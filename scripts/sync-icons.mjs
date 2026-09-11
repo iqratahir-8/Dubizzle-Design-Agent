@@ -97,12 +97,16 @@ for (const source of SOURCES) {
  */
 function writeSvgWithNamespace(from, to) {
   const svg = readFileSync(from, 'utf8');
+  /* A few upstream files wrap their artwork in <symbol>, which only paints when a
+     <use> references it. Via <img> they render as an empty box — flag them so a
+     template author picks a different file rather than shipping an invisible logo. */
+  const symbolOnly = /<symbol\b/.test(svg) && !/<\/symbol>\s*<(path|g|rect|circle|use)\b/.test(svg);
   if (/<svg[^>]*\sxmlns=/.test(svg)) {
     copyFileSync(from, to);
-    return false;
+    return { namespaced: false, symbolOnly };
   }
   writeFileSync(to, svg.replace(/<svg\b/, '<svg xmlns="http://www.w3.org/2000/svg"'));
-  return true;
+  return { namespaced: true, symbolOnly };
 }
 
 const outDir = join(ROOT, 'design-kit/icons');
@@ -111,12 +115,17 @@ mkdirSync(outDir, { recursive: true });
 
 const byCategory = new Map();
 let namespaceFixes = 0;
+const symbolOnlyIcons = [];
 for (const icon of [...picked.values()].sort((a, b) => a.name.localeCompare(b.name))) {
   const categoryDir = join(outDir, icon.category);
   mkdirSync(categoryDir, { recursive: true });
   const dest = join(categoryDir, `${icon.name}.${icon.ext}`);
+  let symbolOnly = false;
   if (icon.ext === 'svg') {
-    if (writeSvgWithNamespace(icon.file, dest)) namespaceFixes++;
+    const result = writeSvgWithNamespace(icon.file, dest);
+    if (result.namespaced) namespaceFixes++;
+    symbolOnly = result.symbolOnly;
+    if (symbolOnly) symbolOnlyIcons.push(`${icon.category}/${icon.name}.svg`);
   } else {
     copyFileSync(icon.file, dest);
   }
@@ -128,6 +137,7 @@ for (const icon of [...picked.values()].sort((a, b) => a.name.localeCompare(b.na
     package: icon.package,
     originalName: icon.originalName,
     usedInSource: icon.usedInSource,
+    ...(symbolOnly ? { rendersBlankAsImg: true } : {}),
   });
 }
 
@@ -148,6 +158,11 @@ for (const c of CATEGORY_ORDER) {
 console.log(
   `\nSkipped: ${skipped.unreferenced} unreferenced (horizontal/strat), ${skipped.lowerPrecedence} shadowed by higher-precedence package`,
 );
+if (symbolOnlyIcons.length) {
+  console.warn(`\n⚠️  ${symbolOnlyIcons.length} icon(s) wrap their artwork in <symbol> and render blank via <img>:`);
+  for (const name of symbolOnlyIcons) console.warn(`     ${name}`);
+  console.warn('     Inline them with <use>, or pick another file. Marked rendersBlankAsImg in icons.json.');
+}
 console.log('Wrote design-kit/icons/ + icons.json + index.html');
 
 function renderIndex(byCategory, total) {

@@ -43,7 +43,8 @@
         "path": "icons/brand/brand-icon-login.svg",
         "package": "dubizzle-facelift",
         "originalName": "brandIconLogin_noinline.svg",
-        "usedInSource": false
+        "usedInSource": false,
+        "rendersBlankAsImg": true
       },
       {
         "name": "brand-logo",
@@ -78,7 +79,8 @@
         "path": "icons/brand/logo.svg",
         "package": "dubizzle-eg",
         "originalName": "logo_noinline.svg",
-        "usedInSource": true
+        "usedInSource": true,
+        "rendersBlankAsImg": true
       },
       {
         "name": "logo-ar",
@@ -113,7 +115,8 @@
         "path": "icons/brand/logo-icon.svg",
         "package": "dubizzle-facelift",
         "originalName": "logoIcon_noinline.svg",
-        "usedInSource": false
+        "usedInSource": false,
+        "rendersBlankAsImg": true
       },
       {
         "name": "logo-mini",

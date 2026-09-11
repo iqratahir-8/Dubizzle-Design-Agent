@@ -1,0 +1,133 @@
+{
+  "_purpose": "Real dubizzle Egypt content. Generated screens look fake mostly because their DATA is fake — 'Product Name', '$99.99', three evenly-weighted cards. Use these fixtures instead of inventing content.",
+  "_sources": "Categories and locations extracted from dubizzle-eg/branding/{useMostPopularCategories,popularLinks}.ts. Listings are representative, written to match the shape and messiness of real seller-written ads.",
+
+  "locale": {
+    "currency": "EGP",
+    "currencyFormat": "EGP 3,200,000",
+    "_currencyNote": "Prefix, comma thousands, no decimals. Never $, never abbreviated to 3.2M.",
+    "areaUnit": "m²",
+    "languages": ["en", "ar"],
+    "rtl": "ar"
+  },
+
+  "categories": [
+    { "slug": "properties", "en": "Properties", "ar": "عقارات" },
+    { "slug": "vehicles", "en": "Vehicles", "ar": "عربيات وقطع غيار" },
+    { "slug": "electronics-home-appliances", "en": "Electronics & Home Appliances", "ar": "الكترونيات وأجهزة منزلية" },
+    { "slug": "home-furniture-decor", "en": "Home Furniture - Decor", "ar": "أثاث منزل - ديكور" },
+    { "slug": "fashion-beauty", "en": "Fashion & Beauty", "ar": "الموضة والجمال" },
+    { "slug": "mobiles-tablets", "en": "Mobile Phones & Tablets", "ar": "موبايلات و تابلت" },
+    { "slug": "jobs", "en": "Jobs", "ar": "وظائف" },
+    { "slug": "services", "en": "Services", "ar": "خدمات" },
+    { "slug": "pets", "en": "Pets - Animals", "ar": "حيوانات واكسسواراتها" },
+    { "slug": "kids-babies", "en": "Kids & Babies", "ar": "مستلزمات أطفال" },
+    { "slug": "business-industrial", "en": "Business - Industrial", "ar": "معدات ومستلزمات مهنية" }
+  ],
+
+  "locations": {
+    "cities": ["Cairo", "Giza", "Alexandria", "Hurghada", "Matruh", "Sohag", "Mansoura", "Port Said"],
+    "cairoAreas": ["Maadi", "Zamalek", "Nasr City", "Heliopolis", "New Cairo", "5th Settlement", "Mokattam", "Madinaty", "Shorouk City", "Rehab City"],
+    "gizaAreas": ["6th of October", "Sheikh Zayed", "Dokki", "Mohandessin", "Haram", "Faisal"],
+    "compounds": ["Mivida", "Hyde Park", "Mountain View", "Eastown", "Beverly Hills", "Palm Hills", "Badya Palm Hills", "Allegria Residence", "Lake View Residence", "Galleria Moon Valley", "De Joya", "Etapa", "Joulz"],
+    "coastal": ["Ain Sukhna", "El Gouna", "Marassi", "North Coast", "Hurghada"],
+    "_note": "Compounds are a big part of EG property search — use them, not generic 'Downtown'."
+  },
+
+  "listings": {
+    "properties": [
+      { "title": "Apartment for sale in Zamalek 200m fully finished", "price": "EGP 8,500,000", "location": "Zamalek, Cairo", "time": "2 hours ago", "beds": 3, "baths": 2, "area": "200 m²", "featured": true },
+      { "title": "شقة للبيع في مدينتي 145 متر سوبر لوكس", "price": "EGP 4,750,000", "location": "Madinaty, Cairo", "time": "منذ 5 ساعات", "beds": 3, "baths": 2, "area": "145 m²", "lang": "ar" },
+      { "title": "Villa for sale Mivida compound - prime location", "price": "EGP 32,000,000", "location": "Mivida, New Cairo", "time": "1 day ago", "beds": 5, "baths": 4, "area": "420 m²", "elite": true },
+      { "title": "Studio for rent Sheikh Zayed furnished", "price": "EGP 12,000 / month", "location": "Sheikh Zayed, Giza", "time": "3 hours ago", "beds": 1, "baths": 1, "area": "65 m²" },
+      { "title": "شقة 120م للايجار المعادي الجديدة تشطيب سوبر لوكس", "price": "EGP 18,000 / month", "location": "Maadi, Cairo", "time": "منذ يوم", "beds": 2, "baths": 1, "area": "120 m²", "lang": "ar" },
+      { "title": "Chalet for sale Marassi north coast first row", "price": "EGP 14,200,000", "location": "Marassi, North Coast", "time": "4 days ago", "beds": 3, "baths": 3, "area": "180 m²", "featured": true },
+      { "title": "Duplex 300m for sale in 6th of October under market price URGENT", "price": "EGP 6,900,000", "location": "6th of October, Giza", "time": "6 hours ago", "beds": 4, "baths": 3, "area": "300 m²" },
+      { "title": "Apartment for sale Nasr City 130m installments over 8 years", "price": "EGP 3,200,000", "location": "Nasr City, Cairo", "time": "12 hours ago", "beds": 3, "baths": 2, "area": "130 m²" }
+    ],
+    "vehicles": [
+      { "title": "Mercedes-Benz E200 2021 - 45,000 km - full options", "price": "EGP 2,850,000", "location": "Sheikh Zayed, Giza", "time": "3 hours ago", "featured": true },
+      { "title": "BMW i5 eDrive40 2025 electric brand new", "price": "EGP 5,400,000", "location": "New Cairo, Cairo", "time": "1 day ago", "elite": true },
+      { "title": "هيونداي النترا 2019 فابريكا بالكامل", "price": "EGP 1,150,000", "location": "Mansoura", "time": "منذ ساعتين", "lang": "ar" },
+      { "title": "Kia Cerato 2018 automatic - excellent condition", "price": "EGP 985,000", "location": "Alexandria", "time": "5 hours ago" },
+      { "title": "Toyota Corolla 2022 - 30,000 km only - agency maintained", "price": "EGP 1,690,000", "location": "Heliopolis, Cairo", "time": "2 days ago" },
+      { "title": "Fiat 128 1982 needs work - price negotiable", "price": "EGP 95,000", "location": "Sohag", "time": "1 week ago" }
+    ],
+    "mobiles": [
+      { "title": "iPhone 15 Pro Max 256GB - like new with box", "price": "EGP 62,000", "location": "Mohandessin, Giza", "time": "1 hour ago" },
+      { "title": "Samsung S24 Ultra 512 جديد متبرشم", "price": "EGP 54,500", "location": "Nasr City, Cairo", "time": "منذ 3 ساعات", "lang": "ar" },
+      { "title": "iPhone 13 128GB battery 89% no scratches", "price": "EGP 27,500", "location": "Alexandria", "time": "8 hours ago" },
+      { "title": "Xiaomi Redmi Note 13 - sealed - 2 year warranty", "price": "EGP 11,300", "location": "Maadi, Cairo", "time": "1 day ago" }
+    ],
+    "electronics": [
+      { "title": "Samsung 55 inch 4K smart TV - barely used", "price": "EGP 18,900", "location": "6th of October, Giza", "time": "4 hours ago" },
+      { "title": "تكييف شارب 1.5 حصان بارد ساخن ضمان 5 سنين", "price": "EGP 24,000", "location": "Giza", "time": "منذ يومين", "lang": "ar" },
+      { "title": "PlayStation 5 Slim + 2 controllers + 4 games", "price": "EGP 32,000", "location": "New Cairo, Cairo", "time": "6 hours ago" }
+    ]
+  },
+
+  "sellers": [
+    { "name": "Ahmed H.", "type": "individual", "memberSince": "2021" },
+    { "name": "Mona S.", "type": "individual", "memberSince": "2023" },
+    { "name": "Nile Realty", "type": "agency", "pro": true, "memberSince": "2019" },
+    { "name": "Karim M.", "type": "individual", "memberSince": "2024" },
+    { "name": "Coldwell Banker Egypt", "type": "agency", "pro": true, "memberSince": "2017" },
+    { "name": "محمود ع.", "type": "individual", "memberSince": "2022" }
+  ],
+
+  "ui": {
+    "en": {
+      "postAd": "Post Your Ad",
+      "login": "Login or Signup",
+      "search": "Search",
+      "searchPlaceholder": "Find Cars, Mobile Phones and more...",
+      "allEgypt": "Egypt",
+      "chat": "Chat",
+      "call": "Call",
+      "whatsapp": "WhatsApp",
+      "myAds": "My Ads",
+      "favourites": "Favourites",
+      "notifications": "Notifications",
+      "filters": "Filters",
+      "sortBy": "Sort by",
+      "newestFirst": "Newest first",
+      "priceLowHigh": "Price: low to high",
+      "resultsCount": "12,847 ads",
+      "featured": "Featured",
+      "elite": "Elite",
+      "verified": "Verified",
+      "popularCategories": "Popular Categories",
+      "viewMore": "View more",
+      "beds": "Beds",
+      "baths": "Baths"
+    },
+    "ar": {
+      "postAd": "أضف إعلانك",
+      "login": "تسجيل الدخول",
+      "search": "بحث",
+      "searchPlaceholder": "ابحث عن عربيات، موبايلات وأكتر...",
+      "allEgypt": "مصر",
+      "chat": "شات",
+      "call": "اتصل",
+      "whatsapp": "واتساب",
+      "myAds": "إعلاناتي",
+      "favourites": "المفضلة",
+      "filters": "فلاتر",
+      "sortBy": "ترتيب حسب",
+      "featured": "مميز",
+      "beds": "غرف",
+      "baths": "حمام"
+    }
+  },
+
+  "relativeTime": {
+    "en": ["Just now", "12 minutes ago", "1 hour ago", "2 hours ago", "5 hours ago", "Yesterday", "2 days ago", "1 week ago"],
+    "ar": ["الآن", "منذ 12 دقيقة", "منذ ساعة", "منذ ساعتين", "منذ 5 ساعات", "أمس", "منذ يومين", "منذ أسبوع"]
+  },
+
+  "filters": {
+    "properties": ["Price", "Location", "Property Type", "Bedrooms", "Bathrooms", "Area (m²)", "Furnished", "Completion", "Delivery Date", "Payment Option"],
+    "vehicles": ["Price", "Make", "Model", "Year", "Kilometers", "Transmission", "Fuel Type", "Body Type", "Color", "Seller Type"],
+    "mobiles": ["Price", "Brand", "Condition", "Storage", "Color", "Warranty"]
+  }
+}

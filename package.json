@@ -27,10 +27,16 @@
   ],
   "scripts": {
     "dev": "storybook dev -p 6006",
+    "kit": "python3 -m http.server 4321 --directory design-kit",
     "build": "tsup",
     "build:storybook": "storybook build",
     "typecheck": "tsc --noEmit",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "sync": "npm run sync:tokens && npm run sync:icons",
+    "sync:tokens": "node scripts/sync-tokens.mjs",
+    "sync:icons": "node scripts/sync-icons.mjs",
+    "check:design": "node scripts/check-design.mjs",
+    "check:all": "node scripts/check-design.mjs design-kit/patterns/*.css design-kit/templates/*/*.html src/components/*/*.module.css"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
