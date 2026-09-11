@@ -2120,3 +2120,56 @@ ul {
   .ad-list-card__media { width: 100%; height: auto; min-height: 20rem; }
   .page-head { flex-wrap: wrap; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE PATTERNS
+   The mobile filter rail collapses to a sticky quick-filter chip bar (a "Filters"
+   trigger + per-facet chips). Sourced from the product's
+   search/compact/quickFilters/* — chips scroll horizontally, never the page body.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.qf-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-page);
+  border-bottom: 0.1rem solid var(--border-default);
+  overflow-x: auto;
+}
+
+.qf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: 3.6rem;
+  padding-inline: var(--space-3);
+  flex: none;
+  border: 0.1rem solid var(--border-input);
+  border-radius: var(--radius-pill);
+  background: var(--surface-page);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* The "Filters" trigger leads the bar and reads as the primary control. */
+.qf-chip--primary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: var(--weight-bold);
+}
+
+.qf-chip img { width: 1.6rem; height: 1.6rem; }
+
+/* Horizontal, scrollable strip — Featured Businesses, category tiles. */
+.m-scroller {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding-block: var(--space-2);
+}
