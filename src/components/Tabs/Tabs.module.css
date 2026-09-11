@@ -1,0 +1,51 @@
+.line {
+  display: flex;
+  gap: 2.4rem;
+  border-bottom: 2px solid var(--gray-02);
+}
+
+.lineTab {
+  font-family: var(--font-primary);
+  font-size: 1.4rem;
+  font-weight: var(--weight-regular);
+  color: var(--gray-05);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.lineTab.active {
+  font-weight: var(--weight-bold);
+  color: var(--red-05);
+  border-bottom-color: var(--red-05);
+}
+
+.segmented {
+  display: inline-flex;
+  background: var(--gray-01);
+  border-radius: var(--radius-md);
+  padding: 0.3rem;
+}
+
+.segmentedTab {
+  font-family: var(--font-primary);
+  font-size: 1.4rem;
+  font-weight: var(--weight-semibold);
+  color: var(--gray-05);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s, color 0.15s;
+}
+
+.segmentedTab.active {
+  color: var(--gray-06);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-control);
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
+  <mask id="mask0_5972_46731" style="mask-type:alpha" width="40" height="40" x="0" y="0" maskUnits="userSpaceOnUse">
+    <path fill="#D9D9D9" d="M20 39.8c11 0 19.7-8.9 19.7-19.9C39.7 9 31 0 20 0 9.1 0 .3 9 .3 20S9 39.7 20 39.7z"/>
+  </mask>
+  <g mask="url(#mask0_5972_46731)">
+    <path fill="url(#paint0_linear_5972_46731)" d="M42.6-2H-2.3v39.4h45V-1.9z"/>
+    <path fill="#23262A" stroke="#23262A" stroke-width=".9" d="M9.8 25l2.5-8 6.8 10.4h-7.6A1.8 1.8 0 0 1 9.8 25zM30.7 25L28 17l-6.7 10.4h7.5c1.3 0 2.2-1.2 1.8-2.4z"/>
+    <path fill="#FDCAB8" d="M25.2 24.5h-9.7v10.3h9.7V24.5z"/>
+    <path fill="#FDB298" d="M25.2 31.5c-4.8-.8-8.3-4.3-9.6-6.1l.4-.2h9.2v6.3z"/>
+    <path fill="#FFDED2" d="M28.4 16.6c0 5.9-3.6 12-8 12-4.5 0-8.1-6.1-8.1-12 0-5.8 3.6-8.3 8-8.3 4.5 0 8 2.5 8 8.3z"/>
+    <path fill="#23262A" stroke="#23262A" stroke-width=".9" d="M28.2 17.6C24 18.2 20 14 19 11.5c-1.8.3-1.2.4-1.5 1.1-1.4 3.6-3.5 4.8-5.3 6C10 15.4 12 8.9 16 7.3c5-2 9.4-.4 11.3 3.1 1.5 2.8 1.2 5.7 1 7.2z"/>
+    <path fill="#85B5F5" d="M20 34.6l-4.5-4-.3 10.5h9.5l1-10.9-5.7 4.4z"/>
+    <path fill="#0F5DC4" stroke="#0F5DC4" stroke-width=".9" d="M16.5 40.9c-1.3-4.4-1.6-10-1.5-12.1l-7.3 3.6c-2.2 1.1-2.4 3-2.5 3.3l-.6 5.2h12zM24.2 40.9c1.3-4.4 1.6-10 1.5-12.1l7.3 3.6c2.2 1.1 2.4 3.1 2.5 3.5l.6 5H24z"/>
+  </g>
+  <defs>
+    <linearGradient id="paint0_linear_5972_46731" x1="20.2" x2="20.2" y1="-1.9" y2="37.4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBE0E0"/>
+      <stop offset="1" stop-color="#FBE0E0" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

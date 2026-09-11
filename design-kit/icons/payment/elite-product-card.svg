@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 60 43">
+  <g opacity=".25">
+    <path fill="#FACA73" d="M36 43a36 36 0 1 0 0-72 36 36 0 0 0 0 72Z"/>
+    <path fill="#fff" d="M17.44-17h38l2 2v44l-2 2h-38l-2-2v-44l2-2Z"/>
+    <mask id="a" width="77" height="77" x="-28" y="-16" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+      <path fill="#D9D9D9" d="M-27.56 8.37-4.2-15l52.58 52.58-23.37 23.36-52.57-52.57Z"/>
+    </mask>
+    <g mask="url(#a)">
+      <path fill="#EDEEEE" d="M17.44-17h38l2 2v44l-2 2h-38l-2-2v-44l2-2Z"/>
+    </g>
+    <path fill="#BDBEBF" fill-rule="evenodd" d="M24 8a1 1 0 0 1 1-1h27a1 1 0 1 1 0 2H25a1 1 0 0 1-1-1ZM27 12a1 1 0 0 1 1-1h24a1 1 0 1 1 0 2H28a1 1 0 0 1-1-1ZM46 17a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2h-5a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+    <path fill="#E00000" d="M21.44-12h30l1 1V1l-1 1h-30l-1-1v-12l1-1Z"/>
+    <path fill="url(#b)" d="M72 7A36 36 0 1 1 0 7a36 36 0 0 1 72 0Z"/>
+    <g filter="url(#c)">
+      <rect width="29.25" height="11.25" x="34.88" y="17.13" fill="url(#d)" rx="2" transform="rotate(-30 34.88 17.13)"/>
+    </g>
+    <path fill="#000" fill-rule="evenodd" d="M44.79 19.05c-.4-.64-.66-.57-1.25-1-.9-.72-.74-1.87-2-2.47.52 1.38-.25 2.32-.5 3.54-.2.96.11 1.86.71 2.28-.1-.6.19-1.23.76-1.56.73-.42 1.64-.2 2.04.49.14.25.2.53.18.8.5-.57.44-1.48.06-2.08Z" clip-rule="evenodd"/>
+    <path fill="#000" fill-rule="evenodd" d="M40.85 18.15c.26-.66.6-1.8.3-2.33-.48-.82-1.16-.93-1.16-.93s.58.53-.2 2.81c-.67 1.96.14 2.93.19 3 .42.64 1.15 1.24 1.85 1.26a2.15 2.15 0 0 1-.91-.81c-.07-.11-.8-1.15-.07-3M44.15 20.55c.28.49.1 1.11-.41 1.4-.51.3-1.15.15-1.43-.34-.27-.48-.09-1.1.42-1.4.5-.29 1.14-.14 1.42.34Z" clip-rule="evenodd"/>
+    <path fill="#000" d="M56.3 11.96a1.9 1.9 0 0 1 .76-2.63c.99-.57 2.06-.26 2.66.77l.1.18-2.46 1.42c.28.37.81.5 1.37.18.31-.18.6-.5.7-.82l.7.3c-.17.5-.6.94-1.11 1.23-1.01.58-2.15.38-2.73-.63ZM57.43 10a.9.9 0 0 0-.42 1.16l1.63-.94c-.19-.29-.64-.56-1.21-.22ZM56.25 14.19c-.6.35-1.11.24-1.43-.32l-.95-1.64-.55.32-.41-.72.55-.32-.5-.85.88-.51.5.86.67-.4.41.73-.67.39.82 1.41c.11.2.3.29.5.17.13-.07.23-.19.25-.26l.54.52c-.06.18-.24.4-.6.62ZM51.71 11.9c-.28.17-.64.08-.8-.19-.16-.27-.05-.63.23-.8a.59.59 0 0 1 .81.2c.16.27.05.63-.24.8Zm1.65 3.85-1.81-3.14.87-.5 1.81 3.14-.87.5ZM51.63 16.75l-2.5-4.33.87-.5 2.5 4.33-.87.5ZM47.65 19.05l-2.5-4.33 3.23-1.87.46.8-2.26 1.3.54.94 2.22-1.28.45.8-2.21 1.27.58 1 2.26-1.3.47.8-3.24 1.87Z"/>
+  </g>
+  <defs>
+    <linearGradient id="b" x1="66.5" x2="5" y1="27" y2="-9.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="d" x1="64.13" x2="34.88" y1="22.75" y2="22.76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D1A65A"/>
+      <stop offset="1" stop-color="#F5D684"/>
+    </linearGradient>
+    <filter id="c" width="32.96" height="26.37" x="33.88" y=".5" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy="-1"/>
+      <feGaussianBlur stdDeviation=".5"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_628_13599"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow_628_13599" result="shape"/>
+    </filter>
+  </defs>
+</svg>
