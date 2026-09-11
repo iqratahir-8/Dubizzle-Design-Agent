@@ -4,7 +4,7 @@
     design-kit/templates/_pages/motors.desktop.html
   Rebuild with: npm run build:templates
 
-  Motors vertical landing page, rebuilt from the saved live page (reference/live/motors.html). Structure: breadcrumb, page-head with count pill + Save Search, left rail (tinted Categories tree + white Location + Brand and Model, all with counts), right column (Featured Businesses strip, All/New/Used segmented, sort toolbar, promoted sections with horizontal listing cards, Popular Cars chips). Counts and copy are the measured live values. Listing price is CHARCOAL, not red.
+  Motors vertical landing page, rebuilt from the saved live page (reference/live/motors.html). Uses the repo's canonical ad card in its list variant (.ad-list-card) — not a bespoke card. Structure: breadcrumb, page-head with count pill + Save Search, left rail (tinted Categories tree + white Location + Brand and Model, all with counts), right column (Featured Businesses strip, All/New/Used segmented, sort toolbar, promoted sections, Popular Cars chips). Listing price is CHARCOAL, not red.
 -->
 <html lang="en">
 <head>
@@ -180,30 +180,28 @@
         <a class="section__link" href="#">View All</a>
       </div>
 
-      <article class="listing-card">
-        <div class="listing-card__media media-placeholder">
+      <article class="ad-list-card">
+        <div class="ad-list-card__media media-placeholder">
           <span class="ribbon"><img src="../../icons/vehicle/car-of-the-day.svg" alt=""> Car of the Week</span>
           <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
           <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 12</span>
         </div>
-        <div class="listing-card__body">
-          <div class="listing-card__price-row">
-            <p class="listing-card__price">EGP 18,500,000</p>
+        <div class="ad-list-card__body">
+          <div class="ad-list-card__head">
+            <p class="ad-card__price">EGP 18,500,000</p>
             <span class="chip">Range Rover Vogue</span>
           </div>
+          <p class="ad-card__specs"><span>2025</span> · <span>0 km</span> · <span>Automatic</span> · <span>Benzine</span></p>
+          <h3 class="ad-card__title">Land Rover Range Rover Vogue 2025</h3>
           <div class="attr-chips">
-            <span class="attr-chip">2025</span>
-            <span class="attr-chip"><img src="../../icons/vehicle/mileage.svg" alt=""> 0 km</span>
             <span class="attr-chip">Condition <strong>New</strong></span>
-            <span class="attr-chip">Transmission <strong>Automatic</strong></span>
-            <span class="attr-chip"><img src="../../icons/vehicle/fuel.svg" alt=""> Benzine</span>
+            <span class="attr-chip">First Owner</span>
           </div>
-          <h3 class="listing-card__title">Land Rover Range Rover Vogue 2025</h3>
-          <div class="listing-card__footer">
+          <div class="ad-list-card__footer">
             <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> New Cairo, Cairo</span>
             <span>23 hours ago</span>
           </div>
-          <div class="contact-row">
+          <div class="ad-list-card__actions">
             <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
             <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
           </div>
@@ -216,29 +214,24 @@
         <a class="section__link" href="#">View More</a>
       </div>
 
-      <article class="listing-card">
-        <div class="listing-card__media media-placeholder">
+      <article class="ad-list-card">
+        <div class="ad-list-card__media media-placeholder">
           <span class="elite-tag"><img src="../../icons/brand/dubizzle-flame.svg" alt=""> Elite</span>
           <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
           <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 11</span>
         </div>
-        <div class="listing-card__body">
-          <div class="listing-card__price-row">
-            <p class="listing-card__price">EGP 9,000,000</p>
+        <div class="ad-list-card__body">
+          <div class="ad-list-card__head">
+            <p class="ad-card__price">EGP 9,000,000</p>
             <span class="chip">Escalade</span>
           </div>
-          <div class="attr-chips">
-            <span class="attr-chip">2024</span>
-            <span class="attr-chip"><img src="../../icons/vehicle/mileage.svg" alt=""> 10,000 km</span>
-            <span class="attr-chip">Transmission <strong>Automatic</strong></span>
-            <span class="attr-chip"><img src="../../icons/vehicle/fuel.svg" alt=""> Benzine</span>
-          </div>
-          <h3 class="listing-card__title">CADILLAC ESCALADE 2024 V 700 H. P</h3>
-          <div class="listing-card__footer">
+          <p class="ad-card__specs"><span>2024</span> · <span>10,000 km</span> · <span>Automatic</span> · <span>Benzine</span></p>
+          <h3 class="ad-card__title">CADILLAC ESCALADE 2024 V 700 H. P</h3>
+          <div class="ad-list-card__footer">
             <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> Smouha, Alexandria</span>
             <span>4 days ago</span>
           </div>
-          <div class="contact-row">
+          <div class="ad-list-card__actions">
             <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
             <button class="contact-btn contact-btn--chat" type="button"><img src="../../icons/action/chat.svg" alt=""> Chat</button>
           </div>
@@ -250,55 +243,50 @@
         <h2 class="section__title">All Cars for Sale</h2>
       </div>
 
-      <article class="listing-card">
-        <div class="listing-card__media media-placeholder">
+      <article class="ad-list-card">
+        <div class="ad-list-card__media media-placeholder">
           <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
           <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 20</span>
         </div>
-        <div class="listing-card__body">
-          <div class="listing-card__price-row">
-            <p class="listing-card__price">EGP 2,450,000</p>
+        <div class="ad-list-card__body">
+          <div class="ad-list-card__head">
+            <p class="ad-card__price">EGP 2,450,000</p>
             <span class="chip">CR-V</span>
           </div>
+          <p class="ad-card__specs"><span>2025</span> · <span>21,000 km</span> · <span>Automatic</span></p>
+          <h3 class="ad-card__title">هوندا سي ار في 2025</h3>
           <div class="attr-chips">
-            <span class="attr-chip">2025</span>
-            <span class="attr-chip"><img src="../../icons/vehicle/mileage.svg" alt=""> 21,000 km</span>
             <span class="attr-chip">Agency Maintained</span>
             <span class="attr-chip">First Owner</span>
           </div>
-          <h3 class="listing-card__title">هوندا سي ار في 2025</h3>
-          <div class="listing-card__footer">
+          <div class="ad-list-card__footer">
             <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> Nasr City, Cairo</span>
             <span>1 week ago</span>
           </div>
-          <div class="contact-row">
+          <div class="ad-list-card__actions">
             <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
             <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
           </div>
         </div>
       </article>
 
-      <article class="listing-card">
-        <div class="listing-card__media media-placeholder">
+      <article class="ad-list-card">
+        <div class="ad-list-card__media media-placeholder">
           <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
           <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 11</span>
         </div>
-        <div class="listing-card__body">
-          <div class="listing-card__price-row">
-            <p class="listing-card__price">EGP 2,600,000</p>
+        <div class="ad-list-card__body">
+          <div class="ad-list-card__head">
+            <p class="ad-card__price">EGP 2,600,000</p>
             <span class="chip">A3</span>
           </div>
-          <div class="attr-chips">
-            <span class="attr-chip">2026</span>
-            <span class="attr-chip"><img src="../../icons/vehicle/mileage.svg" alt=""> 0 km</span>
-            <span class="attr-chip">Transmission <strong>Automatic</strong></span>
-          </div>
-          <h3 class="listing-card__title">Audi A3 2026 Sline اودي اي ٣ اس لاين</h3>
-          <div class="listing-card__footer">
+          <p class="ad-card__specs"><span>2026</span> · <span>0 km</span> · <span>Automatic</span></p>
+          <h3 class="ad-card__title">Audi A3 2026 Sline اودي اي ٣ اس لاين</h3>
+          <div class="ad-list-card__footer">
             <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> Mohandessin, Giza</span>
             <span>3 weeks ago</span>
           </div>
-          <div class="contact-row">
+          <div class="ad-list-card__actions">
             <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
             <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
           </div>

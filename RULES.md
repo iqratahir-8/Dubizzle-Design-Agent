@@ -112,7 +112,7 @@ Each of these is a tell that a screen was generated rather than designed. None o
 
 ## 3. Required patterns
 
-**Hierarchy in an ad card** — price is the loudest thing (1.8rem/700, red), then title (1.4rem/600, near-black), then specs (1.2rem/600, gray), then location and time (1.2rem/400, light gray). Four distinct levels. Never flatten them.
+**Hierarchy in an ad card** — price is the loudest thing (1.8rem/700, **charcoal** `--gray-06` — not red; production renders it in charcoal and red is reserved for action/brand), then title (1.4rem/600, near-black), then specs (1.2rem/600, gray), then location and time (1.2rem/400, light gray). Four distinct levels. Never flatten them.
 
 **Buttons** — exactly four variants, no more:
 - `primary` — red fill, white text. One per view, for the main action.

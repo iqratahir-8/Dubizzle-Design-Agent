@@ -556,11 +556,14 @@ ul {
 .ad-card__body { padding: var(--space-3); }
 
 /* Price is the loudest element on the card — the hierarchy is
-   price > title > specs > location/time, and it must stay that way. */
+   price > title > specs > location/time, and it must stay that way.
+   Colour is CHARCOAL, not red: production dubizzle.com.eg renders the listing
+   price in --text-primary (rgb(35,38,42)). The monorepo's $adCardPriceColor is
+   the brand red, but live wins. Red stays reserved for action/brand. */
 .ad-card__price {
   font-size: var(--text-lg);
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--text-primary);
   line-height: var(--leading-tight);
 }
 
@@ -645,6 +648,39 @@ ul {
   gap: var(--space-2);
   margin-top: auto;
   padding-top: var(--space-3);
+}
+
+/* Each action button shares the row equally (Call / WhatsApp / Chat). */
+.ad-list-card__actions .contact-btn { flex: 1; }
+
+/* Price + model chip on one row — the list/vertical-page card leads with the
+   price on the start side and a model/type chip on the end. */
+.ad-list-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* On the vertical landing pages the list card carries a couple of extra rows
+   (attribute chips, a location + time footer). Keep them inside the same body
+   flow with the card's rhythm. */
+.ad-list-card__body .attr-chips { margin-top: var(--space-2); }
+
+.ad-list-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+.ad-list-card__footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
 }
 
 /* ── Results grid ─────────────────────────────────────────────────────────── */
@@ -1898,114 +1934,6 @@ ul {
   border-color: var(--color-secondary-light);
 }
 
-/* ── Listing card — vertical/search pages ─────────────────────────────────── */
-
-/* Note: the price here is CHARCOAL, not red. The monorepo still defines
-   $adCardPriceColor as the primary red, but production renders --text-primary.
-   Live wins. */
-.listing-card {
-  display: flex;
-  gap: var(--space-4);
-  padding: var(--space-3);
-  background: var(--surface-card);
-  border: 0.1rem solid var(--border-default);
-  border-radius: var(--radius-lg);
-  cursor: pointer;
-  transition: box-shadow 0.2s;
-}
-
-.listing-card:hover { box-shadow: var(--shadow-card-hover); }
-
-.listing-card__media {
-  position: relative;
-  width: 26rem;
-  flex: none;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--surface-muted);
-  min-height: 19rem;
-}
-
-.listing-card__body {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.listing-card__price-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-3);
-}
-
-.listing-card__price {
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
-  color: var(--text-primary);
-  margin: 0;
-  line-height: var(--leading-tight);
-}
-
-.listing-card__specs {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-size: var(--text-sm);
-  color: var(--text-primary);
-  flex-wrap: wrap;
-}
-
-.listing-card__specs strong { font-weight: var(--weight-semibold); }
-
-.listing-card__spec {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-}
-
-.listing-card__spec img { width: 2rem; height: 2rem; }
-
-.listing-card__divider { color: var(--border-default); }
-
-.listing-card__title {
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  color: var(--text-primary);
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.listing-card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  margin-top: auto;
-  font-size: var(--text-xs);
-  color: var(--text-tertiary);
-}
-
-.listing-card__footer span {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-}
-
-/* Contact actions inside a listing card — Call / WhatsApp / Chat. Sits below
-   the footer; buttons keep the coloured contact-btn fills. */
-.contact-row {
-  display: flex;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
-}
-
-.contact-row .contact-btn { flex: 1; }
-
 .agency-logo {
   height: 3.2rem;
   max-width: 12rem;
@@ -2175,7 +2103,7 @@ ul {
 
 @media (max-width: 768px) {
   .hero-banner { height: 12rem; }
-  .listing-card { flex-direction: column; }
-  .listing-card__media { width: 100%; min-height: 20rem; }
+  .ad-list-card { flex-direction: column; }
+  .ad-list-card__media { width: 100%; height: auto; min-height: 20rem; }
   .page-head { flex-wrap: wrap; }
 }
