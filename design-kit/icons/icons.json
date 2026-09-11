@@ -1,0 +1,4141 @@
+{
+  "generated": "scripts/sync-icons.mjs",
+  "total": 587,
+  "categories": {
+    "brand": [
+      {
+        "name": "app-gallery",
+        "path": "icons/brand/app-gallery.svg",
+        "package": "horizontal",
+        "originalName": "iconAppGallery_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "app-store-en",
+        "path": "icons/brand/app-store-en.svg",
+        "package": "strat",
+        "originalName": "iconAppStoreEN_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "bayut-icon",
+        "path": "icons/brand/bayut-icon.svg",
+        "package": "horizontal",
+        "originalName": "bayutIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "brand-cut-icon",
+        "path": "icons/brand/brand-cut-icon.svg",
+        "package": "horizontal",
+        "originalName": "brandCutIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "brand-icon",
+        "path": "icons/brand/brand-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "brandIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "brand-icon-login",
+        "path": "icons/brand/brand-icon-login.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "brandIconLogin_noinline.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "brand-logo",
+        "path": "icons/brand/brand-logo.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconBrandLogo_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "brand-with-country",
+        "path": "icons/brand/brand-with-country.svg",
+        "package": "dubizzle-eg",
+        "originalName": "brandWithCountry.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "dubizzle-flame",
+        "path": "icons/brand/dubizzle-flame.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconDubizzleFlame.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "google-play-en",
+        "path": "icons/brand/google-play-en.svg",
+        "package": "strat",
+        "originalName": "iconGooglePlayEN_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logo",
+        "path": "icons/brand/logo.svg",
+        "package": "dubizzle-eg",
+        "originalName": "logo_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logo-ar",
+        "path": "icons/brand/logo-ar.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLogoAR.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logo-black",
+        "path": "icons/brand/logo-black.svg",
+        "package": "horizontal",
+        "originalName": "iconLogoBlack_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logo-flame",
+        "path": "icons/brand/logo-flame.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLogoFlame_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logo-hatla2ee",
+        "path": "icons/brand/logo-hatla2ee.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLogoHatla2ee_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logo-icon",
+        "path": "icons/brand/logo-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "logoIcon_noinline.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "logo-mini",
+        "path": "icons/brand/logo-mini.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLogoMini.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logo-mini-mono",
+        "path": "icons/brand/logo-mini-mono.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLogoMiniMono.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logo-tiny",
+        "path": "icons/brand/logo-tiny.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLogoTiny.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logo-with-text",
+        "path": "icons/brand/logo-with-text.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLogoWithText.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "logo-with-text-tiny",
+        "path": "icons/brand/logo-with-text-tiny.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLogoWithTextTiny.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "logout",
+        "path": "icons/brand/logout.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLogout_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "pro-logo",
+        "path": "icons/brand/pro-logo.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "proLogo_noinline.svg",
+        "usedInSource": true
+      }
+    ],
+    "navigation": [
+      {
+        "name": "arrow-down",
+        "path": "icons/navigation/arrow-down.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconArrowDown.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-down-red",
+        "path": "icons/navigation/arrow-down-red.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconArrowDownRed.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "arrow-down-white",
+        "path": "icons/navigation/arrow-down-white.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconArrowDownWhite_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-forward-line",
+        "path": "icons/navigation/arrow-forward-line.svg",
+        "package": "horizontal",
+        "originalName": "iconArrowForwardLine.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-left",
+        "path": "icons/navigation/arrow-left.svg",
+        "package": "horizontal",
+        "originalName": "iconArrowLeft.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-line-down",
+        "path": "icons/navigation/arrow-line-down.svg",
+        "package": "horizontal",
+        "originalName": "iconArrowLineDown.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-line-up",
+        "path": "icons/navigation/arrow-line-up.svg",
+        "package": "horizontal",
+        "originalName": "iconArrowLineUp.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-right",
+        "path": "icons/navigation/arrow-right.svg",
+        "package": "horizontal",
+        "originalName": "iconArrowRight.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-stick-right",
+        "path": "icons/navigation/arrow-stick-right.svg",
+        "package": "strat",
+        "originalName": "iconArrowStickRight.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-top-right",
+        "path": "icons/navigation/arrow-top-right.svg",
+        "package": "horizontal",
+        "originalName": "iconArrowTopRight.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-up",
+        "path": "icons/navigation/arrow-up.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconArrowUp_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-up-right",
+        "path": "icons/navigation/arrow-up-right.svg",
+        "package": "horizontal",
+        "originalName": "iconArrowUpRight.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "arrow-upward",
+        "path": "icons/navigation/arrow-upward.svg",
+        "package": "horizontal",
+        "originalName": "iconArrowUpward.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "back",
+        "path": "icons/navigation/back.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconBack.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chevron-down",
+        "path": "icons/navigation/chevron-down.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconChevronDown.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chevron-left",
+        "path": "icons/navigation/chevron-left.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconChevronLeft.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chevron-right",
+        "path": "icons/navigation/chevron-right.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconChevronRight.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chevron-right-small",
+        "path": "icons/navigation/chevron-right-small.svg",
+        "package": "horizontal",
+        "originalName": "iconChevronRightSmall.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "fast-forward",
+        "path": "icons/navigation/fast-forward.svg",
+        "package": "horizontal",
+        "originalName": "fastForward.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "home",
+        "path": "icons/navigation/home.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconHome.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "menu",
+        "path": "icons/navigation/menu.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconMenu.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "menu-icon",
+        "path": "icons/navigation/menu-icon.svg",
+        "package": "horizontal",
+        "originalName": "menuIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "photo-mobile-tab-switcher",
+        "path": "icons/navigation/photo-mobile-tab-switcher.svg",
+        "package": "strat",
+        "originalName": "iconPhotoMobileTabSwitcher.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "play-arrow",
+        "path": "icons/navigation/play-arrow.svg",
+        "package": "horizontal",
+        "originalName": "PlayArrow.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "plus-icon-desktop",
+        "path": "icons/navigation/plus-icon-desktop.svg",
+        "package": "strat",
+        "originalName": "plusIconDesktop.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "red-arrow-right-icon",
+        "path": "icons/navigation/red-arrow-right-icon.svg",
+        "package": "horizontal",
+        "originalName": "redArrowRightIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "right-arrow-in-circle",
+        "path": "icons/navigation/right-arrow-in-circle.svg",
+        "package": "horizontal",
+        "originalName": "rightArrowInCircle.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "tablets",
+        "path": "icons/navigation/tablets.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "tablets.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "thick-arrow-up",
+        "path": "icons/navigation/thick-arrow-up.svg",
+        "package": "horizontal",
+        "originalName": "iconThickArrowUp_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "vertical-properties-home",
+        "path": "icons/navigation/vertical-properties-home.svg",
+        "package": "horizontal",
+        "originalName": "iconVerticalPropertiesHome.svg",
+        "usedInSource": true
+      }
+    ],
+    "action": [
+      {
+        "name": "add-photo",
+        "path": "icons/action/add-photo.svg",
+        "package": "horizontal",
+        "originalName": "iconAddPhoto_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "add-quota",
+        "path": "icons/action/add-quota.svg",
+        "package": "horizontal",
+        "originalName": "iconAddQuota.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "address-trash",
+        "path": "icons/action/address-trash.svg",
+        "package": "horizontal",
+        "originalName": "iconAddressTrash.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "bookmark",
+        "path": "icons/action/bookmark.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconBookmark.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "call",
+        "path": "icons/action/call.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconCall.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "call-icon",
+        "path": "icons/action/call-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "call_icon.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "chat",
+        "path": "icons/action/chat.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconChat.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chat-bubble",
+        "path": "icons/action/chat-bubble.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconChatBubble.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chat-helper-icon",
+        "path": "icons/action/chat-helper-icon.svg",
+        "package": "horizontal",
+        "originalName": "chatHelperIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chat-icon",
+        "path": "icons/action/chat-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "chat_icon.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "chat-link",
+        "path": "icons/action/chat-link.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconChatLink_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chat-send",
+        "path": "icons/action/chat-send.svg",
+        "package": "horizontal",
+        "originalName": "iconChatSend.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chat-sending",
+        "path": "icons/action/chat-sending.svg",
+        "package": "horizontal",
+        "originalName": "chatSending.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chat-with-dots",
+        "path": "icons/action/chat-with-dots.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconChatWithDots.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chats",
+        "path": "icons/action/chats.svg",
+        "package": "horizontal",
+        "originalName": "iconChats.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "circle-plus",
+        "path": "icons/action/circle-plus.svg",
+        "package": "horizontal",
+        "originalName": "iconCirclePlus.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "close",
+        "path": "icons/action/close.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconClose.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "close-thick",
+        "path": "icons/action/close-thick.svg",
+        "package": "horizontal",
+        "originalName": "iconCloseThick.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "copy-to-clipboard",
+        "path": "icons/action/copy-to-clipboard.svg",
+        "package": "strat",
+        "originalName": "iconCopyToClipboard.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "credits-sparkle-coin",
+        "path": "icons/action/credits-sparkle-coin.svg",
+        "package": "horizontal",
+        "originalName": "creditsSparkleCoin_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "cross",
+        "path": "icons/action/cross.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "cross_inline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "delete",
+        "path": "icons/action/delete.svg",
+        "package": "horizontal",
+        "originalName": "iconDelete.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "delete-tile",
+        "path": "icons/action/delete-tile.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconDeleteTile.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "delete-white",
+        "path": "icons/action/delete-white.svg",
+        "package": "horizontal",
+        "originalName": "delete-white.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "dislike",
+        "path": "icons/action/dislike.svg",
+        "package": "horizontal",
+        "originalName": "dislike.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "dots",
+        "path": "icons/action/dots.svg",
+        "package": "horizontal",
+        "originalName": "iconDots_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "download",
+        "path": "icons/action/download.svg",
+        "package": "horizontal",
+        "originalName": "iconDownload.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "download-count",
+        "path": "icons/action/download-count.svg",
+        "package": "horizontal",
+        "originalName": "iconDownloadCount.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "downloads",
+        "path": "icons/action/downloads.svg",
+        "package": "horizontal",
+        "originalName": "iconDownloads.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "drag-handle-dots",
+        "path": "icons/action/drag-handle-dots.svg",
+        "package": "horizontal",
+        "originalName": "dragHandleDots.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "edit-address",
+        "path": "icons/action/edit-address.svg",
+        "package": "horizontal",
+        "originalName": "iconEditAddress.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "edit-avatar",
+        "path": "icons/action/edit-avatar.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconEditAvatar.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "edit-profile",
+        "path": "icons/action/edit-profile.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconEditProfile.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "email",
+        "path": "icons/action/email.svg",
+        "package": "horizontal",
+        "originalName": "iconEmail.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "email-required",
+        "path": "icons/action/email-required.svg",
+        "package": "horizontal",
+        "originalName": "iconEmailRequired_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "empty-state-search",
+        "path": "icons/action/empty-state-search.svg",
+        "package": "horizontal",
+        "originalName": "iconEmptyStateSearch_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "external-link",
+        "path": "icons/action/external-link.svg",
+        "package": "horizontal",
+        "originalName": "iconExternalLink.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "eye-crossed",
+        "path": "icons/action/eye-crossed.svg",
+        "package": "horizontal",
+        "originalName": "iconEyeCrossed.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "eye-light",
+        "path": "icons/action/eye-light.svg",
+        "package": "strat",
+        "originalName": "iconEyeLight.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "favorite-selected",
+        "path": "icons/action/favorite-selected.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconFavoriteSelected_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "favorite-unselected",
+        "path": "icons/action/favorite-unselected.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconFavoriteUnselected_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "favourite",
+        "path": "icons/action/favourite.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "favourite_noinline.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "filter",
+        "path": "icons/action/filter.svg",
+        "package": "horizontal",
+        "originalName": "filter_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "filters",
+        "path": "icons/action/filters.svg",
+        "package": "horizontal",
+        "originalName": "iconFilters.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "filters-new",
+        "path": "icons/action/filters-new.svg",
+        "package": "strat",
+        "originalName": "iconFiltersNew.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "flag",
+        "path": "icons/action/flag.svg",
+        "package": "horizontal",
+        "originalName": "flag_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "gear",
+        "path": "icons/action/gear.svg",
+        "package": "horizontal",
+        "originalName": "iconGear_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "hatla2ee-refresh-product-icon",
+        "path": "icons/action/hatla2ee-refresh-product-icon.svg",
+        "package": "horizontal",
+        "originalName": "iconHatla2eeRefreshProductIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "heart",
+        "path": "icons/action/heart.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconHeart.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "heart-filled",
+        "path": "icons/action/heart-filled.svg",
+        "package": "horizontal",
+        "originalName": "iconHeartFilled.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "image-upload",
+        "path": "icons/action/image-upload.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconImageUpload.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "like",
+        "path": "icons/action/like.svg",
+        "package": "horizontal",
+        "originalName": "like.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "linked-in",
+        "path": "icons/action/linked-in.svg",
+        "package": "horizontal",
+        "originalName": "iconLinkedIn_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "location-blocked",
+        "path": "icons/action/location-blocked.png",
+        "package": "horizontal",
+        "originalName": "locationBlocked.png",
+        "usedInSource": true
+      },
+      {
+        "name": "login-error-icon",
+        "path": "icons/action/login-error-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "loginErrorIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "message",
+        "path": "icons/action/message.svg",
+        "package": "horizontal",
+        "originalName": "iconMessage_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "microphone",
+        "path": "icons/action/microphone.svg",
+        "package": "horizontal",
+        "originalName": "iconMicrophone.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "minus-circle",
+        "path": "icons/action/minus-circle.svg",
+        "package": "horizontal",
+        "originalName": "iconMinusCircle.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "mobile-phones",
+        "path": "icons/action/mobile-phones.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "mobile-phones.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "more-actions",
+        "path": "icons/action/more-actions.svg",
+        "package": "horizontal",
+        "originalName": "iconMoreActions.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "more-categories",
+        "path": "icons/action/more-categories.svg",
+        "package": "horizontal",
+        "originalName": "more_categories.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "more-icon",
+        "path": "icons/action/more-icon.svg",
+        "package": "horizontal",
+        "originalName": "moreIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "more-info-icon",
+        "path": "icons/action/more-info-icon.svg",
+        "package": "horizontal",
+        "originalName": "moreInfoIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "more-info-icon-red",
+        "path": "icons/action/more-info-icon-red.svg",
+        "package": "horizontal",
+        "originalName": "moreInfoIconRed_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "more-options",
+        "path": "icons/action/more-options.svg",
+        "package": "horizontal",
+        "originalName": "iconMoreOptions.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "no-address",
+        "path": "icons/action/no-address.svg",
+        "package": "horizontal",
+        "originalName": "iconNoAddress.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "pause-audio",
+        "path": "icons/action/pause-audio.svg",
+        "package": "horizontal",
+        "originalName": "pauseAudio_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "phone",
+        "path": "icons/action/phone.svg",
+        "package": "horizontal",
+        "originalName": "iconPhone.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "phone-in-circle",
+        "path": "icons/action/phone-in-circle.svg",
+        "package": "horizontal",
+        "originalName": "phoneInCircle.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "phone-number",
+        "path": "icons/action/phone-number.svg",
+        "package": "horizontal",
+        "originalName": "iconPhoneNumber.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "play-audio",
+        "path": "icons/action/play-audio.svg",
+        "package": "horizontal",
+        "originalName": "playAudio_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "plus",
+        "path": "icons/action/plus.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconPlus.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "plus-circle",
+        "path": "icons/action/plus-circle.svg",
+        "package": "horizontal",
+        "originalName": "iconPlusCircle.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "plus-sell",
+        "path": "icons/action/plus-sell.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconPlusSell.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "portal-filter",
+        "path": "icons/action/portal-filter.svg",
+        "package": "horizontal",
+        "originalName": "iconPortalFilter.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "post-more-ads",
+        "path": "icons/action/post-more-ads.svg",
+        "package": "horizontal",
+        "originalName": "iconPostMoreAds_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "post-more-ads-and-elite",
+        "path": "icons/action/post-more-ads-and-elite.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconPostMoreAdsAndElite_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "post-more-ads-and-featured",
+        "path": "icons/action/post-more-ads-and-featured.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconPostMoreAdsAndFeatured_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "post-more-ads-and-refresh",
+        "path": "icons/action/post-more-ads-and-refresh.svg",
+        "package": "horizontal",
+        "originalName": "iconPostMoreAdsAndRefresh_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "profile-filters",
+        "path": "icons/action/profile-filters.svg",
+        "package": "horizontal",
+        "originalName": "iconProfileFilters_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "promote-refresh",
+        "path": "icons/action/promote-refresh.svg",
+        "package": "horizontal",
+        "originalName": "iconPromoteRefresh_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "refresh",
+        "path": "icons/action/refresh.svg",
+        "package": "horizontal",
+        "originalName": "iconRefresh.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "refresh-ad",
+        "path": "icons/action/refresh-ad.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "iconRefreshAd.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "refresh-ad-ar",
+        "path": "icons/action/refresh-ad-ar.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "iconRefreshAd-ar.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "refresh-package",
+        "path": "icons/action/refresh-package.svg",
+        "package": "horizontal",
+        "originalName": "iconRefreshPackage_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "refresh-rounded",
+        "path": "icons/action/refresh-rounded.svg",
+        "package": "horizontal",
+        "originalName": "iconRefreshRounded.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "report-flag",
+        "path": "icons/action/report-flag.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconReportFlag.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "save",
+        "path": "icons/action/save.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconSave.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "save-filled",
+        "path": "icons/action/save-filled.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconSaveFilled.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "search",
+        "path": "icons/action/search.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconSearch.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "search-history",
+        "path": "icons/action/search-history.svg",
+        "package": "horizontal",
+        "originalName": "iconSearchHistory.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "search-insights",
+        "path": "icons/action/search-insights.svg",
+        "package": "horizontal",
+        "originalName": "iconSearchInsights.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "search-read-only",
+        "path": "icons/action/search-read-only.svg",
+        "package": "horizontal",
+        "originalName": "iconSearchReadOnly.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "search-suggestion",
+        "path": "icons/action/search-suggestion.svg",
+        "package": "horizontal",
+        "originalName": "iconSearchSuggestion.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "search-trash",
+        "path": "icons/action/search-trash.svg",
+        "package": "horizontal",
+        "originalName": "iconSearchTrash.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "settings",
+        "path": "icons/action/settings.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconSettings_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "sort",
+        "path": "icons/action/sort.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconSort.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "sort-desc",
+        "path": "icons/action/sort-desc.svg",
+        "package": "horizontal",
+        "originalName": "iconSortDesc.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "start-your-search",
+        "path": "icons/action/start-your-search.svg",
+        "package": "horizontal",
+        "originalName": "iconStartYourSearch.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "trash",
+        "path": "icons/action/trash.svg",
+        "package": "horizontal",
+        "originalName": "iconTrash.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "unlock-more-options",
+        "path": "icons/action/unlock-more-options.svg",
+        "package": "horizontal",
+        "originalName": "iconUnlockMoreOptions_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "view-more",
+        "path": "icons/action/view-more.svg",
+        "package": "horizontal",
+        "originalName": "iconViewMore.svg",
+        "usedInSource": true
+      }
+    ],
+    "status": [
+      {
+        "name": "ad-posted-check",
+        "path": "icons/status/ad-posted-check.svg",
+        "package": "horizontal",
+        "originalName": "iconAdPostedCheck.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "ad-posted-icon",
+        "path": "icons/status/ad-posted-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "adPostedIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-fast-responder",
+        "path": "icons/status/agency-badge-fast-responder.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgeFastResponder.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-fast-responder-watermark",
+        "path": "icons/status/agency-badge-fast-responder-watermark.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgeFastResponderWatermark.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-inventory-champ",
+        "path": "icons/status/agency-badge-inventory-champ.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgeInventoryChamp.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-inventory-champ-watermark",
+        "path": "icons/status/agency-badge-inventory-champ-watermark.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgeInventoryChampWatermark.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-prime",
+        "path": "icons/status/agency-badge-prime.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgePrime.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-prime-watermark",
+        "path": "icons/status/agency-badge-prime-watermark.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgePrimeWatermark.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-quality-lister",
+        "path": "icons/status/agency-badge-quality-lister.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgeQualityLister.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-quality-lister-watermark",
+        "path": "icons/status/agency-badge-quality-lister-watermark.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgeQualityListerWatermark.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "ai-both-stars2x",
+        "path": "icons/status/ai-both-stars2x.webp",
+        "package": "horizontal",
+        "originalName": "AI-both-stars2x.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "ai-category-alert",
+        "path": "icons/status/ai-category-alert.png",
+        "package": "horizontal",
+        "originalName": "aiCategoryAlert.png",
+        "usedInSource": true
+      },
+      {
+        "name": "ai-star-blue",
+        "path": "icons/status/ai-star-blue.png",
+        "package": "horizontal",
+        "originalName": "AI-star-blue.png",
+        "usedInSource": true
+      },
+      {
+        "name": "ai-star-red",
+        "path": "icons/status/ai-star-red.png",
+        "package": "horizontal",
+        "originalName": "AI-star-red.png",
+        "usedInSource": true
+      },
+      {
+        "name": "alert",
+        "path": "icons/status/alert.svg",
+        "package": "strat",
+        "originalName": "iconAlert.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "applied",
+        "path": "icons/status/applied.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "applied_inline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "auto-boost-expiration",
+        "path": "icons/status/auto-boost-expiration.svg",
+        "package": "horizontal",
+        "originalName": "auto_boost_expiration_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "badge",
+        "path": "icons/status/badge.svg",
+        "package": "horizontal",
+        "originalName": "iconBadge_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "badge-good-2",
+        "path": "icons/status/badge-good-2.svg",
+        "package": "horizontal",
+        "originalName": "iconBadgeGood_2.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "calendar",
+        "path": "icons/status/calendar.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconCalendar.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "calendar-blog",
+        "path": "icons/status/calendar-blog.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconCalendarBlog.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "calendar-dual",
+        "path": "icons/status/calendar-dual.svg",
+        "package": "horizontal",
+        "originalName": "iconCalendarDual.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "calendar-empty-gray",
+        "path": "icons/status/calendar-empty-gray.svg",
+        "package": "horizontal",
+        "originalName": "iconCalendarEmptyGray.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "calendar-new",
+        "path": "icons/status/calendar-new.svg",
+        "package": "horizontal",
+        "originalName": "iconCalendarNew_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "candidate-profile",
+        "path": "icons/status/candidate-profile.svg",
+        "package": "horizontal",
+        "originalName": "candidateProfile_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "candidates",
+        "path": "icons/status/candidates.svg",
+        "package": "horizontal",
+        "originalName": "iconCandidates.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "candidates-inverted",
+        "path": "icons/status/candidates-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconCandidatesInverted.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "check",
+        "path": "icons/status/check.svg",
+        "package": "horizontal",
+        "originalName": "iconCheck.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "check-box",
+        "path": "icons/status/check-box.svg",
+        "package": "strat",
+        "originalName": "iconCheckBox.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "check-circle",
+        "path": "icons/status/check-circle.svg",
+        "package": "horizontal",
+        "originalName": "iconCheckCircle.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "check-mark",
+        "path": "icons/status/check-mark.svg",
+        "package": "strat",
+        "originalName": "iconCheckMark_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "check-mark-blue",
+        "path": "icons/status/check-mark-blue.svg",
+        "package": "horizontal",
+        "originalName": "iconCheckMarkBlue_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "check-promote",
+        "path": "icons/status/check-promote.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconCheckPromote.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "check-redesign",
+        "path": "icons/status/check-redesign.svg",
+        "package": "strat",
+        "originalName": "iconCheckRedesign.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "check-thick",
+        "path": "icons/status/check-thick.svg",
+        "package": "horizontal",
+        "originalName": "iconCheckThick.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "checklist",
+        "path": "icons/status/checklist.svg",
+        "package": "horizontal",
+        "originalName": "iconChecklist_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "clock",
+        "path": "icons/status/clock.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconClock.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "clock-icon",
+        "path": "icons/status/clock-icon.svg",
+        "package": "horizontal",
+        "originalName": "clockIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "clock-icon-2",
+        "path": "icons/status/clock-icon-2.svg",
+        "package": "horizontal",
+        "originalName": "clockIcon_2.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "critical-error",
+        "path": "icons/status/critical-error.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconCriticalError_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "delivery",
+        "path": "icons/status/delivery.svg",
+        "package": "horizontal",
+        "originalName": "iconDelivery.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "delivery-request-success",
+        "path": "icons/status/delivery-request-success.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconDeliveryRequestSuccess_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "delivery-truck",
+        "path": "icons/status/delivery-truck.svg",
+        "package": "horizontal",
+        "originalName": "iconDeliveryTruck_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "disable-location-warning",
+        "path": "icons/status/disable-location-warning.svg",
+        "package": "horizontal",
+        "originalName": "iconDisableLocationWarning.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "double-check",
+        "path": "icons/status/double-check.svg",
+        "package": "horizontal",
+        "originalName": "iconDoubleCheck.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "elite",
+        "path": "icons/status/elite.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconElite_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "elite-ad",
+        "path": "icons/status/elite-ad.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "iconEliteAd.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "elite-ad-ar",
+        "path": "icons/status/elite-ad-ar.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "iconEliteAd-ar.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "elite-package",
+        "path": "icons/status/elite-package.svg",
+        "package": "horizontal",
+        "originalName": "iconElitePackage_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "elite-white",
+        "path": "icons/status/elite-white.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconEliteWhite_noinline.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "empty-delivey-order",
+        "path": "icons/status/empty-delivey-order.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconEmptyDeliveyOrder_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "error",
+        "path": "icons/status/error.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconError_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "error-face",
+        "path": "icons/status/error-face.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconErrorFace_noinline.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "exclamation-error",
+        "path": "icons/status/exclamation-error.svg",
+        "package": "horizontal",
+        "originalName": "iconExclamationError.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "featured",
+        "path": "icons/status/featured.svg",
+        "package": "horizontal",
+        "originalName": "iconFeatured_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "featured-ad",
+        "path": "icons/status/featured-ad.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "iconFeaturedAd.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "featured-ad-ar",
+        "path": "icons/status/featured-ad-ar.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "iconFeaturedAd-ar.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "featured-ar",
+        "path": "icons/status/featured-ar.svg",
+        "package": "horizontal",
+        "originalName": "iconFeaturedAr_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "featured-en",
+        "path": "icons/status/featured-en.svg",
+        "package": "horizontal",
+        "originalName": "iconFeaturedEn_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "gemini-stars-icon",
+        "path": "icons/status/gemini-stars-icon.svg",
+        "package": "horizontal",
+        "originalName": "geminiStarsIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "green-check-icon",
+        "path": "icons/status/green-check-icon.svg",
+        "package": "horizontal",
+        "originalName": "greenCheckIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "hatla2ee-featured-product-icon",
+        "path": "icons/status/hatla2ee-featured-product-icon.svg",
+        "package": "horizontal",
+        "originalName": "iconHatla2eeFeaturedProductIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "hatla2ee-premium-package",
+        "path": "icons/status/hatla2ee-premium-package.svg",
+        "package": "horizontal",
+        "originalName": "iconHatla2eePremiumPackage_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "info",
+        "path": "icons/status/info.svg",
+        "package": "strat",
+        "originalName": "iconInfo_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "info-circle",
+        "path": "icons/status/info-circle.svg",
+        "package": "horizontal",
+        "originalName": "iconInfoCircle.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "info-disabled",
+        "path": "icons/status/info-disabled.svg",
+        "package": "strat",
+        "originalName": "iconInfoDisabled_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "info-icon",
+        "path": "icons/status/info-icon.svg",
+        "package": "horizontal",
+        "originalName": "infoIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "internal-error",
+        "path": "icons/status/internal-error.png",
+        "package": "dubizzle-facelift",
+        "originalName": "iconInternalError.png",
+        "usedInSource": true
+      },
+      {
+        "name": "jazz-cash-voucher-success",
+        "path": "icons/status/jazz-cash-voucher-success.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconJazzCashVoucherSuccess_noinline.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "live",
+        "path": "icons/status/live.svg",
+        "package": "horizontal",
+        "originalName": "iconLive_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "lock-unlock",
+        "path": "icons/status/lock-unlock.svg",
+        "package": "horizontal",
+        "originalName": "iconLockUnlock_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "nafath-badge",
+        "path": "icons/status/nafath-badge.png",
+        "package": "horizontal",
+        "originalName": "nafathBadge.png",
+        "usedInSource": true
+      },
+      {
+        "name": "nafath-warning",
+        "path": "icons/status/nafath-warning.png",
+        "package": "horizontal",
+        "originalName": "nafathWarning.png",
+        "usedInSource": true
+      },
+      {
+        "name": "nudge-error",
+        "path": "icons/status/nudge-error.svg",
+        "package": "horizontal",
+        "originalName": "iconNudgeError.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "nudge-warning",
+        "path": "icons/status/nudge-warning.svg",
+        "package": "horizontal",
+        "originalName": "iconNudgeWarning.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "pending",
+        "path": "icons/status/pending.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconPending_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "post-featured-icon",
+        "path": "icons/status/post-featured-icon.svg",
+        "package": "horizontal",
+        "originalName": "postFeaturedIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "premium-employer",
+        "path": "icons/status/premium-employer.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconPremiumEmployer.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "promote-elite",
+        "path": "icons/status/promote-elite.svg",
+        "package": "horizontal",
+        "originalName": "iconPromoteElite_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "promote-elite-ar",
+        "path": "icons/status/promote-elite-ar.svg",
+        "package": "horizontal",
+        "originalName": "iconPromoteEliteAr_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "promote-feature",
+        "path": "icons/status/promote-feature.svg",
+        "package": "horizontal",
+        "originalName": "iconPromoteFeature_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "promote-feature-ar",
+        "path": "icons/status/promote-feature-ar.svg",
+        "package": "horizontal",
+        "originalName": "iconPromoteFeatureAr_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "protected-info",
+        "path": "icons/status/protected-info.svg",
+        "package": "horizontal",
+        "originalName": "iconProtectedInfo.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "purchase-package-error",
+        "path": "icons/status/purchase-package-error.svg",
+        "package": "horizontal",
+        "originalName": "purchasePackageError_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "rating-star",
+        "path": "icons/status/rating-star.svg",
+        "package": "horizontal",
+        "originalName": "iconRatingStar.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "sellable-tag-check",
+        "path": "icons/status/sellable-tag-check.svg",
+        "package": "horizontal",
+        "originalName": "sellableTagCheck.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "shield-warning",
+        "path": "icons/status/shield-warning.svg",
+        "package": "horizontal",
+        "originalName": "iconShieldWarning_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "star-outline",
+        "path": "icons/status/star-outline.svg",
+        "package": "strat",
+        "originalName": "iconStarOutline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "star-rate",
+        "path": "icons/status/star-rate.svg",
+        "package": "horizontal",
+        "originalName": "iconStarRate_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "star-rating",
+        "path": "icons/status/star-rating.svg",
+        "package": "horizontal",
+        "originalName": "iconStarRating.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "stars",
+        "path": "icons/status/stars.svg",
+        "package": "horizontal",
+        "originalName": "iconStars.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "start-selling",
+        "path": "icons/status/start-selling.svg",
+        "package": "horizontal",
+        "originalName": "iconStartSelling.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "success",
+        "path": "icons/status/success.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconSuccess_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "success-payement-icon",
+        "path": "icons/status/success-payement-icon.svg",
+        "package": "horizontal",
+        "originalName": "successPayementIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "tick-double",
+        "path": "icons/status/tick-double.svg",
+        "package": "horizontal",
+        "originalName": "iconTickDouble_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "tick-double-blue",
+        "path": "icons/status/tick-double-blue.svg",
+        "package": "horizontal",
+        "originalName": "iconTickDoubleBlue_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "tick-one",
+        "path": "icons/status/tick-one.svg",
+        "package": "horizontal",
+        "originalName": "iconTickOne_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "time",
+        "path": "icons/status/time.svg",
+        "package": "horizontal",
+        "originalName": "iconTime_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "verified",
+        "path": "icons/status/verified.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconVerified.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "verified-agency",
+        "path": "icons/status/verified-agency.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconVerifiedAgency.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "verified-bordered",
+        "path": "icons/status/verified-bordered.svg",
+        "package": "horizontal",
+        "originalName": "iconVerifiedBordered_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "warning",
+        "path": "icons/status/warning.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconWarning_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "xerror",
+        "path": "icons/status/xerror.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconXError.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "yellow-warning-icon",
+        "path": "icons/status/yellow-warning-icon.svg",
+        "package": "horizontal",
+        "originalName": "yellowWarningIcon.svg",
+        "usedInSource": true
+      }
+    ],
+    "category": [
+      {
+        "name": "agricultural",
+        "path": "icons/category/agricultural.svg",
+        "package": "horizontal",
+        "originalName": "agricultural_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "animals",
+        "path": "icons/category/animals.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "animals_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "bikes",
+        "path": "icons/category/bikes.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "bikes_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "books",
+        "path": "icons/category/books.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "books_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "business",
+        "path": "icons/category/business.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "business_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "business-packages",
+        "path": "icons/category/business-packages.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconBusinessPackages.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "electronics",
+        "path": "icons/category/electronics.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "electronics_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "fashion",
+        "path": "icons/category/fashion.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "fashion_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "furniture",
+        "path": "icons/category/furniture.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "furniture_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "jobs",
+        "path": "icons/category/jobs.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "jobs_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "jobs-thumbnail",
+        "path": "icons/category/jobs-thumbnail.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconJobsThumbnail_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "kids",
+        "path": "icons/category/kids.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "kids_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "mobiles",
+        "path": "icons/category/mobiles.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "mobiles_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "my-jobs",
+        "path": "icons/category/my-jobs.svg",
+        "package": "horizontal",
+        "originalName": "myJobs_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "services",
+        "path": "icons/category/services.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "services_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "services-thumbnail",
+        "path": "icons/category/services-thumbnail.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconServicesThumbnail_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "vehicles",
+        "path": "icons/category/vehicles.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "vehicles_noinline.svg",
+        "usedInSource": true
+      }
+    ],
+    "property": [
+      {
+        "name": "apartment",
+        "path": "icons/property/apartment.svg",
+        "package": "horizontal",
+        "originalName": "apartment_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "apartments-for-sale",
+        "path": "icons/property/apartments-for-sale.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "apartments-for-sale.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "area",
+        "path": "icons/property/area.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconArea.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "baths",
+        "path": "icons/property/baths.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconBaths.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "beds",
+        "path": "icons/property/beds.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconBeds.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "chalet",
+        "path": "icons/property/chalet.svg",
+        "package": "horizontal",
+        "originalName": "chalet_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "duplex",
+        "path": "icons/property/duplex.svg",
+        "package": "horizontal",
+        "originalName": "duplex_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "hotel-apartment",
+        "path": "icons/property/hotel-apartment.svg",
+        "package": "horizontal",
+        "originalName": "hotel_apartment_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "ivilla",
+        "path": "icons/property/ivilla.svg",
+        "package": "horizontal",
+        "originalName": "ivilla_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "penthouse",
+        "path": "icons/property/penthouse.svg",
+        "package": "horizontal",
+        "originalName": "penthouse_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "room",
+        "path": "icons/property/room.svg",
+        "package": "horizontal",
+        "originalName": "room_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "showroom",
+        "path": "icons/property/showroom.svg",
+        "package": "horizontal",
+        "originalName": "showroom_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "standalone-villa",
+        "path": "icons/property/standalone-villa.svg",
+        "package": "horizontal",
+        "originalName": "standalone_villa_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "studio",
+        "path": "icons/property/studio.svg",
+        "package": "horizontal",
+        "originalName": "studio_noinline.svg",
+        "usedInSource": true
+      }
+    ],
+    "vehicle": [
+      {
+        "name": "attachments-auction-sheet-icon",
+        "path": "icons/vehicle/attachments-auction-sheet-icon.svg",
+        "package": "horizontal",
+        "originalName": "attachmentsAuctionSheetIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "attachments-car-documents-icon",
+        "path": "icons/vehicle/attachments-car-documents-icon.svg",
+        "package": "horizontal",
+        "originalName": "attachmentsCarDocumentsIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "attachments-inspection-sheet",
+        "path": "icons/vehicle/attachments-inspection-sheet.svg",
+        "package": "horizontal",
+        "originalName": "attachmentsInspectionSheet_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "car",
+        "path": "icons/vehicle/car.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconCar_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "car-category-type",
+        "path": "icons/vehicle/car-category-type.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "carCategoryType_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "car-of-the-day",
+        "path": "icons/vehicle/car-of-the-day.svg",
+        "package": "horizontal",
+        "originalName": "iconCarOfTheDay_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "car-usage",
+        "path": "icons/vehicle/car-usage.svg",
+        "package": "horizontal",
+        "originalName": "iconCarUsage.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "car-vertical-bodies",
+        "path": "icons/vehicle/car-vertical-bodies.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "carVerticalBodies_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "car-vertical-features",
+        "path": "icons/vehicle/car-vertical-features.svg",
+        "package": "horizontal",
+        "originalName": "carVerticalFeatures_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "cars-for-sale",
+        "path": "icons/vehicle/cars-for-sale.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "cars-for-sale.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "cart-minus-icon",
+        "path": "icons/vehicle/cart-minus-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "cartMinusIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "cart-plus-icon",
+        "path": "icons/vehicle/cart-plus-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "cartPlusIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "engine",
+        "path": "icons/vehicle/engine.svg",
+        "package": "horizontal",
+        "originalName": "iconEngine.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "fuel",
+        "path": "icons/vehicle/fuel.svg",
+        "package": "horizontal",
+        "originalName": "iconFuel.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "header-icon-motors",
+        "path": "icons/vehicle/header-icon-motors.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "headerIconMotors.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "key-car-icon",
+        "path": "icons/vehicle/key-car-icon.svg",
+        "package": "horizontal",
+        "originalName": "keyCarIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "laptop-car-icon",
+        "path": "icons/vehicle/laptop-car-icon.svg",
+        "package": "horizontal",
+        "originalName": "laptopCarIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "mileage",
+        "path": "icons/vehicle/mileage.svg",
+        "package": "horizontal",
+        "originalName": "iconMileage.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "mobile-car-icon",
+        "path": "icons/vehicle/mobile-car-icon.svg",
+        "package": "horizontal",
+        "originalName": "mobileCarIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "new-car",
+        "path": "icons/vehicle/new-car.svg",
+        "package": "horizontal",
+        "originalName": "iconNewCar.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "new-car-condition",
+        "path": "icons/vehicle/new-car-condition.svg",
+        "package": "horizontal",
+        "originalName": "iconNewCarCondition.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "promote-car-of-the-day",
+        "path": "icons/vehicle/promote-car-of-the-day.svg",
+        "package": "horizontal",
+        "originalName": "iconPromoteCarOfTheDay_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "transmission",
+        "path": "icons/vehicle/transmission.svg",
+        "package": "horizontal",
+        "originalName": "iconTransmission.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "used-car",
+        "path": "icons/vehicle/used-car.svg",
+        "package": "horizontal",
+        "originalName": "iconUsedCar.svg",
+        "usedInSource": true
+      }
+    ],
+    "location": [
+      {
+        "name": "choose-location",
+        "path": "icons/location/choose-location.png",
+        "package": "horizontal",
+        "originalName": "chooseLocation.png",
+        "usedInSource": true
+      },
+      {
+        "name": "current-location",
+        "path": "icons/location/current-location.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconCurrentLocation.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "location",
+        "path": "icons/location/location.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLocation.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "location-filled",
+        "path": "icons/location/location-filled.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLocationFilled.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "location-new",
+        "path": "icons/location/location-new.svg",
+        "package": "horizontal",
+        "originalName": "iconLocationNew.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "location-pin-design",
+        "path": "icons/location/location-pin-design.svg",
+        "package": "horizontal",
+        "originalName": "iconLocationPinDesign.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "location-pin-red",
+        "path": "icons/location/location-pin-red.svg",
+        "package": "horizontal",
+        "originalName": "iconLocationPinRed_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "map",
+        "path": "icons/location/map.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconMap_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "map-pin",
+        "path": "icons/location/map-pin.svg",
+        "package": "horizontal",
+        "originalName": "iconMapPin.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "pinpoint",
+        "path": "icons/location/pinpoint.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconPinpoint.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "see-location",
+        "path": "icons/location/see-location.svg",
+        "package": "horizontal",
+        "originalName": "iconSeeLocation.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "vertical-properties-location",
+        "path": "icons/location/vertical-properties-location.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconVerticalPropertiesLocation.svg",
+        "usedInSource": true
+      }
+    ],
+    "user": [
+      {
+        "name": "accounting-finance-banking",
+        "path": "icons/user/accounting-finance-banking.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "accounting-finance-banking.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-name",
+        "path": "icons/user/agency-name.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyName.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agent",
+        "path": "icons/user/agent.svg",
+        "package": "horizontal",
+        "originalName": "iconAgent_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agent-filled",
+        "path": "icons/user/agent-filled.svg",
+        "package": "horizontal",
+        "originalName": "iconAgentFilled_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "avatar-female",
+        "path": "icons/user/avatar-female.svg",
+        "package": "horizontal",
+        "originalName": "iconAvatarFemale_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "avatar-male",
+        "path": "icons/user/avatar-male.svg",
+        "package": "horizontal",
+        "originalName": "iconAvatarMale_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "avatar-neutral",
+        "path": "icons/user/avatar-neutral.svg",
+        "package": "horizontal",
+        "originalName": "iconAvatarNeutral_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "contact-sales",
+        "path": "icons/user/contact-sales.svg",
+        "package": "horizontal",
+        "originalName": "iconContactSales_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "contact-support",
+        "path": "icons/user/contact-support.svg",
+        "package": "horizontal",
+        "originalName": "iconContactSupport.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "default-agency-logo",
+        "path": "icons/user/default-agency-logo.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "defaultAgencyLogo_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "manage-accounts",
+        "path": "icons/user/manage-accounts.svg",
+        "package": "horizontal",
+        "originalName": "iconManageAccounts.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "no-agency-logo",
+        "path": "icons/user/no-agency-logo.svg",
+        "package": "horizontal",
+        "originalName": "noAgencyLogo_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "public-profile",
+        "path": "icons/user/public-profile.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconPublicProfile.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "real-estate-agency",
+        "path": "icons/user/real-estate-agency.png",
+        "package": "dubizzle-facelift",
+        "originalName": "iconRealEstateAgency.png",
+        "usedInSource": false
+      },
+      {
+        "name": "real-estate-agency-banner",
+        "path": "icons/user/real-estate-agency-banner.webp",
+        "package": "dubizzle-facelift",
+        "originalName": "realEstateAgencyBanner.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "user-ads",
+        "path": "icons/user/user-ads.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconUserAds_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "user-agent",
+        "path": "icons/user/user-agent.svg",
+        "package": "strat",
+        "originalName": "iconUserAgent.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "user-default",
+        "path": "icons/user/user-default.svg",
+        "package": "horizontal",
+        "originalName": "iconUserDefault_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "user-notifications",
+        "path": "icons/user/user-notifications.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconUserNotifications_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "users",
+        "path": "icons/user/users.svg",
+        "package": "horizontal",
+        "originalName": "iconUsers.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "users-inverted",
+        "path": "icons/user/users-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconUsersInverted.svg",
+        "usedInSource": true
+      }
+    ],
+    "media": [
+      {
+        "name": "ad-video",
+        "path": "icons/media/ad-video.svg",
+        "package": "horizontal",
+        "originalName": "iconAdVideo_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "attachment-video-icon",
+        "path": "icons/media/attachment-video-icon.svg",
+        "package": "horizontal",
+        "originalName": "attachmentVideoIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "camera",
+        "path": "icons/media/camera.svg",
+        "package": "horizontal",
+        "originalName": "iconCamera.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "camera-black",
+        "path": "icons/media/camera-black.svg",
+        "package": "horizontal",
+        "originalName": "iconCameraBlack.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "gallery",
+        "path": "icons/media/gallery.svg",
+        "package": "horizontal",
+        "originalName": "gallery.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "image",
+        "path": "icons/media/image.svg",
+        "package": "horizontal",
+        "originalName": "iconImage.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "image-ai",
+        "path": "icons/media/image-ai.svg",
+        "package": "horizontal",
+        "originalName": "iconImageAI_inline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "image-count",
+        "path": "icons/media/image-count.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconImageCount.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "image-galary-icon",
+        "path": "icons/media/image-galary-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "imageGalaryIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "no-image",
+        "path": "icons/media/no-image.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconNoImage.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "photo-count-black",
+        "path": "icons/media/photo-count-black.svg",
+        "package": "horizontal",
+        "originalName": "iconPhotoCountBlack.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "profile-picture",
+        "path": "icons/media/profile-picture.png",
+        "package": "horizontal",
+        "originalName": "iconProfilePicture.png",
+        "usedInSource": true
+      },
+      {
+        "name": "profile-picture-logged-out",
+        "path": "icons/media/profile-picture-logged-out.png",
+        "package": "horizontal",
+        "originalName": "iconProfilePictureLoggedOut.png",
+        "usedInSource": true
+      },
+      {
+        "name": "video",
+        "path": "icons/media/video.svg",
+        "package": "horizontal",
+        "originalName": "iconVideo.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "video-outline",
+        "path": "icons/media/video-outline.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconVideoOutline.svg",
+        "usedInSource": true
+      }
+    ],
+    "payment": [
+      {
+        "name": "ad-card-more-icon",
+        "path": "icons/payment/ad-card-more-icon.svg",
+        "package": "horizontal",
+        "originalName": "adCardMoreIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "add-card-button",
+        "path": "icons/payment/add-card-button.svg",
+        "package": "horizontal",
+        "originalName": "addCardButton.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-valuation-expert",
+        "path": "icons/payment/agency-badge-valuation-expert.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgeValuationExpert.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agency-badge-valuation-expert-watermark",
+        "path": "icons/payment/agency-badge-valuation-expert-watermark.svg",
+        "package": "horizontal",
+        "originalName": "iconAgencyBadgeValuationExpertWatermark.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "apple-pay",
+        "path": "icons/payment/apple-pay.svg",
+        "package": "dubizzle-eg",
+        "originalName": "iconApplePay.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "banner-credit-coins",
+        "path": "icons/payment/banner-credit-coins.svg",
+        "package": "horizontal",
+        "originalName": "bannerCreditCoins_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "cash-payment",
+        "path": "icons/payment/cash-payment.svg",
+        "package": "horizontal",
+        "originalName": "iconCashPayment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "cash-united-payment",
+        "path": "icons/payment/cash-united-payment.svg",
+        "package": "horizontal",
+        "originalName": "iconCashUnitedPayment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "credit-card",
+        "path": "icons/payment/credit-card.svg",
+        "package": "horizontal",
+        "originalName": "iconCreditCard.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "credit-coin",
+        "path": "icons/payment/credit-coin.svg",
+        "package": "dubizzle-eg",
+        "originalName": "creditCoin_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "credit-coins",
+        "path": "icons/payment/credit-coins.svg",
+        "package": "horizontal",
+        "originalName": "creditCoins_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "delivery-service-wallet",
+        "path": "icons/payment/delivery-service-wallet.svg",
+        "package": "horizontal",
+        "originalName": "iconDeliveryServiceWallet_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "easy-paisa-payment",
+        "path": "icons/payment/easy-paisa-payment.svg",
+        "package": "horizontal",
+        "originalName": "iconEasyPaisaPayment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "elite-product-card",
+        "path": "icons/payment/elite-product-card.svg",
+        "package": "horizontal",
+        "originalName": "iconEliteProductCard_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "elite-product-card-large",
+        "path": "icons/payment/elite-product-card-large.svg",
+        "package": "horizontal",
+        "originalName": "iconEliteProductCardLarge_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "etisalat-payment",
+        "path": "icons/payment/etisalat-payment.svg",
+        "package": "dubizzle-eg",
+        "originalName": "iconEtisalatPayment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "evaluations",
+        "path": "icons/payment/evaluations.svg",
+        "package": "horizontal",
+        "originalName": "iconEvaluations.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "evaluations-inverted",
+        "path": "icons/payment/evaluations-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconEvaluationsInverted.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "fawry-payment",
+        "path": "icons/payment/fawry-payment.svg",
+        "package": "dubizzle-eg",
+        "originalName": "iconFawryPayment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "fawry-payment-device",
+        "path": "icons/payment/fawry-payment-device.svg",
+        "package": "horizontal",
+        "originalName": "fawryPaymentDevice_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "feature-product-card",
+        "path": "icons/payment/feature-product-card.svg",
+        "package": "horizontal",
+        "originalName": "iconFeatureProductCard_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "feature-product-card-large",
+        "path": "icons/payment/feature-product-card-large.svg",
+        "package": "horizontal",
+        "originalName": "iconFeatureProductCardLarge_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "general-payment-device",
+        "path": "icons/payment/general-payment-device.svg",
+        "package": "horizontal",
+        "originalName": "GeneralPaymentDevice_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "hatla2ee-banner-credit-coins",
+        "path": "icons/payment/hatla2ee-banner-credit-coins.svg",
+        "package": "horizontal",
+        "originalName": "hatla2eeBannerCreditCoins_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "master-card",
+        "path": "icons/payment/master-card.svg",
+        "package": "horizontal",
+        "originalName": "iconMasterCard.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "mastercard-icon",
+        "path": "icons/payment/mastercard-icon.png",
+        "package": "horizontal",
+        "originalName": "mastercard_icon.png",
+        "usedInSource": true
+      },
+      {
+        "name": "mobile-payment",
+        "path": "icons/payment/mobile-payment.svg",
+        "package": "horizontal",
+        "originalName": "iconMobilePayment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "mobile-payment-otp",
+        "path": "icons/payment/mobile-payment-otp.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "mobile_payment_otp_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "omtpayment",
+        "path": "icons/payment/omtpayment.svg",
+        "package": "horizontal",
+        "originalName": "iconOMTPayment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "orange-money-ar",
+        "path": "icons/payment/orange-money-ar.svg",
+        "package": "dubizzle-eg",
+        "originalName": "iconOrangeMoneyAr.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "orange-money-en",
+        "path": "icons/payment/orange-money-en.svg",
+        "package": "dubizzle-eg",
+        "originalName": "iconOrangeMoneyEn.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "payfast-payment",
+        "path": "icons/payment/payfast-payment.svg",
+        "package": "horizontal",
+        "originalName": "iconPayfastPayment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "payment-disclaimer",
+        "path": "icons/payment/payment-disclaimer.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "payment_disclaimer.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "payment-failed",
+        "path": "icons/payment/payment-failed.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconPaymentFailed_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "payment-lock",
+        "path": "icons/payment/payment-lock.svg",
+        "package": "horizontal",
+        "originalName": "payment_lock.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "paymob-bank-installment-payment",
+        "path": "icons/payment/paymob-bank-installment-payment.svg",
+        "package": "horizontal",
+        "originalName": "iconPaymobBankInstallmentPayment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "product-card",
+        "path": "icons/payment/product-card.svg",
+        "package": "horizontal",
+        "originalName": "iconProductCard_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "product-card-large",
+        "path": "icons/payment/product-card-large.svg",
+        "package": "horizontal",
+        "originalName": "iconProductCardLarge_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "refresh-product-card-large",
+        "path": "icons/payment/refresh-product-card-large.svg",
+        "package": "horizontal",
+        "originalName": "iconRefreshProductCardLarge_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "unsuccessful-payment",
+        "path": "icons/payment/unsuccessful-payment.svg",
+        "package": "horizontal",
+        "originalName": "iconUnsuccessfulPayment_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "user-wallet",
+        "path": "icons/payment/user-wallet.svg",
+        "package": "horizontal",
+        "originalName": "iconUserWallet_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "valu",
+        "path": "icons/payment/valu.svg",
+        "package": "dubizzle-eg",
+        "originalName": "iconValu.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "visa",
+        "path": "icons/payment/visa.svg",
+        "package": "horizontal",
+        "originalName": "iconVisa.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "visa-icon",
+        "path": "icons/payment/visa-icon.png",
+        "package": "horizontal",
+        "originalName": "visa_icon.png",
+        "usedInSource": true
+      },
+      {
+        "name": "vodafone-cash",
+        "path": "icons/payment/vodafone-cash.svg",
+        "package": "dubizzle-eg",
+        "originalName": "iconVodafoneCash.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "wallet",
+        "path": "icons/payment/wallet.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconWallet_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "whish-payment",
+        "path": "icons/payment/whish-payment.svg",
+        "package": "horizontal",
+        "originalName": "iconWhishPayment.svg",
+        "usedInSource": true
+      }
+    ],
+    "social": [
+      {
+        "name": "facebook",
+        "path": "icons/social/facebook.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconFacebook_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "icon-share-new",
+        "path": "icons/social/icon-share-new.svg",
+        "package": "horizontal",
+        "originalName": "IconShareNew.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "icon-youtube-video",
+        "path": "icons/social/icon-youtube-video.svg",
+        "package": "horizontal",
+        "originalName": "IconYoutubeVideo.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "instagram",
+        "path": "icons/social/instagram.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconInstagram_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "landing-facebook",
+        "path": "icons/social/landing-facebook.svg",
+        "package": "horizontal",
+        "originalName": "iconLandingFacebook.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "landing-instagram",
+        "path": "icons/social/landing-instagram.svg",
+        "package": "horizontal",
+        "originalName": "iconLandingInstagram.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "landing-linkedin",
+        "path": "icons/social/landing-linkedin.svg",
+        "package": "horizontal",
+        "originalName": "iconLandingLinkedin.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "landing-tiktok",
+        "path": "icons/social/landing-tiktok.svg",
+        "package": "horizontal",
+        "originalName": "iconLandingTiktok.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "landing-twitter",
+        "path": "icons/social/landing-twitter.svg",
+        "package": "horizontal",
+        "originalName": "iconLandingTwitter.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "landing-youtube",
+        "path": "icons/social/landing-youtube.svg",
+        "package": "horizontal",
+        "originalName": "iconLandingYoutube.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "share",
+        "path": "icons/social/share.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconShare.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "share-icon-facebook",
+        "path": "icons/social/share-icon-facebook.svg",
+        "package": "strat",
+        "originalName": "shareIconFacebook.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "share-icon-linked-in",
+        "path": "icons/social/share-icon-linked-in.svg",
+        "package": "strat",
+        "originalName": "shareIconLinkedIn.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "share-icon-mail",
+        "path": "icons/social/share-icon-mail.svg",
+        "package": "strat",
+        "originalName": "shareIconMail.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "share-icon-twitter",
+        "path": "icons/social/share-icon-twitter.svg",
+        "package": "strat",
+        "originalName": "shareIconTwitter.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "share-icon-whatsapp",
+        "path": "icons/social/share-icon-whatsapp.svg",
+        "package": "strat",
+        "originalName": "shareIconWhatsapp.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "share-whats-app",
+        "path": "icons/social/share-whats-app.svg",
+        "package": "strat",
+        "originalName": "iconShareWhatsApp.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "twitter",
+        "path": "icons/social/twitter.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconTwitter_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "whatsapp",
+        "path": "icons/social/whatsapp.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconWhatsapp.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "whatsapp-icon",
+        "path": "icons/social/whatsapp-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "whatsapp_icon.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "whatsapp-non-trulead",
+        "path": "icons/social/whatsapp-non-trulead.svg",
+        "package": "horizontal",
+        "originalName": "iconWhatsappNonTrulead_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "whatsapp-outline",
+        "path": "icons/social/whatsapp-outline.svg",
+        "package": "horizontal",
+        "originalName": "iconWhatsappOutline_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "whatsapp-trulead",
+        "path": "icons/social/whatsapp-trulead.svg",
+        "package": "horizontal",
+        "originalName": "iconWhatsappTrulead_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "youtube",
+        "path": "icons/social/youtube.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconYoutube_noinline.svg",
+        "usedInSource": true
+      }
+    ],
+    "misc": [
+      {
+        "name": "active-ads",
+        "path": "icons/misc/active-ads.svg",
+        "package": "horizontal",
+        "originalName": "activeAds_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "ads",
+        "path": "icons/misc/ads.svg",
+        "package": "horizontal",
+        "originalName": "iconAds.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "ads-inverted",
+        "path": "icons/misc/ads-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconAdsInverted.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "agencies-mweb",
+        "path": "icons/misc/agencies-mweb.webp",
+        "package": "horizontal",
+        "originalName": "iconAgenciesMweb.webp",
+        "usedInSource": true
+      },
+      {
+        "name": "agreement-succes",
+        "path": "icons/misc/agreement-succes.svg",
+        "package": "horizontal",
+        "originalName": "iconAgreementSucces_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "any-use",
+        "path": "icons/misc/any-use.svg",
+        "package": "horizontal",
+        "originalName": "any_use_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "app-install-pitch",
+        "path": "icons/misc/app-install-pitch.svg",
+        "package": "dubizzle-eg",
+        "originalName": "iconAppInstallPitch.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "app-pitch-logo",
+        "path": "icons/misc/app-pitch-logo.svg",
+        "package": "horizontal",
+        "originalName": "iconAppPitchLogo.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "attachment",
+        "path": "icons/misc/attachment.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconAttachment.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "audience",
+        "path": "icons/misc/audience.svg",
+        "package": "horizontal",
+        "originalName": "iconAudience_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "auto-republish",
+        "path": "icons/misc/auto-republish.svg",
+        "package": "horizontal",
+        "originalName": "iconAutoRepublish.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "bank",
+        "path": "icons/misc/bank.svg",
+        "package": "horizontal",
+        "originalName": "iconBank.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "bank-compact",
+        "path": "icons/misc/bank-compact.svg",
+        "package": "horizontal",
+        "originalName": "iconBankCompact.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "bell-ring",
+        "path": "icons/misc/bell-ring.svg",
+        "package": "horizontal",
+        "originalName": "iconBellRing_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "blog",
+        "path": "icons/misc/blog.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconBlog_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "bought-packages",
+        "path": "icons/misc/bought-packages.svg",
+        "package": "horizontal",
+        "originalName": "iconBoughtPackages_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "briefcase",
+        "path": "icons/misc/briefcase.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconBriefcase_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "build",
+        "path": "icons/misc/build.svg",
+        "package": "horizontal",
+        "originalName": "iconBuild_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "bulb",
+        "path": "icons/misc/bulb.svg",
+        "package": "horizontal",
+        "originalName": "iconBulb.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "bullets-list",
+        "path": "icons/misc/bullets-list.svg",
+        "package": "horizontal",
+        "originalName": "iconBulletsList_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "cabin",
+        "path": "icons/misc/cabin.svg",
+        "package": "horizontal",
+        "originalName": "cabin_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "campaign",
+        "path": "icons/misc/campaign.svg",
+        "package": "horizontal",
+        "originalName": "iconCampaign_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "clinic",
+        "path": "icons/misc/clinic.svg",
+        "package": "horizontal",
+        "originalName": "clinic_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "co-working-space",
+        "path": "icons/misc/co-working-space.svg",
+        "package": "horizontal",
+        "originalName": "co_working_space_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "coin-money",
+        "path": "icons/misc/coin-money.svg",
+        "package": "horizontal",
+        "originalName": "iconCoinMoney_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "commercial",
+        "path": "icons/misc/commercial.svg",
+        "package": "horizontal",
+        "originalName": "commercial_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "commercial-building",
+        "path": "icons/misc/commercial-building.svg",
+        "package": "horizontal",
+        "originalName": "commercial_building_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "correct-icon",
+        "path": "icons/misc/correct-icon.svg",
+        "package": "horizontal",
+        "originalName": "correctIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "crown-vip",
+        "path": "icons/misc/crown-vip.svg",
+        "package": "horizontal",
+        "originalName": "iconCrownVIP.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "crown-vipsection",
+        "path": "icons/misc/crown-vipsection.svg",
+        "package": "horizontal",
+        "originalName": "iconCrownVIPSection.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "crown-vipsection-inverted",
+        "path": "icons/misc/crown-vipsection-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconCrownVIPSectionInverted.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "dashboard",
+        "path": "icons/misc/dashboard.svg",
+        "package": "horizontal",
+        "originalName": "iconDashboard.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "dashboard-inverted",
+        "path": "icons/misc/dashboard-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconDashboardInverted.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "discount",
+        "path": "icons/misc/discount.png",
+        "package": "strat",
+        "originalName": "iconDiscount.png",
+        "usedInSource": true
+      },
+      {
+        "name": "discount-tag",
+        "path": "icons/misc/discount-tag.svg",
+        "package": "horizontal",
+        "originalName": "iconDiscountTag.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "doc",
+        "path": "icons/misc/doc.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "doc_inline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "downward-trend",
+        "path": "icons/misc/downward-trend.svg",
+        "package": "horizontal",
+        "originalName": "iconDownwardTrend.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "education",
+        "path": "icons/misc/education.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconEducation.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "empty-page",
+        "path": "icons/misc/empty-page.svg",
+        "package": "horizontal",
+        "originalName": "iconEmptyPage_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "empty-state-ads",
+        "path": "icons/misc/empty-state-ads.svg",
+        "package": "horizontal",
+        "originalName": "iconEmptyStateAds_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "envelope",
+        "path": "icons/misc/envelope.svg",
+        "package": "horizontal",
+        "originalName": "iconEnvelope.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "exclamation",
+        "path": "icons/misc/exclamation.svg",
+        "package": "strat",
+        "originalName": "iconExclamation.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "exp",
+        "path": "icons/misc/exp.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconExp.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "export-leads",
+        "path": "icons/misc/export-leads.svg",
+        "package": "horizontal",
+        "originalName": "iconExportLeads.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "exposure",
+        "path": "icons/misc/exposure.svg",
+        "package": "horizontal",
+        "originalName": "iconExposure_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "factory",
+        "path": "icons/misc/factory.svg",
+        "package": "horizontal",
+        "originalName": "factory_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "favicon-hatla2ee",
+        "path": "icons/misc/favicon-hatla2ee.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconFaviconHatla2ee_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "garage",
+        "path": "icons/misc/garage.svg",
+        "package": "horizontal",
+        "originalName": "garage_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "get-in-touch",
+        "path": "icons/misc/get-in-touch.svg",
+        "package": "horizontal",
+        "originalName": "iconGetInTouch.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "goods",
+        "path": "icons/misc/goods.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "goods_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "grid",
+        "path": "icons/misc/grid.svg",
+        "package": "horizontal",
+        "originalName": "iconGrid_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "hatla2ee",
+        "path": "icons/misc/hatla2ee.svg",
+        "package": "horizontal",
+        "originalName": "iconHatla2ee.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "hatla2ee-limit-bump-product-icon",
+        "path": "icons/misc/hatla2ee-limit-bump-product-icon.svg",
+        "package": "horizontal",
+        "originalName": "iconHatla2eeLimitBumpProductIcon_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "header-icon-property",
+        "path": "icons/misc/header-icon-property.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "headerIconProperty.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "help",
+        "path": "icons/misc/help.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconHelp_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "hourglass",
+        "path": "icons/misc/hourglass.svg",
+        "package": "horizontal",
+        "originalName": "iconHourglass_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "icon",
+        "path": "icons/misc/icon.svg",
+        "package": "horizontal",
+        "originalName": "icon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "impressions",
+        "path": "icons/misc/impressions.svg",
+        "package": "horizontal",
+        "originalName": "iconImpressions_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "insights",
+        "path": "icons/misc/insights.svg",
+        "package": "horizontal",
+        "originalName": "iconInsights.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "insights-inverted",
+        "path": "icons/misc/insights-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconInsightsInverted.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "inspect",
+        "path": "icons/misc/inspect.svg",
+        "package": "horizontal",
+        "originalName": "iconInspect_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "insufficient-money",
+        "path": "icons/misc/insufficient-money.svg",
+        "package": "horizontal",
+        "originalName": "iconInsufficientMoney_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "jazz-cash",
+        "path": "icons/misc/jazz-cash.svg",
+        "package": "horizontal",
+        "originalName": "iconJazzCash_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "jazz-cash-mobile-app",
+        "path": "icons/misc/jazz-cash-mobile-app.svg",
+        "package": "horizontal",
+        "originalName": "iconJazzCashMobileApp.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "language",
+        "path": "icons/misc/language.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconLanguage_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "language-ar",
+        "path": "icons/misc/language-ar.svg",
+        "package": "horizontal",
+        "originalName": "iconLanguageAR_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "language-en",
+        "path": "icons/misc/language-en.svg",
+        "package": "horizontal",
+        "originalName": "iconLanguageEN_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "leads",
+        "path": "icons/misc/leads.svg",
+        "package": "horizontal",
+        "originalName": "iconLeads.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "leads-inverted",
+        "path": "icons/misc/leads-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconLeadsInverted.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "lectronics",
+        "path": "icons/misc/lectronics.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "lectronics_noinline.svg",
+        "usedInSource": false
+      },
+      {
+        "name": "list",
+        "path": "icons/misc/list.svg",
+        "package": "horizontal",
+        "originalName": "iconList_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "listing-tip",
+        "path": "icons/misc/listing-tip.svg",
+        "package": "horizontal",
+        "originalName": "iconListingTip.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "listings",
+        "path": "icons/misc/listings.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconListings.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "make-offer",
+        "path": "icons/misc/make-offer.svg",
+        "package": "horizontal",
+        "originalName": "iconMakeOffer.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "manage",
+        "path": "icons/misc/manage.svg",
+        "package": "horizontal",
+        "originalName": "iconManage.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "mark-as-sold",
+        "path": "icons/misc/mark-as-sold.svg",
+        "package": "horizontal",
+        "originalName": "iconMarkAsSold.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "medical-facility",
+        "path": "icons/misc/medical-facility.svg",
+        "package": "horizontal",
+        "originalName": "medical_facility_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "membership-expire",
+        "path": "icons/misc/membership-expire.svg",
+        "package": "horizontal",
+        "originalName": "membership_expire_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "modify",
+        "path": "icons/misc/modify.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconModify_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "money",
+        "path": "icons/misc/money.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconMoney.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "my-ads",
+        "path": "icons/misc/my-ads.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconMyAds.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "my-orders",
+        "path": "icons/misc/my-orders.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconMyOrders.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "near-me",
+        "path": "icons/misc/near-me.svg",
+        "package": "horizontal",
+        "originalName": "iconNearMe.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "no-agencies",
+        "path": "icons/misc/no-agencies.svg",
+        "package": "horizontal",
+        "originalName": "iconNoAgencies.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "no-packages-available",
+        "path": "icons/misc/no-packages-available.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "noPackagesAvailable_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "not-found",
+        "path": "icons/misc/not-found.png",
+        "package": "dubizzle-facelift",
+        "originalName": "iconNotFound.png",
+        "usedInSource": true
+      },
+      {
+        "name": "notification",
+        "path": "icons/misc/notification.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconNotification_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "notifications",
+        "path": "icons/misc/notifications.svg",
+        "package": "horizontal",
+        "originalName": "iconNotifications_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "offer",
+        "path": "icons/misc/offer.svg",
+        "package": "horizontal",
+        "originalName": "iconOffer_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "office-space",
+        "path": "icons/misc/office-space.svg",
+        "package": "horizontal",
+        "originalName": "office_space_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "okhand",
+        "path": "icons/misc/okhand.svg",
+        "package": "horizontal",
+        "originalName": "okhand.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "other",
+        "path": "icons/misc/other.svg",
+        "package": "horizontal",
+        "originalName": "other_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "ownership",
+        "path": "icons/misc/ownership.svg",
+        "package": "horizontal",
+        "originalName": "iconOwnership.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "packages",
+        "path": "icons/misc/packages.svg",
+        "package": "horizontal",
+        "originalName": "iconPackages.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "packages-inverted",
+        "path": "icons/misc/packages-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconPackagesInverted.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "partner-with-us",
+        "path": "icons/misc/partner-with-us.svg",
+        "package": "dubizzle-eg",
+        "originalName": "iconPartnerWithUs.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "pay",
+        "path": "icons/misc/pay.svg",
+        "package": "horizontal",
+        "originalName": "iconPay.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "pdf",
+        "path": "icons/misc/pdf.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "pdf_inline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "pharmacy",
+        "path": "icons/misc/pharmacy.svg",
+        "package": "horizontal",
+        "originalName": "pharmacy_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "price-nudge-tag",
+        "path": "icons/misc/price-nudge-tag.png",
+        "package": "horizontal",
+        "originalName": "iconPriceNudgeTag.png",
+        "usedInSource": true
+      },
+      {
+        "name": "price-pointer",
+        "path": "icons/misc/price-pointer.svg",
+        "package": "horizontal",
+        "originalName": "iconPricePointer.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "price-red",
+        "path": "icons/misc/price-red.svg",
+        "package": "horizontal",
+        "originalName": "iconPriceRed_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "price-tag",
+        "path": "icons/misc/price-tag.png",
+        "package": "horizontal",
+        "originalName": "iconPriceTag.png",
+        "usedInSource": true
+      },
+      {
+        "name": "pro-lite-logo",
+        "path": "icons/misc/pro-lite-logo.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "proLiteLogo_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "product",
+        "path": "icons/misc/product.svg",
+        "package": "horizontal",
+        "originalName": "iconProduct_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "property-for-rent",
+        "path": "icons/misc/property-for-rent.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "property-for-rent_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "property-for-sale",
+        "path": "icons/misc/property-for-sale.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "property-for-sale_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "property-type",
+        "path": "icons/misc/property-type.svg",
+        "package": "horizontal",
+        "originalName": "iconPropertyType.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "property-vertical-features",
+        "path": "icons/misc/property-vertical-features.svg",
+        "package": "horizontal",
+        "originalName": "propertyVerticalFeatures_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "purpose",
+        "path": "icons/misc/purpose.svg",
+        "package": "horizontal",
+        "originalName": "iconPurpose.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "qr-code-app-install",
+        "path": "icons/misc/qr-code-app-install.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "qrCodeAppInstall_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "questions",
+        "path": "icons/misc/questions.svg",
+        "package": "horizontal",
+        "originalName": "iconQuestions.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "quick-apply-light",
+        "path": "icons/misc/quick-apply-light.svg",
+        "package": "horizontal",
+        "originalName": "iconQuickApplyLight_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "recent",
+        "path": "icons/misc/recent.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconRecent.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "recent-history",
+        "path": "icons/misc/recent-history.svg",
+        "package": "horizontal",
+        "originalName": "iconRecentHistory.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "refund",
+        "path": "icons/misc/refund.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconRefund_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "rental-frequency",
+        "path": "icons/misc/rental-frequency.svg",
+        "package": "horizontal",
+        "originalName": "iconRentalFrequency.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "residential",
+        "path": "icons/misc/residential.svg",
+        "package": "horizontal",
+        "originalName": "residential_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "retail",
+        "path": "icons/misc/retail.svg",
+        "package": "horizontal",
+        "originalName": "retail_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "retry",
+        "path": "icons/misc/retry.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "retry_inline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "road",
+        "path": "icons/misc/road.svg",
+        "package": "horizontal",
+        "originalName": "iconRoad.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "roof",
+        "path": "icons/misc/roof.svg",
+        "package": "horizontal",
+        "originalName": "roof_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "safety-tips",
+        "path": "icons/misc/safety-tips.svg",
+        "package": "horizontal",
+        "originalName": "safetyTips_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "salary",
+        "path": "icons/misc/salary.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconSalary_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "select",
+        "path": "icons/misc/select.svg",
+        "package": "horizontal",
+        "originalName": "iconSelect.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "select-package",
+        "path": "icons/misc/select-package.svg",
+        "package": "horizontal",
+        "originalName": "iconSelectPackage.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "sell",
+        "path": "icons/misc/sell.svg",
+        "package": "horizontal",
+        "originalName": "iconSell_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "sell-something",
+        "path": "icons/misc/sell-something.png",
+        "package": "dubizzle-facelift",
+        "originalName": "iconSellSomething.png",
+        "usedInSource": false
+      },
+      {
+        "name": "skip-product-purchase",
+        "path": "icons/misc/skip-product-purchase.svg",
+        "package": "horizontal",
+        "originalName": "iconSkipProductPurchase_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "sms",
+        "path": "icons/misc/sms.svg",
+        "package": "horizontal",
+        "originalName": "sms.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "sparkle",
+        "path": "icons/misc/sparkle.svg",
+        "package": "horizontal",
+        "originalName": "iconSparkle.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "stacked-coins",
+        "path": "icons/misc/stacked-coins.svg",
+        "package": "horizontal",
+        "originalName": "iconStackedCoins.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "stacked-coins-inverted",
+        "path": "icons/misc/stacked-coins-inverted.svg",
+        "package": "horizontal",
+        "originalName": "iconStackedCoinsInverted.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "straight-face",
+        "path": "icons/misc/straight-face.png",
+        "package": "dubizzle-facelift",
+        "originalName": "iconStraightFace.png",
+        "usedInSource": true
+      },
+      {
+        "name": "support",
+        "path": "icons/misc/support.svg",
+        "package": "horizontal",
+        "originalName": "iconSupport_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "tik-tok",
+        "path": "icons/misc/tik-tok.svg",
+        "package": "horizontal",
+        "originalName": "iconTikTok_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "town-house",
+        "path": "icons/misc/town-house.svg",
+        "package": "horizontal",
+        "originalName": "town_house_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "truck",
+        "path": "icons/misc/truck.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconTruck_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "twin-house",
+        "path": "icons/misc/twin-house.svg",
+        "package": "horizontal",
+        "originalName": "twin_house_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "upselling-apply-limits-banner-icon",
+        "path": "icons/misc/upselling-apply-limits-banner-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "upsellingApplyLimitsBannerIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "upselling-buy-limits-offer-banner-icon",
+        "path": "icons/misc/upselling-buy-limits-offer-banner-icon.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "upsellingBuyLimitsOfferBannerIcon.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "upward-trend",
+        "path": "icons/misc/upward-trend.svg",
+        "package": "horizontal",
+        "originalName": "iconUpwardTrend.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "verify-banner",
+        "path": "icons/misc/verify-banner.svg",
+        "package": "horizontal",
+        "originalName": "verifyBanner_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "verify-banner-compact",
+        "path": "icons/misc/verify-banner-compact.svg",
+        "package": "horizontal",
+        "originalName": "verifyBannerCompact_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "vertical-properties-price",
+        "path": "icons/misc/vertical-properties-price.svg",
+        "package": "horizontal",
+        "originalName": "iconVerticalPropertiesPrice.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "view-agencies",
+        "path": "icons/misc/view-agencies.svg",
+        "package": "horizontal",
+        "originalName": "iconViewAgencies.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "views",
+        "path": "icons/misc/views.svg",
+        "package": "horizontal",
+        "originalName": "iconViews_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "vip-lead",
+        "path": "icons/misc/vip-lead.svg",
+        "package": "horizontal",
+        "originalName": "iconVipLead_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "warehouse",
+        "path": "icons/misc/warehouse.svg",
+        "package": "horizontal",
+        "originalName": "warehouse_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "water-drop",
+        "path": "icons/misc/water-drop.svg",
+        "package": "horizontal",
+        "originalName": "iconWaterDrop_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "workplace",
+        "path": "icons/misc/workplace.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconWorkplace.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "x-loader",
+        "path": "icons/misc/x-loader.svg",
+        "package": "horizontal",
+        "originalName": "x_loader.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "xcircle-blue",
+        "path": "icons/misc/xcircle-blue.svg",
+        "package": "horizontal",
+        "originalName": "iconXCircleBlue_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "xcircle-red",
+        "path": "icons/misc/xcircle-red.svg",
+        "package": "horizontal",
+        "originalName": "iconXCircleRed_noinline.svg",
+        "usedInSource": true
+      }
+    ]
+  }
+}

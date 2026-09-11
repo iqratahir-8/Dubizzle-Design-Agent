@@ -1,0 +1,17 @@
+{
+  "monorepoPath": "/Users/iqratahir/dubizzle-maple-master 2",
+  "brand": "dubizzle-eg",
+  "entryVariables": "frontend/dubizzle-eg/dubizzle-eg/branding/styles/variables.css",
+  "packageRoots": [
+    "frontend/dubizzle-eg",
+    "frontend/dubizzle-facelift",
+    "frontend/horizontal",
+    "frontend/strat"
+  ],
+  "iconSources": [
+    "frontend/dubizzle-eg/dubizzle-eg/assets/icons",
+    "frontend/dubizzle-facelift/dubizzle-facelift/assets/icons",
+    "frontend/horizontal/assets/icons",
+    "frontend/horizontal/horizontal/assets/icons"
+  ]
+}
