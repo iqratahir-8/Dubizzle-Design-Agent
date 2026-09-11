@@ -1,0 +1,63 @@
+{
+  "name": "dubizzle-design-system",
+  "version": "0.1.0",
+  "description": "React component library and design tokens for dubizzle Egypt — buttons, forms, ad cards, header/footer, and the foundations behind them.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/index.css",
+    "./tokens/*": "./src/tokens/*",
+    "./assets/*": "./src/assets/*"
+  },
+  "files": [
+    "dist",
+    "src/tokens",
+    "src/assets"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "tsup",
+    "build:storybook": "storybook build",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "^8.4.7",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "dubizzle",
+    "component-library",
+    "ui-kit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iqratahir/dubizzle-design-system.git"
+  }
+}

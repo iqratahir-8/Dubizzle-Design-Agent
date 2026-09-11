@@ -1,0 +1,13 @@
+/* Global reset — the live dubizzle app relies on a border-box reset, so authored
+   control heights (e.g. height:4.8rem with .8rem vertical padding) resolve to the
+   intended box. Consumers need this for any token-sized component to measure right. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Root font-size: 10px so 1rem = 10px (matches the codebase convention). */
+html {
+  font-size: 10px;
+}

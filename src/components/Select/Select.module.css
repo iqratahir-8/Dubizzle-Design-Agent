@@ -1,0 +1,93 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.label {
+  font-size: 1.4rem;
+  font-weight: var(--weight-semibold);
+  color: var(--gray-06);
+  font-family: var(--font-primary);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.8rem;
+  padding: 0 1.2rem;
+  border: 1px solid var(--gray-03);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: 1.4rem;
+  color: var(--gray-04);
+}
+
+.control.hasValue {
+  color: var(--gray-06);
+}
+
+.control.error {
+  border-color: var(--red-05);
+}
+
+.control.disabled {
+  background: var(--gray-01);
+  cursor: not-allowed;
+}
+
+.chevron {
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.control.open .chevron {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.4rem;
+  z-index: 10;
+  background: var(--white);
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dropdown);
+  max-height: 24rem;
+  overflow-y: auto;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.option {
+  padding: 1rem 1.2rem;
+  font-size: 1.4rem;
+  font-family: var(--font-primary);
+  color: var(--gray-06);
+  cursor: pointer;
+  background: transparent;
+}
+
+.option:hover {
+  background: var(--gray-01);
+}
+
+.option.selected {
+  background: var(--gray-01);
+}
+
+.errorText {
+  font-size: 1.2rem;
+  color: var(--red-05);
+  font-family: var(--font-primary);
+}

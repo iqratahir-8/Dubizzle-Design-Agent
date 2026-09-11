@@ -1,0 +1,65 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  height: 4rem;
+  border: 0;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-primary);
+  font-size: 1.4rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  white-space: nowrap;
+  padding: 0 1.6rem;
+}
+
+.icon {
+  flex: none;
+  display: flex;
+}
+
+.button[data-full-width='true'] {
+  width: 100%;
+}
+
+.button[data-show-label='false'] {
+  width: 4rem;
+  min-width: 4rem;
+  padding: 0;
+}
+
+.chat {
+  background: var(--red-02);
+  color: var(--gray-06);
+}
+.chat:hover {
+  background: var(--red-03);
+}
+.chat:not([data-full-width='true'])[data-show-label='true'] {
+  width: 10.4rem;
+}
+
+.call {
+  background: var(--blue-02);
+  color: var(--gray-06);
+}
+.call:hover {
+  background: var(--blue-03);
+}
+.call:not([data-full-width='true'])[data-show-label='true'] {
+  width: 10.4rem;
+}
+
+.whatsapp {
+  background: var(--green-02);
+  color: var(--gray-06);
+}
+.whatsapp:hover {
+  background: var(--green-03);
+}
+.whatsapp:not([data-full-width='true'])[data-show-label='true'] {
+  width: 11.4rem;
+}

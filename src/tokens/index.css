@@ -1,0 +1,9 @@
+/* Dubizzle Design System — token entrypoint.
+   Import this once at your app root: `import 'dubizzle-design-system/styles.css'`. */
+@import './fonts.css';
+@import './base.css';
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './radii.css';
+@import './shadows.css';

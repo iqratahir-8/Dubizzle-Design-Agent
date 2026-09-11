@@ -1,0 +1,50 @@
+.pill {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 1.2rem;
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-relaxed);
+  white-space: nowrap;
+  font-family: var(--font-primary);
+}
+
+.regular {
+  background: var(--gray-02);
+  color: var(--gray-06);
+}
+
+.success {
+  background: var(--green-02);
+  color: var(--green-06);
+}
+
+.featured {
+  background: var(--yellow-02);
+  color: var(--yellow-06);
+}
+
+.error {
+  background: var(--red-02);
+  color: var(--red-06);
+}
+
+.boosted {
+  background: var(--blue-02);
+  color: var(--blue-05);
+}
+
+.live {
+  background: var(--red-01);
+  color: var(--red-05);
+}
+
+.recent {
+  background: var(--blue-02);
+  color: var(--blue-06);
+}
+
+.disabled {
+  background: var(--gray-02);
+  color: var(--gray-04);
+}

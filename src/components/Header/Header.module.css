@@ -1,0 +1,424 @@
+.header {
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  border-bottom: 0.1rem solid var(--gray-02);
+  font-family: var(--font-primary);
+}
+
+.band {
+  background-color: var(--gray-00);
+}
+
+.container {
+  margin-inline: auto;
+  width: min(100% - 4.8rem, 1280px);
+}
+
+.row1 {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 1.25rem;
+  min-width: 0;
+}
+
+.brandGroup {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+.agencyLogo {
+  display: flex;
+  align-items: center;
+  padding-inline-start: 2.4rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.agencyLogo img {
+  width: 12.5rem;
+  height: 2.6rem;
+}
+
+.logoLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 13rem;
+  padding-inline: 0.8rem;
+}
+
+.logoLink img {
+  height: 3.6rem;
+}
+
+.navLink {
+  position: relative;
+  min-width: 13rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  text-decoration: none;
+}
+
+.navLinkInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.5rem;
+  color: var(--gray-06);
+}
+
+.navLinkInner img {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.navLabel {
+  font-family: var(--font-primary);
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+}
+
+/* White tab behind the active vertical — mirrors dubizzle-facelift's .highlight */
+.tabShadow {
+  position: absolute;
+  inset: calc(-1.6rem / 1.5) 0 calc(-1 * 1.25rem);
+  border-radius: 3rem 3rem 0 0 / 1.6rem;
+  z-index: -1;
+  box-shadow: -8px 0 16px rgba(147, 1, 0, 0.05), 8px 0 16px rgba(0, 0, 0, 0.05);
+}
+
+.tabFill {
+  position: absolute;
+  top: calc(-1.6rem / 1.5);
+  bottom: calc(-1 * 1.25rem);
+  inset-inline: -1.6rem;
+  border-inline: 1.6rem solid transparent;
+  border-radius: 3rem 3rem 0 0 / 1.6rem;
+  background: var(--white);
+  z-index: -1;
+  mask:
+    radial-gradient(1.6rem at 1.6rem 0, transparent 100%, #000 100%) calc(-1.6rem) 100% / 100% 1.6rem repeat-x,
+    conic-gradient(#000 0 0) padding-box;
+  -webkit-mask:
+    radial-gradient(1.6rem at 1.6rem 0, transparent 100%, #000 100%) calc(-1.6rem) 100% / 100% 1.6rem repeat-x,
+    conic-gradient(#000 0 0) padding-box;
+}
+
+.userGroup {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-inline-start: 2.4rem;
+  flex-shrink: 0;
+}
+
+.signedInNav {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  margin-inline-end: 1.4rem;
+  flex-shrink: 0;
+}
+
+.userNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--gray-05);
+}
+
+.userNavLink.active {
+  color: var(--gray-06);
+}
+
+.userNavLinkInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+}
+
+.userNavIconWrap {
+  position: relative;
+  display: flex;
+}
+
+.userNavIconWrap img {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+}
+
+.badgeCount {
+  position: absolute;
+  top: -0.4rem;
+  inset-inline-start: 1.2rem;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0 0.4rem;
+  border-radius: var(--radius-pill);
+  background: var(--red-05);
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.6rem;
+  text-align: center;
+}
+
+.userNavText {
+  font-family: var(--font-primary);
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: var(--weight-regular);
+  color: inherit;
+}
+
+.userNavText.active {
+  font-weight: var(--weight-bold);
+}
+
+.langSwitch {
+  font-size: 1.8rem;
+  font-weight: var(--weight-bold);
+  white-space: nowrap;
+  color: var(--gray-06);
+  text-decoration: none;
+  font-family: var(--font-arabic);
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.avatarWrap {
+  position: relative;
+  height: 4rem;
+  width: 4rem;
+  margin-inline-end: 0.8rem;
+  flex: none;
+}
+
+.avatar {
+  height: 4rem;
+  width: 4rem;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--red-02);
+  color: var(--red-05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proBadge {
+  position: absolute;
+  inset-inline-start: 50%;
+  bottom: -0.2rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 1.3rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 0.2rem var(--gray-00);
+  background: linear-gradient(270deg, var(--red-05) 0%, var(--gray-07) 100%);
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: 1.008rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.2rem;
+}
+
+.userName {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.8rem;
+  white-space: nowrap;
+  color: var(--gray-06);
+}
+
+.chevron {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-inline: 0.8rem;
+}
+
+.loginButton {
+  appearance: none;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+}
+
+.postAdButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 4rem;
+  padding: 0 1.6rem;
+  border: 0;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  background: var(--red-05);
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  transition: background-color 0.15s;
+}
+
+.postAdButton:hover {
+  background: var(--red-06);
+}
+
+/* Row 2 — location + search, on white */
+.row2 {
+  display: grid;
+  grid-template-columns: 30.3rem 1fr;
+  gap: 1.6rem;
+  align-items: center;
+  padding-top: 1.6rem;
+  padding-bottom: 1.2rem;
+}
+
+.locationField {
+  min-width: 30.3rem;
+  width: 30.3rem;
+}
+
+.locationControl {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border: 0.1rem solid var(--gray-04);
+  border-radius: var(--radius-md);
+  height: 4.8rem;
+  padding: 0.8rem 1.6rem 0.8rem 1.6rem;
+  cursor: pointer;
+}
+
+.locationIcon {
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  margin-inline-end: 0.8rem;
+  flex: none;
+}
+
+.locationText {
+  flex: 1;
+  font-family: var(--font-primary);
+  font-size: 1.596rem;
+  font-weight: var(--weight-regular);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--gray-06);
+}
+
+.locationChevron {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 1.6rem;
+  flex: none;
+}
+
+.searchWrap {
+  position: relative;
+}
+
+.searchRow {
+  display: flex;
+  align-items: center;
+}
+
+.searchField {
+  flex: 1;
+  display: flex;
+  background: var(--white);
+  border: 0.1rem solid var(--gray-04);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  height: 4.8rem;
+}
+
+.searchInput {
+  appearance: none;
+  background: none;
+  border: none;
+  border-radius: inherit;
+  color: var(--gray-06);
+  flex: 1;
+  font-family: var(--font-primary);
+  font-size: 1.596rem;
+  font-weight: var(--weight-regular);
+  height: 100%;
+  margin: 0;
+  outline: none;
+  padding: 0 0 0 1.2rem;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 11rem;
+  height: 4.8rem;
+  border: none;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: var(--gray-06);
+  color: var(--white);
+  cursor: pointer;
+  flex: none;
+  font-family: var(--font-primary);
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+}
+
+.searchButton img {
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: none;
+}
