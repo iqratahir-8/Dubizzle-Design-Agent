@@ -76,10 +76,16 @@ for (const file of files) {
   // Token-definition files legitimately contain raw hexes.
   if (/tokens\.(css|json)$/.test(file)) { console.log(`- ${file}: token definition, skipped`); continue; }
 
-  const lines = readFileSync(file, 'utf8').split('\n');
+  // Keep the raw lines for the ds-ignore check (the escape hatch lives in a comment),
+  // but scan a comment-stripped copy so documentation that quotes a colour isn't
+  // mistaken for a style declaration.
+  const rawText = readFileSync(file, 'utf8');
+  const rawLines = rawText.split('\n');
+  const lines = rawText.replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, ' ')).split('\n');
   const hits = [];
   lines.forEach((line, i) => {
-    if (/ds-ignore/.test(line) || (i > 0 && /ds-ignore/.test(lines[i - 1]))) return;
+    if (/ds-ignore/.test(rawLines[i]) || (i > 0 && /ds-ignore/.test(rawLines[i - 1]))) return;
+    if (/^\s*\/\//.test(line)) return; // JS/JSX line comment
 
     // Each candidate literal maps to the hex we'll look up.
     const candidates = []; // { lit, hex }

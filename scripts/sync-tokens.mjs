@@ -146,6 +146,11 @@ const SEMANTIC = {
     '--border-strong': 'var(--gray-03)',
     '--border-input': 'var(--input-color)',
     '--border-focus': 'var(--active-input-border-color)',
+    '--border-subtle': 'rgba(0, 47, 52, 0.2)',
+    // Translucent overlays for controls/scrims sitting on top of media (a card
+    // photo). No opaque token can stand in — the alpha is the point.
+    '--overlay-light': 'rgba(255, 255, 255, 0.9)',
+    '--overlay-dark': 'rgba(35, 38, 42, 0.75)',
     '--featured-accent': 'var(--featured-ad-accent-color)',
     '--featured-gradient': 'var(--featured-ad-accent-bgcolor)',
     '--elite-gradient': 'var(--elite-tag-bg)',
