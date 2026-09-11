@@ -1,0 +1,215 @@
+<!doctype html>
+<!--
+  dubizzle Egypt — Ad detail (desktop)
+
+  Layout: content column + 34rem sticky-ish sidebar holding the seller and the
+  three contact CTAs. Gallery is a 2fr/1fr split. Price sits above the title and
+  is the largest thing on the page.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apartment for sale in Zamalek 200m fully finished | dubizzle Egypt</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="../../patterns/patterns.css">
+</head>
+<body class="page-bg-search">
+
+<header class="header">
+  <div class="header__band">
+    <div class="container header__row1">
+      <div class="header__brand-group">
+        <a class="header__logo" href="#"><img src="../../icons/brand/logo-with-text.svg" alt="dubizzle"></a>
+        <a class="header__vertical" href="#"><img src="../../icons/category/vehicles.svg" alt=""> Motors</a>
+        <a class="header__vertical header__vertical--active" href="#"><img src="../../icons/property/apartment.svg" alt=""> Property</a>
+      </div>
+      <div class="header__user-group">
+        <a class="header__lang" href="#">العربية</a>
+        <a class="header__link" href="#">Login or Signup</a>
+        <button class="btn btn--primary header__cta">Post Your Ad</button>
+      </div>
+    </div>
+  </div>
+  <div class="container header__row2">
+    <div class="header__location">
+      <img src="../../icons/location/location-filled.svg" alt="">
+      <span>Egypt</span>
+      <img src="../../icons/navigation/chevron-down.svg" alt="">
+    </div>
+    <form class="header__search">
+      <label class="visually-hidden" for="q">Search</label>
+      <input id="q" type="search" placeholder="Find Cars, Mobile Phones and more...">
+      <button class="header__search-btn" type="submit">
+        <img src="../../icons/action/search.svg" alt=""> Search
+      </button>
+    </form>
+  </div>
+</header>
+
+<main class="container">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="#">Egypt</a> ›
+    <a href="#">Properties</a> ›
+    <a href="#">For Sale</a> ›
+    <a href="#">Apartments &amp; Duplexes</a> ›
+    <span>Zamalek</span>
+  </nav>
+
+  <div class="gallery">
+    <div class="gallery__main media-placeholder"></div>
+    <div class="gallery__side">
+      <div class="media-placeholder media-placeholder--sm"></div>
+      <div class="media-placeholder media-placeholder--sm"></div>
+    </div>
+  </div>
+
+  <div class="detail-layout">
+
+    <!-- ── Content column ─────────────────────────────────────────────────── -->
+    <div>
+      <div class="detail-card">
+        <p class="detail-price">EGP 8,500,000</p>
+        <h1 class="detail-title">Apartment for sale in Zamalek 200m fully finished</h1>
+        <p class="ad-card__meta"><img src="../../icons/location/location-filled.svg" alt=""> Zamalek, Cairo</p>
+        <p class="ad-card__time">Posted 2 hours ago · Ad ID 208328828</p>
+        <div class="filter-chips">
+          <span class="pill pill--featured">Featured</span>
+          <span class="pill pill--boosted">Boosted</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h2 class="filter-group__title">Details</h2>
+        <dl class="spec-table">
+          <div class="spec-row"><dt>Type</dt><dd>Apartment</dd></div>
+          <div class="spec-row"><dt>Bedrooms</dt><dd>3</dd></div>
+          <div class="spec-row"><dt>Bathrooms</dt><dd>2</dd></div>
+          <div class="spec-row"><dt>Area</dt><dd>200 m²</dd></div>
+          <div class="spec-row"><dt>Furnished</dt><dd>Unfurnished</dd></div>
+          <div class="spec-row"><dt>Level</dt><dd>4</dd></div>
+          <div class="spec-row"><dt>Payment Option</dt><dd>Cash</dd></div>
+          <div class="spec-row"><dt>Delivery Term</dt><dd>Finished</dd></div>
+        </dl>
+      </div>
+
+      <div class="detail-card">
+        <h2 class="filter-group__title">Description</h2>
+        <p>
+          Fully finished apartment in a prime Zamalek location, 200 m² with three bedrooms and two
+          bathrooms. Fourth floor with elevator, private entrance, and two balconies overlooking a
+          quiet side street. Close to schools, clubs and transport. Cash only, price slightly
+          negotiable for a serious buyer.
+        </p>
+      </div>
+
+      <div class="detail-card">
+        <h2 class="filter-group__title">Amenities</h2>
+        <div class="filter-chips">
+          <span class="chip">Elevator</span>
+          <span class="chip">Balcony</span>
+          <span class="chip">Security</span>
+          <span class="chip">Parking</span>
+          <span class="chip">Private Entrance</span>
+          <span class="chip">Air Conditioning</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Seller / contact rail ──────────────────────────────────────────── -->
+    <aside>
+      <div class="detail-card">
+        <div class="seller-card">
+          <span class="seller-avatar">A</span>
+          <div>
+            <p class="ad-card__title">Ahmed H.</p>
+            <p class="ad-card__time">Member since 2021</p>
+          </div>
+        </div>
+        <div class="contact-stack">
+          <button class="contact-btn contact-btn--chat btn--block">
+            <img src="../../icons/action/chat.svg" alt=""> Chat
+          </button>
+          <button class="contact-btn contact-btn--call btn--block">
+            <img src="../../icons/action/call.svg" alt=""> Call
+          </button>
+          <button class="contact-btn contact-btn--whatsapp btn--block">
+            <img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h2 class="filter-group__title">Safety tips</h2>
+        <ul class="footer__links">
+          <li>Meet the seller in a public place</li>
+          <li>Check the item before you buy</li>
+          <li>Pay only after inspecting the item</li>
+          <li>Never pay a deposit in advance</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__main">
+    <div class="container footer__cols">
+      <section class="footer__col">
+        <span class="footer__heading">About Us</span>
+        <div class="footer__links">
+          <a href="#">About Dubizzle Group</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Dubizzle for Businesses</a>
+        </div>
+      </section>
+      <section class="footer__col">
+        <span class="footer__heading">Dubizzle</span>
+        <div class="footer__links">
+          <a href="#">Blog</a>
+          <a href="#">Help</a>
+          <a href="#">Sitemap</a>
+          <a href="#">Terms of use</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </section>
+      <section class="footer__col">
+        <span class="footer__heading">Countries</span>
+        <div class="footer__links">
+          <a href="#">Bahrain</a>
+          <a href="#">Jordan</a>
+          <a href="#">Kuwait</a>
+          <a href="#">Oman</a>
+          <a href="#">Qatar</a>
+          <a href="#">Saudi Arabia</a>
+          <a href="#">UAE</a>
+        </div>
+      </section>
+      <section class="footer__col">
+        <span class="footer__heading">Follow us</span>
+        <div class="footer__socials">
+          <a href="#"><img src="../../icons/social/landing-twitter.svg" alt="Twitter"></a>
+          <a href="#"><img src="../../icons/social/landing-linkedin.svg" alt="LinkedIn"></a>
+          <a href="#"><img src="../../icons/social/landing-facebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="../../icons/social/landing-youtube.svg" alt="YouTube"></a>
+          <a href="#"><img src="../../icons/social/landing-instagram.svg" alt="Instagram"></a>
+        </div>
+        <div class="footer__stores">
+          <a href="#"><img src="../../icons/brand/app-store-en.svg" alt="App Store"></a>
+          <a href="#"><img src="../../icons/brand/google-play-en.svg" alt="Google Play"></a>
+          <a href="#"><img src="../../icons/brand/app-gallery.svg" alt="App Gallery"></a>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="footer__legal">
+    <div class="container">
+      <strong>Free Classifieds in Egypt.</strong>© 2026 Dubizzle
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

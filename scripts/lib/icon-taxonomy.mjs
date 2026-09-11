@@ -23,7 +23,7 @@ const RULES = [
   ['property', /(bed|bath|area|apartment|villa|duplex|studio|chalet|townhouse|penthouse|floor|amenity|amenities|furnished|compound|freehold|room)/],
   ['vehicle', /(car|motor|engine|fuel|transmission|mileage|kilometer|gearbox|body-type|cylinder|horsepower|seller-type|trim|plate|inspection|auction)/],
   ['navigation', /(chevron|arrow|back|forward|next|prev|menu|burger|home|nav|tab|breadcrumb|caret|expand|collapse|scroll|top)/],
-  ['action', /(search|filter|sort|add|plus|minus|close|cross|delete|trash|edit|pencil|copy|download|upload|refresh|reload|play|pause|zoom|crop|rotate|save|bookmark|favourite|favorite|heart|like|report|flag|block|call|phone|chat|message|mail|email|send|link|print|more|dots|settings|gear|logout|login|eye|hide|show)/],
+  ['action', /(search|filter|sort|add|plus|minus|close|cross|delete|trash|edit|pencil|copy|download|upload|refresh|reload|play|pause|zoom|crop|rotate|save|bookmark|favourite|favorite|heart|like|report|flag|block|call|phone|chat|message|mail|email|send|link|print|more|dots|settings|gear|logout|login|eye|hide|show|notification|bell)/],
   ['status', /(check|tick|success|verified|applied|posted|warning|error|alert|info|pending|expired|live|boost|promote|featured|elite|premium|star|rating|badge|lock|shield|secure|clock|time|calendar|date)/],
   ['media', /(camera|photo|image|gallery|video|picture|film|panorama|360|virtual-tour)/],
   ['location', /(location|pin|map|marker|geo|city|country|directions|compass|nearby)/],

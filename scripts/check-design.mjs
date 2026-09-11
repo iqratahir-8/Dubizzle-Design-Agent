@@ -193,6 +193,21 @@ const rules = [
     },
   },
   {
+    /* Icon filenames shift when the monorepo is re-synced. A broken <img src> is
+       invisible in HTML — the browser just renders nothing — so catch it here rather
+       than letting a template ship with a missing logo. */
+    id: 'broken-icon-ref',
+    severity: 'error',
+    test(line, context) {
+      if (!context.fileDir) return null;
+      const missing = [];
+      for (const [, src] of line.matchAll(/(?:src|href)="([^"]*\/icons\/[^"]+)"/g)) {
+        if (!existsSync(resolve(context.fileDir, src))) missing.push(src);
+      }
+      return missing.length ? `icon file not found: ${missing.join(', ')}` : null;
+    },
+  },
+  {
     id: 'slop-copy',
     severity: 'warn',
     test(line) {
@@ -266,7 +281,7 @@ for (const file of files) {
     // Escape hatch for deliberate exceptions (e.g. the visually-hidden -1px idiom):
     // put `ds-ignore` in a comment on the line or the line above.
     if (/ds-ignore/.test(line) || (i > 0 && /ds-ignore/.test(lines[i - 1]))) return;
-    const context = { inMaskDeclaration: maskContext[i] };
+    const context = { inMaskDeclaration: maskContext[i], fileDir: dirname(resolve(file)) };
     for (const rule of rules) {
       const message = rule.test(line, context);
       if (message) findings.push({ line: i + 1, rule, message, text: line.trim() });

@@ -403,6 +403,13 @@
         "usedInSource": true
       },
       {
+        "name": "bell-ring",
+        "path": "icons/action/bell-ring.svg",
+        "package": "horizontal",
+        "originalName": "iconBellRing_noinline.svg",
+        "usedInSource": true
+      },
+      {
         "name": "bookmark",
         "path": "icons/action/bookmark.svg",
         "package": "dubizzle-facelift",
@@ -844,6 +851,20 @@
         "usedInSource": true
       },
       {
+        "name": "notification",
+        "path": "icons/action/notification.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconNotification_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "notifications",
+        "path": "icons/action/notifications.svg",
+        "package": "horizontal",
+        "originalName": "iconNotifications_noinline.svg",
+        "usedInSource": true
+      },
+      {
         "name": "pause-audio",
         "path": "icons/action/pause-audio.svg",
         "package": "horizontal",
@@ -1086,6 +1107,13 @@
         "path": "icons/action/unlock-more-options.svg",
         "package": "horizontal",
         "originalName": "iconUnlockMoreOptions_noinline.svg",
+        "usedInSource": true
+      },
+      {
+        "name": "user-notifications",
+        "path": "icons/action/user-notifications.svg",
+        "package": "dubizzle-facelift",
+        "originalName": "iconUserNotifications_noinline.svg",
         "usedInSource": true
       },
       {
@@ -2431,13 +2459,6 @@
         "usedInSource": true
       },
       {
-        "name": "user-notifications",
-        "path": "icons/user/user-notifications.svg",
-        "package": "dubizzle-facelift",
-        "originalName": "iconUserNotifications_noinline.svg",
-        "usedInSource": true
-      },
-      {
         "name": "users",
         "path": "icons/user/users.svg",
         "package": "horizontal",
@@ -3153,13 +3174,6 @@
         "usedInSource": true
       },
       {
-        "name": "bell-ring",
-        "path": "icons/misc/bell-ring.svg",
-        "package": "horizontal",
-        "originalName": "iconBellRing_noinline.svg",
-        "usedInSource": true
-      },
-      {
         "name": "blog",
         "path": "icons/misc/blog.svg",
         "package": "dubizzle-facelift",
@@ -3661,20 +3675,6 @@
         "path": "icons/misc/not-found.png",
         "package": "dubizzle-facelift",
         "originalName": "iconNotFound.png",
-        "usedInSource": true
-      },
-      {
-        "name": "notification",
-        "path": "icons/misc/notification.svg",
-        "package": "dubizzle-facelift",
-        "originalName": "iconNotification_noinline.svg",
-        "usedInSource": true
-      },
-      {
-        "name": "notifications",
-        "path": "icons/misc/notifications.svg",
-        "package": "horizontal",
-        "originalName": "iconNotifications_noinline.svg",
         "usedInSource": true
       },
       {

@@ -1,0 +1,270 @@
+<!doctype html>
+<!--
+  dubizzle Egypt — Home (desktop)
+
+  Structure: header, popular categories (4-up), fresh recommendations grid,
+  popular-areas SEO block, footer. No marketing hero — the real home page puts
+  search and categories above the fold and nothing else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dubizzle (OLX) — Buy &amp; Sell Cars, Properties &amp; More in Egypt</title>
+<link rel="stylesheet" href="../../tokens/tokens.css">
+<link rel="stylesheet" href="../../patterns/patterns.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header__band">
+    <div class="container header__row1">
+      <div class="header__brand-group">
+        <a class="header__logo" href="#"><img src="../../icons/brand/logo-with-text.svg" alt="dubizzle"></a>
+        <a class="header__vertical" href="#"><img src="../../icons/category/vehicles.svg" alt=""> Motors</a>
+        <a class="header__vertical" href="#"><img src="../../icons/property/apartment.svg" alt=""> Property</a>
+      </div>
+      <div class="header__user-group">
+        <a class="header__lang" href="#">العربية</a>
+        <a class="header__link" href="#">Login or Signup</a>
+        <button class="btn btn--primary header__cta">Post Your Ad</button>
+      </div>
+    </div>
+  </div>
+  <div class="container header__row2">
+    <div class="header__location">
+      <img src="../../icons/location/location-filled.svg" alt="">
+      <span>Egypt</span>
+      <img src="../../icons/navigation/chevron-down.svg" alt="">
+    </div>
+    <form class="header__search">
+      <label class="visually-hidden" for="q">Search</label>
+      <input id="q" type="search" placeholder="Find Cars, Mobile Phones and more...">
+      <button class="header__search-btn" type="submit">
+        <img src="../../icons/action/search.svg" alt=""> Search
+      </button>
+    </form>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="section">
+    <div class="section__head">
+      <h2 class="section__title">Popular Categories</h2>
+      <a class="section__link" href="#">View all categories</a>
+    </div>
+    <div class="category-grid">
+      <a class="category-tile" href="#"><img src="../../icons/property/apartment.svg" alt=""> Properties</a>
+      <a class="category-tile" href="#"><img src="../../icons/category/vehicles.svg" alt=""> Vehicles</a>
+      <a class="category-tile" href="#"><img src="../../icons/category/mobiles.svg" alt=""> Mobile Phones &amp; Tablets</a>
+      <a class="category-tile" href="#"><img src="../../icons/category/electronics.svg" alt=""> Electronics &amp; Home Appliances</a>
+      <a class="category-tile" href="#"><img src="../../icons/category/furniture.svg" alt=""> Home Furniture - Decor</a>
+      <a class="category-tile" href="#"><img src="../../icons/category/jobs.svg" alt=""> Jobs</a>
+      <a class="category-tile" href="#"><img src="../../icons/category/fashion.svg" alt=""> Fashion &amp; Beauty</a>
+      <a class="category-tile" href="#"><img src="../../icons/category/services.svg" alt=""> Services</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2 class="section__title">Fresh Recommendations</h2>
+      <a class="section__link" href="#">View more</a>
+    </div>
+    <ul class="results-grid">
+
+      <li><article class="ad-card">
+        <div class="ad-card__media media-placeholder">
+          <span class="ad-card__badge ad-card__badge--featured">Featured</span>
+          <button class="ad-card__fav" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 14</span>
+        </div>
+        <div class="ad-card__body">
+          <p class="ad-card__price">EGP 2,850,000</p>
+          <h3 class="ad-card__title">Mercedes-Benz E200 2021 - 45,000 km - full options</h3>
+          <p class="ad-card__meta"><img src="../../icons/location/location-filled.svg" alt=""> Sheikh Zayed, Giza</p>
+          <p class="ad-card__time">3 hours ago</p>
+        </div>
+      </article></li>
+
+      <li><article class="ad-card">
+        <div class="ad-card__media media-placeholder">
+          <button class="ad-card__fav" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 6</span>
+        </div>
+        <div class="ad-card__body">
+          <p class="ad-card__price">EGP 62,000</p>
+          <h3 class="ad-card__title">iPhone 15 Pro Max 256GB - like new with box</h3>
+          <p class="ad-card__meta"><img src="../../icons/location/location-filled.svg" alt=""> Mohandessin, Giza</p>
+          <p class="ad-card__time">1 hour ago</p>
+        </div>
+      </article></li>
+
+      <li><article class="ad-card">
+        <div class="ad-card__media media-placeholder">
+          <span class="ad-card__badge ad-card__badge--elite">Elite</span>
+          <button class="ad-card__fav" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 28</span>
+        </div>
+        <div class="ad-card__body">
+          <p class="ad-card__price">EGP 32,000,000</p>
+          <h3 class="ad-card__title">Villa for sale Mivida compound - prime location</h3>
+          <p class="ad-card__specs"><span>5 Beds</span> · <span>4 Baths</span> · <span>420 m²</span></p>
+          <p class="ad-card__meta"><img src="../../icons/location/location-filled.svg" alt=""> Mivida, New Cairo</p>
+          <p class="ad-card__time">1 day ago</p>
+        </div>
+      </article></li>
+
+      <li><article class="ad-card">
+        <div class="ad-card__media media-placeholder">
+          <button class="ad-card__fav" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 11</span>
+        </div>
+        <div class="ad-card__body">
+          <p class="ad-card__price">EGP 18,900</p>
+          <h3 class="ad-card__title">Samsung 55 inch 4K smart TV - barely used</h3>
+          <p class="ad-card__meta"><img src="../../icons/location/location-filled.svg" alt=""> 6th of October, Giza</p>
+          <p class="ad-card__time">4 hours ago</p>
+        </div>
+      </article></li>
+
+      <li><article class="ad-card">
+        <div class="ad-card__media media-placeholder">
+          <button class="ad-card__fav" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 9</span>
+        </div>
+        <div class="ad-card__body">
+          <p class="ad-card__price">EGP 1,150,000</p>
+          <h3 class="ad-card__title">هيونداي النترا 2019 فابريكا بالكامل</h3>
+          <p class="ad-card__meta"><img src="../../icons/location/location-filled.svg" alt=""> Mansoura</p>
+          <p class="ad-card__time">منذ ساعتين</p>
+        </div>
+      </article></li>
+
+      <li><article class="ad-card">
+        <div class="ad-card__media media-placeholder">
+          <button class="ad-card__fav" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 22</span>
+        </div>
+        <div class="ad-card__body">
+          <p class="ad-card__price">EGP 12,000 / month</p>
+          <h3 class="ad-card__title">Studio for rent Sheikh Zayed furnished</h3>
+          <p class="ad-card__specs"><span>1 Bed</span> · <span>1 Bath</span> · <span>65 m²</span></p>
+          <p class="ad-card__meta"><img src="../../icons/location/location-filled.svg" alt=""> Sheikh Zayed, Giza</p>
+          <p class="ad-card__time">3 hours ago</p>
+        </div>
+      </article></li>
+
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2 class="section__title">Popular Areas</h2>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <span class="footer__heading">Apartments for Sale</span>
+        <div class="footer__links">
+          <a href="#">Apartments for sale in New Cairo</a>
+          <a href="#">Apartments for sale in Nasr City</a>
+          <a href="#">Apartments for sale in Madinaty</a>
+          <a href="#">Apartments for sale in 6th of October</a>
+          <a href="#">Apartments for sale in Heliopolis</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <span class="footer__heading">Villas for Sale</span>
+        <div class="footer__links">
+          <a href="#">Villas for sale in Sheikh Zayed</a>
+          <a href="#">Villas for sale in Mivida</a>
+          <a href="#">Villas for sale in Hyde Park</a>
+          <a href="#">Villas for sale in Beverly Hills</a>
+          <a href="#">Villas for sale in Palm Hills</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <span class="footer__heading">Cars for Sale</span>
+        <div class="footer__links">
+          <a href="#">Cars for sale in Cairo</a>
+          <a href="#">Cars for sale in Alexandria</a>
+          <a href="#">Cars for sale in Giza</a>
+          <a href="#">Cars for sale in Mansoura</a>
+          <a href="#">Cars for sale in Sohag</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <span class="footer__heading">Chalets</span>
+        <div class="footer__links">
+          <a href="#">Chalets in North Coast</a>
+          <a href="#">Chalets in Ain Sukhna</a>
+          <a href="#">Chalets in El Gouna</a>
+          <a href="#">Chalets in Marassi</a>
+          <a href="#">Chalets in Hurghada</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__main">
+    <div class="container footer__cols">
+      <section class="footer__col">
+        <span class="footer__heading">About Us</span>
+        <div class="footer__links">
+          <a href="#">About Dubizzle Group</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Dubizzle for Businesses</a>
+        </div>
+      </section>
+      <section class="footer__col">
+        <span class="footer__heading">Dubizzle</span>
+        <div class="footer__links">
+          <a href="#">Blog</a>
+          <a href="#">Help</a>
+          <a href="#">Sitemap</a>
+          <a href="#">Terms of use</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </section>
+      <section class="footer__col">
+        <span class="footer__heading">Countries</span>
+        <div class="footer__links">
+          <a href="#">Bahrain</a>
+          <a href="#">Jordan</a>
+          <a href="#">Kuwait</a>
+          <a href="#">Oman</a>
+          <a href="#">Qatar</a>
+          <a href="#">Saudi Arabia</a>
+          <a href="#">UAE</a>
+        </div>
+      </section>
+      <section class="footer__col">
+        <span class="footer__heading">Follow us</span>
+        <div class="footer__socials">
+          <a href="#"><img src="../../icons/social/landing-twitter.svg" alt="Twitter"></a>
+          <a href="#"><img src="../../icons/social/landing-linkedin.svg" alt="LinkedIn"></a>
+          <a href="#"><img src="../../icons/social/landing-facebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="../../icons/social/landing-youtube.svg" alt="YouTube"></a>
+          <a href="#"><img src="../../icons/social/landing-instagram.svg" alt="Instagram"></a>
+        </div>
+        <div class="footer__stores">
+          <a href="#"><img src="../../icons/brand/app-store-en.svg" alt="App Store"></a>
+          <a href="#"><img src="../../icons/brand/google-play-en.svg" alt="Google Play"></a>
+          <a href="#"><img src="../../icons/brand/app-gallery.svg" alt="App Gallery"></a>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="footer__legal">
+    <div class="container">
+      <strong>Free Classifieds in Egypt.</strong>© 2026 Dubizzle
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
