@@ -577,6 +577,14 @@ ul {
   white-space: nowrap;
 }
 
+/* Rent period after a price — "EGP 90,000 / Monthly". Lighter and smaller so
+   the amount stays the loud element. */
+.ad-card__price-suffix {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  color: var(--text-tertiary);
+}
+
 .ad-card__specs {
   display: flex;
   align-items: center;
@@ -636,11 +644,19 @@ ul {
   display: block;
 }
 
+/* One consistent vertical rhythm for every row in the body. Each row (head,
+   specs, title, chips, footer) is a direct child and inherits this gap, so the
+   grid card's per-element margins are neutralised here to avoid double spacing. */
 .ad-list-card__body {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ad-list-card__body > :is(.ad-card__title, .ad-card__specs, .ad-card__meta, .ad-card__time, .attr-chips) {
+  margin: 0;
 }
 
 .ad-list-card__actions {
@@ -653,26 +669,20 @@ ul {
 /* Each action button shares the row equally (Call / WhatsApp / Chat). */
 .ad-list-card__actions .contact-btn { flex: 1; }
 
-/* Price + model chip on one row — the list/vertical-page card leads with the
-   price on the start side and a model/type chip on the end. */
+/* Price + model/type chip on one row — the card leads with the price on the
+   start side and a chip on the end. */
 .ad-list-card__head {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
 }
-
-/* On the vertical landing pages the list card carries a couple of extra rows
-   (attribute chips, a location + time footer). Keep them inside the same body
-   flow with the card's rhythm. */
-.ad-list-card__body .attr-chips { margin-top: var(--space-2); }
 
 .ad-list-card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  margin-top: var(--space-2);
   font-size: var(--text-xs);
   color: var(--text-tertiary);
 }
@@ -682,6 +692,9 @@ ul {
   align-items: center;
   gap: var(--space-1);
 }
+
+/* Property specs lead with the property type, then beds · baths · area. */
+.ad-card__specs strong { color: var(--text-primary); font-weight: var(--weight-bold); }
 
 /* ── Results grid ─────────────────────────────────────────────────────────── */
 

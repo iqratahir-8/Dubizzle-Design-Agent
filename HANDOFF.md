@@ -45,6 +45,17 @@ The user compared the templates against the real dubizzle.com.eg and they did no
 - **Home page** (`_pages/home.desktop.html`) — rebuilt. The live home is a **category directory, not a listings feed**. There are no ad cards on it at all. It is: hero banner → `h1 "Explore Egypt's Largest Marketplace"` → 12-category grid (4 cols), each with 4 sub-links and a red "All in X ›" → Popular Searches.
 - **`patterns.css`** — added a `LIVE-SITE PATTERNS` block with everything measured from the saved pages.
 
+### Card components — three per-vertical anatomies
+
+The list/category card is **three components** sharing one shell (`.ad-list-card`):
+- **Cars** — price + model chip → title → `year · km · transmission · fuel` spec line → optional condition chips.
+- **Property** — **no free-text title**; body leads with the property type + `beds · baths · area`, then attribute chips (Completion Status, Ownership).
+- **Goods** — price → title → a single condition attribute; no structured specs.
+
+All keep the price **charcoal** and contact CTAs at the bottom. The grid card (`.ad-card`) and React `AdCard` are the same designed card; price is charcoal there too. Documented in `design-kit/index.html` → Ad cards → "List variant — three category components" (source in `scripts/build-preview.mjs`).
+
+**Goods still needs a live reference.** motors/properties were built from saved live pages; there is no saved goods page, and this environment's network egress to dubizzle.com.eg is blocked, so a live fetch isn't possible from here. The goods card above is built from the general classifieds pattern — save a live goods category page (e.g. mobile phones) into `design-kit/reference/live/goods.html` and re-check it.
+
 ### Still to do
 
 1. ~~**Vertical landing pages are missing entirely** — `motors.desktop.html` and `properties.desktop.html`.~~ **DONE.** Both built from the saved live pages and verified with headless Chromium against the measured values (rail 304px, tinted card #fef5f5, listing price charcoal `rgb(35,38,42)` at 24px/700).

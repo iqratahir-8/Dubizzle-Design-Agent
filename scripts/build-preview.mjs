@@ -453,21 +453,76 @@ ${sampleIcons
           </article>
         </div>
       </div>
-      <h3>List variant</h3>
+      <h3>List variant — three category components</h3>
+      <p class="note">
+        The list card shares one shell (<code>.ad-list-card</code>) but the body differs by
+        vertical. <strong>Cars</strong>: price + model chip, a title, then a year · km ·
+        transmission · fuel spec line. <strong>Property</strong>: no free-text title — the body
+        leads with the property type and beds · baths · area, then attribute chips.
+        <strong>Goods</strong>: price, title, a single condition attribute — no structured specs.
+        All three keep the price charcoal and the contact CTAs at the bottom.
+      </p>
       <div class="demo demo--muted demo--stack">
+
+        <!-- Cars -->
         <article class="ad-list-card">
           <div class="ad-list-card__media media-placeholder media-placeholder--sm"></div>
           <div class="ad-list-card__body">
-            <p class="ad-card__price">EGP 2,850,000</p>
-            <h3 class="ad-card__title">Mercedes-Benz E200 2021 - 45,000 km - full options</h3>
-            <p class="ad-card__specs"><span>45,000 km</span> · <span>Automatic</span></p>
+            <div class="ad-list-card__head">
+              <p class="ad-card__price">EGP 2,850,000</p>
+              <span class="chip">E200</span>
+            </div>
+            <h3 class="ad-card__title">Mercedes-Benz E200 2021 - full options</h3>
+            <p class="ad-card__specs"><span>2021</span> · <span>45,000 km</span> · <span>Automatic</span> · <span>Benzine</span></p>
             <p class="ad-card__meta"><img src="icons/location/location-filled.svg" alt=""> Sheikh Zayed, Giza</p>
             <div class="ad-list-card__actions">
-              <button class="contact-btn contact-btn--chat"><img src="icons/action/chat.svg" alt=""> Chat</button>
               <button class="contact-btn contact-btn--call"><img src="icons/action/call.svg" alt=""> Call</button>
+              <button class="contact-btn contact-btn--whatsapp"><img src="icons/social/whatsapp.svg" alt=""> WhatsApp</button>
             </div>
           </div>
         </article>
+
+        <!-- Property -->
+        <article class="ad-list-card">
+          <div class="ad-list-card__media media-placeholder media-placeholder--sm"></div>
+          <div class="ad-list-card__body">
+            <p class="ad-card__price">EGP 5,150,000</p>
+            <p class="ad-card__specs"><strong>Apartment</strong> · <span>3 Beds</span> · <span>2 Baths</span> · <span>150 m²</span></p>
+            <div class="attr-chips">
+              <span class="attr-chip">Completion Status <strong>Ready</strong></span>
+              <span class="attr-chip">Ownership <strong>Primary</strong></span>
+            </div>
+            <div class="ad-list-card__footer">
+              <span><img src="icons/location/location-filled.svg" alt="" width="16" height="16"> New Cairo, Cairo</span>
+              <span>2 hours ago</span>
+            </div>
+            <div class="ad-list-card__actions">
+              <button class="contact-btn contact-btn--call"><img src="icons/action/call.svg" alt=""> Call</button>
+              <button class="contact-btn contact-btn--whatsapp"><img src="icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Goods -->
+        <article class="ad-list-card">
+          <div class="ad-list-card__media media-placeholder media-placeholder--sm"></div>
+          <div class="ad-list-card__body">
+            <p class="ad-card__price">EGP 62,000</p>
+            <h3 class="ad-card__title">iPhone 15 Pro Max 256GB - Natural Titanium</h3>
+            <div class="attr-chips">
+              <span class="attr-chip">Condition <strong>Used</strong></span>
+            </div>
+            <div class="ad-list-card__footer">
+              <span><img src="icons/location/location-filled.svg" alt="" width="16" height="16"> Nasr City, Cairo</span>
+              <span>35 minutes ago</span>
+            </div>
+            <div class="ad-list-card__actions">
+              <button class="contact-btn contact-btn--call"><img src="icons/action/call.svg" alt=""> Call</button>
+              <button class="contact-btn contact-btn--chat"><img src="icons/action/chat.svg" alt=""> Chat</button>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
