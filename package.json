@@ -32,12 +32,13 @@
     "build:storybook": "storybook build",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit",
-    "sync": "npm run sync:tokens && npm run sync:icons && npm run build:templates",
+    "sync": "npm run sync:tokens && npm run sync:icons && npm run build:templates && npm run build:preview",
     "sync:tokens": "node scripts/sync-tokens.mjs",
     "sync:icons": "node scripts/sync-icons.mjs",
     "check:design": "node scripts/check-design.mjs",
     "check:all": "node scripts/check-design.mjs design-kit/*.html design-kit/patterns/*.css design-kit/templates/*.html design-kit/templates/*/*.html src/components/*/*.module.css src/templates/*.module.css",
-    "build:templates": "node scripts/build-templates.mjs"
+    "build:templates": "node scripts/build-templates.mjs",
+    "build:preview": "node scripts/build-preview.mjs"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

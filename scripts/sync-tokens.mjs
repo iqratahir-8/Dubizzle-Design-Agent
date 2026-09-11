@@ -262,6 +262,27 @@ const json = {
     ]),
   ),
 };
+
+/* The semantic layer is what everything downstream actually targets, so it belongs in
+   the machine-readable output too — not just the stylesheet. Merged into the matching
+   groups so consumers can look a token up by name without knowing which layer it came
+   from. */
+const SEMANTIC_GROUP_TO_KIND = {
+  color: 'color',
+  typography: 'font-size',
+  spacing: 'spacing',
+  radius: 'radius',
+  shadow: 'shadow',
+  layout: 'size',
+};
+
+json.semantic = {};
+for (const [groupName, entries] of Object.entries(SEMANTIC)) {
+  json.semantic[groupName] = entries;
+  const kind = SEMANTIC_GROUP_TO_KIND[groupName];
+  if (!kind) continue;
+  json.groups[kind] = { ...(json.groups[kind] ?? {}), ...entries };
+}
 writeFileSync(join(outDir, 'tokens.json'), JSON.stringify(json, null, 2));
 
 // ── Console report ────────────────────────────────────────────────────────
