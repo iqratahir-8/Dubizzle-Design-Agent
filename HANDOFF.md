@@ -47,14 +47,11 @@ The user compared the templates against the real dubizzle.com.eg and they did no
 
 ### Still to do
 
-1. **Vertical landing pages are missing entirely** — `motors.desktop.html` and `properties.desktop.html`. These are the highest-value remaining templates. Structure from the live pages:
-   - Breadcrumb (`Home / Vehicles / Cars for Sale`)
-   - `h1` + red-tinted count pill (`12,864 ads`) + outlined `Save Search` button on the right
-   - Left rail: **Categories card tinted `--color-primary-light` (#fef5f5)** with a category tree carrying counts and a red "View more ⌄"; below it a **white** Location card with a select and a location list with counts
-   - Right column: `Featured Businesses` logo strip (motors), segmented `All / New / Used`, make chips, location panel with counts + "View More Locations ›"
-   - Listing cards are **horizontal** — see below
-   - Patterns for all of this already exist in `patterns.css` (`.filter-card--tinted`, `.count-pill`, `.btn--outline`, `.segmented`, `.listing-card`, `.attr-chip`, `.ribbon`, `.business-strip`)
-2. **Mobile versions** of the corrected home + the two verticals.
+1. ~~**Vertical landing pages are missing entirely** — `motors.desktop.html` and `properties.desktop.html`.~~ **DONE.** Both built from the saved live pages and verified with headless Chromium against the measured values (rail 304px, tinted card #fef5f5, listing price charcoal `rgb(35,38,42)` at 24px/700).
+   - Motors: breadcrumb → page-head (`12,864 ads` count pill + Save Search) → left rail (tinted Categories tree, white Location, Brand and Model — all with live counts) → right column (Featured Businesses strip, `All / New / Used` segmented, sort toolbar, Car of the Week ribbon, Elite Ads, results, Popular Cars chips). Listing cards horizontal with vehicle attr-chips + Call/WhatsApp/Chat.
+   - Properties: **no** Featured Businesses strip and **no** segmented control (motors-only). Leads with a Location panel (areas + counts + "View More Locations ›"). Left rail adds a Price range. No aggregate count pill — the live properties landing doesn't surface one; counts live per-category in the rail. Property cards use beds/baths/area specs.
+   - Added one small pattern (`.contact-row`) and sized `.attr-chip img` while doing this.
+2. **Mobile versions** of the corrected home + the two verticals (`home.mobile.html` is stale; `motors.mobile.html` / `properties.mobile.html` don't exist yet).
 3. **`search.desktop.html` needs reworking** to the real pattern — it currently uses price/beds/area inputs, but live uses the category+location tree with counts.
 4. **Re-check `ad-detail`** against live — no saved reference for it yet; ask the user for one.
 

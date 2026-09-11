@@ -1,0 +1,239 @@
+<!--@ {"title":"Properties for Sale & Rent in Egypt | dubizzle Egypt (OLX)","header":"desktop","vertical":"property","note":"Properties vertical landing page, rebuilt from the saved live page (reference/live/properties.html). Unlike motors there is NO Featured Businesses strip and NO All/New/Used segmented control; the results column leads with a Location panel (areas + counts + View More Locations). Left rail: tinted Categories tree, white Location, Price range — all with the measured live counts. Listing cards are horizontal with beds/baths/area specs; price is CHARCOAL, not red."} @-->
+
+<main class="container">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="#">Home</a> ›
+    <span>Properties for Sale &amp; Rent</span>
+  </nav>
+
+  <div class="page-head">
+    <h1 class="page-head__title">Properties for Sale &amp; Rent in Egypt</h1>
+    <span class="page-head__spacer"></span>
+    <button class="btn--outline" type="button">
+      <img src="../../icons/action/bookmark.svg" alt=""> Save Search
+    </button>
+  </div>
+
+  <div class="search-layout">
+
+    <!-- ── Filter rail ──────────────────────────────────────────────────────── -->
+    <aside>
+
+      <div class="filter-card filter-card--tinted">
+        <h3 class="filter-card__title">Categories</h3>
+        <div class="filter-tree">
+          <a class="filter-tree__root" href="#">All categories</a>
+          <a class="filter-tree__parent" href="#">Properties</a>
+          <a class="filter-tree__child filter-tree__child--active" href="#">Apartments for Sale <span class="filter-tree__count">(93,384)</span></a>
+          <a class="filter-tree__child" href="#">Villas For Sale <span class="filter-tree__count">(48,435)</span></a>
+          <a class="filter-tree__child" href="#">Apartments for Rent <span class="filter-tree__count">(36,132)</span></a>
+          <a class="filter-tree__child" href="#">Vacation Homes for Sale <span class="filter-tree__count">(25,016)</span></a>
+        </div>
+        <button class="filter-more" type="button">View more <img src="../../icons/navigation/chevron-down.svg" alt="" width="14" height="14"></button>
+      </div>
+
+      <div class="filter-card">
+        <h3 class="filter-card__title">Location</h3>
+        <div class="filter-tree">
+          <a href="#">Cairo <span class="filter-tree__count">(133,103)</span></a>
+          <a href="#">Giza <span class="filter-tree__count">(48,967)</span></a>
+          <a href="#">Matruh <span class="filter-tree__count">(33,560)</span></a>
+          <a href="#">Alexandria <span class="filter-tree__count">(12,415)</span></a>
+          <a href="#">Red Sea <span class="filter-tree__count">(5,704)</span></a>
+          <a href="#">Suez <span class="filter-tree__count">(4,921)</span></a>
+          <a href="#">Sharqia <span class="filter-tree__count">(1,130)</span></a>
+          <a href="#">Dakahlia <span class="filter-tree__count">(568)</span></a>
+        </div>
+        <button class="filter-more" type="button">View more <img src="../../icons/navigation/chevron-down.svg" alt="" width="14" height="14"></button>
+      </div>
+
+      <div class="filter-card">
+        <h3 class="filter-card__title">Price (EGP)</h3>
+        <div class="filter-range">
+          <input class="input" type="text" placeholder="Min" aria-label="Minimum price">
+          <input class="input" type="text" placeholder="Max" aria-label="Maximum price">
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ── Results column ───────────────────────────────────────────────────── -->
+    <section>
+
+      <!-- Properties leads with a location panel, not a business strip. -->
+      <div class="location-panel">
+        <div class="location-panel__grid">
+          <a href="#">New Cairo City <span class="filter-tree__count">(74,375)</span></a>
+          <a href="#">6th of October <span class="filter-tree__count">(33,140)</span></a>
+          <a href="#">North Coast <span class="filter-tree__count">(23,306)</span></a>
+          <a href="#">Sheikh Zayed <span class="filter-tree__count">(18,753)</span></a>
+          <a href="#">New Administrative Capital <span class="filter-tree__count">(13,326)</span></a>
+          <a href="#">Nasr City <span class="filter-tree__count">(8,192)</span></a>
+          <a href="#">Mostakbal City <span class="filter-tree__count">(7,854)</span></a>
+          <a href="#">Ain Sukhna <span class="filter-tree__count">(7,181)</span></a>
+        </div>
+        <a class="filter-more" href="#">View More Locations <img src="../../icons/navigation/chevron-right.svg" alt="" width="14" height="14"></a>
+      </div>
+
+      <div class="results-toolbar">
+        <span class="results-toolbar__spacer"></span>
+        <div class="sort-control">Sort by: <strong>Newly listed</strong> <img src="../../icons/action/sort.svg" alt="" width="18" height="18"></div>
+      </div>
+
+      <!-- Property of the Week — red ribbon across the image top-left. -->
+      <div class="section__head">
+        <h2 class="section__title">Property of the Week</h2>
+        <a class="section__link" href="#">View All</a>
+      </div>
+
+      <article class="listing-card">
+        <div class="listing-card__media media-placeholder">
+          <span class="ribbon"><img src="../../icons/vehicle/car-of-the-day.svg" alt=""> Property of the Week</span>
+          <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 16</span>
+        </div>
+        <div class="listing-card__body">
+          <div class="listing-card__price-row">
+            <p class="listing-card__price">EGP 5,150,000</p>
+            <span class="chip">Chalet</span>
+          </div>
+          <div class="listing-card__specs">
+            <span class="listing-card__spec"><img src="../../icons/property/beds.svg" alt=""> 2 beds</span>
+            <span class="listing-card__divider">·</span>
+            <span class="listing-card__spec"><img src="../../icons/property/baths.svg" alt=""> 2 baths</span>
+            <span class="listing-card__divider">·</span>
+            <span class="listing-card__spec"><img src="../../icons/property/area.svg" alt=""> 115 m²</span>
+          </div>
+          <div class="attr-chips">
+            <span class="attr-chip">Completion Status <strong>Ready</strong></span>
+            <span class="attr-chip">Ownership <strong>Primary</strong></span>
+          </div>
+          <h3 class="listing-card__title">Chalet for sale in Viva Sokhna, Ain Sukhna</h3>
+          <div class="listing-card__footer">
+            <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> Viva Sokhna, Ain Sukhna</span>
+            <span>4 weeks ago</span>
+          </div>
+          <div class="contact-row">
+            <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Elite Ads -->
+      <div class="section__head">
+        <h2 class="section__title">Elite Ads</h2>
+        <a class="section__link" href="#">View More</a>
+      </div>
+
+      <article class="listing-card">
+        <div class="listing-card__media media-placeholder">
+          <span class="elite-tag"><img src="../../icons/brand/dubizzle-flame.svg" alt=""> Elite</span>
+          <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 11</span>
+        </div>
+        <div class="listing-card__body">
+          <div class="listing-card__price-row">
+            <p class="listing-card__price">EGP 14,000,000</p>
+            <span class="chip">Apartment</span>
+          </div>
+          <div class="listing-card__specs">
+            <span class="listing-card__spec"><img src="../../icons/property/beds.svg" alt=""> 3 beds</span>
+            <span class="listing-card__divider">·</span>
+            <span class="listing-card__spec"><img src="../../icons/property/baths.svg" alt=""> 3 baths</span>
+            <span class="listing-card__divider">·</span>
+            <span class="listing-card__spec"><img src="../../icons/property/area.svg" alt=""> 110 m²</span>
+          </div>
+          <h3 class="listing-card__title">Apartment for sale, Mountain View iCity Compound, 5th Settlement</h3>
+          <div class="listing-card__footer">
+            <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> Mountain View iCity Compound, 5th Settlement</span>
+            <span>2 minutes ago</span>
+          </div>
+          <div class="contact-row">
+            <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Latest results -->
+      <div class="section__head">
+        <h2 class="section__title">All Properties for Sale &amp; Rent</h2>
+      </div>
+
+      <article class="listing-card">
+        <div class="listing-card__media media-placeholder">
+          <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 10</span>
+        </div>
+        <div class="listing-card__body">
+          <div class="listing-card__price-row">
+            <p class="listing-card__price">EGP 16,000,000</p>
+            <span class="chip">Apartment</span>
+          </div>
+          <div class="listing-card__specs">
+            <span class="listing-card__spec"><img src="../../icons/property/beds.svg" alt=""> 3 beds</span>
+            <span class="listing-card__divider">·</span>
+            <span class="listing-card__spec"><img src="../../icons/property/baths.svg" alt=""> 3 baths</span>
+            <span class="listing-card__divider">·</span>
+            <span class="listing-card__spec"><img src="../../icons/property/area.svg" alt=""> 164 m²</span>
+          </div>
+          <h3 class="listing-card__title">Apartment for sale, EL Patio ORO Compound, 5th Settlement</h3>
+          <div class="listing-card__footer">
+            <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> EL Patio ORO Compound, 5th Settlement</span>
+            <span>5 minutes ago</span>
+          </div>
+          <div class="contact-row">
+            <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="listing-card">
+        <div class="listing-card__media media-placeholder">
+          <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 8</span>
+        </div>
+        <div class="listing-card__body">
+          <div class="listing-card__price-row">
+            <p class="listing-card__price">EGP 90,000 <span class="listing-card__title" style="display:inline;font-weight:var(--weight-regular)">Monthly</span></p>
+            <span class="chip">Clinic</span>
+          </div>
+          <div class="listing-card__specs">
+            <span class="listing-card__spec"><img src="../../icons/property/area.svg" alt=""> 95 m²</span>
+          </div>
+          <div class="attr-chips">
+            <span class="attr-chip">Furnished <strong>Yes</strong></span>
+          </div>
+          <h3 class="listing-card__title">Clinic for rent, fully furnished, prime location</h3>
+          <div class="listing-card__footer">
+            <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> Nasr City, Cairo</span>
+            <span>47 minutes ago</span>
+          </div>
+          <div class="contact-row">
+            <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Popular searches — chips, not cards. -->
+      <section class="section">
+        <div class="section__head">
+          <h2 class="section__title">Popular Properties in Egypt</h2>
+        </div>
+        <div class="attr-chips">
+          <a class="attr-chip" href="#">Apartments for Sale in New Cairo</a>
+          <a class="attr-chip" href="#">Villas for Sale in 6th of October</a>
+          <a class="attr-chip" href="#">Chalets for Sale in North Coast</a>
+          <a class="attr-chip" href="#">Apartments for Rent in Nasr City</a>
+          <a class="attr-chip" href="#">Studios for Rent in Maadi</a>
+          <a class="attr-chip" href="#">Duplexes for Sale in Sheikh Zayed</a>
+        </div>
+      </section>
+
+    </section>
+  </div>
+</main>

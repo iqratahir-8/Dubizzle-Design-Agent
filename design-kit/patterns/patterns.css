@@ -1990,6 +1990,22 @@ ul {
   color: var(--text-tertiary);
 }
 
+.listing-card__footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Contact actions inside a listing card — Call / WhatsApp / Chat. Sits below
+   the footer; buttons keep the coloured contact-btn fills. */
+.contact-row {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.contact-row .contact-btn { flex: 1; }
+
 .agency-logo {
   height: 3.2rem;
   max-width: 12rem;
@@ -2019,6 +2035,8 @@ ul {
   font-weight: var(--weight-bold);
   color: var(--text-primary);
 }
+
+.attr-chip img { width: 1.6rem; height: 1.6rem; flex: none; }
 
 /* ── Promotion ribbons ────────────────────────────────────────────────────── */
 

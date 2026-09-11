@@ -148,6 +148,8 @@ for (const path of built) {
 
 const LABELS = {
   home: 'Home',
+  motors: 'Motors landing (vertical)',
+  properties: 'Properties landing (vertical)',
   search: 'Search results',
   'ad-detail': 'Ad detail',
   'post-ad': 'Post your ad',

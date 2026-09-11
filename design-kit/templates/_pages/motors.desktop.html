@@ -1,0 +1,252 @@
+<!--@ {"title":"Cars Price in Egypt | dubizzle Egypt (OLX)","header":"desktop","vertical":"motors","note":"Motors vertical landing page, rebuilt from the saved live page (reference/live/motors.html). Structure: breadcrumb, page-head with count pill + Save Search, left rail (tinted Categories tree + white Location + Brand and Model, all with counts), right column (Featured Businesses strip, All/New/Used segmented, sort toolbar, promoted sections with horizontal listing cards, Popular Cars chips). Counts and copy are the measured live values. Listing price is CHARCOAL, not red."} @-->
+
+<main class="container">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="#">Home</a> ›
+    <a href="#">Vehicles</a> ›
+    <span>Cars for Sale</span>
+  </nav>
+
+  <div class="page-head">
+    <h1 class="page-head__title">Cars for Sale in Egypt</h1>
+    <span class="count-pill">12,864 ads</span>
+    <span class="page-head__spacer"></span>
+    <button class="btn--outline" type="button">
+      <img src="../../icons/action/bookmark.svg" alt=""> Save Search
+    </button>
+  </div>
+
+  <div class="search-layout">
+
+    <!-- ── Filter rail ──────────────────────────────────────────────────────── -->
+    <aside>
+
+      <!-- The category card is the one tinted panel on the page (red-01). -->
+      <div class="filter-card filter-card--tinted">
+        <h3 class="filter-card__title">Categories</h3>
+        <div class="filter-tree">
+          <a class="filter-tree__root" href="#">All categories</a>
+          <a class="filter-tree__child filter-tree__child--active" href="#">Cars for Sale <span class="filter-tree__count">(12,864)</span></a>
+          <a class="filter-tree__child" href="#">Motorcycles &amp; Scooters <span class="filter-tree__count">(6,423)</span></a>
+          <a class="filter-tree__child" href="#">Car Spare Parts <span class="filter-tree__count">(4,654)</span></a>
+          <a class="filter-tree__child" href="#">Tyres, Batteries, Oils, &amp; Accessories <span class="filter-tree__count">(2,982)</span></a>
+          <a class="filter-tree__child" href="#">Cars for Rent <span class="filter-tree__count">(2,450)</span></a>
+          <a class="filter-tree__child" href="#">Motorcycles Gear, Safety &amp; Security <span class="filter-tree__count">(258)</span></a>
+          <a class="filter-tree__child" href="#">Boats - Watercraft <span class="filter-tree__count">(221)</span></a>
+          <a class="filter-tree__child" href="#">Motorcycle Spare Parts <span class="filter-tree__count">(220)</span></a>
+          <a class="filter-tree__child" href="#">Golf Carts <span class="filter-tree__count">(98)</span></a>
+          <a class="filter-tree__child" href="#">Car Care <span class="filter-tree__count">(75)</span></a>
+          <a class="filter-tree__child" href="#">Heavy Trucks, Buses &amp; Other Vehicles <span class="filter-tree__count">(33)</span></a>
+        </div>
+        <button class="filter-more" type="button">View less <img src="../../icons/navigation/thick-arrow-up.svg" alt="" width="14" height="14"></button>
+      </div>
+
+      <div class="filter-card">
+        <h3 class="filter-card__title">Location</h3>
+        <div class="filter-tree">
+          <a href="#">Cairo <span class="filter-tree__count">(7,476)</span></a>
+          <a href="#">Giza <span class="filter-tree__count">(2,317)</span></a>
+          <a href="#">Alexandria <span class="filter-tree__count">(1,000)</span></a>
+          <a href="#">Sharqia <span class="filter-tree__count">(285)</span></a>
+          <a href="#">Dakahlia <span class="filter-tree__count">(253)</span></a>
+          <a href="#">Gharbia <span class="filter-tree__count">(233)</span></a>
+          <a href="#">Qalyubia <span class="filter-tree__count">(211)</span></a>
+          <a href="#">Damietta <span class="filter-tree__count">(155)</span></a>
+        </div>
+        <button class="filter-more" type="button">View more <img src="../../icons/navigation/chevron-down.svg" alt="" width="14" height="14"></button>
+      </div>
+
+      <div class="filter-card">
+        <h3 class="filter-card__title">Brand and Model</h3>
+        <div class="filter-tree">
+          <a href="#">Mercedes-Benz <span class="filter-tree__count">(1,460)</span></a>
+          <a href="#">Hyundai <span class="filter-tree__count">(779)</span></a>
+          <a href="#">Fiat <span class="filter-tree__count">(748)</span></a>
+          <a href="#">Toyota <span class="filter-tree__count">(712)</span></a>
+          <a href="#">BMW <span class="filter-tree__count">(694)</span></a>
+          <a href="#">Kia <span class="filter-tree__count">(543)</span></a>
+        </div>
+        <button class="filter-more" type="button">View more <img src="../../icons/navigation/chevron-down.svg" alt="" width="14" height="14"></button>
+      </div>
+
+    </aside>
+
+    <!-- ── Results column ───────────────────────────────────────────────────── -->
+    <section>
+
+      <div class="business-strip">
+        <h2 class="business-strip__title">Featured Businesses</h2>
+        <div class="business-strip__row">
+          <div class="business-card"><div class="business-card__logo media-placeholder media-placeholder--sm"></div>Auto Prime</div>
+          <div class="business-card"><div class="business-card__logo media-placeholder media-placeholder--sm"></div>Eg Motors</div>
+          <div class="business-card"><div class="business-card__logo media-placeholder media-placeholder--sm"></div>Cairo Cars</div>
+          <div class="business-card"><div class="business-card__logo media-placeholder media-placeholder--sm"></div>Elite Auto</div>
+          <div class="business-card"><div class="business-card__logo media-placeholder media-placeholder--sm"></div>Speed Zone</div>
+          <div class="business-card"><div class="business-card__logo media-placeholder media-placeholder--sm"></div>Nile Motors</div>
+        </div>
+      </div>
+
+      <div class="segmented" role="group" aria-label="Condition">
+        <button class="segmented__option segmented__option--active" type="button">All</button>
+        <button class="segmented__option" type="button">New</button>
+        <button class="segmented__option" type="button">Used</button>
+      </div>
+
+      <div class="results-toolbar">
+        <span class="results-toolbar__spacer"></span>
+        <div class="sort-control">Sort by: <strong>Newly listed</strong> <img src="../../icons/action/sort.svg" alt="" width="18" height="18"></div>
+      </div>
+
+      <!-- Car of the Week — red ribbon across the image top-left. -->
+      <div class="section__head">
+        <h2 class="section__title">Car of the Week</h2>
+        <a class="section__link" href="#">View All</a>
+      </div>
+
+      <article class="listing-card">
+        <div class="listing-card__media media-placeholder">
+          <span class="ribbon"><img src="../../icons/vehicle/car-of-the-day.svg" alt=""> Car of the Week</span>
+          <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 12</span>
+        </div>
+        <div class="listing-card__body">
+          <div class="listing-card__price-row">
+            <p class="listing-card__price">EGP 18,500,000</p>
+            <span class="chip">Range Rover Vogue</span>
+          </div>
+          <div class="attr-chips">
+            <span class="attr-chip">2025</span>
+            <span class="attr-chip"><img src="../../icons/vehicle/mileage.svg" alt=""> 0 km</span>
+            <span class="attr-chip">Condition <strong>New</strong></span>
+            <span class="attr-chip">Transmission <strong>Automatic</strong></span>
+            <span class="attr-chip"><img src="../../icons/vehicle/fuel.svg" alt=""> Benzine</span>
+          </div>
+          <h3 class="listing-card__title">Land Rover Range Rover Vogue 2025</h3>
+          <div class="listing-card__footer">
+            <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> New Cairo, Cairo</span>
+            <span>23 hours ago</span>
+          </div>
+          <div class="contact-row">
+            <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Elite Ads -->
+      <div class="section__head">
+        <h2 class="section__title">Elite Ads</h2>
+        <a class="section__link" href="#">View More</a>
+      </div>
+
+      <article class="listing-card">
+        <div class="listing-card__media media-placeholder">
+          <span class="elite-tag"><img src="../../icons/brand/dubizzle-flame.svg" alt=""> Elite</span>
+          <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 11</span>
+        </div>
+        <div class="listing-card__body">
+          <div class="listing-card__price-row">
+            <p class="listing-card__price">EGP 9,000,000</p>
+            <span class="chip">Escalade</span>
+          </div>
+          <div class="attr-chips">
+            <span class="attr-chip">2024</span>
+            <span class="attr-chip"><img src="../../icons/vehicle/mileage.svg" alt=""> 10,000 km</span>
+            <span class="attr-chip">Transmission <strong>Automatic</strong></span>
+            <span class="attr-chip"><img src="../../icons/vehicle/fuel.svg" alt=""> Benzine</span>
+          </div>
+          <h3 class="listing-card__title">CADILLAC ESCALADE 2024 V 700 H. P</h3>
+          <div class="listing-card__footer">
+            <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> Smouha, Alexandria</span>
+            <span>4 days ago</span>
+          </div>
+          <div class="contact-row">
+            <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--chat" type="button"><img src="../../icons/action/chat.svg" alt=""> Chat</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Latest results -->
+      <div class="section__head">
+        <h2 class="section__title">All Cars for Sale</h2>
+      </div>
+
+      <article class="listing-card">
+        <div class="listing-card__media media-placeholder">
+          <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 20</span>
+        </div>
+        <div class="listing-card__body">
+          <div class="listing-card__price-row">
+            <p class="listing-card__price">EGP 2,450,000</p>
+            <span class="chip">CR-V</span>
+          </div>
+          <div class="attr-chips">
+            <span class="attr-chip">2025</span>
+            <span class="attr-chip"><img src="../../icons/vehicle/mileage.svg" alt=""> 21,000 km</span>
+            <span class="attr-chip">Agency Maintained</span>
+            <span class="attr-chip">First Owner</span>
+          </div>
+          <h3 class="listing-card__title">هوندا سي ار في 2025</h3>
+          <div class="listing-card__footer">
+            <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> Nasr City, Cairo</span>
+            <span>1 week ago</span>
+          </div>
+          <div class="contact-row">
+            <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="listing-card">
+        <div class="listing-card__media media-placeholder">
+          <button class="ad-card__fav" type="button" aria-label="Save"><img src="../../icons/action/heart.svg" alt=""></button>
+          <span class="ad-card__photos"><img src="../../icons/media/image-count.svg" alt=""> 11</span>
+        </div>
+        <div class="listing-card__body">
+          <div class="listing-card__price-row">
+            <p class="listing-card__price">EGP 2,600,000</p>
+            <span class="chip">A3</span>
+          </div>
+          <div class="attr-chips">
+            <span class="attr-chip">2026</span>
+            <span class="attr-chip"><img src="../../icons/vehicle/mileage.svg" alt=""> 0 km</span>
+            <span class="attr-chip">Transmission <strong>Automatic</strong></span>
+          </div>
+          <h3 class="listing-card__title">Audi A3 2026 Sline اودي اي ٣ اس لاين</h3>
+          <div class="listing-card__footer">
+            <span><img src="../../icons/location/location-filled.svg" alt="" width="16" height="16"> Mohandessin, Giza</span>
+            <span>3 weeks ago</span>
+          </div>
+          <div class="contact-row">
+            <button class="contact-btn contact-btn--call" type="button"><img src="../../icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="../../icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Popular searches — chips, not cards. -->
+      <section class="section">
+        <div class="section__head">
+          <h2 class="section__title">Popular Cars for Sale in Egypt</h2>
+        </div>
+        <div class="attr-chips">
+          <a class="attr-chip" href="#">Mercedes-Benz C180</a>
+          <a class="attr-chip" href="#">Mercedes-Benz E200</a>
+          <a class="attr-chip" href="#">Renault Logan</a>
+          <a class="attr-chip" href="#">Kia Sportage</a>
+          <a class="attr-chip" href="#">Toyota Corolla</a>
+          <a class="attr-chip" href="#">Daewoo Nubira</a>
+          <a class="attr-chip" href="#">Nissan Sunny</a>
+          <a class="attr-chip" href="#">Fiat 128</a>
+          <a class="attr-chip" href="#">Chevrolet Lanos</a>
+        </div>
+      </section>
+
+    </section>
+  </div>
+</main>
