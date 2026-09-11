@@ -9,3 +9,6 @@ storybook-static
 # Saved copies of live pages — ground truth for template work, but 16MB.
 # Re-save from dubizzle.com.eg if you need them; see HANDOFF.md.
 design-kit/reference/live/
+
+# skill-creator optimization scratch (logs, iteration runs)
+.claude/skills/*-workspace/

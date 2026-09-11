@@ -1,0 +1,22 @@
+[
+  {"query": "just finished the new PromoBanner.module.css for the design system, can you make sure it's clean before I commit", "should_trigger": true},
+  {"query": "i hardcoded #e00000 in the badge styles instead of a variable, is that a problem", "should_trigger": true},
+  {"query": "added a new Chip variant with some padding and a box-shadow — does it follow our design system", "should_trigger": true},
+  {"query": "review the AdCard.module.css changes I just made and make sure the colours and spacing use our tokens", "should_trigger": true},
+  {"query": "building a new SaveSearchButton component for dubizzle-eg, want to double check it's not using raw px or hex anywhere", "should_trigger": true},
+  {"query": "does this CSS use the tokens or did I leave raw values in there", "should_trigger": true},
+  {"query": "tokenize this component", "should_trigger": true},
+  {"query": "i wrote `background: rgb(35, 38, 42)` for the price label, should that be a token", "should_trigger": true},
+  {"query": "before I open the PR, sanity check the new Toast component's styles against the design system rules", "should_trigger": true},
+  {"query": "i just edited patterns.css to add a filter-card, run the design checks on it", "should_trigger": true},
+  {"query": "add a new colour token to tokens.css for the elite badge background", "should_trigger": false},
+  {"query": "what's the hex value of --color-primary in our design system", "should_trigger": false},
+  {"query": "refactor the AdCard into separate hero and normal category components", "should_trigger": false},
+  {"query": "generate a fresh colour palette for a new dubizzle sub-brand", "should_trigger": false},
+  {"query": "the Storybook build is failing with a CSS module import error, can you fix it", "should_trigger": false},
+  {"query": "write documentation explaining our spacing scale and when to use each step", "should_trigger": false},
+  {"query": "add dark mode support to the whole design system", "should_trigger": false},
+  {"query": "convert this Figma frame into a React component", "should_trigger": false},
+  {"query": "why is my flexbox layout wrapping to two lines on mobile", "should_trigger": false},
+  {"query": "bump the design-system package version and publish it to npm", "should_trigger": false}
+]
