@@ -19,8 +19,8 @@ Everything here is extracted from the production `dubizzle-maple` monorepo, not 
 | `design-kit/tokens/tokens.css` | 1,269 production tokens + a small stable semantic API (`--color-primary`, `--space-4`, `--radius-lg`…). Link this in any HTML you produce. |
 | `design-kit/tokens/tokens.json` | Same values, machine-readable. |
 | `design-kit/patterns/patterns.css` | Header, filter rail, results grid, ad cards, contact CTAs, footer, bottom nav. The shared vocabulary. |
-| `design-kit/templates/desktop/` | `home.html`, `search.html`, `ad-detail.html` |
-| `design-kit/templates/mobile/` | Same three at 375px, with bottom nav and sticky contact bar |
+| `design-kit/templates/` | **23 page templates.** Open `index.html` for the gallery. Covers home, search, ad detail, post-ad, my-ads, chat, favourites, seller/agency page, agency portal, login, payment, and empty/error states — desktop and mobile. |
+| `design-kit/templates/_pages/` | Template sources. Edit these, then `npm run build:templates`. |
 | `design-kit/icons/` | 587 real icons in 13 folders. `index.html` is a browsable contact sheet; `icons.json` lists every one. |
 | `design-kit/content/fixtures.json` | Real EG categories (EN + Arabic), locations, compounds, and listings written like real seller ads. |
 | `design-kit/layout/layout.json` | Breakpoints, container widths, grid columns, header heights. |
@@ -30,7 +30,7 @@ Everything here is extracted from the production `dubizzle-maple` monorepo, not 
 
 **Design a new screen (mock, prototype, or spec)**
 1. Read `RULES.md`.
-2. Copy the closest file from `design-kit/templates/` — don't start from a blank page.
+2. Copy the closest of the 23 files in `design-kit/templates/` (gallery at `templates/index.html`) — never start from a blank page.
 3. Swap the content using `design-kit/content/fixtures.json`. Real prices, real Egyptian locations, real messy titles.
 4. Pick icons from `design-kit/icons/`. Never emoji, never an external pack. If the icon you want doesn't exist, say so.
 5. Reuse classes from `patterns.css`. Add new CSS only for genuinely new structure, and only using tokens.
@@ -46,7 +46,7 @@ Run `npm run check:design -- <files>`. Then check the things a linter can't: is 
 ```
 npm run sync -- "/path/to/dubizzle-maple-master"
 ```
-Regenerates tokens and icons from the monorepo. It fails loudly if an upstream rename broke a semantic alias, and flags icons that would render blank. Then run `npm run check:all`.
+Regenerates tokens, icons and templates from the monorepo. It fails loudly if an upstream rename broke a semantic alias, and flags icons that would render blank. Then run `npm run check:all`.
 
 ## The three things that matter most
 

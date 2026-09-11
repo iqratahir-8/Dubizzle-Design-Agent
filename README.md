@@ -25,8 +25,10 @@ design-kit/                Standalone, no build step
 ├── tokens/                tokens.css (1,269 production tokens + semantic API), tokens.json
 ├── patterns/              patterns.css — header, filter rail, results grid, cards, footer
 ├── templates/
-│   ├── desktop/           home · search · ad-detail
-│   └── mobile/            home · search · ad-detail
+│   ├── _partials/         shared chrome (header, footer, bottom nav)
+│   ├── _pages/            per-page bodies + directives — edit these
+│   ├── desktop/           12 generated pages
+│   └── mobile/            11 generated pages
 ├── icons/                 587 icons in 13 categories + browsable index.html
 ├── content/               fixtures.json — real EG categories, locations, listings
 └── layout/                layout.json — breakpoints, grid, container widths
@@ -74,7 +76,7 @@ For mocks, prototypes, and agent-generated screens, work in plain HTML:
 <link rel="stylesheet" href="design-kit/patterns/patterns.css">
 ```
 
-Then copy the closest file from `design-kit/templates/` and swap the content using `design-kit/content/fixtures.json`. Don't start from a blank page.
+Then copy the closest of the 23 files in `design-kit/templates/` (see `templates/index.html` for the gallery) and swap the content using `design-kit/content/fixtures.json`. Don't start from a blank page.
 
 ## Keeping it in sync
 
@@ -86,6 +88,8 @@ npm run check:all
 ```
 
 `sync-tokens` walks the `@import` chain (`strat → horizontal → dubizzle-facelift → dubizzle-eg`), resolves every `$variable`, and emits both the full production vocabulary and a small stable semantic API that components and templates target. If an upstream rename breaks an alias, the sync fails loudly rather than emitting a dead variable.
+
+`build-templates` regenerates every page from `_partials/` + `_pages/`, so a header change is one edit rather than twenty. Output stays standalone HTML you can copy anywhere.
 
 `sync-icons` resolves icons by package precedence the way `@app` does — `dubizzle-eg` and `dubizzle-facelift` wholesale, plus only the `horizontal`/`strat` icons that EG-reachable source actually imports. It repairs missing `xmlns` declarations (42 of them, which webpack's inlining hides but `<img src>` does not) and flags `<symbol>`-wrapped files that render blank.
 
