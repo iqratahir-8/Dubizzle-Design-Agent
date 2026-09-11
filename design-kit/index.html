@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dubizzle Egypt — Design Kit</title>
+<link rel="stylesheet" href="tokens/tokens.css">
+<link rel="stylesheet" href="patterns/patterns.css">
+<style>
+  .kit { padding-block: var(--space-8); }
+  .kit h1 { font-size: var(--text-3xl); margin: 0 0 var(--space-2); }
+  .kit .lede { color: var(--text-secondary); font-size: var(--text-md); margin: 0 0 var(--space-8); max-width: 62rem; }
+  .kit h2 { font-size: var(--text-lg); margin: var(--space-8) 0 var(--space-4); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr)); gap: var(--space-3); }
+  .kit-card {
+    display: block; padding: var(--space-4);
+    border: 0.1rem solid var(--border-default); border-radius: var(--radius-lg);
+    background: var(--surface-card); transition: box-shadow 0.2s;
+  }
+  .kit-card:hover { box-shadow: var(--shadow-card-hover); }
+  .kit-card h3 { margin: 0 0 var(--space-1); font-size: var(--text-md); }
+  .kit-card p { margin: 0; font-size: var(--text-sm); color: var(--text-secondary); }
+  .swatches { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .sw { width: 8rem; }
+  .sw i { display: block; height: 4.8rem; border-radius: var(--radius-md); border: 0.1rem solid var(--border-default); }
+  .sw span { display: block; font-size: var(--text-xs); color: var(--text-secondary); margin-top: var(--space-1); }
+</style>
+</head>
+<body>
+
+<div class="container kit">
+  <h1>dubizzle Egypt Design Kit</h1>
+  <p class="lede">
+    Tokens, icons, patterns and page templates extracted from the production monorepo.
+    Read <strong>RULES.md</strong> before generating anything — it defines the closed value
+    sets and the things that never appear in dubizzle production.
+  </p>
+
+  <h2>Page templates</h2>
+  <div class="cards">
+    <a class="kit-card" href="templates/index.html">
+      <h3>All 23 templates &rarr;</h3>
+      <p>home · search · ad detail · post ad · my ads · chat · favourites · seller page · agency portal · login · payment · not found — desktop and mobile</p>
+    </a>
+    <a class="kit-card" href="templates/desktop/search.html">
+      <h3>Search results (desktop)</h3><p>The densest page — filter rail + 3-column grid</p>
+    </a>
+    <a class="kit-card" href="templates/mobile/ad-detail.html">
+      <h3>Ad detail (mobile)</h3><p>Sticky contact bar, collapsed gallery</p>
+    </a>
+  </div>
+
+  <h2>Foundations</h2>
+  <div class="cards">
+    <a class="kit-card" href="icons/index.html">
+      <h3>Icons</h3><p>587 icons across 13 categories</p>
+    </a>
+    <a class="kit-card" href="tokens/tokens.css">
+      <h3>Tokens</h3><p>1,269 production tokens + the semantic API</p>
+    </a>
+    <a class="kit-card" href="content/fixtures.json">
+      <h3>Content fixtures</h3><p>Real categories, locations, and listings</p>
+    </a>
+    <a class="kit-card" href="layout/layout.json">
+      <h3>Layout spec</h3><p>Breakpoints, grid columns, container widths</p>
+    </a>
+  </div>
+
+  <h2>Core palette</h2>
+  <div class="swatches">
+    <div class="sw"><i style="background:var(--color-primary)"></i><span>--color-primary</span></div>
+    <div class="sw"><i style="background:var(--color-primary-hover)"></i><span>--color-primary-hover</span></div>
+    <div class="sw"><i style="background:var(--color-secondary)"></i><span>--color-secondary</span></div>
+    <div class="sw"><i style="background:var(--text-primary)"></i><span>--text-primary</span></div>
+    <div class="sw"><i style="background:var(--text-secondary)"></i><span>--text-secondary</span></div>
+    <div class="sw"><i style="background:var(--surface-subtle)"></i><span>--surface-subtle</span></div>
+    <div class="sw"><i style="background:var(--color-success)"></i><span>--color-success</span></div>
+    <div class="sw"><i style="background:var(--color-warning)"></i><span>--color-warning</span></div>
+  </div>
+
+  <h2>Components</h2>
+  <div class="cards">
+    <div class="kit-card">
+      <h3>Buttons</h3>
+      <p style="margin-top:var(--space-3)">
+        <button class="btn btn--primary">Post Your Ad</button>
+        <button class="btn btn--secondary">Cancel</button>
+      </p>
+    </div>
+    <div class="kit-card">
+      <h3>Contact CTAs</h3>
+      <p style="margin-top:var(--space-3)">
+        <button class="contact-btn contact-btn--chat">Chat</button>
+        <button class="contact-btn contact-btn--call">Call</button>
+      </p>
+    </div>
+    <div class="kit-card">
+      <h3>Pills</h3>
+      <p style="margin-top:var(--space-3)">
+        <span class="pill pill--featured">Featured</span>
+        <span class="pill pill--success">Verified</span>
+        <span class="pill pill--boosted">Boosted</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

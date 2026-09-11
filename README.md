@@ -1,101 +1,110 @@
-# Dubizzle Design System
+# Dubizzle Egypt Design System
 
-A React + TypeScript component library and design token set for **dubizzle Egypt** — the red-primary, utilitarian visual language behind [dubizzle.com.eg](https://www.dubizzle.com.eg). Built from the live site markup, the `dubizzle-facelift` codebase conventions, and the brand's Figma token export.
+Design tokens, icons, patterns, page templates, and a React component library for **dubizzle Egypt** — all extracted from the production `dubizzle-maple` monorepo rather than hand-transcribed, and regenerable when a new release ships.
 
-Components are styled with **CSS Modules** on top of a shared CSS custom-property token layer, so the same tokens drive every component and can be consumed directly in non-React contexts too.
+It serves two consumers from one source of truth:
 
-## Install
+- **Engineers** — a React + TypeScript component library styled with CSS Modules.
+- **Designers and AI agents** — a standalone kit of tokens, icons, patterns, real content, and copy-ready page templates, governed by a set of enforced design rules.
 
-```bash
-npm install dubizzle-design-system
-```
-
-`react` and `react-dom` (>=18) are peer dependencies.
-
-## Usage
-
-Import the token stylesheet once at your app root, then use components like any other React component:
-
-```tsx
-import 'dubizzle-design-system/styles.css';
-import { Button, AdCard, Pill } from 'dubizzle-design-system';
-
-function Example() {
-  return (
-    <div>
-      <Button variant="primary">Post Your Ad</Button>
-      <Pill variant="featured" label="Featured" />
-      <AdCard
-        title="Modern Apartment with Nile View, Maadi"
-        price="EGP 3,200,000"
-        location="Maadi, Cairo"
-        time="2 hours ago"
-        beds={3}
-        baths={2}
-        area="150 m²"
-      />
-    </div>
-  );
-}
-```
-
-`Header` and `Footer` reference icon/logo/social SVGs by path rather than bundling them, so consumers can serve them from wherever suits their build. Copy `src/assets/` into your app's public directory and pass the resulting path as `assetPath` (defaults to `/assets`):
-
-```tsx
-<Header assetPath="/dubizzle-assets" user={{ name: 'Ahmed H.' }} />
-```
-
-## Explore the library
+## Quick start
 
 ```bash
 npm install
-npm run dev        # Storybook at http://localhost:6006
-npm run build       # bundles the library to dist/
-npm run typecheck
+npm run dev     # Storybook — components, tokens, page templates
+npm run kit     # static design kit at http://localhost:4321
 ```
 
-## What's inside
+## Layout
 
-### Foundations (`src/tokens`)
+```
+RULES.md                   Design constraints + the anti-slop list. Read this first.
+SKILL.md                   Entry point when this is used as an agent skill.
 
-| Token file | Covers |
-|---|---|
-| `colors.css` | Red (primary), Gray, Blue, Yellow, Green scales + semantic aliases (`--color-primary`, `--text-secondary`, `--border-focus`, …) |
-| `typography.css` | Font families (Proxima Nova / GESS for Arabic), size scale, weights, line-heights, tracking |
-| `spacing.css` | 4px-based spacing scale, `--space-0` through `--space-10` |
-| `radii.css` | Corner radius scale — inputs/buttons (`--radius-md`), cards (`--radius-lg`), pills (`--radius-pill`) |
-| `shadows.css` | Card, card-hover, dropdown, header, search-input shadows |
-| `fonts.css` | `@font-face` declarations for Proxima Nova and GESS |
+design-kit/                Standalone, no build step
+├── tokens/                tokens.css (1,269 production tokens + semantic API), tokens.json
+├── patterns/              patterns.css — header, filter rail, results grid, cards, footer
+├── templates/
+│   ├── desktop/           home · search · ad-detail
+│   └── mobile/            home · search · ad-detail
+├── icons/                 587 icons in 13 categories + browsable index.html
+├── content/               fixtures.json — real EG categories, locations, listings
+└── layout/                layout.json — breakpoints, grid, container widths
 
-All values are plain CSS custom properties on `:root` — use them straight from `dubizzle-design-system/tokens/colors.css` etc. in a non-React context if needed.
+src/                       React + TypeScript library
+├── components/            14 components, each with a scoped .module.css
+├── templates/             HomePage · SearchPage · AdDetailPage
+├── tokens/                generated.css (from the monorepo) + fonts + reset
+└── assets/                fonts, logos, icons
 
-### Components (`src/components`)
+scripts/
+├── sync-tokens.mjs        Re-extract tokens from the monorepo
+├── sync-icons.mjs         Re-extract and organise icons
+└── check-design.mjs       Design adherence linter
+```
 
-| Component | Notes |
-|---|---|
-| **Button** | primary / secondary / tertiary / ghost variants, 3 sizes, disabled state |
-| **Input** | label, placeholder, error state, leading icon slot |
-| **Select** | custom dropdown with options list, error state, closes on outside click |
-| **Checkbox** | checked / unchecked / disabled |
-| **Radio** | selected / unselected / disabled, grouped via shared `name` |
-| **Toggle** | on/off switch |
-| **Chip** | filter chip, active/inactive |
-| **Pill** | status pill — regular, success, featured, error, boosted, live, recent, disabled |
-| **ContactButton** | seller contact CTAs — Chat (red), Call (blue), WhatsApp (green) |
-| **AdCard** | listing card — grid and compact layouts, Featured/Elite badges, favorite heart, photo count |
-| **Tabs** | segmented and underline/line variants |
-| **Pagination** | numbered pages with ellipsis and prev/next arrows |
-| **Header** | full site header — logged out/in, agency Pro badge, active-vertical states |
-| **Footer** | full site footer — About/Dubizzle/Countries/Follow us columns, legal bar |
+## Using the component library
 
-Every component ships its own `.module.css`, so class names are scoped and won't leak into or clash with a consuming app's styles.
+```tsx
+import 'dubizzle-design-system/styles.css';
+import { Button, AdCard, Pill, SearchPage } from 'dubizzle-design-system';
+
+<Button variant="primary">Post Your Ad</Button>
+
+<AdCard
+  title="Apartment for sale in Zamalek 200m fully finished"
+  price="EGP 8,500,000"
+  location="Zamalek, Cairo"
+  time="2 hours ago"
+  beds={3} baths={2} area="150 m²"
+  featured
+/>
+```
+
+Components: Button, Input, Select, Checkbox, Radio, Toggle, Chip, Pill, ContactButton, AdCard, Tabs, Pagination, Header, Footer.
+
+`Header` and `Footer` reference icons by path rather than bundling them — copy `src/assets/` into your public directory and pass `assetPath`.
+
+## Using the design kit
+
+For mocks, prototypes, and agent-generated screens, work in plain HTML:
+
+```html
+<link rel="stylesheet" href="design-kit/tokens/tokens.css">
+<link rel="stylesheet" href="design-kit/patterns/patterns.css">
+```
+
+Then copy the closest file from `design-kit/templates/` and swap the content using `design-kit/content/fixtures.json`. Don't start from a blank page.
+
+## Keeping it in sync
+
+Everything derived from the monorepo is generated, so a new dubizzle release is a re-run, not a rewrite:
+
+```bash
+npm run sync -- "/path/to/dubizzle-maple-master"
+npm run check:all
+```
+
+`sync-tokens` walks the `@import` chain (`strat → horizontal → dubizzle-facelift → dubizzle-eg`), resolves every `$variable`, and emits both the full production vocabulary and a small stable semantic API that components and templates target. If an upstream rename breaks an alias, the sync fails loudly rather than emitting a dead variable.
+
+`sync-icons` resolves icons by package precedence the way `@app` does — `dubizzle-eg` and `dubizzle-facelift` wholesale, plus only the `horizontal`/`strat` icons that EG-reachable source actually imports. It repairs missing `xmlns` declarations (42 of them, which webpack's inlining hides but `<img src>` does not) and flags `<symbol>`-wrapped files that render blank.
+
+Point it at a different monorepo path any time, or edit `design-sync.config.json`.
+
+## Enforcing the rules
+
+```bash
+npm run check:design -- design-kit/templates/desktop/search.html
+npm run check:all
+```
+
+The linter derives its palette allowlist from the generated tokens, so it can't drift from the system it's policing. It catches off-palette colour, unauthorised gradients, arbitrary `px` in a rem-based system, over-large radii, hand-authored shadows, `transform: scale()` on hover, glassmorphism, emoji, external icon packs and fonts, RTL-breaking physical directions, broken icon references, generic AI copy, and non-EGP currency.
+
+Deliberate exceptions carry a `ds-ignore` comment on the line — for example the header's concave active-vertical tab, whose elliptical radius is load-bearing geometry.
 
 ## Brand notes
 
-- **Color:** red-primary (`#E00000`) on a white/light-gray UI. No gradients except Featured/Elite listing badges and the Pro ribbon.
-- **Type:** Proxima Nova (LTR), GESS (Arabic/RTL). Base unit is `1rem = 10px`.
-- **Motion:** intentionally minimal — background/border-color transitions only, no scale or opacity effects.
-- **Voice:** direct, transactional, second-person ("Post your ad"). No emoji in UI copy.
+Red-primary (`#E00000`) on white and light gray. Proxima Nova for Latin, GESS for Arabic. `1rem = 10px`. No gradients except the Featured, Elite, and Pro badges. Minimal motion — colour transitions only, nothing scales or bounces. Dense and utilitarian: desktop search is three cards per row with a 1.2rem gap.
 
 ## License
 

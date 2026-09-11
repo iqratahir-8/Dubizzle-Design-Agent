@@ -1,0 +1,38 @@
+<!--@ {"title":"Login or Signup | dubizzle Egypt","header":"desktop","bodyClass":"page-bg-search","note":"Auth is a centred card, the one place a centred layout is correct."} @-->
+
+<main class="container auth-shell">
+  <div class="auth-card">
+    <h1 class="auth-card__title">Login or Signup</h1>
+    <p class="auth-card__sub">Buy and sell faster with a dubizzle account.</p>
+
+    <form class="form">
+      <div class="field">
+        <label class="field__label" for="phone">Mobile number</label>
+        <input class="input" id="phone" type="tel" placeholder="010 0000 0000">
+        <span class="field__hint">We'll send you a verification code.</span>
+      </div>
+      <button class="btn btn--primary btn--lg btn--block" type="button">Continue</button>
+    </form>
+
+    <div class="auth-divider">or continue with</div>
+
+    <div class="option-list">
+      <button class="option-row" type="button">
+        <img src="../../icons/social/landing-facebook.svg" alt="">
+        <span class="option-row__body">
+          <span class="option-row__title">Continue with Facebook</span>
+        </span>
+      </button>
+      <button class="option-row" type="button">
+        <img src="../../icons/action/email.svg" alt="">
+        <span class="option-row__body">
+          <span class="option-row__title">Continue with email</span>
+        </span>
+      </button>
+    </div>
+
+    <p class="field__hint">
+      By continuing you agree to dubizzle's Terms of use and Privacy Policy.
+    </p>
+  </div>
+</main>

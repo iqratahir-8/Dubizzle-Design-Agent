@@ -1,0 +1,76 @@
+<!--@ {"title":"Chat | dubizzle Egypt","header":"desktop","bodyClass":"page-bg-search","note":"Conversation list beside a thread. Own messages use blue-02, the other party gray-01 — matching chatOwnMessageBackgroundColor upstream."} @-->
+
+<main class="container">
+  <div class="pane-layout">
+    <aside class="pane">
+      <div class="conversation conversation--active">
+        <span class="conversation__avatar">A</span>
+        <div class="conversation__body">
+          <p class="conversation__name">Ahmed H.</p>
+          <p class="conversation__preview">Is the price negotiable?</p>
+        </div>
+        <span class="conversation__time">2h</span>
+      </div>
+      <div class="conversation">
+        <span class="conversation__avatar">M</span>
+        <div class="conversation__body">
+          <p class="conversation__name">Mona S.</p>
+          <p class="conversation__preview">I can come see it tomorrow morning</p>
+        </div>
+        <span class="conversation__time">5h</span>
+      </div>
+      <div class="conversation">
+        <span class="conversation__avatar">N</span>
+        <div class="conversation__body">
+          <p class="conversation__name">Nile Realty</p>
+          <p class="conversation__preview">We have three similar units in the same compound</p>
+        </div>
+        <span class="conversation__time">1d</span>
+      </div>
+      <div class="conversation">
+        <span class="conversation__avatar">م</span>
+        <div class="conversation__body">
+          <p class="conversation__name">محمود ع.</p>
+          <p class="conversation__preview">التمن قابل للتفاوض؟</p>
+        </div>
+        <span class="conversation__time">2d</span>
+      </div>
+    </aside>
+
+    <section class="pane">
+      <div class="conversation">
+        <span class="conversation__avatar">A</span>
+        <div class="conversation__body">
+          <p class="conversation__name">Ahmed H.</p>
+          <p class="conversation__preview">Apartment for sale in Zamalek 200m · EGP 8,500,000</p>
+        </div>
+        <button class="contact-btn contact-btn--call">Call</button>
+      </div>
+
+      <div class="thread">
+        <div class="bubble">
+          Hi, is the apartment still available?
+          <span class="bubble__time">10:42</span>
+        </div>
+        <div class="bubble bubble--own">
+          Yes, still available.
+          <span class="bubble__time">10:44</span>
+        </div>
+        <div class="bubble">
+          Is the price negotiable?
+          <span class="bubble__time">10:45</span>
+        </div>
+        <div class="bubble bubble--own">
+          Slightly, for a serious buyer. Would you like to view it this week?
+          <span class="bubble__time">10:47</span>
+        </div>
+      </div>
+
+      <div class="composer">
+        <label class="visually-hidden" for="msg">Message</label>
+        <input class="input composer__input" id="msg" type="text" placeholder="Write a message...">
+        <button class="btn btn--primary" type="button">Send</button>
+      </div>
+    </section>
+  </div>
+</main>
