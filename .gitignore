@@ -12,3 +12,6 @@ design-kit/reference/live/
 
 # skill-creator optimization scratch (logs, iteration runs)
 .claude/skills/*-workspace/
+
+# Transient skill-eval artifacts
+.claude/skills/token-check-workspace/
