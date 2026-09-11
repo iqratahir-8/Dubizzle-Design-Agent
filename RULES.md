@@ -4,6 +4,12 @@ Constraints for generating dubizzle Egypt interfaces. These are not preferences.
 
 Read this before generating any screen. Run `npm run check:design <file>` after.
 
+**Also read first, per task:**
+- `PRODUCT.md` — who the product serves and what each surface must do (product/business alignment).
+- `docs/DECISIONS.md` — decisions & discoveries the code won't tell you (e.g. the price is charcoal, not red). Don't re-litigate or re-break these; add to it when you learn something new.
+- `docs/REFERENCES.md` — live URLs + measured values per surface (ground truth). Build a page by refreshing its live capture and verifying against its row, not from a blank file.
+- After building a component, run the `token-check` skill (tokens, not literals).
+
 ---
 
 ## 0. The one-paragraph brief
