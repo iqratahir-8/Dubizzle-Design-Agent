@@ -20,8 +20,9 @@ toasts, loading/skeletons, the category switcher, the location system, galleries
 — is almost entirely unmodeled. The single biggest fidelity gap is the **ad
 card**, which this system models as one component but the product implements as
 **two systems** (a dedicated `strat` property card, and a shared classifieds card
-that branches hero/normal by category) — with a price colour that is genuinely
-split (see §3).
+that branches hero/normal by category). On the price colour: the code snapshot
+says red but live production renders charcoal, which this design system matches
+(see §3).
 
 ## Sources & method
 
@@ -89,24 +90,27 @@ facelift's). So **facelift is the source of truth for the EG card.**
 
 Each spec is a `BasicTag` separated by `•` (`horizontal/adCard/tags`).
 
-### Price colour — genuinely split, and it needs a decision
+### Price colour — the code snapshot and live production disagree
 
-This is more nuanced than the handoff assumed. Read from code:
+The exact discrepancy is **code vs. live**, not a per-view split:
 
-- **Strat property card** — no colour on `.price`; inherits the card link colour `$neutralColor → $black → #222222` (**charcoal**).
-- **Classifieds `AdCard` (facelift/eg)** — `.priceLabel { color: $adCardPriceColor }`, and in facelift `$adCardPriceColor: $primaryColor: $red05: #e00000` (**RED**). The **grid-view** style (`horizontal/adCard/styles/gridViewStyles.cssm`) overrides `.priceLabel` to `$gray06` (**charcoal**). Down-payment price is `$gray06` (charcoal).
+| Source | Main ad price | Evidence |
+|---|---|---|
+| Product **source code** (this maple clone) | **RED `#e00000`** | `.priceLabel { color: $adCardPriceColor }` (`horizontal/adCard/styles/adCard.cssm:60`) → `$adCardPriceColor: $primaryColor` → `$primaryColor: $red05` → `$red05: #e00000` (`dubizzle-facelift/branding/styles/variables.css:85,49,11`). Grid view inlines the same rule (`gridViewStyles.cssm:122-124`), so it is red too. |
+| **Live dubizzle.com.eg** (saved pages, measured) | **CHARCOAL `#23262a`** | computed `rgb(35,38,42)`, 24px/700, on both motors + properties main prices |
+| This **design system** | **CHARCOAL `#23262a`** | matches live |
 
-So the classifieds ad price is **view/config-dependent**: the base/list token is
-**red `#e00000`**, the grid view is **charcoal**. Meanwhile the **saved live
-dubizzle.com.eg vertical pages measured charcoal** (`rgb(35,38,42)`), which is
-what this design system was set to.
+Notes:
+- The `$gray06` (charcoal) in `gridViewStyles.cssm:127` is on **`.downpaymentPriceLabel`** (the secondary / down-payment price, `rgb(70,76,85)` at 12px on the live pages), **not** the main `.priceLabel`. The main price is red in code for both grid and list.
+- The **strat property card** price is charcoal by a different path — no colour on `.price`, inherits the card link colour `$neutralColor → $black → #222222`.
 
-⚠️ **Open discrepancy:** this design system currently renders **all** ad prices
-charcoal (including the search grid). The classifieds **code default is red**;
-only the grid override and the measured live vertical pages are charcoal.
-Someone who owns the brand should confirm which is intended per surface (search
-grid vs. list vs. vertical landing) before we lock the token — we may have
-over-applied charcoal to surfaces that production renders red.
+**Conclusion:** the code default is red, but live production renders the main
+price **charcoal** — so this maple clone is **behind production** on the price
+token (consistent with the handoff's warning that the snapshot lags prod). This
+design system's charcoal price is therefore **correct for what ships** on the
+cars/property vertical pages. The only surface still **unverified** is the
+**goods / normal-category** card (no saved live goods page); the code says red
+there too, so confirm it against a live goods page before assuming charcoal.
 
 ## 4. Facelift layer (latest) — largest unmodeled areas
 
@@ -136,7 +140,7 @@ Foundational primitives present in `strat/components` but **not** modeled at all
 ## 5. Fidelity issues found
 
 1. **Ad card is two systems, not one component.** A dedicated `strat` property card, and a shared classifieds `AdCard` that branches by category (hero: cars/property/jobs; normal: goods) at runtime. Model it as: classifieds base shell + hero/normal branch + per-vertical subtitle, and treat the strat property card separately.
-2. **Price colour is unresolved** (see §3) — the code default for the classifieds card is **red**; we render charcoal everywhere. Needs a per-surface decision.
+2. **Price colour: code says red, live says charcoal** (see §3). Measured on the saved production pages, the main price is charcoal `#23262a` — this design system matches live. The maple clone's red token is behind production. Only the goods/normal-category card is unverified (no live goods page).
 3. **Cars spec row is over-specified.** Product `AdCarSubtitle` shows only `mileage • year`; this system's card showed `year · km · transmission · fuel` (four fields).
 4. **Property lead is close but not exact.** Product uses a property-**type** tag (inline on desktop) alongside `beds • baths • area`; this system leads the specs line with a bold type token.
 5. **"Of the Week / Day" are real components,** not a ribbon: `search/results/adOfTheWeek`, `adCard/compact/carOfTheDayStrip`, `adCard/compact/adOfTheDayCard`.
@@ -144,7 +148,7 @@ Foundational primitives present in `strat/components` but **not** modeled at all
 
 ## 6. Recommendations (prioritized)
 
-1. **Resolve the price-colour question first** (§3). Get a brand owner to confirm, per surface (search grid / list / vertical landing), whether the classifieds price is red `#e00000` or charcoal `$gray06`. This design system currently forces charcoal everywhere; that may be wrong for some surfaces. Lock the token once decided.
+1. **Price colour is effectively resolved** (§3): live production renders the main price charcoal `#23262a`, which this design system matches; the code's red token is a stale snapshot. Remaining action is small — verify the **goods / normal-category** card against a live goods page (code says red there too), then record charcoal as the confirmed token.
 2. **Re-model the ad card to match the product** — a classifieds base shell + `hero`/`normal` category branch + per-vertical subtitle (`car` / `property` / `job` / `goods`), and a separate property card for the strat/Bayut-style layout. Correct the cars subtitle to `mileage • year`.
 3. **Add the foundational primitives the product is built on** and the DS lacks: layout (`Box`/`Flex`/`Container`/`Section`/`Text`), `Dialog` + mobile `BottomSheet`, `Toast`, `Loading`/`Skeleton`, `Badge`/`Tag` (elite, featured, verified).
 4. **Decide whether search is in scope.** It's the single largest area (94 files); today the kit has only a static filter rail. If yes, prioritize `range`/`rangeSlider`, `priceFilter`, `multipleChoice`/`singleChoice`, `hierarchical`, `selectedFilters`, and the `filtersPreview` chip family.
