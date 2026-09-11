@@ -1,9 +1,9 @@
 /* Dubizzle Design System — token entrypoint.
-   Import this once at your app root: `import 'dubizzle-design-system/styles.css'`. */
+   Import this once at your app root: `import 'dubizzle-design-system/styles.css'`.
+
+   generated.css is produced by `npm run sync:tokens` from the maple monorepo and is
+   the single source of truth for token values — the static design kit reads the same
+   file. Don't hand-edit it; change the SEMANTIC map in scripts/sync-tokens.mjs. */
 @import './fonts.css';
 @import './base.css';
-@import './colors.css';
-@import './typography.css';
-@import './spacing.css';
-@import './radii.css';
-@import './shadows.css';
+@import './generated.css';

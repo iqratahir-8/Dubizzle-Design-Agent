@@ -1,0 +1,84 @@
+{
+  "_source": "Extracted from dubizzle-facelift/horizontal .cssm files. Verify with scripts/sync-tokens.mjs after a monorepo update.",
+  "rootFontSize": "10px",
+  "_rootFontSizeNote": "1rem = 10px throughout the codebase. Every rem value below reads as its px value x10.",
+
+  "breakpoints": {
+    "ultraTinyMobile": "280px",
+    "tinyMobile": "360px",
+    "smallMobile": "480px",
+    "mobile": "768px",
+    "mobileLandscape": "896px",
+    "tablet": "950px",
+    "bigTablet": "1020px",
+    "desktop": "1280px"
+  },
+  "_breakpointNote": "768px is the real desktop/mobile split — 182 of the facelift media queries key off it. Treat `max-width: 768px` as 'mobile' and `min-width: 768px` as 'desktop'.",
+
+  "container": {
+    "desktopMaxWidth": "1280px",
+    "tabletMaxWidth": "1200px",
+    "gutter": "2.4rem",
+    "gutterCompact": "1.6rem",
+    "formula": "width: min(100% - 2 * gutter, maxWidth); margin-inline: auto;"
+  },
+
+  "header": {
+    "withVerticalsHeight": "5.9rem",
+    "withLocationHeight": "10.3rem",
+    "activeUserHeight": "12.4rem",
+    "rowPaddingBlock": "1.25rem",
+    "locationFilterWidth": "30.3rem",
+    "searchFieldHeight": "4.8rem",
+    "sticky": true
+  },
+
+  "searchPage": {
+    "desktop": {
+      "gridTemplateColumns": "minmax(0, 30.4rem) minmax(0, 1fr)",
+      "gap": "1.6rem",
+      "_note": "Filter sidebar is a fixed 304px; results column takes the rest.",
+      "alignItems": "start"
+    },
+    "mobile": {
+      "layout": "single column, filters open in a full-screen sheet"
+    }
+  },
+
+  "searchResults": {
+    "grid": {
+      "columns": { "base": 1, "768px": 2, "1280px": 3 },
+      "gap": "1.2rem",
+      "cardThumbHeight": { "mobile": "16rem", "tablet+": "16.4rem" },
+      "cardPadding": { "desktop": "1.2rem", "mobile": "0.8rem" },
+      "cardRadius": { "desktop": "0.8rem", "mobile": "0.6rem" }
+    },
+    "list": {
+      "direction": "column",
+      "gap": { "mobile": "1.2rem", "768px+": "1.6rem" },
+      "mobileItem": "white background, padding 1.2rem 1.6rem",
+      "_note": "On mobile the list item carries the white card background; on desktop the card itself does."
+    }
+  },
+
+  "homePage": {
+    "categoryGrid": { "columns": 4, "_source": "categoryWithHitsSection.cssm" }
+  },
+
+  "spacingScale": {
+    "small": "0.8rem",
+    "tertiary": "1.2rem",
+    "secondary": "1.5rem",
+    "primary": "1.6rem",
+    "large": "2.4rem",
+    "ternary": "2.5rem",
+    "xlarge": "3.2rem",
+    "section": "4rem",
+    "_note": "Upstream names are historical and inconsistent (`ternary` 2.5rem and `tertiary` 1.2rem are different tokens). Prefer the --space-N semantic scale for new work."
+  },
+
+  "zIndex": {
+    "header": 6,
+    "_note": "Header is sticky at z-index 6; dropdowns and dialogs sit above it. See --*-z-index tokens for the full set."
+  }
+}

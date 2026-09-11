@@ -1,9 +1,0 @@
-/* Dubizzle Egypt — Border Radius Tokens */
-:root {
-  --radius-sm: 0.4rem;    /* 4px — small elements, pills base */
-  --radius-md: 0.6rem;    /* 6px — inputs, buttons, ad cards (compact), features */
-  --radius-lg: 0.8rem;    /* 8px — ad cards, sections, filters, location filters */
-  --radius-xl: 1.2rem;    /* 12px — user dropdown */
-  --radius-pill: 2rem;    /* 20px — pills, tags */
-  --radius-full: 9999px;  /* circle */
-}

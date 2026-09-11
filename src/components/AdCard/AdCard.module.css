@@ -42,11 +42,11 @@
 }
 
 .badge.featured {
-  background: linear-gradient(95.51deg, #4d9feb -18.13%, rgba(20, 114, 236, 0.96) 98.24%);
+  background: var(--featured-gradient);
 }
 
 .badge.elite {
-  background: linear-gradient(277.28deg, #e39e00 -55.35%, #f5d684 53.99%);
+  background: var(--elite-gradient);
 }
 
 .favorite {
@@ -191,7 +191,7 @@
   font-size: 0.9rem;
   font-weight: var(--weight-bold);
   padding: 0.2rem 0.6rem;
-  border-radius: 0.3rem;
+  border-radius: var(--radius-sm);
   font-family: var(--font-primary);
 }
 

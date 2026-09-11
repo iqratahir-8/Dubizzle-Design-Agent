@@ -59,11 +59,21 @@ function classify(name, value) {
 }
 
 const groups = new Map();
+/* A handful of tokens are url() references to bitmaps that live in the monorepo's
+   asset folders. Emitting them would make every bundler try (and fail) to resolve a
+   path we don't ship, so they're recorded in tokens.json instead of the stylesheet. */
+const assetRefs = {};
+
 for (const [name, rawValue] of [...resolved].sort(([a], [b]) => a.localeCompare(b))) {
   const value = normalizeArithmetic(rawValue);
+  const cssName = `--${toKebab(name)}`;
+  if (/\burl\(/.test(value)) {
+    assetRefs[cssName] = value;
+    continue;
+  }
   const kind = classify(name, value);
   if (!groups.has(kind)) groups.set(kind, []);
-  groups.get(kind).push({ name, cssName: `--${toKebab(name)}`, value, kind });
+  groups.get(kind).push({ name, cssName, value, kind });
 }
 
 const ORDER = [
@@ -139,6 +149,7 @@ const SEMANTIC = {
     '--featured-accent': 'var(--featured-ad-accent-color)',
     '--featured-gradient': 'var(--featured-ad-accent-bgcolor)',
     '--elite-gradient': 'var(--elite-tag-bg)',
+    '--pro-gradient': 'var(--pro-badge-background)',
   },
   typography: {
     '--font-primary': 'var(--font-ltr)',
@@ -188,6 +199,7 @@ const SEMANTIC = {
     '--shadow-card-hover': 'var(--ad-card-shadow-hover)',
     '--shadow-dropdown': 'var(--dropdown-shadow)',
     '--shadow-header': '0px 2px 4px 0px rgba(0,0,0,0.008)',
+    '--shadow-control': 'var(--category-switcher-box-shadow)',
   },
   layout: {
     '--page-width': 'var(--page-desktop-width)',
@@ -223,6 +235,12 @@ for (const [groupName, entries] of Object.entries(SEMANTIC)) {
 css += '}\n';
 writeFileSync(join(outDir, 'tokens.css'), css);
 
+/* The React library and the static design kit must never disagree about what a token
+   means, so both read the same generated file rather than keeping parallel copies. */
+const libTokens = join(ROOT, 'src/tokens/generated.css');
+mkdirSync(dirname(libTokens), { recursive: true });
+writeFileSync(libTokens, css);
+
 if (missing.length) {
   console.warn(`\n⚠️  ${missing.length} semantic alias(es) point at tokens that no longer exist upstream:`);
   for (const m of missing) console.warn(`     ${m}`);
@@ -234,6 +252,9 @@ if (missing.length) {
 const json = {
   generatedFrom: config.brand,
   tokenCount: resolved.size,
+  assetRefs,
+  _assetRefsNote:
+    'url() tokens pointing at monorepo bitmaps that this package does not ship. Copy the asset and re-point the url if you need one.',
   groups: Object.fromEntries(
     ORDER.filter((k) => groups.has(k)).map((kind) => [
       kind,
