@@ -15,3 +15,10 @@ design-kit/reference/live/
 
 # Transient skill-eval artifacts
 .claude/skills/token-check-workspace/
+
+# Remotion skills installed via `npx skills add` — kept local, not part of the
+# design-system repo. Remove this block (and commit .agents/) if you decide to
+# keep them; or `rm -rf .agents skills-lock.json .claude/skills/remotion-*` to drop them.
+.agents/
+skills-lock.json
+.claude/skills/remotion-*
