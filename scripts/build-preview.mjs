@@ -210,6 +210,7 @@ const page = `<!doctype html>
       </p>
       <div class="demo">
         <a class="btn btn--primary" href="templates/index.html">Browse page templates</a>
+        <a class="btn btn--secondary" href="reference/live/gallery.html">Live screens</a>
         <a class="btn btn--secondary" href="icons/index.html">Browse all ${icons.total} icons</a>
         <a class="btn btn--ghost" href="tokens/tokens.css">View tokens.css</a>
       </div>

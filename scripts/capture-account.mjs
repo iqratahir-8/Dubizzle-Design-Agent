@@ -18,6 +18,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { absolutize } from './lib/absolutize.mjs';
+import { buildGallery } from './build-screens-gallery.mjs';
 import { ORIGIN, LAYOUTS, sleep, scrollThrough, settleFixedElements, captureAndDismissInterstitial } from './lib/render-helpers.mjs';
 import { readAccountIdentity, redactPage, sanitizeHtml, leaks } from './lib/redact.mjs';
 import { connectToSession, isSignedIn } from './capture-session.mjs';
@@ -114,6 +115,7 @@ for (const name of selected) {
 }
 
 await browser.disconnect();
+buildGallery();
 for (const r of results) console.log(`${r.status.padEnd(6)}  ${r.base.padEnd(32)} ${r.detail}`);
 const failed = results.filter((r) => r.status === 'FAILED').length;
 console.log(`\n${results.length - failed} saved, ${failed} failed`);

@@ -42,7 +42,8 @@
     "capture:live": "node scripts/capture-live.mjs",
     "capture:rendered": "node scripts/capture-rendered.mjs",
     "capture:login": "node scripts/capture-session.mjs",
-    "capture:account": "node scripts/capture-account.mjs"
+    "capture:account": "node scripts/capture-account.mjs",
+    "build:gallery": "node scripts/build-screens-gallery.mjs"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

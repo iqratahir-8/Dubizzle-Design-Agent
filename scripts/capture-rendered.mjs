@@ -20,6 +20,7 @@ import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
 import { absolutize } from './lib/absolutize.mjs';
+import { buildGallery } from './build-screens-gallery.mjs';
 import {
   ORIGIN,
   LAYOUTS,
@@ -123,6 +124,7 @@ try {
   rmSync(profile, { recursive: true, force: true });
 }
 
+buildGallery();
 for (const r of results) console.log(`${r.status.padEnd(6)}  ${`${r.name}.${r.layout}`.padEnd(24)} ${r.detail}`);
 const failed = results.filter((r) => r.status === 'FAILED').length;
 console.log(`\n${results.length - failed} rendered, ${failed} failed · screenshots in design-kit/reference/live/screens/`);
