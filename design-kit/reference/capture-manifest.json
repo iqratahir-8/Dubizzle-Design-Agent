@@ -1,0 +1,31 @@
+{
+  "_purpose": "Live pages captured as ground truth for template work. Run: npm run capture:live",
+  "_notes": [
+    "URLs were verified against the live site on 2026-09-11, not taken from the original checklist. Three of its URLs were wrong: /en/properties/residential-for-sale/ 404s, /en/mobile-phones-tablets/mobile-phones/ redirect-loops to /en/notfound, and 'Motors landing' repeated the cars-listing URL — the real landing is /en/motors/.",
+    "Filters were confirmed to actually apply by comparing ad counts (base 12,854; new_used_eq_1 2,431; new_used_eq_2 10,422; cairo 7,465; cairo + price 2,696).",
+    "property-villas replaces the checklist's 'property-apartments': the base property listing is already the apartments category, so a second type is the informative filter state.",
+    "Ad pages expire. If a DPV capture 404s, pick a fresh /en/ad/ link from the matching listing page and update it here."
+  ],
+  "tiers": {
+    "1": {
+      "home": "/en/",
+      "motors": "/en/motors/",
+      "property": "/en/properties/",
+      "cars-list": "/en/vehicles/cars-for-sale/",
+      "property-list": "/en/properties/apartments-duplex-for-sale/",
+      "mobiles-list": "/en/mobile-phones-tablets-accessories-numbers/mobile-phones/",
+      "car-dpv": "/en/ad/mercedes-benz-e300-2018-amg-ID208928385.html",
+      "property-dpv": "/en/ad/penthouse-167-m2-fully-finished-with-acs-ready-to-move-for-sale-in-fifth-square-al-marasem-new-cairo-ID504003995.html",
+      "mobile-dpv": "/en/ad/honor-robot-phone-1-tera-16g-ram-ID208912587.html",
+      "car-finance": "/en/motors/car-finance/"
+    },
+    "2": {
+      "cars-new": "/en/vehicles/cars-for-sale/?filter=new_used_eq_1",
+      "cars-toyota": "/en/vehicles/cars-for-sale/toyota/",
+      "cars-cairo-price": "/en/vehicles/cars-for-sale/cairo/?filter=price_between_500000_to_1500000",
+      "property-villas": "/en/properties/villas-for-sale/",
+      "property-newcairo": "/en/properties/apartments-duplex-for-sale/new-cairo/",
+      "mobiles-apple": "/en/mobile-phones-tablets-accessories-numbers/mobile-phones/q-iphone/"
+    }
+  }
+}

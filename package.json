@@ -1,7 +1,7 @@
 {
   "name": "dubizzle-design-system",
   "version": "0.1.0",
-  "description": "React component library and design tokens for dubizzle Egypt \u2014 buttons, forms, ad cards, header/footer, and the foundations behind them.",
+  "description": "React component library and design tokens for dubizzle Egypt — buttons, forms, ad cards, header/footer, and the foundations behind them.",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -38,7 +38,9 @@
     "check:design": "node scripts/check-design.mjs",
     "check:all": "node scripts/check-design.mjs design-kit/*.html design-kit/patterns/*.css design-kit/templates/*.html design-kit/templates/*/*.html src/components/*/*.module.css src/templates/*.module.css",
     "build:templates": "node scripts/build-templates.mjs",
-    "build:preview": "node scripts/build-preview.mjs"
+    "build:preview": "node scripts/build-preview.mjs",
+    "capture:live": "node scripts/capture-live.mjs",
+    "capture:rendered": "node scripts/capture-rendered.mjs"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
@@ -50,6 +52,7 @@
     "@storybook/react-vite": "^8.4.7",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "puppeteer-core": "^25.10.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "^8.4.7",
