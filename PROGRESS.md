@@ -146,8 +146,8 @@ LPVs), desktop + mobile; quick vs selected chips; pixel-perfect htmls"):**
   New captures: seller-page (/en/companies/…), not-found (404), login (home with dialog open,
   viewport-size screenshot). Hand-built `_pages` for replaced pages were retired; post-ad, favourites,
   payment, agency-portal remain hand-built until captured. Account templates are gitignored (local).
-- Still open: My Ads (4–5% diff) + all account screens need recapture with the new snapshot once the
-  capture window is signed in again (`npm run capture:login`, then `npm run capture:account`).
+- Account screens recaptured with snapshots (2026-09-14, user re-signed in to the capture window):
+  all 12 templates within 0–2.4% (`check:templates`); no phones/emails found in them.
   Templates in `design-kit/templates` still use older card markup (a compatibility block in
   patterns.css keeps them rendering) — rebuild them from the captures.
 
