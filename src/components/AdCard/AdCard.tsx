@@ -94,9 +94,9 @@ export function AdCard({
         {isProperty && (
           <div className={styles.meta}>
             {beds && <span>{beds} Beds</span>}
-            <span className={styles.metaDot}>●</span>
+            <span className={styles.metaDot}>•</span>
             {baths && <span>{baths} Baths</span>}
-            <span className={styles.metaDot}>●</span>
+            <span className={styles.metaDot}>•</span>
             {area && <span>{area}</span>}
           </div>
         )}
