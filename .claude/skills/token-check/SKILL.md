@@ -32,6 +32,16 @@ Anything with style declarations in this repo:
 - `src/templates/*.module.css`
 - `design-kit/patterns/patterns.css`
 - `design-kit/templates/_pages/*.html`, `design-kit/templates/_partials/*.html`
+- any CSS you add to a copied live template
+
+**Not in scope:** live-capture templates (`design-kit/templates/{desktop,mobile}/*.html`
+starting with `<!-- LIVE TEMPLATE`) and their `_live-css/` files are frozen production
+code — the linter skips them. Only what *you* add on top is checked.
+
+**Components with a twin:** `AdCard`, `AdListCard`, `Chip`, `ContactButton`, `Button`,
+`Pill`, `Input`, `Select`, `Checkbox`, `Radio`, `Toggle`, `Tabs`, `Pagination` exist both
+as React (`src/components`) and as kit classes (`patterns.css`). Tokenize **both** and run
+`npm run check:parity` (Storybook + kit servers running) until `0 differ`.
 
 ## Workflow
 
@@ -82,9 +92,14 @@ justified measured value.
 
 ### 5. Report
 State what you tokenized in one short block: each raw value → the token it became, and
-confirm `0 errors`. If any literal genuinely can't map to a token (a one-off measured
-value from the live site), keep it, mark the line with a `ds-ignore` comment **and a
-reason**, and call it out — don't hide it.
+confirm `0 errors`.
+
+If a value is **measured from the live site** and no token equals it (this happened with
+the live badge gradients and the 16px highlighted-card radius), don't keep the literal —
+add a semantic token in `scripts/sync-tokens.mjs` (with a comment naming where production
+uses it), run `npm run sync:tokens`, and use the token. Record the measurement in
+`docs/LIVE-MEASUREMENTS.md`. Only a true one-off keeps a literal, marked `ds-ignore` with a
+reason, and called out in the report.
 
 ## Mapping cheat-sheet
 
@@ -92,7 +107,7 @@ Read `design-kit/tokens/tokens.css` for the complete list; these are the common 
 
 **Colour** → never a raw hex. Prefer the semantic token, fall back to the palette ramp:
 - brand/action red: `--color-primary` (hover `--color-primary-hover`, tint `--color-primary-light`, muted `--color-primary-muted`)
-- text: `--text-primary` (#23262a), `--text-secondary`, `--text-tertiary`, `--text-inverse`
+- text: `--text-primary` (#23262a), `--text-secondary` (#464c55), `--text-tertiary` (#919395), `--text-inverse`
 - surfaces: `--surface-page`, `--surface-card`, `--surface-muted`, `--surface-subtle`
 - borders: `--border-default`, `--border-input`
 - status: `--color-success` / `-bg`, `--color-warning` / `-bg`, `--color-error` / `-bg`, `--color-info` / `-bg`
@@ -104,9 +119,17 @@ Read `design-kit/tokens/tokens.css` for the complete list; these are the common 
 `--space-5` 2rem · `--space-6` 2.4rem · `--space-7` 3.2rem · `--space-8` 4rem ·
 `--space-9` 4.8rem · `--space-10` 6.4rem. `0`, `1px`, `2px` (hairlines/borders) are fine.
 
-**Radius** → `--radius-sm` 0.4rem · `--radius-md` 0.8rem · `--radius-lg` (card) ·
-`--radius-xl` 1.2rem · `--radius-pill` · `--radius-full` 9999px. Nothing above 1.2rem
-except pills/avatars.
+**Radius** → `--radius-sm` 0.4rem (badges, attribute chips, segment chips) ·
+`--radius-md` 0.6rem (inputs, buttons, quick/filter chips, contact buttons) ·
+`--radius-lg` 0.8rem (grid ad card, mobile list card) · `--radius-xl` 1.2rem (desktop
+list card) · `--radius-2xl` 1.6rem (highlighted "of the Week" list card only) ·
+`--radius-pill` 2rem · `--radius-full` 9999px. No other literal radius.
+
+**Gradients** → only `--featured-gradient` (Featured badge), `--elite-gradient` (Elite
+badge — charcoal text on it), `--pro-gradient`, `--overlay-image-fade` (fade behind a
+photo's slider dots). A literal `linear-gradient(…)` is an error.
+
+**Overlays** → `--overlay-dark` (photo-count badge), `--overlay-light` (heart button on a photo).
 
 **Shadow** → `--shadow-card`, `--shadow-card-hover`, `--shadow-dropdown`,
 `--shadow-header`, `--shadow-control`. Never hand-author a `box-shadow`.

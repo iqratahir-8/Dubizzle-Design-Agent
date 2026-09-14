@@ -6,7 +6,7 @@ Read this before generating any screen. Run `npm run check:design <file>` after.
 
 **Also read first, per task:**
 - `PRODUCT.md` — who the product serves and what each surface must do (product/business alignment).
-- `docs/DECISIONS.md` — decisions & discoveries the code won't tell you (e.g. the price is charcoal, not red). Don't re-litigate or re-break these; add to it when you learn something new.
+- `docs/DECISIONS.md` — decisions & discoveries the code won't tell you (e.g. list-card prices are charcoal, grid-card prices red). Don't re-litigate or re-break these; add to it when you learn something new.
 - `docs/REFERENCES.md` — live URLs + measured values per surface (ground truth). Build a page by refreshing its live capture and verifying against its row, not from a blank file.
 - After building a component, run the `token-check` skill (tokens, not literals).
 
@@ -80,7 +80,7 @@ Each of these is a tell that a screen was generated rather than designed. None o
 
 **Color and surface**
 - ✗ Purple, indigo, violet, teal — anywhere, for anything
-- ✗ Gradients. The **only** two permitted are `--featured-gradient` (blue, Featured badge) and `--elite-gradient` (gold, Elite badge). No gradient buttons, headers, heroes, or backgrounds.
+- ✗ Gradients. The **only** ones permitted are `--featured-gradient` (blue, Featured badge), `--elite-gradient` (gold, Elite badge, charcoal text) and `--overlay-image-fade` (the fade behind a card photo's slider dots). No gradient buttons, headers, heroes, or backgrounds.
 - ✗ Glassmorphism, `backdrop-filter`, translucent frosted panels
 - ✗ Dark mode. dubizzle EG web has none. Do not invent one.
 - ✗ Coloured drop shadows, glows, neon
@@ -118,7 +118,9 @@ Each of these is a tell that a screen was generated rather than designed. None o
 
 ## 3. Required patterns
 
-**Hierarchy in an ad card** — price is the loudest thing (1.8rem/700, **charcoal** `--gray-06` — not red; production renders it in charcoal and red is reserved for action/brand), then title (1.4rem/600, near-black), then specs (1.2rem/600, gray), then location and time (1.2rem/400, light gray). Four distinct levels. Never flatten them.
+**Hierarchy in an ad card** — price is the loudest thing, then title, then specs, then location and time. Four distinct levels; never flatten them. Exact live values per card and device are in `docs/LIVE-MEASUREMENTS.md` — use `AdCard` / `AdListCard` (or `.ad-card` / `.ad-list-card`) rather than restyling:
+- **Grid card** (home and landing rails, similar ads): price 1.8rem/700 **red** `--red-05`, title 1.6rem/400, bold spec line with grey "•", location/time 1.4rem grey `--gray-05`. Flat — no card shadow.
+- **List card** (search results): price 2.4rem/700 **charcoal** `--gray-06` (1.8rem on mobile), type + specs, 1.6rem/600 title, attribute chips, contact buttons. Card shadow, 1.2rem radius (0.8rem mobile).
 
 **Buttons** — exactly four variants, no more:
 - `primary` — red fill, white text. One per view, for the main action.

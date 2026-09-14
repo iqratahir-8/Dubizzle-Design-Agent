@@ -9,8 +9,14 @@ Format: `D-NNN — title` · date · status · what · evidence.
 
 ---
 
-## D-001 — Listing price is CHARCOAL, not red
-**2026-09-11 · adopted (cars + property); goods unverified**
+## D-001 — Price colour depends on the card type: LIST = charcoal, GRID = red
+**2026-09-11 · adopted · revised 2026-09-14 after measuring grid cards**
+
+> **Revision (2026-09-14):** the charcoal finding below holds for the **list** card (search
+> results, 24px desktop / 18px mobile). The **grid** card — home and landing-page rails and
+> the similar-ads widget under an ad — renders its price **red** `#e00000` at 18px/700 on
+> desktop and mobile (measured on `home.desktop` / `home.mobile` captures). Components:
+> `AdListCard` charcoal, `AdCard` red. See `docs/LIVE-MEASUREMENTS.md`.
 
 The main ad-card price renders in charcoal `#23262a` (`--text-primary` / `--gray-06`),
 not the brand red. Red stays reserved for action/brand (Post Your Ad, CTAs).
@@ -53,3 +59,23 @@ measure real elements with `getComputedStyle` + `getBoundingClientRect` (Playwri
 obtained, and it's what caught the price-colour discrepancy. Note: this environment's
 network egress to dubizzle.com.eg is blocked, so live pages must be **saved and
 uploaded**, then measured locally.
+
+## D-005 — Page templates are generated from live captures
+**2026-09-14 · adopted**
+
+Hand-built templates only approximated production, so feature work started with template
+fixes. Templates are now frozen captures (`scripts/build-live-templates.mjs`,
+`design-kit/templates/live-templates.json`) and are pixel-checked against the live screenshots
+(`npm run check:templates`, ~0–3%). New UI is composed on top of them with the component
+library. Hand-built `_pages` remain only where no capture exists. Refresh with the
+`live-capture` skill after a release.
+
+## D-006 — Two privacy gates on every logged-in capture
+**2026-09-14 · adopted after an incident**
+
+React-controlled form fields restored the account's real name and phone after DOM redaction,
+so they appeared in screenshots while the saved HTML was clean. Redaction now sets field values
+through the native setter + input event, and `visibleLeaks()` refuses any screenshot whose
+rendered text or field values still contain the account name or a non-sample phone. Both
+`leaks()` (HTML) and `visibleLeaks()` (screen) must pass. Never remove either.
+

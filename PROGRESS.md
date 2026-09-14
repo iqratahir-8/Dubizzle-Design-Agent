@@ -144,8 +144,10 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
   the earlier run filled 13). Re-run `npm run capture:post-ad -- --layout=desktop`, confirm the "filled:"
   list, then `npm run build:templates`. Needs the capture Chrome window signed in
   (`npm run capture:login -- --check`).
-- Skills: none added since 2026-09-11. User was offered updating `responsive-design` / `token-check` to
-  know about live templates, AdListCard/Chip variants and the capture tooling, plus a new re-capture skill.
+- Skills updated 2026-09-14 (user asked): `responsive-design` now starts from live templates and the new
+  components; `token-check` has correct radius/gradient tokens and skips live templates; new
+  `live-capture` skill (re-capture after a release, privacy gates, known failure causes). SKILL.md,
+  RULES.md (grid price red / list price charcoal) and DECISIONS.md (D-001 revised, D-005, D-006) updated.
 - Remaining hand-built templates: favourites, payment, agency-portal (no captures yet).
 
 **Done 2026-09-14 — capture fidelity + ad cards/chips (user request: "check all screens fetched

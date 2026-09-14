@@ -1,33 +1,30 @@
 ---
 name: responsive-design
 description: >-
-  Build mobile-first dubizzle Egypt screens, flows and prototypes from the design
-  system — and, when asked, the desktop companion side by side. Sources each mobile
-  piece from the real product code first, materializes anything missing into the
-  design system (mobile ad card, landing-page header states, footer, bottom
-  navigation, quick filters, filters page, bottom sheets…), and verifies against the
-  live site. Use this WHENEVER the task involves a mobile / responsive design, a
-  mobile version of a page, a mobile user flow or prototype, "mobile-first",
-  "make it responsive", "mobile only", bottom sheet, bottom nav, or quick filters —
-  for one screen or a whole flow. Handles both "mobile + desktop together" and
-  "mobile only".
+  Build mobile-first dubizzle Egypt screens, flows and prototypes — and, when asked, the
+  desktop companion side by side. Starts from the live-capture page templates (they
+  render like production on desktop and mobile), composes new UI from the React library
+  (AdCard / AdListCard with device="mobile", Chip quick/filter/segment…), sources any
+  genuinely missing mobile piece from the product monorepo, and verifies against the
+  live site with the capture tooling. Use this WHENEVER the task involves a mobile /
+  responsive design, a mobile version of a page, a mobile user flow or prototype,
+  "mobile-first", "make it responsive", "mobile only", bottom sheet, bottom nav, filter
+  bar or quick filters — for one screen or a whole flow. Handles both "mobile + desktop
+  together" and "mobile only".
 ---
 
 # Responsive (mobile-first) design
 
-## What this does and why
+## Why this works the way it does
 
-The design system's desktop side is well covered; its **mobile side has gaps**
-(no mobile ad card variant, landing-page header states, mobile footer, richer bottom
-nav, quick filters, a filters page, bottom sheets). This skill builds mobile screens
-and whole flows **mobile-first**, filling those gaps by pulling the *real* mobile
-components from the product code rather than inventing them — so the work is fast and
-faithful. It speeds up your process: one command turns a surface into a mobile design
-(or a mobile+desktop pair) plus a browsable prototype.
+dubizzle is mobile-majority, and the mobile layout makes the hard decisions (what
+collapses into a sheet, what the bottom nav carries, tap targets). Desktop widens from a
+correct mobile base.
 
-Mobile-first because the product is mobile-majority and the mobile layout makes the
-hard decisions (what collapses into a sheet, what the bottom nav carries, tap
-targets). Desktop then widens from a correct mobile base.
+Hand-built pages only ever approximated the live site, so designs used to start with
+fixing the template. That's solved: **templates are now frozen captures of the real
+pages** and render within ~0–3% of the live screenshots. Build on them; don't rebuild
+chrome that already exists.
 
 ## Modes — read the request
 
@@ -35,84 +32,107 @@ targets). Desktop then widens from a correct mobile base.
 |---|---|---|
 | "mobile responsive", "mobile version", "responsive", "mobile + desktop", "side by side" | **companion** (default) | mobile-first, then the desktop counterpart; both verified side by side |
 | "mobile only", "just mobile", "only the mobile design" | **mobile-only** | mobile screens/flow only — no desktop artifact |
-| an existing desktop `_pages/<name>.desktop.html` exists and they want its mobile | **companion** | build `<name>.mobile.html` to mirror the flow, adapted to mobile |
 
-If unsure which, ask one question: "mobile only, or mobile + desktop?" Don't build a
-desktop artifact in mobile-only mode — that's the whole point of the catch.
+If unsure, ask one question: "mobile only, or mobile + desktop?" Never build a desktop
+artifact in mobile-only mode.
 
-## The sourcing pipeline (per surface AND per missing component)
+## Step 1 — Start from the live template (never a blank page)
 
-Apply this in order. It is the heart of the skill.
+`design-kit/templates/index.html` lists every template with its pixel difference from live.
+Each exists as `templates/mobile/<name>.html` and `templates/desktop/<name>.html`:
 
-### 1. Repo-first — pull the real mobile component
-Attach and read the product monorepo before authoring anything:
-- If `dubizzle-maple-master-copy` isn't attached, `add_repo` it (owner `chaudhary-umair-ahmad`), clone shallow, `register_repo_root`.
-- The newest mobile components live under `frontend/dubizzle-facelift/dubizzle-facelift/`, in `compact/` folders. Map of the pieces you'll most often need:
+| Surface | Template |
+|---|---|
+| Home | `home` |
+| Landing pages | `motors`, `properties`, `car-finance` |
+| Search results | `search` (cars), `search-property`, `search-mobiles` |
+| Ad detail | `ad-detail` (car), `ad-detail-property`, `ad-detail-mobile-phone` |
+| Seller / business profile | `seller-page` |
+| Login (dialog), 404 | `login`, `not-found` |
+| Account (local only, gitignored) | `my-ads`, `chat`, `edit-profile`, `settings-privacy`, `settings-notifications`, `packages` |
+| Post an ad (local only) | `post-ad-category`, `post-ad-subcategory`, `post-ad`, `post-ad-filled` |
+| Upselling (local only) | `upsell-select`, `upsell` |
+| Hand-built (no capture yet) | `favourites`, `payment`, `agency-portal` |
+
+Copy the closest template to a new file and edit it. Live templates are production HTML
+(hashed class names, shared CSS in `_live-css/`, images in `_live/assets/`) — keep the
+`<link>`s, change content and structure where the feature needs it. Account-only
+templates exist only on the machine that ran the logged-in captures.
+
+If a template doesn't exist for your surface but the page is public, capture it first
+(`live-capture` skill) — ten minutes of capture beats a day of approximation.
+
+## Step 2 — Compose new UI from the component library
+
+For anything the feature adds, use the design system — it matches live
+(`docs/LIVE-MEASUREMENTS.md`, `npm run check:parity` keeps React and the kit identical):
+
+| Need | React (`src/components`) | HTML kit (`patterns.css`) |
+|---|---|---|
+| Grid ad card — home/landing rails, "similar ads" under an ad | `<AdCard device="mobile" …>` | `.ad-card.ad-card--mobile` |
+| List ad card — search results | `<AdListCard device="mobile" …>` (property: `type`, `beds/baths/area`; cars: `brand`, `model`, `attributes`) | `.ad-list-card.ad-list-card--mobile` |
+| Filter bar chips ("Cars for Sale ▾"), filters button with count | `<Chip variant="filter" caret selected count={2}>` | `.chip.chip--filter.is-selected`, `.chip__count` |
+| Quick filters (brand shortcuts) | `<Chip variant="quick" device="mobile">` | `.chip.chip--mobile` |
+| All / New / Used switch | `<Chip variant="segment" selected>` | `.chip.chip--segment.is-selected` |
+| Attribute chips (Year 2026…) | `AdListCard attributes` | `.attr-chips.attr-chips--stacked` |
+| Call / WhatsApp / Chat | `<ContactButton variant="call">` | `.contact-btn--call` |
+| Icons | `src/components/icons` (generated from `design-kit/icons`) | `design-kit/icons/**` |
+
+Card price colour differs by type and must stay that way: **grid = red, list = charcoal**.
+
+## Step 3 — Genuinely missing pieces: source from the monorepo
+
+Only when neither a live template nor a component covers it (e.g. filters page, sort
+bottom sheet, location sheet, category switcher dialog, bottom-nav states on a new page):
+
+- Product monorepo: path in `design-sync.config.json` → `monorepoPath`. Newest mobile
+  components: `frontend/dubizzle-facelift/dubizzle-facelift/**/compact/`.
 
   | Mobile piece | Real component |
   |---|---|
-  | Mobile ad card | `adCard/compact/adCardForHeroCategory.tsx`, `adOfTheDayCard.tsx`, `carOfTheDayStrip.tsx` (+ the category split, see DECISIONS.md D-002) |
-  | Landing header states | `header/compact/header.tsx`, `headerWithVerticals.tsx`, `headerLinks.tsx` |
   | Bottom navigation | `navigation/compact/bottomBar.tsx`, `bottomBarLink.tsx`, `sellSaveButton.tsx` |
   | Bottom sheet | `modal/compact/bottomSheet/responsiveBottomSheet.tsx` |
-  | Quick filters | `search/compact/quickFilters/*` (`quickFilter`, `categoryQuickFilter`, `locationQuickFilter`, `makeModelQuickFilter`, `displayValueRangeQuickFilter`) |
-  | Filters page/dialog | `search/compact/filtersDialog.tsx`, `search/filters/compact/*` (`filter`, `singleChoice`, `multipleChoice`, `hierarchical`, `range`, `dialogs/*`) |
-  | Category switcher | `categorySwitcher/compact/*` (`categoriesDialog`, `categoryCarousel`, `categorySwitcher`) |
-  | Location picker | `search/location/compact/*` (`locationsDialog`, `hierarchicalLocationSelectDialog`) |
-  | Footer | `strat/navigation/compactFooter.tsx` (mobile pages usually omit the footer — confirm the surface) |
+  | Quick filters | `search/compact/quickFilters/*` |
+  | Filters page/dialog | `search/compact/filtersDialog.tsx`, `search/filters/compact/*` |
+  | Category switcher | `categorySwitcher/compact/*` |
+  | Location picker | `search/location/compact/*` |
+  | Header states | `header/compact/header.tsx`, `headerWithVerticals.tsx` |
 
-  Read the JSX + its `.cssm` to get the real anatomy (fields, order, states), the same
-  way COMPONENT-AUDIT.md was built.
+- Read the JSX + `.cssm` for anatomy and states, then **check the live site** — the
+  monorepo lags production and **live wins** (open the live page, or capture it, and
+  measure with `getComputedStyle` on the snapshot).
+- Materialize it so the system gains it: React in `src/components/<Name>/` (+ story) and
+  the matching class in `patterns.css`; add a pair to `scripts/check-parity.mjs`; record
+  measured values in `docs/LIVE-MEASUREMENTS.md`.
 
-### 2. Materialize into the design system — save what's missing
-For each piece not yet in the DS, create it and **save it**, so the system gains it:
-- Shared chrome → `design-kit/templates/_partials/` (e.g. a richer `header-mobile`, `bottom-nav` states) and `design-kit/patterns/patterns.css` (mobile ad card, quick-filter bar, bottom-sheet, filters-page patterns).
-- React → `src/components/<Name>/` (with `.module.css`, story) when it's a reusable component.
-- Page bodies → `design-kit/templates/_pages/<name>.mobile.html` with the directive block (`"header":"mobile"` or `"mobile-back"`, `"bottomNav":"home|search|chat|ads"`).
-- Rebuild: `npm run build:templates`.
-Name and structure to match the existing mobile partials/patterns. Reuse tokens (run the `token-check` skill after).
+## Desktop ↔ mobile rules (measured, not guessed)
 
-### 3. Live-verify — the snapshot may lag production (DECISIONS.md D-003)
-If the repo version doesn't match what actually ships, **live wins**:
-- Capture the live mobile page/component and correct to match it. Preferred: a saved live mobile page (`m.dubizzle.com.eg` / the responsive site), measured locally with headless Chromium (`getComputedStyle`/`getBoundingClientRect`), or a screenshot from the live CDN.
-- ⚠️ This environment's network egress to dubizzle.com.eg / its CDN is **blocked**, so a direct fetch/screenshot fails here. When it's blocked, ask the user to **save and upload** the live mobile page or a screenshot, then measure/compare. Record the measured values in `docs/REFERENCES.md`.
+Build at **390px** (test 360–414); desktop at **1440px**. Mobile ≤ 768px.
 
-## Missing-inventory checklist (build these as you hit them)
+- **Cards change type, not just size.** Mobile list card stacks a 240px image on top,
+  18px charcoal price, time in the price row's corner, stacked attribute chips, full-width
+  contact buttons. Mobile grid card: 8px padding, 160px image, 12px spec lines.
+- **Filter rail → filter bar.** Desktop's left rail becomes the mobile filter-bar chips
+  (32px, applied = charcoal outline) plus a filters page / bottom sheets.
+- **Quick filters** are grey 42px on desktop, white 37px on mobile.
+- **Overlays not inline** on mobile: location, sort, make/model, category → bottom sheets.
+- **Touch:** tap targets ≥ 44px; horizontal scroll only for chip rows and carousels.
+- **RTL always** (`-inline-start/-end`). Same tokens; mobile is layout, not a re-skin.
 
-Mobile ad card (per-vertical, D-002) · landing-page header states (default / scrolled / with-verticals / search-focused) · mobile footer · bottom navigation (Home / Search / Sell / Chat / My Ads, active states) · quick-filter bar (horizontal chips) · full filters page + per-filter bottom dialogs · location bottom sheet · category switcher (carousel + dialog) · sort bottom sheet · the generic `bottom-sheet` pattern. Each: source (step 1) → materialize (step 2) → live-verify (step 3).
+## Flows and prototypes
 
-## Desktop → mobile transform rules
+A flow is every screen the user passes through. List the screens first (e.g. Motors:
+landing → search results → filters → ad detail → contact; Post an ad: category →
+subcategory → details → upsell), start each from its template, and present the mobile
+screens side by side in 390px frames (headless Chrome screenshots).
 
-When adapting an existing desktop page (companion mode), apply these — grounded in
-`design-kit/layout/layout.json` breakpoints (mobile ≤ 768px; build at **390px**, test
-360–414px):
+## Quality gates (before calling it done)
 
-- **One column.** The `search-layout` rail+results grid stacks; the filter rail becomes a **quick-filter bar** (sticky chips) + a **filters page/bottom sheet**, not an inline rail.
-- **Chrome swaps.** Desktop 3-row header → `header-mobile` (logo + location + actions) with a search field; add the fixed **bottom-nav**; drop the desktop footer on app-like pages.
-- **Overlays not inline.** Location, sort, make/model, category → **bottom sheets** (`responsiveBottomSheet`), full-screen dialogs on small screens.
-- **Cards go compact.** Use the mobile ad-card variant (smaller media, tighter type) — not the desktop `.ad-list-card` shrunk.
-- **Touch.** Tap targets ≥ 44px; sticky search/CTA within thumb reach; horizontal scroll only for chip rows and carousels, never the page body.
-- **RTL always** (`-inline-start/-end`). Keep the same tokens; mobile is a layout change, not a re-skin.
-
-## Cover the flow + prototype (as done for desktop)
-
-A "flow" is every screen a user passes through, not one page. For the requested flow,
-build each screen as a `.mobile.html` page and link them into a browsable prototype:
-- Enumerate the flow's screens (e.g. Motors: landing → search results → filters sheet → ad detail → contact). List them before building so none is skipped.
-- Build each screen mobile-first through the pipeline above.
-- `npm run build:templates` regenerates the gallery; the mobile pages appear in `design-kit/templates/index.html`. For a phone-framed prototype view, present the mobile screens in a 390px frame side by side (screenshot with headless Chromium).
-
-## Quality gates (every screen, before done)
-
-1. `npm run build:templates` — no errors.
-2. `node scripts/check-design.mjs <files>` — 0 errors.
-3. `token-check` skill — 0 hardcoded literals.
-4. `accessibility` + `web-design-guidelines` skills on the built HTML — tap targets, labels, focus order.
-5. Screenshot at 390px (and 1280px in companion mode) and eyeball against the live reference.
-
-## Where things go
-
-`_partials/` (chrome) · `patterns.css` (mobile patterns) · `_pages/<name>.mobile.html`
-(bodies) · `src/components/` (reusable React) · `docs/REFERENCES.md` (measured live
-values) · `docs/DECISIONS.md` (any new discovery). Commit the materialized components
-so the design system permanently gains them.
+1. `token-check` skill on every CSS you authored — 0 errors (live-template HTML is
+   production code and is skipped by the linter; your additions are not).
+2. If you touched a component: `npm run check:parity` → 0 differ (needs `npm run dev` + `npm run kit`).
+3. If you rebuilt templates: `npm run check:templates` → all ok.
+4. `accessibility` + `web-design-guidelines` skills on new UI — tap targets, labels, focus.
+5. Screenshot at 390px (and 1440px in companion mode) next to the live screenshot in
+   `design-kit/reference/live/screens/` and compare.
+6. Update `PROGRESS.md` and commit (see `CLAUDE.md`).
