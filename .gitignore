@@ -33,3 +33,7 @@ design-kit/templates/mobile/settings-notifications.html
 design-kit/templates/desktop/packages.html
 design-kit/templates/mobile/packages.html
 design-kit/templates/_live/fidelity.json
+design-kit/templates/desktop/post-ad*.html
+design-kit/templates/mobile/post-ad*.html
+design-kit/templates/desktop/upsell*.html
+design-kit/templates/mobile/upsell*.html

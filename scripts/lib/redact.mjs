@@ -199,7 +199,12 @@ export async function redactPage(page, identity) {
           else if (el.tagName === 'TEXTAREA' || /about|bio|desc/.test(hint)) value = 'Selling cars and electronics in Cairo.';
         }
         if (value !== el.value) {
-          el.value = value;
+          // React-controlled fields: assigning .value is undone on the next render (a real phone
+          // number reappeared in a screenshot that way). Use the native setter + input event,
+          // like typing, so the app's own state holds the sample value. Nothing is saved.
+          const setter = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el), 'value').set;
+          setter.call(el, value);
+          el.dispatchEvent(new Event('input', { bubbles: true }));
           el.setAttribute('value', value);
           counts.inputs++;
         }
@@ -244,4 +249,24 @@ export function leaks(html, identity) {
   }
   if (/<script\b/i.test(html)) found.push('script tag');
   return [...new Set(found)];
+}
+
+/**
+ * Final gate for SCREENSHOTS — the rendered page, not the HTML. Checks visible text and every
+ * field value for the account name or a phone number other than the sample. Call right before
+ * page.screenshot(); refuse the capture if it returns anything.
+ */
+export async function visibleLeaks(page, identity) {
+  return page.evaluate(
+    ({ names, phoneSrc, samplePhone }) => {
+      const found = new Set();
+      const values = [...document.querySelectorAll('input, textarea')].map((e) => e.value);
+      const text = `${document.body.innerText}\n${values.join('\n')}`;
+      for (const name of names) if (text.includes(name)) found.add('account name');
+      const digits = (s) => s.replace(/\D/g, '').replace(/^20/, '').replace(/^0/, '');
+      for (const m of text.match(new RegExp(phoneSrc, 'g')) ?? []) if (digits(m) !== digits(samplePhone)) found.add('phone number');
+      return [...found];
+    },
+    { names: namePairs(identity).map(([real]) => real).filter((n) => n.length >= 3), phoneSrc: PHONE.source, samplePhone: SAMPLE.phone },
+  );
 }

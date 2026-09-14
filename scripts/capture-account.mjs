@@ -21,7 +21,7 @@ import { absolutize } from './lib/absolutize.mjs';
 import { recordResponses, snapshotHtml } from './lib/snapshot.mjs';
 import { buildGallery } from './build-screens-gallery.mjs';
 import { ORIGIN, LAYOUTS, sleep, scrollThrough, settleFixedElements, captureAndDismissInterstitial, removePushPrompt } from './lib/render-helpers.mjs';
-import { readAccountIdentity, redactPage, sanitizeHtml, leaks } from './lib/redact.mjs';
+import { readAccountIdentity, redactPage, sanitizeHtml, leaks, visibleLeaks } from './lib/redact.mjs';
 import { connectToSession, isSignedIn } from './capture-session.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -99,8 +99,14 @@ for (const name of selected) {
         results.push({ base, status: 'FAILED', detail: `refused to save — still contains: ${leaked.join(', ')}` });
         continue;
       }
-      writeFileSync(join(OUT, `${base}.html`), html);
       await settleFixedElements(page);
+      await redactPage(page, identity);
+      const onScreen = await visibleLeaks(page, identity);
+      if (onScreen.length) {
+        results.push({ base, status: 'FAILED', detail: `refused — still visible on screen: ${onScreen.join(', ')}` });
+        continue;
+      }
+      writeFileSync(join(OUT, `${base}.html`), html);
       await page.screenshot({ path: join(SCREENS, `${base}.png`), fullPage: true });
 
       const height = await page.evaluate(() => document.documentElement.scrollHeight);

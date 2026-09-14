@@ -39,9 +39,10 @@ const GROUPS = [
     {
       'post-category': 'Choose a category',
       'post-subcategory': 'Choose a subcategory',
-      'post-details': 'Ad details form',
-      'post-review': 'Review',
-      upsell: 'Upselling — sell faster',
+      'post-details': 'Ad details form (empty)',
+      'post-details-filled': 'Ad details form — filled with sample data, never posted',
+      'upsell-select': 'Upselling — choose category',
+      upsell: 'Upselling — packages',
       packages: 'Packages',
     },
   ],

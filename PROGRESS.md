@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-14 · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-14 (late) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -125,6 +125,24 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    Servers now run from here; parity 31/31 verified.
 
 ## 6. Next up
+
+**Latest (2026-09-14, before account switch):**
+- **Post an Ad flow captured** (`npm run capture:post-ad`, desktop + mobile): post-category → post-subcategory
+  (Vehicles) → post-details (Cars for Sale, empty form /en/post/attributes) → post-details-filled (sample
+  data) → upsell-select → upsell (packages page via My Ads "View Packages", Vehicles/Cars for Sale,
+  "Show packages"; cart stays EGP 0). NEVER PUBLISHES: never clicks Post/Pay/Republish/Remove, and aborts
+  every non-GET request for the whole run. My Ads has 0 active ads, so there is no per-ad "Sell faster".
+- **Privacy incident fixed:** the mobile form pre-fills the account's real name + phone; React restored them
+  after redaction, so two screenshots showed them (HTML was clean). Screenshots deleted, never committed.
+  Fix: redactPage sets values via the native setter + input event; new `visibleLeaks()` gate in
+  capture-account and capture-post-ad refuses any screenshot showing the account name or a non-sample
+  phone. Account screens recaptured under the gate (12/12 ok). **Always keep this gate.**
+- Templates added (local/gitignored, account): post-ad-category, post-ad-subcategory, post-ad, post-ad-filled,
+  upsell-select, upsell. Hand-built post-ad retired. check:templates: 23/24 ok; upsell.desktop was saved
+  mid-"Loading…" → save() now waits for loading to clear; desktop recapture was running at switch time.
+  **First thing to do:** `npm run capture:post-ad -- --layout=desktop && npm run build:templates && npm run check:templates -- upsell post-ad post-ad-filled`
+  (needs the capture Chrome window signed in: `npm run capture:login -- --check`).
+- Remaining hand-built templates: favourites, payment, agency-portal (no captures yet).
 
 **Done 2026-09-14 — capture fidelity + ad cards/chips (user request: "check all screens fetched
 properly… update component libraries: grid cards (home, LPV, DPV widget) and list cards (search
