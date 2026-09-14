@@ -306,53 +306,368 @@ ul {
   min-width: 0;
 }
 
-/* ── Bottom navigation — mobile only ──────────────────────────────────────── */
+/* ── Mobile web components ─────────────────────────────────────────────────── */
+/* Measured on dubizzle.com.eg at 390px (docs/LIVE-MEASUREMENTS.md). Mirrors src/components/
+   MobileHeader, BottomNav, SortSaveBar, QuickLinks, AppBanner — npm run check:parity.
+   Icons: .m-icon masks a live SVG (design-kit/icons/mobile) so it takes the text colour:
+   <span class="m-icon" style="--i:url(icons/mobile/nav-home.svg)"></span>                    */
 
-.bottom-nav {
-  position: fixed;
-  inset-inline: 0;
-  bottom: 0;
-  z-index: 7;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  background: var(--surface-page);
-  border-top: 0.1rem solid var(--border-default);
-  padding-block: var(--space-2);
+.m-icon {
+  display: inline-block;
+  flex: none;
+  width: var(--s, 2.4rem);
+  height: var(--s, 2.4rem);
+  background-color: currentColor;
+  -webkit-mask: var(--i) center / contain no-repeat;
+  mask: var(--i) center / contain no-repeat;
 }
+
+/* Bottom navigation — Home, Chat, Sell, My Ads, Account */
+.bottom-nav {
+  display: grid;
+  grid-template-columns: repeat(5, 7.2rem);
+  justify-content: center;
+  gap: 0.8rem;
+  height: 5.9rem;
+  padding: 0.7rem 0;
+  background: var(--white);
+  box-shadow: var(--shadow-bottom-nav);
+}
+
+.bottom-nav--fixed { position: fixed; inset-inline: 0; bottom: 0; z-index: 7; }
 
 .bottom-nav__item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-1);
-  font-size: 1rem;
-  color: var(--text-secondary);
+  gap: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.8rem;
+  color: var(--gray-04);
+  white-space: nowrap;
+  text-decoration: none;
 }
 
-.bottom-nav__item img {
-  width: 2.4rem;
-  height: 2.4rem;
-}
-
-.bottom-nav__item--active {
-  color: var(--color-primary);
-  font-weight: var(--weight-bold);
-}
+.bottom-nav__item--active { color: var(--gray-06); }
 
 .bottom-nav__sell {
-  width: 4.4rem;
-  height: 4.4rem;
-  margin-top: -1.6rem;
-  border-radius: var(--radius-full);
-  background: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  height: 6rem;
+  margin-top: -1.3rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  color: var(--gray-05);
+}
+
+.bottom-nav__sell img { width: 4.4rem; height: 4.4rem; }
+
+/* Mobile header — landing (home / motors) in three scroll states, and the listing header */
+.m-header { color: var(--gray-06); }
+
+.m-header__bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.6rem;
+}
+
+.m-header--home .m-header__bar { background: var(--gray-01); }
+.m-header--motors .m-header__bar { padding: 1.6rem 1.6rem 1.2rem; }
+
+.m-header__tiles { display: flex; gap: 0.8rem; }
+
+.m-header__tile {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 5.9rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-tile);
+  color: var(--black);
+  text-decoration: none;
 }
 
-.bottom-nav__sell img {
-  width: 2.4rem;
-  height: 2.4rem;
+.m-header--motors .m-header__tile { height: 5.8rem; padding: 0.8rem 1rem; border: 0; }
+.m-header__tile--active { background: var(--red-05); color: var(--white); }
+.m-header__tile-body { display: flex; flex-direction: column; align-items: center; }
+.m-header__tile-icon { display: flex; height: 2.4rem; overflow: hidden; }
+.m-header__tile-icon img { width: 2.4rem; height: 2.4rem; }
+.m-header__tile-label { font-size: 1.4rem; font-weight: var(--weight-bold); line-height: 2.1rem; white-space: nowrap; }
+.m-header--motors .m-header__tile-label { line-height: 1.82rem; }
+.m-header__logo { --s: 3rem; width: 5.4rem; }
+.m-header--motors .m-header__logo { width: 6.4rem; height: 4.2rem; }
+
+/* State 2 — minimized: labels only. State 3 — search field only. */
+.m-header--minimized .m-header__tile { height: 4.9rem; }
+.m-header--minimized .m-header__tile-icon { height: 0; }
+.m-header--minimized.m-header--motors .m-header__logo { height: 2.4rem; }
+.m-header--search .m-header__tiles { display: none; }
+
+.m-header__search-row { display: flex; align-items: center; gap: 0.8rem; }
+
+.m-search {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  height: 4rem;
+  padding: 0 1.6rem 0 1.2rem;
+  border: 1px solid var(--gray-04);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-search);
+  font-family: inherit;
+  color: var(--gray-06);
+  text-align: start;
+}
+
+.m-header--motors .m-search { height: 4.2rem; }
+
+.m-search__placeholder {
+  display: flex;
+  gap: 0.8rem;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 1.4rem;
+  color: var(--gray-04);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.m-search__count { flex: none; }
+
+.m-header__favourites {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-search);
+  color: var(--gray-06);
+}
+
+.m-header__favourites img { width: 2.4rem; height: 2.4rem; }
+
+.m-header__location {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: var(--weight-black);
+  line-height: 1.68rem;
+  color: var(--gray-06);
+}
+
+.m-header__location .m-icon:first-child { color: var(--red-05); }
+.m-header__location--below { gap: 0.8rem; margin: 0 1.6rem; font-weight: var(--weight-bold); }
+
+.m-listing-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.2rem 1.6rem;
+  background: var(--white);
+  box-shadow: var(--shadow-sticky-header);
+  color: var(--gray-06);
+}
+
+.m-listing-header__row { display: flex; align-items: center; gap: 0.8rem; }
+.m-listing-header__back { display: flex; padding: 0; border: 0; background: none; color: var(--gray-06); }
+.m-listing-header__filters { display: flex; align-items: center; gap: 0.8rem; }
+
+.m-listing-header__scroller {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+  margin-inline-end: -1.6rem;
+  padding-inline-end: 1.6rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+/* Sort | Save bar and the Sell FAB on mobile listing pages */
+.sort-save {
+  display: inline-flex;
+  align-items: center;
+  height: 4.2rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-floating);
+}
+
+.sort-save__action {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 4rem;
+  padding: 0.8rem 1.2rem;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+  color: var(--gray-06);
+}
+
+.sort-save__divider { width: 1px; height: 1.6rem; background: var(--gray-02); }
+
+.sell-fab {
+  display: grid;
+  place-items: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--red-05);
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+  color: var(--white);
+}
+
+.listing-actions { display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%; }
+.listing-actions .sell-fab { align-self: flex-end; margin-inline-end: 1.6rem; }
+.listing-actions--fixed { position: fixed; inset-inline: 0; bottom: 0; z-index: 7; }
+
+/* Category quick links — "Explore Egypt's Largest Marketplace" */
+.quick-links { color: var(--gray-06); }
+.quick-links__title { margin: 0; padding: 1.6rem 1.6rem 0; font-size: 2rem; font-weight: var(--weight-bold); line-height: 2.7rem; }
+.quick-links__tabs { display: flex; gap: 3rem; margin: 0 1.6rem; overflow-x: auto; scrollbar-width: none; }
+
+.quick-links__tab {
+  position: relative;
+  flex: none;
+  padding: 1.4rem 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: var(--weight-medium);
+  line-height: 1.4rem;
+  color: var(--gray-05);
+}
+
+.quick-links__tab--active { font-weight: var(--weight-bold); color: var(--gray-06); }
+.quick-links__tab--active::after { content: ''; position: absolute; inset-inline: 0; bottom: 0.1rem; height: 0.2rem; background: var(--red-05); }
+.quick-links__scroller { padding: 1.6rem 0; overflow-x: auto; scrollbar-width: none; }
+
+.quick-links__grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-columns: 8rem;
+  row-gap: 1.2rem;
+  margin: 0;
+  padding: 0 1.6rem;
+  list-style: none;
+}
+
+.quick-links__link { display: flex; flex-direction: column; align-items: center; color: inherit; text-decoration: none; }
+
+.quick-links__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: var(--radius-md);
+  background: var(--gray-00);
+}
+
+.quick-links__icon img { width: 3.2rem; height: 3.2rem; }
+
+.quick-links__label {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-top: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.82rem;
+  text-align: center;
+}
+
+/* App smart banner — "Buy and sell faster in app" */
+.app-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 7.5rem;
+  padding: 1rem 1.2rem;
+  background: var(--white);
+}
+
+.app-banner__close { display: flex; padding: 0; border: 0; background: none; color: var(--gray-06); }
+
+.app-banner__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-app-icon);
+}
+
+.app-banner__icon img { width: 3.7rem; height: 3.7rem; }
+.app-banner__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.app-banner__title { font-size: 1.4rem; font-weight: var(--weight-bold); line-height: 1.68rem; color: var(--gray-07); }
+.app-banner__badges { display: flex; align-items: center; gap: 0.8rem; }
+
+.app-banner__badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--blue-01);
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  color: var(--gray-07);
+}
+
+.app-banner__badge img { width: 1.2rem; height: 1.2rem; }
+
+.app-banner__cta {
+  flex: none;
+  height: 3.2rem;
+  padding: 0 1.6rem;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--blue-09);
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  color: var(--white);
 }
 
 /* ── Buttons ──────────────────────────────────────────────────────────────── */

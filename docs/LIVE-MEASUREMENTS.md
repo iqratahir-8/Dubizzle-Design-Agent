@@ -79,3 +79,50 @@ Token mapping: `#f6f6f6` --gray-00 · `#f0f0f0` --gray-01 · `#e0e0e0` --gray-02
 `#919395` --gray-04 · `#464c55` --gray-05 · `#23262a` --gray-06 · `#e7f1fd` --blue-02 · `#c4dbfa` --blue-03 ·
 `#0f5dc4` --blue-06 · Featured `#4d9feb→#1270ec` --blue-08→--blue-09 · Elite `#ffe8ad→#e39e00` --yellow-03→--yellow-06.
 The monorepo's `--elite-tag-bg` / `--featured-ad-accent-bgcolor` gradients differ from live; components use the live ones.
+
+## Mobile web components (390px)
+
+Measured on the live site while scrolling (header states) and on the snapshots. Components:
+`MobileHeader`, `BottomNav`, `SortSaveBar` / `SellFab` / `ListingActions`, `QuickLinks`, `AppBanner`
+(kit: `.m-header`, `.m-listing-header`, `.bottom-nav`, `.sort-save`, `.sell-fab`, `.quick-links`, `.app-banner`).
+Icons extracted from the live pages into `design-kit/icons/mobile/`.
+
+### Landing header — home and motors (three scroll states)
+| | Home | Motors |
+|---|---|---|
+| Bar | sticky under app banner, bg `#f0f0f0`, padding 16, column gap 12 | fixed, transparent, padding 16 16 12, gap 12 |
+| Tiles (Dubizzle / Motors / Property) | 114×59, padding 6px 12px, 1px `#e0e0e0`, radius 6, white, shadow `0 2px 8px rgba(0,0,0,.14)`; active red with white 54×30 logo | 114×58, padding 8px 10px, no border, same shadow; active red; logo 64×42 |
+| Tile content | 24px icon over label 14/700 lh21 `#222` | 24px icon over label 14/700 lh18.2 |
+| Search | 306×40 button, padding 0 16 0 12, gap 8, 1px `#919395`, radius 6, shadow `0 2px 10px rgba(0,0,0,.1)`, 16px icon, placeholder 14 `#919395` "Search for great finds"; + 44×40 favourites button (white, same shadow, 24px heart) | full-width 42px field, same border; placeholder "Search by Car Model" |
+| Location | below the header: red pin 17 + "Egypt" 14/700 + chevron 12, gap 8 | inside the header, 12 under search: red pin 15 + "Egypt" 14/900 + chevron 16 |
+| **State 1 full** | tiles with icons + search + location (header 143) | same (169) |
+| **State 2 minimized** | tiles 49 tall, icons collapsed, labels only; no location (132) | same (131); logo 64×24 |
+| **State 3 search** | not reached on live (home stops at minimized) | tiles collapsed, search field only (70) |
+
+### Listing header — property / search results
+108 tall, white, padding 12 16, gap 12, shadow `0 2px 4px rgba(0,0,0,.133)`. Row 1: back 24 + search button
+(same as home, placeholder "Properties for Sale & Rent in Egypt (200,000+ ads)"). Row 2: filter button (filter chip,
+selected, 16px icon, red count badge) + horizontally scrolling filter chips with carets.
+
+### Bottom navigation
+59 tall, white, padding 7 0, shadow `0 -2px 4px rgba(0,0,0,.133)`; 5 columns × 72px, gap 8. Item: 24px icon over
+label 12/400 lh18, gap 3; active `#23262a`, inactive `#919395`. Items: Home, Chat, **Sell** (44px red circle with
+white ring + plus, raised 13px, label 12 `#464c55`), My Ads, Account.
+
+### Sort | Save + Sell (listing pages)
+Fixed bottom container, column gap 10. Sell FAB 56×56 circle `#e00000`, "Sell" 16/700 white, right 16. Bar 156×42,
+1px `#e0e0e0`, radius 6, white, shadow `0 4px 12px rgba(0,0,0,.22)`; actions padding 8px 12px, gap 4, 20px icon +
+14/700 lh21; divider 1×16 `#e0e0e0`.
+
+### Quick links (home "Explore Egypt's Largest Marketplace")
+Title 20/700 lh27, padding 16 16 0. Grid padding 16 0, two rows, horizontal scroll, row gap 12, columns 80. Tile:
+64×64, radius 6, bg `#f6f6f6`, 32px icon; label 14/400 lh18.2, max 2 lines, 8 below. Motors tab row: gap 30,
+padding 14 0, 14px lh14; active 700 charcoal + 2px red underline; inactive 500 `#626465` (→ `--gray-05`).
+
+### App banner
+75 tall, white, padding 10 12, gap 10. Close 15; app icon 45×45 box, 1px `#e5e5e5`, radius 10; title 14/700 lh16.8
+`#17191c`; badges (4.5 ★, 10M+ ↓) padding 4 6, radius 999, bg `rgba(231,241,253,.6)` (→ `--blue-01`), 14/400;
+"Get App" 32 tall, padding 0 16, radius 999, `#2f6fed` (→ `--blue-09`), 14/700 white.
+
+New tokens: `--shadow-tile`, `--shadow-search`, `--shadow-bottom-nav`, `--shadow-sticky-header`, `--shadow-floating`,
+`--weight-medium`, `--radius-app-icon`.

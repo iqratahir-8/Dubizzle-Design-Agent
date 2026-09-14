@@ -173,6 +173,8 @@ const SEMANTIC = {
     '--weight-thin': 'var(--font-weight-ultra-light)',
     '--weight-light': 'var(--font-weight-light)',
     '--weight-regular': 'var(--font-weight-normal)',
+    // Medium has no monorepo variable; production uses 500 for inactive quick-link tabs (motors).
+    '--weight-medium': '500',
     '--weight-semibold': 'var(--font-weight-semi-bold)',
     '--weight-bold': 'var(--font-weight-bold)',
     '--weight-black': 'var(--font-weight-ultra-bold)',
@@ -202,6 +204,8 @@ const SEMANTIC = {
     '--radius-xl': '1.2rem',
     // Highlighted list card (Car / Property of the Week slot) only.
     '--radius-2xl': '1.6rem',
+    // App icon tile in the mobile app banner only.
+    '--radius-app-icon': '1rem',
     '--radius-pill': 'var(--pill-border-radius)',
     '--radius-full': '9999px',
   },
@@ -211,6 +215,12 @@ const SEMANTIC = {
     '--shadow-dropdown': 'var(--dropdown-shadow)',
     '--shadow-header': '0px 2px 4px 0px rgba(0,0,0,0.008)',
     '--shadow-control': 'var(--category-switcher-box-shadow)',
+    // Mobile web, measured on dubizzle.com.eg (docs/LIVE-MEASUREMENTS.md)
+    '--shadow-tile': '0 2px 8px 0 rgba(0, 0, 0, 0.14)', // vertical tiles in the mobile header
+    '--shadow-search': '0 2px 10px 0 rgba(0, 0, 0, 0.1)', // mobile search field and favourites button
+    '--shadow-bottom-nav': '0 -2px 4px 0 rgba(0, 0, 0, 0.133)',
+    '--shadow-sticky-header': '0 2px 4px 0 rgba(0, 0, 0, 0.133)', // listing-page header
+    '--shadow-floating': '0 4px 12px 0 rgba(0, 0, 0, 0.22)', // Sort / Save bar
   },
   layout: {
     '--page-width': 'var(--page-desktop-width)',

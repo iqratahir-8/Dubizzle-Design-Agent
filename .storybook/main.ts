@@ -8,7 +8,11 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
-  staticDirs: [{ from: join(__dirname, '../src/assets'), to: '/assets' }],
+  staticDirs: [
+    { from: join(__dirname, '../src/assets'), to: '/assets' },
+    // design-kit icons, for stories that show real category imagery (QuickLinks)
+    { from: join(__dirname, '../design-kit/icons'), to: '/icons' },
+  ],
 };
 
 export default config;

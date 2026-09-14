@@ -126,6 +126,15 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
 
 ## 6. Next up
 
+**Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find
+[in the exported pages], store in the component library" — starting with mobile bottom nav, sort/save, quick links,
+header all states for home / motors / property). Working list with status: **`docs/COMPONENT-INVENTORY.md`**.
+Done this round: `MobileHeader` (home + motors × full/minimized/search, property listing header), `BottomNav`,
+`SortSaveBar`/`SellFab`/`ListingActions`, `QuickLinks`, `AppBanner` — React + stories (Storybook "Mobile/…") + kit
+`patterns.css` + kit page section `#mobile`; live icons in `design-kit/icons/mobile/`; check:parity 126/126.
+Assumption to confirm with user: "mobiles" in the request read as the **Motors** landing page.
+Next: continue the inventory top-down (mobile first, then desktop, then account/flows).
+
 **Latest (2026-09-14, before account switch):**
 - **Post an Ad flow captured** (`npm run capture:post-ad`, desktop + mobile): post-category → post-subcategory
   (Vehicles) → post-details (Cars for Sale, empty form /en/post/attributes) → post-details-filled (sample

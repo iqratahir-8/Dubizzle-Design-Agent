@@ -1,0 +1,59 @@
+/* Mobile bottom navigation — measured on dubizzle.com.eg (docs/LIVE-MEASUREMENTS.md).
+   Mirrors .bottom-nav in design-kit/patterns/patterns.css (npm run check:parity). */
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(5, 7.2rem);
+  justify-content: center;
+  gap: 0.8rem;
+  height: 5.9rem;
+  padding: 0.7rem 0;
+  background: var(--white);
+  box-shadow: var(--shadow-bottom-nav);
+  font-family: var(--font-primary);
+}
+
+.fixed {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 7;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--gray-04);
+  text-decoration: none;
+}
+
+.active {
+  color: var(--gray-06);
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.8rem;
+  white-space: nowrap;
+}
+
+/* Sell sits 13px above the bar: a 44px red circle over its label */
+.sell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  height: 6rem;
+  margin-top: -1.3rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  color: var(--gray-05);
+  cursor: pointer;
+}

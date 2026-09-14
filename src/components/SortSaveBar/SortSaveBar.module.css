@@ -1,0 +1,71 @@
+/* Sort | Save bar and Sell FAB — measured on dubizzle.com.eg mobile listing pages.
+   Mirrors .sort-save / .sell-fab in design-kit/patterns/patterns.css (npm run check:parity). */
+
+.bar {
+  display: inline-flex;
+  align-items: center;
+  height: 4.2rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-floating);
+  font-family: var(--font-primary);
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 4rem;
+  padding: 0.8rem 1.2rem;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.divider {
+  width: 1px;
+  height: 1.6rem;
+  background: var(--gray-02);
+}
+
+.fab {
+  display: grid;
+  place-items: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--red-05);
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.actions .fab {
+  align-self: flex-end;
+  margin-inline-end: 1.6rem;
+}
+
+.fixed {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 7;
+}
