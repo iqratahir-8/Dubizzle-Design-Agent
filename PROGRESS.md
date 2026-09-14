@@ -82,6 +82,12 @@ human-designed, with no "AI slop", and that can be regenerated when a new releas
 | `npm run capture:account` | Logged-in, read-only: my-ads, chat, edit-profile, settings-privacy, settings-notifications, packages — with two-layer redaction; refuses if signed out or the name can't be read |
 | `npm run build:gallery` | Rebuilds `design-kit/reference/live/gallery.html` (linked from the kit as "Live screens") |
 | `npm run check:parity` | Storybook vs kit computed-style comparison |
+| `npm run check:captures [-- names]` | Fidelity: re-renders each saved HTML at its layout and pixel-diffs it against the live screenshot (`screens/_check/`) |
+
+**Captures are frozen snapshots** (`scripts/lib/snapshot.mjs`): applied CSSOM rules, inlined fonts
+(dubizzle draws some text via an obfuscation font — without it text shows as "AsB/I1"), inlined
+images and SVG sprites, iframes (ads) replaced by pictures, timers stopped, all scripts removed.
+Plain `page.content()` captures re-rendered 20–40% wrong.
 
 URLs: `design-kit/reference/capture-manifest.json`. Helpers: `scripts/lib/{absolutize,render-helpers,redact}.mjs`.
 
@@ -116,6 +122,16 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    Servers now run from here; parity 31/31 verified.
 
 ## 6. Next up
+
+**In progress (2026-09-14):** user reported inconsistent captures and asked for pixel-perfect
+HTML for all desktop + mobile screens, then updated component libraries: **grid ad card**
+(home, landing pages, DPV bottom widget) and **list ad card** (search listing pages), desktop +
+mobile, plus **quick chips vs selected chips** (different styles on live). Steps:
+a. ✅ snapshot + `check:captures` built; home desktop now 0% pixel diff.
+b. ⏳ recapture all 16 public pages × 2 layouts with snapshots, run `check:captures` to 0 broken.
+c. Account screens: capture window is signed out — ask the user to sign in, then `npm run capture:account`.
+d. Measure grid card, list card, quick/selected chips on the new captures; update React
+   (`AdCard` grid + list, `Chip` quick/selected) and kit patterns; add parity pairs; stories.
 
 1. **Post an Ad flow capture** (desktop + mobile): category → subcategory → details form →
    photos → review, typing sample data, **never publishing**. Then upselling via Sell faster /

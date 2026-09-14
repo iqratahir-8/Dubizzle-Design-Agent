@@ -20,6 +20,7 @@ import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
 import { absolutize } from './lib/absolutize.mjs';
+import { recordResponses, snapshotHtml } from './lib/snapshot.mjs';
 import { buildGallery } from './build-screens-gallery.mjs';
 import {
   ORIGIN,
@@ -28,6 +29,7 @@ import {
   scrollThrough,
   settleFixedElements,
   captureAndDismissInterstitial,
+  removePushPrompt,
 } from './lib/render-helpers.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -74,6 +76,7 @@ try {
         await page.setUserAgent(userAgent);
         await page.setViewport(viewport);
         await page.setExtraHTTPHeaders({ 'Accept-Language': 'en' });
+        const recorder = recordResponses(page);
 
         const response = await page.goto(ORIGIN + urls[name], { waitUntil: 'networkidle2', timeout: 90_000 });
         const status = response?.status() ?? 0;
@@ -99,7 +102,8 @@ try {
           continue;
         }
 
-        writeFileSync(join(OUT, `${base}.html`), absolutize(await page.content(), ORIGIN));
+        await removePushPrompt(page);
+        writeFileSync(join(OUT, `${base}.html`), absolutize(await snapshotHtml(page, recorder), ORIGIN));
         const settled = await settleFixedElements(page);
         await page.screenshot({ path: join(SCREENS, `${base}.png`), fullPage: true });
 

@@ -219,7 +219,14 @@ export async function redactPage(page, identity) {
 }
 
 /** Layer 2 — runs on the serialized HTML before it is written. */
+/** Apply a text transform everywhere except inside data: URIs (inlined fonts), which it would corrupt. */
+const outsideDataUris = (html, fn) => html.split(/(data:[a-z0-9.+/-]+;base64,[A-Za-z0-9+/=]+)/i).map((part, i) => (i % 2 ? part : fn(part))).join('');
+
 export function sanitizeHtml(html, identity) {
+  return outsideDataUris(html, (chunk) => sanitizeChunk(chunk, identity));
+}
+
+function sanitizeChunk(html, identity) {
   let out = html
     .replace(/<script\b[\s\S]*?<\/script>/gi, '')
     .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, '')
@@ -230,6 +237,7 @@ export function sanitizeHtml(html, identity) {
 
 /** Final gate: refuse to write a capture if any identifier survived both layers. */
 export function leaks(html, identity) {
+  html = html.replace(/data:[a-z0-9.+/-]+;base64,[A-Za-z0-9+/=]+/gi, '');
   const found = [];
   for (const [real] of namePairs(identity)) {
     if (real.length >= 3 && html.includes(real)) found.push('account name');

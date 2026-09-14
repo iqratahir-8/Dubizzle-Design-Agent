@@ -96,3 +96,25 @@ export async function captureAndDismissInterstitial(page, screenshotPath) {
 }
 
 export const screenPath = (dir, base, suffix = '') => join(dir, `${base}${suffix}.png`);
+
+/**
+ * The site's own "This website would like to send you awesome updates" push-permission
+ * prompt sits over the search bar on first visit. It's not part of the page design, so it's
+ * removed before capture (removed from the DOM, not answered).
+ */
+export async function removePushPrompt(page) {
+  return page.evaluate(() => {
+    const hit = [...document.querySelectorAll('body *')].find(
+      (el) => el.children.length === 0 && /would like to send you/i.test(el.textContent),
+    );
+    if (!hit) return false;
+    let box = hit;
+    while (box.parentElement && box.parentElement !== document.body) {
+      const pos = getComputedStyle(box).position;
+      if (pos === 'fixed' || pos === 'absolute') break;
+      box = box.parentElement;
+    }
+    box.remove();
+    return true;
+  });
+}

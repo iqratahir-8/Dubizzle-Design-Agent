@@ -44,7 +44,8 @@
     "capture:login": "node scripts/capture-session.mjs",
     "capture:account": "node scripts/capture-account.mjs",
     "build:gallery": "node scripts/build-screens-gallery.mjs",
-    "check:parity": "node scripts/check-parity.mjs"
+    "check:parity": "node scripts/check-parity.mjs",
+    "check:captures": "node scripts/check-captures.mjs"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

@@ -18,8 +18,9 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { absolutize } from './lib/absolutize.mjs';
+import { recordResponses, snapshotHtml } from './lib/snapshot.mjs';
 import { buildGallery } from './build-screens-gallery.mjs';
-import { ORIGIN, LAYOUTS, sleep, scrollThrough, settleFixedElements, captureAndDismissInterstitial } from './lib/render-helpers.mjs';
+import { ORIGIN, LAYOUTS, sleep, scrollThrough, settleFixedElements, captureAndDismissInterstitial, removePushPrompt } from './lib/render-helpers.mjs';
 import { readAccountIdentity, redactPage, sanitizeHtml, leaks } from './lib/redact.mjs';
 import { connectToSession, isSignedIn } from './capture-session.mjs';
 
@@ -78,6 +79,7 @@ for (const name of selected) {
     try {
       await page.setUserAgent(userAgent);
       await page.setViewport(viewport);
+      const recorder = recordResponses(page);
       const response = await page.goto(ORIGIN + ACCOUNT_SCREENS[name], { waitUntil: 'networkidle2', timeout: 90_000 });
       const status = response?.status() ?? 0;
       await sleep(2000);
@@ -89,8 +91,9 @@ for (const name of selected) {
       await scrollThrough(page);
       await page.waitForNetworkIdle({ idleTime: 800, timeout: 15_000 }).catch(() => {});
 
+      await removePushPrompt(page);
       const counts = await redactPage(page, identity);
-      const html = sanitizeHtml(absolutize(await page.content(), ORIGIN), identity);
+      const html = sanitizeHtml(absolutize(await snapshotHtml(page, recorder, { inlineImages: false, restoreScroll: false }), ORIGIN), identity);
       const leaked = leaks(html, identity);
       if (leaked.length) {
         results.push({ base, status: 'FAILED', detail: `refused to save — still contains: ${leaked.join(', ')}` });
