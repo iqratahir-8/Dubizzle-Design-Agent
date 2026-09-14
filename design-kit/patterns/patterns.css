@@ -309,8 +309,10 @@ ul {
 /* ── Mobile web components ─────────────────────────────────────────────────── */
 /* Measured on dubizzle.com.eg at 390px (docs/LIVE-MEASUREMENTS.md). Mirrors src/components/
    MobileHeader, BottomNav, SortSaveBar, QuickLinks, AppBanner — npm run check:parity.
-   Icons: .m-icon masks a live SVG (design-kit/icons/mobile) so it takes the text colour:
-   <span class="m-icon" style="--i:url(icons/mobile/nav-home.svg)"></span>                    */
+   Icons: .m-icon masks a live SVG (design-kit/icons/mobile) so it takes the text colour.
+   The url() inside --i resolves against THIS stylesheet (design-kit/patterns/), not the page —
+   so always write it relative to patterns.css, from any page:
+   <span class="m-icon" style="--i:url(../icons/mobile/nav-home.svg)"></span>                  */
 
 .m-icon {
   display: inline-block;
@@ -580,9 +582,7 @@ ul {
 
 .quick-links__grid {
   display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: repeat(2, auto);
-  grid-auto-columns: 8rem;
+  grid-template-columns: repeat(var(--columns, 6), 8rem); /* row by row, like live: columns = ceil(items / 2) */
   row-gap: 1.2rem;
   margin: 0;
   padding: 0 1.6rem;

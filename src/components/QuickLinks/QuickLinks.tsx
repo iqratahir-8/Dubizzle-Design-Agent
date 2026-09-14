@@ -40,7 +40,7 @@ export function QuickLinks({ title, tabs, activeTab, onTab, items, rows = 2, cla
         </div>
       )}
       <div className={styles.scroller}>
-        <ul className={styles.grid} style={{ gridTemplateRows: `repeat(${rows}, auto)` }}>
+        <ul className={styles.grid} style={{ ['--columns' as string]: Math.ceil(items.length / rows) }}>
           {items.map((item) => (
             <li key={item.label}>
               <a className={styles.link} href={item.href ?? '#'}>

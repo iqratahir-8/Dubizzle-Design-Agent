@@ -58,8 +58,7 @@
 
 .grid {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 8rem;
+  grid-template-columns: repeat(var(--columns, 6), 8rem); /* fills row by row, like live */
   row-gap: 1.2rem;
   margin: 0;
   padding: 0 1.6rem;
