@@ -27,7 +27,7 @@
 }
 
 .box.checked {
-  border: none;
+  border-color: var(--red-05);
   background: var(--red-05);
 }
 

@@ -11,3 +11,16 @@
 html {
   font-size: 10px;
 }
+
+/* Base text — must stay identical to the body rule in design-kit/patterns/patterns.css.
+   Without it, any React text that doesn't set its own font inherits the browser default
+   (Times, 10px from the root size), and Storybook stops matching the design kit.
+   npm run check:parity guards this. */
+body {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-primary);
+  font-family: var(--font-primary), sans-serif;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
