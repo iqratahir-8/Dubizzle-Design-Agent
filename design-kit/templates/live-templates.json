@@ -1,0 +1,25 @@
+{
+  "_purpose": "Page templates generated from live captures (scripts/build-live-templates.mjs). Each template is the frozen snapshot of a real dubizzle.com.eg page, so it renders pixel-for-pixel like production. Re-capture, then npm run build:templates.",
+  "_account": "Templates marked account come from redacted logged-in captures. They stay local (gitignored) like the captures themselves.",
+  "templates": {
+    "home": { "capture": "home", "label": "Home" },
+    "motors": { "capture": "motors", "label": "Motors landing" },
+    "properties": { "capture": "property", "label": "Properties landing" },
+    "car-finance": { "capture": "car-finance", "label": "Car finance" },
+    "search": { "capture": "cars-list", "label": "Search results — cars" },
+    "search-property": { "capture": "property-list", "label": "Search results — property" },
+    "search-mobiles": { "capture": "mobiles-list", "label": "Search results — mobile phones" },
+    "ad-detail": { "capture": "car-dpv", "label": "Ad detail — car" },
+    "ad-detail-property": { "capture": "property-dpv", "label": "Ad detail — property" },
+    "ad-detail-mobile-phone": { "capture": "mobile-dpv", "label": "Ad detail — mobile phone" },
+    "seller-page": { "capture": "seller-page", "label": "Seller / business profile" },
+    "login": { "capture": "login", "label": "Login or sign up (dialog)" },
+    "not-found": { "capture": "not-found", "label": "Not found (404)" },
+    "my-ads": { "capture": "my-ads", "label": "My ads", "account": true },
+    "chat": { "capture": "chat", "label": "Chats", "account": true },
+    "edit-profile": { "capture": "edit-profile", "label": "Edit profile", "account": true },
+    "settings-privacy": { "capture": "settings-privacy", "label": "Settings — privacy", "account": true },
+    "settings-notifications": { "capture": "settings-notifications", "label": "Settings — notifications", "account": true },
+    "packages": { "capture": "packages", "label": "Business packages", "account": true }
+  }
+}

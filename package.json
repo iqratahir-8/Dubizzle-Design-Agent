@@ -37,7 +37,7 @@
     "sync:icons": "node scripts/sync-icons.mjs",
     "check:design": "node scripts/check-design.mjs",
     "check:all": "node scripts/check-design.mjs design-kit/*.html design-kit/patterns/*.css design-kit/templates/*.html design-kit/templates/*/*.html src/components/*/*.module.css src/templates/*.module.css",
-    "build:templates": "node scripts/build-templates.mjs",
+    "build:templates": "node scripts/build-templates.mjs && node scripts/build-live-templates.mjs",
     "build:preview": "node scripts/build-preview.mjs",
     "capture:live": "node scripts/capture-live.mjs",
     "capture:rendered": "node scripts/capture-rendered.mjs",
@@ -46,7 +46,8 @@
     "build:gallery": "node scripts/build-screens-gallery.mjs",
     "check:parity": "node scripts/check-parity.mjs",
     "check:captures": "node scripts/check-captures.mjs",
-    "build:icons": "node scripts/build-component-icons.mjs"
+    "build:icons": "node scripts/build-component-icons.mjs",
+    "check:templates": "node scripts/check-captures.mjs --templates"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

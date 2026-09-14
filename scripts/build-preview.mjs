@@ -205,7 +205,7 @@ const page = `<!doctype html>
       <h1>dubizzle Egypt Design System</h1>
       <p class="note">
         Extracted from the production <code>dubizzle-maple</code> monorepo — ${tokens.tokenCount.toLocaleString()} tokens,
-        ${icons.total} icons, and 23 page templates. Red-primary on white, dense and utilitarian.
+        ${icons.total} icons, and page templates captured from the live site. Red-primary on white, dense and utilitarian.
         Everything on this page is rendered from the same stylesheets the templates use.
       </p>
       <div class="demo">
@@ -625,7 +625,7 @@ ${sampleIcons
     <section id="templates">
       <h2>Page templates</h2>
       <p class="note">
-        23 templates across 12 page types, desktop and mobile. Copy one and swap the content —
+        Templates are frozen captures of real dubizzle.com.eg pages, desktop and mobile, so they render like production. Copy one and swap the content —
         never start from a blank page.
       </p>
       <div class="frame-grid">

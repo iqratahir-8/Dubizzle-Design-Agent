@@ -83,6 +83,8 @@ human-designed, with no "AI slop", and that can be regenerated when a new releas
 | `npm run build:gallery` | Rebuilds `design-kit/reference/live/gallery.html` (linked from the kit as "Live screens") |
 | `npm run check:parity` | Storybook vs kit computed-style comparison |
 | `npm run build:icons` | React icon components generated from design-kit SVGs |
+| `npm run build:templates` | Hand-built templates, then live-capture templates + index |
+| `npm run check:templates` | Pixel-diff every live template against its live screenshot |
 | `npm run check:captures [-- names]` | Fidelity: re-renders each saved HTML at its layout and pixel-diffs it against the live screenshot (`screens/_check/`) |
 
 **Captures are frozen snapshots** (`scripts/lib/snapshot.mjs`): applied CSSOM rules, inlined fonts
@@ -137,6 +139,13 @@ LPVs), desktop + mobile; quick vs selected chips; pixel-perfect htmls"):**
   `docs/LIVE-MEASUREMENTS.md`. `check:parity` 75/75; side-by-side vs live screenshots verified.
 - Tokens: `--featured-gradient` / `--elite-gradient` now the live gradients; added
   `--overlay-image-fade`, `--radius-2xl`. Elite badge text is charcoal (fixes the readability issue).
+- **Templates are now live captures** (user: "make templates pixel perfect so I can work on my feature"):
+  `scripts/build-live-templates.mjs` + `design-kit/templates/live-templates.json` turn captures into
+  templates (shared `_live-css/` + `_live/assets/`, small editable HTML). `npm run check:templates`:
+  35/38 within 0–1.4% (seller-page mobile 3.8% = text antialiasing; my-ads needs account recapture).
+  New captures: seller-page (/en/companies/…), not-found (404), login (home with dialog open,
+  viewport-size screenshot). Hand-built `_pages` for replaced pages were retired; post-ad, favourites,
+  payment, agency-portal remain hand-built until captured. Account templates are gitignored (local).
 - Still open: My Ads (4–5% diff) + all account screens need recapture with the new snapshot once the
   capture window is signed in again (`npm run capture:login`, then `npm run capture:account`).
   Templates in `design-kit/templates` still use older card markup (a compatibility block in

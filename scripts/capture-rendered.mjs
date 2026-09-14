@@ -40,6 +40,12 @@ const CHROME = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Conte
 const manifest = JSON.parse(readFileSync(join(ROOT, 'design-kit/reference/capture-manifest.json'), 'utf8'));
 const urls = Object.assign({}, ...Object.values(manifest.tiers));
 
+/** Pages that legitimately aren't HTTP 200, and pages captured with a dialog opened. */
+const EXPECTED_STATUS = { 'not-found': 404 };
+const OPEN_DIALOG = { login: /^(Login or Signup|Login or Sign up|Login|Log in)$/i };
+/** Short pages whose text-length sanity check needs a lower bar. */
+const MIN_TEXT = { 'not-found': 100, 'seller-page': 300 };
+
 const args = process.argv.slice(2);
 const layoutArg = args.find((a) => a.startsWith('--layout='))?.split('=')[1];
 const layouts = layoutArg ? [layoutArg] : Object.keys(LAYOUTS);
@@ -80,7 +86,7 @@ try {
 
         const response = await page.goto(ORIGIN + urls[name], { waitUntil: 'networkidle2', timeout: 90_000 });
         const status = response?.status() ?? 0;
-        if (status !== 200 || /\/notfound\b/.test(page.url())) {
+        if (status !== (EXPECTED_STATUS[name] ?? 200) || (!EXPECTED_STATUS[name] && /\/notfound\b/.test(page.url()))) {
           results.push({ name, layout, status: 'FAILED', detail: `HTTP ${status} at ${page.url()}` });
           continue;
         }
@@ -89,23 +95,41 @@ try {
         const hadPrompt =
           layout === 'mobile' && (await captureAndDismissInterstitial(page, join(SCREENS, `${base}.app-prompt.png`)));
 
-        await scrollThrough(page);
-        await page.waitForNetworkIdle({ idleTime: 800, timeout: 20_000 }).catch(() => {});
+        if (OPEN_DIALOG[name]) {
+          const opened = await page.evaluate((source) => {
+            const re = new RegExp(source, 'i');
+            const target = [...document.querySelectorAll('a, button, [role="button"], span, div')].find(
+              (el) => (re.test(el.textContent.trim()) || re.test(el.getAttribute('aria-label') || '')) && el.getBoundingClientRect().height > 0 && el.children.length <= 2,
+            );
+            target?.click();
+            return Boolean(target);
+          }, OPEN_DIALOG[name].source);
+          if (!opened) {
+            results.push({ name, layout, status: 'FAILED', detail: 'dialog trigger not found' });
+            continue;
+          }
+          await sleep(2500);
+          await page.waitForNetworkIdle({ idleTime: 800, timeout: 20_000 }).catch(() => {});
+        } else {
+          await scrollThrough(page);
+          await page.waitForNetworkIdle({ idleTime: 800, timeout: 20_000 }).catch(() => {});
+        }
 
         const facts = await page.evaluate(() => ({
           h1: document.querySelector('h1')?.textContent.trim() ?? null,
           text: document.body.innerText.length,
           height: document.documentElement.scrollHeight,
         }));
-        if (facts.text < 800) {
+        if (facts.text < (MIN_TEXT[name] ?? 800)) {
           results.push({ name, layout, status: 'FAILED', detail: `only ${facts.text} chars of visible text` });
           continue;
         }
 
         await removePushPrompt(page);
         writeFileSync(join(OUT, `${base}.html`), absolutize(await snapshotHtml(page, recorder), ORIGIN));
-        const settled = await settleFixedElements(page);
-        await page.screenshot({ path: join(SCREENS, `${base}.png`), fullPage: true });
+        // Dialog screens are one viewport: a full-page shot re-lays the fixed dialog out of view.
+        const settled = OPEN_DIALOG[name] ? { hidden: 0, toBottom: 0, pinned: 0 } : await settleFixedElements(page);
+        await page.screenshot({ path: join(SCREENS, `${base}.png`), fullPage: !OPEN_DIALOG[name] });
 
         results.push({
           name,

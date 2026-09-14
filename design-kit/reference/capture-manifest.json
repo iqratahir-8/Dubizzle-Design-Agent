@@ -4,7 +4,8 @@
     "URLs were verified against the live site on 2026-09-11, not taken from the original checklist. Three of its URLs were wrong: /en/properties/residential-for-sale/ 404s, /en/mobile-phones-tablets/mobile-phones/ redirect-loops to /en/notfound, and 'Motors landing' repeated the cars-listing URL — the real landing is /en/motors/.",
     "Filters were confirmed to actually apply by comparing ad counts (base 12,854; new_used_eq_1 2,431; new_used_eq_2 10,422; cairo 7,465; cairo + price 2,696).",
     "property-villas replaces the checklist's 'property-apartments': the base property listing is already the apartments category, so a second type is the informative filter state.",
-    "Ad pages expire. If a DPV capture 404s, pick a fresh /en/ad/ link from the matching listing page and update it here."
+    "Ad pages expire. If a DPV capture 404s, pick a fresh /en/ad/ link from the matching listing page and update it here.",
+    "Tier 'templates' fills page templates that had no capture: 'login' is the home page with the Login or Signup dialog opened (login has no route of its own); 'not-found' is expected to return HTTP 404; 'seller-page' is a business profile (/en/companies/…)."
   ],
   "tiers": {
     "1": {
@@ -26,6 +27,11 @@
       "property-villas": "/en/properties/villas-for-sale/",
       "property-newcairo": "/en/properties/apartments-duplex-for-sale/new-cairo/",
       "mobiles-apple": "/en/mobile-phones-tablets-accessories-numbers/mobile-phones/q-iphone/"
+    },
+    "templates": {
+      "seller-page": "/en/companies/Smart-Car-6610",
+      "not-found": "/en/this-page-does-not-exist-404/",
+      "login": "/en/"
     }
   }
 }

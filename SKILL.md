@@ -19,7 +19,7 @@ Everything here is extracted from the production `dubizzle-maple` monorepo, not 
 | `design-kit/tokens/tokens.css` | 1,269 production tokens + a small stable semantic API (`--color-primary`, `--space-4`, `--radius-lg`…). Link this in any HTML you produce. |
 | `design-kit/tokens/tokens.json` | Same values, machine-readable. |
 | `design-kit/patterns/patterns.css` | Header, filter rail, results grid, ad cards, contact CTAs, footer, bottom nav. The shared vocabulary. |
-| `design-kit/templates/` | **23 page templates.** Open `index.html` for the gallery. Covers home, search, ad detail, post-ad, my-ads, chat, favourites, seller/agency page, agency portal, login, payment, and empty/error states — desktop and mobile. |
+| `design-kit/templates/` | **Page templates generated from live captures** (`live-templates.json`, `npm run build:templates`) — they render like production (`npm run check:templates` pixel-diffs them). Home, landing pages, search results (cars/property/mobiles), ad detail (car/property/phone), seller page, login, 404; account pages locally. Open `index.html`. Pages without a capture yet (post-ad, favourites, payment, agency portal) are hand-built. |
 | `design-kit/templates/_pages/` | Template sources. Edit these, then `npm run build:templates`. |
 | `design-kit/icons/` | 587 real icons in 13 folders. `index.html` is a browsable contact sheet; `icons.json` lists every one. |
 | `design-kit/content/fixtures.json` | Real EG categories (EN + Arabic), locations, compounds, and listings written like real seller ads. |

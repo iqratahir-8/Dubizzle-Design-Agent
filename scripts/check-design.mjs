@@ -259,7 +259,10 @@ for (const file of files) {
     console.error(`  skipped (not found): ${file}`);
     continue;
   }
-  const lines = readFileSync(file, 'utf8').split('\n');
+  const text = readFileSync(file, 'utf8');
+  // Live templates are frozen production pages, not authored code — the rules don't apply.
+  if (text.slice(0, 1200).includes('LIVE TEMPLATE')) continue;
+  const lines = text.split('\n');
   const findings = [];
 
   /* `mask:` values routinely wrap across several lines, and the gradients inside them

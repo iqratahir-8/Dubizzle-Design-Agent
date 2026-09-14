@@ -18,3 +18,18 @@ design-kit/reference/live/
 
 # throwaway measurement scripts
 scripts/.tmp-*
+
+# Live templates built from redacted logged-in captures stay local, like the captures
+design-kit/templates/desktop/my-ads.html
+design-kit/templates/mobile/my-ads.html
+design-kit/templates/desktop/chat.html
+design-kit/templates/mobile/chat.html
+design-kit/templates/desktop/edit-profile.html
+design-kit/templates/mobile/edit-profile.html
+design-kit/templates/desktop/settings-privacy.html
+design-kit/templates/mobile/settings-privacy.html
+design-kit/templates/desktop/settings-notifications.html
+design-kit/templates/mobile/settings-notifications.html
+design-kit/templates/desktop/packages.html
+design-kit/templates/mobile/packages.html
+design-kit/templates/_live/fidelity.json

@@ -1,0 +1,71 @@
+._1230fafb, .c9525a5c { pointer-events: auto; width: 100%; }
+@media (max-width: 768px) {
+  ._0a673d69 { display: none; }
+}
+._0a673d69 { gap: 0.8rem; pointer-events: none; z-index: 1; }
+._0840ac47 { --contact-btn-icon-margin: 0; --btn-text-color: #23262a; --btn-bg-color: #fbe0e0; --btn-border-radius: 0.6rem; --btn-height: 4rem; --btn-padding: 0 1.6rem; --btn-hover-bg-color: #f6b3b3; --btn-active-bg-color: var(--btn-hover-bg-color); align-items: center; border: 0px; cursor: pointer; display: flex; gap: 0.8rem; justify-content: center; text-align: center; }
+._0840ac47 .b2c39531, ._0840ac47 svg { --btn-icon-color: var(--contact-btn-icon-color,#fff); --btn-icon-margin: var(--contact-btn-icon-margin,0.8rem); --btn-icon-size: var(--contact-btn-icon-size,2rem); flex: 0 0 auto; }
+._85aaf59d { --contact-btn-icon-margin: 0; --btn-bg-color: #fbe0e0; --btn-border-radius: 0.6rem; --btn-height: 4rem; --btn-padding: 0 1.6rem; --btn-hover-bg-color: #f6b3b3; align-items: center; cursor: pointer; display: flex; gap: 0.8rem; justify-content: center; text-align: center; }
+._85aaf59d .b2c39531, ._85aaf59d svg { --btn-icon-color: var(--contact-btn-icon-color,#fff); --btn-icon-margin: var(--contact-btn-icon-margin,0.8rem); --btn-icon-size: var(--contact-btn-icon-size,2rem); flex: 0 0 auto; }
+._85aaf59d { min-width: 11.4rem; --btn-text-color: #23262a; --btn-bg-color: #e8f7e8; --btn-hover-bg-color: #c7ebc5; --btn-active-bg-color: var(--btn-hover-bg-color); border: 0px; }
+.b59f469c { --btn-bg-color: #e7f1fd; --btn-icon-color: #3a88ef; --btn-hover-bg-color: #c4dbfa; --btn-active-bg-color: var(--btn-hover-bg-color); }
+.ab1c9e38 { height: 4rem; pointer-events: auto; width: 20.4rem; z-index: 1; }
+._78d27f32 { width: 100%; }
+.e9d75405 svg { --contact-btn-icon-margin: 0; }
+._1230fafb.e9d75405, ._1230fafb.e9d75405 ._85aaf59d { min-width: 0px; }
+._4bc425b9 { flex: 1 1 0%; position: relative; width: 100%; }
+._6a9aea2e { height: 100%; overflow: auto; position: absolute; width: 100%; }
+.e8f7216a { background-color: rgb(255, 255, 255); border-bottom: 0.1rem solid rgba(0, 47, 52, 0.2); flex-shrink: 0; height: 6.4rem; width: 100%; }
+.ea8ba351 { cursor: pointer; height: 100%; width: 4rem; }
+._022ab855 { height: 2rem; width: 2rem; fill: rgb(8, 46, 51); }
+html[dir="rtl"] ._022ab855 { transform: rotate(180deg); }
+.bb99b67f { flex-shrink: 0; height: 4rem; margin-right: 0.8rem; position: relative; width: 4rem; }
+.c956c660 { align-items: center; height: 100%; padding: 0px 0.8rem; }
+._115c7c48 { margin: 0.2rem 0.4rem; }
+._115c7c48, .b5517a0b { color: rgb(0, 0, 0); cursor: pointer; height: 100%; width: 2.5rem; }
+.b5517a0b { margin: 0.6rem 0.4rem 0.2rem; }
+.d0a2d1d2 { height: 6.4rem; }
+.d833b9d2 { cursor: pointer; height: 100%; width: 4rem; }
+.e23591de { height: 2rem; width: 2rem; fill: rgb(8, 46, 51); }
+html[dir="rtl"] .e23591de { transform: rotate(180deg); }
+._8db46e8d { flex-shrink: 0; height: 4rem; margin-right: 0.8rem; position: relative; width: 4rem; }
+._65274113 { align-items: center; height: 100%; padding: 0px 0.8rem; }
+._03e57cd3 { margin: 0.2rem 0.4rem; }
+._03e57cd3, ._1bc96e0f { color: rgb(0, 0, 0); cursor: pointer; height: 100%; width: 2.5rem; }
+._1bc96e0f { margin: 0.6rem 0.4rem 0.2rem; }
+.d0a2d1d2 { background-color: rgb(255, 255, 255); border-bottom: 0.1rem solid rgba(0, 47, 52, 0.2); flex-shrink: 0; height: 7.3rem; padding: 0px 2.4rem; width: 100%; }
+@media (max-width: 1280px) {
+  .d0a2d1d2 { padding: 0px 1.6rem; }
+}
+._96417ec4 { margin-left: 1.6rem; }
+._32f2457d { border-radius: 4px; flex-shrink: 0; height: 4rem; margin-right: 1.6rem; width: 4rem; }
+@media (max-width: 1280px) {
+  ._32f2457d { margin-right: 1.2rem; }
+}
+._1b507167 { height: 13.7rem; }
+.dab7f056 { background-color: rgb(255, 255, 255); }
+._8adea9b7 { overflow-x: auto; }
+._8adea9b7, .d78390b4 { height: 100%; }
+html[dir="rtl"] .d78390b4 { direction: rtl; }
+.b70489eb { background-color: rgb(255, 255, 255); position: sticky; top: 0px; z-index: 1; }
+._17ba5d16 { border-bottom: 0.2rem solid rgba(0, 47, 52, 0.2); flex: 1 1 0%; padding: 1rem 0px; }
+._17ba5d16.c6de71a6 { border-color: rgb(224, 0, 0); }
+._10a9e749 { height: 100%; }
+._449f81df { align-items: center; background-color: rgb(240, 240, 240); color: rgb(35, 38, 42); column-gap: 1.6rem; display: flex; font-size: 2rem; font-weight: 700; height: 5.6rem; line-height: 1; padding: 2.4rem 1.6rem; }
+._67ff40d6 { font-size: 2rem; font-weight: 400; line-height: 3rem; }
+.ad240383 { border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: rgb(58, 136, 239); font-size: 1.6rem; font-weight: 700; height: 10rem; text-align: center; }
+.cfd286fa { position: relative; }
+.a7520da5 { width: 100%; }
+.e8cb8f32 { --contact-btn-icon-margin: 0; align-items: center; background-color: var(--contact-btn-bg-color,#fbe0e0); border: 0px; border-radius: 0.6rem; color: var(--contact-btn-color,#23262a); cursor: pointer; display: flex; height: 4rem; justify-content: center; max-height: 100%; padding: 0px 1.6rem; text-align: center; }
+.e8cb8f32:hover { --contact-btn-bg-color: var(
+            --contact-btn-hover-bg-color,#f6b3b3
+        ); --contact-btn-color: var(--contact-btn-hover-color,currentColor); }
+.e8cb8f32 ._9cf1237b, .e8cb8f32 svg { --btn-icon-color: var(--contact-btn-icon-color,#fff); --btn-icon-margin: var(--contact-btn-icon-margin,0.8rem); --btn-icon-size: var(--contact-btn-icon-size,2rem); flex: 0 0 auto; }
+.e8cb8f32 { border-radius: 0.4rem; gap: 0.8rem; height: auto; padding-bottom: 1rem; padding-top: 1rem; background-color: rgb(218, 219, 219) !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; border-image: none !important; cursor: not-allowed !important; }
+@media (max-width: 950px) {
+  .e8cb8f32 { width: 100%; }
+}
+._03681718 { font-size: 1.4rem; font-weight: 700; color: rgb(146, 147, 149) !important; }
+._5f77f16c { padding-bottom: 1.2rem; padding-top: 1.2rem; width: 100%; }
+._993e0186 { background: rgb(255, 255, 255); border-top: 0.1rem solid rgb(224, 224, 224); inset-inline: 0px; bottom: 0px; position: fixed; transform: translateZ(0px); z-index: 2; }
+._2752591f { column-gap: 0.8rem; padding: 1.2rem 1.6rem; }
