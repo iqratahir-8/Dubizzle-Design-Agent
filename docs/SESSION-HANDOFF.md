@@ -1,3 +1,5 @@
+> **Superseded — read [PROGRESS.md](../PROGRESS.md) for the current state.** Kept for history.
+
 # Session Handoff — Dubizzle Egypt Design System
 
 A complete record of what was built in this working session and how to resume,

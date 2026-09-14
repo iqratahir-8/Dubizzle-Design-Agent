@@ -1,3 +1,5 @@
+> **Superseded — read [PROGRESS.md](PROGRESS.md) for the current state.** Kept for history.
+
 # Handoff
 
 State of this repo and what to do next. Read this first if you're picking it up in a new session or on another account.
