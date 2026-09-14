@@ -152,8 +152,12 @@ const SEMANTIC = {
     '--overlay-light': 'rgba(255, 255, 255, 0.9)',
     '--overlay-dark': 'rgba(35, 38, 42, 0.75)',
     '--featured-accent': 'var(--featured-ad-accent-color)',
-    '--featured-gradient': 'var(--featured-ad-accent-bgcolor)',
-    '--elite-gradient': 'var(--elite-tag-bg)',
+    // Badge gradients as production renders them (docs/LIVE-MEASUREMENTS.md) — the monorepo's
+    // --featured-ad-accent-bgcolor / --elite-tag-bg are angled variants that no longer ship.
+    '--featured-gradient': 'linear-gradient(90deg, var(--blue-08), var(--blue-09))',
+    '--elite-gradient': 'linear-gradient(90deg, var(--yellow-03), var(--yellow-06))',
+    // Bottom fade behind a card photo's slider dots.
+    '--overlay-image-fade': 'linear-gradient(transparent, rgba(0, 0, 0, 0.4))',
     '--pro-gradient': 'var(--pro-badge-background)',
   },
   typography: {
@@ -196,6 +200,8 @@ const SEMANTIC = {
     '--radius-md': 'var(--input-border-radius)',
     '--radius-lg': 'var(--ad-card-border-radius)',
     '--radius-xl': '1.2rem',
+    // Highlighted list card (Car / Property of the Week slot) only.
+    '--radius-2xl': '1.6rem',
     '--radius-pill': 'var(--pill-border-radius)',
     '--radius-full': '9999px',
   },

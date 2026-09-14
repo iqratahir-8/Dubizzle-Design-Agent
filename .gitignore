@@ -15,3 +15,6 @@ design-kit/reference/live/
 
 # Transient skill-eval artifacts
 .claude/skills/token-check-workspace/
+
+# throwaway measurement scripts
+scripts/.tmp-*

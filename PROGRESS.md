@@ -82,6 +82,7 @@ human-designed, with no "AI slop", and that can be regenerated when a new releas
 | `npm run capture:account` | Logged-in, read-only: my-ads, chat, edit-profile, settings-privacy, settings-notifications, packages — with two-layer redaction; refuses if signed out or the name can't be read |
 | `npm run build:gallery` | Rebuilds `design-kit/reference/live/gallery.html` (linked from the kit as "Live screens") |
 | `npm run check:parity` | Storybook vs kit computed-style comparison |
+| `npm run build:icons` | React icon components generated from design-kit SVGs |
 | `npm run check:captures [-- names]` | Fidelity: re-renders each saved HTML at its layout and pixel-diffs it against the live screenshot (`screens/_check/`) |
 
 **Captures are frozen snapshots** (`scripts/lib/snapshot.mjs`): applied CSSOM rules, inlined fonts
@@ -123,15 +124,23 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
 
 ## 6. Next up
 
-**In progress (2026-09-14):** user reported inconsistent captures and asked for pixel-perfect
-HTML for all desktop + mobile screens, then updated component libraries: **grid ad card**
-(home, landing pages, DPV bottom widget) and **list ad card** (search listing pages), desktop +
-mobile, plus **quick chips vs selected chips** (different styles on live). Steps:
-a. ✅ snapshot + `check:captures` built; home desktop now 0% pixel diff.
-b. ⏳ recapture all 16 public pages × 2 layouts with snapshots, run `check:captures` to 0 broken.
-c. Account screens: capture window is signed out — ask the user to sign in, then `npm run capture:account`.
-d. Measure grid card, list card, quick/selected chips on the new captures; update React
-   (`AdCard` grid + list, `Chip` quick/selected) and kit patterns; add parity pairs; stories.
+**Done 2026-09-14 — capture fidelity + ad cards/chips (user request: "check all screens fetched
+properly… update component libraries: grid cards (home, LPV, DPV widget) and list cards (search
+LPVs), desktop + mobile; quick vs selected chips; pixel-perfect htmls"):**
+- All 16 public pages × desktop/mobile recaptured as frozen snapshots; `npm run check:captures`:
+  public pages 0–1.1% pixel diff. Motors needed the snapshot built on a *cloned* DOM (its app strips
+  foreign styles) and Typekit fonts rebuilt from font responses.
+- React: `AdCard` (grid, `device` desktop|mobile), new `AdListCard` (list; property + car layouts,
+  highlighted slot), `Chip` variants `quick` / `filter` / `segment`; icons generated from kit SVGs
+  (`npm run build:icons`). Kit: `.ad-card(--mobile)`, `.ad-list-card(--mobile|--highlighted)`,
+  `.chip(--mobile|--filter|--segment, .is-selected)`, `.attr-chips--stacked`. Measurements in
+  `docs/LIVE-MEASUREMENTS.md`. `check:parity` 75/75; side-by-side vs live screenshots verified.
+- Tokens: `--featured-gradient` / `--elite-gradient` now the live gradients; added
+  `--overlay-image-fade`, `--radius-2xl`. Elite badge text is charcoal (fixes the readability issue).
+- Still open: My Ads (4–5% diff) + all account screens need recapture with the new snapshot once the
+  capture window is signed in again (`npm run capture:login`, then `npm run capture:account`).
+  Templates in `design-kit/templates` still use older card markup (a compatibility block in
+  patterns.css keeps them rendering) — rebuild them from the captures.
 
 1. **Post an Ad flow capture** (desktop + mobile): category → subcategory → details form →
    photos → review, typing sample data, **never publishing**. Then upselling via Sell faster /

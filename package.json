@@ -32,7 +32,7 @@
     "build:storybook": "storybook build",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit",
-    "sync": "npm run sync:tokens && npm run sync:icons && npm run build:templates && npm run build:preview",
+    "sync": "npm run sync:tokens && npm run sync:icons && npm run build:icons && npm run build:templates && npm run build:preview",
     "sync:tokens": "node scripts/sync-tokens.mjs",
     "sync:icons": "node scripts/sync-icons.mjs",
     "check:design": "node scripts/check-design.mjs",
@@ -45,7 +45,8 @@
     "capture:account": "node scripts/capture-account.mjs",
     "build:gallery": "node scripts/build-screens-gallery.mjs",
     "check:parity": "node scripts/check-parity.mjs",
-    "check:captures": "node scripts/check-captures.mjs"
+    "check:captures": "node scripts/check-captures.mjs",
+    "build:icons": "node scripts/build-component-icons.mjs"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

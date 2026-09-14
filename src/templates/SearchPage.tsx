@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AdCard } from '../components/AdCard';
+import { AdListCard } from '../components/AdListCard';
 import { Chip } from '../components/Chip';
 import { Checkbox } from '../components/Checkbox';
 import { Footer } from '../components/Footer';
@@ -116,7 +116,7 @@ export function SearchPage({
             <ul className={styles.resultsGrid}>
               {listings.map((listing) => (
                 <li key={listing.title}>
-                  <AdCard {...listing} />
+                  <AdListCard {...listing} />
                 </li>
               ))}
             </ul>

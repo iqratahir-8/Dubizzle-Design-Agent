@@ -19,12 +19,12 @@
   .doc { padding-block: var(--space-8) var(--space-10); min-width: 0; }
   .doc > section { padding-block: var(--space-6); border-top: 0.1rem solid var(--border-default); }
   .doc > section:first-of-type { border-top: none; }
-  .doc h1 { font-size: 3.2rem; margin: 0 0 var(--space-2); }
-  .doc h2 { font-size: var(--text-2xl); margin: 0 0 var(--space-2); }
+  :where(.doc) h1 { font-size: 3.2rem; margin: 0 0 var(--space-2); }
+  :where(.doc) h2 { font-size: var(--text-2xl); margin: 0 0 var(--space-2); }
   /* Scoped to section-level headings only — an unscoped .doc h3 outranks .ad-card__title
      and silently misrepresents the component it is supposed to be demonstrating. */
   .doc > section > h3, .do-dont > div > h3 { font-size: var(--text-md); margin: var(--space-6) 0 var(--space-3); color: var(--text-secondary); }
-  .doc p.note { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 var(--space-4); max-width: 70rem; }
+  :where(.doc) p.note { color: var(--text-secondary); font-size: var(--text-sm); margin: 0 0 var(--space-4); max-width: 70rem; }
   .demo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding: var(--space-4); border: 0.1rem solid var(--border-default); border-radius: var(--radius-lg); background: var(--surface-page); }
   .demo--stack { flex-direction: column; align-items: stretch; }
   .demo--muted { background: var(--surface-subtle); }
@@ -706,13 +706,29 @@
 
     <section id="tags">
       <h2>Chips &amp; pills</h2>
-      <p class="note">Chips are interactive filters. Pills are read-only status.</p>
-      <h3>Filter chips</h3>
-      <div class="demo">
-        <span class="chip chip--active">New Cairo</span>
-        <span class="chip">Maadi</span>
-        <span class="chip">Zamalek</span>
-        <span class="chip">6th of October</span>
+      <p class="note">
+        Chips are interactive filters; pills are read-only status. Listing pages use three chip styles
+        (measured on dubizzle.com.eg — docs/LIVE-MEASUREMENTS.md). React: <code>&lt;Chip variant=…&gt;</code>.
+      </p>
+      <h3>Quick filters — <code>.chip</code> · desktop / <code>.chip--mobile</code></h3>
+      <div class="demo" data-parity="quick-desktop">
+        <button class="chip" type="button">Mercedes-Benz</button><button class="chip" type="button">Hyundai</button><button class="chip" type="button">Fiat</button><button class="chip" type="button">BMW</button><button class="chip" type="button">Kia</button>
+      </div>
+      <div class="demo" data-parity="quick-mobile">
+        <button class="chip chip--mobile" type="button">Mercedes-Benz</button><button class="chip chip--mobile" type="button">Hyundai</button><button class="chip chip--mobile" type="button">Fiat</button><button class="chip chip--mobile" type="button">BMW</button><button class="chip chip--mobile" type="button">Kia</button>
+      </div>
+      <h3>Filter bar (mobile) — <code>.chip--filter</code>, <code>.is-selected</code> = filter applied</h3>
+      <div class="demo" data-parity="filter-bar">
+        <button class="chip chip--filter is-selected" type="button" aria-label="Filters"><img src="icons/action/filters.svg" alt="" width="16" height="16"><span class="chip__count">2</span></button>
+        <button class="chip chip--filter is-selected" type="button">Cars for Sale<img class="chip__caret" src="icons/navigation/chevron-down.svg" alt=""></button>
+        <button class="chip chip--filter" type="button">Brand and Model<img class="chip__caret" src="icons/navigation/chevron-down.svg" alt=""></button>
+        <button class="chip chip--filter" type="button">Price<img class="chip__caret" src="icons/navigation/chevron-down.svg" alt=""></button>
+      </div>
+      <h3>Segment — <code>.chip--segment</code>, <code>.is-selected</code> = blue</h3>
+      <div class="demo" data-parity="segment">
+        <button class="chip chip--segment is-selected" type="button">All</button>
+        <button class="chip chip--segment" type="button">New</button>
+        <button class="chip chip--segment" type="button">Used</button>
       </div>
       <h3>Status pills</h3>
       <div class="demo">
@@ -727,113 +743,149 @@
     <section id="cards">
       <h2>Ad cards</h2>
       <p class="note">
-        The hierarchy is price → title → specs → location/time, and it must stay that way.
-        Featured and Elite are overlay badges on the image, not pills in the body.
+        Two card types, each in desktop and mobile web sizes — measured on dubizzle.com.eg
+        (docs/LIVE-MEASUREMENTS.md). <strong>Grid</strong> (<code>.ad-card</code> / React
+        <code>AdCard</code>): home and landing-page rails and the similar-ads widget on ad pages —
+        flat, red price. <strong>List</strong> (<code>.ad-list-card</code> / React
+        <code>AdListCard</code>): search results — image beside the details on desktop, stacked on
+        mobile, charcoal price, attribute chips and contact buttons.
       </p>
-      <div class="demo demo--muted">
-        <div style="width:28rem">
-          <article class="ad-card">
-            <div class="ad-card__media media-placeholder">
-              <span class="ad-card__badge ad-card__badge--featured">Featured</span>
-              <button class="ad-card__fav" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
-              <span class="ad-card__photos"><img src="icons/media/image-count.svg" alt=""> 12</span>
-            </div>
+      <h3>Grid — desktop</h3>
+      <div class="demo">
+        <div style="width:32rem"><article class="ad-card" data-parity="grid-desktop">
+            <div class="ad-card__media media-placeholder"></div>
             <div class="ad-card__body">
-              <p class="ad-card__price">EGP 8,500,000</p>
-              <h3 class="ad-card__title">Apartment for sale in Zamalek 200m fully finished</h3>
-              <p class="ad-card__specs"><span>3 Beds</span> · <span>2 Baths</span> · <span>200 m²</span></p>
-              <p class="ad-card__meta"><img src="icons/location/location-filled.svg" alt=""> Zamalek, Cairo</p>
-              <p class="ad-card__time">2 hours ago</p>
+              <div class="ad-card__price-row"><span class="ad-card__price">EGP 22,130,000</span><span class="ad-card__dp">Down Payment <strong>EGP 1,106,500</strong></span></div>
+              <p class="ad-card__title">Own Your Villa Sea View in Hacienda Heneish</p>
+              <button class="ad-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
+              <div class="ad-card__specs"><span class="ad-card__type">Stand Alone Villa</span><span>4 beds</span><span>5 baths</span><span>220 m²</span></div>
+              <div class="ad-card__meta"><span class="ad-card__location">Hacienda Heneish, North Coast</span><span class="ad-card__time">1 minute ago</span></div>
             </div>
-          </article>
-        </div>
-        <div style="width:28rem">
-          <article class="ad-card">
-            <div class="ad-card__media media-placeholder">
-              <span class="ad-card__badge ad-card__badge--elite">Elite</span>
-              <button class="ad-card__fav" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
-              <span class="ad-card__photos"><img src="icons/media/image-count.svg" alt=""> 28</span>
-            </div>
+          </article></div>
+        <div style="width:32rem"><article class="ad-card">
+            <div class="ad-card__media media-placeholder"></div>
             <div class="ad-card__body">
-              <p class="ad-card__price">EGP 32,000,000</p>
-              <h3 class="ad-card__title">Villa for sale Mivida compound - prime location</h3>
-              <p class="ad-card__specs"><span>5 Beds</span> · <span>4 Baths</span> · <span>420 m²</span></p>
-              <p class="ad-card__meta"><img src="icons/location/location-filled.svg" alt=""> Mivida, New Cairo</p>
-              <p class="ad-card__time">1 day ago</p>
+              <div class="ad-card__price-row"><span class="ad-card__price">EGP 2,050,000</span><span class="ad-card__note">Negotiable</span></div>
+              <p class="ad-card__title">Hyundai Tucson 2025</p>
+              <button class="ad-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
+              <div class="ad-card__specs"><span>4000 km</span><span>2025</span></div>
+              <div class="ad-card__meta"><span class="ad-card__location">Nasr City, Cairo</span><span class="ad-card__time">3 minutes ago</span></div>
             </div>
-          </article>
-        </div>
+          </article></div>
+        <div style="width:32rem"><article class="ad-card" id="featured-grid-card">
+            <div class="ad-card__media media-placeholder"><span class="ad-card__badge ad-card__badge--featured">Featured</span></div>
+            <div class="ad-card__body">
+              <div class="ad-card__price-row"><span class="ad-card__price">EGP 22,130,000</span><span class="ad-card__dp">Down Payment <strong>EGP 1,106,500</strong></span></div>
+              <p class="ad-card__title">Own Your Villa Sea View in Hacienda Heneish</p>
+              <button class="ad-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
+              <div class="ad-card__specs"><span class="ad-card__type">Stand Alone Villa</span><span>4 beds</span><span>5 baths</span><span>220 m²</span></div>
+              <div class="ad-card__meta"><span class="ad-card__location">Hacienda Heneish, North Coast</span><span class="ad-card__time">1 minute ago</span></div>
+            </div>
+          </article></div>
       </div>
-      <h3>List variant — three category components</h3>
-      <p class="note">
-        The list card shares one shell (<code>.ad-list-card</code>) but the body differs by
-        vertical. <strong>Cars</strong>: price + model chip, a title, then a year · km ·
-        transmission · fuel spec line. <strong>Property</strong>: no free-text title — the body
-        leads with the property type and beds · baths · area, then attribute chips.
-        <strong>Goods</strong>: price, title, a single condition attribute — no structured specs.
-        All three keep the price charcoal and the contact CTAs at the bottom.
-      </p>
-      <div class="demo demo--muted demo--stack">
-
-        <!-- Cars -->
-        <article class="ad-list-card">
-          <div class="ad-list-card__media media-placeholder media-placeholder--sm"></div>
+      <h3>Grid — mobile <code>.ad-card--mobile</code></h3>
+      <div class="demo">
+        <div style="width:18.7rem"><article class="ad-card ad-card--mobile" data-parity="grid-mobile">
+            <div class="ad-card__media media-placeholder"></div>
+            <div class="ad-card__body">
+              <div class="ad-card__price-row"><span class="ad-card__price">EGP 22,130,000</span></div>
+              <p class="ad-card__title">Own Your Villa Sea View in Hacienda Heneish</p>
+              <button class="ad-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
+              <div class="ad-card__specs"><span class="ad-card__type">Stand Alone Villa</span><span>4 beds</span><span>5 baths</span><span>220 m²</span></div>
+              <div class="ad-card__meta"><span class="ad-card__location">Hacienda Heneish, North Coast</span><span class="ad-card__time">1 minute ago</span></div>
+            </div>
+          </article></div>
+        <div style="width:18.7rem"><article class="ad-card ad-card--mobile">
+            <div class="ad-card__media media-placeholder"></div>
+            <div class="ad-card__body">
+              <div class="ad-card__price-row"><span class="ad-card__price">EGP 2,050,000</span><span class="ad-card__note">Negotiable</span></div>
+              <p class="ad-card__title">Hyundai Tucson 2025</p>
+              <button class="ad-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
+              <div class="ad-card__specs"><span>4000 km</span><span>2025</span></div>
+              <div class="ad-card__meta"><span class="ad-card__location">Nasr City, Cairo</span><span class="ad-card__time">3 minutes ago</span></div>
+            </div>
+          </article></div>
+      </div>
+      <h3>List — desktop (property, car, highlighted top slot)</h3>
+      <div class="demo demo--stack" style="max-width:96rem">
+        <article class="ad-list-card" data-parity="list-desktop">
+          <div class="ad-list-card__media media-placeholder"><div class="ad-list-card__dots"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span></div><span class="ad-list-card__photos"><img src="icons/media/image-count.svg" alt="">10</span><span class="ad-card__badge ad-card__badge--featured">Featured</span></div>
           <div class="ad-list-card__body">
-            <div class="ad-list-card__head">
-              <p class="ad-card__price">EGP 2,850,000</p>
-              <span class="chip">E200</span>
-            </div>
-            <h3 class="ad-card__title">Mercedes-Benz E200 2021 - full options</h3>
-            <p class="ad-card__specs"><span>2021</span> · <span>45,000 km</span> · <span>Automatic</span> · <span>Benzine</span></p>
-            <p class="ad-card__meta"><img src="icons/location/location-filled.svg" alt=""> Sheikh Zayed, Giza</p>
-            <div class="ad-list-card__actions">
-              <button class="contact-btn contact-btn--call"><img src="icons/action/call.svg" alt=""> Call</button>
-              <button class="contact-btn contact-btn--whatsapp"><img src="icons/social/whatsapp.svg" alt=""> WhatsApp</button>
-            </div>
+            <div class="ad-list-card__price-row"><span class="ad-list-card__price">EGP 8,400,000</span><span class="ad-list-card__dp">Down Payment <strong>EGP 4,280,000</strong></span><span class="ad-list-card__time-corner">2 weeks ago</span></div>
+            <div class="ad-list-card__type-row"><span class="ad-list-card__type">Apartment</span><span class="ad-list-card__divider">|</span><span class="ad-list-card__specs"><span><img src="icons/property/beds.svg" alt="">3 beds</span><span><img src="icons/property/baths.svg" alt="">2 baths</span><span><img src="icons/property/area.svg" alt="">142 m²</span></span></div>
+            <h2 class="ad-list-card__title">Apartment for sale with a cash discount in Taj City</h2>
+            <button class="ad-list-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
+            <div class="attr-chips"><span class="attr-chip">Completion Status <strong>Off-Plan</strong></span><span class="attr-chip">Ownership <strong>Primary</strong></span></div>
+            <div class="ad-list-card__meta"><span class="ad-list-card__location"><img src="icons/location/location.svg" alt="">Taj City, New Cairo</span><span class="ad-list-card__time">2 weeks ago</span></div>
+          </div>
+          <div class="ad-list-card__actions">
+            <button class="contact-btn contact-btn--call" type="button"><img src="icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="icons/social/whatsapp.svg" alt=""> WhatsApp</button>
           </div>
         </article>
-
-        <!-- Property -->
         <article class="ad-list-card">
-          <div class="ad-list-card__media media-placeholder media-placeholder--sm"></div>
+          <div class="ad-list-card__media media-placeholder"><div class="ad-list-card__dots"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span></div><span class="ad-list-card__photos"><img src="icons/media/image-count.svg" alt="">18</span><span class="ad-card__badge ad-card__badge--elite"><img src="icons/status/elite.svg" alt="">Elite</span></div>
           <div class="ad-list-card__body">
-            <p class="ad-card__price">EGP 5,150,000</p>
-            <p class="ad-card__specs"><strong>Apartment</strong> · <span>3 Beds</span> · <span>2 Baths</span> · <span>150 m²</span></p>
-            <div class="attr-chips">
-              <span class="attr-chip">Completion Status <strong>Ready</strong></span>
-              <span class="attr-chip">Ownership <strong>Primary</strong></span>
-            </div>
-            <div class="ad-list-card__footer">
-              <span><img src="icons/location/location-filled.svg" alt="" width="16" height="16"> New Cairo, Cairo</span>
-              <span>2 hours ago</span>
-            </div>
-            <div class="ad-list-card__actions">
-              <button class="contact-btn contact-btn--call"><img src="icons/action/call.svg" alt=""> Call</button>
-              <button class="contact-btn contact-btn--whatsapp"><img src="icons/social/whatsapp.svg" alt=""> WhatsApp</button>
-            </div>
+            <div class="ad-list-card__price-row"><span class="ad-list-card__price">EGP 3,750,000</span><span class="ad-list-card__dp">Down Payment <strong>EGP 1,125,000</strong></span><span class="ad-list-card__time-corner">17 hours ago</span></div>
+            <div class="ad-list-card__brand"><span>Mercedes-Benz</span><span>CLA 200</span></div>
+            <h2 class="ad-list-card__title">Mercedes CLA 200 2026</h2>
+            <button class="ad-list-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
+            <div class="attr-chips attr-chips--stacked"><span class="attr-chip">Year <strong>2026</strong></span><span class="attr-chip">Condition <strong>New</strong></span><span class="attr-chip">Transmission <strong>Automatic</strong></span><span class="attr-chip">Fuel Type <strong>Benzine</strong></span></div>
+            <div class="ad-list-card__meta"><span class="ad-list-card__location"><img src="icons/location/location.svg" alt="">New Cairo, Cairo</span><span class="ad-list-card__time">17 hours ago</span></div>
+          </div>
+          <div class="ad-list-card__actions">
+            <button class="contact-btn contact-btn--call" type="button"><img src="icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="icons/social/whatsapp.svg" alt=""> WhatsApp</button>
           </div>
         </article>
-
-        <!-- Goods -->
-        <article class="ad-list-card">
-          <div class="ad-list-card__media media-placeholder media-placeholder--sm"></div>
+        <article class="ad-list-card ad-list-card--highlighted">
+          <div class="ad-list-card__media media-placeholder"><div class="ad-list-card__dots"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span></div><span class="ad-list-card__photos"><img src="icons/media/image-count.svg" alt="">18</span></div>
           <div class="ad-list-card__body">
-            <p class="ad-card__price">EGP 62,000</p>
-            <h3 class="ad-card__title">iPhone 15 Pro Max 256GB - Natural Titanium</h3>
-            <div class="attr-chips">
-              <span class="attr-chip">Condition <strong>Used</strong></span>
-            </div>
-            <div class="ad-list-card__footer">
-              <span><img src="icons/location/location-filled.svg" alt="" width="16" height="16"> Nasr City, Cairo</span>
-              <span>35 minutes ago</span>
-            </div>
-            <div class="ad-list-card__actions">
-              <button class="contact-btn contact-btn--call"><img src="icons/action/call.svg" alt=""> Call</button>
-              <button class="contact-btn contact-btn--chat"><img src="icons/action/chat.svg" alt=""> Chat</button>
-            </div>
+            <div class="ad-list-card__price-row"><span class="ad-list-card__price">EGP 3,750,000</span><span class="ad-list-card__dp">Down Payment <strong>EGP 1,125,000</strong></span><span class="ad-list-card__time-corner">17 hours ago</span></div>
+            <div class="ad-list-card__brand"><span>Mercedes-Benz</span><span>CLA 200</span></div>
+            <h2 class="ad-list-card__title">Mercedes CLA 200 2026</h2>
+            <button class="ad-list-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button>
+            <div class="attr-chips attr-chips--stacked"><span class="attr-chip">Year <strong>2026</strong></span><span class="attr-chip">Condition <strong>New</strong></span><span class="attr-chip">Transmission <strong>Automatic</strong></span><span class="attr-chip">Fuel Type <strong>Benzine</strong></span></div>
+            <div class="ad-list-card__meta"><span class="ad-list-card__location"><img src="icons/location/location.svg" alt="">New Cairo, Cairo</span><span class="ad-list-card__time">17 hours ago</span></div>
+          </div>
+          <div class="ad-list-card__actions">
+            <button class="contact-btn contact-btn--call" type="button"><img src="icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="icons/social/whatsapp.svg" alt=""> WhatsApp</button>
           </div>
         </article>
-
+      </div>
+      <h3>List — mobile <code>.ad-list-card--mobile</code></h3>
+      <div class="demo">
+        <div style="width:35.8rem"><article class="ad-list-card ad-list-card--mobile" data-parity="list-mobile">
+          <div class="ad-list-card__media media-placeholder"><div class="ad-list-card__dots"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span></div><span class="ad-card__badge ad-card__badge--featured">Featured</span><button class="ad-list-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button></div>
+          <div class="ad-list-card__body">
+            <div class="ad-list-card__price-row"><span class="ad-list-card__price">EGP 8,400,000</span><span class="ad-list-card__dp">Down Payment <strong>EGP 4,280,000</strong></span><span class="ad-list-card__time-corner">2 weeks ago</span></div>
+            <div class="ad-list-card__type-row"><span class="ad-list-card__type">Apartment</span><span class="ad-list-card__divider">|</span><span class="ad-list-card__specs"><span><img src="icons/property/beds.svg" alt="">3 beds</span><span><img src="icons/property/baths.svg" alt="">2 baths</span><span><img src="icons/property/area.svg" alt="">142 m²</span></span></div>
+            
+            
+            <div class="attr-chips attr-chips--stacked"><span class="attr-chip">Completion Status <strong>Off-Plan</strong></span><span class="attr-chip">Ownership <strong>Primary</strong></span></div>
+            <div class="ad-list-card__meta"><span class="ad-list-card__location"><img src="icons/location/location.svg" alt="">Taj City, New Cairo</span></div>
+          </div>
+          <div class="ad-list-card__actions">
+            <button class="contact-btn contact-btn--call" type="button"><img src="icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+          </div>
+        </article></div>
+        <div style="width:35.8rem"><article class="ad-list-card ad-list-card--mobile">
+          <div class="ad-list-card__media media-placeholder"><div class="ad-list-card__dots"><span class="is-active"></span><span></span><span></span><span></span><span></span><span></span></div><span class="ad-card__badge ad-card__badge--elite"><img src="icons/status/elite.svg" alt="">Elite</span><button class="ad-list-card__fav" type="button" aria-label="Save"><img src="icons/action/heart.svg" alt=""></button></div>
+          <div class="ad-list-card__body">
+            <div class="ad-list-card__price-row"><span class="ad-list-card__price">EGP 3,750,000</span><span class="ad-list-card__dp">Down Payment <strong>EGP 1,125,000</strong></span><span class="ad-list-card__time-corner">17 hours ago</span></div>
+            <div class="ad-list-card__brand"><span>Mercedes-Benz</span><span>CLA 200</span></div>
+            <h2 class="ad-list-card__title">Mercedes CLA 200 2026</h2>
+            
+            <div class="attr-chips attr-chips--stacked"><span class="attr-chip">Year <strong>2026</strong></span><span class="attr-chip">Condition <strong>New</strong></span><span class="attr-chip">Transmission <strong>Automatic</strong></span><span class="attr-chip">Fuel Type <strong>Benzine</strong></span></div>
+            <div class="ad-list-card__meta"><span class="ad-list-card__location"><img src="icons/location/location.svg" alt="">New Cairo, Cairo</span></div>
+          </div>
+          <div class="ad-list-card__actions">
+            <button class="contact-btn contact-btn--call" type="button"><img src="icons/action/call.svg" alt=""> Call</button>
+            <button class="contact-btn contact-btn--whatsapp" type="button"><img src="icons/social/whatsapp.svg" alt=""> WhatsApp</button>
+          </div>
+        </article></div>
       </div>
     </section>
 

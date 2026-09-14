@@ -1,0 +1,435 @@
+/* List ad card — values measured on dubizzle.com.eg search results, see docs/LIVE-MEASUREMENTS.md.
+   Must render identically to .ad-list-card in design-kit/patterns/patterns.css (npm run check:parity). */
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 31.2rem minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  font-family: var(--font-primary);
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.highlighted {
+  border: 1px solid var(--red-04);
+  border-radius: var(--radius-2xl);
+}
+
+/* ── Media ─────────────────────────────────────────────────────────────── */
+
+.media {
+  position: relative;
+  grid-row: 1 / 3;
+  min-height: 20rem;
+  background: var(--gray-01);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  color: var(--gray-04);
+}
+
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background: var(--overlay-image-fade);
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.dotActive {
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--white);
+}
+
+.photoCount {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--overlay-dark);
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: var(--weight-bold);
+  line-height: 1rem;
+  letter-spacing: 0.02rem;
+}
+
+.badge {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 1.2rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.6rem;
+}
+
+.featured {
+  background: var(--featured-gradient);
+  color: var(--white);
+}
+
+.elite {
+  background: var(--elite-gradient);
+  color: var(--gray-06);
+}
+
+/* ── Body ──────────────────────────────────────────────────────────────── */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 1.6rem 1.6rem 0 2.1rem;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-top: -0.8rem;
+  padding-right: 4rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.price {
+  font-size: 2.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 3.6rem;
+}
+
+.downPayment {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--gray-01);
+  font-size: 1.2rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.6rem;
+  color: var(--gray-05);
+}
+
+.downPayment strong {
+  font-weight: var(--weight-bold);
+}
+
+.priceNote {
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.8rem;
+  color: var(--gray-05);
+}
+
+.timeCorner {
+  position: absolute;
+  top: 0.6rem;
+  right: 0;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: var(--gray-05);
+}
+
+.typeRow {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  min-height: 2.4rem;
+}
+
+.type {
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+  line-height: 2rem;
+}
+
+.divider {
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: var(--gray-04);
+}
+
+.specs {
+  display: flex;
+  gap: 1.6rem;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+.spec {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-transform: lowercase;
+}
+
+.brandLine {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+}
+
+.bullet {
+  margin: 0 0.6rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(--gray-04);
+}
+
+.title {
+  max-width: 66%;
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: var(--weight-semibold);
+  line-height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.favourite {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.favouriteOn {
+  color: var(--red-05);
+  --icon-heart-inner-fill-opacity: 1;
+}
+
+/* One row; chips that don't fit are cut off, as on live */
+.attributes {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+}
+
+.attribute {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--gray-01);
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: var(--gray-05);
+  white-space: nowrap;
+}
+
+.attributesStacked .attribute {
+  flex-direction: column;
+  gap: 0;
+}
+
+.attributeLabel {
+  color: var(--gray-05);
+}
+
+.attributeValue {
+  font-weight: var(--weight-bold);
+  color: var(--gray-06);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0.8rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.location svg {
+  flex: none;
+  color: var(--gray-05);
+}
+
+.locationText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.time {
+  color: var(--gray-05);
+}
+
+.logo {
+  width: 12rem;
+  height: 4rem;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.logoCorner {
+  position: absolute;
+  right: 1.6rem;
+  bottom: 1.6rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0 1.6rem 1.6rem 2.1rem;
+}
+
+/* ── Mobile web ────────────────────────────────────────────────────────── */
+
+.mobile {
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+.mobile.highlighted {
+  border-color: var(--red-06);
+  border-radius: var(--radius-lg);
+}
+
+.mobile .media {
+  height: 24rem;
+  min-height: 0;
+}
+
+.mobile .favourite {
+  top: 0;
+  right: 0;
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.mobile .body {
+  gap: 0.6rem;
+  padding: 0.4rem 1.2rem 1.6rem;
+}
+
+.mobile .priceRow {
+  position: relative;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  padding-right: 9rem;
+  overflow: visible;
+}
+
+.mobile .price {
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  letter-spacing: -0.05rem;
+}
+
+.mobile .typeRow {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.mobile .specs {
+  gap: 1.2rem;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+}
+
+.mobile .brandLine {
+  gap: 0.8rem;
+}
+
+.mobile .brandLine .bullet {
+  margin: 0;
+}
+
+.mobile .title {
+  max-width: none;
+  font-size: 1.4rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.82rem;
+}
+
+.mobile .attributes {
+  margin: 0.6rem 0;
+}
+
+.mobile .meta {
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(--gray-05);
+}
+
+.mobile .logo {
+  width: 9rem;
+  height: 3rem;
+  border: 1px solid var(--gray-02);
+}
+
+.mobile .actions {
+  padding: 0 1.2rem 1.2rem;
+}
+
+.mobile .action {
+  flex: 1;
+  width: auto;
+}

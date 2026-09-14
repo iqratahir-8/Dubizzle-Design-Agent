@@ -1,22 +1,24 @@
+/* Grid ad card — values measured on dubizzle.com.eg, see docs/LIVE-MEASUREMENTS.md.
+   Must render identically to .ad-card in design-kit/patterns/patterns.css (npm run check:parity). */
+
 .card {
-  background: var(--white);
+  position: relative;
+  display: grid;
+  gap: 1.2rem;
+  padding: 1.2rem;
   border-radius: var(--radius-lg);
   overflow: hidden;
+  font-family: var(--font-primary);
+  color: var(--gray-06);
   cursor: pointer;
-  box-shadow: var(--shadow-card);
-  transition: box-shadow 0.2s;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-card-hover);
 }
 
 .media {
-  /* Live grid card image is 164px tall */
-  height: 16.4rem;
-  background: var(--gray-01);
   position: relative;
+  height: 16.4rem;
+  border-radius: var(--radius-sm);
   overflow: hidden;
+  background: var(--gray-01);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,225 +28,212 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
+.placeholder {
+  color: var(--gray-04);
+}
+
+/* Featured / Elite — same badge as the list card */
 .badge {
   position: absolute;
   top: 0.8rem;
   left: 0.8rem;
-  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
   font-size: 1.2rem;
   font-weight: var(--weight-semibold);
   line-height: 1.6rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-primary);
 }
 
-.badge.featured {
+.featured {
   background: var(--featured-gradient);
-}
-
-.badge.elite {
-  background: var(--elite-gradient);
-}
-
-.favorite {
-  position: absolute;
-  top: 0.8rem;
-  right: 0.8rem;
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: var(--radius-full);
-  background: var(--overlay-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.photoCount {
-  position: absolute;
-  bottom: 0.8rem;
-  left: 0.8rem;
-  background: var(--overlay-dark);
-  border-radius: var(--radius-sm);
-  padding: 0.3rem 0.6rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
   color: var(--white);
-  font-size: 1.2rem;
-  font-weight: var(--weight-semibold);
-  font-family: var(--font-primary);
+}
+
+.elite {
+  background: var(--elite-gradient);
+  color: var(--gray-06);
 }
 
 .body {
-  padding: 1.2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin: 0 0 0.4rem;
+  padding-right: 3rem;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .price {
   font-size: 1.8rem;
   font-weight: var(--weight-bold);
-  /* Charcoal, not red — production renders the listing price in --gray-06.
-     Red stays reserved for action/brand. */
-  color: var(--gray-06);
-  font-family: var(--font-primary);
-  line-height: 1.2;
-  margin-bottom: 0.4rem;
+  line-height: 2.16rem;
+  color: var(--red-05);
+}
+
+.priceNote {
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.8rem;
+  color: var(--gray-05);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.downPayment {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-md);
+  background: var(--gray-01);
+  font-size: 1.2rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.6rem;
+  color: var(--gray-05);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.downPayment strong {
+  font-weight: 900;
 }
 
 .title {
-  font-size: 1.4rem;
-  font-weight: var(--weight-semibold);
-  color: var(--gray-06);
-  font-family: var(--font-primary);
+  margin: 0;
+  padding-right: 3.2rem;
+  font-size: 1.6rem;
+  font-weight: var(--weight-regular);
   line-height: 2rem;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.favourite {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.favouriteOn {
+  color: var(--red-05);
+  --icon-heart-inner-fill-opacity: 1;
+}
+
+.specs {
+  display: flex;
+  align-items: center;
+  margin: 0.4rem 0;
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.type {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
+
+.specItems,
+.specItem {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.specItem {
+  text-transform: lowercase;
+}
+
+.dot {
+  margin: 0 0.6rem;
+  color: var(--gray-04);
 }
 
 .meta {
   display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-  line-height: 1.8rem;
-  color: var(--gray-05);
-  font-family: var(--font-primary);
-  font-weight: var(--weight-semibold);
-  margin-top: 0.6rem;
-}
-
-.metaDot {
-  margin: 0 0.6rem;
-  color: var(--gray-04);
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
   font-size: 1.4rem;
   font-weight: var(--weight-regular);
+  color: var(--gray-05);
+  white-space: nowrap;
 }
 
 .location {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.8rem;
-  font-size: 1.2rem;
-  color: var(--gray-04);
-  font-family: var(--font-primary);
+  line-height: 1.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .time {
-  font-size: 1.2rem;
-  color: var(--gray-04);
-  font-family: var(--font-primary);
-  margin-top: 0.4rem;
+  line-height: 1.4rem;
 }
 
-/* Compact / list variant */
-.compact {
-  display: flex;
-  gap: 1.2rem;
-  padding: 1.2rem 0;
-  border-bottom: 1px solid var(--gray-01);
-  cursor: pointer;
-  background: none;
-  box-shadow: none;
-  border-radius: 0;
-}
+/* ── Mobile web ─────────────────────────────────────────────────────────── */
 
-.compact:hover {
-  box-shadow: none;
-}
-
-.compactMedia {
-  width: 14rem;
-  height: 10.5rem;
-  border-radius: var(--radius-lg);
-  background: var(--gray-01);
-  flex-shrink: 0;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.compactMedia img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.compactFavorite {
-  position: absolute;
-  top: 0.4rem;
-  right: 0.4rem;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: var(--radius-full);
-  background: var(--overlay-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.compactBadge {
-  position: absolute;
-  top: 0.4rem;
-  left: 0.4rem;
-  color: var(--white);
-  font-size: 0.9rem;
-  font-weight: var(--weight-bold);
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-primary);
-}
-
-.compactContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 0;
-}
-
-.compactPrice {
-  font-size: 1.6rem;
-  font-weight: var(--weight-bold);
-  color: var(--gray-06);
-  font-family: var(--font-primary);
-}
-
-.compactTitle {
-  font-size: 1.4rem;
-  font-weight: var(--weight-semibold);
-  color: var(--gray-06);
-  font-family: var(--font-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 0.2rem;
-}
-
-.compactMeta {
-  display: flex;
+.mobile {
   gap: 0.8rem;
-  font-size: 1.1rem;
-  color: var(--gray-05);
-  font-family: var(--font-primary);
-  font-weight: var(--weight-semibold);
-  margin-top: 0.4rem;
+  padding: 0.8rem;
+  border-radius: var(--radius-md);
 }
 
-.compactFooter {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.1rem;
-  color: var(--gray-04);
-  font-family: var(--font-primary);
+.mobile .media {
+  height: 16rem;
 }
 
-.compactLocation {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
+.mobile .title {
+  min-height: 2rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+/* Mobile puts the property type on its own line above the spec items */
+.mobile .specs {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}
+
+.mobile .specs,
+.mobile .specItems {
+  max-width: 100%;
+}
+
+.mobile .meta {
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.mobile .location,
+.mobile .time {
+  line-height: 1.4rem;
 }

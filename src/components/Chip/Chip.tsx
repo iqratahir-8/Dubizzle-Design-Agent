@@ -1,21 +1,62 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 import { cx } from '../../utils/cx';
+import { ChevronDownIcon } from '../icons';
+import type { Device } from '../AdCard/listing';
 import styles from './Chip.module.css';
 
+/**
+ * - `quick`   — quick-filter shortcuts under the results header (brands, models). Desktop is
+ *               grey-filled and larger; mobile is white.
+ * - `filter`  — the mobile filter bar ("Cars for Sale ▾", "Brand and Model ▾"). Selected =
+ *               a filter is applied: charcoal outline, bold.
+ * - `segment` — the All / New / Used switch. Selected = blue.
+ */
+export type ChipVariant = 'quick' | 'filter' | 'segment';
+
 export interface ChipProps {
-  label: ReactNode;
+  label?: ReactNode;
+  variant?: ChipVariant;
+  selected?: boolean;
+  /** @deprecated use `selected` */
   active?: boolean;
-  onClick?: MouseEventHandler<HTMLSpanElement>;
+  device?: Device;
   icon?: ReactNode;
+  /** Dropdown caret — filter chips that open a picker. */
+  caret?: boolean;
+  /** Red count badge — e.g. the number of applied filters on the filters button. */
+  count?: number;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
+  'aria-label'?: string;
 }
 
-/** Filter chip for search and category selectors. Active / inactive states. */
-export function Chip({ label, active = false, onClick, icon, className }: ChipProps) {
+/** Chips as they appear on dubizzle.com.eg listing pages — see docs/LIVE-MEASUREMENTS.md. */
+export function Chip({
+  label,
+  variant = 'quick',
+  selected,
+  active,
+  device = 'desktop',
+  icon,
+  caret = false,
+  count,
+  onClick,
+  className,
+  'aria-label': ariaLabel,
+}: ChipProps) {
+  const isSelected = selected ?? active ?? false;
   return (
-    <span className={cx(styles.chip, active && styles.active, className)} onClick={onClick}>
+    <button
+      type="button"
+      className={cx(styles.chip, styles[variant], device === 'mobile' && styles.mobile, isSelected && styles.selected, className)}
+      aria-pressed={isSelected}
+      aria-label={ariaLabel}
+      onClick={onClick}
+    >
       {icon}
       {label}
-    </span>
+      {caret && <ChevronDownIcon size={16} className={styles.caret} />}
+      {count != null && count > 0 && <span className={styles.count}>{count}</span>}
+    </button>
   );
 }

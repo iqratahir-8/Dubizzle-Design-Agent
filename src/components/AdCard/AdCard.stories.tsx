@@ -1,43 +1,76 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { AdCard } from './AdCard';
+import type { AdCardProps } from './AdCard';
 
 const meta: Meta<typeof AdCard> = {
   title: 'Components/AdCard',
   component: AdCard,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Grid ad card — home and landing-page rails, and the similar-ads widget under an ad. Search results use **AdListCard**. Values measured on dubizzle.com.eg (docs/LIVE-MEASUREMENTS.md).',
+      },
+    },
+  },
   args: {
-    title: 'Modern Apartment with Nile View, Maadi',
-    price: 'EGP 3,200,000',
-    location: 'Maadi, Cairo',
-    time: '2 hours ago',
-    beds: 3,
-    baths: 2,
-    area: '150 m²',
-    photoCount: 8,
+    price: 'EGP 22,130,000',
+    downPayment: 'EGP 1,106,500',
+    title: 'Own Your Villa Sea View in Hacienda Heneish',
+    type: 'Stand Alone Villa',
+    beds: 4,
+    baths: 5,
+    area: '220 m²',
+    location: 'Hacienda Heneish, North Coast',
+    time: '1 minute ago',
   },
 };
 export default meta;
 
 type Story = StoryObj<typeof AdCard>;
 
-export const Grid: Story = { render: (args) => <div style={{ width: 280 }}><AdCard {...args} /></div> };
+const desktop = (args: Story['args']) => (
+  <div style={{ width: 320 }}>
+    <AdCard {...(args as AdCardProps)} />
+  </div>
+);
+const mobile = (args: Story['args']) => (
+  <div style={{ width: 187 }}>
+    <AdCard {...(args as AdCardProps)} device="mobile" />
+  </div>
+);
 
-export const Featured: Story = {
-  args: { featured: true },
-  render: (args) => <div style={{ width: 280 }}><AdCard {...args} /></div>,
+export const Property: Story = { render: desktop };
+
+export const Car: Story = {
+  args: {
+    price: 'EGP 2,050,000',
+    downPayment: undefined,
+    priceNote: 'Negotiable',
+    title: 'Hyundai Tucson 2025',
+    type: undefined,
+    beds: undefined,
+    baths: undefined,
+    area: undefined,
+    specs: ['4000 km', '2025'],
+    location: 'Nasr City, Cairo',
+    time: '3 minutes ago',
+  },
+  render: desktop,
 };
 
-export const Elite: Story = {
-  args: { elite: true },
-  render: (args) => <div style={{ width: 280 }}><AdCard {...args} /></div>,
-};
+export const Featured: Story = { args: { featured: true }, render: desktop };
 
-export const NonProperty: Story = {
-  args: { title: 'iPhone 15 Pro Max, 256GB', beds: undefined, baths: undefined, area: undefined },
-  render: (args) => <div style={{ width: 280 }}><AdCard {...args} /></div>,
-};
+export const Elite: Story = { args: { elite: true }, render: desktop };
 
-export const Compact: Story = {
-  args: { compact: true },
-  render: (args) => <div style={{ width: 480 }}><AdCard {...args} /></div>,
+export const Mobile: Story = { args: { downPayment: undefined }, render: mobile };
+
+export const DesktopAndMobile: Story = {
+  render: (args) => (
+    <div style={{ display: 'flex', gap: 32, alignItems: 'flex-start' }}>
+      {desktop(args)}
+      {mobile({ ...args, downPayment: undefined })}
+    </div>
+  ),
 };

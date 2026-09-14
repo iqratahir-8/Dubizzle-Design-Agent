@@ -19,7 +19,7 @@ export { Toggle } from './components/Toggle';
 export type { ToggleProps } from './components/Toggle';
 
 export { Chip } from './components/Chip';
-export type { ChipProps } from './components/Chip';
+export type { ChipProps, ChipVariant } from './components/Chip';
 
 export { Pill } from './components/Pill';
 export type { PillProps, PillVariant } from './components/Pill';
@@ -28,7 +28,12 @@ export { ContactButton } from './components/ContactButton';
 export type { ContactButtonProps, ContactButtonVariant } from './components/ContactButton';
 
 export { AdCard } from './components/AdCard';
-export type { AdCardProps } from './components/AdCard';
+export type { AdCardProps, Listing, ListingAttribute, Device } from './components/AdCard';
+
+export { AdListCard } from './components/AdListCard';
+export type { AdListCardProps } from './components/AdListCard';
+
+export * from './components/icons';
 
 export { Tabs } from './components/Tabs';
 export type { TabsProps, TabsVariant } from './components/Tabs';

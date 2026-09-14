@@ -5,10 +5,11 @@
   gap: 0.8rem;
   height: 4rem;
   border: 0;
-  border-radius: var(--radius-lg);
+  /* live search cards: 6px */
+  border-radius: var(--radius-md);
   font-family: var(--font-primary);
   font-size: 1.4rem;
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
   line-height: 1;
   cursor: pointer;
   transition: background-color 0.15s;
@@ -61,5 +62,5 @@
   background: var(--green-03);
 }
 .whatsapp:not([data-full-width='true'])[data-show-label='true'] {
-  width: 11.4rem;
+  width: 12.6rem;
 }

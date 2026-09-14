@@ -82,7 +82,12 @@ function stopTimers() {
   window.requestAnimationFrame = () => 0;
 }
 
-/** Runs in the page. Mutates the live DOM into its frozen form; returns hrefs of sheets it couldn't read. */
+/**
+ * Runs in the page. Builds the frozen form on a CLONE of the document and returns its HTML —
+ * the live page is left untouched, because some apps (the motors Next.js app) strip
+ * stylesheets they didn't insert, which wrecked the screenshot taken afterwards.
+ * Returns { html, unreadable } where unreadable lists sheet hrefs that couldn't be read.
+ */
 function freezeDom() {
   const abs = (css, base) =>
     css.replace(/url\(\s*(['"]?)([^'")]+)\1\s*\)/g, (m, q, u) => {
@@ -98,16 +103,22 @@ function freezeDom() {
       .map((rule) => (rule instanceof CSSImportRule ? (rule.styleSheet ? cssOf(rule.styleSheet) : '') : abs(rule.cssText, sheet.href || location.href)))
       .join('\n');
 
+  // Pair every live element with its clone by document order.
+  const live = [...document.documentElement.querySelectorAll('*')];
+  const root = document.documentElement.cloneNode(true);
+  const copy = [...root.querySelectorAll('*')];
+  const twin = new Map(live.map((el, i) => [el, copy[i]]));
+
   const unreadable = [];
   for (const sheet of [...document.styleSheets]) {
-    const owner = sheet.ownerNode;
+    const owner = sheet.ownerNode && twin.get(sheet.ownerNode);
     if (!owner || !owner.parentNode) continue;
-    const style = document.createElement('style');
-    if (sheet.media?.mediaText) style.setAttribute('media', sheet.media.mediaText);
     if (sheet.disabled) {
       owner.remove();
       continue;
     }
+    const style = document.createElement('style');
+    if (sheet.media?.mediaText) style.setAttribute('media', sheet.media.mediaText);
     try {
       style.textContent = cssOf(sheet);
     } catch {
@@ -119,43 +130,49 @@ function freezeDom() {
   }
 
   for (const el of document.querySelectorAll('input, textarea, select')) {
-    if (el.type === 'checkbox' || el.type === 'radio') el.toggleAttribute('checked', el.checked);
-    else if (el.tagName === 'SELECT') for (const o of el.options) o.toggleAttribute('selected', o.selected);
-    else if (el.tagName === 'TEXTAREA') el.textContent = el.value;
-    else if (el.type !== 'file' && el.type !== 'password') el.setAttribute('value', el.value);
+    const c = twin.get(el);
+    if (!c) continue;
+    if (el.type === 'checkbox' || el.type === 'radio') c.toggleAttribute('checked', el.checked);
+    else if (el.tagName === 'SELECT') [...el.options].forEach((o, i) => c.options[i]?.toggleAttribute('selected', o.selected));
+    else if (el.tagName === 'TEXTAREA') c.textContent = el.value;
+    else if (el.type !== 'file' && el.type !== 'password') c.setAttribute('value', el.value);
   }
 
   for (const img of document.images) {
-    if (img.currentSrc) img.setAttribute('src', img.currentSrc);
-    img.removeAttribute('srcset');
-    img.removeAttribute('sizes');
-    img.removeAttribute('loading');
+    const c = twin.get(img);
+    if (!c) continue;
+    if (img.currentSrc) c.setAttribute('src', img.currentSrc);
+    c.removeAttribute('srcset');
+    c.removeAttribute('sizes');
+    c.removeAttribute('loading');
   }
-  for (const source of document.querySelectorAll('picture > source')) source.remove();
+  for (const source of root.querySelectorAll('picture > source')) source.remove();
 
   for (const canvas of document.querySelectorAll('canvas')) {
+    const c = twin.get(canvas);
     try {
       const img = document.createElement('img');
       const r = canvas.getBoundingClientRect();
       img.src = canvas.toDataURL();
       img.className = canvas.className;
       img.setAttribute('style', `${canvas.getAttribute('style') || ''};width:${r.width}px;height:${r.height}px`);
-      canvas.replaceWith(img);
+      c?.replaceWith(img);
     } catch {
       /* tainted canvas (cross-origin map tiles) — leave it */
     }
   }
 
   // Carousels and scroll panes: keep where they were scrolled to.
-  for (const el of document.querySelectorAll('body *')) {
-    if (el.scrollLeft > 0) el.setAttribute('data-snapshot-scroll-left', String(el.scrollLeft));
+  for (const el of live) {
+    if (el.scrollLeft > 0) twin.get(el)?.setAttribute('data-snapshot-scroll-left', String(el.scrollLeft));
   }
 
-  for (const el of document.querySelectorAll('script, noscript, link[rel="preload"], link[rel="modulepreload"], link[rel="prefetch"], link[rel="stylesheet"]')) el.remove();
-  for (const el of document.querySelectorAll('*')) {
+  for (const el of root.querySelectorAll('script, noscript, link[rel="preload"], link[rel="modulepreload"], link[rel="prefetch"], link[rel="stylesheet"]')) el.remove();
+  for (const el of [root, ...root.querySelectorAll('*')]) {
     for (const attr of [...el.attributes]) if (/^on/i.test(attr.name)) el.removeAttribute(attr.name);
   }
-  return unreadable;
+  const doctype = document.doctype ? `<!DOCTYPE ${document.doctype.name}>` : '<!DOCTYPE html>';
+  return { html: `${doctype}\n${root.outerHTML}`, unreadable };
 }
 
 /** Restores carousel scroll offsets when the snapshot opens — the only script a snapshot carries. */
@@ -219,12 +236,41 @@ async function freezeIframes(page) {
   return n;
 }
 
+/**
+ * Fonts added from JavaScript (Adobe Typekit on the motors app uses the FontFace API) never
+ * appear in a stylesheet, so there is no @font-face to copy. Rebuild one per loaded face
+ * from the recorded font responses: Typekit URLs carry the variation as fvd=n4 / n7 / i4
+ * (style letter + weight/100).
+ */
+async function inlineScriptLoadedFonts(page, html, recorder) {
+  const loaded = await page.evaluate(() =>
+    [...document.fonts].filter((f) => f.status === 'loaded').map((f) => ({ family: f.family.replace(/["']/g, ''), weight: f.weight, style: f.style })),
+  );
+  const declared = new Set([...html.matchAll(/@font-face\s*\{[^}]*?font-family:\s*["']?([^;"'}]+)/g)].map((m) => m[1].trim().toLowerCase()));
+  const missing = loaded.filter((f) => !declared.has(f.family.toLowerCase()));
+  if (!missing.length) return html;
+  const families = [...new Set(missing.map((f) => f.family))];
+  const fontResponses = [...recorder.store.entries()].filter(([url, hit]) => hit.type === 'font' && /[?&]fvd=[nio]\d/.test(url));
+  let css = '';
+  for (const [url, hit] of fontResponses) {
+    const [, s, w] = url.match(/[?&]fvd=([nio])(\d)/);
+    const style = { n: 'normal', i: 'italic', o: 'oblique' }[s];
+    const weight = String(Number(w) * 100);
+    const face = missing.find((f) => f.style === style && String(f.weight) === weight) ?? (families.length === 1 ? { family: families[0] } : null);
+    if (!face) continue;
+    const format = /woff2/.test(hit.mime) || url.includes('/l?') ? 'woff2' : 'woff';
+    css += `@font-face{font-family:"${face.family}";font-weight:${weight};font-style:${style};font-display:block;src:url("data:${mimeFor(url, hit.mime)};base64,${hit.body.toString('base64')}") format("${format}")}\n`;
+  }
+  return css ? html.replace(/<\/head>/i, `<style data-snapshot-fonts>${css}</style></head>`) : html;
+}
+
 export async function snapshotHtml(page, recorder, { inlineImages = true, restoreScroll = true } = {}) {
   await page.evaluate(stopTimers);
   await recorder.settle();
   if (inlineImages) await freezeIframes(page);
-  const unreadable = await page.evaluate(freezeDom);
-  let html = await page.content();
+  const frozen = await page.evaluate(freezeDom);
+  const { unreadable } = frozen;
+  let { html } = frozen;
   html = await inlineSvgSprites(html, recorder, page.url());
 
   for (const href of unreadable) {
@@ -250,6 +296,8 @@ export async function snapshotHtml(page, recorder, { inlineImages = true, restor
       if (data) html = html.split(`src="${src.replace(/&/g, '&amp;')}"`).join(`src="${data}"`).split(`src="${src}"`).join(`src="${data}"`);
     }
   }
+
+  html = await inlineScriptLoadedFonts(page, html, recorder);
 
   if (restoreScroll) html = html.replace(/<\/body>/i, `${RESTORE_SCROLL}</body>`);
   return html;

@@ -417,10 +417,10 @@ ul {
   height: 4rem;
   padding: 0 var(--space-4);
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   font-family: inherit;
   font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
   line-height: 1;
   color: var(--text-primary);
   cursor: pointer;
@@ -438,27 +438,97 @@ ul {
 
 /* ── Chips & pills ────────────────────────────────────────────────────────── */
 
+/* Chips — measured on dubizzle.com.eg listing pages (docs/LIVE-MEASUREMENTS.md).
+   Mirrors src/components/Chip/Chip.module.css — npm run check:parity.
+   .chip--quick   quick filters under the results header (default)
+   .chip--filter  mobile filter bar; .is-selected = filter applied
+   .chip--segment All / New / Used; .is-selected = blue                                  */
+
 .chip {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
-  padding: 0.6rem var(--space-3);
-  border: 0.1rem solid var(--border-input);
+  justify-content: center;
+  gap: 0.4rem;
+  flex: none;
+  margin: 0;
+  height: 4.2rem;
+  padding: 0 1.6rem;
+  border: 1px solid var(--gray-02);
   border-radius: var(--radius-md);
-  background: var(--surface-page);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-bold);
-  color: var(--text-primary);
-  cursor: pointer;
+  background: var(--gray-00);
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: var(--weight-regular);
+  line-height: 2.4rem;
+  color: var(--black);
   white-space: nowrap;
+  cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
 
-.chip:hover { background: var(--surface-muted); }
+.chip--mobile {
+  height: 3.7rem;
+  padding: 0 1.2rem;
+  border-color: var(--gray-03);
+  background: var(--white);
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+}
 
+.chip.is-selected,
 .chip--active {
-  background: var(--color-primary-muted);
-  border-color: var(--color-accent);
+  border-color: var(--gray-06);
+  font-weight: var(--weight-bold);
+}
+
+.chip--filter {
+  height: 3.2rem;
+  padding: 0 1.2rem;
+  border-color: var(--gray-03);
+  background: transparent;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: var(--gray-06);
+}
+
+.chip--filter.is-selected {
+  border-color: var(--gray-06);
+  background: var(--gray-00);
+  font-weight: var(--weight-bold);
+}
+
+.chip__caret { width: 1.6rem; height: 1.6rem; margin-inline-end: -0.4rem; }
+
+.chip--segment {
+  min-width: 10.9rem;
+  height: 3.7rem;
+  padding: 0 1.6rem;
+  border-color: var(--gray-03);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+}
+
+.chip--segment.is-selected {
+  border-color: var(--blue-03);
+  background: var(--blue-02);
+  font-weight: var(--weight-bold);
+  color: var(--blue-06);
+}
+
+.chip__count {
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--red-05);
+  font-size: 1rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.3rem;
+  color: var(--white);
 }
 
 .pill {
@@ -478,238 +548,371 @@ ul {
 .pill--boosted { background: var(--blue-02); color: var(--blue-05); }
 
 /* ── Ad card — grid ───────────────────────────────────────────────────────── */
+/* Home and landing-page rails, and the similar-ads widget under an ad. Measured on
+   dubizzle.com.eg (docs/LIVE-MEASUREMENTS.md); mirrors src/components/AdCard. Flat card,
+   RED price (the list card's is charcoal), bold spec line, grey location/time.        */
 
 .ad-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--surface-card);
+  position: relative;
+  display: grid;
+  gap: 1.2rem;
+  padding: 1.2rem;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  color: var(--gray-06);
   cursor: pointer;
-  transition: box-shadow 0.2s;
 }
-
-.ad-card:hover { box-shadow: var(--shadow-card-hover); }
 
 .ad-card__media {
   position: relative;
   height: 16.4rem;
-  background: var(--surface-muted);
+  border-radius: var(--radius-sm);
   overflow: hidden;
+  background: var(--gray-01);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.ad-card__media img {
+.ad-card__media > img:not(.ad-card__fav img) {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
+/* Featured / Elite — shared by grid and list cards */
 .ad-card__badge {
   position: absolute;
-  top: var(--space-2);
-  inset-inline-start: var(--space-2);
+  top: 0.8rem;
+  left: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
   padding: 0.3rem 0.6rem;
   border-radius: var(--radius-sm);
-  color: var(--text-inverse);
   font-size: 1.2rem;
   font-weight: var(--weight-semibold);
   line-height: 1.6rem;
 }
 
-.ad-card__badge--featured { background: var(--featured-gradient); }
-.ad-card__badge--elite { background: var(--elite-gradient); }
+.ad-card__badge img { width: 1.4rem; height: 1.4rem; }
+.ad-card__badge--featured { background: var(--featured-gradient); color: var(--white); }
+.ad-card__badge--elite { background: var(--elite-gradient); color: var(--gray-06); }
 
-.ad-card__fav {
-  position: absolute;
-  top: var(--space-2);
-  inset-inline-end: var(--space-2);
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: var(--radius-full);
-  background: var(--overlay-light);
+.ad-card__body {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
+  flex-direction: column;
+  min-width: 0;
 }
 
-.ad-card__fav img { width: 1.8rem; height: 1.8rem; }
-
-.ad-card__photos {
-  position: absolute;
-  bottom: var(--space-2);
-  inset-inline-start: var(--space-2);
+.ad-card__price-row {
   display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  padding: 0.3rem 0.6rem;
-  border-radius: var(--radius-sm);
-  background: var(--overlay-dark);
-  color: var(--text-inverse);
-  font-size: var(--text-xs);
-  font-weight: var(--weight-semibold);
+  align-items: baseline;
+  gap: 0.8rem;
+  margin: 0 0 0.4rem;
+  padding-right: 3rem;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.ad-card__photos img { width: 1.4rem; height: 1.4rem; filter: brightness(0) invert(1); }
-
-.ad-card__body { padding: var(--space-3); }
-
-/* Price is the loudest element on the card — the hierarchy is
-   price > title > specs > location/time, and it must stay that way.
-   Colour is CHARCOAL, not red: production dubizzle.com.eg renders the listing
-   price in --text-primary (rgb(35,38,42)). The monorepo's $adCardPriceColor is
-   the brand red, but live wins. Red stays reserved for action/brand. */
 .ad-card__price {
   margin: 0;
-  font-size: var(--text-lg);
+  font-size: 1.8rem;
   font-weight: var(--weight-bold);
-  color: var(--text-primary);
-  line-height: 1.2;
+  line-height: 2.16rem;
+  color: var(--red-05);
 }
 
+.ad-card__note {
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.8rem;
+  color: var(--gray-05);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ad-card__dp {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-md);
+  background: var(--gray-01);
+  font-size: 1.2rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.6rem;
+  color: var(--gray-05);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ad-card__dp strong { font-weight: 900; }
+
 .ad-card__title {
-  margin: var(--space-1) 0 0;
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  color: var(--text-primary);
+  margin: 0;
+  padding-right: 3.2rem;
+  font-size: 1.6rem;
+  font-weight: var(--weight-regular);
   line-height: 2rem;
+  color: var(--gray-06);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* Rent period after a price — "EGP 90,000 / Monthly". Lighter and smaller so
-   the amount stays the loud element. */
-.ad-card__price-suffix {
-  font-size: var(--text-sm);
-  font-weight: var(--weight-regular);
-  color: var(--text-tertiary);
+.ad-card__fav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
 }
 
+.ad-card__fav img { width: 2.4rem; height: 2.4rem; }
+
+/* "Stand Alone Villa • 4 beds • 5 baths • 220 m²" — separators are drawn in CSS */
 .ad-card__specs {
   display: flex;
   align-items: center;
-  margin: 0.6rem 0 0;
-  font-size: 0; /* hides any literal " · " in markup; separators come from ::before */
-  font-weight: var(--weight-semibold);
-  line-height: 1.8rem;
-  color: var(--text-secondary);
-}
-
-.ad-card__specs > * { display: inline-flex; align-items: center; font-size: var(--text-xs); }
-
-/* Live separator: "•" 14px grey, 6px either side */
-.ad-card__specs > * + *::before {
-  content: '•';
-  margin: 0 0.6rem;
+  margin: 0.4rem 0;
   font-size: 1.4rem;
-  font-weight: var(--weight-regular);
-  color: var(--text-tertiary);
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+  color: var(--gray-06);
+  white-space: nowrap;
+  overflow: hidden;
 }
+
+.ad-card__specs > * { display: inline-flex; align-items: center; flex: none; text-transform: lowercase; }
+.ad-card__specs > .ad-card__type,
+.ad-card__specs > strong { display: block; flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; text-transform: capitalize; font-weight: var(--weight-bold); }
+.ad-card__specs > * + *::before { content: '•'; margin: 0 0.6rem; color: var(--gray-04); }
 
 .ad-card__meta {
   display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  margin: var(--space-2) 0 0;
-  font-size: var(--text-xs);
-  color: var(--text-tertiary);
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0.4rem 0 0;
+  font-size: 1.4rem;
+  font-weight: var(--weight-regular);
+  color: var(--gray-05);
+  white-space: nowrap;
 }
 
-.ad-card__meta img { width: 1.2rem; height: 1.2rem; opacity: 0.43; /* black glyph → #919191 ≈ --text-tertiary */ }
+.ad-card__location { line-height: 1.8rem; overflow: hidden; text-overflow: ellipsis; }
+.ad-card__time { margin: 0; font-size: 1.4rem; line-height: 1.4rem; color: var(--gray-05); }
 
-.ad-card__time {
-  margin: var(--space-1) 0 0;
-  font-size: var(--text-xs);
-  color: var(--text-tertiary);
-}
+/* Mobile web */
+.ad-card--mobile { gap: 0.8rem; padding: 0.8rem; border-radius: var(--radius-md); }
+.ad-card--mobile .ad-card__media { height: 16rem; }
+.ad-card--mobile .ad-card__fav img { width: 2rem; height: 2rem; }
+.ad-card--mobile .ad-card__title { min-height: 2rem; margin-bottom: 0.4rem; font-size: 1.4rem; line-height: 1.8rem; }
+.ad-card--mobile .ad-card__specs { flex-wrap: wrap; row-gap: 0.4rem; margin: 0; font-size: 1.2rem; line-height: 1.8rem; }
+.ad-card--mobile .ad-card__specs > .ad-card__type { flex-basis: 100%; }
+.ad-card--mobile .ad-card__specs > .ad-card__type + *::before { content: none; }
+.ad-card--mobile .ad-card__meta { gap: 0.4rem; margin-top: 0.6rem; font-size: 1.2rem; }
+.ad-card--mobile .ad-card__location,
+.ad-card--mobile .ad-card__time { font-size: 1.2rem; line-height: 1.4rem; }
 
-/* ── Ad card — list / compact ─────────────────────────────────────────────── */
+/* Older template markup (heart and photo count on the image, pin icon in the meta line)
+   — kept so templates render until they are rebuilt from the live captures. */
+.ad-card__media .ad-card__fav { top: 0.8rem; right: 0.8rem; width: 3.2rem; height: 3.2rem; align-items: center; justify-content: center; border-radius: var(--radius-full); background: var(--overlay-light); }
+.ad-card__media .ad-card__fav img { width: 1.8rem; height: 1.8rem; }
+.ad-card__photos { display: none; }
+.ad-card__meta img { display: none; }
+
+/* ── Ad card — list ───────────────────────────────────────────────────────── */
+/* Search results. Measured on dubizzle.com.eg (docs/LIVE-MEASUREMENTS.md); mirrors
+   src/components/AdListCard. Desktop: 312px image beside the details; .ad-list-card--mobile
+   stacks it. CHARCOAL 24px price.                                                      */
 
 .ad-list-card {
-  display: flex;
-  gap: var(--space-3);
-  padding: var(--space-3);
-  background: var(--surface-card);
-  border-radius: var(--radius-lg);
+  position: relative;
+  display: grid;
+  grid-template-columns: 31.2rem minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  background: var(--white);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
+  overflow: hidden;
+  color: var(--gray-06);
   cursor: pointer;
-  transition: box-shadow 0.2s;
 }
 
-.ad-list-card:hover { box-shadow: var(--shadow-card-hover); }
+.ad-list-card--highlighted { border: 1px solid var(--red-04); border-radius: var(--radius-2xl); }
 
 .ad-list-card__media {
   position: relative;
-  width: 22rem;
-  height: 16.5rem;
-  flex: none;
-  border-radius: var(--radius-md);
+  grid-row: 1 / 3;
+  min-height: 20rem;
+  background: var(--gray-01);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  background: var(--surface-muted);
 }
 
-.ad-list-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.ad-list-card__media > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.ad-list-card__dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background: var(--overlay-image-fade);
 }
 
-/* One consistent vertical rhythm for every row in the body. Each row (head,
-   specs, title, chips, footer) is a direct child and inherits this gap, so the
-   grid card's per-element margins are neutralised here to avoid double spacing. */
+.ad-list-card__dots span { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: rgba(255, 255, 255, 0.4); }
+.ad-list-card__dots .is-active { width: 0.8rem; height: 0.8rem; background: var(--white); }
+
+.ad-list-card__photos {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--overlay-dark);
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: var(--weight-bold);
+  line-height: 1rem;
+  letter-spacing: 0.02rem;
+}
+
+.ad-list-card__photos img { width: 1.4rem; height: 1.4rem; filter: brightness(0) invert(1); }
+
 .ad-list-card__body {
-  flex: 1;
-  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 1.6rem 1.6rem 0 2.1rem;
 }
 
-.ad-list-card__body > :is(.ad-card__title, .ad-card__specs, .ad-card__meta, .ad-card__time, .attr-chips) {
+.ad-list-card__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-top: -0.8rem;
+  padding-right: 4rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ad-list-card__price { margin: 0; font-size: 2.4rem; font-weight: var(--weight-bold); line-height: 3.6rem; color: var(--gray-06); }
+
+.ad-list-card__dp {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--gray-01);
+  font-size: 1.2rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.6rem;
+  color: var(--gray-05);
+}
+
+.ad-list-card__dp strong { font-weight: var(--weight-bold); }
+.ad-list-card__note { font-size: 1.4rem; font-weight: var(--weight-bold); line-height: 1.8rem; color: var(--gray-05); }
+.ad-list-card__time-corner { display: none; }
+
+.ad-list-card__type-row { display: flex; align-items: center; gap: 1.6rem; min-height: 2.4rem; }
+.ad-list-card__type { font-size: 1.6rem; font-weight: var(--weight-bold); line-height: 2rem; }
+.ad-list-card__divider { font-size: 1.4rem; line-height: 2.1rem; color: var(--gray-04); }
+.ad-list-card__specs { display: flex; gap: 1.6rem; font-size: 1.6rem; line-height: 2.4rem; }
+.ad-list-card__specs > span { display: flex; align-items: center; gap: 0.8rem; text-transform: lowercase; }
+.ad-list-card__specs img { width: 1.6rem; height: 1.6rem; }
+
+.ad-list-card__brand { display: flex; align-items: center; font-size: 1.4rem; line-height: 2.1rem; }
+.ad-list-card__brand > * + *::before,
+.ad-list-card__meta > .ad-list-card__time::before { content: '•'; margin: 0 0.6rem; font-size: 1.4rem; line-height: 1.8rem; color: var(--gray-04); }
+
+.ad-list-card__title {
+  max-width: 66%;
   margin: 0;
+  font-size: 1.6rem;
+  font-weight: var(--weight-semibold);
+  line-height: 3rem;
+  color: var(--gray-06);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.ad-list-card__actions {
+.ad-list-card__fav {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
   display: flex;
-  gap: var(--space-2);
-  margin-top: auto;
-  padding-top: var(--space-3);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
 }
 
-/* Each action button shares the row equally (Call / WhatsApp / Chat). */
-.ad-list-card__actions .contact-btn { flex: 1; }
+.ad-list-card__fav img { width: 2.4rem; height: 2.4rem; }
 
-/* Price + model/type chip on one row — the card leads with the price on the
-   start side and a chip on the end. */
-.ad-list-card__head {
+.ad-list-card .attr-chips { flex-wrap: nowrap; overflow: hidden; margin: 1.2rem 0; }
+.ad-list-card .attr-chip { flex: none; }
+
+.ad-list-card__meta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
+  margin: 0 0 0.8rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.ad-list-card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  font-size: var(--text-xs);
-  color: var(--text-tertiary);
-}
+.ad-list-card__location { display: flex; align-items: center; gap: 0.6rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.ad-list-card__location img { width: 1.6rem; height: 1.6rem; flex: none; opacity: 0.8; }
+.ad-list-card__time { display: flex; align-items: center; color: var(--gray-05); }
+.ad-list-card__logo { position: absolute; right: 1.6rem; bottom: 1.6rem; width: 12rem; height: 4rem; border-radius: var(--radius-sm); object-fit: cover; }
 
-.ad-list-card__footer span {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-}
+.ad-list-card__actions { display: flex; gap: 0.8rem; padding: 0 1.6rem 1.6rem 2.1rem; }
 
-/* Property specs lead with the property type, then beds · baths · area. */
-.ad-card__specs strong { color: var(--text-primary); font-weight: var(--weight-bold); }
+/* Mobile web */
+.ad-list-card--mobile { display: block; border-radius: var(--radius-lg); }
+.ad-list-card--mobile.ad-list-card--highlighted { border-color: var(--red-06); border-radius: var(--radius-lg); }
+.ad-list-card--mobile .ad-list-card__media { height: 24rem; min-height: 0; }
+.ad-list-card--mobile .ad-list-card__photos { display: none; }
+.ad-list-card--mobile .ad-list-card__fav { top: 0; right: 0; width: 4rem; height: 4rem; align-items: center; justify-content: center; }
+.ad-list-card--mobile .ad-list-card__fav img { width: 2rem; height: 2rem; filter: brightness(0) invert(1); }
+.ad-list-card--mobile .ad-list-card__body { gap: 0.6rem; padding: 0.4rem 1.2rem 1.6rem; }
+.ad-list-card--mobile .ad-list-card__price-row { position: relative; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-top: 0.6rem; padding-right: 9rem; overflow: visible; }
+.ad-list-card--mobile .ad-list-card__price { font-size: 1.8rem; line-height: 2.7rem; letter-spacing: -0.05rem; }
+.ad-list-card--mobile .ad-list-card__time-corner { display: block; position: absolute; top: 0.6rem; right: 0; font-size: 1.2rem; line-height: 1.6rem; color: var(--gray-05); }
+.ad-list-card--mobile .ad-list-card__type-row { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+.ad-list-card--mobile .ad-list-card__divider { display: none; }
+.ad-list-card--mobile .ad-list-card__specs { gap: 1.2rem; font-size: 1.4rem; line-height: 2.1rem; }
+.ad-list-card--mobile .ad-list-card__brand { gap: 0.8rem; }
+.ad-list-card--mobile .ad-list-card__brand > * + *::before { margin: 0 0.8rem 0 0; }
+.ad-list-card--mobile .ad-list-card__title { max-width: none; font-size: 1.4rem; font-weight: var(--weight-regular); line-height: 1.82rem; }
+.ad-list-card--mobile .attr-chips { margin: 0.6rem 0; }
+.ad-list-card--mobile .ad-list-card__meta { justify-content: space-between; gap: 0.8rem; margin: 0; font-size: 1.4rem; line-height: 1.8rem; color: var(--gray-05); }
+.ad-list-card--mobile .ad-list-card__location img { width: 1.4rem; height: 1.4rem; }
+.ad-list-card--mobile .ad-list-card__logo { position: static; width: 9rem; height: 3rem; border: 1px solid var(--gray-02); }
+.ad-list-card--mobile .ad-list-card__actions { padding: 0 1.2rem 1.2rem; }
+.ad-list-card--mobile .ad-list-card__actions .contact-btn { flex: 1; }
+
+/* Older template markup (__head / __footer rows) — kept until templates are rebuilt. */
+.ad-list-card__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.ad-list-card__footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); font-size: 1.4rem; color: var(--gray-05); }
+.ad-list-card__footer span { display: inline-flex; align-items: center; gap: var(--space-1); }
+.ad-list-card__body > .ad-card__price { font-size: 2.4rem; line-height: 3.6rem; color: var(--gray-06); }
+.ad-list-card__body .ad-list-card__actions { padding: var(--space-3) 0 var(--space-4); }
 
 /* ── Results grid ─────────────────────────────────────────────────────────── */
 
@@ -1974,26 +2177,27 @@ ul {
 .attr-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  align-items: center;
+  gap: 0.8rem;
 }
 
+/* Label + value on one line (desktop property); .attr-chips--stacked puts the value under
+   the label (cars everywhere, all verticals on mobile). */
 .attr-chip {
   display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-md);
-  background: var(--surface-muted);
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--gray-01);
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: var(--gray-05);
   white-space: nowrap;
 }
 
-.attr-chip strong {
-  font-weight: var(--weight-bold);
-  color: var(--text-primary);
-}
-
+.attr-chips--stacked .attr-chip { flex-direction: column; gap: 0; }
+.attr-chip strong { font-weight: var(--weight-bold); color: var(--gray-06); }
 .attr-chip img { width: 1.6rem; height: 1.6rem; flex: none; }
 
 /* ── Promotion ribbons ────────────────────────────────────────────────────── */

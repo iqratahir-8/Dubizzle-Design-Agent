@@ -18,8 +18,22 @@ const LIVE = join(ROOT, 'design-kit/reference/live');
 const SCREENS = join(LIVE, 'screens');
 
 const GROUPS = [
-  ['Landing pages', { home: 'Home', motors: 'Motors', property: 'Property' }],
-  ['Ad detail', { 'car-dpv': 'Car for sale — detail page' }],
+  ['Landing pages', { home: 'Home', motors: 'Motors', property: 'Property', 'car-finance': 'Car finance' }],
+  [
+    'Search listings',
+    {
+      'cars-list': 'Cars for sale',
+      'cars-new': 'Cars — new only',
+      'cars-toyota': 'Cars — Toyota',
+      'cars-cairo-price': 'Cars — Cairo, price filter',
+      'property-list': 'Apartments for sale',
+      'property-villas': 'Villas for sale',
+      'property-newcairo': 'Apartments — New Cairo',
+      'mobiles-list': 'Mobile phones',
+      'mobiles-apple': 'Mobile phones — iPhone',
+    },
+  ],
+  ['Ad detail', { 'car-dpv': 'Car for sale', 'property-dpv': 'Property', 'mobile-dpv': 'Mobile phone' }],
   [
     'Post an ad',
     {
