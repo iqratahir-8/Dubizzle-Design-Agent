@@ -138,10 +138,14 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
   capture-account and capture-post-ad refuses any screenshot showing the account name or a non-sample
   phone. Account screens recaptured under the gate (12/12 ok). **Always keep this gate.**
 - Templates added (local/gitignored, account): post-ad-category, post-ad-subcategory, post-ad, post-ad-filled,
-  upsell-select, upsell. Hand-built post-ad retired. check:templates: 23/24 ok; upsell.desktop was saved
-  mid-"Loading…" → save() now waits for loading to clear; desktop recapture was running at switch time.
-  **First thing to do:** `npm run capture:post-ad -- --layout=desktop && npm run build:templates && npm run check:templates -- upsell post-ad post-ad-filled`
-  (needs the capture Chrome window signed in: `npm run capture:login -- --check`).
+  upsell-select, upsell. Hand-built post-ad retired. upsell.desktop was saved mid-"Loading…" → save() now
+  waits for loading to clear; recaptured: all 24 account/post-ad templates within 0–2.8%.
+  **Open:** the latest desktop run only filled 2 fields on post-details-filled (condition, transmission —
+  the earlier run filled 13). Re-run `npm run capture:post-ad -- --layout=desktop`, confirm the "filled:"
+  list, then `npm run build:templates`. Needs the capture Chrome window signed in
+  (`npm run capture:login -- --check`).
+- Skills: none added since 2026-09-11. User was offered updating `responsive-design` / `token-check` to
+  know about live templates, AdListCard/Chip variants and the capture tooling, plus a new re-capture skill.
 - Remaining hand-built templates: favourites, payment, agency-portal (no captures yet).
 
 **Done 2026-09-14 — capture fidelity + ad cards/chips (user request: "check all screens fetched
