@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-14 · branch `claude/keen-hypatia-ftrhz4` · last commit `d898a17`
+Last updated: 2026-09-14 · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -13,11 +13,12 @@ Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HAND
 
 ## 1. How to resume on another account
 
-1. Open the folder **`/Users/iqratahir/Downloads/Dubizzle-Design-System`** in Claude Code
-   (this is the canonical copy; `~/Dubizzle-Design-System` is an old, outdated copy — don't use it).
+1. Open the folder **`/Users/iqratahir/Dubizzle-Design-System`** (home folder) in Claude Code.
+   This is the canonical copy since 2026-09-14. `~/Downloads/Dubizzle-Design-System` is an older
+   copy kept only as a backup — don't work there.
 2. `npm install` (only if `node_modules` is missing).
-3. Start the two servers **from a terminal / the Bash tool**, not the app's preview launcher —
-   macOS blocks app-started servers from reading `~/Downloads`:
+3. Start the two servers (the app's preview launcher works — `.claude/launch.json` has
+   `storybook` and `design-kit` — or run them from a terminal):
    - `npm run dev` → Storybook (React library) on http://localhost:6006
    - `npm run kit` → HTML design kit on http://localhost:4321 (main designer-facing deliverable)
    If port 6006/4321 is "in use", the server is already running — just open the URL.
@@ -25,7 +26,7 @@ Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HAND
 
 **Git:** remote `github.com/chaudhary-umair-ahmad/Dubizzle-Design-System` (private). This Mac's
 GitHub user (`iqratahir-8`) has no push access, so recent commits exist **only locally**
-(5 commits ahead of origin at `d898a17`). Switching accounts on this Mac is fine — the folder
+(everything after `92fc595` is unpushed). Switching accounts on this Mac is fine — the folder
 carries everything. Moving to another machine means copying the folder (or pushing from an
 account with access).
 
@@ -107,7 +108,12 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    (46px), line tabs, checkbox, ad card (164px image, price/title line-heights, Featured badge,
    "•" separators, real icons) to live values on both sides; added `check:parity`. 31/31 identical.
    Commits `7180c86`, `d898a17`.
-8. User asked for this progress file, kept updated so accounts can be switched any time.
+8. User asked for this progress file, kept updated so accounts can be switched any time →
+   `PROGRESS.md` + `CLAUDE.md` (commit `995b32d`).
+9. User asked to keep the project in the home folder instead of Downloads → `~/Dubizzle-Design-System`
+   brought up to date (latest branch, captures, working `node_modules`); its old uncommitted
+   changes (a vite 8 bump + old launch paths) are in `git stash` — don't apply them.
+   Servers now run from here; parity 31/31 verified.
 
 ## 6. Next up
 
@@ -125,6 +131,7 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
 
 ## 7. Known gotchas
 
+- `git stash list` in this folder has the old copy's uncommitted vite-8 bump — never apply it.
 - Browser pane screenshots can be unreliable; measure with computed styles instead.
 - `puppeteer-core` only resolves from inside the repo — put throwaway scripts in `scripts/.tmp-*.mjs`
   and delete them after, or import via absolute path.
