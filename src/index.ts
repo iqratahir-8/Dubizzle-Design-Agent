@@ -83,5 +83,3 @@ export type { HeaderProps, HeaderUser, HeaderUserType, HeaderVertical } from './
 export { Footer } from './components/Footer';
 export type { FooterProps } from './components/Footer';
 
-export { HomePage, SearchPage, AdDetailPage } from './templates';
-export type { HomePageProps, SearchPageProps, AdDetailPageProps } from './templates';

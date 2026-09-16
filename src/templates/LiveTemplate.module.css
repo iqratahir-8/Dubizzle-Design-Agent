@@ -1,0 +1,83 @@
+/* Chrome around a page template shown in Storybook. The page itself is an iframe of the very
+   file design-kit/templates serves, so this styles only the toolbar around it. */
+
+.root {
+  font-family: var(--font-primary);
+  color: var(--gray-06);
+  padding: var(--space-4);
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.title {
+  font-weight: var(--weight-bold);
+}
+
+.badge {
+  border-radius: var(--radius-full);
+  padding: 0.2rem var(--space-2);
+  font-size: var(--text-xs);
+  background: var(--gray-01);
+  color: var(--gray-05);
+}
+
+.badge[data-live] {
+  background: var(--green-01);
+  color: var(--green-04);
+}
+
+.path,
+.meta {
+  font-size: var(--text-xs);
+  color: var(--gray-04);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.link {
+  font-size: var(--text-xs);
+  color: var(--red-04);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.note {
+  margin: 0;
+  padding: var(--space-4);
+  border: 1px dashed var(--gray-02);
+  border-radius: var(--radius-lg);
+  background: var(--gray-00);
+  color: var(--gray-05);
+  font-size: var(--text-sm);
+}
+
+/* The frame renders at the real viewport width and is scaled down to fit the canvas, so the
+   page keeps the layout it has at 1440 / 390 instead of reflowing to Storybook's width. */
+.viewport {
+  position: relative;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+}
+
+.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  transform-origin: top left;
+}

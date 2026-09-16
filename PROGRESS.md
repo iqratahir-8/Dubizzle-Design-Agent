@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-14 (late) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-16 · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -124,6 +124,15 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    changes (a vite 8 bump + old launch paths) are in `git stash` — don't apply them.
    Servers now run from here; parity 31/31 verified.
 
+10. User: "templates pages in the Storybook are old, not what we have in the design kit" → Storybook
+   no longer has its own hand-built pages. `src/templates/LiveTemplate.tsx` frames the very file
+   `design-kit/templates/<device>/<name>.html`, and `scripts/build-template-stories.mjs` (runs as part
+   of `npm run build:templates`) generates one story per template into `src/templates/PageTemplates.stories.tsx`
+   — so the two libraries cannot drift again. `.storybook/main.ts` serves `design-kit/templates`
+   at `/templates` (plus `tokens/` and `patterns/`, which hand-built templates link). The old React
+   `HomePage` / `SearchPage` / `AdDetailPage` (+ `fixtures.ts`) were deleted and dropped from
+   `src/index.ts`; page templates are HTML now, not React.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find
@@ -209,5 +218,8 @@ LPVs), desktop + mobile; quick vs selected chips; pixel-perfect htmls"):**
   and delete them after, or import via absolute path.
 - Storybook selectors in `check-parity.mjs` are auto-scoped to `#storybook-root` (otherwise they
   hit Storybook's own UI).
+- Storybook's Templates section is generated: after capturing or adding a page template run
+  `npm run build:templates` (it regenerates `src/templates/PageTemplates.stories.tsx`), and restart
+  Storybook if you changed `staticDirs` — it only reads them at start-up.
 - Kit markup uses `<p>`/`<h3>`; always zero their margins in patterns, or kit cards grow taller
   than React ones.

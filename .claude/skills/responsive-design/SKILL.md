@@ -39,7 +39,9 @@ artifact in mobile-only mode.
 ## Step 1 — Start from the live template (never a blank page)
 
 `design-kit/templates/index.html` lists every template with its pixel difference from live.
-Each exists as `templates/mobile/<name>.html` and `templates/desktop/<name>.html`:
+Each exists as `templates/mobile/<name>.html` and `templates/desktop/<name>.html`. Storybook
+shows the very same files under **Templates → Pages** (device control: desktop 1440 / mobile
+390), so browse there and copy the file the story names — never rebuild a page in React:
 
 | Surface | Template |
 |---|---|

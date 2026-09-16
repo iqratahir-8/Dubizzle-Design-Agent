@@ -35,7 +35,7 @@ design-kit/                Standalone, no build step
 
 src/                       React + TypeScript library
 ├── components/            14 components, each with a scoped .module.css
-├── templates/             HomePage · SearchPage · AdDetailPage
+├── templates/             LiveTemplate — frames design-kit/templates in Storybook
 ├── tokens/                generated.css (from the monorepo) + fonts + reset
 └── assets/                fonts, logos, icons
 
@@ -49,7 +49,7 @@ scripts/
 
 ```tsx
 import 'dubizzle-design-system/styles.css';
-import { Button, AdCard, Pill, SearchPage } from 'dubizzle-design-system';
+import { Button, AdCard, Pill, AdListCard } from 'dubizzle-design-system';
 
 <Button variant="primary">Post Your Ad</Button>
 

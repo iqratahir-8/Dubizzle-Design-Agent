@@ -40,7 +40,7 @@ Everything here is extracted from the production `dubizzle-maple` monorepo, not 
 6. Run the `token-check` skill (or `npm run check:design -- <your-file>`) and fix every error.
 
 **Write production React**
-Import from the library rather than re-implementing: `import { Button, AdCard, Header } from 'dubizzle-design-system'`. Page-level examples live in `src/templates/`. Browse everything with `npm run dev` (Storybook).
+Import from the library rather than re-implementing: `import { Button, AdCard, Header } from 'dubizzle-design-system'`. Whole pages start from a template, not from React: `design-kit/templates/<desktop|mobile>/<page>.html` is a frozen capture of the live page, and Storybook's **Templates → Pages** frames those same files, so the two never disagree. Browse everything with `npm run dev` (Storybook).
 
 **Audit an existing design**
 Run `npm run check:design -- <files>`. Then check the things a linter can't: is the ad-card hierarchy intact (price > title > specs > meta)? Is the density right? Does the copy sound like dubizzle or like a SaaS landing page?

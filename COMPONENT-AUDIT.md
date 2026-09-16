@@ -39,6 +39,10 @@ says red but live production renders charcoal, which this design system matches
 AdCard, Tabs, Pagination, Header, Footer` + `HomePage / SearchPage / AdDetailPage`
 templates.
 
+> Since this audit: the mobile components were added (see `docs/COMPONENT-INVENTORY.md`),
+> and the three React page templates were removed — page templates are now the frozen live
+> captures in `design-kit/templates/`, which Storybook frames under **Templates/Pages**.
+
 ## 2. Coverage matrix (design system ↔ product)
 
 | DS component | Product location | Status |
