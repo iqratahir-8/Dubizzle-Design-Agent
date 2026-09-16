@@ -167,6 +167,14 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    screenshots. In the kit a pinned menu steps aside as soon as the pointer enters the strip.
    Parity 185/185.
 
+14. User: "fetch all the mega menus" → the remaining four are captured (Mobiles & Tablets, Jobs,
+   Home & Office Furniture, Electronics & Appliances) plus a second-level state
+   (`menu-vehicles-car-care`, showing the panel follow the hovered subcategory). All 0% off live.
+   A screenshot only shows one panel at a time, so **`scripts/extract-mega-menus.mjs`** reads the
+   whole menu off live into `design-kit/content/mega-menus.json` — 7 menus, 67 subcategories,
+   201 panel links — and that file now drives both the `MegaMenu` story (one story per menu) and
+   the kit example (all seven, generated in `build-preview.mjs`). Templates: **61 pages / 107**.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

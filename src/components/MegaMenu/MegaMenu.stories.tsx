@@ -1,77 +1,33 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MegaMenu } from './MegaMenu';
 import type { MegaMenuItem } from './MegaMenu';
+import menuData from '../../../design-kit/content/mega-menus.json';
 
-/** Content copied from the live header capture (design-kit/templates/desktop/menu-*.html). */
-const ITEMS: MegaMenuItem[] = [
-  {
-    label: 'Vehicles',
-    categories: [
-      {
-        label: 'Cars for Sale',
-        panel: {
-          title: 'Popular Brands',
+/**
+ * The real header menu, read off the live site by `node scripts/extract-mega-menus.mjs`:
+ * all seven categories, their subcategories and every panel behind them.
+ */
+const ITEMS: MegaMenuItem[] = menuData.menus.map((menu) => ({
+  label: menu.label,
+  categories: menu.categories.map((category) => ({
+    label: category.label,
+    subtitle: category.subtitle ?? undefined,
+    href: category.href ?? undefined,
+    panel: category.panel
+      ? {
+          title: category.panel.title ?? category.label,
           seeAllLabel: 'See All',
-          columns: 2,
-          links: [
-            { label: 'Mercedes-Benz' }, { label: 'MG' }, { label: 'Hyundai' }, { label: 'Volkswagen' },
-            { label: 'Fiat' }, { label: 'Skoda' }, { label: 'BMW' }, { label: 'Daewoo' },
-            { label: 'Renault' }, { label: 'Toyota' }, { label: 'Kia' }, { label: 'Chery' },
-            { label: 'Chevrolet' }, { label: 'Suzuki' }, { label: 'Opel' }, { label: 'Seat' },
-          ],
-        },
-      },
-      { label: 'Cars for Rent', panel: { title: 'Cars for Rent', seeAllLabel: 'See All', links: [{ label: 'Daily Rental', chevron: true }, { label: 'Monthly Rental', chevron: true }, { label: 'With Driver', chevron: true }] } },
-      { label: 'Tyres, Batteries, Oils, & Accessories', panel: { title: 'Tyres, Batteries, Oils, & Accessories', seeAllLabel: 'See All', links: [{ label: 'Tyres' }, { label: 'Batteries' }, { label: 'Oils' }, { label: 'Accessories' }] } },
-      { label: 'Car Spare Parts' },
-      { label: 'Car Care', panel: { title: 'Car Care', seeAllLabel: 'See All', links: [{ label: 'Pads, Sponges, & Cloths' }, { label: 'Car Air Fresheners' }, { label: 'Car Cleaning Products' }, { label: 'Car Waxes' }, { label: 'Car Polishes & Compounds' }] } },
-      { label: 'Motorcycles & Scooters' },
-      { label: 'Motorcycle Spare Parts' },
-      { label: 'Boats - Watercraft' },
-      { label: 'Golf Carts' },
-      { label: 'Heavy Trucks, Buses & Other Vehicles' },
-    ],
-  },
-  {
-    label: 'Properties',
-    categories: [
-      { label: 'Apartments for Sale', panel: { title: 'Apartments for Sale', seeAllLabel: 'See All', columns: 2, links: [{ label: 'Cairo' }, { label: 'Giza' }, { label: 'New Cairo' }, { label: 'Alexandria' }, { label: 'Sheikh Zayed' }, { label: '6th of October' }] } },
-      { label: 'Apartments for Rent' },
-      { label: 'Villas For Sale' },
-      { label: 'Villas For Rent' },
-      { label: 'Vacation Homes' },
-      { label: 'Commercial' },
-    ],
-  },
-  { label: 'Mobiles & Tablets', categories: [{ label: 'Mobile Phones', panel: { title: 'Mobile Phones', seeAllLabel: 'See All', columns: 2, links: [{ label: 'Apple' }, { label: 'Samsung' }, { label: 'Xiaomi' }, { label: 'Oppo' }] } }, { label: 'Tablets' }, { label: 'Mobile Numbers' }] },
-  { label: 'Jobs', categories: [{ label: 'Accounting, Finance & Banking' }, { label: 'Engineering' }, { label: 'Designers' }] },
-  {
-    label: 'More Categories',
-    categories: [
-      {
-        label: 'Fashion & Beauty',
-        subtitle: "Women's Clothing; Men's Clothing; Women'…",
-        panel: {
-          title: 'Fashion & Beauty',
-          seeAllLabel: 'See All',
-          links: [
-            { label: "Women's Clothing", chevron: true },
-            { label: "Men's Clothing", chevron: true },
-            { label: "Women's Accessories - Cosmetics - Personal Care", chevron: true },
-            { label: "Men's Accessories - Personal Care", chevron: true },
-            { label: "Women's Footwear" },
-            { label: "Men's Footwear" },
-          ],
-        },
-      },
-      { label: 'Pets - Birds - Ornamental fish', subtitle: 'Dogs; Cats; Birds' },
-      { label: 'Kids & Babies', subtitle: 'Baby & Mom Healthcare; Baby Clothing; Kid…' },
-      { label: 'Books, Sports & Hobbies', subtitle: 'Antiques - Collectibles; Bicycles; Books' },
-      { label: 'Business - Industrial - Agriculture', subtitle: 'Agriculture; Construction; Industrial Equipm…' },
-      { label: 'Services', subtitle: 'Business; Car; Events' },
-    ],
-  },
-];
+          seeAllHref: category.panel.seeAllHref ?? undefined,
+          columns: category.panel.columns as 1 | 2,
+          links: category.panel.links.map((link) => ({
+            label: link.label,
+            href: link.href ?? undefined,
+            chevron: link.chevron,
+          })),
+        }
+      : undefined,
+  })),
+}));
 
 const meta: Meta<typeof MegaMenu> = {
   title: 'Components/MegaMenu',
@@ -81,8 +37,9 @@ const meta: Meta<typeof MegaMenu> = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component:
-          'The desktop header category strip and its mega menu, as on dubizzle.com.eg. **Hover a category to open it** — the open one is marked by a 4px underline — then hover a subcategory on the left to swap the panel on the right. `openItem` pins one open for screenshots and for the design kit.',
+        component: `The desktop header category strip and its mega menu, as on dubizzle.com.eg. **Hover a category to open it** — the open one is marked by a 4px underline — then hover a subcategory on the left to swap the panel on the right.
+
+Content is the live menu itself (${menuData.menus.length} categories, ${menuData.menus.reduce((n, m) => n + m.categories.length, 0)} subcategories, read ${menuData._captured}); re-read it with \`node scripts/extract-mega-menus.mjs\`. \`openItem\` pins one open for screenshots and for the design kit.`,
       },
     },
   },
@@ -101,4 +58,8 @@ type Story = StoryObj<typeof MegaMenu>;
 export const Interactive: Story = {};
 export const Vehicles: Story = { args: { openItem: 'Vehicles' } };
 export const Properties: Story = { args: { openItem: 'Properties' } };
+export const Mobiles: Story = { name: 'Mobiles & Tablets', args: { openItem: 'Mobiles & Tablets' } };
+export const Jobs: Story = { args: { openItem: 'Jobs' } };
+export const Furniture: Story = { name: 'Home & Office Furniture', args: { openItem: 'Home & Office Furniture - Decor' } };
+export const Electronics: Story = { name: 'Electronics & Appliances', args: { openItem: 'Electronics & Appliances' } };
 export const MoreCategories: Story = { args: { openItem: 'More Categories' } };

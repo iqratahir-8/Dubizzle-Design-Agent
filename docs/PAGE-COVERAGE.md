@@ -24,7 +24,17 @@ captured; all 13 new captures render 0–1.6% off their screenshots.
 |---|---|---|
 | Mega menu — Vehicles (subcategory column + Popular Brands panel) | desktop header nav, on hover | ✅ `menu-vehicles` |
 | Mega menu — Properties | desktop header nav | ✅ `menu-properties` |
-| Mega menu — More Categories | desktop header nav | ✅ `menu-more-categories` |
+| Mega menu — Mobiles & Tablets | desktop header nav | ✅ `menu-mobiles` |
+| Mega menu — Jobs (column only, no panels) | desktop header nav | ✅ `menu-jobs` |
+| Mega menu — Home & Office Furniture - Decor | desktop header nav | ✅ `menu-furniture` |
+| Mega menu — Electronics & Appliances | desktop header nav | ✅ `menu-electronics` |
+| Mega menu — More Categories (rows with subtitles) | desktop header nav | ✅ `menu-more-categories` |
+| Mega menu — second level (Vehicles → Car Care panel) | desktop header nav | ✅ `menu-vehicles-car-care` |
+
+All seven menus in the strip are captured. Their **content** — every subcategory and every panel
+link behind them — is read separately into `design-kit/content/mega-menus.json`
+(`node scripts/extract-mega-menus.mjs`), because a screenshot only ever shows one panel at a time:
+7 menus, 67 subcategories, 201 panel links. That file drives the `MegaMenu` story and the kit example.
 | Location dropdown (search field, Use current location, governorate list) | desktop header | ✅ `location-dropdown` |
 | Keyword search suggestions ("toyota" → per-category rows) | desktop header | ✅ `search-suggestions` |
 | Mobile search page — empty | mobile, tapping the search field | ✅ `m-search-overlay` |

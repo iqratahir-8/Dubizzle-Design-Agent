@@ -201,6 +201,12 @@ Panel hangs from the bottom of the strip, 732×404 = a 302 column + a 430 panel:
 - Column: white, padding-block 12. Item 32 tall (33 with a subtitle), padding 8/12/8/20, label 14/16.1,
   chevron 10. Active item: background `#f0f0f0`, label `#0f5dc4` (`--blue-06`) at 700. Subtitle line
   12–14 grey, ellipsised.
+- The panel is rendered **inside the hovered subcategory's row** and positioned beside the column,
+  not as a sibling of it — worth knowing when reading the markup or scripting against it.
 - Panel: background `#f6f6f6`, 1px `#e0e0e0` inline-start border, padding 16. Head: title 18/20.7 bold,
   "See All" 14 bold `#e00000`, 12 bottom padding over a 1px `#e0e0e0` rule. Links 14/24 `#222`, two
   columns for brand lists, one column with chevrons for category lists.
+
+All seven menus and their panels are in `design-kit/content/mega-menus.json` (7 categories,
+67 subcategories, 201 links). Jobs has a column and no panels; More Categories is the only menu
+whose rows carry a subtitle line.

@@ -1,0 +1,1665 @@
+{
+  "_purpose": "The desktop header mega menu, read off dubizzle.com.eg by scripts/extract-mega-menus.mjs. Drives the MegaMenu component story and the design kit example. Re-run after a release.",
+  "_captured": "2026-09-16",
+  "menus": [
+    {
+      "label": "Vehicles",
+      "categories": [
+        {
+          "label": "Cars for Sale",
+          "subtitle": null,
+          "href": "/en/vehicles/cars-for-sale/",
+          "chevron": true,
+          "panel": {
+            "title": "Popular Brands",
+            "seeAllHref": "/en/vehicles/cars-for-sale/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Mercedes-Benz",
+                "href": "/en/vehicles/cars-for-sale/mercedes-benz/",
+                "chevron": false
+              },
+              {
+                "label": "Hyundai",
+                "href": "/en/vehicles/cars-for-sale/hyundai/",
+                "chevron": false
+              },
+              {
+                "label": "Fiat",
+                "href": "/en/vehicles/cars-for-sale/fiat/",
+                "chevron": false
+              },
+              {
+                "label": "BMW",
+                "href": "/en/vehicles/cars-for-sale/bmw/",
+                "chevron": false
+              },
+              {
+                "label": "Renault",
+                "href": "/en/vehicles/cars-for-sale/renault/",
+                "chevron": false
+              },
+              {
+                "label": "Kia",
+                "href": "/en/vehicles/cars-for-sale/kia/",
+                "chevron": false
+              },
+              {
+                "label": "Chevrolet",
+                "href": "/en/vehicles/cars-for-sale/chevrolet/",
+                "chevron": false
+              },
+              {
+                "label": "Opel",
+                "href": "/en/vehicles/cars-for-sale/opel/",
+                "chevron": false
+              },
+              {
+                "label": "Peugeot",
+                "href": "/en/vehicles/cars-for-sale/peugeot/",
+                "chevron": false
+              },
+              {
+                "label": "Nissan",
+                "href": "/en/vehicles/cars-for-sale/nissan/",
+                "chevron": false
+              },
+              {
+                "label": "MG",
+                "href": "/en/vehicles/cars-for-sale/mg/",
+                "chevron": false
+              },
+              {
+                "label": "Volkswagen",
+                "href": "/en/vehicles/cars-for-sale/volkswagen/",
+                "chevron": false
+              },
+              {
+                "label": "Skoda",
+                "href": "/en/vehicles/cars-for-sale/skoda/",
+                "chevron": false
+              },
+              {
+                "label": "Daewoo",
+                "href": "/en/vehicles/cars-for-sale/daewoo/",
+                "chevron": false
+              },
+              {
+                "label": "Toyota",
+                "href": "/en/vehicles/cars-for-sale/toyota/",
+                "chevron": false
+              },
+              {
+                "label": "Chery",
+                "href": "/en/vehicles/cars-for-sale/chery/",
+                "chevron": false
+              },
+              {
+                "label": "Suzuki",
+                "href": "/en/vehicles/cars-for-sale/suzuki/",
+                "chevron": false
+              },
+              {
+                "label": "Seat",
+                "href": "/en/vehicles/cars-for-sale/seat/",
+                "chevron": false
+              },
+              {
+                "label": "Jeep",
+                "href": "/en/vehicles/cars-for-sale/jeep/",
+                "chevron": false
+              },
+              {
+                "label": "Land Rover",
+                "href": "/en/vehicles/cars-for-sale/land-rover/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Cars for Rent",
+          "subtitle": null,
+          "href": "/en/vehicles/cars-for-rent/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Tyres, Batteries, Oils, & Accessories",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Tyres, Batteries, Oils, & Accessories",
+            "seeAllHref": "/en/vehicles/tyres-batteries-oil-car-accessories/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Car Wheels",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/car-wheels/",
+                "chevron": false
+              },
+              {
+                "label": "Car Tires",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/car-tires/",
+                "chevron": false
+              },
+              {
+                "label": "Rims",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/rims/",
+                "chevron": false
+              },
+              {
+                "label": "Car Batteries & Accessories",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/car-batteries-accessories/",
+                "chevron": false
+              },
+              {
+                "label": "Chargers & Jump Starters",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/chargers-jump-starters/",
+                "chevron": false
+              },
+              {
+                "label": "Car Oils and Lubricants",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/car-oils-and-lubricants/",
+                "chevron": false
+              },
+              {
+                "label": "Car Coolants and Additives",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/car-coolants-and-additives/",
+                "chevron": false
+              },
+              {
+                "label": "Car Interior Lighting",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/car-interior-lighting/",
+                "chevron": false
+              },
+              {
+                "label": "Interior Accessories",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/interior-accessories/",
+                "chevron": false
+              },
+              {
+                "label": "Exterior Accessories",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/exterior-accessories/",
+                "chevron": false
+              },
+              {
+                "label": "Car Safety & Security",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/car-safety-security/",
+                "chevron": false
+              },
+              {
+                "label": "Car Tools & Gadgets",
+                "href": "/en/vehicles/tyres-batteries-oil-car-accessories/car-tools-gadgets/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Car Spare Parts",
+          "subtitle": null,
+          "href": "/en/vehicles/car-spare-parts/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Car Care",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Car Care",
+            "seeAllHref": "/en/vehicles/car-care/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Pads, Sponges, & Cloths",
+                "href": "/en/vehicles/car-care/pads-sponges-cloths/",
+                "chevron": false
+              },
+              {
+                "label": "Car Air Fresheners",
+                "href": "/en/vehicles/car-care/car-air-fresheners/",
+                "chevron": false
+              },
+              {
+                "label": "Car Cleaning Products",
+                "href": "/en/vehicles/car-care/car-cleaning-products/",
+                "chevron": false
+              },
+              {
+                "label": "Car Waxes",
+                "href": "/en/vehicles/car-care/car-waxes/",
+                "chevron": false
+              },
+              {
+                "label": "Car Polishes & Compounds",
+                "href": "/en/vehicles/car-care/car-polishes-compounds/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Motorcycles & Scooters",
+          "subtitle": null,
+          "href": "/en/vehicles/motorcycles-accessories/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Motorcycle Spare Parts",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Motorcycle Spare Parts",
+            "seeAllHref": "/en/vehicles/motorcycle-spare-parts/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Motorcycle Tires & Wheels",
+                "href": "/en/vehicles/motorcycle-spare-parts/motorcycle-tires-wheels/",
+                "chevron": false
+              },
+              {
+                "label": "Motorcycle Filters & Belts",
+                "href": "/en/vehicles/motorcycle-spare-parts/motorcycle-filters-belts/",
+                "chevron": false
+              },
+              {
+                "label": "Motorcycle Exhaust Systems",
+                "href": "/en/vehicles/motorcycle-spare-parts/motorcycle-exhaust-systems/",
+                "chevron": false
+              },
+              {
+                "label": "Motorcycle Braking System",
+                "href": "/en/vehicles/motorcycle-spare-parts/motorcycle-braking-system/",
+                "chevron": false
+              },
+              {
+                "label": "Motorcycle Body & Frame",
+                "href": "/en/vehicles/motorcycle-spare-parts/motorcycle-body-frame/",
+                "chevron": false
+              },
+              {
+                "label": "Motorcycle Electrical & Lighting",
+                "href": "/en/vehicles/motorcycle-spare-parts/motorcycle-electrical-lighting/",
+                "chevron": false
+              },
+              {
+                "label": "Motorcycle Suspension",
+                "href": "/en/vehicles/motorcycle-spare-parts/motorcycle-suspension/",
+                "chevron": false
+              },
+              {
+                "label": "Motorcycle Engine & Transmission",
+                "href": "/en/vehicles/motorcycle-spare-parts/motorcycle-engine-transmission/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Motorcycles Gear, Safety & Security",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Motorcycles Gear, Safety & Security",
+            "seeAllHref": "/en/vehicles/motorcycles-gear-safety-security/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Motorcycle Securtiy",
+                "href": "/en/vehicles/motorcycles-gear-safety-security/motorcycle-securtiy/",
+                "chevron": false
+              },
+              {
+                "label": "Motorcycle Gear",
+                "href": "/en/vehicles/motorcycles-gear-safety-security/motorcycle-gear/",
+                "chevron": false
+              },
+              {
+                "label": "Motorcycle Safety",
+                "href": "/en/vehicles/motorcycles-gear-safety-security/motorcycle-safety/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Boats - Watercraft",
+          "subtitle": null,
+          "href": "/en/vehicles/boats-watercraft/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Golf Carts",
+          "subtitle": null,
+          "href": "/en/vehicles/golf-carts/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Heavy Trucks, Buses & Other Vehicles",
+          "subtitle": null,
+          "href": "/en/vehicles/trucks-buses-other-vehicles/",
+          "chevron": false,
+          "panel": null
+        }
+      ]
+    },
+    {
+      "label": "Properties",
+      "categories": [
+        {
+          "label": "Apartments for Sale",
+          "subtitle": null,
+          "href": "/en/properties/apartments-duplex-for-sale/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Apartments for Rent",
+          "subtitle": null,
+          "href": "/en/properties/apartments-duplex-for-rent/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Villas For Sale",
+          "subtitle": null,
+          "href": "/en/properties/villas-for-sale/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Villas For Rent",
+          "subtitle": null,
+          "href": "/en/properties/villas-for-rent/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Vacation Homes for Sale",
+          "subtitle": null,
+          "href": "/en/properties/vacation-homes-for-sale/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Vacation Homes for Rent",
+          "subtitle": null,
+          "href": "/en/properties/vacation-homes-for-rent/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Commercial for Sale",
+          "subtitle": null,
+          "href": "/en/properties/commercial-for-sale/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Commercial for Rent",
+          "subtitle": null,
+          "href": "/en/properties/commercial-for-rent/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Buildings & Lands",
+          "subtitle": null,
+          "href": "/en/properties/buildings-lands-other/",
+          "chevron": false,
+          "panel": null
+        }
+      ]
+    },
+    {
+      "label": "Mobiles & Tablets",
+      "categories": [
+        {
+          "label": "Mobile Phones",
+          "subtitle": null,
+          "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-phones/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Tablets",
+          "subtitle": null,
+          "href": "/en/mobile-phones-tablets-accessories-numbers/tablets/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Mobile & Tablet Accessories",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Mobile & Tablet Accessories",
+            "seeAllHref": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Chargers & Cables",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/chargers-cables/",
+                "chevron": false
+              },
+              {
+                "label": "Power Banks",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/power-banks/",
+                "chevron": false
+              },
+              {
+                "label": "Headphones & Earbuds",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/headphones-earbuds/",
+                "chevron": false
+              },
+              {
+                "label": "Covers & Cases",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/covers-cases/",
+                "chevron": false
+              },
+              {
+                "label": "Screen Protectors",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/screen-protectors/",
+                "chevron": false
+              },
+              {
+                "label": "Mobile Stands",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/mobile-stands/",
+                "chevron": false
+              },
+              {
+                "label": "Selfie Sticks",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/selfie-sticks/",
+                "chevron": false
+              },
+              {
+                "label": "Ring Lights",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/ring-lights/",
+                "chevron": false
+              },
+              {
+                "label": "Stylus Pens",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/stylus-pens/",
+                "chevron": false
+              },
+              {
+                "label": "Mobile & Tablet Keyboards",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/mobile-tablet-keyboards/",
+                "chevron": false
+              },
+              {
+                "label": "Adapters",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/adapters/",
+                "chevron": false
+              },
+              {
+                "label": "Memory Cards",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/memory-cards/",
+                "chevron": false
+              },
+              {
+                "label": "Spare Parts",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-tablet-accessories/mobile-spare-parts/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Mobile Numbers",
+          "subtitle": null,
+          "href": "/en/mobile-phones-tablets-accessories-numbers/mobile-numbers/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Smart Watches",
+          "subtitle": null,
+          "href": "/en/mobile-phones-tablets-accessories-numbers/smart-watches/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Wearables",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Wearables",
+            "seeAllHref": "/en/mobile-phones-tablets-accessories-numbers/wearables/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Fitness Trackers",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/wearables/fitness-trackers/",
+                "chevron": false
+              },
+              {
+                "label": "Smart Glasses",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/wearables/smart-glasses/",
+                "chevron": false
+              },
+              {
+                "label": "Smart Rings",
+                "href": "/en/mobile-phones-tablets-accessories-numbers/wearables/smart-rings/",
+                "chevron": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Jobs",
+      "categories": [
+        {
+          "label": "Accounting, Finance & Banking",
+          "subtitle": null,
+          "href": "/en/jobs/accounting-finance-banking/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Engineering",
+          "subtitle": null,
+          "href": "/en/jobs/engineering/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Designers",
+          "subtitle": null,
+          "href": "/en/jobs/designers/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Customer Service & Call Center",
+          "subtitle": null,
+          "href": "/en/jobs/customer-service-call-center/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Workers and Technicians",
+          "subtitle": null,
+          "href": "/en/jobs/workers-technicians/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Management & Consulting",
+          "subtitle": null,
+          "href": "/en/jobs/consulting-management/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Drivers & Delivery",
+          "subtitle": null,
+          "href": "/en/jobs/drivers-delivery/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Education",
+          "subtitle": null,
+          "href": "/en/jobs/education/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "HR",
+          "subtitle": null,
+          "href": "/en/jobs/hr-recruiting/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Tourism, Travel & Hospitality",
+          "subtitle": null,
+          "href": "/en/jobs/tourism-travel-hospitality/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "IT - Telecom",
+          "subtitle": null,
+          "href": "/en/jobs/it-telecom/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Marketing and Public Relations",
+          "subtitle": null,
+          "href": "/en/jobs/marketing-public-relations/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Medical, Healthcare, & Nursing",
+          "subtitle": null,
+          "href": "/en/jobs/medical-healthcare-nursing/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Sales",
+          "subtitle": null,
+          "href": "/en/jobs/sales/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Architecture & Design",
+          "subtitle": null,
+          "href": "/en/jobs/architecture-design/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Secretarial",
+          "subtitle": null,
+          "href": "/en/jobs/secretarial/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Guards and Security",
+          "subtitle": null,
+          "href": "/en/jobs/guards-security/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Real Estate",
+          "subtitle": null,
+          "href": "/en/jobs/real-estate/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Media & Journalism",
+          "subtitle": null,
+          "href": "/en/jobs/media-journalism/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Legal - Lawyers",
+          "subtitle": null,
+          "href": "/en/jobs/legal-lawyers/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Other Job",
+          "subtitle": null,
+          "href": "/en/jobs/jobs-other/",
+          "chevron": false,
+          "panel": null
+        }
+      ]
+    },
+    {
+      "label": "Home & Office Furniture - Decor",
+      "categories": [
+        {
+          "label": "Furniture",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Furniture",
+            "seeAllHref": "/en/home-furniture-decor/furniture/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Full Rooms",
+                "href": "/en/home-furniture-decor/furniture/full-rooms/",
+                "chevron": false
+              },
+              {
+                "label": "Beds",
+                "href": "/en/home-furniture-decor/furniture/beds/",
+                "chevron": false
+              },
+              {
+                "label": "Full Kitchen",
+                "href": "/en/home-furniture-decor/furniture/full-kitchen/",
+                "chevron": false
+              },
+              {
+                "label": "Chairs",
+                "href": "/en/home-furniture-decor/furniture/chairs/",
+                "chevron": false
+              },
+              {
+                "label": "Sofas",
+                "href": "/en/home-furniture-decor/furniture/sofas/",
+                "chevron": false
+              },
+              {
+                "label": "Tables",
+                "href": "/en/home-furniture-decor/furniture/tables/",
+                "chevron": false
+              },
+              {
+                "label": "Storage",
+                "href": "/en/home-furniture-decor/furniture/storage/",
+                "chevron": false
+              },
+              {
+                "label": "Other",
+                "href": "/en/home-furniture-decor/furniture/other/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Office Furniture",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Office Furniture",
+            "seeAllHref": "/en/home-furniture-decor/office-furniture/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Office Chairs",
+                "href": "/en/home-furniture-decor/office-furniture/office-chairs/",
+                "chevron": false
+              },
+              {
+                "label": "Office Desks",
+                "href": "/en/home-furniture-decor/office-furniture/desks/",
+                "chevron": false
+              },
+              {
+                "label": "Office Storage",
+                "href": "/en/home-furniture-decor/office-furniture/office-storage/",
+                "chevron": false
+              },
+              {
+                "label": "Office Accessories",
+                "href": "/en/home-furniture-decor/office-furniture/office-accessories/",
+                "chevron": false
+              },
+              {
+                "label": "Reception Counter",
+                "href": "/en/home-furniture-decor/office-furniture/reception-counter/",
+                "chevron": false
+              },
+              {
+                "label": "Gaming Furniture",
+                "href": "/en/home-furniture-decor/office-furniture/gaming-furniture/",
+                "chevron": false
+              },
+              {
+                "label": "Other Furniture",
+                "href": "/en/home-furniture-decor/office-furniture/other-furniture/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Home Decoration & Accessories",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Home Decoration & Accessories",
+            "seeAllHref": "/en/home-furniture-decor/home-decoration-accessories/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Mirrors",
+                "href": "/en/home-furniture-decor/home-decoration-accessories/mirrors/",
+                "chevron": false
+              },
+              {
+                "label": "Clocks",
+                "href": "/en/home-furniture-decor/home-decoration-accessories/clocks/",
+                "chevron": false
+              },
+              {
+                "label": "Artwork & Paintings",
+                "href": "/en/home-furniture-decor/home-decoration-accessories/artwork-paintings/",
+                "chevron": false
+              },
+              {
+                "label": "Home Decoration",
+                "href": "/en/home-furniture-decor/home-decoration-accessories/home-decoration/",
+                "chevron": false
+              },
+              {
+                "label": "Festive & Religious Decor",
+                "href": "/en/home-furniture-decor/home-decoration-accessories/festive-religious-decor/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Bathroom and kitchen tools and accessories",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Bathroom and kitchen tools and accessories",
+            "seeAllHref": "/en/home-furniture-decor/bathroom-and-kitchen-tools-and-accessories/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Bathroom",
+                "href": "/en/home-furniture-decor/bathroom-and-kitchen-tools-and-accessories/bathroom/",
+                "chevron": false
+              },
+              {
+                "label": "Kitchen - Kitchenware",
+                "href": "/en/home-furniture-decor/bathroom-and-kitchen-tools-and-accessories/kitchen-kitchenware/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Fabric & Bedding",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Fabric & Bedding",
+            "seeAllHref": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Mattresses",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/mattresses/",
+                "chevron": false
+              },
+              {
+                "label": "Curtains",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/curtains/",
+                "chevron": false
+              },
+              {
+                "label": "Pillows",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/pillows/",
+                "chevron": false
+              },
+              {
+                "label": "Bed Linens & Covers",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/bed-linens-covers/",
+                "chevron": false
+              },
+              {
+                "label": "Fabrics",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/fabrics/",
+                "chevron": false
+              },
+              {
+                "label": "Towels",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/towels/",
+                "chevron": false
+              },
+              {
+                "label": "Cushions",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/cushions/",
+                "chevron": false
+              },
+              {
+                "label": "Table Runners",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/table-runners/",
+                "chevron": false
+              },
+              {
+                "label": "Carpets",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/carpets/",
+                "chevron": false
+              },
+              {
+                "label": "Blankets",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/blankets/",
+                "chevron": false
+              },
+              {
+                "label": "Bedding sets",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/bedding-sets/",
+                "chevron": false
+              },
+              {
+                "label": "Other",
+                "href": "/en/home-furniture-decor/fabrics-curtains-blinds-carpets/other/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Garden - Outdoor",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Garden - Outdoor",
+            "seeAllHref": "/en/home-furniture-decor/garden-outdoor/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Garden Furniture",
+                "href": "/en/home-furniture-decor/garden-outdoor/garden-furniture/",
+                "chevron": false
+              },
+              {
+                "label": "Swings & Hanging Chairs",
+                "href": "/en/home-furniture-decor/garden-outdoor/swings-hanging-chairs/",
+                "chevron": false
+              },
+              {
+                "label": "Pergolas & Tents",
+                "href": "/en/home-furniture-decor/garden-outdoor/pergolas-tents/",
+                "chevron": false
+              },
+              {
+                "label": "Pools & Pools Accessories",
+                "href": "/en/home-furniture-decor/garden-outdoor/pools-pools-accessories/",
+                "chevron": false
+              },
+              {
+                "label": "Grills",
+                "href": "/en/home-furniture-decor/garden-outdoor/grills/",
+                "chevron": false
+              },
+              {
+                "label": "Other",
+                "href": "/en/home-furniture-decor/garden-outdoor/other/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Lighting",
+          "subtitle": null,
+          "href": "/en/home-furniture-decor/lighting-tools/",
+          "chevron": false,
+          "panel": null
+        },
+        {
+          "label": "Multiple/Other Furniture",
+          "subtitle": null,
+          "href": "/en/home-furniture-decor/multiple-other-furniture/",
+          "chevron": false,
+          "panel": null
+        }
+      ]
+    },
+    {
+      "label": "Electronics & Appliances",
+      "categories": [
+        {
+          "label": "TVs, Audio, & Video Devices",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "TVs, Audio, & Video Devices",
+            "seeAllHref": "/en/electronics-home-appliances/tv-audio-video/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Television Screens",
+                "href": "/en/electronics-home-appliances/tv-audio-video/televisions/",
+                "chevron": false
+              },
+              {
+                "label": "Home Audio",
+                "href": "/en/electronics-home-appliances/tv-audio-video/home-audio/",
+                "chevron": false
+              },
+              {
+                "label": "Satellite TV receivers",
+                "href": "/en/electronics-home-appliances/tv-audio-video/satellite-tv-receivers/",
+                "chevron": false
+              },
+              {
+                "label": "Projectors & Accessories",
+                "href": "/en/electronics-home-appliances/tv-audio-video/projectors-accessories/",
+                "chevron": false
+              },
+              {
+                "label": "Television Accessories",
+                "href": "/en/electronics-home-appliances/tv-audio-video/television-accessories/",
+                "chevron": false
+              },
+              {
+                "label": "DVD & Home Theaters",
+                "href": "/en/electronics-home-appliances/tv-audio-video/dvd-home-theater/",
+                "chevron": false
+              },
+              {
+                "label": "Mp3 Players & Portable Audios",
+                "href": "/en/electronics-home-appliances/tv-audio-video/mp3-players-portable-audio/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Computers & Accessories",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Computers & Accessories",
+            "seeAllHref": "/en/electronics-home-appliances/computers-accessories/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Monitors",
+                "href": "/en/electronics-home-appliances/computers-accessories/monitors/",
+                "chevron": false
+              },
+              {
+                "label": "Laptops",
+                "href": "/en/electronics-home-appliances/computers-accessories/laptop-computers/",
+                "chevron": false
+              },
+              {
+                "label": "Printers & Scanners",
+                "href": "/en/electronics-home-appliances/computers-accessories/printers-scanners/",
+                "chevron": false
+              },
+              {
+                "label": "Desktop computers",
+                "href": "/en/electronics-home-appliances/computers-accessories/desktop-computers/",
+                "chevron": false
+              },
+              {
+                "label": "Computer Accessories & Spare Parts",
+                "href": "/en/electronics-home-appliances/computers-accessories/computer-accessories-spare-parts/",
+                "chevron": false
+              },
+              {
+                "label": "Networking Devices",
+                "href": "/en/electronics-home-appliances/computers-accessories/networking-devices/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Video Games & Consoles",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Video Games & Consoles",
+            "seeAllHref": "/en/electronics-home-appliances/video-games-and-consoles/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Video Game Consoles",
+                "href": "/en/electronics-home-appliances/video-games-and-consoles/video-game-consoles/",
+                "chevron": false
+              },
+              {
+                "label": "Video Games & Accessories",
+                "href": "/en/electronics-home-appliances/video-games-and-consoles/video-game-accessories/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Cameras & Imaging Accessories",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Cameras & Imaging Accessories",
+            "seeAllHref": "/en/electronics-home-appliances/cameras-imaging/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Security Cameras",
+                "href": "/en/electronics-home-appliances/cameras-imaging/security-cameras/",
+                "chevron": false
+              },
+              {
+                "label": "Video Cameras",
+                "href": "/en/electronics-home-appliances/cameras-imaging/video-cameras/",
+                "chevron": false
+              },
+              {
+                "label": "Digital Cameras",
+                "href": "/en/electronics-home-appliances/cameras-imaging/cameras/",
+                "chevron": false
+              },
+              {
+                "label": "Camera Lenses",
+                "href": "/en/electronics-home-appliances/cameras-imaging/camera-lenses/",
+                "chevron": false
+              },
+              {
+                "label": "Camera Accessories",
+                "href": "/en/electronics-home-appliances/cameras-imaging/camera-accessories/",
+                "chevron": false
+              },
+              {
+                "label": "Binoculars & Telescopes",
+                "href": "/en/electronics-home-appliances/cameras-imaging/binoculars-telescopes/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Home Appliances",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Home Appliances",
+            "seeAllHref": "/en/electronics-home-appliances/home-appliances/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Refrigerators & Freezers",
+                "href": "/en/electronics-home-appliances/home-appliances/refrigerators-and-freezers/",
+                "chevron": false
+              },
+              {
+                "label": "Washing Machines & Dryers",
+                "href": "/en/electronics-home-appliances/home-appliances/washers-and-dryers/",
+                "chevron": false
+              },
+              {
+                "label": "Air Conditioners",
+                "href": "/en/electronics-home-appliances/home-appliances/air-conditioners/",
+                "chevron": false
+              },
+              {
+                "label": "Fans",
+                "href": "/en/electronics-home-appliances/home-appliances/fans/",
+                "chevron": false
+              },
+              {
+                "label": "Ovens & Microwaves",
+                "href": "/en/electronics-home-appliances/home-appliances/ovens-and-microwaves/",
+                "chevron": false
+              },
+              {
+                "label": "Dishwashers",
+                "href": "/en/electronics-home-appliances/home-appliances/dishwashers/",
+                "chevron": false
+              },
+              {
+                "label": "Air Purifiers & Humidifiers",
+                "href": "/en/electronics-home-appliances/home-appliances/air-purifiers-humidifiers/",
+                "chevron": false
+              },
+              {
+                "label": "Water Filters",
+                "href": "/en/electronics-home-appliances/home-appliances/water-filters/",
+                "chevron": false
+              },
+              {
+                "label": "Air Coolers",
+                "href": "/en/electronics-home-appliances/home-appliances/air-coolers/",
+                "chevron": false
+              },
+              {
+                "label": "Water Heaters",
+                "href": "/en/electronics-home-appliances/home-appliances/heaters/",
+                "chevron": false
+              },
+              {
+                "label": "Room Heaters",
+                "href": "/en/electronics-home-appliances/home-appliances/room-heaters/",
+                "chevron": false
+              },
+              {
+                "label": "Water Coolers & Kettles",
+                "href": "/en/electronics-home-appliances/home-appliances/water-coolers-kettles/",
+                "chevron": false
+              },
+              {
+                "label": "Cooking Tools & Appliances",
+                "href": "/en/electronics-home-appliances/home-appliances/cooking-tools/",
+                "chevron": false
+              },
+              {
+                "label": "Cleaning Appliances",
+                "href": "/en/electronics-home-appliances/home-appliances/cleaning-appliances/",
+                "chevron": false
+              },
+              {
+                "label": "Other Home Appliances",
+                "href": "/en/electronics-home-appliances/home-appliances/other-home-appliances/",
+                "chevron": false
+              },
+              {
+                "label": "Sewing Machines",
+                "href": "/en/electronics-home-appliances/home-appliances/sewing-machines/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Home Generators & UPS",
+          "subtitle": null,
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Home Generators & UPS",
+            "seeAllHref": "/en/electronics-home-appliances/home-generators-ups/",
+            "columns": 2,
+            "links": [
+              {
+                "label": "Home Generators",
+                "href": "/en/electronics-home-appliances/home-generators-ups/home-generators/",
+                "chevron": false
+              },
+              {
+                "label": "UPS",
+                "href": "/en/electronics-home-appliances/home-generators-ups/ups/",
+                "chevron": false
+              },
+              {
+                "label": "Batteries",
+                "href": "/en/electronics-home-appliances/home-generators-ups/batteries/",
+                "chevron": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "More Categories",
+      "categories": [
+        {
+          "label": "Fashion & Beauty",
+          "subtitle": "Women’s Clothing; Men’s Clothing; Women’s Accessories - Cosmetics - Personal Care",
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Fashion & Beauty",
+            "seeAllHref": "/en/fashion-beauty/",
+            "columns": 1,
+            "links": [
+              {
+                "label": "Women’s Clothing",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Men’s Clothing",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Women’s Accessories - Cosmetics - Personal Care",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Men’s Accessories - Personal Care",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Women's Footwear",
+                "href": "/en/fashion-beauty/womens-footwear/",
+                "chevron": false
+              },
+              {
+                "label": "Men's Footwear",
+                "href": "/en/fashion-beauty/mens-footwear/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Pets - Birds - Ornamental fish",
+          "subtitle": "Dogs; Cats; Birds",
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Pets - Birds - Ornamental fish",
+            "seeAllHref": "/en/pets/",
+            "columns": 1,
+            "links": [
+              {
+                "label": "Dogs",
+                "href": "/en/pets/dogs/",
+                "chevron": false
+              },
+              {
+                "label": "Cats",
+                "href": "/en/pets/cats/",
+                "chevron": false
+              },
+              {
+                "label": "Birds",
+                "href": "/en/pets/birds-pigeons/",
+                "chevron": false
+              },
+              {
+                "label": "Ornamental Fish",
+                "href": "/en/pets/ornamental-fish/",
+                "chevron": false
+              },
+              {
+                "label": "Horses",
+                "href": "/en/pets/horses/",
+                "chevron": false
+              },
+              {
+                "label": "Cows , sheep & camels",
+                "href": "/en/pets/cows-sheep-camels/",
+                "chevron": false
+              },
+              {
+                "label": "Animal , Birds and  Fish  Dry food",
+                "href": "/en/pets/animal-birds-and-fish-dry-food/",
+                "chevron": false
+              },
+              {
+                "label": "Animal, bird and fish care tools and accessories",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Other Pets & Animals",
+                "href": "/en/pets/pets-animals-other/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Kids & Babies",
+          "subtitle": "Baby & Mom Healthcare; Baby Clothing; Kids Clothing",
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Kids & Babies",
+            "seeAllHref": "/en/kids-babies/",
+            "columns": 1,
+            "links": [
+              {
+                "label": "Baby & Mom Healthcare",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Baby Clothing",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Kids Clothing",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Baby Feeding Tools",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Baby beds - Strollers - Carseats",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Toys",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Other Baby Items",
+                "href": "/en/kids-babies/other-baby-items/",
+                "chevron": false
+              },
+              {
+                "label": "Baby walkers - Baby chairs - Feeding chairs",
+                "href": "/en/kids-babies/baby-walkers-baby-chairs-feeding-chairs/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Books, Sports & Hobbies",
+          "subtitle": "Antiques - Collectibles; Bicycles; Books",
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Books, Sports & Hobbies",
+            "seeAllHref": "/en/books-sports-hobbies/",
+            "columns": 1,
+            "links": [
+              {
+                "label": "Antiques - Collectibles",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Bicycles",
+                "href": "/en/books-sports-hobbies/bicycles/",
+                "chevron": false
+              },
+              {
+                "label": "Books",
+                "href": "/en/books-sports-hobbies/books/",
+                "chevron": false
+              },
+              {
+                "label": "Board - Card Games",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Movies - Music",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Musical Instruments",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Sports Equipment",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Arts & Crafts",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Study Tools",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Tickets - Vouchers",
+                "href": "/en/books-sports-hobbies/tickets-vouchers/",
+                "chevron": false
+              },
+              {
+                "label": "Luggage",
+                "href": "/en/books-sports-hobbies/luggage/",
+                "chevron": false
+              },
+              {
+                "label": "Other Items",
+                "href": "/en/books-sports-hobbies/hobbies-music-art-books-sports-other/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Business - Industrial - Agriculture",
+          "subtitle": "Agriculture; Construction; Industrial Equipment",
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Business - Industrial - Agriculture",
+            "seeAllHref": "/en/business-industrial-agriculture/",
+            "columns": 1,
+            "links": [
+              {
+                "label": "Agriculture",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Construction",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Industrial Equipment",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Medical Equipment",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Oil, Gas & Petroleum",
+                "href": "/en/business-industrial-agriculture/oil-gas-petroleum/",
+                "chevron": false
+              },
+              {
+                "label": "Restaurants Equipment",
+                "href": "/null",
+                "chevron": true
+              },
+              {
+                "label": "Printing & Packaging",
+                "href": "/en/business-industrial-agriculture/printing-packaging/",
+                "chevron": false
+              },
+              {
+                "label": "Textiles & Garment Manufacturing",
+                "href": "/en/business-industrial-agriculture/textiles-garment-manufacturing/",
+                "chevron": false
+              },
+              {
+                "label": "Retail & Wholesale Equipment",
+                "href": "/en/business-industrial-agriculture/retail-wholesale-equipment/",
+                "chevron": false
+              },
+              {
+                "label": "Transportation & Logistics Equipment",
+                "href": "/en/business-industrial-agriculture/transportation-logistics-equipment/",
+                "chevron": false
+              },
+              {
+                "label": "Whole Business for Sale",
+                "href": "/en/business-industrial-agriculture/whole-business-for-sale/",
+                "chevron": false
+              },
+              {
+                "label": "Other Business, Industrial & Agriculture",
+                "href": "/en/business-industrial-agriculture/business-industrial-agriculture-other/",
+                "chevron": false
+              }
+            ]
+          }
+        },
+        {
+          "label": "Services",
+          "subtitle": "Business; Car; Events",
+          "href": "/null",
+          "chevron": true,
+          "panel": {
+            "title": "Services",
+            "seeAllHref": "/en/services/",
+            "columns": 1,
+            "links": [
+              {
+                "label": "Business",
+                "href": "/en/services/business-services/",
+                "chevron": false
+              },
+              {
+                "label": "Car",
+                "href": "/en/services/car-services/",
+                "chevron": false
+              },
+              {
+                "label": "Events",
+                "href": "/en/services/events/",
+                "chevron": false
+              },
+              {
+                "label": "Health & Beauty",
+                "href": "/en/services/health-beauty-services/",
+                "chevron": false
+              },
+              {
+                "label": "Home Services & Maintenance",
+                "href": "/en/services/maintenance/",
+                "chevron": false
+              },
+              {
+                "label": "Medical",
+                "href": "/en/services/medical-services/",
+                "chevron": false
+              },
+              {
+                "label": "Movers",
+                "href": "/en/services/services-movers/",
+                "chevron": false
+              },
+              {
+                "label": "Pets",
+                "href": "/en/services/services-pets/",
+                "chevron": false
+              },
+              {
+                "label": "Education",
+                "href": "/en/services/education-services/",
+                "chevron": false
+              },
+              {
+                "label": "Other Services",
+                "href": "/en/services/other-services/",
+                "chevron": false
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

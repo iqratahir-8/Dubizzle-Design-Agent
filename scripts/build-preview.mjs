@@ -15,6 +15,60 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const tokens = JSON.parse(readFileSync(join(ROOT, 'design-kit/tokens/tokens.json'), 'utf8'));
 const icons = JSON.parse(readFileSync(join(ROOT, 'design-kit/icons/icons.json'), 'utf8'));
 
+
+/* ── Header mega menu ─────────────────────────────────────────────────────────
+   Built from design-kit/content/mega-menus.json, the live menu read by
+   scripts/extract-mega-menus.mjs, so the kit shows every real category. Vehicles is pinned
+   open (.is-open) so the page has one to look at; hovering any item opens that item's menu. */
+const megaMenus = JSON.parse(readFileSync(join(ROOT, 'design-kit/content/mega-menus.json'), 'utf8'));
+
+const CHEVRON =
+  '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+
+const esc = (text) => String(text ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+function megaMenuDemo() {
+  const item = (menu, index) => {
+    const categories = menu.categories
+      .map((category, i) => {
+        const subtitle = category.subtitle ? `<span class="mega-menu__cat-subtitle">${esc(category.subtitle)}</span>` : '';
+        return (
+          `<a class="mega-menu__cat${i === 0 ? ' mega-menu__cat--active' : ''}" href="${esc(category.href ?? '#')}">` +
+          `<span class="mega-menu__cat-text"><span class="mega-menu__cat-label">${esc(category.label)}</span>${subtitle}</span>` +
+          `${category.panel ? CHEVRON : ''}</a>`
+        );
+      })
+      .join('');
+    const panel = menu.categories[0]?.panel;
+    const panelHtml = panel
+      ? `<div class="mega-menu__panel-wrap"><div class="mega-menu__panel">` +
+        `<div class="mega-menu__panel-head"><span class="mega-menu__panel-title">${esc(panel.title ?? menu.categories[0].label)}</span>` +
+        `<a class="mega-menu__see-all" href="${esc(panel.seeAllHref ?? '#')}">See All</a></div>` +
+        `<div class="mega-menu__links${panel.columns === 2 ? ' mega-menu__links--2' : ''}">` +
+        panel.links
+          .map((link) => `<a class="mega-menu__link" href="${esc(link.href ?? '#')}"><span>${esc(link.label)}</span>${link.chevron ? CHEVRON : ''}</a>`)
+          .join('') +
+        `</div></div></div>`
+      : '';
+    return (
+      `<div class="mega-nav__item${index === 0 ? ' is-open' : ''}">` +
+      `<a class="mega-nav__label" href="#">${esc(menu.label)}</a>` +
+      `<div class="mega-menu"><div class="mega-menu__column">${categories}</div>${panelHtml}</div></div>`
+    );
+  };
+  const subcategories = megaMenus.menus.reduce((n, m) => n + m.categories.length, 0);
+  return (
+    '      <h3>Header mega menu</h3>\n' +
+    `      <p class="note">All ${megaMenus.menus.length} category menus, with the live content read on ${megaMenus._captured} ` +
+    `(${subcategories} subcategories). <strong>Hover a category</strong> to open its menu — the open one is marked by a 4px underline. ` +
+    'Vehicles is pinned open with <code>.is-open</code> and steps aside as soon as you hover the strip. Swapping the right panel as you ' +
+    'move down the left column is the React component\'s behaviour; this page shows the first subcategory\'s panel.</p>\n' +
+    '      <div class="demo" style="display:block;min-height:46rem;overflow:visible">' +
+    `<nav class="mega-nav" data-parity="mega">${megaMenus.menus.map(item).join('')}</nav>` +
+    '</div>\n'
+  );
+}
+
 const colorTokens = tokens.groups.color ?? {};
 
 /** Resolves a `var(--x)` chain down to a literal so swatches can be painted. */
@@ -611,9 +665,7 @@ ${sampleIcons
           <button class="tabs__tab">Drafts (2)</button>
         </div>
       </div>
-      <h3>Header mega menu</h3>
-      <p class="note">Hover a category to open its menu — the open one is marked by a 4px underline. Vehicles is pinned open here with <code>.is-open</code>. Swapping the right panel as you move down the left column is the React component's behaviour; this page shows the first subcategory's panel.</p>
-      <div class="demo" style="display:block;min-height:46rem;overflow:visible"><nav class="mega-nav" data-parity="mega"><div class="mega-nav__item is-open"><a class="mega-nav__label" href="#">Vehicles</a><div class="mega-menu"><div class="mega-menu__column"><a class="mega-menu__cat mega-menu__cat--active" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Cars for Sale</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Cars for Rent</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Tyres, Batteries, Oils, &amp; Accessories</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Car Spare Parts</span></span></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Car Care</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Motorcycles &amp; Scooters</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Motorcycle Spare Parts</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Boats - Watercraft</span></span></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Golf Carts</span></span></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Heavy Trucks, Buses &amp; Other Vehicles</span></span></a></div><div class="mega-menu__panel-wrap"><div class="mega-menu__panel"><div class="mega-menu__panel-head"><span class="mega-menu__panel-title">Popular Brands</span><a class="mega-menu__see-all" href="#">See All</a></div><div class="mega-menu__links mega-menu__links--2"><a class="mega-menu__link" href="#"><span>Mercedes-Benz</span></a><a class="mega-menu__link" href="#"><span>MG</span></a><a class="mega-menu__link" href="#"><span>Hyundai</span></a><a class="mega-menu__link" href="#"><span>Volkswagen</span></a><a class="mega-menu__link" href="#"><span>Fiat</span></a><a class="mega-menu__link" href="#"><span>Skoda</span></a><a class="mega-menu__link" href="#"><span>BMW</span></a><a class="mega-menu__link" href="#"><span>Daewoo</span></a><a class="mega-menu__link" href="#"><span>Renault</span></a><a class="mega-menu__link" href="#"><span>Toyota</span></a><a class="mega-menu__link" href="#"><span>Kia</span></a><a class="mega-menu__link" href="#"><span>Chery</span></a><a class="mega-menu__link" href="#"><span>Chevrolet</span></a><a class="mega-menu__link" href="#"><span>Suzuki</span></a><a class="mega-menu__link" href="#"><span>Opel</span></a><a class="mega-menu__link" href="#"><span>Seat</span></a></div></div></div></div></div><div class="mega-nav__item"><a class="mega-nav__label" href="#">Properties</a><div class="mega-menu"><div class="mega-menu__column"><a class="mega-menu__cat mega-menu__cat--active" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Apartments for Sale</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Apartments for Rent</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Villas For Sale</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Villas For Rent</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Vacation Homes</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="mega-menu__cat" href="#"><span class="mega-menu__cat-text"><span class="mega-menu__cat-label">Commercial</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div><div class="mega-menu__panel-wrap"><div class="mega-menu__panel"><div class="mega-menu__panel-head"><span class="mega-menu__panel-title">Apartments for Sale</span><a class="mega-menu__see-all" href="#">See All</a></div><div class="mega-menu__links mega-menu__links--2"><a class="mega-menu__link" href="#"><span>Cairo</span></a><a class="mega-menu__link" href="#"><span>Giza</span></a><a class="mega-menu__link" href="#"><span>New Cairo</span></a><a class="mega-menu__link" href="#"><span>Alexandria</span></a><a class="mega-menu__link" href="#"><span>Sheikh Zayed</span></a><a class="mega-menu__link" href="#"><span>6th of October</span></a></div></div></div></div></div><div class="mega-nav__item"><a class="mega-nav__label" href="#">Mobiles &amp; Tablets</a></div><div class="mega-nav__item"><a class="mega-nav__label" href="#">Jobs</a></div><div class="mega-nav__item"><a class="mega-nav__label" href="#">Home &amp; Office Furniture - Decor</a></div><div class="mega-nav__item"><a class="mega-nav__label" href="#">Electronics &amp; Appliances</a></div><div class="mega-nav__item"><a class="mega-nav__label" href="#">More Categories</a></div></nav></div>
+${megaMenuDemo()}
       <h3>Pagination</h3>
       <div class="demo">
         <div class="pagination">

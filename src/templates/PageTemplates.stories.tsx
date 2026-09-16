@@ -876,6 +876,76 @@ export const MUserMenu: Story = {
   },
 };
 
+export const MenuMobiles: Story = {
+  name: "Header mega menu — Mobiles & Tablets",
+  args: {
+    "name": "menu-mobiles",
+    "label": "Header mega menu — Mobiles & Tablets",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MenuJobs: Story = {
+  name: "Header mega menu — Jobs",
+  args: {
+    "name": "menu-jobs",
+    "label": "Header mega menu — Jobs",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MenuFurniture: Story = {
+  name: "Header mega menu — Home & Office Furniture",
+  args: {
+    "name": "menu-furniture",
+    "label": "Header mega menu — Home & Office Furniture",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MenuElectronics: Story = {
+  name: "Header mega menu — Electronics & Appliances",
+  args: {
+    "name": "menu-electronics",
+    "label": "Header mega menu — Electronics & Appliances",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MenuVehiclesCarCare: Story = {
+  name: "Header mega menu — Vehicles, Car Care panel (second level)",
+  args: {
+    "name": "menu-vehicles-car-care",
+    "label": "Header mega menu — Vehicles, Car Care panel (second level)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
 export const AgencyPortal: Story = {
   name: "Agency portal",
   args: {

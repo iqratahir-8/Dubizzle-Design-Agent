@@ -51,6 +51,7 @@ Needs the kit server for checks: `npm run kit` (port 4321). Storybook (`npm run 
 | Account screens | `npm run capture:account [-- my-ads chat …]` |
 | Interaction states (mega menus, location dropdown, search suggestions, mobile search/location pages) | `npm run capture:states [-- names] [--layout=desktop]` — the list lives in `scripts/lib/states.mjs` |
 | Signed-in states (user menu, mobile account page) | `npm run capture:states -- --account` |
+| Mega menu content (all 7 menus, every panel) | `node scripts/extract-mega-menus.mjs` → `design-kit/content/mega-menus.json` |
 | Post an Ad flow + upsell | `npm run capture:post-ad [-- --layout=desktop]` |
 | Capture fidelity | `npm run check:captures [-- names]` |
 | Regenerate templates | `npm run build:templates` |

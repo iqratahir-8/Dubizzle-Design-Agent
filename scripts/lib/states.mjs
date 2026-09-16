@@ -36,6 +36,42 @@ export const STATES = {
     layouts: ['desktop'],
     steps: [{ hover: { text: 'More Categories', within: [120, 200] } }, { wait: 1200 }],
   },
+  'menu-mobiles': {
+    label: 'Header mega menu — Mobiles & Tablets',
+    url: '/en/',
+    layouts: ['desktop'],
+    steps: [{ hover: { text: 'Mobiles & Tablets', within: [120, 200] } }, { wait: 1200 }],
+  },
+  'menu-jobs': {
+    label: 'Header mega menu — Jobs',
+    url: '/en/',
+    layouts: ['desktop'],
+    steps: [{ hover: { text: 'Jobs', within: [120, 200] } }, { wait: 1200 }],
+  },
+  'menu-furniture': {
+    label: 'Header mega menu — Home & Office Furniture - Decor',
+    url: '/en/',
+    layouts: ['desktop'],
+    steps: [{ hover: { text: 'Home & Office Furniture - Decor', within: [120, 200] } }, { wait: 1200 }],
+  },
+  'menu-electronics': {
+    label: 'Header mega menu — Electronics & Appliances',
+    url: '/en/',
+    layouts: ['desktop'],
+    steps: [{ hover: { text: 'Electronics & Appliances', within: [120, 200] } }, { wait: 1200 }],
+  },
+  /** Second level: the right panel follows the subcategory under the pointer. */
+  'menu-vehicles-car-care': {
+    label: 'Header mega menu — Vehicles, Car Care panel',
+    url: '/en/',
+    layouts: ['desktop'],
+    steps: [
+      { hover: { text: 'Vehicles', within: [120, 200] } },
+      { wait: 1200 },
+      { hover: { text: 'Car Care', within: [190, 620] } },
+      { wait: 1200 },
+    ],
+  },
   'location-dropdown': {
     label: 'Header location dropdown',
     url: '/en/',
