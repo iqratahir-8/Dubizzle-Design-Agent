@@ -28,6 +28,8 @@ export interface ContactButtonProps extends Omit<ButtonHTMLAttributes<HTMLButton
   label?: string;
   showLabel?: boolean;
   fullWidth?: boolean;
+  /** Drop the fixed per-variant width and share the row's leftover space (ad detail contact bar). */
+  grow?: boolean;
   onClick?: () => void;
   className?: string;
 }
@@ -41,6 +43,7 @@ export function ContactButton({
   label,
   showLabel = true,
   fullWidth = false,
+  grow = false,
   onClick,
   className,
   type = 'button',
@@ -53,6 +56,7 @@ export function ContactButton({
       className={cx(styles.button, styles[variant], className)}
       data-full-width={fullWidth}
       data-show-label={showLabel}
+      data-grow={grow}
       onClick={onClick}
       aria-label={text}
       {...props}

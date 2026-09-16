@@ -994,6 +994,9 @@ ul {
 }
 
 .contact-btn img { width: 2rem; height: 2rem; }
+/* The icon never shrinks — otherwise a tight row steals a pixel from it and the
+   button's content width no longer matches React's. */
+.contact-btn svg { flex: none; }
 
 .contact-btn--chat { background: var(--red-02); }
 .contact-btn--chat:hover { background: var(--red-03); }
@@ -2960,3 +2963,115 @@ ul {
   overflow-x: auto;
   padding-block: var(--space-2);
 }
+
+/* ── Ad detail (mobile): gallery, "of the Week" ribbon, contact bar ────────────
+   Measured on the live mobile ad detail page (docs/LIVE-MEASUREMENTS.md).
+   Mirrors AdGallery / WeekRibbon / ContactBar in src/components (npm run check:parity). */
+
+.week-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--week-gradient);
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  line-height: 1.8rem;
+  white-space: nowrap;
+}
+
+.week-ribbon svg { flex: none; }
+
+.ad-gallery {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 390 / 294;
+  overflow: hidden;
+  background: var(--gray-01);
+  font-family: var(--font-primary);
+}
+
+.ad-gallery__photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Mid grey, not the usual pale placeholder: the gallery's white dots and ribbon are made
+   for a photograph. */
+.ad-gallery__placeholder { width: 100%; height: 100%; background: var(--gray-04); }
+
+.ad-gallery__back {
+  position: absolute;
+  top: 1.2rem;
+  inset-inline-start: 1.6rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--gray-01);
+  color: var(--gray-06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ad-gallery__next {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 1rem;
+  transform: translateY(-50%);
+  width: 4.8rem;
+  height: 4.8rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--overlay-arrow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ad-gallery__ribbon { position: absolute; inset-inline-start: 0.8rem; bottom: 0.8rem; }
+
+.ad-gallery__counter {
+  position: absolute;
+  inset-inline-end: 1.6rem;
+  bottom: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--overlay-counter);
+  color: var(--white);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  line-height: 1.8rem;
+}
+
+.ad-gallery__dots {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The pager shrinks with distance from the active photo, as on live. */
+.ad-gallery__dot { border-radius: 50%; background: var(--dot-idle); margin-inline-end: 0.8rem; }
+.ad-gallery__dot:last-child { margin-inline-end: 0; }
+.ad-gallery__dot--active { width: 0.8rem; height: 0.8rem; background: var(--white); }
+.ad-gallery__dot--near { width: 0.6rem; height: 0.6rem; }
+.ad-gallery__dot--far { width: 0.4rem; height: 0.4rem; }
+
+.contact-bar { background: var(--white); border-top: 1px solid var(--gray-02); }
+
+.contact-bar--fixed { position: fixed; inset-inline: 0; bottom: 0; z-index: 2; }
+
+.contact-bar__row { display: flex; gap: 0.8rem; padding: 1.2rem 1.6rem; }
+
+/* Buttons keep their content width and share the leftover space, so Call and WhatsApp
+   land on live's uneven 152 / 198 split. */
+.contact-bar__row .contact-btn { flex: auto; width: auto; }

@@ -24,6 +24,9 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - ✅ Featured Businesses scroller — `FeaturedBusinesses`
 - ✅ Prime Dealers First row — `PrimeDealersRow`
 - ✅ Explore dubizzle Motors tiles — `ExploreTiles`
+- ✅ Ad detail gallery (photo, back/next, counter, shrinking dot pager) — `AdGallery`
+- ✅ "Car / Property of the Week" ribbon — `WeekRibbon`
+- ✅ Sticky contact bar (ad detail) — `ContactBar` (+ `ContactButton` `grow`)
 
 ## Exists, needs live verification
 - 🟡 `Header` (desktop) — live has 3 rows: top bar (logo tab, Motors/Property, العربية, Login or Signup / user centre, Post Your Ad), search row (location select + search + Search button), category nav strip
@@ -32,9 +35,11 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 
 ## To do — mobile
 
-- ⬜ Hero promo carousel with dots — home
-- ⬜ DPV mobile: image gallery, sticky contact bar, specs, seller card
-- ⬜ "Car/Property of the Week" ribbon — listing cards
+- ⬜ DPV mobile: price/title block (share icon, down-payment pill), 4-column specs strip, details table,
+  seller card, "View in app" CTA
+- ⬜ DPV sticky section tabs (Highlights · Details · Description · Posted by), pinned under the header on scroll
+- ⬜ Home promo banner slot — `PromoBanner` (390×150 mobile / 1280×180 desktop; no dots, see
+  `docs/LIVE-MEASUREMENTS.md`)
 
 ## To do — desktop
 - ⬜ Breadcrumbs

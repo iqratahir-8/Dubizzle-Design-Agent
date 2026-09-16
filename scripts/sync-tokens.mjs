@@ -162,6 +162,14 @@ const SEMANTIC = {
     '--app-promo-gradient': 'linear-gradient(270deg, #ffedea -0.93%, #fefbf5 50.98%)',
     '--app-icon-gradient': 'linear-gradient(#ffffff, #ffedea)',
     '--pro-gradient': 'var(--pro-badge-background)',
+    // Ad-detail gallery furniture, measured on the live mobile DPV
+    // (docs/LIVE-MEASUREMENTS.md): the photo counter's scrim, the next-photo
+    // arrow's disc, and the idle slider dot.
+    '--overlay-counter': 'rgba(0, 0, 0, 0.75)',
+    '--overlay-arrow': 'rgba(0, 0, 0, 0.2)',
+    '--dot-idle': 'rgba(255, 255, 255, 0.4)',
+    // "Car / Property of the Week" ribbon.
+    '--week-gradient': 'linear-gradient(92.05deg, #e00000 64.95%, #ba0000 121.09%)',
   },
   typography: {
     '--font-primary': 'var(--font-ltr)',
@@ -257,7 +265,12 @@ for (const [groupName, entries] of Object.entries(SEMANTIC)) {
 }
 
 css += '}\n';
-writeFileSync(join(outDir, 'tokens.css'), css);
+/* Kit pages and templates link tokens.css and nothing else, so the kit's copy pulls in the
+   web fonts — without them the kit renders in the system fallback, ~3px wider per word than
+   Storybook (which is how npm run check:parity found this). The library gets its faces from
+   src/tokens/index.css instead, so its copy stays token-only. */
+const FONT_IMPORT = `/* Web fonts — see design-kit/tokens/fonts.css */\n@import url('./fonts.css');\n\n`;
+writeFileSync(join(outDir, 'tokens.css'), css.replace(':root {', `${FONT_IMPORT}:root {`));
 
 /* The React library and the static design kit must never disagree about what a token
    means, so both read the same generated file rather than keeping parallel copies. */

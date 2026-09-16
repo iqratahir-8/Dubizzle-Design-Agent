@@ -5,7 +5,8 @@
     "Filters were confirmed to actually apply by comparing ad counts (base 12,854; new_used_eq_1 2,431; new_used_eq_2 10,422; cairo 7,465; cairo + price 2,696).",
     "property-villas replaces the checklist's 'property-apartments': the base property listing is already the apartments category, so a second type is the informative filter state.",
     "Ad pages expire. If a DPV capture 404s, pick a fresh /en/ad/ link from the matching listing page and update it here.",
-    "Tier 'templates' fills page templates that had no capture: 'login' is the home page with the Login or Signup dialog opened (login has no route of its own); 'not-found' is expected to return HTTP 404; 'seller-page' is a business profile (/en/companies/…)."
+    "Tier 'templates' fills page templates that had no capture: 'login' is the home page with the Login or Signup dialog opened (login has no route of its own); 'not-found' is expected to return HTTP 404; 'seller-page' is a business profile (/en/companies/…).",
+    "Tier 3 (2026-09-16) closes the vertical gaps found by auditing the live navigation: the Property vertical landing is /en/realestate/ (the nav's Property link) — /en/properties/, captured as 'property', is the all-property listing, the counterpart of /en/vehicles/. New Cars (catalogue / brand / model / compare) and Electric Cars are separate Motors surfaces; rent, commercial, vacation homes, land, compound and area pages are the Property listing variants. See docs/PAGE-COVERAGE.md."
   ],
   "tiers": {
     "1": {
@@ -32,6 +33,26 @@
       "seller-page": "/en/companies/Smart-Car-6610",
       "not-found": "/en/this-page-does-not-exist-404/",
       "login": "/en/"
+    },
+    "3": {
+      "realestate": "/en/realestate/",
+      "vehicles-all": "/en/vehicles/",
+      "new-cars": "/en/motors/new-cars/",
+      "new-cars-brand": "/en/motors/new-cars/toyota/",
+      "new-cars-model": "/en/motors/new-cars/toyota/corolla/",
+      "new-cars-compare": "/en/motors/new-cars/compare/",
+      "electric-cars": "/en/motors/electric-cars/",
+      "cars-model-list": "/en/vehicles/cars-for-sale/mercedes-benz/model-c180/",
+      "motorcycles-list": "/en/vehicles/motorcycles-accessories/",
+      "trucks-list": "/en/vehicles/trucks-buses-other-vehicles/",
+      "property-rent-list": "/en/properties/apartments-duplex-for-rent/",
+      "property-commercial-list": "/en/properties/commercial-for-sale/",
+      "property-vacation-list": "/en/properties/vacation-homes-for-sale/",
+      "property-land-list": "/en/properties/buildings-lands-other/",
+      "property-compound": "/en/properties/mivida-compound/",
+      "property-area": "/en/properties/new-cairo/",
+      "property-agency": "/en/companies/gate-real-estate-602",
+      "property-rent-dpv": "/en/ad/fully-furnished-first-use-apartment-for-rent-in-villette-sky-condos-180-sqm-3-bedrooms-egp-100000-ID504099029.html"
     }
   }
 }

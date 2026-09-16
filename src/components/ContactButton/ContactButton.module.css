@@ -26,6 +26,13 @@
   width: 100%;
 }
 
+/* In the ad detail contact bar the buttons keep their content width and share the
+   leftover space, which is how live lands on an uneven 152 / 198 split. */
+.button[data-grow='true'] {
+  flex: auto;
+  width: auto;
+}
+
 .button[data-show-label='false'] {
   width: 4rem;
   min-width: 4rem;
@@ -39,7 +46,7 @@
 .chat:hover {
   background: var(--red-03);
 }
-.chat:not([data-full-width='true'])[data-show-label='true'] {
+.chat:not([data-full-width='true'])[data-show-label='true']:not([data-grow='true']) {
   width: 10.4rem;
 }
 
@@ -50,7 +57,7 @@
 .call:hover {
   background: var(--blue-03);
 }
-.call:not([data-full-width='true'])[data-show-label='true'] {
+.call:not([data-full-width='true'])[data-show-label='true']:not([data-grow='true']) {
   width: 10.4rem;
 }
 
@@ -61,6 +68,6 @@
 .whatsapp:hover {
   background: var(--green-03);
 }
-.whatsapp:not([data-full-width='true'])[data-show-label='true'] {
+.whatsapp:not([data-full-width='true'])[data-show-label='true']:not([data-grow='true']) {
   width: 12.6rem;
 }

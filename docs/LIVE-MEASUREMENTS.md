@@ -167,3 +167,26 @@ Title 18/700 lh21.6. Two columns, gap 12; tile 100 tall, padding 10, radius 8, b
 (white → `#ffedea`), 22px icon; title only; CTA 28 tall.
 
 Added tokens: `--app-promo-gradient`, `--app-icon-gradient`.
+
+### Ad detail gallery (mobile DPV)
+Photo full-bleed 390×294 (aspect 390/294), `object-fit: cover`, no radius. Back disc 32 at top 12 / start 16,
+background `#f0f0f0`. Next disc 48 on the end edge (inset 10), vertically centred, `rgba(0,0,0,.2)`.
+Photo counter bottom 12 / end 16: padding 4 8, radius 4, `rgba(0,0,0,.75)`, 12/700 lh18 white, 12px camera icon,
+gap 4. Dot pager bottom 16, centred, 8px gaps: **active 8×8 white, neighbours 6×6, everything further 4×4**
+`rgba(255,255,255,.4)` — the dots shrink with distance, they are not all one size.
+
+### "Car / Property of the Week" ribbon
+Bottom-left of the gallery photo (start 8 / bottom 8) and on the listing card. Padding 2 6, radius 4,
+`linear-gradient(92.05deg, #e00000 64.95%, #ba0000 121.09%)`, 12/700 lh18 white, 12px star, gap 4.
+
+### Sticky contact bar (mobile DPV)
+`position: fixed; bottom: 0; z-index: 2`, white, 1px `#e0e0e0` top border, 65 tall. Row padding 12 16, gap 8.
+Buttons 40 tall, radius 6, 14/700: Call `#e7f1fd` **152** wide, WhatsApp `#e8f7e8` **198** wide at 390 — they
+keep their content width and split the leftover space evenly (`flex: auto`), so the two are not equal halves.
+
+Added tokens: `--overlay-counter`, `--overlay-arrow`, `--dot-idle`, `--week-gradient`.
+
+### Note — the home "hero carousel"
+The home promo banner is a single full-bleed slot: 390×150 on mobile (no radius), 1280×180 with a 4px radius on
+desktop, inside a `react-swipeable-views` track. **It has no dots of its own** — the dots visible in screenshots
+are printed in the advertiser's artwork. Don't build a pager for it.

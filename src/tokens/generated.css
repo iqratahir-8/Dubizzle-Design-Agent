@@ -1333,6 +1333,10 @@
   --app-promo-gradient: linear-gradient(270deg, #ffedea -0.93%, #fefbf5 50.98%);
   --app-icon-gradient: linear-gradient(#ffffff, #ffedea);
   --pro-gradient: var(--pro-badge-background);
+  --overlay-counter: rgba(0, 0, 0, 0.75);
+  --overlay-arrow: rgba(0, 0, 0, 0.2);
+  --dot-idle: rgba(255, 255, 255, 0.4);
+  --week-gradient: linear-gradient(92.05deg, #e00000 64.95%, #ba0000 121.09%);
 
   /* ── typography ── */
   --font-primary: var(--font-ltr);

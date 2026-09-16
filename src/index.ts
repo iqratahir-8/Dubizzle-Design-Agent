@@ -69,6 +69,15 @@ export type { PrimeDealersRowProps } from './components/PrimeDealersRow';
 export { ExploreTiles } from './components/ExploreTiles';
 export type { ExploreTilesProps, ExploreTile } from './components/ExploreTiles';
 
+export { AdGallery } from './components/AdGallery';
+export type { AdGalleryProps } from './components/AdGallery';
+
+export { ContactBar } from './components/ContactBar';
+export type { ContactBarProps } from './components/ContactBar';
+
+export { WeekRibbon } from './components/WeekRibbon';
+export type { WeekRibbonProps } from './components/WeekRibbon';
+
 export * from './components/icons';
 
 export { Tabs } from './components/Tabs';

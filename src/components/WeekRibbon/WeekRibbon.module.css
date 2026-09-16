@@ -1,0 +1,21 @@
+/* "Car of the Week" badge — live mobile DPV: 12px/18px bold white on the red gradient,
+   2px 6px padding, 4px radius. Must match .week-ribbon in patterns.css (check:parity). */
+
+.ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--week-gradient);
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  line-height: 1.8rem;
+  white-space: nowrap;
+}
+
+.star {
+  flex: none;
+}

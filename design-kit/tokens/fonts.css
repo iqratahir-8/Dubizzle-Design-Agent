@@ -1,0 +1,101 @@
+/* Web fonts for the design kit — the same files the React library loads
+   (src/tokens/fonts.css), so the kit renders in Proxima Nova instead of falling back to
+   Helvetica. Without these the kit measured ~3px wider per word than Storybook, which is
+   how the gap was found (npm run check:parity, ContactBar).
+   Only the weights the system actually uses are shipped here. */
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../assets/fonts/Proxima-Nova-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../assets/fonts/Proxima-Nova-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../assets/fonts/Proxima-Nova-Regular-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../assets/fonts/Proxima-Nova-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../assets/fonts/Proxima-Nova-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../assets/fonts/Proxima-Nova-Extrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* proxima-nova — the Typekit alias the product's CSS asks for. */
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../assets/fonts/Proxima-Nova-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../assets/fonts/Proxima-Nova-Regular-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../assets/fonts/Proxima-Nova-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../assets/fonts/Proxima-Nova-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* GESS — the Arabic face. */
+@font-face {
+  font-family: 'GESS';
+  src: url('../assets/fonts/GESS-Two-Light.woff') format('woff');
+  font-weight: 200 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GESS';
+  src: url('../assets/fonts/GESS-Two-Medium.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GESS';
+  src: url('../assets/fonts/GESS-Two-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
