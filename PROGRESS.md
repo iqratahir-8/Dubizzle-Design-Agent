@@ -133,7 +133,12 @@ Done this round: `MobileHeader` (home + motors × full/minimized/search, propert
 `SortSaveBar`/`SellFab`/`ListingActions`, `QuickLinks`, `AppBanner` — React + stories (Storybook "Mobile/…") + kit
 `patterns.css` + kit page section `#mobile`; live icons in `design-kit/icons/mobile/`; check:parity 126/126.
 Assumption to confirm with user: "mobiles" in the request read as the **Motors** landing page.
-Next: continue the inventory top-down (mobile first, then desktop, then account/flows).
+Round 2 (2026-09-16): `DiscoverTabs`, `AppPromoCard`, `PopularSearches`, `MobileFooter`,
+`FeaturedBusinesses`, `PrimeDealersRow`, `ExploreTiles`, plus the app banner's compact state —
+React + stories + kit + kit page; check:parity 160/160. Correction: the home header **does** reach
+state 3 (search only) at deep scroll.
+Next: remaining mobile items (hero carousel, DPV mobile gallery/sticky contact bar, "of the Week"
+ribbon), then desktop, then account/flows — see docs/COMPONENT-INVENTORY.md.
 
 **Latest (2026-09-14, before account switch):**
 - **Post an Ad flow captured** (`npm run capture:post-ad`, desktop + mobile): post-category → post-subcategory

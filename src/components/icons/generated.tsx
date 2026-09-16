@@ -228,3 +228,27 @@ export function DownloadIcon({ size = 16, ...props }: IconProps) {
       dangerouslySetInnerHTML={{ __html: "<mask id=\"mask0_569_23371\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"12\" height=\"12\" style=\"mask-type: alpha;\"><path fill=\"#D9D9D9\" d=\"M0 0h12v12H0z\"></path></mask><g mask=\"url(#mask0_569_23371)\"><path d=\"M5.77 8.2a.55.55 0 0 1-.2-.14L3.3 5.81a.57.57 0 0 1-.18-.43.64.64 0 0 1 .63-.63c.17-.01.32.05.44.17L5.37 6.1V1.63a.6.6 0 0 1 .18-.45A.6.6 0 0 1 6 1a.6.6 0 0 1 .45.18.6.6 0 0 1 .17.45v4.46L7.8 4.92a.58.58 0 0 1 .44-.18.64.64 0 0 1 .63.63c0 .17-.06.32-.18.44L6.44 8.06a.55.55 0 0 1-.2.14.7.7 0 0 1-.24.03.7.7 0 0 1-.23-.03zM2.25 11a1.2 1.2 0 0 1-.88-.37A1.2 1.2 0 0 1 1 9.75V8.5a.6.6 0 0 1 .18-.45.6.6 0 0 1 .45-.18.6.6 0 0 1 .44.18.6.6 0 0 1 .18.45v1.25h7.5V8.5a.6.6 0 0 1 .18-.45.6.6 0 0 1 .45-.18.6.6 0 0 1 .44.18.6.6 0 0 1 .18.45v1.25c0 .34-.12.64-.37.88a1.2 1.2 0 0 1-.88.37h-7.5z\" fill=\"#0F5DC4\"></path></g>" }} />
   );
 }
+
+/** design-kit/icons/mobile/promo-check.svg */
+export function CheckIcon({ size = 16, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 19.44 14.5" fill="currentColor" aria-hidden="true" focusable="false" {...props}
+      dangerouslySetInnerHTML={{ __html: "<path d=\"M6.6 14.21L.3 7.9a.97.97 0 0 1-.01-1.38l1.37-1.37a.97.97 0 0 1 1.38 0L7.29 9.4 16.41.28a.97.97 0 0 1 1.38 0l1.37 1.38a.97.97 0 0 1 0 1.38L7.98 14.21a.97.97 0 0 1-1.38 0z\"></path>" }} />
+  );
+}
+
+/** design-kit/icons/mobile/prime-crown.svg */
+export function CrownIcon({ size = 16, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false" {...props}
+      dangerouslySetInnerHTML={{ __html: "<rect x=\"5.57\" y=\"5.84\" width=\"28.33\" height=\"28.33\" rx=\"2.08\" fill=\"#F08080\" stroke=\"#fff\" stroke-width=\"2\"></rect><rect x=\"19.73\" y=\"1.27\" width=\"26.49\" height=\"26.49\" rx=\"2.08\" transform=\"rotate(45 19.73 1.27)\" fill=\"#F08080\" stroke=\"#fff\" stroke-width=\"2\"></rect><rect x=\"8.1\" y=\"7.82\" width=\"23\" height=\"24\" rx=\"1\" fill=\"#E00000\"></rect><rect x=\"7.1\" y=\"6.82\" width=\"25\" height=\"26\" rx=\"2\" stroke=\"#F08080\" stroke-width=\"2\"></rect><mask id=\"mask0_4080_7833\" style=\"mask-type:alpha\" maskUnits=\"userSpaceOnUse\" x=\"10\" y=\"10\" width=\"20\" height=\"20\"><rect x=\"10.15\" y=\"10.42\" width=\"19.17\" height=\"19.17\" rx=\"1.04\" fill=\"#D9D9D9\"></rect></mask><g mask=\"url(#mask0_4080_7833)\" fill=\"#FFF0F0\"><path d=\"M20.46 16.47a1.06 1.06 0 1 0-.71 0l-1.28 3.46a.3.3 0 0 1-.52.09l-2.71-3.32a1.06 1.06 0 0 0-.74-1.82 1.06 1.06 0 1 0 .18 2.1l1.6 5.67c.1.39.46.66.87.66h5.91a.9.9 0 0 0 .88-.66l1.6-5.67a1.07 1.07 0 0 0 1.23-1.04 1.06 1.06 0 1 0-1.8.76l-2.7 3.32a.3.3 0 0 1-.52-.09l-1.29-3.46zM17.29 24a.66.66 0 1 0 0 1.31h5.64a.66.66 0 0 0 0-1.31h-5.64z\"></path></g>" }} />
+  );
+}
+
+/** design-kit/icons/navigation/chevron-right.svg */
+export function ChevronRightIcon({ size = 16, ...props }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false" {...props}
+      dangerouslySetInnerHTML={{ __html: "<path fill=\"currentColor\" d=\"m5.2 12.014 4.207-4.216L5.2 3.581l1.295-1.295 5.512 5.512-5.512 5.511L5.2 12.014Z\"/>" }} />
+  );
+}

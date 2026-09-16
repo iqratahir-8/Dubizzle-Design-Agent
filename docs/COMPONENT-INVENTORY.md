@@ -16,7 +16,14 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - ✅ Bottom navigation — `BottomNav`
 - ✅ Sort | Save bar + Sell FAB — `SortSaveBar`, `SellFab`, `ListingActions`
 - ✅ Category quick links — `QuickLinks` (+ motors tab row)
-- ✅ App smart banner — `AppBanner`
+- ✅ App smart banner — `AppBanner` (full + compact/scrolled)
+- ✅ Discover Listings tabs — `DiscoverTabs`
+- ✅ "Get more in the app" band — `AppPromoCard`
+- ✅ Popular Searches — `PopularSearches`
+- ✅ Mobile footer — `MobileFooter`
+- ✅ Featured Businesses scroller — `FeaturedBusinesses`
+- ✅ Prime Dealers First row — `PrimeDealersRow`
+- ✅ Explore dubizzle Motors tiles — `ExploreTiles`
 
 ## Exists, needs live verification
 - 🟡 `Header` (desktop) — live has 3 rows: top bar (logo tab, Motors/Property, العربية, Login or Signup / user centre, Post Your Ad), search row (location select + search + Search button), category nav strip
@@ -24,13 +31,7 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - 🟡 `Button`, `Input`, `Select`, `Checkbox`, `Radio`, `Toggle`, `Tabs`, `Pagination`, `Pill` — parity OK, live values partly verified (2026-09-12)
 
 ## To do — mobile
-- ⬜ Discover Listings tabs ("For You · New" / "Recommended" with subtitles) — home
-- ⬜ "Get more in the app" promo card — home, motors
-- ⬜ Popular Searches link groups with "View more" — home
-- ⬜ Mobile footer accordion (Categories / About Us / Dubizzle / Countries, Follow Us, app badges)
-- ⬜ Featured Businesses logo scroller — motors, listings
-- ⬜ Prime Dealers First toggle row — cars listing
-- ⬜ Explore dubizzle Motors tiles (New Cars / Electric Cars NEW / Car Comparison / Car Finance) — motors
+
 - ⬜ Hero promo carousel with dots — home
 - ⬜ DPV mobile: image gallery, sticky contact bar, specs, seller card
 - ⬜ "Car/Property of the Week" ribbon — listing cards

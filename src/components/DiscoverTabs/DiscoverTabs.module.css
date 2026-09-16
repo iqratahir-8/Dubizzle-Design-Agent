@@ -1,0 +1,56 @@
+/* "Discover Listings" tabs — measured on dubizzle.com.eg mobile home.
+   Mirrors .discover-tabs in design-kit/patterns/patterns.css (npm run check:parity). */
+
+.tabs {
+  display: flex;
+  font-family: var(--font-primary);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.2rem;
+  border: 0;
+  border-bottom: 1px solid var(--gray-02);
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.active {
+  border-bottom: 2px solid var(--red-05);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.label {
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+  color: var(--gray-06);
+}
+
+.badge {
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background: var(--red-05);
+  font-size: 1rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1.3rem;
+  color: var(--white);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.8rem;
+  color: var(--gray-05);
+  text-align: center;
+}

@@ -158,6 +158,9 @@ const SEMANTIC = {
     '--elite-gradient': 'linear-gradient(90deg, var(--yellow-03), var(--yellow-06))',
     // Bottom fade behind a card photo's slider dots.
     '--overlay-image-fade': 'linear-gradient(transparent, rgba(0, 0, 0, 0.4))',
+    // Mobile app-promo surfaces (docs/LIVE-MEASUREMENTS.md).
+    '--app-promo-gradient': 'linear-gradient(270deg, #ffedea -0.93%, #fefbf5 50.98%)',
+    '--app-icon-gradient': 'linear-gradient(#ffffff, #ffedea)',
     '--pro-gradient': 'var(--pro-badge-background)',
   },
   typography: {

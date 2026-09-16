@@ -1,0 +1,56 @@
+/* Featured Businesses scroller — measured on dubizzle.com.eg mobile motors / listings.
+   Mirrors .featured-businesses in design-kit/patterns/patterns.css (npm run check:parity). */
+
+.section {
+  padding: 0 1.6rem;
+  font-family: var(--font-primary);
+  color: var(--gray-06);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.34rem;
+}
+
+.scroller {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: none;
+  width: 13.2rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4.3rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.name {
+  font-size: 1.4rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.68rem;
+}

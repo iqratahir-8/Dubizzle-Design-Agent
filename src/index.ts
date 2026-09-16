@@ -48,6 +48,27 @@ export type { QuickLinksProps, QuickLink } from './components/QuickLinks';
 export { AppBanner } from './components/AppBanner';
 export type { AppBannerProps } from './components/AppBanner';
 
+export { DiscoverTabs } from './components/DiscoverTabs';
+export type { DiscoverTabsProps, DiscoverTab } from './components/DiscoverTabs';
+
+export { AppPromoCard } from './components/AppPromoCard';
+export type { AppPromoCardProps } from './components/AppPromoCard';
+
+export { PopularSearches } from './components/PopularSearches';
+export type { PopularSearchesProps, PopularSearchGroup } from './components/PopularSearches';
+
+export { MobileFooter } from './components/MobileFooter';
+export type { MobileFooterProps } from './components/MobileFooter';
+
+export { FeaturedBusinesses } from './components/FeaturedBusinesses';
+export type { FeaturedBusinessesProps, FeaturedBusiness } from './components/FeaturedBusinesses';
+
+export { PrimeDealersRow } from './components/PrimeDealersRow';
+export type { PrimeDealersRowProps } from './components/PrimeDealersRow';
+
+export { ExploreTiles } from './components/ExploreTiles';
+export type { ExploreTilesProps, ExploreTile } from './components/ExploreTiles';
+
 export * from './components/icons';
 
 export { Tabs } from './components/Tabs';

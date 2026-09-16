@@ -24,7 +24,7 @@ export type MobileHeaderPage = 'home' | 'motors' | 'property';
  * Landing header states, as the page scrolls (measured on dubizzle.com.eg):
  * 1. `full`      — tiles with icons, search, location (top of page)
  * 2. `minimized` — tiles shrink to labels only, location hidden
- * 3. `search`    — tiles collapse, search field only (motors; home stops at minimized)
+ * 3. `search`    — tiles collapse, search field only (both pages, deep scroll)
  */
 export type MobileHeaderState = 'full' | 'minimized' | 'search';
 

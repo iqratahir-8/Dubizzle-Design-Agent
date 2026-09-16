@@ -3,6 +3,8 @@ import { AppBannerIcon, CloseIcon, DownloadIcon, StarIcon } from '../icons';
 import styles from './AppBanner.module.css';
 
 export interface AppBannerProps {
+  /** Scrolled state: 42px tall, icon + title + button only (no rating/downloads). */
+  compact?: boolean;
   title?: string;
   rating?: string;
   downloads?: string;
@@ -13,17 +15,18 @@ export interface AppBannerProps {
 }
 
 /** "Buy and sell faster in app" smart banner pinned above the mobile home header (dubizzle.com.eg). */
-export function AppBanner({ title = 'Buy and sell faster in app', rating = '4.5', downloads = '10M+', cta = 'Get App', onClose, onGetApp, className }: AppBannerProps) {
+export function AppBanner({ compact = false, title = 'Buy and sell faster in app', rating = '4.5', downloads = '10M+', cta = 'Get App', onClose, onGetApp, className }: AppBannerProps) {
   return (
-    <div className={cx(styles.banner, className)}>
+    <div className={cx(styles.banner, compact && styles.compact, className)}>
       <button type="button" className={styles.close} aria-label="Close" onClick={onClose}>
         <CloseIcon size={15} />
       </button>
       <span className={styles.appIcon}>
-        <AppBannerIcon size={37} />
+        <AppBannerIcon size={compact ? 22 : 37} />
       </span>
       <div className={styles.text}>
         <span className={styles.title}>{title}</span>
+        {!compact && (
         <div className={styles.badges}>
           <span className={styles.badge}>
             <StarIcon size={12} />
@@ -34,6 +37,7 @@ export function AppBanner({ title = 'Buy and sell faster in app', rating = '4.5'
             {downloads}
           </span>
         </div>
+        )}
       </div>
       <button type="button" className={styles.cta} onClick={onGetApp}>
         {cta}

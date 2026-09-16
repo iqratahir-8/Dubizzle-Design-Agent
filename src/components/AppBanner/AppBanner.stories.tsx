@@ -15,3 +15,4 @@ const meta: Meta<typeof AppBanner> = {
 export default meta;
 
 export const Default: StoryObj<typeof AppBanner> = {};
+export const Compact: StoryObj<typeof AppBanner> = { args: { compact: true } };

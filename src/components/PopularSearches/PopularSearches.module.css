@@ -1,0 +1,76 @@
+/* Popular Searches — measured on dubizzle.com.eg mobile home.
+   Mirrors .popular-searches in design-kit/patterns/patterns.css (npm run check:parity). */
+
+.section {
+  font-family: var(--font-primary);
+  color: var(--gray-06);
+}
+
+.heading {
+  margin: 0;
+  padding: 0 1.6rem;
+  font-size: 1.8rem;
+  font-weight: var(--weight-bold);
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 0.4rem;
+}
+
+.group {
+  position: relative;
+  padding: 0 1.6rem;
+}
+
+/* Only the first few links show; "View more" opens the rest. */
+.clip {
+  border-bottom: 1px solid var(--gray-02);
+  /* title (33) + N links (30 each) + room for View more */
+  height: calc(3.3rem + var(--visible-links, 5) * 3rem + 1.5rem);
+  overflow: hidden;
+}
+
+.groupTitle {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  font-size: 1.4rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.8rem;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.viewMore {
+  position: absolute;
+  inset-inline-end: 1.6rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+  color: var(--red-05);
+  cursor: pointer;
+}

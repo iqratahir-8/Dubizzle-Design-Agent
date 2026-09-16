@@ -1,0 +1,79 @@
+/* Mobile footer — measured on dubizzle.com.eg mobile home.
+   Mirrors .m-footer in design-kit/patterns/patterns.css (npm run check:parity). */
+
+.footer {
+  /* room for the fixed bottom navigation */
+  padding-bottom: 6rem;
+  background: var(--white);
+  font-family: var(--font-primary);
+  color: var(--gray-06);
+}
+
+.row,
+.follow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.6rem;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  background: none;
+  font-family: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.rowLabel {
+  font-size: 1.6rem;
+  font-weight: var(--weight-regular);
+  line-height: 2.4rem;
+  color: var(--gray-06);
+}
+
+.chevron {
+  color: var(--gray-06);
+}
+
+.follow {
+  cursor: default;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.socialLink img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.6rem;
+  border-top: 2px solid var(--border-subtle);
+}
+
+.badge img {
+  width: 8.4rem;
+  height: 2.8rem;
+}
+
+.copyright {
+  padding: 1.6rem 0;
+  background: var(--gray-02);
+  font-size: 1.2rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.8rem;
+  color: var(--black);
+  text-align: center;
+}
+
+.tagline {
+  font-weight: var(--weight-bold);
+}

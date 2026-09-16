@@ -97,7 +97,7 @@ Icons extracted from the live pages into `design-kit/icons/mobile/`.
 | Location | below the header: red pin 17 + "Egypt" 14/700 + chevron 12, gap 8 | inside the header, 12 under search: red pin 15 + "Egypt" 14/900 + chevron 16 |
 | **State 1 full** | tiles with icons + search + location (header 143) | same (169) |
 | **State 2 minimized** | tiles 49 tall, icons collapsed, labels only; no location (132) | same (131); logo 64×24 |
-| **State 3 search** | not reached on live (home stops at minimized) | tiles collapsed, search field only (70) |
+| **State 3 search** | tiles collapse, search field only (deep scroll) | tiles collapsed, search field only (70) |
 
 ### Listing header — property / search results
 108 tall, white, padding 12 16, gap 12, shadow `0 2px 4px rgba(0,0,0,.133)`. Row 1: back 24 + search button
@@ -126,3 +126,44 @@ padding 14 0, 14px lh14; active 700 charcoal + 2px red underline; inactive 500 `
 
 New tokens: `--shadow-tile`, `--shadow-search`, `--shadow-bottom-nav`, `--shadow-sticky-header`, `--shadow-floating`,
 `--weight-medium`, `--radius-app-icon`.
+
+### Discover Listings tabs (home)
+Equal-width tabs, padding 12, column gap 6. Active: 2px `#e00000` bottom border; inactive: 1px `#e0e0e0`.
+Head row centred, gap 6: label 14/700 lh21 charcoal + optional badge (padding 2px 4px, radius 4, red, 10/600 lh13
+white). Subtitle 12/400 lh18 `#464c55`, centred.
+
+### "Get more in the app" band (home, motors)
+Padding 12 16, column gap 12, background `linear-gradient(270deg,#ffedea -0.93%,#fefbf5 50.98%)`
+(`--app-promo-gradient`). Row gap 12: image 140×92 radius 8; text column gap 8 — title 16/700 lh20, bullets gap 8,
+each bullet gap 6 with a 14px circle `#fbe0e0` holding an 8px tick + 12/400 lh16 text. CTA full width, 32 tall,
+padding 10 16, radius 4, red, 12/600 lh18 white.
+
+### Popular Searches (home)
+Heading 18/700, padding 0 16. Groups gap 16, padding 0 16, each with a 1px `#e0e0e0` bottom border and clipped to
+~5 links (168 tall). Group title 14/700 lh21; links gap 12, 14/400 lh18 `#222`; "View more" bottom-right,
+14/700 `#e00000` + 10px chevron.
+
+### Mobile footer
+Accordion rows 57 tall, padding 16, 1px `rgba(0,47,52,.2)` (`--border-subtle`) top border, label 16/400 lh24,
+15px chevron. "Follow us" row 81 tall with five 40px social icons (gap 8). App badges row: padding 16, 2px top
+border, three 84×28 badges centred. Copyright bar: padding 16 0, background `#e0e0e0`, 12/400 black centred,
+tagline 12/700. Footer padding-bottom 60 for the bottom nav.
+
+### Featured Businesses scroller (motors, listings)
+Title 18/700 lh23.4. Scroller gap 12, items 132 wide, column gap 8: logo box 43 tall, 1px `#e0e0e0`, radius 6,
+white; name 14/400 lh16.8.
+
+### "Prime Dealers First" row (cars listing)
+Row 57 tall, padding 12 16, 1px `#e0e0e0` bottom border, white. Left: 32px crown + label 16/700 lh20.
+Switch **39×20** (smaller than the form Toggle), radius pill, off `#919395`, knob 16 white with
+`--shadow-control`.
+
+### "Explore dubizzle Motors" tiles (motors)
+Title 18/700 lh21.6. Two columns, gap 12; tile 100 tall, padding 10, radius 8, background `#f6f6f6`; label
+14/700 lh16.8; badge padding 4 8, radius pill, red, 10/700 white; illustration ~105×73 anchored bottom-right.
+
+### App banner — compact (scrolled)
+42 tall, padding 6 12, 1px `#e5e5e5` top and bottom borders; icon box 28 with `--app-icon-gradient`
+(white → `#ffedea`), 22px icon; title only; CTA 28 tall.
+
+Added tokens: `--app-promo-gradient`, `--app-icon-gradient`.

@@ -10,7 +10,7 @@ const meta: Meta<typeof MobileHeader> = {
     docs: {
       description: {
         component:
-          'Mobile web header as it appears on dubizzle.com.eg at 390px. **Home / Motors** scroll through three states: 1 `full` (tiles with icons, search, location), 2 `minimized` (labels only), 3 `search` (search field only — Motors; Home stops at minimized). **Property** (listing pages) uses the back + search + filter bar header.',
+          'Mobile web header as it appears on dubizzle.com.eg at 390px. **Home / Motors** scroll through three states: 1 `full` (tiles with icons, search, location), 2 `minimized` (labels only), 3 `search` (search field only, deep scroll). **Property** (listing pages) uses the back + search + filter bar header.',
       },
     },
   },
