@@ -17,6 +17,7 @@ import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
 import { LAYOUTS, sleep, settleFixedElements } from './lib/render-helpers.mjs';
+import { STATES } from './lib/states.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const LIVE = join(ROOT, 'design-kit/reference/live');
@@ -26,8 +27,9 @@ const KIT = process.env.KIT_URL || 'http://localhost:4321';
 const CHROME = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 /** Share of pixels allowed to differ (after downscaling) before a capture counts as broken. */
 const TOLERANCE = 0.03;
-/** Screens captured with a dialog open are compared at viewport size (see capture-rendered.mjs). */
-const VIEWPORT_ONLY = new Set(['login']);
+/** Screens captured with a dialog or an overlay open are compared at viewport size: a
+    full-page screenshot re-lays a fixed overlay out of view (capture-rendered / capture-states). */
+const VIEWPORT_ONLY = new Set(['login', ...Object.keys(STATES)]);
 
 const only = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 const TEMPLATE_MODE = process.argv.includes('--templates');

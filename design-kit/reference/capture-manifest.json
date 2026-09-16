@@ -52,7 +52,10 @@
       "property-compound": "/en/properties/mivida-compound/",
       "property-area": "/en/properties/new-cairo/",
       "property-agency": "/en/companies/gate-real-estate-602",
-      "property-rent-dpv": "/en/ad/fully-furnished-first-use-apartment-for-rent-in-villette-sky-condos-180-sqm-3-bedrooms-egp-100000-ID504099029.html"
+      "property-rent-dpv": "/en/ad/fully-furnished-first-use-apartment-for-rent-in-villette-sky-condos-180-sqm-3-bedrooms-egp-100000-ID504099029.html",
+      "property-agencies": "/en/realestate/agencies",
+      "car-finance-bank": "/en/motors/car-finance/eg-bank/",
+      "car-comparison-result": "/en/motors/new-cars/compare/mg-6-vs-toyota-corolla/"
     }
   }
 }

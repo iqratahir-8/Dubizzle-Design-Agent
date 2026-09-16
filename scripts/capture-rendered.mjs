@@ -43,8 +43,10 @@ const urls = Object.assign({}, ...Object.values(manifest.tiers));
 /** Pages that legitimately aren't HTTP 200, and pages captured with a dialog opened. */
 const EXPECTED_STATUS = { 'not-found': 404 };
 const OPEN_DIALOG = { login: /^(Login or Signup|Login or Sign up|Login|Log in)$/i };
+/** Pages whose content is built client-side after first paint and needs longer to settle. */
+const EXTRA_WAIT = { 'property-agencies': 6000 };
 /** Short pages whose text-length sanity check needs a lower bar. */
-const MIN_TEXT = { 'not-found': 100, 'seller-page': 300 };
+const MIN_TEXT = { 'not-found': 100, 'seller-page': 300, 'property-agencies': 600 };
 
 const args = process.argv.slice(2);
 const layoutArg = args.find((a) => a.startsWith('--layout='))?.split('=')[1];
@@ -91,7 +93,7 @@ try {
           continue;
         }
 
-        await sleep(1500);
+        await sleep(1500 + (EXTRA_WAIT[name] ?? 0));
         const hadPrompt =
           layout === 'mobile' && (await captureAndDismissInterstitial(page, join(SCREENS, `${base}.app-prompt.png`)));
 

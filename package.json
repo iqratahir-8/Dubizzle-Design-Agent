@@ -48,7 +48,8 @@
     "check:captures": "node scripts/check-captures.mjs",
     "build:icons": "node scripts/build-component-icons.mjs",
     "check:templates": "node scripts/check-captures.mjs --templates",
-    "capture:post-ad": "node scripts/capture-post-ad.mjs"
+    "capture:post-ad": "node scripts/capture-post-ad.mjs",
+    "capture:states": "node scripts/capture-states.mjs"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

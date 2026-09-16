@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-16 (late) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-16 (night) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -145,6 +145,17 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    `AdGallery`, `WeekRibbon`, `ContactBar` (+ `ContactButton grow`) measured on the mobile ad
    detail, and the design kit finally got its **web fonts** (it had been rendering in the system
    fallback — found because a text-width parity pair disagreed with Storybook).
+
+12. User: the Motors/Property landings' **internal pages** and every **dropdown** were still
+   missing — mega menus, location and keyword search (desktop dropdowns, full pages on mobile),
+   and the user profile menu. Built **`scripts/capture-states.mjs`** (+ `scripts/lib/states.mjs`,
+   `npm run capture:states`): it opens a real page, drives real mouse/keyboard input, then freezes
+   the result like any capture. Ten states captured (three mega menus, location dropdown, search
+   suggestions, mobile search empty + suggestions, mobile location page, and — signed in, redacted,
+   local — the desktop user menu and the mobile account page) plus three internal pages
+   (`property-agencies`, `car-finance-bank`, `car-comparison-result`). All 0–1.6% off live;
+   templates: **56 pages / 102 templates**. State captures embed their images (the ad behind an
+   overlay rotates) and are compared at viewport size.
 
 ## 6. Next up
 

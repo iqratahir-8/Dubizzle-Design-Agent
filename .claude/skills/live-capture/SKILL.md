@@ -49,11 +49,24 @@ Needs the kit server for checks: `npm run kit` (port 4321). Storybook (`npm run 
 | Public pages (desktop + mobile) | `npm run capture:rendered -- <names…> [--layout=mobile]` — names from `design-kit/reference/capture-manifest.json` |
 | Sign in for logged-in captures | `npm run capture:login` opens a plain Chrome window (automation-controlled Chrome gets "invalid credentials"); the **user** signs in there; confirm with `npm run capture:login -- --check` |
 | Account screens | `npm run capture:account [-- my-ads chat …]` |
+| Interaction states (mega menus, location dropdown, search suggestions, mobile search/location pages) | `npm run capture:states [-- names] [--layout=desktop]` — the list lives in `scripts/lib/states.mjs` |
+| Signed-in states (user menu, mobile account page) | `npm run capture:states -- --account` |
 | Post an Ad flow + upsell | `npm run capture:post-ad [-- --layout=desktop]` |
 | Capture fidelity | `npm run check:captures [-- names]` |
 | Regenerate templates | `npm run build:templates` |
 | Template fidelity | `npm run check:templates [-- names]` |
 | Gallery | `npm run build:gallery` (also runs after every capture) |
+
+## Capturing something that only exists after an interaction
+
+A page capture always shows menus closed, so dropdowns and overlays need their own capture.
+Add an entry to `scripts/lib/states.mjs` (`url`, `layouts`, `steps`) and run `capture:states`.
+Steps are `hover` (a real mouse move — React's `onMouseEnter` ignores synthetic events), `click`,
+`type` and `wait`; target an element by `text` (+ `within: [minY, maxY]` when the word repeats on
+the page) or by `at: [x, y]` where the text is personal, like the account name. State captures
+embed their images — the page behind an overlay carries a rotating ad, and a capture that
+re-fetched it would never match its own screenshot — and are screenshotted at viewport size, so
+`check:captures` compares them at viewport size too.
 
 ## Workflow after a release
 

@@ -41,6 +41,15 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - ⬜ Home promo banner slot — `PromoBanner` (390×150 mobile / 1280×180 desktop; no dots, see
   `docs/LIVE-MEASUREMENTS.md`)
 
+## To do — navigation and search (from the interaction-state captures)
+- ⬜ Header mega menu — subcategory column with chevrons + right panel ("Popular Brands" / links, "See All")
+- ⬜ Header location dropdown — search field, "Use current location", governorate rows with chevrons
+- ⬜ Header search suggestions — query + category rows with the open-in-new arrow
+- ⬜ Mobile search page — back + field, suggestion rows (full page on mobile, not a dropdown)
+- ⬜ Mobile location page
+- ⬜ User menu (desktop dropdown) and mobile account page — avatar chip, "Get Verified Now", packages
+  banner, menu rows; the signed-in header also carries Notifications / Favourites / Chats / My Ads
+
 ## To do — desktop
 - ⬜ Breadcrumbs
 - ⬜ Page title + ad count pill + Save Search button — listings

@@ -1,0 +1,221 @@
+#!/usr/bin/env node
+/**
+ * Captures the parts of dubizzle.com.eg that only exist after an interaction — the header's
+ * mega menus, the location dropdown, the search suggestions, the mobile search and location
+ * overlays, and (with --account) the signed-in user menu.
+ *
+ * A page capture always shows these closed, so the design system had no record of them.
+ * Each state here opens on a real page with real mouse/keyboard input, then is frozen the
+ * same way page captures are (scripts/lib/snapshot.mjs) and screenshotted at viewport size —
+ * a full-page shot would re-lay the overlay out of view.
+ *
+ *   npm run capture:states                       # every public state, both layouts
+ *   npm run capture:states -- menu-vehicles      # named states
+ *   npm run capture:states -- --layout=desktop
+ *   npm run capture:states -- --account          # the signed-in ones (needs capture:login)
+ */
+import { writeFileSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
+import { join, resolve, dirname } from 'node:path';
+import { tmpdir } from 'node:os';
+import { fileURLToPath } from 'node:url';
+import puppeteer from 'puppeteer-core';
+import { absolutize } from './lib/absolutize.mjs';
+import { recordResponses, snapshotHtml } from './lib/snapshot.mjs';
+import { buildGallery } from './build-screens-gallery.mjs';
+import { ORIGIN, LAYOUTS, sleep, captureAndDismissInterstitial, removePushPrompt } from './lib/render-helpers.mjs';
+import { readAccountIdentity, redactPage, sanitizeHtml, leaks, visibleLeaks } from './lib/redact.mjs';
+import { STATES } from './lib/states.mjs';
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const OUT = join(ROOT, 'design-kit/reference/live');
+const SCREENS = join(OUT, 'screens');
+const CHROME = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const args = process.argv.slice(2);
+const layoutArg = args.find((a) => a.startsWith('--layout='))?.split('=')[1];
+const accountMode = args.includes('--account');
+const names = args.filter((a) => !a.startsWith('--'));
+const unknown = names.filter((n) => !STATES[n]);
+if (unknown.length) {
+  console.error(`Unknown state(s): ${unknown.join(', ')}. Known: ${Object.keys(STATES).join(', ')}`);
+  process.exit(2);
+}
+const selected = (names.length ? names : Object.keys(STATES)).filter((n) =>
+  accountMode ? STATES[n].account : !STATES[n].account,
+);
+if (!selected.length) {
+  console.error(accountMode ? 'No signed-in states selected.' : 'No public states selected.');
+  process.exit(2);
+}
+
+/** Finds the element a step names, in the page. Kept in one place so hover and click agree. */
+const FIND = `(step) => {
+  if (step.at) {
+    let el = document.elementFromPoint(step.at[0], step.at[1]);
+    // Walk up to whatever carries the click handler — the point usually lands on a label.
+    while (el && el !== document.body) {
+      const key = Object.keys(el).find((k) => k.startsWith('__reactProps'));
+      if (key && el[key].onClick) return el;
+      el = el.parentElement;
+    }
+    return document.elementFromPoint(step.at[0], step.at[1]);
+  }
+  const inRange = (el) => {
+    if (!step.within) return true;
+    const y = el.getBoundingClientRect().y;
+    return y >= step.within[0] && y <= step.within[1];
+  };
+  const visible = (el) => { const r = el.getBoundingClientRect(); return r.width > 8 && r.height > 8; };
+  if (step.selector) {
+    const hit = [...document.querySelectorAll(step.selector)].find((el) => visible(el) && inRange(el));
+    if (hit) return hit;
+  }
+  const text = step.text ?? step.fallbackText;
+  if (!text) return null;
+  const candidates = [...document.querySelectorAll('button, a, div, span, [role="button"]')].filter(
+    (el) => el.textContent.trim() === text && visible(el) && inRange(el),
+  );
+  // The innermost match is the one carrying the handler; outer wrappers repeat the text.
+  return candidates.find((el) => !candidates.some((other) => other !== el && el.contains(other))) ?? null;
+}`;
+
+async function runStep(page, step) {
+  if (step.wait) return sleep(step.wait);
+  if (step.type) {
+    await page.keyboard.type(step.type.text, { delay: 90 });
+    return;
+  }
+  const target = step.hover ?? step.click;
+  const box = await page.evaluate(
+    (find, s) => {
+      const el = new Function('return ' + find)()(s);
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+    },
+    FIND,
+    target,
+  );
+  if (!box) throw new Error(`no element for ${JSON.stringify(target)}`);
+  if (step.hover) {
+    // A real mouse move — React's onMouseEnter doesn't fire for synthetic events.
+    await page.mouse.move(box.x - 40, box.y + 60);
+    await page.mouse.move(box.x, box.y, { steps: 12 });
+  } else {
+    await page.mouse.click(box.x, box.y);
+  }
+}
+
+mkdirSync(SCREENS, { recursive: true });
+
+let browser;
+let identity = null;
+let profile = null;
+if (accountMode) {
+  const { connectToSession, isSignedIn } = await import('./capture-session.mjs');
+  browser = await connectToSession();
+  const probe = await browser.newPage();
+  await probe.setViewport(LAYOUTS.desktop.viewport);
+  await probe.goto(`${ORIGIN}/en/`, { waitUntil: 'networkidle2', timeout: 90_000 });
+  await sleep(2000);
+  if (!(await isSignedIn(probe))) {
+    console.error('The capture window is signed out. Sign in there, then: npm run capture:login -- --check');
+    await probe.close();
+    await browser.disconnect();
+    process.exit(1);
+  }
+  identity = await readAccountIdentity(probe, ORIGIN);
+  await probe.close();
+  if (!identity?.fullName) {
+    console.error('Could not read the account name to redact it — refusing to capture.');
+    await browser.disconnect();
+    process.exit(1);
+  }
+} else {
+  profile = mkdtempSync(join(tmpdir(), 'dbz-states-'));
+  browser = await puppeteer.launch({
+    executablePath: CHROME,
+    headless: true,
+    userDataDir: profile,
+    args: ['--no-first-run', '--no-default-browser-check', '--lang=en-US'],
+  });
+}
+
+const results = [];
+try {
+  for (const name of selected) {
+    const state = STATES[name];
+    for (const layout of state.layouts.filter((l) => !layoutArg || l === layoutArg)) {
+      const { viewport, userAgent } = LAYOUTS[layout];
+      const base = `${name}.${layout}`;
+      const page = await browser.newPage();
+      try {
+        await page.setUserAgent(userAgent);
+        await page.setViewport(viewport);
+        await page.setExtraHTTPHeaders({ 'Accept-Language': 'en' });
+        const recorder = recordResponses(page);
+
+        // domcontentloaded, then settle: the signed-in session keeps long-poll requests open,
+        // so waiting for the network to go idle can time out on a page that is already there.
+        const response = await page.goto(ORIGIN + state.url, { waitUntil: 'domcontentloaded', timeout: 90_000 });
+        await page.waitForNetworkIdle({ idleTime: 800, timeout: 20_000 }).catch(() => {});
+        if ((response?.status() ?? 0) !== 200) {
+          results.push({ base, status: 'FAILED', detail: `HTTP ${response?.status()}` });
+          continue;
+        }
+        await sleep(1500);
+        if (layout === 'mobile') await captureAndDismissInterstitial(page, null);
+        await removePushPrompt(page);
+
+        for (const step of state.steps) await runStep(page, step);
+
+        if (identity) await redactPage(page, identity);
+        const opened = await page.evaluate(() => {
+          const panels = [...document.querySelectorAll('*')].filter((el) => {
+            const r = el.getBoundingClientRect();
+            const s = getComputedStyle(el);
+            return r.width > 200 && r.height > 120 && (s.position === 'absolute' || s.position === 'fixed');
+          });
+          return { panels: panels.length, text: document.body.innerText.length };
+        });
+
+        // Images are embedded, unlike page captures of account screens: the page behind an
+        // overlay carries a rotating ad, so a capture that re-fetched its images would show a
+        // different creative every time it was rendered and never match its own screenshot.
+        // Avatars and other personal images are replaced by redactPage above, before this runs.
+        let html = absolutize(await snapshotHtml(page, recorder, { inlineImages: true, restoreScroll: false }), ORIGIN);
+        if (identity) {
+          html = sanitizeHtml(html, identity);
+          const leaked = leaks(html, identity);
+          if (leaked.length) {
+            results.push({ base, status: 'FAILED', detail: `refused to save — contains: ${leaked.join(', ')}` });
+            continue;
+          }
+          const onScreen = await visibleLeaks(page, identity);
+          if (onScreen.length) {
+            results.push({ base, status: 'FAILED', detail: `refused — visible on screen: ${onScreen.join(', ')}` });
+            continue;
+          }
+        }
+        writeFileSync(join(OUT, `${base}.html`), html);
+        // Viewport-size: the state is an overlay, and a full-page shot re-lays it out of view.
+        await page.screenshot({ path: join(SCREENS, `${base}.png`), fullPage: false });
+        results.push({ base, status: 'saved', detail: `${state.label} · ${opened.panels} overlay element(s)` });
+      } catch (error) {
+        results.push({ base, status: 'FAILED', detail: error.message.split('\n')[0] });
+      } finally {
+        await page.close();
+      }
+    }
+  }
+} finally {
+  if (accountMode) await browser.disconnect();
+  else await browser.close();
+  if (profile) rmSync(profile, { recursive: true, force: true });
+}
+
+buildGallery();
+for (const r of results) console.log(`${r.status.padEnd(6)}  ${r.base.padEnd(30)} ${r.detail}`);
+const failed = results.filter((r) => r.status === 'FAILED').length;
+console.log(`\n${results.length - failed} saved, ${failed} failed · screenshots in design-kit/reference/live/screens/`);
+process.exit(failed ? 1 : 0);

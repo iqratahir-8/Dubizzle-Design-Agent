@@ -55,6 +55,10 @@ shows the very same files under **Templates → Pages** (device control: desktop
 | Ad detail | `ad-detail` (car), `ad-detail-property`, `ad-detail-property-rent`, `ad-detail-mobile-phone` |
 | Seller / business profile | `seller-page` (dealer), `agency-page` (property agency) |
 | Login (dialog), 404 | `login`, `not-found` |
+| Agencies directory, car finance bank, comparison result | `property-agencies`, `car-finance-bank`, `car-comparison-result` |
+| Header states (desktop) | `menu-vehicles`, `menu-properties`, `menu-more-categories`, `location-dropdown`, `search-suggestions` |
+| Search / location on mobile (full pages, not dropdowns) | `m-search-overlay`, `m-search-suggestions`, `m-location-page` |
+| User menu (local only) | `user-menu`, `m-user-menu` |
 | Account (local only, gitignored) | `my-ads`, `chat`, `edit-profile`, `settings-privacy`, `settings-notifications`, `packages` |
 | Post an ad (local only) | `post-ad-category`, `post-ad-subcategory`, `post-ad`, `post-ad-filled` |
 | Upselling (local only) | `upsell-select`, `upsell` |

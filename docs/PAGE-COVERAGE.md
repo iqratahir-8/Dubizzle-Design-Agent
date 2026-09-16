@@ -7,9 +7,43 @@ category, city and brand, so one capture of each shape is enough.
 
 Status: ✅ captured (all of tier 3 was captured on 2026-09-16 and is now a template)
 
-**Result:** 18 page types were missing — 10 in Motors, 8 in Property. All were captured on
+**Result (first pass):** 18 page types were missing — 10 in Motors, 8 in Property. All were captured on
 2026-09-16 (desktop + mobile, 36 captures, 35 faithful on the first run and the last after a
 re-capture) and built into templates, so `design-kit/templates/` now covers 43 pages.
+
+**Result (second pass, after the user pointed out what was still missing):** the vertical
+landings were captured, but nothing that only exists *after an interaction* was — the header
+mega menus, the location dropdown, the search suggestions, the mobile search and location
+overlays, the signed-in user menu — and three internal pages linked from the Motors / Property
+landings. `scripts/capture-states.mjs` now captures interaction states the same way pages are
+captured; all 13 new captures render 0–1.6% off their screenshots.
+
+## Interaction states (`npm run capture:states`)
+
+| State | Where | Template |
+|---|---|---|
+| Mega menu — Vehicles (subcategory column + Popular Brands panel) | desktop header nav, on hover | ✅ `menu-vehicles` |
+| Mega menu — Properties | desktop header nav | ✅ `menu-properties` |
+| Mega menu — More Categories | desktop header nav | ✅ `menu-more-categories` |
+| Location dropdown (search field, Use current location, governorate list) | desktop header | ✅ `location-dropdown` |
+| Keyword search suggestions ("toyota" → per-category rows) | desktop header | ✅ `search-suggestions` |
+| Mobile search page — empty | mobile, tapping the search field | ✅ `m-search-overlay` |
+| Mobile search page — suggestions | mobile | ✅ `m-search-suggestions` |
+| Mobile location page | mobile, tapping the location row | ✅ `m-location-page` |
+| User menu (avatar chip → account menu) | desktop header, signed in | ✅ `user-menu` (local) |
+| Mobile account page | mobile, Account in the bottom nav | ✅ `m-user-menu` (local) |
+
+The two signed-in states are redacted and stay local, like the other account captures. The mobile
+search and location "dropdowns" are full pages on mobile, not overlays — one more mobile/desktop
+divergence to design for.
+
+## Internal pages linked from the landings
+
+| Page | URL | Template |
+|---|---|---|
+| Property agencies directory (filters + agency cards, 1,756 agencies) | `/en/realestate/agencies` | ✅ `property-agencies` |
+| Car finance — bank detail | `/en/motors/car-finance/eg-bank/` | ✅ `car-finance-bank` |
+| Car comparison — result (two cars side by side) | `/en/motors/new-cars/compare/mg-6-vs-toyota-corolla/` | ✅ `car-comparison-result` |
 
 ## The mistake this audit found
 

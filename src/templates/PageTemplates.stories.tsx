@@ -689,6 +689,193 @@ export const AdDetailPropertyRent: Story = {
   },
 };
 
+export const PropertyAgencies: Story = {
+  name: "Property agencies directory",
+  args: {
+    "name": "property-agencies",
+    "label": "Property agencies directory",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/realestate/agencies"
+  },
+};
+
+export const CarFinanceBank: Story = {
+  name: "Car finance — bank detail",
+  args: {
+    "name": "car-finance-bank",
+    "label": "Car finance — bank detail",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/motors/car-finance/eg-bank/"
+  },
+};
+
+export const CarComparisonResult: Story = {
+  name: "Car comparison — result",
+  args: {
+    "name": "car-comparison-result",
+    "label": "Car comparison — result",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/motors/new-cars/compare/mg-6-vs-toyota-corolla/"
+  },
+};
+
+export const MenuVehicles: Story = {
+  name: "Header mega menu — Vehicles",
+  args: {
+    "name": "menu-vehicles",
+    "label": "Header mega menu — Vehicles",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MenuProperties: Story = {
+  name: "Header mega menu — Properties",
+  args: {
+    "name": "menu-properties",
+    "label": "Header mega menu — Properties",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MenuMoreCategories: Story = {
+  name: "Header mega menu — More Categories",
+  args: {
+    "name": "menu-more-categories",
+    "label": "Header mega menu — More Categories",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const LocationDropdown: Story = {
+  name: "Header location dropdown",
+  args: {
+    "name": "location-dropdown",
+    "label": "Header location dropdown",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const SearchSuggestions: Story = {
+  name: "Header search suggestions",
+  args: {
+    "name": "search-suggestions",
+    "label": "Header search suggestions",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MSearchOverlay: Story = {
+  name: "Mobile search page (empty)",
+  args: {
+    "name": "m-search-overlay",
+    "label": "Mobile search page (empty)",
+    "layouts": [
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MSearchSuggestions: Story = {
+  name: "Mobile search page — suggestions",
+  args: {
+    "name": "m-search-suggestions",
+    "label": "Mobile search page — suggestions",
+    "layouts": [
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MLocationPage: Story = {
+  name: "Mobile location page",
+  args: {
+    "name": "m-location-page",
+    "label": "Mobile location page",
+    "layouts": [
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const UserMenu: Story = {
+  name: "Header user menu (signed in)",
+  args: {
+    "name": "user-menu",
+    "label": "Header user menu (signed in)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MUserMenu: Story = {
+  name: "Mobile account menu (signed in)",
+  args: {
+    "name": "m-user-menu",
+    "label": "Mobile account menu (signed in)",
+    "layouts": [
+      "mobile"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
 export const AgencyPortal: Story = {
   name: "Agency portal",
   args: {

@@ -37,3 +37,7 @@ design-kit/templates/desktop/post-ad*.html
 design-kit/templates/mobile/post-ad*.html
 design-kit/templates/desktop/upsell*.html
 design-kit/templates/mobile/upsell*.html
+design-kit/templates/desktop/user-menu.html
+design-kit/templates/mobile/user-menu.html
+design-kit/templates/desktop/m-user-menu.html
+design-kit/templates/mobile/m-user-menu.html
