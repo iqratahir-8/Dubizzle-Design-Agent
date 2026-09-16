@@ -157,6 +157,16 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    templates: **56 pages / 102 templates**. State captures embed their images (the ad behind an
    overlay rotates) and are compared at viewport size.
 
+13. User, looking at a captured mega menu: "how do I know which one is hovered?" and "the mega
+   menu should open when hovered". Two fixes: (a) `capture-states.mjs` now copies the hovered
+   chain's computed styles inline, marks it `data-hovered` and stamps
+   `<meta name="live-state" content="menu-… · hovering …">`, so a frozen capture keeps the 4px
+   underline that identifies the open item (it is a `:hover` style — a frozen page has no pointer);
+   (b) the mega menu is a real component now: **`MegaMenu`** (React) + `.mega-nav` / `.mega-menu`
+   (kit), both opening on hover like live, with `openItem` / `.is-open` to pin one open for
+   screenshots. In the kit a pinned menu steps aside as soon as the pointer enters the strip.
+   Parity 185/185.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

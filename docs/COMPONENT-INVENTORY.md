@@ -27,6 +27,7 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - ✅ Ad detail gallery (photo, back/next, counter, shrinking dot pager) — `AdGallery`
 - ✅ "Car / Property of the Week" ribbon — `WeekRibbon`
 - ✅ Sticky contact bar (ad detail) — `ContactBar` (+ `ContactButton` `grow`)
+- ✅ Header mega menu — `MegaMenu` (opens on hover, like live; `openItem` pins one open)
 
 ## Exists, needs live verification
 - 🟡 `Header` (desktop) — live has 3 rows: top bar (logo tab, Motors/Property, العربية, Login or Signup / user centre, Post Your Ad), search row (location select + search + Search button), category nav strip
@@ -42,7 +43,6 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
   `docs/LIVE-MEASUREMENTS.md`)
 
 ## To do — navigation and search (from the interaction-state captures)
-- ⬜ Header mega menu — subcategory column with chevrons + right panel ("Popular Brands" / links, "See All")
 - ⬜ Header location dropdown — search field, "Use current location", governorate rows with chevrons
 - ⬜ Header search suggestions — query + category rows with the open-in-new arrow
 - ⬜ Mobile search page — back + field, suggestion rows (full page on mobile, not a dropdown)

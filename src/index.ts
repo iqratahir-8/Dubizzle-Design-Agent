@@ -75,6 +75,9 @@ export type { AdGalleryProps } from './components/AdGallery';
 export { ContactBar } from './components/ContactBar';
 export type { ContactBarProps } from './components/ContactBar';
 
+export { MegaMenu } from './components/MegaMenu';
+export type { MegaMenuProps, MegaMenuItem, MegaMenuCategory, MegaMenuPanel, MegaMenuLink } from './components/MegaMenu';
+
 export { WeekRibbon } from './components/WeekRibbon';
 export type { WeekRibbonProps } from './components/WeekRibbon';
 

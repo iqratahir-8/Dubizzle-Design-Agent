@@ -190,3 +190,17 @@ Added tokens: `--overlay-counter`, `--overlay-arrow`, `--dot-idle`, `--week-grad
 The home promo banner is a single full-bleed slot: 390×150 on mobile (no radius), 1280×180 with a 4px radius on
 desktop, inside a `react-swipeable-views` track. **It has no dots of its own** — the dots visible in screenshots
 are printed in the advertiser's artwork. Don't build a pager for it.
+
+### Header mega menu (desktop)
+Strip item 48 tall, padding 0 12, 14/600. **The open item is marked by `box-shadow: inset 0 -4px 0 #222`,
+not a border** — and it is a `:hover` style, so it vanishes from a frozen capture unless the capture
+persists it (`capture-states.mjs` copies the hovered chain's styles inline and stamps
+`<meta name="live-state">`).
+
+Panel hangs from the bottom of the strip, 732×404 = a 302 column + a 430 panel:
+- Column: white, padding-block 12. Item 32 tall (33 with a subtitle), padding 8/12/8/20, label 14/16.1,
+  chevron 10. Active item: background `#f0f0f0`, label `#0f5dc4` (`--blue-06`) at 700. Subtitle line
+  12–14 grey, ellipsised.
+- Panel: background `#f6f6f6`, 1px `#e0e0e0` inline-start border, padding 16. Head: title 18/20.7 bold,
+  "See All" 14 bold `#e00000`, 12 bottom padding over a 1px `#e0e0e0` rule. Links 14/24 `#222`, two
+  columns for brand lists, one column with chevrons for category lists.

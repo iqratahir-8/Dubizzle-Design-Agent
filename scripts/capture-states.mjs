@@ -169,6 +169,23 @@ try {
 
         for (const step of state.steps) await runStep(page, step);
 
+        // A frozen page has no mouse, so every :hover style would be lost — including the
+        // 4px underline that says which nav item opened the mega menu. Copy the hovered
+        // chain's visual properties into inline styles, and mark it, before freezing.
+        const hoverMark = await page.evaluate(() => {
+          const KEEP = ['boxShadow', 'backgroundColor', 'color', 'fontWeight', 'textDecorationLine', 'borderBottomWidth', 'borderBottomStyle', 'borderBottomColor', 'opacity'];
+          const chain = [...document.querySelectorAll(':hover')].slice(-4);
+          let label = null;
+          for (const el of chain) {
+            const style = getComputedStyle(el);
+            for (const prop of KEEP) el.style[prop] = style[prop];
+            el.setAttribute('data-hovered', 'true');
+            const text = el.textContent.trim();
+            if (text && text.length < 40) label = text;
+          }
+          return label;
+        });
+
         if (identity) await redactPage(page, identity);
         const opened = await page.evaluate(() => {
           const panels = [...document.querySelectorAll('*')].filter((el) => {
@@ -197,10 +214,18 @@ try {
             continue;
           }
         }
+        // Say in the file itself which element is hovered — "which menu is this?" is otherwise
+        // only answerable from the file name.
+        const stamp = `<meta name="live-state" content="${name}${hoverMark ? ` · hovering ${hoverMark.replace(/"/g, "'")}` : ''}">`;
+        html = html.replace(/<head([^>]*)>/i, (m) => `${m}\n${stamp}`);
         writeFileSync(join(OUT, `${base}.html`), html);
         // Viewport-size: the state is an overlay, and a full-page shot re-lays it out of view.
         await page.screenshot({ path: join(SCREENS, `${base}.png`), fullPage: false });
-        results.push({ base, status: 'saved', detail: `${state.label} · ${opened.panels} overlay element(s)` });
+        results.push({
+          base,
+          status: 'saved',
+          detail: `${state.label} · ${opened.panels} overlay element(s)${hoverMark ? ` · hovering "${hoverMark}"` : ''}`,
+        });
       } catch (error) {
         results.push({ base, status: 'FAILED', detail: error.message.split('\n')[0] });
       } finally {
