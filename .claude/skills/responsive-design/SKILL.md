@@ -46,10 +46,14 @@ shows the very same files under **Templates → Pages** (device control: desktop
 | Surface | Template |
 |---|---|
 | Home | `home` |
-| Landing pages | `motors`, `properties`, `car-finance` |
-| Search results | `search` (cars), `search-property`, `search-mobiles` |
-| Ad detail | `ad-detail` (car), `ad-detail-property`, `ad-detail-mobile-phone` |
-| Seller / business profile | `seller-page` |
+| Vertical landings | `motors`, `property-landing` (`/en/realestate/`), `car-finance` |
+| All-ads listings | `vehicles-listing`, `properties` (all property ads) |
+| Search results — motors | `search` (cars), `search-cars-model`, `search-motorcycles`, `search-trucks` |
+| Search results — property | `search-property` (sale), `search-property-rent`, `search-property-commercial`, `search-property-vacation`, `search-property-land`, `property-area`, `property-compound` |
+| Search results — goods | `search-mobiles` |
+| New Cars | `new-cars`, `new-cars-brand`, `new-cars-model`, `car-comparison`, `electric-cars` |
+| Ad detail | `ad-detail` (car), `ad-detail-property`, `ad-detail-property-rent`, `ad-detail-mobile-phone` |
+| Seller / business profile | `seller-page` (dealer), `agency-page` (property agency) |
 | Login (dialog), 404 | `login`, `not-found` |
 | Account (local only, gitignored) | `my-ads`, `chat`, `edit-profile`, `settings-privacy`, `settings-notifications`, `packages` |
 | Post an ad (local only) | `post-ad-category`, `post-ad-subcategory`, `post-ad`, `post-ad-filled` |

@@ -1,0 +1,8 @@
+.interscroller-wrapper { width: 100vw; position: relative; left: calc(50% - 50vw); }
+.interscroller-label { font-size: 9px; background: rgb(249, 249, 249); color: rgb(90, 90, 90); padding: 5px 0px; text-align: center; letter-spacing: 1px; }
+#layer-1 { position: relative; width: 100vw; height: 100vh; left: calc(50% - 50vw); }
+#layer-2 { position: absolute; width: 100%; height: 100vh; clip-path: inset(0px); overflow: hidden; clip: rect(0px, auto, auto, 0px); }
+#layer-3 { position: fixed; top: 0px; width: 100%; height: 100%; transform: translateZ(0px); }
+#layer-4 { position: absolute; width: 100%; height: 100%; background-image: url("../_live/assets/5e6ab585913ad454.jpg"); background-repeat: no-repeat; background-position: center top; background-size: 100% auto; }
+#mobile-top-leaderboard.is-sticky, .filters-sticky { position: static !important; }
+#ad-placement-middle-0 { display: none; }

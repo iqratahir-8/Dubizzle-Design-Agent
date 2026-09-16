@@ -12,7 +12,7 @@
     },
     "properties": {
       "capture": "property",
-      "label": "Properties landing"
+      "label": "All properties listing (/en/properties/)"
     },
     "car-finance": {
       "capture": "car-finance",
@@ -113,6 +113,78 @@
       "capture": "upsell",
       "label": "Upselling — packages",
       "account": true
+    },
+    "property-landing": {
+      "capture": "realestate",
+      "label": "Property landing — the vertical (/en/realestate/)"
+    },
+    "vehicles-listing": {
+      "capture": "vehicles-all",
+      "label": "All vehicles listing (/en/vehicles/)"
+    },
+    "new-cars": {
+      "capture": "new-cars",
+      "label": "New Cars — catalogue"
+    },
+    "new-cars-brand": {
+      "capture": "new-cars-brand",
+      "label": "New Cars — brand"
+    },
+    "new-cars-model": {
+      "capture": "new-cars-model",
+      "label": "New Cars — model (price, variants)"
+    },
+    "car-comparison": {
+      "capture": "new-cars-compare",
+      "label": "Car comparison tool"
+    },
+    "electric-cars": {
+      "capture": "electric-cars",
+      "label": "Electric cars landing"
+    },
+    "search-cars-model": {
+      "capture": "cars-model-list",
+      "label": "Search results — cars, brand + model"
+    },
+    "search-motorcycles": {
+      "capture": "motorcycles-list",
+      "label": "Search results — motorcycles"
+    },
+    "search-trucks": {
+      "capture": "trucks-list",
+      "label": "Search results — trucks & buses"
+    },
+    "search-property-rent": {
+      "capture": "property-rent-list",
+      "label": "Search results — property for rent"
+    },
+    "search-property-commercial": {
+      "capture": "property-commercial-list",
+      "label": "Search results — commercial property"
+    },
+    "search-property-vacation": {
+      "capture": "property-vacation-list",
+      "label": "Search results — chalets & vacation homes"
+    },
+    "search-property-land": {
+      "capture": "property-land-list",
+      "label": "Search results — buildings & land"
+    },
+    "property-compound": {
+      "capture": "property-compound",
+      "label": "Compound page"
+    },
+    "property-area": {
+      "capture": "property-area",
+      "label": "Property area page"
+    },
+    "agency-page": {
+      "capture": "property-agency",
+      "label": "Property agency profile"
+    },
+    "ad-detail-property-rent": {
+      "capture": "property-rent-dpv",
+      "label": "Ad detail — property for rent"
     }
   }
 }

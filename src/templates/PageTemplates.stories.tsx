@@ -63,10 +63,10 @@ export const Motors: Story = {
 };
 
 export const Properties: Story = {
-  name: "Properties landing",
+  name: "All properties listing (/en/properties/)",
   args: {
     "name": "properties",
-    "label": "Properties landing",
+    "label": "All properties listing (/en/properties/)",
     "layouts": [
       "desktop",
       "mobile"
@@ -416,6 +416,276 @@ export const Upsell: Story = {
     "local": true,
     "captured": "2026-09-14",
     "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PropertyLanding: Story = {
+  name: "Property landing — the vertical (/en/realestate/)",
+  args: {
+    "name": "property-landing",
+    "label": "Property landing — the vertical (/en/realestate/)",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/realestate/"
+  },
+};
+
+export const VehiclesListing: Story = {
+  name: "All vehicles listing (/en/vehicles/)",
+  args: {
+    "name": "vehicles-listing",
+    "label": "All vehicles listing (/en/vehicles/)",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/vehicles/"
+  },
+};
+
+export const NewCars: Story = {
+  name: "New Cars — catalogue",
+  args: {
+    "name": "new-cars",
+    "label": "New Cars — catalogue",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/motors/new-cars/"
+  },
+};
+
+export const NewCarsBrand: Story = {
+  name: "New Cars — brand",
+  args: {
+    "name": "new-cars-brand",
+    "label": "New Cars — brand",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/motors/new-cars/toyota/"
+  },
+};
+
+export const NewCarsModel: Story = {
+  name: "New Cars — model (price, variants)",
+  args: {
+    "name": "new-cars-model",
+    "label": "New Cars — model (price, variants)",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/motors/new-cars/toyota/corolla/"
+  },
+};
+
+export const CarComparison: Story = {
+  name: "Car comparison tool",
+  args: {
+    "name": "car-comparison",
+    "label": "Car comparison tool",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/motors/new-cars/compare/"
+  },
+};
+
+export const ElectricCars: Story = {
+  name: "Electric cars landing",
+  args: {
+    "name": "electric-cars",
+    "label": "Electric cars landing",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/motors/electric-cars/"
+  },
+};
+
+export const SearchCarsModel: Story = {
+  name: "Search results — cars, brand + model",
+  args: {
+    "name": "search-cars-model",
+    "label": "Search results — cars, brand + model",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/vehicles/cars-for-sale/mercedes-benz/model-c180/"
+  },
+};
+
+export const SearchMotorcycles: Story = {
+  name: "Search results — motorcycles",
+  args: {
+    "name": "search-motorcycles",
+    "label": "Search results — motorcycles",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/vehicles/motorcycles-accessories/"
+  },
+};
+
+export const SearchTrucks: Story = {
+  name: "Search results — trucks & buses",
+  args: {
+    "name": "search-trucks",
+    "label": "Search results — trucks & buses",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/vehicles/trucks-buses-other-vehicles/"
+  },
+};
+
+export const SearchPropertyRent: Story = {
+  name: "Search results — property for rent",
+  args: {
+    "name": "search-property-rent",
+    "label": "Search results — property for rent",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/properties/apartments-duplex-for-rent/"
+  },
+};
+
+export const SearchPropertyCommercial: Story = {
+  name: "Search results — commercial property",
+  args: {
+    "name": "search-property-commercial",
+    "label": "Search results — commercial property",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/properties/commercial-for-sale/"
+  },
+};
+
+export const SearchPropertyVacation: Story = {
+  name: "Search results — chalets & vacation homes",
+  args: {
+    "name": "search-property-vacation",
+    "label": "Search results — chalets & vacation homes",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/properties/vacation-homes-for-sale/"
+  },
+};
+
+export const SearchPropertyLand: Story = {
+  name: "Search results — buildings & land",
+  args: {
+    "name": "search-property-land",
+    "label": "Search results — buildings & land",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/properties/buildings-lands-other/"
+  },
+};
+
+export const PropertyCompound: Story = {
+  name: "Compound page",
+  args: {
+    "name": "property-compound",
+    "label": "Compound page",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/properties/mivida-compound/"
+  },
+};
+
+export const PropertyArea: Story = {
+  name: "Property area page",
+  args: {
+    "name": "property-area",
+    "label": "Property area page",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/properties/new-cairo/"
+  },
+};
+
+export const AgencyPage: Story = {
+  name: "Property agency profile",
+  args: {
+    "name": "agency-page",
+    "label": "Property agency profile",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/companies/gate-real-estate-602"
+  },
+};
+
+export const AdDetailPropertyRent: Story = {
+  name: "Ad detail — property for rent",
+  args: {
+    "name": "ad-detail-property-rent",
+    "label": "Ad detail — property for rent",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-16",
+    "origin": "https://www.dubizzle.com.eg/en/ad/fully-furnished-first-use-apartment-for-rent-in-villette-sky-condos-180-sqm-3-bedrooms-egp-100000-ID504099029.html"
   },
 };
 

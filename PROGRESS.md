@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-16 · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-16 (late) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -133,6 +133,19 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    `HomePage` / `SearchPage` / `AdDetailPage` (+ `fixtures.ts`) were deleted and dropped from
    `src/index.ts`; page templates are HTML now, not React.
 
+11. User asked which pages were still missing, per vertical, and to fetch them all →
+   **`docs/PAGE-COVERAGE.md`** (audit of the live navigation vs the capture manifest). 18 page
+   types were missing: Motors (all-vehicles listing, New Cars catalogue/brand/model, car
+   comparison, electric cars, brand+model listing, motorcycles, trucks) and Property (the
+   **vertical landing `/en/realestate/`** — what we had captured as "Properties landing" is
+   actually the all-property listing — plus rent, commercial, vacation homes, land, compound,
+   area, agency profile and a rent ad detail). All captured desktop + mobile as tier 3 of
+   `capture-manifest.json` (36 captures, all faithful, one re-capture needed) and built into
+   templates: **43 pages / 86 templates**, new ones 0–2.5% off live. Also this round:
+   `AdGallery`, `WeekRibbon`, `ContactBar` (+ `ContactButton grow`) measured on the mobile ad
+   detail, and the design kit finally got its **web fonts** (it had been rendering in the system
+   fallback — found because a text-width parity pair disagreed with Storybook).
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find
@@ -218,6 +231,11 @@ LPVs), desktop + mobile; quick vs selected chips; pixel-perfect htmls"):**
   and delete them after, or import via absolute path.
 - Storybook selectors in `check-parity.mjs` are auto-scoped to `#storybook-root` (otherwise they
   hit Storybook's own UI).
+- The kit's web fonts live in `design-kit/assets/fonts` + `design-kit/tokens/fonts.css`, imported
+  by the generated `tokens.css`. Without them kit text renders ~3px wider per word than the
+  library, which silently breaks any width comparison.
+- Template assets are committed and now weigh ~118MB (`_live/assets` 57MB, `_live-css` 35MB).
+  If the repo gets unwieldy, the shared asset/CSS folders are the thing to move out, not the HTML.
 - Storybook's Templates section is generated: after capturing or adding a page template run
   `npm run build:templates` (it regenerates `src/templates/PageTemplates.stories.tsx`), and restart
   Storybook if you changed `staticDirs` — it only reads them at start-up.
