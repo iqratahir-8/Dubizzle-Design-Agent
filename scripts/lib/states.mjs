@@ -133,8 +133,10 @@ export const STATES = {
   'dpv-phone': {
     label: 'Ad detail — phone reveal is gated by login (signed out)',
     url: '/en/ad/mercedes-benz-e300-2018-amg-ID208928385.html',
-    layouts: ['desktop', 'mobile'],
+    layouts: ['desktop'],
     scrubContacts: true,
+    layoutsNote: 'desktop only — mobile has no "Show phone number"; its Call button dials directly',
+    expect: { text: 'Login into your Dubizzle account' },
     steps: [{ click: { text: 'Show phone number' } }, { wait: 2500 }],
   },
   'dpv-report': {
@@ -142,36 +144,48 @@ export const STATES = {
     url: '/en/ad/mercedes-benz-e300-2018-amg-ID208928385.html',
     layouts: ['desktop', 'mobile'],
     scrubContacts: true,
+    expect: { text: 'Login into your Dubizzle account' },
     steps: [{ click: { text: 'Report this ad' } }, { wait: 2500 }],
   },
-  'dpv-gallery': {
-    label: 'Ad detail — full-screen gallery',
+  /* "View +5 more" is the DETAILS expander, not a photo control — it reveals extra
+     spec rows (Full Leather, …). Mobile web has no photo gallery at all: the page
+     says "All 15 images are available in the app". So this state is the expanded
+     details table, which is what the control actually does, on both layouts. */
+  'dpv-details-expanded': {
+    label: 'Ad detail — details table expanded',
     url: '/en/ad/mercedes-benz-e300-2018-amg-ID208928385.html',
     layouts: ['desktop', 'mobile'],
-    steps: [{ click: { selector: 'img[alt="Cover photo"]' } }, { wait: 2500 }],
+    expect: { text: 'Full Leather' },
+    steps: [{ click: { text: 'View +5 more' } }, { wait: 2000 }],
   },
+  /* Desktop only: the mobile home page has no login button — mobile signs in from
+     the bottom nav's Account tab, which is a different flow (see m-user-menu). */
   'login-dialog': {
     label: 'Login or Signup dialog',
     url: '/en/',
-    layouts: ['desktop', 'mobile'],
-    steps: [{ click: { text: 'Login or Signup', fallbackText: 'Login or Sign up' } }, { wait: 2500 }],
+    layouts: ['desktop'],
+    expect: { text: 'Login into your Dubizzle account' },
+    steps: [{ click: { text: ['Login or Signup', 'Login or Sign up'] } }, { wait: 2500 }],
   },
   'sort-menu': {
     label: 'Listing — sort menu open (desktop)',
     url: '/en/vehicles/cars-for-sale/',
     layouts: ['desktop'],
+    expect: { text: 'Most relevant' },
     steps: [{ click: { text: 'Sort by: Newly listed' } }, { wait: 1500 }],
   },
   'm-filters': {
     label: 'Listing — mobile filter sheet',
     url: '/en/vehicles/cars-for-sale/',
     layouts: ['mobile'],
+    expect: { text: 'Searching For' },
     steps: [{ click: { selector: 'img[alt="Filters Icon"]' } }, { wait: 2500 }],
   },
   'save-search': {
     label: 'Listing — Save Search (signed out prompt)',
     url: '/en/vehicles/cars-for-sale/',
     layouts: ['desktop'],
+    expect: { text: 'Login into your Dubizzle account' },
     steps: [{ click: { text: 'Save Search' } }, { wait: 2500 }],
   },
 };

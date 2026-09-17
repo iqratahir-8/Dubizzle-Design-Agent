@@ -71,7 +71,8 @@ const FIND = `(step) => {
     if (hit) return hit;
   }
   // Desktop and mobile often word the same control differently ("Login or Signup"
-  // vs "Login or Sign up"), so `text` may be a list: the first one that matches wins.
+  // vs "Login or Sign up"), so step.text may be a list: the first match wins.
+  // NOTE: this whole function lives inside a template literal — no backticks here.
   const texts = [step.text, step.fallbackText].flat().filter(Boolean);
   if (!texts.length) return null;
   const pool = [...document.querySelectorAll('button, a, div, span, [role="button"]')];
@@ -230,6 +231,32 @@ try {
           return { panels: panels.length, text: document.body.innerText.length };
         });
 
+        /* Finding the trigger is not proof the state opened. login-dialog.mobile
+           matched an element, clicked it, and saved the plain home page — the exact
+           silent-wrong-state failure this harness is supposed to make impossible.
+           So every state must show evidence. Counting absolutely-positioned boxes is
+           too weak on its own — the mobile DPV has a sticky contact bar and a back
+           button, so dpv-gallery.mobile "passed" while showing no gallery. Prefer an
+           explicit expect: {text} (copy that only exists in the open state) or
+           {selector}. No evidence, no capture. */
+        const proof = state.expect
+          ? await page.evaluate(
+              (e) =>
+                e.selector
+                  ? !!document.querySelector(e.selector)
+                  : document.body.innerText.toLowerCase().includes(String(e.text).toLowerCase()),
+              state.expect,
+            )
+          : opened.panels > 0;
+        if (!proof) {
+          results.push({
+            base,
+            status: 'FAILED',
+            detail: `state did not open — expected ${state.expect ? JSON.stringify(state.expect) : 'an overlay'}`,
+          });
+          continue;
+        }
+
         // Images are embedded, unlike page captures of account screens: the page behind an
         // overlay carries a rotating ad, so a capture that re-fetched its images would show a
         // different creative every time it was rendered and never match its own screenshot.
@@ -261,12 +288,46 @@ try {
         const stamp = `<meta name="live-state" content="${name}${hoverMark ? ` · hovering ${hoverMark.replace(/"/g, "'")}` : ''}">`;
         html = html.replace(/<head([^>]*)>/i, (m) => `${m}\n${stamp}`);
         writeFileSync(join(OUT, `${base}.html`), html);
-        // Viewport-size: the state is an overlay, and a full-page shot re-lays it out of view.
+        /* Viewport-size: the state is an overlay, and a full-page shot re-lays it out
+           of view. But a non-overlay state (an expanded details table) sits wherever it
+           sits, and freezing the DOM returns the page to scroll 0 — so the shot would
+           show the top of the page and prove nothing. Put the evidence back on screen
+           first, so the PNG shows what the HTML captured. */
+        let shotAt = null;
+        if (state.expect) {
+          // scrollIntoView is unreliable after the freeze (the frozen document can be
+          // height-locked), so compute the absolute offset and scroll the window.
+          shotAt = await page.evaluate((e) => {
+            let el = e.selector && document.querySelector(e.selector);
+            if (!el && e.text) {
+              const needle = String(e.text).toLowerCase();
+              el = [...document.querySelectorAll('body *')].find(
+                (n) => n.children.length === 0 && n.textContent.toLowerCase().includes(needle),
+              );
+            }
+            if (!el) return null;
+            const top = el.getBoundingClientRect().top + window.scrollY;
+            // An overlay is fixed to the viewport — scrolling to it would scroll the page
+            // behind it instead. Only move for content that actually sits down the page.
+            const fixed = (n) => {
+              for (let p = n; p && p !== document.body; p = p.parentElement) {
+                if (getComputedStyle(p).position === 'fixed') return true;
+              }
+              return false;
+            };
+            if (fixed(el)) return { scrolled: window.scrollY, fixed: true };
+            window.scrollTo(0, Math.max(0, top - window.innerHeight / 2));
+            return { scrolled: window.scrollY, fixed: false };
+          }, state.expect);
+          await sleep(500);
+        }
         await page.screenshot({ path: join(SCREENS, `${base}.png`), fullPage: false });
         results.push({
           base,
           status: 'saved',
-          detail: `${state.label} · ${opened.panels} overlay element(s)${hoverMark ? ` · hovering "${hoverMark}"` : ''}`,
+          detail: `${state.label} · ${opened.panels} overlay element(s)${hoverMark ? ` · hovering "${hoverMark}"` : ''}${
+            shotAt ? ` · shot at y=${shotAt.scrolled}${shotAt.fixed ? ' (fixed overlay)' : ''}` : ''
+          }`,
         });
       } catch (error) {
         results.push({ base, status: 'FAILED', detail: error.message.split('\n')[0] });

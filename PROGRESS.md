@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-17 (late; D-007/D-008 rules, D-009 modal capture pass 1) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-17 (late; D-007/D-008 rules, D-009/D-010 modal pass complete) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -284,6 +284,19 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    fabricated stats and a fake leads table — and must be replaced by real captures, not extended.
    Toast triggers approved by the user: copy/share (no write), form-validation errors, and
    favourite-then-undo (name the ad, confirm the undo).
+
+
+25. **Modal pass complete — 9 states, 0 failed, every one proving it opened.** Took three
+   rounds because rounds 1–2 produced captures that looked fine and were not (see **D-010**):
+   `login-dialog.mobile` saved the plain home page, `dpv-gallery.mobile` the plain DPV. Both
+   deleted. Harness now requires `expect: {text|selector}` per state, scrolls the evidence
+   into view by absolute offset before the shot (skipping `position: fixed` overlays), and
+   logs `shot at y=…`. Fixing the shot also *improved* `sort-menu`: it had been clipped to
+   two options at the viewport edge, now shows all five.
+   Saved: `login-dialog.desktop`, `dpv-phone.desktop`, `dpv-report` ×2, `save-search.desktop`,
+   `sort-menu.desktop`, `m-filters.mobile`, `dpv-details-expanded` ×2.
+   Gotcha for the next session: the element finder is a **template literal** inside
+   `capture-states.mjs` — a backtick in a comment there closes the string and breaks the file.
 
 ## 6. Next up
 

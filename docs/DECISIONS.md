@@ -168,3 +168,36 @@ the capture saved a normal-looking page with no overlay. Only the header mega me
 it, because they are always on screen. `runStep` now scrolls the target into view, re-measures,
 and throws if it is still unreachable. **A missed interaction must fail loudly; a capture that
 silently records the wrong state is worse than no capture.**
+
+## D-010 — A capture must prove the state opened, and the shot must show it
+**2026-09-17 · adopted after two false positives**
+
+Two captures were reported "saved" while showing nothing of the sort: `login-dialog.mobile`
+was the plain mobile home page, `dpv-gallery.mobile` the plain mobile DPV. Both were caught
+only by opening the PNGs by hand. Three rules now:
+
+1. **Finding the trigger is not proof.** The finder matched an element, clicked it, and the
+   page never changed. Every state declares `expect` — `{text}` or `{selector}` that exists
+   *only* in the open state ("Login into your Dubizzle account", "Most relevant",
+   "Searching For", "Full Leather"). No evidence, no capture; the state FAILS.
+2. **Counting overlay boxes is too weak as a default.** A mobile DPV has a sticky contact
+   bar, a back button and a photo chip — enough absolutely-positioned elements to pass a
+   naive check while showing no gallery. Prefer an explicit `expect`.
+3. **The screenshot has to show what the HTML contains.** Freezing the DOM resets scroll, so
+   a non-overlay state (an expanded details table) screenshotted the top of the page.
+   The capture now scrolls the evidence back into view by absolute offset —
+   `scrollIntoView` silently does nothing once the frozen document is height-locked — and
+   **skips scrolling when the target sits inside a `position: fixed` ancestor**, because
+   scrolling to a modal scrolls the page *behind* it and pushes the dialog out of frame.
+   Each result line reports `shot at y=…`, so a scroll mismatch is visible in the log
+   rather than only by opening every image.
+
+The `absolute` vs `fixed` distinction is load-bearing: the sort menu is `absolute` and moves
+with the page, and scrolling to it revealed **all five options** where the frozen shot had
+been clipping it to two at the viewport edge. A capture that is merely plausible is the
+thing this whole pipeline exists to prevent.
+
+*Also settled here:* mobile web has no photo gallery ("All 15 images are available in the
+app"), and "View +5 more" is the **Details expander**, not a photo control — the state is
+`dpv-details-expanded`. `dpv-phone` and `login-dialog` are desktop-only: mobile's Call button
+dials directly, and mobile signs in from the bottom nav's Account tab.
