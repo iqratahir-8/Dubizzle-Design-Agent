@@ -1,0 +1,103 @@
+/* Header location dropdown — measured on the live header, see docs/LIVE-MEASUREMENTS.md.
+   Must match .location-dropdown in patterns.css (npm run check:parity). */
+
+.panel {
+  width: 30.3rem;
+  max-height: 45rem;
+  overflow-y: auto;
+  padding-top: var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  box-shadow: var(--shadow-overlay);
+  font-family: var(--font-primary);
+}
+
+.searchField {
+  display: flex;
+  height: 4.8rem;
+  margin-inline: var(--space-4);
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  padding-inline-start: 1.2rem;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  color: var(--gray-06);
+  font-family: inherit;
+  font-size: 1.596rem;
+}
+
+.currentLocation {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 1.6rem;
+  border: 0;
+  background: none;
+  color: var(--blue-05);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  cursor: pointer;
+}
+
+.locationIcon {
+  flex: none;
+}
+
+.sectionLabel {
+  display: block;
+  padding: 0.8rem 1.6rem 0;
+  color: var(--gray-04);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem 1.6rem;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  text-align: start;
+  cursor: pointer;
+}
+
+.row:hover {
+  background: var(--gray-00);
+}
+
+.allLabel {
+  color: var(--red-05);
+}
+
+.rowLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  flex: none;
+  color: var(--gray-04);
+}

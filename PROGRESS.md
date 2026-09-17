@@ -189,6 +189,14 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    vertical sub-nav (Cars for Sale · New Cars · Electric Cars NEW · Car Comparison · Car Finance),
    which is now on the desktop to-do list.
 
+17. Three more components from the state captures: **`VerticalNav`** (the Motors/Property landing
+   sub-nav with its red "NEW" pill), **`LocationDropdown`** (its own search field, "Use current
+   location", the governorates — now listed once in `design-kit/content/fixtures.json` and read by
+   both the component and the kit) and **`SearchSuggestions`**. New token `--shadow-overlay`, the
+   two-part shadow live gives header overlays. Also fixed: the mega menu's "See All" was
+   `--red-04` (#f08080) where live is `--red-05` (#e00000) — parity passed because both sides were
+   wrong. Parity 199/199.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

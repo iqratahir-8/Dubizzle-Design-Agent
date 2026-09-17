@@ -3201,7 +3201,7 @@ ul {
 }
 
 .mega-menu__see-all {
-  color: var(--red-04);
+  color: var(--red-05);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   text-decoration: none;
@@ -3227,3 +3227,178 @@ ul {
 }
 
 .mega-menu__link:hover { color: var(--blue-06); }
+
+/* ── Vertical landing sub-nav, location dropdown, search suggestions ───────────
+   Measured on the live motors landing and header (docs/LIVE-MEASUREMENTS.md). Mirror
+   VerticalNav / LocationDropdown / SearchSuggestions in src/components (check:parity). */
+
+.vertical-nav { background: var(--white); font-family: var(--font-primary); }
+
+.vertical-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vertical-nav__link {
+  display: inline-flex;
+  align-items: center;
+  padding-block: 1.2rem;
+  color: var(--gray-06);
+  font-size: 1.6rem;
+  font-weight: var(--weight-semibold);
+  line-height: 2.4rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.vertical-nav__link--active { color: var(--red-05); }
+
+.vertical-nav__badge {
+  margin-inline-start: 0.6rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-pill);
+  background: var(--red-05);
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.1rem;
+}
+
+.location-dropdown {
+  width: 30.3rem;
+  max-height: 45rem;
+  overflow-y: auto;
+  padding-top: var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  box-shadow: var(--shadow-overlay);
+  font-family: var(--font-primary);
+}
+
+.location-dropdown__search {
+  display: flex;
+  height: 4.8rem;
+  margin-inline: var(--space-4);
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.location-dropdown__input {
+  flex: 1;
+  min-width: 0;
+  padding-inline-start: 1.2rem;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  color: var(--gray-06);
+  font-family: inherit;
+  font-size: 1.596rem;
+}
+
+.location-dropdown__current {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 1.6rem;
+  border: 0;
+  background: none;
+  color: var(--blue-05);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  cursor: pointer;
+}
+
+.location-dropdown__current svg { flex: none; }
+
+.location-dropdown__section {
+  display: block;
+  padding: 0.8rem 1.6rem 0;
+  color: var(--gray-04);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+}
+
+.location-dropdown__list { display: flex; flex-direction: column; }
+
+.location-dropdown__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem 1.6rem;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  text-align: start;
+  cursor: pointer;
+}
+
+.location-dropdown__row:hover { background: var(--gray-00); }
+
+.location-dropdown__all { color: var(--red-05); }
+
+.location-dropdown__label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.location-dropdown__row svg { flex: none; color: var(--gray-04); }
+
+.search-suggestions {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  box-shadow: var(--shadow-overlay);
+  overflow: hidden;
+  font-family: var(--font-primary);
+}
+
+.search-suggestions__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  padding: 0.8rem 1.6rem;
+  border: 0;
+  background: none;
+  text-align: start;
+  cursor: pointer;
+}
+
+.search-suggestions__row--active,
+.search-suggestions__row:hover { background: var(--gray-01); }
+
+.search-suggestions__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.search-suggestions__query {
+  color: var(--gray-06);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-suggestions__category {
+  color: var(--gray-05);
+  font-size: var(--text-sm);
+  line-height: 2rem;
+}
+
+.search-suggestions__row svg { flex: none; color: var(--gray-05); }

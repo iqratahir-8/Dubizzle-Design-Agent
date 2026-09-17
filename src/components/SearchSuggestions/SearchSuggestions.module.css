@@ -1,0 +1,57 @@
+/* Header search suggestions — measured on the live header, see docs/LIVE-MEASUREMENTS.md.
+   Must match .search-suggestions in patterns.css (npm run check:parity). */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  box-shadow: var(--shadow-overlay);
+  overflow: hidden;
+  font-family: var(--font-primary);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  padding: 0.8rem 1.6rem;
+  border: 0;
+  background: none;
+  text-align: start;
+  cursor: pointer;
+}
+
+.active,
+.row:hover {
+  background: var(--gray-01);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.query {
+  color: var(--gray-06);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category {
+  color: var(--gray-05);
+  font-size: var(--text-sm);
+  line-height: 2rem;
+}
+
+.arrow {
+  flex: none;
+  color: var(--gray-05);
+}

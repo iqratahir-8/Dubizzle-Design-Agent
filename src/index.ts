@@ -76,6 +76,15 @@ export { ContactBar } from './components/ContactBar';
 export type { ContactBarProps } from './components/ContactBar';
 
 export { MegaMenu, MEGA_MENUS, MEGA_MENUS_CAPTURED } from './components/MegaMenu';
+
+export { VerticalNav, MOTORS_NAV } from './components/VerticalNav';
+export type { VerticalNavProps, VerticalNavItem } from './components/VerticalNav';
+
+export { LocationDropdown, EGYPT_LOCATIONS } from './components/LocationDropdown';
+export type { LocationDropdownProps, LocationOption } from './components/LocationDropdown';
+
+export { SearchSuggestions } from './components/SearchSuggestions';
+export type { SearchSuggestionsProps, SearchSuggestion } from './components/SearchSuggestions';
 export type { MegaMenuProps, MegaMenuItem, MegaMenuCategory, MegaMenuPanel, MegaMenuLink } from './components/MegaMenu';
 
 export { WeekRibbon } from './components/WeekRibbon';

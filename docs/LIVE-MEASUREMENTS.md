@@ -221,3 +221,22 @@ tab flares straight into the white row. Post Your Ad 130×40, radius 6, label 14
 radius 6 with a 1px `#919395` border; search field 850×48 radius `6 0 0 6`; Search button 111×48
 `#23262a`, radius `0 6 6 0`, label **17/500** — the only 17px in the header. Category strip: see
 the mega menu entry above.
+
+### Vertical landing sub-nav (Motors)
+A `<ul>` across the 1280 container, items 48 apart, each 49 tall with 12 padding-block and a
+16/24/600 label; the current page is `#e00000`, the rest `#23262a`. "NEW" pill: 42×19, 11/11/700
+white on `#e00000`, pill radius, padding 4 8, 6 from the label. On these pages the sub-nav replaces
+the header's search row.
+
+### Header location dropdown
+Panel 303 wide (max 450 tall, scrolls), radius 4, padding-top 16, on `--shadow-overlay`
+(`0 0 6px rgba(0,0,0,.12), 0 6px 6px rgba(0,0,0,.24)` — the shadow live gives header overlays).
+Its own search field 271×48, radius 6, 1px `#e0e0e0`, text 16 with 12 of start padding.
+"Use current location" 16/700 `#3a88ef` with a 26px target icon, padding 16. "Choose location"
+14/700 `#919395`, padding 8 16 0. Rows 41 tall, padding 10 16, label 14/21; "See ads in all Egypt"
+is the same row in `#e00000`; governorate rows carry a chevron.
+
+### Header search suggestions
+Panel as wide as the search field (850 at 1440; 961 when the field is wider), radius 4, the same
+`--shadow-overlay`. Rows 61 tall, padding 8 16: query 16/24 over category 14/20 `#464c55`, with a
+20px open-in-new arrow at the end. The row under the pointer sits on `#f0f0f0`.

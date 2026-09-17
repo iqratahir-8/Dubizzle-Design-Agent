@@ -27,6 +27,10 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - ✅ Ad detail gallery (photo, back/next, counter, shrinking dot pager) — `AdGallery`
 - ✅ "Car / Property of the Week" ribbon — `WeekRibbon`
 - ✅ Sticky contact bar (ad detail) — `ContactBar` (+ `ContactButton` `grow`)
+- ✅ Vertical landing sub-nav — `VerticalNav` (+ `MOTORS_NAV`)
+- ✅ Header location dropdown — `LocationDropdown` (+ `EGYPT_LOCATIONS`, shared with the kit via
+  `design-kit/content/fixtures.json`)
+- ✅ Header search suggestions — `SearchSuggestions`
 - ✅ Header mega menu — `MegaMenu` (opens on hover, like live; `openItem` pins one open), with the
   live menu content exported as `MEGA_MENUS` (7 categories, 67 subcategories, 201 links) and the
   strip wired into `Header` (`categories`, `openCategory`)
@@ -48,16 +52,12 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
   `docs/LIVE-MEASUREMENTS.md`)
 
 ## To do — navigation and search (from the interaction-state captures)
-- ⬜ Header location dropdown — search field, "Use current location", governorate rows with chevrons
-- ⬜ Header search suggestions — query + category rows with the open-in-new arrow
 - ⬜ Mobile search page — back + field, suggestion rows (full page on mobile, not a dropdown)
 - ⬜ Mobile location page
 - ⬜ User menu (desktop dropdown) and mobile account page — avatar chip, "Get Verified Now", packages
   banner, menu rows; the signed-in header also carries Notifications / Favourites / Chats / My Ads
 
 ## To do — desktop
-- ⬜ Vertical sub-nav (Motors: Cars for Sale · New Cars · Electric Cars NEW · Car Comparison · Car
-  Finance; the motors/property landings replace the search row with it, active item in red)
 - ⬜ Breadcrumbs
 - ⬜ Page title + ad count pill + Save Search button — listings
 - ⬜ Filter rail: Categories tree with counts, Location, Brand & Model, Price range — listings
