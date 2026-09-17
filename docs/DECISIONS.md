@@ -114,3 +114,29 @@ other `backdrop-filter`.
 isn't traceable to a measurement is a liability, because the linter turns it into law.
 Every remaining ✗ in §2 should be checkable against the captures. Where one isn't, mark it
 as judgement rather than stating it as fact about dubizzle.
+
+## D-008 — Gradient, glass, colour and icon rules relaxed into a proposal workflow
+**2026-09-17 · adopted · user decision**
+
+Following D-007, the user set the policy for values the system doesn't yet have. The rules
+moved from bans to governance:
+
+- **New gradients and new colours are allowed in a design**, but must be logged in
+  `docs/PROPOSALS.md` and **raised with the designer before shipping**. `check:design`
+  downgraded both from `error` to `warn` so work isn't blocked — which means the warning,
+  plus Claude saying so in the response, is now the only gate. Silence is the failure mode.
+- **Glassmorphism is an option, not a default.** Added `.glass-panel` / `.glass-panel--dark`
+  with `--glass-panel-{bg,bg-dark,border,blur}`. These are **authored, not measured** —
+  production still frosts only the media chip. The distinction is recorded in
+  `sync-tokens.mjs`, `PROPOSALS.md` and RULES.md §1 so D-007 doesn't repeat in reverse.
+- **Icons: Lucide, Font Awesome and Material Symbols are permitted**, resolved by name.
+  `design-kit/icons/` stays first — 587 icons that match each other — with the packs as
+  named fallbacks for genuine gaps. Font Awesome **Free only** (CC BY 4.0 / SIL OFL 1.1 /
+  MIT, attribution required); no Pro licence exists for this repo. Heroicons, Feather,
+  Bootstrap Icons, Phosphor and Iconoir stay out: more sources, more mismatch, no gain.
+- **Centred marketing heroes and three evenly-weighted card rows are permitted when the
+  brief calls for them** — campaign and landing surfaces, not on top of a results grid.
+
+*Why the provenance table in `PROPOSALS.md` matters:* the system now holds values from three
+different sources — measured, adopted, proposed. D-007 happened because an unmeasured value
+was stated as fact about dubizzle. Keeping the three labelled is what stops that recurring.

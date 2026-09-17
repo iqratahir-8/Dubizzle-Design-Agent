@@ -90,16 +90,45 @@ The test is whether removing the gradient loses information. A scrim keeps white
 text legible on an unknown photo. An edge fade says the rail scrolls. A badge
 gradient distinguishes paid tiers at a glance. A gradient hero says nothing.
 
-### Frosted glass — one component
+### Frosted glass — one measured use, one opt-in
 
-`backdrop-filter` renders in exactly one place: the **media-type chip** ("Video")
-sitting on a card photo — `--glass-chip-bg` + `--glass-chip-blur`, radius `0.4rem`,
-63×22. It appears in 13 captures across both verticals and both layouts, so it is
-systematic, not an accident.
+**Measured.** `backdrop-filter` renders in exactly one place on live dubizzle: the
+**media-type chip** ("Video") on a card photo — `--glass-chip-bg` + `--glass-chip-blur`,
+radius `0.4rem`, 63×22, in 13 captures across both verticals and both layouts. Class:
+`.glass-chip`.
 
-It is frosted for a reason: the photo behind it is arbitrary, so no opaque fill
-guarantees contrast. That reason does not extend to a nav, a card, a modal or a
-sidebar sitting on a known background — those get a solid token.
+**Opt-in.** Glassmorphism is also available as a deliberate choice (user decision,
+2026-09-17): `.glass-panel` with `--glass-panel-bg` / `--glass-panel-blur` /
+`--glass-panel-border`, plus `.glass-panel--dark`. **These are authored, not measured
+— production does not render them.** Don't describe a frosted panel as something
+dubizzle does; it's something this system now offers.
+
+Use it where the chip's logic holds: the backdrop is genuinely unknown — over imagery,
+over a map, over content scrolling underneath. Over a known solid background it costs
+a compositing layer and buys nothing; use a surface token.
+
+Always ship a solid fallback. `.glass-panel` puts the blur behind `@supports` and falls
+back to `--surface-page` with a real border, so the panel stays legible where
+`backdrop-filter` is unsupported or disabled. Never put text on a frosted surface
+without checking contrast against the *worst* backdrop it can land on, not the mock.
+
+### New values — propose, confirm, adopt
+
+A design may introduce a colour or a gradient the system doesn't have. That's allowed,
+and it is **not** finished when the design looks right:
+
+1. Use it — don't stall.
+2. `check:design` warns and points at `docs/PROPOSALS.md`. Log it there.
+3. **Say so in the response.** "This introduces a new colour `#xxxxxx` — it needs
+   designer sign-off before it ships." A new value that ships unmentioned is the
+   failure mode; see D-007.
+4. Once the designer confirms, it becomes a token (`scripts/sync-tokens.mjs` →
+   `npm run sync:tokens`), gets a `D-NNN` in `docs/DECISIONS.md`, and moves to
+   **Adopted** in `PROPOSALS.md`.
+
+Keep provenance straight: **measured** (verified on live) · **adopted** (designer
+authored and confirmed) · **proposed** (in a design, unconfirmed). Never call an
+adopted or proposed value something dubizzle "uses".
 
 ### Breakpoints
 768px is the real split. `max-width: 768px` = mobile, `min-width: 768px` = desktop. Secondary: 360, 480, 950, 1280.
@@ -112,8 +141,8 @@ Each of these is a tell that a screen was generated rather than designed. None o
 
 **Color and surface**
 - ✗ Purple, indigo, violet, teal — anywhere, for anything
-- ✗ **Decorative** gradient — a gradient with no job. Mesh backgrounds, gradient heroes, gradient buttons, gradient text, gradient borders, atmosphere. Production has 333 gradients and not one of them is this. See §1 for the ones that are real.
-- ✗ Frosted panels, navs, cards, modals, sidebars. Blur is for one chip over a photo (§1), nothing else.
+- ⚠ Gradient that isn't one of the §1 roles — mesh backgrounds, gradient buttons, gradient text, gradient borders. Production has 333 gradients and none of them is decorative, so the default answer is still no. But if a design needs a new one, **use it, then raise it**: log it in `docs/PROPOSALS.md` and get the designer's sign-off before it ships. `check:design` warns rather than blocks.
+- ⚠ Frosted panels — available as an opt-in (`.glass-panel`, §1), not a default. Reach for it when the backdrop is genuinely unknown; over a known solid background a surface token is better and cheaper.
 - ✗ Dark mode. dubizzle EG web has none. Do not invent one.
 - ✗ Glows and neon. (Coloured shadow exists in exactly one place — the header's active-vertical tab, which is `ds-ignore`d geometry. Don't author a second.)
 
@@ -131,12 +160,26 @@ Each of these is a tell that a screen was generated rather than designed. None o
 
 **Iconography**
 - ✗ Emoji as icons. Ever. Not in UI, not in labels, not in empty states.
-- ✗ Lucide, Heroicons, Font Awesome, Material Icons, or any external pack
-- ✓ Use `design-kit/icons/` — 587 real icons. If one genuinely doesn't exist, say so rather than substituting.
+- ✓ **`design-kit/icons/` first** — 587 real dubizzle icons, and they match each other.
+- ✓ **Then Lucide, Font Awesome, or Google's Material Symbols**, resolved by name: if the
+  design asks for an icon the kit doesn't have, take it from whichever pack has it rather
+  than shipping a gap. (User decision, 2026-09-17.)
+- Keep one pack per screen where you can. Mixing sets is visible — Lucide's 2px stroke on a
+  24 grid doesn't sit level with dubizzle's filled set — so if a screen needs three external
+  icons, take all three from the same pack and match the optical size.
+- **Font Awesome:** Free only (CC BY 4.0, icons; SIL OFL 1.1, fonts; MIT, code — attribution
+  required). Pro is paid and this repo has no licence for it. Don't reference a Pro-only glyph.
+- ✗ Heroicons, Feather, Bootstrap Icons, Phosphor, Iconoir — a fourth and fifth source buys
+  nothing and multiplies the mismatch.
 
 **Layout**
-- ✗ Centered marketing hero with a big headline and a single CTA
-- ✗ Three evenly-weighted feature cards in a row
+- ⚠ Centred marketing hero with a big headline and a single CTA — **permitted when the brief
+  calls for one** (user decision, 2026-09-17). It is still wrong for a listings surface, where
+  density and scanning win. Use it for campaign, landing and promotional pages, not on top of
+  a results grid.
+- ⚠ Three evenly-weighted cards in a row — **permitted when the content is genuinely three
+  peers** (a value-prop row, a three-step explainer). Don't use it to pad thin content, and
+  don't apply it to listings: real ad grids are ragged because real content is ragged.
 - ✗ Large empty margins "for breathing room" — this is a dense product
 - ✗ Full-bleed photography behind text
 - ✗ Symmetric, evenly-spaced everything. Real listing grids are ragged because real content is ragged.
@@ -190,9 +233,11 @@ Fake content is the fastest way to make a real design look generated. Use `desig
 ## 5. Before you call it done
 
 - [ ] Every colour, space, radius, and shadow is a token — no literal hex or off-scale px
-- [ ] Every gradient is one of the §1 roles, via its token — none is decorative
-- [ ] No `backdrop-filter` outside the media chip
-- [ ] No emoji, no external icon pack
+- [ ] Every gradient is a §1 role via its token — or it's logged in `docs/PROPOSALS.md` **and flagged to the user for designer sign-off**
+- [ ] Any new colour is likewise tokenised or logged and flagged
+- [ ] Frosted surfaces use `.glass-chip` / `.glass-panel` and have a solid `@supports` fallback
+- [ ] Icons come from `design-kit/icons/` first; external ones are Lucide / Font Awesome Free / Material Symbols, ideally one pack per screen
+- [ ] No emoji anywhere
 - [ ] Nothing scales or bounces on hover
 - [ ] Content reads like real Egyptian listings, with real prices and real place names
 - [ ] The densest reasonable layout was chosen, not the airiest

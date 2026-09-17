@@ -58,7 +58,10 @@ const EMOJI = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{1F1E6}-\u{1F1FF}]
 const rules = [
   {
     id: 'off-palette-color',
-    severity: 'error',
+    /* warn, not error: new colour is allowed to enter a design, but it must be
+       confirmed with the designer and adopted as a token (docs/PROPOSALS.md)
+       rather than silently living as a literal. */
+    severity: 'warn',
     test(line) {
       const hits = [];
       for (const [hex] of line.matchAll(/#[0-9a-fA-F]{3,8}\b/g)) {
@@ -66,17 +69,22 @@ const rules = [
         if (paletteHexes.has(normalized)) continue;
         hits.push(`${hex}${describeHue(normalized)}`);
       }
-      return hits.length ? `off-palette colour: ${hits.join(', ')} — use a palette token` : null;
+      return hits.length
+        ? `colour outside the palette: ${hits.join(', ')} — use a token, or if this is a new brand colour, log it in docs/PROPOSALS.md and confirm it with the designer before it ships`
+        : null;
     },
   },
   {
-    id: 'forbidden-gradient',
-    severity: 'error',
+    id: 'unregistered-gradient',
+    /* warn, not error: a design may introduce a new gradient. It has to be raised
+       with the designer and, once finalised, added to the system as a role token
+       (docs/PROPOSALS.md) — not left as an inline literal. */
+    severity: 'warn',
     test(line, context) {
       if (!/linear-gradient|radial-gradient|conic-gradient/.test(line)) return null;
       if (context.inMaskDeclaration) return null;
       if (ALLOWED_GRADIENT_HINTS.some((re) => re.test(line))) return null;
-      return 'gradient authored inline — use the role token for it (RULES.md §1), or drop it if it is decoration';
+      return 'gradient not in the system — use its role token if one fits (RULES.md §1), otherwise log it in docs/PROPOSALS.md and confirm it with the designer before it ships';
     },
   },
   {
@@ -165,13 +173,17 @@ const rules = [
   },
   {
     id: 'glassmorphism',
-    severity: 'error',
-    /* Production frosts exactly one thing: the media-type chip over a card photo,
-       where the image behind it is arbitrary. Anything else gets a solid token. */
+    /* Glassmorphism is an available option (RULES.md §1), not a default. The
+       measured chip and the opt-in panel both have tokens; a hand-rolled blur
+       value is still worth flagging so it gets tokenised. */
+    severity: 'warn',
     test: (line) => {
       if (!/backdrop-filter\s*:/i.test(line)) return null;
-      if (/--glass-chip-blur/.test(line)) return null;
-      return 'backdrop-filter outside the media chip — use a solid surface token (RULES.md §1)';
+      // `@supports (backdrop-filter: blur(1px))` is a feature test, not a declaration —
+      // it is exactly how the solid fallback is done, so don't flag the guard itself.
+      if (/@supports/i.test(line)) return null;
+      if (/--glass-(chip|panel)-blur/.test(line)) return null;
+      return 'hand-authored blur — use var(--glass-chip-blur) or var(--glass-panel-blur), and pair it with a solid @supports fallback (.glass-panel in patterns.css)';
     },
   },
   {
@@ -184,16 +196,21 @@ const rules = [
   },
   {
     id: 'external-icons-or-fonts',
-    severity: 'error',
+    /* warn: brand type still matters, but a non-brand family is a judgement call
+       now that icon fonts are permitted. */
+    severity: 'warn',
     test(line) {
-      if (/lucide|heroicons?|font-?awesome|material-icons|feather-icons|bootstrap-icons/i.test(line)) {
-        return 'external icon pack — use design-kit/icons/';
+      /* Lucide, Font Awesome and Google's Material Symbols are permitted sources
+         (RULES.md §Iconography, user decision 2026-09-17): name the icon and pull
+         it from whichever set has it. dubizzle's own 587 icons come first, because
+         they are the brand's and they match each other. The packs below are named
+         fallbacks for what the kit genuinely lacks. */
+      if (/heroicons?|feather-icons|bootstrap-icons|iconoir|phosphor-icons/i.test(line)) {
+        return 'icon pack outside the permitted set — use design-kit/icons/, Lucide, Font Awesome or Material Symbols';
       }
-      if (/fonts\.googleapis\.com|fonts\.gstatic\.com/i.test(line)) {
-        return 'Google Fonts — the brand fonts are Proxima Nova and GESS';
-      }
-      if (/font-family\s*:\s*(?!.*(var\(|proxima|gess|inherit))/i.test(line)) {
-        return 'non-brand font-family — use var(--font-primary) or var(--font-arabic)';
+      if (/font-?awesome/i.test(line) && !/fa-(solid|regular|brands|light|thin|duotone)?/i.test(line)) return null;
+      if (/font-family\s*:\s*(?!.*(var\(|proxima|gess|inherit|lucide|font ?awesome|material symbols|material icons))/i.test(line)) {
+        return 'non-brand font-family for text — body and headings are var(--font-primary) / var(--font-arabic); icon fonts are exempt';
       }
       return null;
     },

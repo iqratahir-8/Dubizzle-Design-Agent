@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-17 (late; D-007 gradient/glass rule correction) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-17 (late; D-007 rule correction + D-008 proposal workflow) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -240,6 +240,19 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    tokens, still errors on an inline literal gradient or any other `backdrop-filter`. Recorded as
    **D-007**, which also carries the general lesson: *a constraint in `RULES.md` that isn't
    traceable to a measurement is a liability, because the linter turns it into law.*
+
+
+23. **Rules relaxed into a governance workflow** (user decisions, 2026-09-17): icons may come
+   from Lucide / Font Awesome Free / Material Symbols by name (kit's 587 first, packs as
+   fallbacks; FA Pro is unlicensed here); glassmorphism is an opt-in `.glass-panel` with
+   authored — *not* measured — tokens; centred heroes and three-card rows are allowed when
+   the brief calls for them; **new gradients and colours are allowed but must be logged in
+   `docs/PROPOSALS.md` and raised with the designer before shipping.** `check:design`
+   downgraded gradient + off-palette colour from `error` to `warn`, so **the warning and
+   Claude saying so out loud are now the only gate** — a new value that ships unmentioned is
+   the failure mode to watch. New `docs/PROPOSALS.md` carries the open/adopted/rejected
+   tables and the provenance rule: **measured** vs **adopted** vs **proposed**, never blurred.
+   Recorded as **D-008**.
 
 ## 6. Next up
 

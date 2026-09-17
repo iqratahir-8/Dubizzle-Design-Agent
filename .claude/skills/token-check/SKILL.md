@@ -132,8 +132,19 @@ list card) · `--radius-2xl` 1.6rem (highlighted "of the Week" list card only) �
 `--surface-depth` (DPV specs strip), `--app-promo-gradient` / `--app-icon-gradient`.
 A literal `linear-gradient(…)` authored inline is an error — see RULES.md §1.
 
-**Frosted glass** → `--glass-chip-bg` + `--glass-chip-blur`, and only on the media-type
-chip over a card photo. Any other `backdrop-filter` is an error.
+**Frosted glass** → measured: `--glass-chip-bg` + `--glass-chip-blur` on the media-type
+chip over a card photo. Opt-in: `--glass-panel-bg` / `--glass-panel-blur` /
+`--glass-panel-border` via `.glass-panel` (authored, not measured — production doesn't
+render it). A hand-rolled blur value warns; tokenise it and give it a solid `@supports`
+fallback.
+
+**New colour or gradient in a design** → this is the one that must not be silent. Use it,
+then log it in `docs/PROPOSALS.md` **and tell the user it needs designer sign-off before it
+ships**. `check:design` warns rather than blocks, so the warning is the only thing standing
+between an unconfirmed value and production.
+
+**Icons** → `design-kit/icons/` first; Lucide, Font Awesome Free and Material Symbols are
+permitted fallbacks resolved by name. Font Awesome Pro is not licensed here.
 
 **Overlays** → `--overlay-dark` (photo-count badge), `--overlay-light` (heart button on a photo).
 

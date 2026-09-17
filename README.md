@@ -105,7 +105,7 @@ npm run check:design -- design-kit/templates/desktop/search.html
 npm run check:all
 ```
 
-The linter derives its palette allowlist from the generated tokens, so it can't drift from the system it's policing. It catches off-palette colour, gradients authored inline rather than through their role token, arbitrary `px` in a rem-based system, over-large radii, hand-authored shadows, `transform: scale()` on hover, `backdrop-filter` outside the one component that uses it, emoji, external icon packs and fonts, RTL-breaking physical directions, broken icon references, generic AI copy, and non-EGP currency.
+The linter derives its palette allowlist from the generated tokens, so it can't drift from the system it's policing. It catches off-palette colour, gradients authored inline rather than through their role token, arbitrary `px` in a rem-based system, over-large radii, hand-authored shadows, `transform: scale()` on hover, hand-authored blur, emoji, icon packs outside the permitted set, RTL-breaking physical directions, broken icon references, generic AI copy, and non-EGP currency.
 
 Deliberate exceptions carry a `ds-ignore` comment on the line — for example the header's concave active-vertical tab, whose elliptical radius is load-bearing geometry.
 

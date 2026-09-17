@@ -12,13 +12,14 @@ re-capture — the answer lives in `docs/HOW-TO-ASK.md`.
 
 ## Before you generate anything
 
-**Read `RULES.md` first.** It is short and it is binding. It defines the closed value sets (colour, spacing, radius, type, shadow) and lists the AI-slop signatures that never appear in dubizzle production — emoji icons, scale-on-hover, centred marketing heroes, fake currency, and *decorative* gradient. Note that gradient and frosted glass themselves are real here, allowed by role via tokens (§1) — see `docs/DECISIONS.md` D-007. Most bad output comes from skipping this file.
+**Read `RULES.md` first.** It is short and it is binding. It defines the closed value sets (colour, spacing, radius, type, shadow) and lists what makes a screen read as generated. Several once-absolute bans are now judgement calls — gradient and frosted glass are real and tokenised (§1, D-007); centred heroes and three-card rows are permitted when the brief calls for them; Lucide / Font Awesome / Material Symbols are permitted icon fallbacks. **What is not optional: a new colour or gradient must be logged in `docs/PROPOSALS.md` and flagged to the user for designer sign-off, never shipped silently.**
 
 ## What's here
 
 | Path | Use it for |
 |---|---|
 | `RULES.md` | The constraints. Read before generating, check against when done. |
+| `docs/PROPOSALS.md` | Where a new colour/gradient goes while it waits for designer sign-off. Read the provenance table — measured vs adopted vs proposed. |
 | `design-kit/tokens/tokens.css` | 1,269 production tokens + a small stable semantic API (`--color-primary`, `--space-4`, `--radius-lg`…). Link this in any HTML you produce. |
 | `design-kit/tokens/tokens.json` | Same values, machine-readable. |
 | `design-kit/patterns/patterns.css` | Header, filter rail, results grid, ad cards, contact CTAs, footer, bottom nav. The shared vocabulary. |
@@ -38,7 +39,7 @@ re-capture — the answer lives in `docs/HOW-TO-ASK.md`.
 1. Read `RULES.md`.
 2. Copy the closest live template in `design-kit/templates/desktop|mobile/` (gallery with pixel-match % at `templates/index.html`) — never start from a blank page. Mobile or a flow? Use the `responsive-design` skill. No template for the page? Capture it (`live-capture` skill).
 3. Swap the content using `design-kit/content/fixtures.json`. Real prices, real Egyptian locations, real messy titles.
-4. Pick icons from `design-kit/icons/`. Never emoji, never an external pack. If the icon you want doesn't exist, say so.
+4. Pick icons from `design-kit/icons/` first (587, and they match each other). If the kit genuinely lacks one, take it by name from Lucide, Font Awesome Free or Material Symbols — one pack per screen where possible. Never emoji.
 5. Build new parts from the components (`AdCard`, `AdListCard`, `Chip`, `ContactButton`…) or their `patterns.css` classes. Add new CSS only for genuinely new structure, and only using tokens.
 6. Run the `token-check` skill (or `npm run check:design -- <your-file>`) and fix every error.
 

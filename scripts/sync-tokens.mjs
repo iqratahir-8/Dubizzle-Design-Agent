@@ -191,6 +191,16 @@ const SEMANTIC = {
     // a card photo, where the image behind it is arbitrary and contrast can't be
     // guaranteed any other way. Pair with --glass-chip-blur.
     '--glass-chip-bg': 'rgba(23, 25, 28, 0.75)',
+
+    // ── Opt-in frosted panel (AUTHORED, NOT MEASURED) ─────────────────────────
+    // Everything above this line was measured on live dubizzle. These four were
+    // authored on the user's instruction (2026-09-17) so that glassmorphism is
+    // available as a deliberate option. Production does not currently render them.
+    // If a design ships with one, measure it and move it up. Keep the distinction:
+    // D-007 exists because invented values were once presented as facts.
+    '--glass-panel-bg': 'rgba(255, 255, 255, 0.72)',
+    '--glass-panel-bg-dark': 'rgba(23, 25, 28, 0.64)',
+    '--glass-panel-border': 'rgba(255, 255, 255, 0.4)',
   },
   typography: {
     '--font-primary': 'var(--font-ltr)',
@@ -255,6 +265,8 @@ const SEMANTIC = {
     // The blur half of the media chip (--glass-chip-bg). The only backdrop-filter
     // in the product.
     '--glass-chip-blur': 'blur(4px)',
+    // Opt-in panel blur (authored, not measured — see --glass-panel-bg).
+    '--glass-panel-blur': 'blur(12px)',
     '--shadow-overlay': '0 0 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24)',
     // The signed-in account menu sits on a softer one.
     '--shadow-menu': '0 4px 10px 0 rgba(0, 0, 0, 0.1)',
