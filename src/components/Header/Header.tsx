@@ -177,7 +177,7 @@ export function Header({
               </button>
             ) : (
               <button type="button" aria-label="Login" onClick={onLogin} className={styles.loginButton}>
-                <span className={styles.navLabel}>Login or Signup</span>
+                <span className={styles.loginLabel}>Login or Signup</span>
               </button>
             )}
 

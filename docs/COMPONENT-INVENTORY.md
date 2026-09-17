@@ -32,9 +32,10 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
   strip wired into `Header` (`categories`, `openCategory`)
 
 ## Exists, needs live verification
-- 🟡 `Header` (desktop) — top bar (logo tab, Motors/Property, العربية, Login or Signup / user centre,
-  Post Your Ad) and search row (location select + search + Search button) still need a live check;
-  the third row, the category nav strip, is now `MegaMenu` and is measured
+- ✅ `Header` (desktop) — checked against the live home template (2026-09-17) and corrected: band 68
+  tall (14 above/below the 40px Post Your Ad), vertical links 130×35 bottom-aligned, Post Your Ad
+  130×40 with a 14/700 label, "Login or Signup" 14/400, language link 14/400, Search button 111×48
+  with a 17/500 label, location text at its natural width. Third row is `MegaMenu`.
 - 🟡 `Footer` (desktop) — About/Dubizzle/Countries/Follow us columns, app badges; plus the "Download the app" band above it
 - 🟡 `Button`, `Input`, `Select`, `Checkbox`, `Radio`, `Toggle`, `Tabs`, `Pagination`, `Pill` — parity OK, live values partly verified (2026-09-12)
 
@@ -55,6 +56,8 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
   banner, menu rows; the signed-in header also carries Notifications / Favourites / Chats / My Ads
 
 ## To do — desktop
+- ⬜ Vertical sub-nav (Motors: Cars for Sale · New Cars · Electric Cars NEW · Car Comparison · Car
+  Finance; the motors/property landings replace the search row with it, active item in red)
 - ⬜ Breadcrumbs
 - ⬜ Page title + ad count pill + Save Search button — listings
 - ⬜ Filter rail: Categories tree with counts, Location, Brand & Model, Price range — listings

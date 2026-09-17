@@ -19,7 +19,8 @@
 .row1 {
   display: flex;
   justify-content: space-between;
-  padding-block: 1.25rem;
+  /* Live: the band is 68 tall — 14 above and below the 40px Post Your Ad button. */
+  padding-block: 1.4rem;
   min-width: 0;
 }
 
@@ -57,13 +58,17 @@
   height: 3.6rem;
 }
 
+/* Live: the vertical links are 130×35 anchors centred in the 68px band — not stretched to it. */
 .navLink {
   position: relative;
   min-width: 13rem;
+  height: 3.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
+  /* Bottom-aligned, not centred: live sits them on the row's baseline so the active tab
+     flares straight into the white row below. */
+  align-self: flex-end;
   text-decoration: none;
 }
 
@@ -94,7 +99,7 @@
    row below, not decoration, so they're exempt from the radius/shadow rules. */
 .tabShadow {
   position: absolute;
-  inset: calc(-1.6rem / 1.5) 0 calc(-1 * 1.25rem);
+  inset: calc(-1.6rem / 1.5) 0 calc(-1 * 1.4rem);
   border-radius: 3rem 3rem 0 0 / 1.6rem; /* ds-ignore */
   z-index: -1;
   box-shadow: -8px 0 16px rgba(147, 1, 0, 0.05), 8px 0 16px rgba(0, 0, 0, 0.05); /* ds-ignore */
@@ -103,7 +108,7 @@
 .tabFill {
   position: absolute;
   top: calc(-1.6rem / 1.5);
-  bottom: calc(-1 * 1.25rem);
+  bottom: calc(-1 * 1.4rem);
   inset-inline: -1.6rem;
   border-inline: 1.6rem solid transparent;
   border-radius: 3rem 3rem 0 0 / 1.6rem; /* ds-ignore — same tab geometry as .tabShadow */
@@ -196,11 +201,12 @@
   font-weight: var(--weight-bold);
 }
 
+/* Live: 14px regular in the black text colour — it reads as a link, not a heading. */
 .langSwitch {
-  font-size: 1.8rem;
-  font-weight: var(--weight-bold);
+  font-size: 1.4rem;
+  font-weight: var(--weight-regular);
   white-space: nowrap;
-  color: var(--gray-06);
+  color: var(--black);
   text-decoration: none;
   font-family: var(--font-arabic);
 }
@@ -278,6 +284,14 @@
   margin-inline: 0.8rem;
 }
 
+/* Live: 14px regular, not the 16px bold of the vertical links. */
+.loginLabel {
+  font-family: var(--font-primary);
+  font-size: 1.4rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.43;
+}
+
 .loginButton {
   appearance: none;
   background: none;
@@ -302,7 +316,9 @@
   background: var(--red-05);
   color: var(--white);
   font-family: var(--font-primary);
-  font-size: 1.596rem;
+  /* Live: 130×40 with a 14px bold label. */
+  min-width: 13rem;
+  font-size: 1.4rem;
   font-weight: var(--weight-bold);
   line-height: 1.2;
   transition: background-color 0.15s;
@@ -346,11 +362,14 @@
   flex: none;
 }
 
+/* The text keeps its natural width and the chevron is pushed to the end, as on live. */
 .locationText {
-  flex: 1;
+  margin-inline-end: auto;
+  min-width: 0;
   font-family: var(--font-primary);
   font-size: 1.596rem;
   font-weight: var(--weight-regular);
+  line-height: 1.375;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -405,7 +424,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  width: 11rem;
+  width: 11.1rem;
   height: 4.8rem;
   border: none;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
@@ -414,9 +433,10 @@
   cursor: pointer;
   flex: none;
   font-family: var(--font-primary);
-  font-size: 1.596rem;
-  font-weight: var(--weight-bold);
-  line-height: 1.2;
+  /* Live: 17px medium — the only 17px in the header. */
+  font-size: 1.7rem;
+  font-weight: var(--weight-medium);
+  line-height: 2.5rem;
 }
 
 .searchButton img {

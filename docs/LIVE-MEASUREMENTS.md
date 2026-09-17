@@ -212,3 +212,12 @@ Panel hangs from the bottom of the strip, 732×404 = a 302 column + a 430 panel:
 All seven menus and their panels are in `design-kit/content/mega-menus.json` (7 categories,
 67 subcategories, 201 links). Jobs has a column and no panels; More Categories is the only menu
 whose rows carry a subtitle line.
+
+### Desktop header (checked 2026-09-17)
+Band 68 tall on `#f6f6f6` — 14 above and below the 40px Post Your Ad button. Vertical links
+(Motors, Property) are 130×35 anchors **bottom-aligned** in the band, label 16/700, so the active
+tab flares straight into the white row. Post Your Ad 130×40, radius 6, label 14/700 white.
+"Login or Signup" is 14/400 (not bold), language link 14/400. Search row: location field 303×48
+radius 6 with a 1px `#919395` border; search field 850×48 radius `6 0 0 6`; Search button 111×48
+`#23262a`, radius `0 6 6 0`, label **17/500** — the only 17px in the header. Category strip: see
+the mega menu entry above.

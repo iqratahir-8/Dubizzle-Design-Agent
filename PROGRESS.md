@@ -182,6 +182,13 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    1280 container like live. Stories: Layout/Header "Mega menu open" and "Without category strip",
    Components/MegaMenu one story per menu. Parity 185/185.
 
+16. Desktop `Header` audited against the live home template and corrected (band height, bottom-aligned
+   vertical links, Post Your Ad / Login / language / Search button type, location text width). The
+   audit was a throwaway puppeteer diff of computed styles — worth redoing after a release. Found on
+   the way: the **motors/property landings use a different header** — the search row is replaced by a
+   vertical sub-nav (Cars for Sale · New Cars · Electric Cars NEW · Car Comparison · Car Finance),
+   which is now on the desktop to-do list.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find
