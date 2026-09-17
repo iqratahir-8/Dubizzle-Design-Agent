@@ -252,7 +252,9 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    Claude saying so out loud are now the only gate** — a new value that ships unmentioned is
    the failure mode to watch. New `docs/PROPOSALS.md` carries the open/adopted/rejected
    tables and the provenance rule: **measured** vs **adopted** vs **proposed**, never blurred.
-   Recorded as **D-008**.
+   Recorded as **D-008**. `ATTRIBUTIONS.md` added: Lucide (ISC), Font Awesome Free (CC BY 4.0)
+   and Material Symbols (Apache 2.0) each need a credit shipped with the product — one
+   About/Credits/licences surface satisfies all three; kit icons need nothing.
 
 ## 6. Next up
 

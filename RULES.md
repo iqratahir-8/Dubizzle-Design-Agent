@@ -167,8 +167,9 @@ Each of these is a tell that a screen was generated rather than designed. None o
 - Keep one pack per screen where you can. Mixing sets is visible — Lucide's 2px stroke on a
   24 grid doesn't sit level with dubizzle's filled set — so if a screen needs three external
   icons, take all three from the same pack and match the optical size.
-- **Font Awesome:** Free only (CC BY 4.0, icons; SIL OFL 1.1, fonts; MIT, code — attribution
-  required). Pro is paid and this repo has no licence for it. Don't reference a Pro-only glyph.
+- **Licences:** Font Awesome **Free only** — Pro is paid and this repo has no licence for it,
+  so don't reference a Pro-only glyph. All three external packs need a credit to travel with
+  anything that ships them (`ATTRIBUTIONS.md`). The kit's own icons need nothing.
 - ✗ Heroicons, Feather, Bootstrap Icons, Phosphor, Iconoir — a fourth and fifth source buys
   nothing and multiplies the mismatch.
 

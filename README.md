@@ -113,6 +113,12 @@ Deliberate exceptions carry a `ds-ignore` comment on the line — for example th
 
 Red-primary (`#E00000`) on white and light gray. Proxima Nova for Latin, GESS for Arabic. `1rem = 10px`. Gradient is used, but only structurally — badges, photo scrims, rail edge fades, the per-vertical CTA band — never as atmosphere. Minimal motion — colour transitions only, nothing scales or bounces. Dense and utilitarian: desktop search is three cards per row with a 1.2rem gap.
 
+## Attributions
+
+`design-kit/icons/` is dubizzle's own. Where a screen uses **Lucide**, **Font Awesome Free**
+or **Material Symbols** as a fallback, those licences require a credit to travel with the
+product — see [ATTRIBUTIONS.md](./ATTRIBUTIONS.md) for the notice text and where it goes.
+
 ## License
 
 MIT — see [LICENSE](./LICENSE).
