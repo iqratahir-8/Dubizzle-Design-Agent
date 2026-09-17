@@ -87,6 +87,7 @@ For anything the feature adds, use the design system — it matches live
 | Attribute chips (Year 2026…) | `AdListCard attributes` | `.attr-chips.attr-chips--stacked` |
 | Call / WhatsApp / Chat | `<ContactButton variant="call">` | `.contact-btn--call` |
 | Icons | `src/components/icons` (generated from `design-kit/icons`) | `design-kit/icons/**` |
+| Desktop category strip + mega menu (hover to open) | `<Header />` (it carries the strip) or `<MegaMenu items={MEGA_MENUS} />` | `.mega-nav` / `.mega-menu` |
 
 Card price colour differs by type and must stay that way: **grid = red, list = charcoal**.
 

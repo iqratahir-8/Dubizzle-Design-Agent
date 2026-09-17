@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import type { KeyboardEvent } from 'react';
 import { cx } from '../../utils/cx';
+import { MegaMenu, MEGA_MENUS } from '../MegaMenu';
+import type { MegaMenuItem } from '../MegaMenu';
 import styles from './Header.module.css';
 
 export interface HeaderUser {
@@ -34,6 +36,14 @@ export interface HeaderProps {
   onPostAd?: () => void;
   /** Fired when "Login or Signup" is clicked. */
   onLogin?: () => void;
+  /**
+   * Category strip under the search row, with the mega menu that opens on hover. Defaults to
+   * the live menu (`MEGA_MENUS`); pass `false` for the pages that don't show it, or your own
+   * items to try a different structure.
+   */
+  categories?: MegaMenuItem[] | false;
+  /** Pins one category menu open — for stories and screenshots; hovering works regardless. */
+  openCategory?: string;
   /** Relative path to the assets folder (icons, logos). Defaults to "/assets". */
   assetPath?: string;
   className?: string;
@@ -88,6 +98,8 @@ export function Header({
   userType = 'individual',
   favouritesCount,
   showAgencyPortalLogo = false,
+  categories = MEGA_MENUS,
+  openCategory,
   onSearch,
   onPostAd,
   onLogin,
@@ -214,6 +226,14 @@ export function Header({
           </div>
         </div>
       </div>
+
+      {categories !== false && categories.length > 0 && (
+        <div className={styles.categoryBar}>
+          <div className={styles.container}>
+            <MegaMenu items={categories} openItem={openCategory} />
+          </div>
+        </div>
+      )}
     </header>
   );
 }

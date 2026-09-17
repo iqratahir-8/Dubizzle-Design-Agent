@@ -192,7 +192,9 @@ desktop, inside a `react-swipeable-views` track. **It has no dots of its own** â
 are printed in the advertiser's artwork. Don't build a pager for it.
 
 ### Header mega menu (desktop)
-Strip item 48 tall, padding 0 12, 14/600. **The open item is marked by `box-shadow: inset 0 -4px 0 #222`,
+The strip is the header's third row: full-width white over a 1px `#e0e0e0` top border, items spread
+across the 1280 container (`justify-content: space-between`), first flush with its start edge and
+last with its end. Strip item 48 tall, padding 0 12, 14/600. **The open item is marked by `box-shadow: inset 0 -4px 0 #222`,
 not a border** â€” and it is a `:hover` style, so it vanishes from a frozen capture unless the capture
 persists it (`capture-states.mjs` copies the hovered chain's styles inline and stamps
 `<meta name="live-state">`).

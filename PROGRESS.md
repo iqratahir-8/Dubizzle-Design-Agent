@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-16 (night) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-17 · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -174,6 +174,13 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    whole menu off live into `design-kit/content/mega-menus.json` — 7 menus, 67 subcategories,
    201 panel links — and that file now drives both the `MegaMenu` story (one story per menu) and
    the kit example (all seven, generated in `build-preview.mjs`). Templates: **61 pages / 107**.
+
+15. User: "store the mega menu components in the component library" → the live menu content is now
+   a library export, `MEGA_MENUS` (from `design-kit/content/mega-menus.json`, typed as
+   `MegaMenuItem[]`), and the category strip is part of **`Header`** (`categories` defaults to
+   `MEGA_MENUS`, `false` hides it, `openCategory` pins one open). The strip spreads across the
+   1280 container like live. Stories: Layout/Header "Mega menu open" and "Without category strip",
+   Components/MegaMenu one story per menu. Parity 185/185.
 
 ## 6. Next up
 

@@ -5,6 +5,9 @@
   position: relative;
   display: flex;
   align-items: stretch;
+  /* Live spreads the seven categories across the 1280 container, first flush with the
+     container's start edge and last with its end. */
+  justify-content: space-between;
   background: var(--white);
   font-family: var(--font-primary);
 }

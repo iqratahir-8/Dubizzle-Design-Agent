@@ -3086,6 +3086,8 @@ ul {
   position: relative;
   display: flex;
   align-items: stretch;
+  /* Live spreads the seven categories across the 1280 container. */
+  justify-content: space-between;
   background: var(--white);
   font-family: var(--font-primary);
 }

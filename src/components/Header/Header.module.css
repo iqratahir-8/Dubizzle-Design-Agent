@@ -425,3 +425,10 @@
   height: 2.4rem;
   flex: none;
 }
+
+/* Category strip + mega menu, the row under the search field on live. The bar is full width;
+   the strip itself sits in the page container, so the menu opens flush with the content. */
+.categoryBar {
+  background: var(--white);
+  border-top: 1px solid var(--gray-02);
+}

@@ -35,3 +35,14 @@ export const AgencyPortal: Story = {
     userType: 'agency-owner',
   },
 };
+
+/** The category strip is part of the header — hover one to open its mega menu. */
+export const MegaMenuOpen: Story = {
+  name: 'Mega menu open',
+  args: { openCategory: 'Vehicles' },
+};
+
+/** Pages that don't show the category strip pass `categories={false}`. */
+export const WithoutCategoryStrip: Story = {
+  args: { categories: false },
+};

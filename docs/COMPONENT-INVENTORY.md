@@ -27,10 +27,14 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - ✅ Ad detail gallery (photo, back/next, counter, shrinking dot pager) — `AdGallery`
 - ✅ "Car / Property of the Week" ribbon — `WeekRibbon`
 - ✅ Sticky contact bar (ad detail) — `ContactBar` (+ `ContactButton` `grow`)
-- ✅ Header mega menu — `MegaMenu` (opens on hover, like live; `openItem` pins one open)
+- ✅ Header mega menu — `MegaMenu` (opens on hover, like live; `openItem` pins one open), with the
+  live menu content exported as `MEGA_MENUS` (7 categories, 67 subcategories, 201 links) and the
+  strip wired into `Header` (`categories`, `openCategory`)
 
 ## Exists, needs live verification
-- 🟡 `Header` (desktop) — live has 3 rows: top bar (logo tab, Motors/Property, العربية, Login or Signup / user centre, Post Your Ad), search row (location select + search + Search button), category nav strip
+- 🟡 `Header` (desktop) — top bar (logo tab, Motors/Property, العربية, Login or Signup / user centre,
+  Post Your Ad) and search row (location select + search + Search button) still need a live check;
+  the third row, the category nav strip, is now `MegaMenu` and is measured
 - 🟡 `Footer` (desktop) — About/Dubizzle/Countries/Follow us columns, app badges; plus the "Download the app" band above it
 - 🟡 `Button`, `Input`, `Select`, `Checkbox`, `Radio`, `Toggle`, `Tabs`, `Pagination`, `Pill` — parity OK, live values partly verified (2026-09-12)
 
