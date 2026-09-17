@@ -119,4 +119,59 @@ export const STATES = {
     account: true,
     steps: [{ click: { text: 'Account' } }, { wait: 2500 }],
   },
+
+  /* ── Modals and sheets (consumer side) ──────────────────────────────────────
+     Each opens with a real click and is then frozen like any other capture.
+     `scrubContacts` replaces third-party phone numbers/emails with the sample
+     before the screenshot and before the HTML is written — the phone-reveal
+     modal shows a real seller's number, and a capture is a durable copy of it.
+     NOTHING here submits: the report dialog is opened and frozen, never sent. */
+
+  /* Signed out, "Show Phone Number" does NOT reveal a number — it opens the login
+     dialog. So this state captures the *gate*, which is worth having: it is where
+     the product asks for an account. The real reveal needs --account (dpv-phone-in). */
+  'dpv-phone': {
+    label: 'Ad detail — phone reveal is gated by login (signed out)',
+    url: '/en/ad/mercedes-benz-e300-2018-amg-ID208928385.html',
+    layouts: ['desktop', 'mobile'],
+    scrubContacts: true,
+    steps: [{ click: { text: 'Show phone number' } }, { wait: 2500 }],
+  },
+  'dpv-report': {
+    label: 'Ad detail — report this ad modal (never submitted)',
+    url: '/en/ad/mercedes-benz-e300-2018-amg-ID208928385.html',
+    layouts: ['desktop', 'mobile'],
+    scrubContacts: true,
+    steps: [{ click: { text: 'Report this ad' } }, { wait: 2500 }],
+  },
+  'dpv-gallery': {
+    label: 'Ad detail — full-screen gallery',
+    url: '/en/ad/mercedes-benz-e300-2018-amg-ID208928385.html',
+    layouts: ['desktop', 'mobile'],
+    steps: [{ click: { selector: 'img[alt="Cover photo"]' } }, { wait: 2500 }],
+  },
+  'login-dialog': {
+    label: 'Login or Signup dialog',
+    url: '/en/',
+    layouts: ['desktop', 'mobile'],
+    steps: [{ click: { text: 'Login or Signup', fallbackText: 'Login or Sign up' } }, { wait: 2500 }],
+  },
+  'sort-menu': {
+    label: 'Listing — sort menu open (desktop)',
+    url: '/en/vehicles/cars-for-sale/',
+    layouts: ['desktop'],
+    steps: [{ click: { text: 'Sort by: Newly listed' } }, { wait: 1500 }],
+  },
+  'm-filters': {
+    label: 'Listing — mobile filter sheet',
+    url: '/en/vehicles/cars-for-sale/',
+    layouts: ['mobile'],
+    steps: [{ click: { selector: 'img[alt="Filters Icon"]' } }, { wait: 2500 }],
+  },
+  'save-search': {
+    label: 'Listing — Save Search (signed out prompt)',
+    url: '/en/vehicles/cars-for-sale/',
+    layouts: ['desktop'],
+    steps: [{ click: { text: 'Save Search' } }, { wait: 2500 }],
+  },
 };

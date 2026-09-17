@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-17 (late; D-007 rule correction + D-008 proposal workflow) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-17 (late; D-007/D-008 rules, D-009 modal capture pass 1) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -255,6 +255,35 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    Recorded as **D-008**. `ATTRIBUTIONS.md` added: Lucide (ISC), Font Awesome Free (CC BY 4.0)
    and Material Symbols (Apache 2.0) each need a credit shipped with the product — one
    About/Credits/licences surface satisfies all three; kit icons need nothing.
+
+
+24. **Modals and sheets — capture pass 1** (user: "modals and toast messages components are
+   missing capture it and store it"). 7 states saved: `m-filters.mobile` (full-screen filter
+   sheet, sticky "See +13K Results"), `sort-menu.desktop` (also captures the Categories rail,
+   Featured Businesses strip and Prime Dealers First row — three pending inventory items),
+   `login-dialog.desktop`, `dpv-report` ×2 (opened, **never submitted**), `dpv-phone.desktop`,
+   `save-search.desktop`.
+   **Key finding → D-009:** signed out, "Show Phone Number", "Report this ad" and "Save Search"
+   all open the *same* login modal. The real dialogs live behind auth, so they move to
+   `capture:states --account`. Keep the gated states — they document *which* actions are gated.
+   **Harness bugs fixed:** (a) the element finder returned viewport coordinates without
+   scrolling, so any trigger below the fold was clicked off-screen and the capture saved a
+   normal-looking page with no overlay — only the header menus escaped it; now it scrolls,
+   re-measures and **throws**. (b) `fallbackText` was never reachable (`step.text ?? step.fallbackText`),
+   so mobile wordings like "Login or Sign up" could not be matched; `text` now accepts a list
+   plus a case/space-insensitive second pass.
+   **New:** third-party contact scrubbing (`scrubContactsPage` / `scrubContactsHtml` /
+   `contactLeaks`) — the account redaction protects the capturer, this protects *other people*
+   whose phone or email a modal reveals. Two layers plus a refuse-to-save gate, like D-006.
+   Still failing (wrong trigger, not harness): `dpv-gallery` ×2, `login-dialog.mobile`,
+   `dpv-phone.mobile`.
+   **Blocked on the user:** agency portal needs an agency sign-in (`npm run capture:login`) —
+   there is no public URL (`/en/pro/`, `/en/business/`, `pro.dubizzle.com.eg` + 6 others all
+   404/NXDOMAIN); the only entry point is "Partner with dubizzle" in the signed-in user menu.
+   Note `design-kit/templates/_pages/agency-portal.desktop.html` is **entirely invented** —
+   fabricated stats and a fake leads table — and must be replaced by real captures, not extended.
+   Toast triggers approved by the user: copy/share (no write), form-validation errors, and
+   favourite-then-undo (name the ad, confirm the undo).
 
 ## 6. Next up
 

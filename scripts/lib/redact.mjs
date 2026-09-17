@@ -270,3 +270,66 @@ export async function visibleLeaks(page, identity) {
     { names: namePairs(identity).map(([real]) => real).filter((n) => n.length >= 3), phoneSrc: PHONE.source, samplePhone: SAMPLE.phone },
   );
 }
+
+/* ── Third-party contact details ──────────────────────────────────────────────
+   The account-holder redaction above protects the person running the capture.
+   These two protect *other* people: a seller's phone number revealed by the
+   DPV's "Show phone number" modal, or an email shown in a contact form. Those
+   pages are public, but a saved capture is a durable copy of someone's personal
+   contact details sitting in a repo, so it gets replaced with the sample before
+   anything is written or screenshotted. Used by scripts/capture-states.mjs for
+   any state marked `scrubContacts`. */
+
+/** Layer 1 — in the live page, before the screenshot. */
+export async function scrubContactsPage(page) {
+  return page.evaluate(
+    ({ phoneSrc, emailSrc, sample }) => {
+      const phone = new RegExp(phoneSrc, 'g');
+      const email = new RegExp(emailSrc, 'g');
+      const swap = (s) => s.replace(phone, sample.phone).replace(email, sample.email);
+      let n = 0;
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      const hits = [];
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        if (node.nodeValue && (phone.test(node.nodeValue) || email.test(node.nodeValue))) hits.push(node);
+        phone.lastIndex = 0;
+        email.lastIndex = 0;
+      }
+      for (const node of hits) {
+        node.nodeValue = swap(node.nodeValue);
+        n++;
+      }
+      // tel:/mailto: links and any field holding one
+      for (const a of document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]')) {
+        a.setAttribute('href', a.getAttribute('href').startsWith('tel:') ? `tel:${sample.phone.replace(/\s/g, '')}` : `mailto:${sample.email}`);
+        n++;
+      }
+      for (const f of document.querySelectorAll('input, textarea')) {
+        if (f.value && (phone.test(f.value) || email.test(f.value))) {
+          f.value = swap(f.value);
+          n++;
+        }
+        phone.lastIndex = 0;
+        email.lastIndex = 0;
+      }
+      return n;
+    },
+    { phoneSrc: PHONE.source, emailSrc: EMAIL.source, sample: SAMPLE },
+  );
+}
+
+/** Layer 2 — on the serialized HTML, before it is written. */
+export function scrubContactsHtml(html) {
+  return outsideDataUris(html, (chunk) => chunk.replace(PHONE, SAMPLE.phone).replace(EMAIL, SAMPLE.email));
+}
+
+/** Gate — refuse to save if a non-sample phone or any email survived both layers. */
+export function contactLeaks(html) {
+  const stripped = html.replace(/data:[a-z0-9.+/-]+;base64,[A-Za-z0-9+/=]+/gi, '');
+  const digits = (s) => s.replace(/\D/g, '');
+  const found = new Set();
+  for (const m of stripped.match(PHONE) ?? []) if (digits(m) !== digits(SAMPLE.phone)) found.add('phone number');
+  for (const m of stripped.match(EMAIL) ?? []) if (m !== SAMPLE.email) found.add(`email (${m.slice(0, 24)})`);
+  return [...found];
+}

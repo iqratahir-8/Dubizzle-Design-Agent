@@ -140,3 +140,31 @@ moved from bans to governance:
 *Why the provenance table in `PROPOSALS.md` matters:* the system now holds values from three
 different sources — measured, adopted, proposed. D-007 happened because an unmeasured value
 was stated as fact about dubizzle. Keeping the three labelled is what stops that recurring.
+
+## D-009 — Signed out, the DPV's contact and save actions all open the same login modal
+**2026-09-17 · discovered while capturing modals**
+
+"Show Phone Number", "Report this ad" and "Save Search" do **not** open their own dialogs for
+a signed-out visitor. All three open the identical **"Login into your Dubizzle account"**
+modal (Phone · Email · OR · Google · Facebook · "New to Dubizzle? Create an account").
+Verified independently in three captures: `dpv-phone.desktop`, `dpv-report.desktop`,
+`save-search.desktop`.
+
+Consequences for capture work:
+
+- The login modal is the single most reachable overlay in the product; `login-dialog` is its
+  canonical capture. The other three states document **which actions are gated**, which is
+  itself product information worth keeping — don't delete them as duplicates.
+- The *real* phone-reveal, report and save-search dialogs only exist behind auth, so they
+  need `capture:states --account`. Anything assuming they're public is wrong.
+- A capture of a signed-out DPV therefore cannot show a seller's phone number. The
+  third-party contact scrubbing added alongside this (`scrubContactsPage` /
+  `scrubContactsHtml` / `contactLeaks` in `scripts/lib/redact.mjs`) still matters, because
+  the signed-in reveal will show one.
+
+*Also found:* the harness's element finder returned viewport coordinates without scrolling,
+so any trigger below the fold was "clicked" at an off-screen point and silently hit nothing —
+the capture saved a normal-looking page with no overlay. Only the header mega menus escaped
+it, because they are always on screen. `runStep` now scrolls the target into view, re-measures,
+and throws if it is still unreachable. **A missed interaction must fail loudly; a capture that
+silently records the wrong state is worse than no capture.**

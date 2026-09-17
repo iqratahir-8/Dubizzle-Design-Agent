@@ -23,7 +23,7 @@ import { absolutize } from './lib/absolutize.mjs';
 import { recordResponses, snapshotHtml } from './lib/snapshot.mjs';
 import { buildGallery } from './build-screens-gallery.mjs';
 import { ORIGIN, LAYOUTS, sleep, captureAndDismissInterstitial, removePushPrompt } from './lib/render-helpers.mjs';
-import { readAccountIdentity, redactPage, sanitizeHtml, leaks, visibleLeaks } from './lib/redact.mjs';
+import { readAccountIdentity, redactPage, sanitizeHtml, leaks, visibleLeaks, scrubContactsPage, scrubContactsHtml, contactLeaks } from './lib/redact.mjs';
 import { STATES } from './lib/states.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -70,13 +70,26 @@ const FIND = `(step) => {
     const hit = [...document.querySelectorAll(step.selector)].find((el) => visible(el) && inRange(el));
     if (hit) return hit;
   }
-  const text = step.text ?? step.fallbackText;
-  if (!text) return null;
-  const candidates = [...document.querySelectorAll('button, a, div, span, [role="button"]')].filter(
-    (el) => el.textContent.trim() === text && visible(el) && inRange(el),
-  );
-  // The innermost match is the one carrying the handler; outer wrappers repeat the text.
-  return candidates.find((el) => !candidates.some((other) => other !== el && el.contains(other))) ?? null;
+  // Desktop and mobile often word the same control differently ("Login or Signup"
+  // vs "Login or Sign up"), so `text` may be a list: the first one that matches wins.
+  const texts = [step.text, step.fallbackText].flat().filter(Boolean);
+  if (!texts.length) return null;
+  const pool = [...document.querySelectorAll('button, a, div, span, [role="button"]')];
+  for (const text of texts) {
+    const candidates = pool.filter((el) => el.textContent.trim() === text && visible(el) && inRange(el));
+    // The innermost match is the one carrying the handler; outer wrappers repeat the text.
+    const hit = candidates.find((el) => !candidates.some((other) => other !== el && el.contains(other)));
+    if (hit) return hit;
+  }
+  // Nothing matched exactly — fall back to a case-insensitive, space-insensitive compare,
+  // which absorbs "Show phone number" vs "Show Phone Number" and stray &nbsp;.
+  const norm = (v) => v.toLowerCase().replace(/\s+/g, ' ').trim();
+  for (const text of texts) {
+    const loose = pool.filter((el) => norm(el.textContent) === norm(text) && visible(el) && inRange(el));
+    const hit = loose.find((el) => !loose.some((other) => other !== el && el.contains(other)));
+    if (hit) return hit;
+  }
+  return null;
 }`;
 
 async function runStep(page, step) {
@@ -86,17 +99,35 @@ async function runStep(page, step) {
     return;
   }
   const target = step.hover ?? step.click;
+  // A trigger below the fold ("Show phone number" sits at y≈1278) has viewport
+  // coordinates outside the window, so clicking them hits nothing. Scroll it into
+  // view first, then re-measure. Elements already on screen are left alone so the
+  // header hovers don't move the page.
+  const scrolled = await page.evaluate(
+    (find, s) => {
+      const el = new Function('return ' + find)()(s);
+      if (!el) return false;
+      const r = el.getBoundingClientRect();
+      if (r.top >= 0 && r.bottom <= window.innerHeight) return false;
+      el.scrollIntoView({ block: 'center' });
+      return true;
+    },
+    FIND,
+    target,
+  );
+  if (scrolled) await sleep(900);
   const box = await page.evaluate(
     (find, s) => {
       const el = new Function('return ' + find)()(s);
       if (!el) return null;
       const r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return null;
       return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
     },
     FIND,
     target,
   );
-  if (!box) throw new Error(`no element for ${JSON.stringify(target)}`);
+  if (!box) throw new Error(`no element for ${JSON.stringify(target)} (or it stayed off-screen)`);
   if (step.hover) {
     // A real mouse move — React's onMouseEnter doesn't fire for synthetic events.
     await page.mouse.move(box.x - 40, box.y + 60);
@@ -186,6 +217,9 @@ try {
           return label;
         });
 
+        // Third-party contact details (a seller's revealed phone) go before the
+        // screenshot, whether or not this is a signed-in capture.
+        if (state.scrubContacts) await scrubContactsPage(page);
         if (identity) await redactPage(page, identity);
         const opened = await page.evaluate(() => {
           const panels = [...document.querySelectorAll('*')].filter((el) => {
@@ -201,6 +235,14 @@ try {
         // different creative every time it was rendered and never match its own screenshot.
         // Avatars and other personal images are replaced by redactPage above, before this runs.
         let html = absolutize(await snapshotHtml(page, recorder, { inlineImages: true, restoreScroll: false }), ORIGIN);
+        if (state.scrubContacts) {
+          html = scrubContactsHtml(html);
+          const contacts = contactLeaks(html);
+          if (contacts.length) {
+            results.push({ base, status: 'FAILED', detail: `refused to save — third-party contact details: ${contacts.join(', ')}` });
+            continue;
+          }
+        }
         if (identity) {
           html = sanitizeHtml(html, identity);
           const leaked = leaks(html, identity);
