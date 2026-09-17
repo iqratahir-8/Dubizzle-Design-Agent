@@ -1,0 +1,30 @@
+/* "Sort by" trigger — measured on the live cars search page, see docs/LIVE-MEASUREMENTS.md.
+   Must match .sort-by in patterns.css (npm run check:parity). */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-primary);
+  cursor: pointer;
+}
+
+.label {
+  color: var(--gray-06);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+}
+
+.value {
+  color: var(--gray-06);
+  font-size: 1.596rem;
+  line-height: 2.2rem;
+}
+
+.chevron {
+  flex: none;
+  color: var(--gray-06);
+}

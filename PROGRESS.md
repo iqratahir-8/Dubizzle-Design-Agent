@@ -220,6 +220,12 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    reachable whether the user starts from the repo, the agent or the design kit. Keep it accurate
    as screens and components are added.
 
+21. Listing furniture: **`Breadcrumbs`**, **`PageHead`** (title + the ad count on a pale red pill +
+   actions) and **`SortBy`**. Signed-in header extras checked against live and fixed — the four
+   icon links sit 32 apart, not 24, and live labels the third "Chats". Parity 240/240.
+   Gotcha found twice now: a bare list inherits the host page's list styling, so `.breadcrumbs__list`
+   states its own colour and type rather than inheriting.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

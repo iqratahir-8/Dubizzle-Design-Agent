@@ -226,6 +226,41 @@ function accountMenusDemo() {
   );
 }
 
+
+/* ── Listing page head ────────────────────────────────────────────────────────
+   Breadcrumbs, title + ad count, Save Search and the sort trigger, as the live cars
+   listing arranges them. */
+function listingHeadDemo() {
+  const CHEVRON_DOWN =
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  const crumbs = [['Home', '#'], ['Vehicles', '#'], ['Cars for Sale', null]];
+  const breadcrumbs =
+    '<nav class="breadcrumbs" data-parity="breadcrumbs" aria-label="Breadcrumb"><ol class="breadcrumbs__list">' +
+    crumbs
+      .map(([label, href], i) => {
+        const last = i === crumbs.length - 1;
+        const crumb = href
+          ? `<a class="breadcrumbs__crumb" href="${href}">${esc(label)}</a>`
+          : `<span class="breadcrumbs__crumb breadcrumbs__crumb--current" aria-current="page">${esc(label)}</span>`;
+        return `<li class="breadcrumbs__item">${crumb}${last ? '' : '<span class="breadcrumbs__separator" aria-hidden="true">/</span>'}</li>`;
+      })
+      .join('') +
+    '</ol></nav>';
+  const head =
+    '<div class="page-head-row" data-parity="page-head-row"><div class="page-head-row__titles">' +
+    '<h1 class="page-head-row__title">Cars for Sale in Egypt</h1>' +
+    '<span class="page-head-row__count">13,065 ads</span></div>' +
+    '<div class="page-head-row__actions"><button class="btn btn--secondary" type="button">Save Search</button></div></div>';
+  const sort =
+    '<button class="sort-by" data-parity="sort-by" type="button"><span class="sort-by__label">Sort by:</span>' +
+    `<span class="sort-by__value">Newly listed</span>${CHEVRON_DOWN}</button>`;
+  return (
+    '      <h3>Listing page head</h3>\n' +
+    '      <p class="note">Breadcrumbs, the title with its ad-count pill, Save Search, and the sort trigger — the furniture above every listing.</p>\n' +
+    `      <div class="demo" style="display:block">${breadcrumbs}${head}<div style="margin-top:2.4rem">${sort}</div></div>\n`
+  );
+}
+
 const colorTokens = tokens.groups.color ?? {};
 
 /** Resolves a `var(--x)` chain down to a literal so swatches can be painted. */
@@ -839,6 +874,7 @@ ${accountMenusDemo()}
           <button class="tabs__tab">Drafts (2)</button>
         </div>
       </div>
+${listingHeadDemo()}
 ${megaMenuDemo()}
       <h3>Vertical sub-nav · location dropdown · search suggestions</h3>
       <p class="note">The Motors and Property landings replace the header's search row with the sub-nav. The dropdowns belong to the header's location field and search field.</p>

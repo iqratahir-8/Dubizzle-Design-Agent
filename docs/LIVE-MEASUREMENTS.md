@@ -272,3 +272,17 @@ white card**, 83 tall, icon over a 14/700 label. Rows: padding-block 16, 1px `#e
 24px icon, title 16/24/700 over subtitle 14/21, chevron at the end.
 
 Both were measured on redacted captures, so the name in the stories and the kit is a placeholder.
+
+### Listing page head (desktop)
+- **Breadcrumbs:** a `<ul>` with 8 of bottom padding; crumbs 14/21 in `rgba(35,38,42,.64)`
+  (`--text-muted`), separated by a slash with 4 either side; the current page is full charcoal.
+- **Title row:** H1 24/26.3/700 with the ad count 16 to its right — the count sits on a pale red
+  pill (`--red-02`), padding 2 7, radius 4, 14/21/700 charcoal. Not a grey pill.
+- **Save Search:** 140×45, padding 10 12, radius 6, white with a 1px `#e0e0e0` border, label 16/700
+  — the secondary button.
+- **Sort:** a text button, "Sort by:" 14/21 then the value 16/22, 4 apart, with a 24px chevron.
+
+### Signed-in header extras
+Notifications · Favourites · Chats · My Ads sit **32 apart** (not 24), each an icon over a 14/18
+label in `#464c55`; then the 40px avatar and the name at 15/18/700. Live labels the third one
+"Chats", plural.

@@ -33,6 +33,10 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - ✅ Header search suggestions — `SearchSuggestions`
 - ✅ Mobile search page — `MobileSearchPage`
 - ✅ Mobile location page — `MobileLocationPage` (+ `LOCATION_SECTIONS`)
+- ✅ Breadcrumbs — `Breadcrumbs`
+- ✅ Listing title + ad-count pill + actions — `PageHead`
+- ✅ Sort trigger — `SortBy` (+ `SORT_OPTIONS`)
+- ✅ Signed-in header extras — in `Header` (checked against live: 32 apart, "Chats")
 - ✅ Account menu — `UserMenu` (desktop dropdown) and `AccountMenu` (mobile page), with the live row
   icons generated into `src/components/icons`
 - ✅ Header mega menu — `MegaMenu` (opens on hover, like live; `openItem` pins one open), with the
@@ -56,14 +60,10 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
   `docs/LIVE-MEASUREMENTS.md`)
 
 ## To do — navigation and search (from the interaction-state captures)
-- ⬜ Signed-in header extras — Notifications / Favourites / Chats / My Ads icon links (the logged-out
-  header doesn't carry them)
 
 ## To do — desktop
-- ⬜ Breadcrumbs
-- ⬜ Page title + ad count pill + Save Search button — listings
 - ⬜ Filter rail: Categories tree with counts, Location, Brand & Model, Price range — listings
-- ⬜ Sort by dropdown + Prime Dealers First checkbox row — listings
+- ⬜ Sort menu (the list that opens under `SortBy`) + desktop Prime Dealers First checkbox row
 - ⬜ Featured Businesses strip (with arrow) — listings
 - ⬜ Home category directory (12 categories × 4 links + "All in …") and hero banner
 - ⬜ Section rail header ("Cars for Sale" + "View More") — home

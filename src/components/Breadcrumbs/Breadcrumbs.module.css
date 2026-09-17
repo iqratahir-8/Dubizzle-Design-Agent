@@ -1,0 +1,46 @@
+/* Listing breadcrumbs — measured on the live cars search page, see docs/LIVE-MEASUREMENTS.md.
+   Must match .breadcrumbs in patterns.css (npm run check:parity). */
+
+.nav {
+  font-family: var(--font-primary);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0 0 0.8rem;
+  list-style: none;
+  /* Stated, not inherited: a page's own list styles would otherwise restyle the crumbs. */
+  color: var(--gray-06);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.crumb {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  text-decoration: none;
+}
+
+.crumb:hover {
+  text-decoration: underline;
+}
+
+.current {
+  color: var(--gray-06);
+}
+
+.separator {
+  padding-inline: 0.4rem;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+}

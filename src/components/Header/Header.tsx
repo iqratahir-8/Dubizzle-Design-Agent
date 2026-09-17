@@ -149,7 +149,7 @@ export function Header({
               <div className={styles.signedInNav}>
                 <UserNavLink icon="notification-bell" label="Notifications" assetPath={assetPath} />
                 <UserNavLink icon="header-heart" label="Favourites" count={favouritesCount} assetPath={assetPath} />
-                <UserNavLink icon="header-chat" label="Chat" assetPath={assetPath} />
+                <UserNavLink icon="header-chat" label="Chats" assetPath={assetPath} />
                 {userType !== 'agency-user' && (
                   <UserNavLink icon="header-my-ads" label="My Ads" assetPath={assetPath} />
                 )}

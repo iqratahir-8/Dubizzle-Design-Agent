@@ -83,6 +83,15 @@ export type { VerticalNavProps, VerticalNavItem } from './components/VerticalNav
 export { LocationDropdown, EGYPT_LOCATIONS } from './components/LocationDropdown';
 export type { LocationDropdownProps, LocationOption } from './components/LocationDropdown';
 
+export { Breadcrumbs } from './components/Breadcrumbs';
+export type { BreadcrumbsProps, Crumb } from './components/Breadcrumbs';
+
+export { PageHead } from './components/PageHead';
+export type { PageHeadProps } from './components/PageHead';
+
+export { SortBy, SORT_OPTIONS } from './components/SortBy';
+export type { SortByProps } from './components/SortBy';
+
 export { UserMenu, USER_MENU_GROUPS } from './components/UserMenu';
 export type { UserMenuProps, UserMenuItem, UserMenuPromo } from './components/UserMenu';
 

@@ -3808,3 +3808,91 @@ ul {
 .account-menu__row-title { font-size: 1.596rem; font-weight: var(--weight-bold); line-height: 2.4rem; }
 
 .account-menu__row-subtitle { font-size: var(--text-sm); line-height: 2.1rem; }
+
+/* ── Listing page head: breadcrumbs, title + count, sort ──────────────────────
+   Measured on the live cars search page (docs/LIVE-MEASUREMENTS.md). Mirror Breadcrumbs /
+   PageHead / SortBy in src/components (npm run check:parity). */
+
+.breadcrumbs { font-family: var(--font-primary); }
+
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0 0 0.8rem;
+  list-style: none;
+  /* Stated, not inherited: a page's own list styles would otherwise restyle the crumbs. */
+  color: var(--gray-06);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+}
+
+.breadcrumbs__item { display: flex; align-items: center; }
+
+.breadcrumbs__crumb {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  text-decoration: none;
+}
+
+.breadcrumbs__crumb:hover { text-decoration: underline; }
+
+.breadcrumbs__crumb--current { color: var(--gray-06); }
+
+.breadcrumbs__separator {
+  padding-inline: 0.4rem;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+}
+
+.page-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-family: var(--font-primary);
+}
+
+.page-head-row__titles { display: flex; align-items: center; gap: var(--space-4); min-width: 0; }
+
+.page-head-row__title {
+  margin: 0;
+  color: var(--gray-06);
+  font-size: 2.394rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.633rem;
+}
+
+/* The count sits on the pale red pill, not on grey. */
+.page-head-row__count {
+  flex: none;
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius-sm);
+  background: var(--red-02);
+  color: var(--gray-06);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+}
+
+.page-head-row__actions { display: flex; align-items: center; gap: var(--space-3); flex: none; }
+
+.sort-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-primary);
+  cursor: pointer;
+}
+
+.sort-by__label { color: var(--gray-06); font-size: var(--text-sm); line-height: 2.1rem; }
+
+.sort-by__value { color: var(--gray-06); font-size: 1.596rem; line-height: 2.2rem; }
+
+.sort-by svg { flex: none; color: var(--gray-06); }

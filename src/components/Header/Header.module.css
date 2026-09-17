@@ -130,10 +130,11 @@
   flex-shrink: 0;
 }
 
+/* Live: the four icon links sit 32 apart. */
 .signedInNav {
   display: flex;
   align-items: center;
-  gap: 2.4rem;
+  gap: 3.2rem;
   margin-inline-end: 1.4rem;
   flex-shrink: 0;
 }
