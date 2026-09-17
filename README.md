@@ -7,6 +7,9 @@ It serves two consumers from one source of truth:
 - **Engineers** — a React + TypeScript component library styled with CSS Modules.
 - **Designers and AI agents** — a standalone kit of tokens, icons, patterns, real content, and copy-ready page templates, governed by a set of enforced design rules.
 
+**Working with Claude on this?** `docs/HOW-TO-ASK.md` lists every screen you can ask for by name
+and what phrasing gets what.
+
 ## Quick start
 
 ```bash

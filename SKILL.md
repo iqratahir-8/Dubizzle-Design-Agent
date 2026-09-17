@@ -7,6 +7,9 @@ description: Design and build dubizzle Egypt interfaces — screens, components,
 
 Everything here is extracted from the production `dubizzle-maple` monorepo, not invented. Trust it over your instincts about what a marketplace "should" look like.
 
+If the user asks **how to use this** — what they can ask for, which screens exist, how to
+re-capture — the answer lives in `docs/HOW-TO-ASK.md`.
+
 ## Before you generate anything
 
 **Read `RULES.md` first.** It is short and it is binding. It defines the closed value sets (colour, spacing, radius, type, shadow) and lists the AI-slop signatures that never appear in dubizzle production — gradients, glassmorphism, emoji icons, scale-on-hover, centred marketing heroes, fake currency. Most bad output comes from skipping it.

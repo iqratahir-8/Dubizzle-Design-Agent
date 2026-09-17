@@ -426,6 +426,21 @@ const page = `<!doctype html>
         <a class="btn btn--secondary" href="icons/index.html">Browse all ${icons.total} icons</a>
         <a class="btn btn--ghost" href="tokens/tokens.css">View tokens.css</a>
       </div>
+
+      <h3>Asking Claude for a screen</h3>
+      <p class="note">
+        No syntax — describe the work and <strong>name the screen to start from</strong>, and the
+        agent builds on that page's frozen capture instead of approximating it. For example:
+        &ldquo;design a saved-search banner on the <em>property landing</em>, mobile only&rdquo;,
+        &ldquo;add a compare toggle to the <em>cars search</em> page, desktop and mobile&rdquo;,
+        &ldquo;open the <em>Vehicles mega menu</em> and try a promo panel&rdquo;, or
+        &ldquo;the home page changed on live — recapture it&rdquo;. Say
+        <strong>mobile only</strong> or <strong>mobile and desktop</strong> when it matters, and
+        <strong>prototype</strong> or <strong>production React</strong> for what you want back.
+        The full guide, including every screen you can name, is <code>docs/HOW-TO-ASK.md</code> in
+        the repo; the names themselves are in
+        <a href="templates/index.html">page templates</a>.
+      </p>
     </section>
 
     <section id="colors">

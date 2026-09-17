@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-17 · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-17 (late) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -23,6 +23,10 @@ Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HAND
    - `npm run kit` → HTML design kit on http://localhost:4321 (main designer-facing deliverable)
    If port 6006/4321 is "in use", the server is already running — just open the URL.
 4. Say "continue from PROGRESS.md".
+
+**For the user, not the agent:** `docs/HOW-TO-ASK.md` is the guide to using this system — every
+screen that can be named, what to say to get it, and how to re-capture after a release. Keep it
+accurate as the system grows.
 
 **Git:** remote `github.com/chaudhary-umair-ahmad/Dubizzle-Design-System` (private). This Mac's
 GitHub user (`iqratahir-8`) has no push access, so recent commits exist **only locally**
@@ -208,6 +212,13 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    from `design-kit/icons` into the React set so the rows carry the live icons rather than bare
    labels. Both measured on the redacted captures; names in stories/kit are placeholders.
    Parity 230/230.
+
+20. User asked how to drive this system from any account → **`docs/HOW-TO-ASK.md`**: what to say,
+   every screen that can be named, the local-only account screens and how to recapture them, the
+   component imports and the check commands. It is linked from `CLAUDE.md` (rule 4), `README.md`,
+   `SKILL.md` and section 1 above, and the kit's landing page carries a short version, so it is
+   reachable whether the user starts from the repo, the agent or the design kit. Keep it accurate
+   as screens and components are added.
 
 ## 6. Next up
 
