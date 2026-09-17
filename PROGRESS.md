@@ -203,6 +203,12 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    chevron, sticky red Select button). Both read as pages, not dropdowns — the mobile/desktop
    divergence the captures exposed. Parity 213/213.
 
+19. Account menus: **`UserMenu`** (desktop dropdown — grey panel, white groups, the 4px gaps between
+   them are the dividers) and **`AccountMenu`** (the mobile account page). Ten more icons generated
+   from `design-kit/icons` into the React set so the rows carry the live icons rather than bare
+   labels. Both measured on the redacted captures; names in stories/kit are placeholders.
+   Parity 230/230.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

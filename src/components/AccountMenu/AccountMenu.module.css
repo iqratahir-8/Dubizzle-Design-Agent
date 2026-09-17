@@ -1,0 +1,165 @@
+/* Mobile account page — measured on the live (redacted) capture, see docs/LIVE-MEASUREMENTS.md.
+   Must match .account-menu in patterns.css (npm run check:parity). */
+
+.page {
+  padding: 1.6rem;
+  background: var(--white);
+  font-family: var(--font-primary);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding-block: 1.2rem;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7.2rem;
+  height: 7.2rem;
+  flex: none;
+  border: 1px solid var(--red-02);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--red-02);
+  color: var(--red-05);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  color: var(--gray-06);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  line-height: 2.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.verify,
+.promo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--blue-02);
+  text-align: start;
+  cursor: pointer;
+}
+
+.verifyIcon {
+  flex: none;
+  color: var(--blue-05);
+}
+
+.verifyLabel {
+  margin-inline-end: auto;
+  color: var(--gray-06);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+}
+
+/* Favourites: a white card with a border, not a banner. */
+.shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  height: 8.3rem;
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  cursor: pointer;
+}
+
+.shortcutLabel {
+  color: var(--black);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+}
+
+.promoText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  margin-inline-end: auto;
+}
+
+.promoTitle {
+  color: var(--gray-06);
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+  line-height: 2rem;
+}
+
+.promoSubtitle {
+  color: var(--gray-06);
+  font-size: var(--text-xs);
+  line-height: 1.6rem;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.2rem;
+  border-top: 1px solid var(--gray-02);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding-block: 1.6rem;
+  border-bottom: 1px solid var(--gray-02);
+  color: var(--gray-06);
+  text-decoration: none;
+}
+
+.rowIcon {
+  display: flex;
+  flex: none;
+}
+
+.rowText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-inline-end: auto;
+}
+
+.rowTitle {
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+}
+
+.rowSubtitle {
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+}
+
+.chevron {
+  flex: none;
+  color: var(--gray-06);
+}

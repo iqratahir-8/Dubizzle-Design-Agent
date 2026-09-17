@@ -1,0 +1,145 @@
+/* Signed-in account menu — measured on the live header, see docs/LIVE-MEASUREMENTS.md.
+   Must match .user-menu in patterns.css (npm run check:parity). */
+
+/* The panel's own grey shows between the white groups: that 4px gap is the divider. */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 34rem;
+  border-radius: var(--radius-xl);
+  background: var(--gray-01);
+  box-shadow: var(--shadow-menu);
+  overflow: hidden;
+  font-family: var(--font-primary);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.6rem;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  flex: none;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--red-02);
+  color: var(--red-05);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.name {
+  color: var(--gray-06);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--blue-05);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  text-decoration: none;
+}
+
+.promo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 0 1.6rem 1.6rem;
+  padding: 1.2rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--blue-02);
+  text-align: start;
+  cursor: pointer;
+}
+
+.promoIcon {
+  display: flex;
+  flex: none;
+}
+
+.promoText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+  margin-inline-end: auto;
+}
+
+.promoTitle {
+  color: var(--gray-06);
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+  line-height: 2rem;
+}
+
+.promoSubtitle {
+  color: var(--gray-06);
+  font-size: var(--text-xs);
+  line-height: 1.6rem;
+}
+
+.chevron {
+  flex: none;
+  color: var(--gray-06);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 2.6rem;
+  height: 5.7rem;
+  padding-inline: 2rem;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.row:hover {
+  background: var(--gray-00);
+}
+
+.rowIcon {
+  display: flex;
+  flex: none;
+  color: var(--gray-06);
+}
+
+.rowLabel {
+  font-size: 1.596rem;
+  line-height: 2.4rem;
+}

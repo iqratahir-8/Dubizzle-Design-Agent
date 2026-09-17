@@ -232,6 +232,8 @@ const SEMANTIC = {
     '--shadow-bottom-nav': '0 -2px 4px 0 rgba(0, 0, 0, 0.133)',
     // Header overlays — the location dropdown and the search suggestions both use this pair.
     '--shadow-overlay': '0 0 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24)',
+    // The signed-in account menu sits on a softer one.
+    '--shadow-menu': '0 4px 10px 0 rgba(0, 0, 0, 0.1)',
     '--shadow-sticky-header': '0 2px 4px 0 rgba(0, 0, 0, 0.133)', // listing-page header
     '--shadow-floating': '0 4px 12px 0 rgba(0, 0, 0, 0.22)', // Sort / Save bar
   },

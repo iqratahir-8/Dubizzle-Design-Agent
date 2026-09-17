@@ -3598,3 +3598,213 @@ ul {
   font-weight: var(--weight-bold);
   cursor: pointer;
 }
+
+/* ── Account menus (desktop dropdown, mobile page) ────────────────────────────
+   Measured on the redacted signed-in captures (docs/LIVE-MEASUREMENTS.md). Mirror
+   UserMenu / AccountMenu in src/components (npm run check:parity). */
+
+/* The panel's grey shows between the white groups — that 4px gap is the divider. */
+.user-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 34rem;
+  border-radius: var(--radius-xl);
+  background: var(--gray-01);
+  box-shadow: var(--shadow-menu);
+  overflow: hidden;
+  font-family: var(--font-primary);
+}
+
+.user-menu__group { display: flex; flex-direction: column; background: var(--white); }
+
+.user-menu__header { display: flex; align-items: center; gap: 1.4rem; padding: 1.6rem; }
+
+.user-menu__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  flex: none;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--red-02);
+  color: var(--red-05);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+}
+
+.user-menu__identity { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+
+.user-menu__name {
+  color: var(--gray-06);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-menu__verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--blue-05);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  text-decoration: none;
+}
+
+.user-menu__promo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 0 1.6rem 1.6rem;
+  padding: 1.2rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--blue-02);
+  text-align: start;
+  cursor: pointer;
+}
+
+.user-menu__promo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+  margin-inline-end: auto;
+}
+
+.user-menu__promo-title { color: var(--gray-06); font-size: 1.6rem; font-weight: var(--weight-bold); line-height: 2rem; }
+
+.user-menu__promo-subtitle { color: var(--gray-06); font-size: var(--text-xs); line-height: 1.6rem; }
+
+.user-menu__row {
+  display: flex;
+  align-items: center;
+  gap: 2.6rem;
+  height: 5.7rem;
+  padding-inline: 2rem;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.user-menu__row:hover { background: var(--gray-00); }
+
+.user-menu__row-label { font-size: 1.596rem; line-height: 2.4rem; }
+
+.user-menu__row-icon,
+.account-menu__row-icon { display: flex; flex: none; }
+
+.user-menu svg,
+.account-menu svg { flex: none; }
+
+.account-menu { padding: 1.6rem; background: var(--white); font-family: var(--font-primary); }
+
+.account-menu__head { display: flex; align-items: center; gap: 1.6rem; padding-block: 1.2rem; }
+
+.account-menu__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7.2rem;
+  height: 7.2rem;
+  flex: none;
+  border: 1px solid var(--red-02);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--red-02);
+  color: var(--red-05);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+}
+
+.account-menu__name {
+  color: var(--gray-06);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  line-height: 2.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-menu__verify,
+.account-menu__promo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--blue-02);
+  text-align: start;
+  cursor: pointer;
+}
+
+.account-menu__verify-label {
+  margin-inline-end: auto;
+  color: var(--gray-06);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  line-height: 2.1rem;
+}
+
+/* Favourites is a bordered white card, not a banner. */
+.account-menu__shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  height: 8.3rem;
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  cursor: pointer;
+}
+
+.account-menu__shortcut-label { color: var(--black); font-size: var(--text-sm); font-weight: var(--weight-bold); line-height: 2.1rem; }
+
+.account-menu__promo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  margin-inline-end: auto;
+}
+
+.account-menu__promo-title { color: var(--gray-06); font-size: 1.6rem; font-weight: var(--weight-bold); line-height: 2rem; }
+
+.account-menu__promo-subtitle { color: var(--gray-06); font-size: var(--text-xs); line-height: 1.6rem; }
+
+.account-menu__group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.2rem;
+  border-top: 1px solid var(--gray-02);
+}
+
+.account-menu__row {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding-block: 1.6rem;
+  border-bottom: 1px solid var(--gray-02);
+  color: var(--gray-06);
+  text-decoration: none;
+}
+
+.account-menu__row-text { display: flex; flex-direction: column; min-width: 0; margin-inline-end: auto; }
+
+.account-menu__row-title { font-size: 1.596rem; font-weight: var(--weight-bold); line-height: 2.4rem; }
+
+.account-menu__row-subtitle { font-size: var(--text-sm); line-height: 2.1rem; }

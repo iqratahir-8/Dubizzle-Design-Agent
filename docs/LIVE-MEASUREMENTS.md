@@ -256,3 +256,19 @@ close icon then the title 16/30/700. Field 358×40 (radius 6, 1px `#e0e0e0`), 29
 `#e0e0e0` bottom border, label 14/21; region rows carry a 20px chevron, popular ones don't.
 Sticky bar: padding 16, 1px `#e0e0e0` top border, white, with a full-width 40px red button,
 label 16/700 ("Select Egypt").
+
+### Account menu (desktop dropdown)
+Panel 340 wide, radius 12, on `--shadow-menu` (`0 4px 10px rgba(0,0,0,.1)`). **The panel is grey
+(`#f0f0f0`) and the groups are white** — the 4px gaps between groups are the dividers, there is no
+border. Header: 56px avatar, 14 gap, name 18/24/700 over "Get Verified Now" 14/21 `#3a88ef` with a
+chevron, padding 16. Packages banner: inset 16, padding 12, radius 6, `--blue-02`, title 16/20/700
+over a 12/16 subtitle, chevron at the end. Rows 57 tall, padding-inline 20, 20px icon then a 26 gap,
+label 16/24.
+
+### Account page (mobile)
+Page padding 16. Head: 72px avatar (1px `--red-02` ring) + name 20/28/700. Verify and packages
+banners: full width, padding 12, radius 6, `--blue-02`, 12 above each. Favourites is a **bordered
+white card**, 83 tall, icon over a 14/700 label. Rows: padding-block 16, 1px `#e0e0e0` between,
+24px icon, title 16/24/700 over subtitle 14/21, chevron at the end.
+
+Both were measured on redacted captures, so the name in the stories and the kit is a placeholder.

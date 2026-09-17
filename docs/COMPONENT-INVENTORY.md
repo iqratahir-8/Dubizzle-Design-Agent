@@ -33,6 +33,8 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - ✅ Header search suggestions — `SearchSuggestions`
 - ✅ Mobile search page — `MobileSearchPage`
 - ✅ Mobile location page — `MobileLocationPage` (+ `LOCATION_SECTIONS`)
+- ✅ Account menu — `UserMenu` (desktop dropdown) and `AccountMenu` (mobile page), with the live row
+  icons generated into `src/components/icons`
 - ✅ Header mega menu — `MegaMenu` (opens on hover, like live; `openItem` pins one open), with the
   live menu content exported as `MEGA_MENUS` (7 categories, 67 subcategories, 201 links) and the
   strip wired into `Header` (`categories`, `openCategory`)
@@ -54,8 +56,8 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
   `docs/LIVE-MEASUREMENTS.md`)
 
 ## To do — navigation and search (from the interaction-state captures)
-- ⬜ User menu (desktop dropdown) and mobile account page — avatar chip, "Get Verified Now", packages
-  banner, menu rows; the signed-in header also carries Notifications / Favourites / Chats / My Ads
+- ⬜ Signed-in header extras — Notifications / Favourites / Chats / My Ads icon links (the logged-out
+  header doesn't carry them)
 
 ## To do — desktop
 - ⬜ Breadcrumbs

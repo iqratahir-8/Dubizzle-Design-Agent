@@ -134,6 +134,98 @@ function mobilePagesDemo() {
   );
 }
 
+
+/* ── Account menus ────────────────────────────────────────────────────────────
+   The desktop dropdown and its mobile counterpart, with the rows live shows. Names here are
+   placeholders: the captures they were measured on are redacted. */
+function accountMenusDemo() {
+  const CHEV16 =
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  // Same icons the React rows use (src/components/icons, generated from these files).
+  const groups = [
+    [
+      ['Edit Profile', 'action/edit-profile.svg'],
+      ['Public Profile', 'user/public-profile.svg'],
+      ['My Jobs', 'category/my-jobs.svg'],
+      ['Bought Packages & Billing', 'misc/bought-packages.svg'],
+      ['Dubizzle Wallet', 'payment/user-wallet.svg'],
+    ],
+    [['Partner with dubizzle', 'misc/partner-with-us.svg']],
+    [
+      ['Settings', 'action/settings.svg'],
+      ['Blog', 'misc/blog.svg'],
+      ['Help & Support', 'misc/help.svg'],
+      ['Logout', 'brand/logout.svg'],
+    ],
+  ];
+  const userMenu =
+    '<div class="user-menu" data-parity="user-menu">' +
+    '<div class="user-menu__group"><div class="user-menu__header">' +
+    '<span class="user-menu__avatar">A</span><span class="user-menu__identity">' +
+    '<span class="user-menu__name">Ahmed Hassan</span>' +
+    '<a class="user-menu__verify" href="#">Get Verified Now<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>' +
+    '</span></div>' +
+    '<button class="user-menu__promo" type="button"><span class="user-menu__promo-text">' +
+    '<span class="user-menu__promo-title">Buy Discounted Packages</span>' +
+    `<span class="user-menu__promo-subtitle">Save big on exclusive packages</span></span>${CHEV16}</button></div>` +
+    groups
+      .map(
+        (group) =>
+          '<div class="user-menu__group">' +
+          group
+            .map(
+              ([label, icon]) =>
+                '<a class="user-menu__row" href="#">' +
+                `<span class="user-menu__row-icon"><img src="icons/${icon}" width="20" height="20" alt=""></span>` +
+                `<span class="user-menu__row-label">${esc(label)}</span></a>`,
+            )
+            .join('') +
+          '</div>',
+      )
+      .join('') +
+    '</div>';
+
+  const rows = [
+    ['Public Profile', 'See how others view your profile', 'user/public-profile.svg'],
+    ['My Jobs', "Jobs you've applied for", 'category/my-jobs.svg'],
+    ['Bought Packages & Billing', 'See your payment history', 'misc/bought-packages.svg'],
+    ['Dubizzle Wallet', 'Balance: EGP 0', 'payment/user-wallet.svg'],
+  ];
+  const accountMenu =
+    '<div class="account-menu" data-parity="account-menu">' +
+    '<div class="account-menu__head"><span class="account-menu__avatar">A</span><span class="account-menu__name">Ahmed Hassan</span></div>' +
+    '<button class="account-menu__verify" type="button">' +
+    '<svg width="20" height="20" viewBox="0 0 24 24" fill="var(--blue-05)" aria-hidden="true"><path d="M12 2l2.4 2.1 3.2-.3.9 3.1 2.7 1.7-1.4 2.9 1.4 2.9-2.7 1.7-.9 3.1-3.2-.3L12 21l-2.4-2.1-3.2.3-.9-3.1L2.8 14.4 4.2 11.5 2.8 8.6l2.7-1.7.9-3.1 3.2.3L12 2z"></path></svg>' +
+    `<span class="account-menu__verify-label">Get Verified Now</span>${CHEV16}</button>` +
+    '<button class="account-menu__shortcut" type="button">' +
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--red-05)" stroke-width="2" aria-hidden="true"><path d="M12 20s-7-4.6-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7-1.2C19 15.4 12 20 12 20z" stroke-linejoin="round"></path></svg>' +
+    '<span class="account-menu__shortcut-label">Favorites</span></button>' +
+    '<button class="account-menu__promo" type="button"><span class="account-menu__promo-text">' +
+    '<span class="account-menu__promo-title">Buy Discounted Packages</span>' +
+    `<span class="account-menu__promo-subtitle">Save big on exclusive packages</span></span>${CHEV16}</button>` +
+    '<div class="account-menu__group">' +
+    rows
+      .map(
+        ([title, subtitle, icon]) =>
+          '<a class="account-menu__row" href="#">' +
+          `<span class="account-menu__row-icon"><img src="icons/${icon}" width="24" height="24" alt=""></span>` +
+          '<span class="account-menu__row-text">' +
+          `<span class="account-menu__row-title">${esc(title)}</span>` +
+          `<span class="account-menu__row-subtitle">${esc(subtitle)}</span></span>${CHEV16}</a>`,
+      )
+      .join('') +
+    '</div></div>';
+
+  return (
+    '      <h3>Account menu — desktop dropdown and mobile page</h3>\n' +
+    '      <p class="note">Signed-in chrome. The names are placeholders: these were measured on redacted captures, which stay on the machine that made them.</p>\n' +
+    '      <div class="demo" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap">' +
+    `<div>${userMenu}</div>` +
+    `<div style="width:39rem;border:1px solid var(--gray-02);border-radius:var(--radius-lg);overflow:hidden">${accountMenu}</div>` +
+    '</div>\n'
+  );
+}
+
 const colorTokens = tokens.groups.color ?? {};
 
 /** Resolves a `var(--x)` chain down to a literal so swatches can be painted. */
@@ -717,6 +809,7 @@ ${sampleIcons
       <h3>Ad detail — gallery, ribbon, contact bar</h3>
       <div class="demo" style="align-items:flex-start;display:grid;grid-template-columns:repeat(auto-fill,39rem);gap:2.4rem"><div><div style="width:39rem;background:var(--white)"><div class="ad-gallery" data-parity="m-gallery"><div class="ad-gallery__placeholder"></div><button class="ad-gallery__back" type="button" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><button class="ad-gallery__next" type="button" aria-label="Next photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><span class="week-ribbon ad-gallery__ribbon"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.35 6.19 20.4 7.3 13.93 2.6 9.35l6.5-.95L12 2.5z"></path></svg>Car of the Week</span><div class="ad-gallery__dots" aria-hidden="true"><span class="ad-gallery__dot ad-gallery__dot--active"></span><span class="ad-gallery__dot ad-gallery__dot--near"></span><span class="ad-gallery__dot ad-gallery__dot--far"></span><span class="ad-gallery__dot ad-gallery__dot--far"></span></div><span class="ad-gallery__counter"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 3l-1.5 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.5L15 3H9zm3 5.5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"></path></svg>1 / 15</span></div><div class="contact-bar" data-parity="m-contact-bar"><div class="contact-bar__row"><button class="contact-btn contact-btn--call" type="button"><svg width="20" height="20" viewBox="0 0 20 20" fill="var(--blue-05)" aria-hidden="true"><path d="M16.06 10.827c-.176 0-.362-.056-.539-.096a7.6 7.6 0 0 1-1.055-.314 1.61 1.61 0 0 0-1.997.805l-.178.362a9.812 9.812 0 0 1-2.142-1.61A9.81 9.81 0 0 1 8.54 7.83l.338-.225a1.61 1.61 0 0 0 .805-1.998 8.32 8.32 0 0 1-.314-1.055 5.978 5.978 0 0 1-.097-.547A2.416 2.416 0 0 0 6.855 2H4.439a2.416 2.416 0 0 0-2.416 2.747 15.303 15.303 0 0 0 13.305 13.256h.306a2.416 2.416 0 0 0 2.208-1.431c.139-.313.21-.651.208-.993v-2.416a2.416 2.416 0 0 0-1.99-2.336z"></path></svg>Call</button><button class="contact-btn contact-btn--whatsapp" type="button"><svg width="20" height="20" viewBox="0 0 20 20" fill="#43BB3F" aria-hidden="true"><path d="M10.038.95a9.05 9.05 0 0 1 7.115 3.467 8.929 8.929 0 0 1-.248 11.312 9.013 9.013 0 0 1-3.263 2.413 9.056 9.056 0 0 1-7.898-.331l-4.731 1.238 1.283-4.669a8.94 8.94 0 0 1 .021-8.946 9 9 0 0 1 3.3-3.28A9.057 9.057 0 0 1 10.037.95z"></path></svg>WhatsApp</button></div></div></div></div><div><div style="width:39rem;background:var(--white);padding:1.6rem"><span class="week-ribbon" data-parity="m-week"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.35 6.19 20.4 7.3 13.93 2.6 9.35l6.5-.95L12 2.5z"></path></svg>Property of the Week</span></div></div></div>
 ${mobilePagesDemo()}
+${accountMenusDemo()}
       <h3>Category quick links</h3>
       <div class="demo"><div style="width:39rem;background:var(--white)"><section class="quick-links" data-parity="m-quick"><h2 class="quick-links__title">Explore Egypt&#39;s Largest Marketplace</h2><div class="quick-links__scroller"><ul class="quick-links__grid" style="--columns:6"><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/vehicles.svg" alt=""></span><span class="quick-links__label">Vehicles</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/navigation/vertical-properties-home.svg" alt=""></span><span class="quick-links__label">Properties</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/mobiles.svg" alt=""></span><span class="quick-links__label">Mobiles &amp; Tablets</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/jobs.svg" alt=""></span><span class="quick-links__label">Jobs</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/furniture.svg" alt=""></span><span class="quick-links__label">Home &amp; Office Furniture - Decor</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/electronics.svg" alt=""></span><span class="quick-links__label">Electronics &amp; Appliances</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/fashion.svg" alt=""></span><span class="quick-links__label">Fashion &amp; Beauty</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/animals.svg" alt=""></span><span class="quick-links__label">Pets - Birds - Ornamental fish</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/kids.svg" alt=""></span><span class="quick-links__label">Kids &amp; Babies</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/bikes.svg" alt=""></span><span class="quick-links__label">Hobbies</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/business.svg" alt=""></span><span class="quick-links__label">Businesses &amp; Industrial</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/services.svg" alt=""></span><span class="quick-links__label">Services</span></a></li></ul></div></section></div></div>
     </section>
