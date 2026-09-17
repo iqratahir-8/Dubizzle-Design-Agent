@@ -79,3 +79,38 @@ through the native setter + input event, and `visibleLeaks()` refuses any screen
 rendered text or field values still contain the account name or a non-sample phone. Both
 `leaks()` (HTML) and `visibleLeaks()` (screen) must pass. Never remove either.
 
+
+## D-007 — Gradients and frosted glass are real; the blanket ban was a fabrication
+**2026-09-17 · adopted · supersedes the gradient/glassmorphism lines in RULES.md §2**
+
+`RULES.md` claimed gradients were limited to the Featured/Elite/Pro badges, and that
+`backdrop-filter` "is not used anywhere in dubizzle". Both were wrong. They were written
+before the live-capture pipeline existed, by generalising from three gradient tokens I
+happened to recognise in the monorepo, plus a generic anti-AI-slop checklist. Nothing was
+measured. `check:design` then enforced the invention as an error, so it actively pushed
+generated work *away* from production for weeks.
+
+*Evidence:* swept all 124 local captures for computed `background-image: *gradient*` and
+`backdrop-filter != none` on rendered elements (>4px).
+
+- **333 gradient instances, ~30 distinct values, in six roles:** status badges (~100),
+  photo scrims `rgba(0,0,0,0)→rgba(0,0,0,.4)` (37), rail edge fades (40), the per-vertical
+  "Post your ad" CTA band (~50), the "of the Week" ribbon (14), DPV specs-strip depth (3).
+- **The CTA band is tinted per vertical:** home `#f7fafe→#e7f1fd`, motors `#e9eaf7`,
+  property `270deg #fef3de→#ffe1e1`, mobiles `#e7f1fd` — all with production's odd
+  `79.97%` stop.
+- **`backdrop-filter`: exactly one component** — the media-type chip ("Video") over a card
+  photo, `blur(4px)` + `rgba(23,25,28,.75)`, radius 4px, 63×22, in 13 captures across both
+  verticals and both layouts. Systematic, not a stray.
+
+What survived the correction: **every gradient found does a job.** None is atmosphere — no
+mesh, no gradient hero, no gradient button, no gradient text. So the rule is now a *role
+allowlist* (RULES.md §1) rather than either a blanket ban or blanket permission, with a
+token per role (`--cta-band-*`, `--rail-fade-*`, `--surface-depth`, `--glass-chip-bg/-blur`).
+`check:design` allows those tokens and still errors on an inline literal gradient or any
+other `backdrop-filter`.
+
+**The general lesson, which matters more than the rule:** a constraint in `RULES.md` that
+isn't traceable to a measurement is a liability, because the linter turns it into law.
+Every remaining ✗ in §2 should be checkable against the captures. Where one isn't, mark it
+as judgement rather than stating it as fact about dubizzle.

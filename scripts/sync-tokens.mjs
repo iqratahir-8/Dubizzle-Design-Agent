@@ -170,6 +170,27 @@ const SEMANTIC = {
     '--dot-idle': 'rgba(255, 255, 255, 0.4)',
     // "Car / Property of the Week" ribbon.
     '--week-gradient': 'linear-gradient(92.05deg, #e00000 64.95%, #ba0000 121.09%)',
+
+    // ── Gradients that are structure, not decoration ──────────────────────────
+    // Measured across 124 live captures (scripts/.tmp-find-effects.mjs pattern):
+    // 333 rendered gradients, every one doing a job. See docs/DECISIONS.md.
+
+    // The "Post your ad" CTA band under a results grid. One component, tinted per
+    // vertical. The 79.97% stop is production's own value, not a rounded 80%.
+    '--cta-band-home': 'linear-gradient(#f7fafe 0, #e7f1fd 79.97%)',
+    '--cta-band-motors': 'linear-gradient(#e9eaf7 0, #e9eaf7 79.97%)',
+    '--cta-band-property': 'linear-gradient(270deg, #fef3de 0, #ffe1e1 79.97%)',
+    '--cta-band-mobiles': 'linear-gradient(#e7f1fd 0, #e7f1fd 79.97%)',
+    // Horizontal rails (brand strips, "more from this seller") fade their overflow
+    // edge instead of clipping it. Mirrored for the other end / RTL.
+    '--rail-fade-end': 'linear-gradient(to right, #f0f0f0 -7.33%, #f0f0f0 25.45%, rgba(255, 255, 255, 0) 73.44%)',
+    '--rail-fade-start': 'linear-gradient(to left, #f0f0f0 -7.33%, #f0f0f0 25.45%, rgba(255, 255, 255, 0) 73.44%)',
+    // The DPV specs strip: a barely-there vertical shade, not a flat fill.
+    '--surface-depth': 'linear-gradient(#f6f6f6, #f0f0f0)',
+    // The product's only frosted surface — the media-type chip ("Video") sitting on
+    // a card photo, where the image behind it is arbitrary and contrast can't be
+    // guaranteed any other way. Pair with --glass-chip-blur.
+    '--glass-chip-bg': 'rgba(23, 25, 28, 0.75)',
   },
   typography: {
     '--font-primary': 'var(--font-ltr)',
@@ -231,6 +252,9 @@ const SEMANTIC = {
     '--shadow-search': '0 2px 10px 0 rgba(0, 0, 0, 0.1)', // mobile search field and favourites button
     '--shadow-bottom-nav': '0 -2px 4px 0 rgba(0, 0, 0, 0.133)',
     // Header overlays — the location dropdown and the search suggestions both use this pair.
+    // The blur half of the media chip (--glass-chip-bg). The only backdrop-filter
+    // in the product.
+    '--glass-chip-blur': 'blur(4px)',
     '--shadow-overlay': '0 0 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24)',
     // The signed-in account menu sits on a softer one.
     '--shadow-menu': '0 4px 10px 0 rgba(0, 0, 0, 0.1)',

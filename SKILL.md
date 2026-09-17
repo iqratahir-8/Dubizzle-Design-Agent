@@ -12,7 +12,7 @@ re-capture — the answer lives in `docs/HOW-TO-ASK.md`.
 
 ## Before you generate anything
 
-**Read `RULES.md` first.** It is short and it is binding. It defines the closed value sets (colour, spacing, radius, type, shadow) and lists the AI-slop signatures that never appear in dubizzle production — gradients, glassmorphism, emoji icons, scale-on-hover, centred marketing heroes, fake currency. Most bad output comes from skipping it.
+**Read `RULES.md` first.** It is short and it is binding. It defines the closed value sets (colour, spacing, radius, type, shadow) and lists the AI-slop signatures that never appear in dubizzle production — emoji icons, scale-on-hover, centred marketing heroes, fake currency, and *decorative* gradient. Note that gradient and frosted glass themselves are real here, allowed by role via tokens (§1) — see `docs/DECISIONS.md` D-007. Most bad output comes from skipping this file.
 
 ## What's here
 

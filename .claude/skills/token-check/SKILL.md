@@ -125,9 +125,15 @@ Read `design-kit/tokens/tokens.css` for the complete list; these are the common 
 list card) · `--radius-2xl` 1.6rem (highlighted "of the Week" list card only) ·
 `--radius-pill` 2rem · `--radius-full` 9999px. No other literal radius.
 
-**Gradients** → only `--featured-gradient` (Featured badge), `--elite-gradient` (Elite
-badge — charcoal text on it), `--pro-gradient`, `--overlay-image-fade` (fade behind a
-photo's slider dots). A literal `linear-gradient(…)` is an error.
+**Gradients** → allowed by role, each through its token: `--featured-gradient`,
+`--elite-gradient` (charcoal text on it), `--pro-gradient`, `--week-gradient`,
+`--overlay-image-fade` (photo scrim), `--rail-fade-start/-end` (rail overflow edge),
+`--cta-band-home/-motors/-property/-mobiles` ("Post your ad" band, tinted per vertical),
+`--surface-depth` (DPV specs strip), `--app-promo-gradient` / `--app-icon-gradient`.
+A literal `linear-gradient(…)` authored inline is an error — see RULES.md §1.
+
+**Frosted glass** → `--glass-chip-bg` + `--glass-chip-blur`, and only on the media-type
+chip over a card photo. Any other `backdrop-filter` is an error.
 
 **Overlays** → `--overlay-dark` (photo-count badge), `--overlay-light` (heart button on a photo).
 

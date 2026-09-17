@@ -69,6 +69,38 @@ Font: `--font-primary` (Proxima Nova) for Latin. `--font-arabic` (GESS) for Arab
 
 All four are near-invisible by design. **Never author a new shadow.** If you find yourself writing `0 10px 30px rgba(0,0,0,0.15)`, you have left the design system.
 
+### Gradient — allowed by role, never by taste
+
+Gradient is part of this system. It was measured, not guessed: **333 rendered
+gradients across 124 live captures, in six roles.** Every one does a job. Use the
+token for the role; if your gradient isn't one of these, it's decoration and §2
+forbids it.
+
+| Role | Token | Where it renders |
+|---|---|---|
+| Status badges | `--featured-gradient` · `--elite-gradient` · `--pro-gradient` | Featured (blue), Elite (gold), Pro (red→charcoal) |
+| "of the Week" ribbon | `--week-gradient` | Car / Property of the Week |
+| Photo scrim | `--overlay-image-fade` | Behind slider dots and labels on a card photo |
+| Rail edge fade | `--rail-fade-start` · `--rail-fade-end` | Horizontal rails fade their overflow edge rather than clipping |
+| "Post your ad" CTA band | `--cta-band-home` · `--cta-band-motors` · `--cta-band-property` · `--cta-band-mobiles` | Under a results grid, tinted per vertical |
+| Surface depth | `--surface-depth` | DPV specs strip — a barely-there shade, not a flat fill |
+| App promo | `--app-promo-gradient` · `--app-icon-gradient` | Mobile app-download surfaces |
+
+The test is whether removing the gradient loses information. A scrim keeps white
+text legible on an unknown photo. An edge fade says the rail scrolls. A badge
+gradient distinguishes paid tiers at a glance. A gradient hero says nothing.
+
+### Frosted glass — one component
+
+`backdrop-filter` renders in exactly one place: the **media-type chip** ("Video")
+sitting on a card photo — `--glass-chip-bg` + `--glass-chip-blur`, radius `0.4rem`,
+63×22. It appears in 13 captures across both verticals and both layouts, so it is
+systematic, not an accident.
+
+It is frosted for a reason: the photo behind it is arbitrary, so no opaque fill
+guarantees contrast. That reason does not extend to a nav, a card, a modal or a
+sidebar sitting on a known background — those get a solid token.
+
 ### Breakpoints
 768px is the real split. `max-width: 768px` = mobile, `min-width: 768px` = desktop. Secondary: 360, 480, 950, 1280.
 
@@ -80,10 +112,10 @@ Each of these is a tell that a screen was generated rather than designed. None o
 
 **Color and surface**
 - ✗ Purple, indigo, violet, teal — anywhere, for anything
-- ✗ Gradients. The **only** ones permitted are `--featured-gradient` (blue, Featured badge), `--elite-gradient` (gold, Elite badge, charcoal text) and `--overlay-image-fade` (the fade behind a card photo's slider dots). No gradient buttons, headers, heroes, or backgrounds.
-- ✗ Glassmorphism, `backdrop-filter`, translucent frosted panels
+- ✗ **Decorative** gradient — a gradient with no job. Mesh backgrounds, gradient heroes, gradient buttons, gradient text, gradient borders, atmosphere. Production has 333 gradients and not one of them is this. See §1 for the ones that are real.
+- ✗ Frosted panels, navs, cards, modals, sidebars. Blur is for one chip over a photo (§1), nothing else.
 - ✗ Dark mode. dubizzle EG web has none. Do not invent one.
-- ✗ Coloured drop shadows, glows, neon
+- ✗ Glows and neon. (Coloured shadow exists in exactly one place — the header's active-vertical tab, which is `ds-ignore`d geometry. Don't author a second.)
 
 **Shape and depth**
 - ✗ Border radius above 1.2rem on anything that isn't a pill or avatar
@@ -158,7 +190,8 @@ Fake content is the fastest way to make a real design look generated. Use `desig
 ## 5. Before you call it done
 
 - [ ] Every colour, space, radius, and shadow is a token — no literal hex or off-scale px
-- [ ] No gradient except Featured/Elite badges
+- [ ] Every gradient is one of the §1 roles, via its token — none is decorative
+- [ ] No `backdrop-filter` outside the media chip
 - [ ] No emoji, no external icon pack
 - [ ] Nothing scales or bounces on hover
 - [ ] Content reads like real Egyptian listings, with real prices and real place names

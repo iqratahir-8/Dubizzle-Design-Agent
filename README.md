@@ -105,13 +105,13 @@ npm run check:design -- design-kit/templates/desktop/search.html
 npm run check:all
 ```
 
-The linter derives its palette allowlist from the generated tokens, so it can't drift from the system it's policing. It catches off-palette colour, unauthorised gradients, arbitrary `px` in a rem-based system, over-large radii, hand-authored shadows, `transform: scale()` on hover, glassmorphism, emoji, external icon packs and fonts, RTL-breaking physical directions, broken icon references, generic AI copy, and non-EGP currency.
+The linter derives its palette allowlist from the generated tokens, so it can't drift from the system it's policing. It catches off-palette colour, gradients authored inline rather than through their role token, arbitrary `px` in a rem-based system, over-large radii, hand-authored shadows, `transform: scale()` on hover, `backdrop-filter` outside the one component that uses it, emoji, external icon packs and fonts, RTL-breaking physical directions, broken icon references, generic AI copy, and non-EGP currency.
 
 Deliberate exceptions carry a `ds-ignore` comment on the line — for example the header's concave active-vertical tab, whose elliptical radius is load-bearing geometry.
 
 ## Brand notes
 
-Red-primary (`#E00000`) on white and light gray. Proxima Nova for Latin, GESS for Arabic. `1rem = 10px`. No gradients except the Featured, Elite, and Pro badges. Minimal motion — colour transitions only, nothing scales or bounces. Dense and utilitarian: desktop search is three cards per row with a 1.2rem gap.
+Red-primary (`#E00000`) on white and light gray. Proxima Nova for Latin, GESS for Arabic. `1rem = 10px`. Gradient is used, but only structurally — badges, photo scrims, rail edge fades, the per-vertical CTA band — never as atmosphere. Minimal motion — colour transitions only, nothing scales or bounces. Dense and utilitarian: desktop search is three cards per row with a 1.2rem gap.
 
 ## License
 

@@ -286,3 +286,30 @@ Both were measured on redacted captures, so the name in the stories and the kit 
 Notifications · Favourites · Chats · My Ads sit **32 apart** (not 24), each an icon over a 14/18
 label in `#464c55`; then the 40px avatar and the name at 15/18/700. Live labels the third one
 "Chats", plural.
+
+## Gradients and frosted glass (measured across 124 captures, 2026-09-17)
+
+Swept every local capture for computed `background-image: *gradient*` and
+`backdrop-filter != none` on rendered elements. 333 gradient instances, 13 glass.
+See `docs/DECISIONS.md` D-007. Tokens in `RULES.md` §1.
+
+| Role | Value | Token |
+|---|---|---|
+| Featured badge | `linear-gradient(90deg, #4d9feb, #1270ec)` | `--featured-gradient` |
+| Elite badge | `linear-gradient(90deg, #ffe8ad, #e39e00)` | `--elite-gradient` |
+| Pro badge | `linear-gradient(270deg, #e00000, #17191c)` | `--pro-gradient` |
+| "of the Week" ribbon | `linear-gradient(92.05deg, #e00000 64.95%, #ba0000 121.09%)` · 115×22 | `--week-gradient` |
+| Photo scrim | `linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.4))` | `--overlay-image-fade` |
+| Rail edge fade | `to right/left, #f0f0f0 -7.33%, #f0f0f0 25.45%, transparent 73.44%` · 80×140 | `--rail-fade-end` / `--rail-fade-start` |
+| CTA band — home | `#f7fafe 0 → #e7f1fd 79.97%` · 960×130 | `--cta-band-home` |
+| CTA band — motors | `#e9eaf7 0 → #e9eaf7 79.97%` (flat) | `--cta-band-motors` |
+| CTA band — property | `270deg, #fef3de 0 → #ffe1e1 79.97%` | `--cta-band-property` |
+| CTA band — mobiles | `#e7f1fd 0 → #e7f1fd 79.97%` (flat) | `--cta-band-mobiles` |
+| DPV specs strip | `linear-gradient(#f6f6f6, #f0f0f0)` · 826×78 | `--surface-depth` |
+| Media chip ("Video") | `backdrop-filter: blur(4px)` + `rgba(23,25,28,.75)`, radius 4px · 63×22 | `--glass-chip-blur` + `--glass-chip-bg` |
+
+The CTA band's `79.97%` stop is production's own value — don't round it to 80%.
+
+The media chip is the **only** `backdrop-filter` in the product. It appears in
+`cars-list`, `cars-new`, `cars-toyota`, `motors`, `property-area`, `property-list`,
+`property-newcairo`, `property-rent-list` — both layouts.

@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-17 (late) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-17 (late; D-007 gradient/glass rule correction) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -225,6 +225,21 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    icon links sit 32 apart, not 24, and live labels the third "Chats". Parity 240/240.
    Gotcha found twice now: a bare list inherits the host page's list styling, so `.breadcrumbs__list`
    states its own colour and type rather than inheriting.
+
+22. **Corrected a fabricated rule.** User: "We make use of gradient, glassmorphism" — and they were
+   right. `RULES.md` had banned gradients outside three badges and declared `backdrop-filter`
+   "not used anywhere in dubizzle". Both were invented before the capture pipeline existed, by
+   generalising from three monorepo token names plus a generic anti-AI-slop checklist, and
+   `check:design` had been enforcing the invention as an **error**. Swept all 124 captures for
+   computed gradients / `backdrop-filter`: **333 gradients in six roles** (badges, photo scrims,
+   rail edge fades, per-vertical "Post your ad" CTA band, "of the Week" ribbon, DPV specs strip)
+   and **one** frosted component (the "Video" media chip, 13 captures, both verticals and layouts).
+   Rule rewritten as a **role allowlist** in `RULES.md` §1 — since every gradient found does a
+   job and none is atmosphere — with new tokens `--cta-band-{home,motors,property,mobiles}`,
+   `--rail-fade-{start,end}`, `--surface-depth`, `--glass-chip-{bg,blur}`. Linter allows the role
+   tokens, still errors on an inline literal gradient or any other `backdrop-filter`. Recorded as
+   **D-007**, which also carries the general lesson: *a constraint in `RULES.md` that isn't
+   traceable to a measurement is a liability, because the linter turns it into law.*
 
 ## 6. Next up
 

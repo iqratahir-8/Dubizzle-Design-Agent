@@ -29,10 +29,20 @@ for (const value of Object.values(tokens.groups.color ?? {})) {
 const RADIUS_SCALE = new Set(['0', '0.4rem', '0.6rem', '0.8rem', '1.2rem', '2rem', '50%', '9999px']);
 const SPACING_PROP = /\b(padding|margin|gap|row-gap|column-gap)(?:-(?:top|right|bottom|left|inline|block)(?:-(?:start|end))?)?\s*:\s*([^;{}]+)/gi;
 
+/* Gradient is allowed by ROLE, via its token — see RULES.md §1. Production renders
+   333 gradients across 124 captures and every one has a job, so the old blanket ban
+   (three badge tokens only) was wrong and pushed generated work away from live.
+   What stays forbidden is a gradient authored inline as decoration. */
 const ALLOWED_GRADIENT_HINTS = [
   /--featured-gradient/,
   /--elite-gradient/,
   /--pro-gradient/,
+  /--week-gradient/,
+  /--overlay-image-fade/,
+  /--rail-fade-(start|end)/,
+  /--cta-band-(home|motors|property|mobiles)/,
+  /--surface-depth/,
+  /--app-(promo|icon)-gradient/,
   /featured-ad-accent/,
   /elite-tag-bg/,
   /pro-badge-background/,
@@ -66,7 +76,7 @@ const rules = [
       if (!/linear-gradient|radial-gradient|conic-gradient/.test(line)) return null;
       if (context.inMaskDeclaration) return null;
       if (ALLOWED_GRADIENT_HINTS.some((re) => re.test(line))) return null;
-      return 'gradient outside the permitted badge gradients (Featured, Elite, Pro)';
+      return 'gradient authored inline — use the role token for it (RULES.md §1), or drop it if it is decoration';
     },
   },
   {
@@ -156,7 +166,13 @@ const rules = [
   {
     id: 'glassmorphism',
     severity: 'error',
-    test: (line) => (/backdrop-filter\s*:/i.test(line) ? 'backdrop-filter / glassmorphism is not used anywhere in dubizzle' : null),
+    /* Production frosts exactly one thing: the media-type chip over a card photo,
+       where the image behind it is arbitrary. Anything else gets a solid token. */
+    test: (line) => {
+      if (!/backdrop-filter\s*:/i.test(line)) return null;
+      if (/--glass-chip-blur/.test(line)) return null;
+      return 'backdrop-filter outside the media chip — use a solid surface token (RULES.md §1)';
+    },
   },
   {
     id: 'emoji',
