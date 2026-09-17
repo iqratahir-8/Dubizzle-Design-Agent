@@ -197,6 +197,12 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    `--red-04` (#f08080) where live is `--red-05` (#e00000) — parity passed because both sides were
    wrong. Parity 199/199.
 
+18. Mobile search and location as components: **`MobileSearchPage`** (back + field, bold query over
+   category, full-bleed highlight on the row under the finger) and **`MobileLocationPage`**
+   (close + title, field, "Use current location", Popular Locations, every governorate with a
+   chevron, sticky red Select button). Both read as pages, not dropdowns — the mobile/desktop
+   divergence the captures exposed. Parity 213/213.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

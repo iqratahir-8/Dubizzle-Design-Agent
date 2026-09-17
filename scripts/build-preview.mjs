@@ -70,6 +70,70 @@ function megaMenuDemo() {
   );
 }
 
+
+/* ── Mobile search + location pages ───────────────────────────────────────────
+   The kit shows the same content the components ship: suggestions from the live capture and
+   the governorates from fixtures.json. */
+function mobilePagesDemo() {
+  const SEARCH_ICON =
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5" stroke-linecap="round"></path></svg>';
+  const ARROW =
+    '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  const CHEVRON20 =
+    '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  const suggestions = [
+    ['toyota', 'Cars for Sale', false],
+    ['toyota', 'Car Spare Parts', true],
+    ['toyota', 'Cars for Rent', false],
+    ['toyota auris', 'Cars for Sale', false],
+  ];
+  const searchPage =
+    '<div class="m-search-page" data-parity="m-search-page">' +
+    '<div class="m-search-page__header">' +
+    '<button class="m-search-page__back" type="button" aria-label="Back"><svg width="15" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>' +
+    `<div class="m-search-page__field">${SEARCH_ICON}<input class="m-search-page__input" type="search" value="toyota"></div>` +
+    '</div><ul class="m-search-page__list">' +
+    suggestions
+      .map(
+        ([query, category, active]) =>
+          `<li class="m-search-page__row${active ? ' m-search-page__row--active' : ''}">` +
+          '<button class="m-search-page__row-button" type="button"><span class="m-search-page__text">' +
+          `<em class="m-search-page__query">${query}</em><span class="m-search-page__category">${category}</span></span>${ARROW}</button></li>`,
+      )
+      .join('') +
+    '</ul></div>';
+
+  const section = (title, rows, chevron) =>
+    `<section class="m-location-page__section"><span class="m-location-page__section-title">${title}</span>` +
+    rows
+      .map(
+        (row) =>
+          '<button class="m-location-page__row" type="button">' +
+          `<span class="m-location-page__row-label">${esc(row)}, Egypt</span>${chevron ? CHEVRON20 : ''}</button>`,
+      )
+      .join('') +
+    '</section>';
+
+  const locationPage =
+    '<div class="m-location-page" data-parity="m-location-page"><div class="m-location-page__body">' +
+    '<div class="m-location-page__title-row"><button class="m-location-page__close" type="button" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"></path></svg></button>' +
+    '<span class="m-location-page__title">Location</span></div>' +
+    `<div class="m-location-page__field">${SEARCH_ICON}<input class="m-location-page__input" type="search" value="Egypt"></div>` +
+    '<button class="m-location-page__current" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 3L3 10.5l7.5 3 3 7.5L21 3z"></path></svg>Use current location</button>' +
+    section('Popular Locations', ['Cairo', 'Giza', 'Alexandria', 'Matruh', 'Red Sea'], false) +
+    section('Choose Region', fixtures.locations.governorates, true) +
+    '</div><div class="m-location-page__cta-bar"><button class="m-location-page__cta" type="button">Select Egypt</button></div></div>';
+
+  return (
+    '      <h3>Mobile search and location pages</h3>\n' +
+    '      <p class="note">On mobile these are pages, not the desktop dropdowns — the search field and the location row each open a full screen.</p>\n' +
+    '      <div class="demo" style="align-items:flex-start;display:grid;grid-template-columns:repeat(auto-fill,39rem);gap:2.4rem">' +
+    `<div><div style="width:39rem;border:1px solid var(--gray-02);border-radius:var(--radius-lg);overflow:hidden">${searchPage}</div></div>` +
+    `<div><div style="width:39rem;height:60rem;overflow-y:auto;border:1px solid var(--gray-02);border-radius:var(--radius-lg)">${locationPage}</div></div>` +
+    '</div>\n'
+  );
+}
+
 const colorTokens = tokens.groups.color ?? {};
 
 /** Resolves a `var(--x)` chain down to a literal so swatches can be painted. */
@@ -652,6 +716,7 @@ ${sampleIcons
       <div class="demo" style="align-items:flex-start;display:grid;grid-template-columns:repeat(auto-fill,39rem);gap:2.4rem"><div><div style="width:39rem;background:var(--white)"><section class="popular-searches" data-parity="m-popular"><h2 class="popular-searches__heading">Popular Searches</h2><div class="popular-searches__groups"><div class="popular-searches__group"><div class="popular-searches__clip" style="--visible-links:5"><span class="popular-searches__title">Cars for Sale in Egypt</span><ul class="popular-searches__links"><li><a class="popular-searches__link" href="#">Find Cars for Sale in Cairo</a></li><li><a class="popular-searches__link" href="#">Find Cars for Sale in Giza</a></li><li><a class="popular-searches__link" href="#">Find Cars for Sale in Alexandria</a></li><li><a class="popular-searches__link" href="#">Find Cars for Sale in Sharkia</a></li><li><a class="popular-searches__link" href="#">Find Cars for Sale in Dakahlia</a></li><li><a class="popular-searches__link" href="#">Find Cars for Sale in Port Said</a></li><li><a class="popular-searches__link" href="#">Find Cars for Sale in Ismailia</a></li></ul></div><button class="popular-searches__more" type="button">View more<span class="m-icon" style="--i:url(../icons/navigation/chevron-right.svg);--s:1rem"></span></button></div><div class="popular-searches__group"><div class="popular-searches__clip" style="--visible-links:5"><span class="popular-searches__title">Apartments for Sale in Egypt</span><ul class="popular-searches__links"><li><a class="popular-searches__link" href="#">Find Apartments for Sale in Maadi</a></li><li><a class="popular-searches__link" href="#">Find Apartments for Sale in Nasr City</a></li><li><a class="popular-searches__link" href="#">Find Apartments for Sale in New Cairo</a></li><li><a class="popular-searches__link" href="#">Find Apartments for Sale in Heliopolis</a></li><li><a class="popular-searches__link" href="#">Find Apartments for Sale in Agami</a></li><li><a class="popular-searches__link" href="#">Find Apartments for Sale in Mansura</a></li></ul></div><button class="popular-searches__more" type="button">View more<span class="m-icon" style="--i:url(../icons/navigation/chevron-right.svg);--s:1rem"></span></button></div></div></section></div></div><div><div style="width:39rem;background:var(--white)"><footer class="m-footer" data-parity="m-footer"><button class="m-footer__row" type="button"><span class="m-footer__label">Categories</span><span class="m-icon" style="--i:url(../icons/navigation/chevron-right.svg);--s:1.5rem"></span></button><button class="m-footer__row" type="button"><span class="m-footer__label">About Us</span><span class="m-icon" style="--i:url(../icons/navigation/chevron-right.svg);--s:1.5rem"></span></button><button class="m-footer__row" type="button"><span class="m-footer__label">Dubizzle</span><span class="m-icon" style="--i:url(../icons/navigation/chevron-right.svg);--s:1.5rem"></span></button><button class="m-footer__row" type="button"><span class="m-footer__label">Countries</span><span class="m-icon" style="--i:url(../icons/navigation/chevron-right.svg);--s:1.5rem"></span></button><div class="m-footer__follow"><span class="m-footer__label">Follow us</span><div class="m-footer__social"><a href="#"><img src="icons/social/landing-twitter.svg" alt=""></a><a href="#"><img src="icons/social/landing-linkedin.svg" alt=""></a><a href="#"><img src="icons/social/landing-facebook.svg" alt=""></a><a href="#"><img src="icons/social/landing-youtube.svg" alt=""></a><a href="#"><img src="icons/social/landing-instagram.svg" alt=""></a></div></div><div class="m-footer__badges"><a href="#"><img src="icons/brand/app-store-en.svg" alt=""></a><a href="#"><img src="icons/brand/google-play-en.svg" alt=""></a><a href="#"><img src="icons/brand/app-gallery.svg" alt=""></a></div><div class="m-footer__copyright"><span class="m-footer__tagline">Free Classifieds in Egypt.</span> &copy; 2026 Dubizzle</div></footer></div></div></div>
       <h3>Ad detail — gallery, ribbon, contact bar</h3>
       <div class="demo" style="align-items:flex-start;display:grid;grid-template-columns:repeat(auto-fill,39rem);gap:2.4rem"><div><div style="width:39rem;background:var(--white)"><div class="ad-gallery" data-parity="m-gallery"><div class="ad-gallery__placeholder"></div><button class="ad-gallery__back" type="button" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><button class="ad-gallery__next" type="button" aria-label="Next photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><span class="week-ribbon ad-gallery__ribbon"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.35 6.19 20.4 7.3 13.93 2.6 9.35l6.5-.95L12 2.5z"></path></svg>Car of the Week</span><div class="ad-gallery__dots" aria-hidden="true"><span class="ad-gallery__dot ad-gallery__dot--active"></span><span class="ad-gallery__dot ad-gallery__dot--near"></span><span class="ad-gallery__dot ad-gallery__dot--far"></span><span class="ad-gallery__dot ad-gallery__dot--far"></span></div><span class="ad-gallery__counter"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 3l-1.5 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.5L15 3H9zm3 5.5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"></path></svg>1 / 15</span></div><div class="contact-bar" data-parity="m-contact-bar"><div class="contact-bar__row"><button class="contact-btn contact-btn--call" type="button"><svg width="20" height="20" viewBox="0 0 20 20" fill="var(--blue-05)" aria-hidden="true"><path d="M16.06 10.827c-.176 0-.362-.056-.539-.096a7.6 7.6 0 0 1-1.055-.314 1.61 1.61 0 0 0-1.997.805l-.178.362a9.812 9.812 0 0 1-2.142-1.61A9.81 9.81 0 0 1 8.54 7.83l.338-.225a1.61 1.61 0 0 0 .805-1.998 8.32 8.32 0 0 1-.314-1.055 5.978 5.978 0 0 1-.097-.547A2.416 2.416 0 0 0 6.855 2H4.439a2.416 2.416 0 0 0-2.416 2.747 15.303 15.303 0 0 0 13.305 13.256h.306a2.416 2.416 0 0 0 2.208-1.431c.139-.313.21-.651.208-.993v-2.416a2.416 2.416 0 0 0-1.99-2.336z"></path></svg>Call</button><button class="contact-btn contact-btn--whatsapp" type="button"><svg width="20" height="20" viewBox="0 0 20 20" fill="#43BB3F" aria-hidden="true"><path d="M10.038.95a9.05 9.05 0 0 1 7.115 3.467 8.929 8.929 0 0 1-.248 11.312 9.013 9.013 0 0 1-3.263 2.413 9.056 9.056 0 0 1-7.898-.331l-4.731 1.238 1.283-4.669a8.94 8.94 0 0 1 .021-8.946 9 9 0 0 1 3.3-3.28A9.057 9.057 0 0 1 10.037.95z"></path></svg>WhatsApp</button></div></div></div></div><div><div style="width:39rem;background:var(--white);padding:1.6rem"><span class="week-ribbon" data-parity="m-week"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.35 6.19 20.4 7.3 13.93 2.6 9.35l6.5-.95L12 2.5z"></path></svg>Property of the Week</span></div></div></div>
+${mobilePagesDemo()}
       <h3>Category quick links</h3>
       <div class="demo"><div style="width:39rem;background:var(--white)"><section class="quick-links" data-parity="m-quick"><h2 class="quick-links__title">Explore Egypt&#39;s Largest Marketplace</h2><div class="quick-links__scroller"><ul class="quick-links__grid" style="--columns:6"><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/vehicles.svg" alt=""></span><span class="quick-links__label">Vehicles</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/navigation/vertical-properties-home.svg" alt=""></span><span class="quick-links__label">Properties</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/mobiles.svg" alt=""></span><span class="quick-links__label">Mobiles &amp; Tablets</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/jobs.svg" alt=""></span><span class="quick-links__label">Jobs</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/furniture.svg" alt=""></span><span class="quick-links__label">Home &amp; Office Furniture - Decor</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/electronics.svg" alt=""></span><span class="quick-links__label">Electronics &amp; Appliances</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/fashion.svg" alt=""></span><span class="quick-links__label">Fashion &amp; Beauty</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/animals.svg" alt=""></span><span class="quick-links__label">Pets - Birds - Ornamental fish</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/kids.svg" alt=""></span><span class="quick-links__label">Kids &amp; Babies</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/bikes.svg" alt=""></span><span class="quick-links__label">Hobbies</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/business.svg" alt=""></span><span class="quick-links__label">Businesses &amp; Industrial</span></a></li><li><a class="quick-links__link" href="#"><span class="quick-links__icon"><img src="icons/category/services.svg" alt=""></span><span class="quick-links__label">Services</span></a></li></ul></div></section></div></div>
     </section>

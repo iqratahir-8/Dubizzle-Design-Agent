@@ -3402,3 +3402,199 @@ ul {
 }
 
 .search-suggestions__row svg { flex: none; color: var(--gray-05); }
+
+/* ── Mobile search and location pages ─────────────────────────────────────────
+   On mobile these are pages, not dropdowns. Measured on the live mobile home
+   (docs/LIVE-MEASUREMENTS.md). Mirror MobileSearchPage / MobileLocationPage in
+   src/components (npm run check:parity). */
+
+.m-search-page { background: var(--white); font-family: var(--font-primary); min-height: 100%; }
+
+.m-search-page__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--gray-02);
+  background: var(--white);
+}
+
+.m-search-page__back,
+.m-location-page__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.m-search-page__field,
+.m-location-page__field {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  height: 4rem;
+  padding-inline-start: 1.2rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.m-search-page__field { flex: 1; }
+
+.m-search-page__field > svg,
+.m-location-page__field > svg { flex: none; color: var(--gray-05); }
+
+.m-search-page__input,
+.m-location-page__input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding-inline-start: 0.8rem;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  font-family: inherit;
+  font-size: var(--text-sm);
+}
+
+.m-search-page__list { margin: 0; padding: 0 1.6rem; list-style: none; }
+
+/* Full-bleed highlight, inset content. */
+.m-search-page__row { margin-inline: -1.6rem; padding-inline: 1.6rem; }
+
+.m-search-page__row--active { background: var(--gray-01); }
+
+.m-search-page__row-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 6.1rem;
+  padding: 0.8rem 1.6rem;
+  border: 0;
+  border-bottom: 1px solid var(--gray-02);
+  background: none;
+  text-align: start;
+  cursor: pointer;
+}
+
+.m-search-page__row:last-child .m-search-page__row-button { border-bottom: 0; }
+
+.m-search-page__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.m-search-page__query {
+  color: var(--gray-06);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: var(--weight-bold);
+  line-height: 2.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.m-search-page__category { color: var(--gray-05); font-size: var(--text-sm); line-height: 2rem; }
+
+.m-search-page__row-button > svg { flex: none; color: var(--gray-05); }
+
+.m-location-page { position: relative; background: var(--white); font-family: var(--font-primary); }
+
+.m-location-page__body { padding: 1.6rem 1.6rem 0; margin-bottom: 8rem; }
+
+.m-location-page__title-row { display: flex; align-items: center; gap: var(--space-2); height: 3rem; }
+
+.m-location-page__title {
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+  line-height: 3rem;
+  color: var(--gray-06);
+}
+
+.m-location-page__field { margin-top: 2.9rem; }
+
+.m-location-page__current {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.3rem 0;
+  border: 0;
+  background: none;
+  color: var(--blue-05);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  cursor: pointer;
+}
+
+.m-location-page__current svg { flex: none; }
+
+.m-location-page__section { display: flex; flex-direction: column; }
+
+.m-location-page__section-title {
+  padding-block: 1.2rem;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  color: var(--gray-06);
+}
+
+.m-location-page__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0.8rem 0 1.6rem;
+  border: 0;
+  border-bottom: 1px solid var(--gray-02);
+  background: none;
+  font-family: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.m-location-page__row-label {
+  color: var(--gray-06);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.m-location-page__row svg { flex: none; color: var(--gray-06); }
+
+.m-location-page__cta-bar {
+  position: sticky;
+  bottom: 0;
+  padding: 1.6rem;
+  border-top: 1px solid var(--gray-02);
+  background: var(--white);
+}
+
+.m-location-page__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 4rem;
+  padding-inline: 1.6rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--red-05);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  cursor: pointer;
+}

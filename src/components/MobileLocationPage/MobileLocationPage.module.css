@@ -1,0 +1,154 @@
+/* Mobile location page — measured on the live mobile home, see docs/LIVE-MEASUREMENTS.md.
+   Must match .m-location-page in patterns.css (npm run check:parity). */
+
+.page {
+  position: relative;
+  background: var(--white);
+  font-family: var(--font-primary);
+}
+
+/* The list clears the sticky confirm bar at the bottom. */
+.body {
+  padding: 1.6rem 1.6rem 0;
+  margin-bottom: 8rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 3rem;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+  line-height: 3rem;
+  color: var(--gray-06);
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  height: 4rem;
+  margin-top: 2.9rem;
+  padding-inline-start: 1.2rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.fieldIcon {
+  flex: none;
+  color: var(--gray-05);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding-inline-start: 0.8rem;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  font-family: inherit;
+  font-size: var(--text-sm);
+}
+
+.currentLocation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.3rem 0;
+  border: 0;
+  background: none;
+  color: var(--blue-05);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  cursor: pointer;
+}
+
+.currentIcon {
+  flex: none;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  padding-block: 1.2rem;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  color: var(--gray-06);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0.8rem 0 1.6rem;
+  border: 0;
+  border-bottom: 1px solid var(--gray-02);
+  background: none;
+  font-family: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.rowLabel {
+  color: var(--gray-06);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  flex: none;
+  color: var(--gray-06);
+}
+
+/* Sticky confirm bar, like the ad detail's contact bar. */
+.ctaBar {
+  position: sticky;
+  bottom: 0;
+  padding: 1.6rem;
+  border-top: 1px solid var(--gray-02);
+  background: var(--white);
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 4rem;
+  padding-inline: 1.6rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--red-05);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  cursor: pointer;
+}

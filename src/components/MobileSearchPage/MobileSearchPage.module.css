@@ -1,0 +1,121 @@
+/* Mobile search page — measured on the live mobile home, see docs/LIVE-MEASUREMENTS.md.
+   Must match .m-search-page in patterns.css (npm run check:parity). */
+
+.page {
+  background: var(--white);
+  font-family: var(--font-primary);
+  min-height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--gray-02);
+  background: var(--white);
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  height: 4rem;
+  padding-inline-start: 1.2rem;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.fieldIcon {
+  flex: none;
+  color: var(--gray-05);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding-inline-start: 0.8rem;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  font-family: inherit;
+  font-size: var(--text-sm);
+}
+
+.list {
+  margin: 0;
+  padding: 0 1.6rem;
+  list-style: none;
+}
+
+/* The row spans the page so the highlight is full-bleed; its content stays inset. */
+.row {
+  margin-inline: -1.6rem;
+  padding-inline: 1.6rem;
+}
+
+.active {
+  background: var(--gray-01);
+}
+
+.rowButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 6.1rem;
+  padding: 0.8rem 1.6rem;
+  border: 0;
+  border-bottom: 1px solid var(--gray-02);
+  background: none;
+  text-align: start;
+  cursor: pointer;
+}
+
+.row:last-child .rowButton {
+  border-bottom: 0;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.query {
+  color: var(--gray-06);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: var(--weight-bold);
+  line-height: 2.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category {
+  color: var(--gray-05);
+  font-size: var(--text-sm);
+  line-height: 2rem;
+}
+
+.arrow {
+  flex: none;
+  color: var(--gray-05);
+}

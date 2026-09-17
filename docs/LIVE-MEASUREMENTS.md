@@ -240,3 +240,19 @@ is the same row in `#e00000`; governorate rows carry a chevron.
 Panel as wide as the search field (850 at 1440; 961 when the field is wider), radius 4, the same
 `--shadow-overlay`. Rows 61 tall, padding 8 16: query 16/24 over category 14/20 `#464c55`, with a
 20px open-in-new arrow at the end. The row under the pointer sits on `#f0f0f0`.
+
+### Mobile search page
+Search on mobile is a page, not a dropdown. Header 390×75: padding 10 12, gap 10, white, 1px
+`#e5e5e5` bottom border, 15×19 back chevron, field 326×40 radius 6 with a 1px `#e0e0e0` border and
+a magnifier. Suggestion rows 61 tall inside a list inset 16: query in `<em>` 16/23 bold over the
+category 14/20 `#464c55`, a 15px open-in-new arrow at the end, 1px `#e0e0e0` between rows. The row
+under the finger is `#f0f0f0` **full-bleed**, while its content stays inset.
+
+### Mobile location page
+Page padding 16 16 0 with 80 of bottom clearance for the sticky bar. Title row 30 tall, gap 8:
+close icon then the title 16/30/700. Field 358×40 (radius 6, 1px `#e0e0e0`), 29 below the title.
+"Use current location" 16/700 `#3a88ef` with a 20px arrow, padding-block 23. Section titles
+("Popular locations", "Choose region") 16/24/700, padding-block 12. Rows: padding 8 0 16, 1px
+`#e0e0e0` bottom border, label 14/21; region rows carry a 20px chevron, popular ones don't.
+Sticky bar: padding 16, 1px `#e0e0e0` top border, white, with a full-width 40px red button,
+label 16/700 ("Select Egypt").

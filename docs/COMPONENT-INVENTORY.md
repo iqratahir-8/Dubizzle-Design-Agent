@@ -31,6 +31,8 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
 - ✅ Header location dropdown — `LocationDropdown` (+ `EGYPT_LOCATIONS`, shared with the kit via
   `design-kit/content/fixtures.json`)
 - ✅ Header search suggestions — `SearchSuggestions`
+- ✅ Mobile search page — `MobileSearchPage`
+- ✅ Mobile location page — `MobileLocationPage` (+ `LOCATION_SECTIONS`)
 - ✅ Header mega menu — `MegaMenu` (opens on hover, like live; `openItem` pins one open), with the
   live menu content exported as `MEGA_MENUS` (7 categories, 67 subcategories, 201 links) and the
   strip wired into `Header` (`categories`, `openCategory`)
@@ -52,8 +54,6 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
   `docs/LIVE-MEASUREMENTS.md`)
 
 ## To do — navigation and search (from the interaction-state captures)
-- ⬜ Mobile search page — back + field, suggestion rows (full page on mobile, not a dropdown)
-- ⬜ Mobile location page
 - ⬜ User menu (desktop dropdown) and mobile account page — avatar chip, "Get Verified Now", packages
   banner, menu rows; the signed-in header also carries Notifications / Favourites / Chats / My Ads
 
