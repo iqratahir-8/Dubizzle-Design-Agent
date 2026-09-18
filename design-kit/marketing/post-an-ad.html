@@ -66,26 +66,41 @@
   .btn:focus-visible { outline: 0.2rem solid var(--color-secondary); outline-offset: 0.2rem; }
   .btn--sm { height: 4rem; font-size: var(--text-sm); padding-inline: var(--space-4); }
 
-  /* ── Hero. Centred is permitted on a composed surface (RULES 4a). ─────── */
-  .hero { padding-block: var(--space-10) var(--space-9); text-align: center; }
+  /* ── Hero. Asymmetric split: copy leads, a real listing photo carries the
+       proof. A centred hero is permitted here (RULES 4a) but the split earns
+       its keep by showing what a dubizzle ad photo actually looks like. ───── */
+  .hero {
+    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--space-9);
+    align-items: center; padding-block: var(--space-9);
+  }
+  .hero__shot { margin: 0; }
+  .hero__shot img {
+    display: block; width: 100%; height: auto; max-height: 42rem; object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+  @media (max-width: 950px) {
+    .hero { grid-template-columns: 1fr; gap: var(--space-6); }
+    .hero__shot img { max-height: 28rem; }
+  }
+  .hero-unused { padding-block: var(--space-10) var(--space-9); text-align: center; }
   .hero h1 {
-    margin: 0 auto var(--space-4);
-    /* 25ch keeps the headline to 2 lines at desktop. A 3-line hero headline is a
+    margin: 0 0 var(--space-4);
+    /* Keeps the headline to 2 lines at desktop. A 3-line hero headline is a
        font-scale error, not a copy-length one. */
-    max-width: 25ch;
-    font-size: 4.4rem; line-height: 1.15; font-weight: var(--weight-bold);
+    max-width: none;
+    font-size: 4rem; line-height: 1.15; font-weight: var(--weight-bold);
     letter-spacing: -0.05rem;
   }
   .hero p {
-    margin: 0 auto var(--space-7); max-width: 52ch;
+    margin: 0 0 var(--space-7); max-width: 48ch;
     font-size: var(--text-lg); line-height: 1.6; color: var(--text-secondary);
   }
-  .hero .cta-row { display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap; }
+  .hero .cta-row { display: flex; gap: var(--space-3); flex-wrap: wrap; }
   .hero .note { margin-top: var(--space-4); font-size: var(--text-xs); color: var(--text-secondary); }
   @media (max-width: 768px) {
-    .hero { padding-block: var(--space-8) var(--space-7); text-align: start; }
-    .hero h1 { font-size: 3.2rem; margin-inline: 0; }
-    .hero p { font-size: var(--text-md); margin-inline: 0; }
+    .hero { padding-block: var(--space-7); }
+    .hero h1 { font-size: 3.2rem; max-width: none; }
+    .hero p { font-size: var(--text-md); }
     .hero .cta-row { justify-content: stretch; }
     .hero .cta-row .btn { flex: 1; }
   }
@@ -189,17 +204,35 @@
   .foot-note { margin-top: var(--space-4); font-size: var(--text-xs); color: var(--text-secondary); }
   @media (max-width: 950px) { .pkgs, .pkgs--two { grid-template-columns: 1fr; } }
 
+  /* Real ads strip. Photos are extracted from frozen captures of live listings,
+     never stock and never generated (RULES.md 4d). */
+  .ads { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+  .ad { display: flex; flex-direction: column; gap: var(--space-1); }
+  .ad img {
+    /* height:auto is load-bearing: without it the intrinsic height from the
+       height attribute wins and aspect-ratio is ignored, so the three cards
+       stagger. */
+    width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover;
+    border-radius: var(--radius-lg); margin-bottom: var(--space-3); display: block;
+    background: var(--surface-muted);
+  }
+  .ad__price { margin: 0; font-size: var(--text-lg); font-weight: var(--weight-bold); color: var(--color-primary); }
+  .ad__title { margin: 0; font-size: var(--text-sm); color: var(--text-primary); }
+  .ad__meta { margin: 0; font-size: var(--text-xs); color: var(--text-secondary); }
+  @media (max-width: 768px) { .ads { grid-template-columns: 1fr; gap: var(--space-6); } }
+
   /* App section: split, image slot on one side. */
   .app { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-9); align-items: center; }
   .app h2 { margin: 0 0 var(--space-3); font-size: 3.2rem; line-height: 1.2; font-weight: var(--weight-bold); }
   .app p { margin: 0 0 var(--space-6); color: var(--text-secondary); font-size: var(--text-md); }
   .badges { display: flex; gap: var(--space-3); flex-wrap: wrap; }
   .badges img { height: 4rem; }
-  .shot {
-    border-radius: var(--radius-lg); background: var(--surface-muted);
-    aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
-    color: var(--text-secondary); font-size: var(--text-xs); text-align: center; padding: var(--space-6);
+  .shot { margin: 0; display: flex; justify-content: center; }
+  .shot img {
+    display: block; width: auto; max-height: 52rem; height: auto;
+    border-radius: var(--radius-lg); border: 0.1rem solid var(--border-default);
   }
+  @media (max-width: 768px) { .shot img { max-height: 40rem; } }
   @media (max-width: 768px) { .app { grid-template-columns: 1fr; gap: var(--space-6); } .app h2 { font-size: 2.4rem; } }
 
   /* Closing band: uses the measured per-vertical CTA band gradient. */
@@ -210,9 +243,37 @@
 
   .mfoot { border-top: 0.1rem solid var(--border-default); padding-block: var(--space-7); color: var(--text-secondary); font-size: var(--text-xs); }
 
-  /* Motion is opt-out by default for anyone who asks for less. */
+  /* Motion. Two moves only, both motivated:
+     1. the hero resolves on load, so the eye lands on the headline before the photo
+     2. each section resolves as you reach it, sequencing the read
+     Nothing loops, nothing moves while you are scanning a list, and only
+     transform and opacity are animated. */
+  .hero__copy > *, .hero__shot { animation: rise var(--duration-base) var(--ease-standard) both; }
+  .hero__copy > *:nth-child(2) { animation-delay: 60ms; }
+  .hero__copy > *:nth-child(3) { animation-delay: 120ms; }
+  .hero__copy > *:nth-child(4) { animation-delay: 180ms; }
+  .hero__shot { animation-delay: 120ms; }
+
+  /* Hidden only when the .js-reveal flag is set, which an inline script adds after
+     confirming IntersectionObserver exists. Without JS, without IO, or if the script
+     never runs, nothing is hidden and the page reads normally. Content that depends
+     on a script to become visible is content that sometimes never appears. */
+  .js-reveal .reveal > * { opacity: 0; transform: translateY(1.2rem); }
+  .js-reveal .reveal.is-in > * {
+    opacity: 1; transform: none;
+    transition: opacity var(--duration-base) var(--ease-standard),
+                transform var(--duration-base) var(--ease-standard);
+  }
+  .js-reveal .reveal.is-in > *:nth-child(2) { transition-delay: 60ms; }
+  .js-reveal .reveal.is-in > *:nth-child(3) { transition-delay: 120ms; }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(1.2rem); } to { opacity: 1; transform: none; } }
+
+  /* Motion is opt-out for anyone who asks for less. The reveal must also resolve
+     to visible, not stay stuck at opacity 0. */
   @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+    *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+    .js-reveal .reveal > * { opacity: 1 !important; transform: none !important; }
   }
 </style>
 </head>
@@ -231,13 +292,18 @@
 <main>
   <div class="wrap">
     <section class="hero">
-      <h1>Post your ad free and reach buyers across Egypt</h1>
-      <p>List a car, an apartment, a phone or anything else in three steps. Buyers call, chat or WhatsApp you directly.</p>
-      <div class="cta-row">
-        <a class="btn btn--primary" href="#">Post Your Ad</a>
-        <a class="btn btn--ghost" href="#how">See how it works</a>
+      <div class="hero__copy">
+        <h1>Post your ad free and reach buyers across Egypt</h1>
+        <p>List a car, an apartment, a phone or anything else in three steps. Buyers call, chat or WhatsApp you directly.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="#">Post Your Ad</a>
+          <a class="btn btn--ghost" href="#how">See how it works</a>
+        </div>
+        <p class="note">Free to post in most categories. Some categories and promotions are paid.</p>
       </div>
-      <p class="note">Free to post in most categories. Some categories and promotions are paid.</p>
+      <figure class="hero__shot">
+        <img src="assets/car.webp" alt="An Audi saloon photographed on a residential street, the kind of photo sellers take for a dubizzle ad" width="400" height="533" fetchpriority="high">
+      </figure>
     </section>
 
     <div class="quickpick" role="list" aria-label="Start with a category">
@@ -249,7 +315,7 @@
       <a class="qp" role="listitem" href="#"><img src="../icons/category/business.svg" alt="">Sell equipment</a>
     </div>
 
-    <section id="how">
+    <section id="how" class="reveal">
       <h2 class="sec-title">Three steps, a few minutes</h2>
       <div class="steps">
         <div class="step">
@@ -267,7 +333,32 @@
       </div>
     </section>
 
-    <section id="sell">
+    <section id="ads" class="reveal">
+      <h2 class="sec-title">This is what your ad looks like</h2>
+      <div class="ads">
+        <article class="ad">
+          <img src="assets/car.webp" alt="Dark Audi saloon parked on a street in Egypt" width="400" height="533" loading="lazy">
+          <p class="ad__price">EGP 2,850,000</p>
+          <p class="ad__title">Mercedes-Benz E200 2021 - 45,000 km - full options</p>
+          <p class="ad__meta">Sheikh Zayed, Giza · 3 hours ago</p>
+        </article>
+        <article class="ad">
+          <img src="assets/property.webp" alt="Front facade render of a low-rise residential building" width="424" height="300" loading="lazy">
+          <p class="ad__price">EGP 8,500,000</p>
+          <p class="ad__title">Apartment for sale in Zamalek 200m fully finished</p>
+          <p class="ad__meta">Zamalek, Cairo · 2 hours ago</p>
+        </article>
+        <article class="ad">
+          <img src="assets/phone.webp" alt="Three sealed smartphone boxes laid out on a wooden floor" width="400" height="710" loading="lazy">
+          <p class="ad__price">EGP 62,000</p>
+          <p class="ad__title">iPhone 15 Pro Max 256GB - like new with box</p>
+          <p class="ad__meta">Mohandessin, Giza · 1 hour ago</p>
+        </article>
+      </div>
+      <p class="foot-note">Photos come straight from your phone. Sellers shoot them where the item is, and that is what buyers expect to see.</p>
+    </section>
+
+    <section id="sell" class="reveal">
       <h2 class="sec-title">What you can sell</h2>
       <div class="cats">
         <a class="cat" href="#"><img src="../icons/category/vehicles.svg" alt=""><span>Vehicles</span></a>
@@ -285,7 +376,7 @@
       </div>
     </section>
 
-    <section id="promote">
+    <section id="promote" class="reveal">
       <h2 class="sec-title">Get seen faster when you need to</h2>
       <p class="sec-lead">Buy in bundles and pay less. Prices below are for Cars for Sale; every category has its own packages.</p>
 
@@ -359,7 +450,7 @@
       <p class="foot-note">All bundles can be used within 30 days from purchase date.</p>
     </section>
 
-    <section class="app">
+    <section class="app reveal">
       <div>
         <h2>Post from your phone in the app</h2>
         <p>Photograph the item and post it where you are standing. Answer buyers from the same place.</p>
@@ -368,8 +459,9 @@
           <img src="../icons/brand/app-gallery.svg" alt="Explore it on AppGallery">
         </div>
       </div>
-      <!-- TODO: real app screenshot, 4:3. Must come from a capture, never stock or generated (RULES.md 4d). -->
-      <div class="shot">App screenshot slot, 4:3. Needs a real capture.</div>
+      <figure class="shot">
+        <img src="assets/post-flow.png" alt="The Post Your Ad form on a phone, showing category, image upload and car details fields" width="500" height="1000" loading="lazy">
+      </figure>
     </section>
 
     <section>
@@ -385,6 +477,42 @@
     <div class="wrap">Free Classifieds in Egypt. Prices in EGP.</div>
   </footer>
 </main>
+
+<script>
+  /* Reveal-on-scroll, with the failure modes handled first.
+
+     The flag goes on only when we know we can take it off again: no JS, no
+     IntersectionObserver, or reduced motion and the page is simply visible.
+     A hidden tab reports zero intersection, so a timeout reveals everything
+     regardless. Content that needs a script to appear must never depend on
+     that script succeeding. */
+  (function () {
+    var root = document.documentElement;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+
+    root.classList.add('js-reveal');
+    var nodes = [].slice.call(document.querySelectorAll('.reveal'));
+    var showAll = function () {
+      nodes.forEach(function (n) { n.classList.add('is-in'); });
+    };
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach(function (n) { io.observe(n); });
+
+    // Backstop: a tab opened in the background never intersects anything.
+    setTimeout(showAll, 2500);
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) setTimeout(showAll, 1200);
+    });
+  })();
+</script>
 
 </body>
 </html>
