@@ -231,6 +231,101 @@ Fake content is the fastest way to make a real design look generated. Use `desig
 
 ---
 
+## 4b. Accessibility — what is checked, and what is known broken
+
+Run `npm run check:a11y`. It resolves the palette from the generated tokens, so it cannot
+drift from the system it polices.
+
+### Contrast — the palette has real failures
+
+**10 of 24 semantic-colour × surface pairings fail AA for normal text.** These are
+production dubizzle values, so they are **not bugs to fix** — they are constraints to
+design around, and a product decision if anyone wants them changed (`PRODUCT.md`).
+
+| Token | on white | on `--surface-subtle` | on `--surface-muted` |
+|---|---|---|---|
+| `--text-primary` #23262a | 15.19 ✓ | ✓ | ✓ |
+| `--text-secondary` #464c55 | 8.66 ✓ | ✓ | ✓ |
+| `--text-tertiary` #919395 | 3.08 large-only | **2.85 ✗** | **2.71 ✗** |
+| `--color-primary` #e00000 | 5.04 ✓ | ✓ | 4.42 large-only |
+| `--color-secondary` #3a88ef | 3.53 large-only | 3.27 | 3.10 |
+| `--color-success` #059e00 | 3.56 large-only | 3.30 | 3.12 |
+| `--color-warning` #ffba3c | **1.70 ✗** | **1.57 ✗** | **1.49 ✗** |
+
+Rules that follow:
+
+- **Never put body text in `--text-tertiary` on a grey surface.** On white it is large-text
+  only (≥24px, or ≥18.66px bold). Meta lines like "2 hours ago" are usually 12–14px — on a
+  grey card that combination fails.
+- **`--color-warning` is never text.** It is the Featured badge's fill. Text on it is charcoal.
+- `--color-secondary` and `--color-success` are for large text, icons, and borders — not
+  14px body copy.
+- **Colour is never the only signal.** A status, an error, or a selected state needs a shape,
+  an icon or a label as well.
+
+### Targets, names, structure
+
+- **Touch targets** ≥24×24 CSS px (WCAG 2.2 AA minimum); aim for 44×44 on mobile.
+- **Every control has an accessible name.** An icon-only button needs `aria-label`. The
+  audit finds 2–14 unnamed controls per template on live captures — don't reproduce that.
+- **Headings descend in order.** Live jumps h1 → h3 on every ad-detail page; a new screen
+  should not copy that.
+- **Every `<img>` has `alt`.** Decorative images get `alt=""` — the attribute must exist.
+- **Focus must be visible.** Only 1 of 41 component stylesheets defines a focus style today.
+  Any new interactive component ships `:focus-visible`.
+
+Not machine-checkable, still required: keyboard order, screen-reader announcement,
+`prefers-reduced-motion`, RTL mirroring. Check them by hand.
+
+---
+
+## 4c. Motion — currently undefined, not "minimal"
+
+`RULES.md` used to assert "colour transitions only, 0.15s". That was never measured — the
+same mistake as D-007. The generated tokens contain exactly **two** motion values
+(`--banner-animation-speed: 1s`, `--tertiary-button-transition: 0.3s`), and production
+plainly has more: mega menus open, carousels rotate, sheets slide up, toasts enter and leave.
+
+So, until someone measures them:
+
+- **Reuse a measured transition or none at all.** Do not invent a duration or an easing.
+- Anything new goes in `docs/PROPOSALS.md` as a motion proposal with the value you used.
+- **Always honour `prefers-reduced-motion: reduce`** — no current component does. New ones must.
+- Still forbidden regardless: `transform: scale()` on hover, bounce/spring/elastic easing,
+  decorative entrance animations, parallax.
+
+Use the `motion-design` skill to measure real values before adding any.
+
+---
+
+## 4d. Imagery and illustration
+
+- **Photography is user content.** Ad photos come from sellers: uneven, sometimes poorly lit,
+  often watermarked. Mocks must use the real listing images in the captures, not stock
+  photography — polished stock is the fastest way to make a screen look fake.
+- **Illustrations exist but are not in the kit.** Production uses them for empty states and
+  404 (blue-tinted line work with soft shapes). `design-kit/icons/` has **no illustration
+  category**, so there is nothing to reuse yet — extract from a capture, don't draw a new style.
+- **Never generate imagery in a brand style that doesn't exist.** If a screen needs an
+  illustration the system doesn't have, say so and propose the nearest captured one.
+- Avatars are initials on `--red-02` when there is no photo. Logos keep their own colour.
+
+Use the `imagery-illustration` skill.
+
+---
+
+## 4e. Charts and data visualisation — nothing exists
+
+The agency portal renders a line chart (Ads Performance). The design system has **no chart
+tokens, no axis styling, no series palette, and no chart components**. Nothing in the
+consumer product needed them.
+
+Therefore: **do not invent a chart language.** Measure the portal's chart first
+(`chart-data-viz` skill), propose the tokens it implies, get sign-off, then build. A chart
+built from guessed colours will not match the one screen that already ships one.
+
+---
+
 ## 5. Before you call it done
 
 - [ ] Every colour, space, radius, and shadow is a token — no literal hex or off-scale px

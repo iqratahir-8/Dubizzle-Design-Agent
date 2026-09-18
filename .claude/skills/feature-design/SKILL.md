@@ -131,6 +131,17 @@ Then:
 - **Copy** in dubizzle voice: imperative, second person. `Post Your Ad`, `Call`, `Chats`.
   Never `Get Started`, `Discover`, `Unlock`, `Seamless`.
 
+**Specialist skills for the parts this system is weakest at** — use them rather than
+improvising:
+
+| Need | Skill | Why |
+|---|---|---|
+| Arabic / RTL | `rtl-arabic` | No Arabic screen has ever been verified |
+| Animation, transitions | `motion-design` | Motion is undefined; 2 tokens in 1,269 |
+| Photos, illustrations, empty states | `imagery-illustration` | Stock photography is the fastest tell |
+| Charts, metrics, dashboards | `chart-data-viz` | One chart ships; no chart language exists |
+| Contrast, targets, names | `npm run check:a11y` | 14 of 24 palette pairings fail AA |
+
 **Anything with no measured basis gets logged in `docs/PROPOSALS.md` and flagged to the
 user for designer sign-off.** New colour, new gradient, new frosted surface, new motion,
 new chart, new illustration. `check:design` warns rather than blocks, so the warning plus

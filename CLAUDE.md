@@ -11,7 +11,11 @@
    It runs the product pass and the design pass, and — critically — makes you check whether
    the screen is already captured before you invent it. Anything with no measured basis goes
    in `docs/PROPOSALS.md` and gets said out loud.
-5. **`docs/HOW-TO-ASK.md` is the user's guide to this system** — the screens they can name, what
+5. **Specialist skills exist for the weak spots** — `rtl-arabic` (never verified),
+   `motion-design` (undefined), `imagery-illustration` (no illustration assets),
+   `chart-data-viz` (no chart language), plus `npm run check:a11y`. Use them instead of
+   improvising a value.
+6. **`docs/HOW-TO-ASK.md` is the user's guide to this system** — the screens they can name, what
    phrasing triggers what, how to re-capture. If they ask how to use the design agent, or seem
    unsure what exists, point them there (and keep it accurate when the system gains screens or
    components).
