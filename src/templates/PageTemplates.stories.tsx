@@ -743,7 +743,7 @@ export const MenuVehicles: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -757,7 +757,7 @@ export const MenuProperties: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -771,7 +771,7 @@ export const MenuMoreCategories: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -785,7 +785,7 @@ export const LocationDropdown: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -799,7 +799,7 @@ export const SearchSuggestions: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -813,7 +813,7 @@ export const MSearchOverlay: Story = {
       "mobile"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -827,7 +827,7 @@ export const MSearchSuggestions: Story = {
       "mobile"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -841,7 +841,7 @@ export const MLocationPage: Story = {
       "mobile"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -885,7 +885,7 @@ export const MenuMobiles: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -899,7 +899,7 @@ export const MenuJobs: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -913,7 +913,7 @@ export const MenuFurniture: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -927,7 +927,7 @@ export const MenuElectronics: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -941,20 +941,8 @@ export const MenuVehiclesCarCare: Story = {
       "desktop"
     ],
     "live": true,
-    "captured": "2026-09-16",
+    "captured": "2026-09-17",
     "origin": "https://www.dubizzle.com.eg"
-  },
-};
-
-export const AgencyPortal: Story = {
-  name: "Agency portal",
-  args: {
-    "name": "agency-portal",
-    "label": "Agency portal",
-    "layouts": [
-      "desktop"
-    ],
-    "live": false
   },
 };
 

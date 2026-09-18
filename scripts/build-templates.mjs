@@ -157,7 +157,6 @@ const LABELS = {
   chat: 'Chat',
   favourites: 'Favourites',
   'seller-page': 'Seller / agency page',
-  'agency-portal': 'Agency portal (Pro)',
   login: 'Login or signup',
   payment: 'Payment',
   'not-found': 'Not found / empty state',

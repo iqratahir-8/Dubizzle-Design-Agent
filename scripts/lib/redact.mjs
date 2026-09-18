@@ -39,7 +39,12 @@ export const SAMPLE = {
   messages: ['Hi, is this still available?', 'Yes, still available.', 'Is the price negotiable?', 'Slightly, for a serious buyer.'],
 };
 
-const PHONE = /(?:\+?20[\s-]?)?\b0?1[0125][\s-]?\d{3,4}[\s-]?\d{4}\b/g;
+/* Egyptian mobile in every form the site renders it. The previous pattern used \b
+   after the country code, which never matches in "+201154785698" — the 0 and the 1
+   are both word characters, so there is no boundary between them. That hole let a
+   real agent's number through into a saved capture and past contactLeaks(). Digit
+   lookarounds instead of \b, and the separators are optional between every digit. */
+const PHONE = /(?<!\d)(?:(?:\+|00)?20[ \t-]?)?0?1[0125](?:[ \t-]?\d){8}(?!\d)/g;
 const EMAIL = /[\w.+-]+@[\w-]+\.[\w.-]+/g;
 const UUID = /\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi;
 
@@ -52,8 +57,13 @@ const UUID = /\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/g
  * drawer, so a redactor that only knows "First L." lets the surname through.
  */
 export async function readAccountIdentity(page, origin) {
-  await page.goto(`${origin}/en/editProfile/info`, { waitUntil: 'networkidle2', timeout: 90_000 });
-  await new Promise((r) => setTimeout(r, 2000));
+  /* domcontentloaded, not networkidle2: a signed-in session holds long-poll
+     connections open, so the network never goes idle and this probe times out at 90s
+     — taking the whole capture run with it, because every screen depends on knowing
+     the name to redact. Settle on DOM, then wait for quiet only as far as it comes. */
+  await page.goto(`${origin}/en/editProfile/info`, { waitUntil: 'domcontentloaded', timeout: 90_000 });
+  await page.waitForNetworkIdle({ idleTime: 900, timeout: 20_000 }).catch(() => {});
+  await new Promise((r) => setTimeout(r, 2500));
   const { fullName, shortName } = await page.evaluate(() => {
     const leaves = [...document.querySelectorAll('body *')].filter((e) => e.children.length === 0);
     const short = leaves.map((e) => e.textContent.trim()).find((t) => /^[\p{L}][\p{L}'-]+ [\p{L}]\.$/u.test(t)) ?? null;
@@ -134,6 +144,7 @@ export async function redactPage(page, identity) {
       }
 
       // Every remaining visible text node.
+      if (!document.body) return 0;
       const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
       for (let node = walker.nextNode(); node; node = walker.nextNode()) {
         const next = scrub(node.nodeValue);
@@ -226,6 +237,24 @@ export async function redactPage(page, identity) {
 /** Layer 2 — runs on the serialized HTML before it is written. */
 /** Apply a text transform everywhere except inside data: URIs (inlined fonts), which it would corrupt. */
 const outsideDataUris = (html, fn) => html.split(/(data:[a-z0-9.+/-]+;base64,[A-Za-z0-9+/=]+)/i).map((part, i) => (i % 2 ? part : fn(part))).join('');
+
+/* Apply a transform to rendered TEXT only — the bits between tags — skipping every
+   attribute value and the whole of any <svg>. Two reasons, both found the hard way:
+   an SVG path ("M12 2a10 10 0 1 0 10 10A…") and an App Store id in a URL both match a
+   phone pattern, so scanning raw HTML reported a leak on all 139 captures including
+   404 and the mega menus; and rewriting those digits would have quietly corrupted
+   every icon it touched. */
+const textOnly = (html, fn) =>
+  html
+    .split(/(<svg[\s\S]*?<\/svg>)/gi)
+    .map((chunk, ci) => {
+      if (ci % 2) return chunk; // an <svg> block — leave entirely alone
+      return chunk
+        .split(/(<[^>]*>)/g)
+        .map((part, i) => (i % 2 ? part : fn(part)))
+        .join('');
+    })
+    .join('');
 
 export function sanitizeHtml(html, identity) {
   return outsideDataUris(html, (chunk) => sanitizeChunk(chunk, identity));
@@ -321,15 +350,113 @@ export async function scrubContactsPage(page) {
 
 /** Layer 2 — on the serialized HTML, before it is written. */
 export function scrubContactsHtml(html) {
-  return outsideDataUris(html, (chunk) => chunk.replace(PHONE, SAMPLE.phone).replace(EMAIL, SAMPLE.email));
+  return outsideDataUris(html, (chunk) => textOnly(chunk, (t) => t.replace(PHONE, SAMPLE.phone).replace(EMAIL, SAMPLE.email)));
 }
 
 /** Gate — refuse to save if a non-sample phone or any email survived both layers. */
 export function contactLeaks(html) {
-  const stripped = html.replace(/data:[a-z0-9.+/-]+;base64,[A-Za-z0-9+/=]+/gi, '');
+  // Same restriction as scrubContactsHtml: judge rendered text, not markup.
+  let stripped = html.replace(/data:[a-z0-9.+/-]+;base64,[A-Za-z0-9+/=]+/gi, '');
+  stripped = textOnly(stripped, (t) => t)
+    .split(/(<svg[\s\S]*?<\/svg>)/gi)
+    .filter((_, i) => i % 2 === 0)
+    .join('')
+    .replace(/<[^>]*>/g, ' ');
   const digits = (s) => s.replace(/\D/g, '');
   const found = new Set();
   for (const m of stripped.match(PHONE) ?? []) if (digits(m) !== digits(SAMPLE.phone)) found.add('phone number');
   for (const m of stripped.match(EMAIL) ?? []) if (m !== SAMPLE.email) found.add(`email (${m.slice(0, 24)})`);
   return [...found];
 }
+
+/* ── Fixture replacement for third-party data tables ──────────────────────────
+   The agency portal's Leads, VIP Leads, Candidates and Agency Management screens
+   list *other people* — buyers who contacted the agency, job applicants, staff.
+   Phone and email are patterns and can be scrubbed; a person's NAME is not, so
+   detect-and-replace is the wrong shape here: whatever the detector misses gets
+   written to disk.
+
+   So this overwrites every data cell wholesale rather than trying to spot the
+   sensitive ones. The design system needs the table's structure — columns, row
+   rhythm, status pills, typography — not real buyers. Headers are preserved
+   because they are UI copy, not data. */
+
+const FIXTURE_NAMES = ['Ahmed H.', 'Mona S.', 'Karim M.', 'Yasmine A.', 'Omar F.', 'Sara K.', 'Hany T.', 'Nour A.'];
+const FIXTURE_ADS = SAMPLE.chatTitles;
+
+/**
+ * Replaces the content of every data row in the page's tables/row-lists with
+ * fixtures, choosing a value per column from that column's header text.
+ * Returns {tables, rows, cells} so a capture can log what it rewrote.
+ */
+export async function fixturizeTables(page) {
+  return page.evaluate(
+    ({ names, ads, sample, phoneSrc, emailSrc }) => {
+      const PHONE_RE = new RegExp(phoneSrc);
+      const EMAIL_RE = new RegExp(emailSrc);
+      const pick = (arr, i) => arr[i % arr.length];
+      let tables = 0;
+      let rows = 0;
+      let cells = 0;
+
+      const valueFor = (header, rowIndex, cellIndex, original) => {
+        const h = (header || '').toLowerCase();
+        // Keep structural / non-personal columns recognisable but synthetic.
+        if (/phone|mobile|tel|whats/.test(h)) return sample.phone;
+        if (/e-?mail/.test(h)) return sample.email;
+        if (/name|customer|lead|applicant|candidate|agent|client|user|buyer|seller|contact/.test(h)) {
+          return pick(names, rowIndex + cellIndex);
+        }
+        if (/ad|listing|title|property|vehicle|car/.test(h)) return pick(ads, rowIndex);
+        // Numbers, dates, prices and statuses are not personal — keep the original
+        // so the column keeps its real shape and width.
+        if (/^[\s\d.,:/%-]*$/.test(original) || /^(EGP|جنيه)/i.test(original)) return original;
+        if (original.length <= 24) return original;
+        return pick(ads, rowIndex + cellIndex);
+      };
+
+      for (const table of document.querySelectorAll('table')) {
+        const headers = [...table.querySelectorAll('th')].map((h) => h.textContent.trim());
+        const bodyRows = [...table.querySelectorAll('tbody tr')];
+        if (!bodyRows.length) continue;
+        tables++;
+        bodyRows.forEach((tr, ri) => {
+          /* An empty state lives in the tbody too: one cell spanning every column,
+             holding an illustration and a message. Rewriting it replaced "Showing 0
+             Leads" artwork copy with a fixture name. A real data row has roughly as
+             many cells as the table has headers — anything narrower is layout. */
+          const cellCount = tr.children.length;
+          if (headers.length > 1 && cellCount < headers.length) return;
+          if (tr.querySelector('svg, img') && cellCount <= 1) return;
+          rows++;
+          [...tr.children].forEach((td, ci) => {
+            const original = td.textContent.trim();
+            if (!original) return;
+            /* A cell is not one value. The Agents table stacks name + phone + WhatsApp
+               handle in a single Name cell, and replacing only the deepest node left the
+               real name and a real phone number untouched. Rewrite EVERY leaf in the
+               cell, choosing per leaf by what that leaf actually contains. */
+            const leaves = [...td.querySelectorAll('*')].filter((n) => n.children.length === 0 && n.textContent.trim());
+            const targets = leaves.length ? leaves : [td];
+            targets.forEach((leaf, li) => {
+              const own = leaf.textContent.trim();
+              if (!own) return;
+              let next;
+              if (PHONE_RE.test(own)) next = sample.phone;
+              else if (EMAIL_RE.test(own)) next = sample.email;
+              else next = valueFor(headers[ci], ri, ci + li, own);
+              PHONE_RE.lastIndex = 0;
+              EMAIL_RE.lastIndex = 0;
+              if (next === own) return;
+              leaf.textContent = next;
+              cells++;
+            });
+          });
+        });
+      }
+      return { tables, rows, cells };
+    },
+    { names: FIXTURE_NAMES, ads: FIXTURE_ADS, sample: SAMPLE, phoneSrc: PHONE.source, emailSrc: EMAIL.source },
+  );
+}
+

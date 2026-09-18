@@ -23,6 +23,7 @@ import { buildGallery } from './build-screens-gallery.mjs';
 import { ORIGIN, LAYOUTS, sleep, scrollThrough, settleFixedElements, captureAndDismissInterstitial, removePushPrompt } from './lib/render-helpers.mjs';
 import { readAccountIdentity, redactPage, sanitizeHtml, leaks, visibleLeaks } from './lib/redact.mjs';
 import { connectToSession, isSignedIn } from './capture-session.mjs';
+import { fixturizeTables, scrubContactsPage, scrubContactsHtml, contactLeaks } from './lib/redact.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'design-kit/reference/live');
@@ -35,7 +36,34 @@ export const ACCOUNT_SCREENS = {
   'settings-privacy': '/en/settings/privacy',
   'settings-notifications': '/en/settings/notifications',
   packages: '/en/payments/businesspackages/my-account',
+
+  /* Agency portal (/en/agencyPortal — camelCase; every lowercase spelling 404s).
+     Reachable only with an agency account; the nav lists these eight sections. */
+  'portal-dashboard': '/en/agencyPortal',
+  'portal-ads': '/en/agencyPortal/ads',
+  'portal-leads': '/en/agencyPortal/leads',
+  'portal-vip': '/en/agencyPortal/vip',
+  'portal-candidates': '/en/agencyPortal/jobsApplications',
+  'portal-agents': '/en/agencyPortal/agents',
+  'portal-insights': '/en/agencyPortal/insights/cars-market',
+  'portal-credit': '/en/agencyPortal/creditInfo/all',
 };
+
+/* Screens listing OTHER people — buyers who contacted the agency, job applicants,
+   staff. Their table rows are overwritten with fixtures before anything is saved:
+   a name is not a pattern, so detect-and-replace would leak whatever it missed.
+   See fixturizeTables() in lib/redact.mjs. */
+export const FIXTURE_SCREENS = new Set([
+  'portal-dashboard',
+  'portal-leads',
+  'portal-vip',
+  'portal-candidates',
+  'portal-agents',
+]);
+
+/* The portal is client-rendered and slow to fill; the default settle leaves empty
+   tables, the same problem property-agencies had. */
+export const PORTAL_WAIT = 6000;
 
 const args = process.argv.slice(2);
 const layoutArg = args.find((a) => a.startsWith('--layout='))?.split('=')[1];
@@ -54,8 +82,13 @@ const browser = await connectToSession();
 // Identity is read once from a desktop page, where the header shows the name.
 const probe = await browser.newPage();
 await probe.setViewport(LAYOUTS.desktop.viewport);
-await probe.goto(`${ORIGIN}/en/`, { waitUntil: 'networkidle2', timeout: 90_000 });
-await sleep(2000);
+/* Third place this bites: a signed-in session keeps long-poll connections open, so
+   networkidle2 never fires and this sign-in probe times out at 90s, aborting the whole
+   run before a single screen is captured. Settle on DOM, then wait for quiet only as
+   far as it comes. Same fix as readAccountIdentity() and the portal navigations. */
+await probe.goto(`${ORIGIN}/en/`, { waitUntil: 'domcontentloaded', timeout: 90_000 });
+await probe.waitForNetworkIdle({ idleTime: 900, timeout: 20_000 }).catch(() => {});
+await sleep(2500);
 if (!(await isSignedIn(probe))) {
   console.error('The capture window is signed out. Sign in there, then run: npm run capture:login -- --check');
   await probe.close();
@@ -80,7 +113,16 @@ for (const name of selected) {
       await page.setUserAgent(userAgent);
       await page.setViewport(viewport);
       const recorder = recordResponses(page);
-      const response = await page.goto(ORIGIN + ACCOUNT_SCREENS[name], { waitUntil: 'networkidle2', timeout: 90_000 });
+      /* The agency portal holds long-poll connections open, so networkidle2 never
+         fires and every page times out at 90s even though it rendered long before.
+         Same fix as the signed-in state captures: settle on DOM, then wait for the
+         network to go quiet only as far as it will. */
+      const portal = name.startsWith('portal-');
+      const response = await page.goto(ORIGIN + ACCOUNT_SCREENS[name], {
+        waitUntil: portal ? 'domcontentloaded' : 'networkidle2',
+        timeout: 90_000,
+      });
+      if (portal) await page.waitForNetworkIdle({ idleTime: 1000, timeout: 20_000 }).catch(() => {});
       const status = response?.status() ?? 0;
       await sleep(2000);
       if (status !== 200 || /\/notfound\b/.test(page.url())) {
@@ -88,12 +130,30 @@ for (const name of selected) {
         continue;
       }
       if (layout === 'mobile') await captureAndDismissInterstitial(page, null);
+      if (name.startsWith('portal-')) await sleep(PORTAL_WAIT);
       await scrollThrough(page);
       await page.waitForNetworkIdle({ idleTime: 800, timeout: 15_000 }).catch(() => {});
 
       await removePushPrompt(page);
+      /* Third-party data goes first, before any redaction or serialization: the
+         portal's Leads/Candidates/Agents tables list other people, and a name is
+         not a pattern. Overwrite every data row with fixtures, then scrub phones
+         and emails as a backstop. */
+      let fixed = null;
+      if (FIXTURE_SCREENS.has(name)) {
+        fixed = await fixturizeTables(page);
+        await scrubContactsPage(page);
+      }
       const counts = await redactPage(page, identity);
-      const html = sanitizeHtml(absolutize(await snapshotHtml(page, recorder, { inlineImages: false, restoreScroll: false }), ORIGIN), identity);
+      let html = sanitizeHtml(absolutize(await snapshotHtml(page, recorder, { inlineImages: false, restoreScroll: false }), ORIGIN), identity);
+      if (FIXTURE_SCREENS.has(name)) {
+        html = scrubContactsHtml(html);
+        const contacts = contactLeaks(html);
+        if (contacts.length) {
+          results.push({ base, status: 'FAILED', detail: `refused to save — third-party contact details: ${contacts.join(', ')}` });
+          continue;
+        }
+      }
       const leaked = leaks(html, identity);
       if (leaked.length) {
         results.push({ base, status: 'FAILED', detail: `refused to save — still contains: ${leaked.join(', ')}` });
@@ -101,6 +161,9 @@ for (const name of selected) {
       }
       await settleFixedElements(page);
       await redactPage(page, identity);
+      // settleFixedElements can re-render a component and restore what was scrubbed,
+      // so third-party contacts are scrubbed again immediately before the screen check.
+      if (FIXTURE_SCREENS.has(name)) await scrubContactsPage(page);
       const onScreen = await visibleLeaks(page, identity);
       if (onScreen.length) {
         results.push({ base, status: 'FAILED', detail: `refused — still visible on screen: ${onScreen.join(', ')}` });
@@ -113,7 +176,9 @@ for (const name of selected) {
       results.push({
         base,
         status: 'saved',
-        detail: `${height}px tall · redacted: ${counts.text} text, ${counts.chatRows} chat rows, ${counts.inputs} fields, ${counts.avatars} avatars`,
+        detail: `${height}px tall · redacted: ${counts.text} text, ${counts.chatRows} chat rows, ${counts.inputs} fields, ${counts.avatars} avatars${
+          fixed ? ` · fixtures: ${fixed.cells} cells in ${fixed.rows} rows / ${fixed.tables} table(s)` : ''
+        }`,
       });
     } catch (error) {
       results.push({ base, status: 'FAILED', detail: error.message.split('\n')[0] });

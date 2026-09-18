@@ -62,7 +62,7 @@ shows the very same files under **Templates → Pages** (device control: desktop
 | Account (local only, gitignored) | `my-ads`, `chat`, `edit-profile`, `settings-privacy`, `settings-notifications`, `packages` |
 | Post an ad (local only) | `post-ad-category`, `post-ad-subcategory`, `post-ad`, `post-ad-filled` |
 | Upselling (local only) | `upsell-select`, `upsell` |
-| Hand-built (no capture yet) | `favourites`, `payment`, `agency-portal` |
+| Hand-built (no capture yet) | `favourites`, `payment` |
 
 Copy the closest template to a new file and edit it. Live templates are production HTML
 (hashed class names, shared CSS in `_live-css/`, images in `_live/assets/`) — keep the

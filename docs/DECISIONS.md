@@ -201,3 +201,51 @@ thing this whole pipeline exists to prevent.
 app"), and "View +5 more" is the **Details expander**, not a photo control — the state is
 `dpv-details-expanded`. `dpv-phone` and `login-dialog` are desktop-only: mobile's Call button
 dials directly, and mobile signs in from the bottom nav's Account tab.
+
+## D-011 — A real phone number reached disk. Five bugs, and what they have in common
+**2026-09-18 · adopted after an incident**
+
+Capturing the agency portal's Agency Management screen wrote a live agent's phone number
+into both the saved HTML and the PNG. It was found by opening the screenshot, not by any
+check. That file is deleted, as is every capture from the buggy runs. All 141 captures now
+scan clean.
+
+**Why the gates were silent.** `PHONE` used `\b` after the country code — but in
+`+201154785698` the `0` and `1` are both word characters, so there is no boundary and the
+match never fired. Every gate (`scrubContactsPage`, `scrubContactsHtml`, `contactLeaks`,
+`visibleLeaks`) depended on that one pattern, so all four agreed the page was clean.
+
+**Why the fixtures missed it.** `fixturizeTables` was written to overwrite cells wholesale
+*precisely because* a name is not a pattern — then implemented as detect-and-replace by
+accident: it rewrote only the deepest text node per cell. The Agents table stacks name +
+phone + WhatsApp handle in one cell, so it replaced the handle and left the real name and
+number. It reported "3 cells replaced", which read like success.
+
+Three more found while verifying:
+
+- **Raw-HTML scanning matched markup.** An inline SVG path (`M12 2a10 10 0 1 0 10 10A…`) and
+  an App Store id in a URL both look like Egyptian mobiles, so the first re-scan reported a
+  leak in 137 of 139 captures — and `scrubContactsHtml` would have *rewritten those digits*,
+  silently corrupting every icon it touched. Scrub and leak-check now read rendered text
+  only: never attributes, never inside `<svg>`.
+- **`\s` let a newline join two numbers.** The dashboard chart's Y axis renders as
+  `15000\n10000`, which matched as a phone, so `visibleLeaks` refused to save a clean page
+  twice. Separators are now `[ \t-]`.
+- **Empty states are not data rows.** An empty state lives in the `tbody` as one cell
+  spanning every column; the fixture pass overwrote "Showing 0 Leads" artwork copy with a
+  fixture name. A row now counts as data only if it has roughly as many cells as the table
+  has headers.
+
+**The common thread:** every one of these came from treating a phone number as "digits with
+flexible separators" and trusting a single pattern to be both the scrubber and the judge.
+The scrubber and the gate share `PHONE`, so a hole in it disables detection *and* repair at
+once, and nothing is left to notice. Three rules follow:
+
+1. **Verify captures by eye.** Four of these bugs produced output that looked correct, and
+   two reported success while doing the wrong thing. This is the same lesson as D-010.
+2. **Never soften a gate to unblock a capture.** Both gate failures here were false
+   positives, and both were fixed by making the pattern *more accurate*, not more permissive.
+   A check that cries wolf is a check someone later disables — which is how the real leak
+   returns.
+3. **Wholesale overwrite beats detection for third-party data.** Where a person's name can
+   appear, replace everything in the region rather than what a detector recognises.

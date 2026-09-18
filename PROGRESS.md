@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-17 (late; D-007/D-008 rules, D-009/D-010 modal pass complete) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-17 (late; D-007/D-008 rules, D-009/D-010 modals, D-011 portal + redaction incident) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -297,6 +297,31 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    `sort-menu.desktop`, `m-filters.mobile`, `dpv-details-expanded` ×2.
    Gotcha for the next session: the element finder is a **template literal** inside
    `capture-states.mjs` — a backtick in a comment there closes the string and breaks the file.
+
+
+26. **Agency portal captured — all 8 screens** (user supplied the URL: `/en/agencyPortal`,
+   camelCase; every lowercase spelling 404s, and there is no public entry point — only
+   "Partner with dubizzle" in the signed-in menu, with an agency account).
+   Screens: Dashboard (sidebar app, "dubizzle Pro" wordmark, Ads Performance with a **line
+   chart**), Agency Ads, Leads (captured both populated *and* as an empty state), VIP Leads,
+   Candidates, Agency Management, Insights (`Make | Dubizzle rank | Traffic trend | Demand |
+   inventory` — market data, no PII), Credit Info.
+   The invented `agency-portal` template is **deleted**: the real portal is a sidebar app
+   with a chart, not a top-nav dashboard with a leads table — nothing was salvageable. The
+   monorepo's `--agency-portal-*` tokens turned out to be real evidence and predicted the
+   layout (`--agency-portal-closed-nav-container-width: 8rem` = the collapsed icon rail).
+   **Incident → D-011: a real phone number reached disk.** Five bugs, all fixed, all captures
+   re-taken and re-scanned (141 clean). Read D-011 before touching redaction. Headlines:
+   `PHONE` used `\b` after the country code so `+20…` never matched *any* gate;
+   `fixturizeTables` rewrote one leaf per cell instead of all of them; raw-HTML scanning
+   matched SVG paths and URLs (137 false leaks, and would have corrupted icons); `\s` let a
+   chart axis `15000\n10000` match as a phone; empty-state rows were treated as data.
+   **New gotcha: `networkidle2` is unusable on any signed-in dubizzle page** — long-poll
+   connections mean the network never idles. It bit in three places, two of them *before*
+   any capture (the sign-in probe and `readAccountIdentity`), so a timeout aborted whole runs.
+   All now `domcontentloaded` + best-effort idle.
+   **Not yet done:** portal mobile layout; toasts (copy/share, form validation,
+   favourite-then-undo) still outstanding.
 
 ## 6. Next up
 
