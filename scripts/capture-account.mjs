@@ -201,5 +201,10 @@ await browser.disconnect();
 buildGallery();
 for (const r of results) console.log(`${r.status.padEnd(6)}  ${r.base.padEnd(32)} ${r.detail}`);
 const failed = results.filter((r) => r.status === 'FAILED').length;
-console.log(`\n${results.length - failed} saved, ${failed} failed`);
+const skipped = results.filter((r) => r.status === 'skipped').length;
+// Count the three outcomes separately: a tally that folds skips into "saved"
+// overstates what a run produced, which is how a missing capture goes unnoticed.
+console.log(
+  `\n${results.length - failed - skipped} saved, ${failed} failed${skipped ? `, ${skipped} skipped` : ''}`,
+);
 process.exit(failed ? 1 : 0);
