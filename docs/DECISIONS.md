@@ -333,6 +333,28 @@ are complete token files, capture scripts and full component sets.
 refused. A skill that supplies *rigour* is welcome. Judge an external skill on which of those
 it is.
 
+**Revised same day — `taste-skill` is now installed, scoped.** The user needs this agent to
+design dubizzle **landing pages**, which is precisely the scope taste-skill declares for
+itself. The original call rejected it on the product-UI case without accounting for the
+marketing case, and that was too broad.
+
+It is installed as `design-taste-frontend` with a dubizzle preamble above the upstream text:
+it governs **composition** on landing/campaign/marketing surfaces — hierarchy, rhythm, section
+order, not looking templated — and explicitly does **not** choose the ingredients. Palette,
+Proxima Nova / GESS, gradient-by-role, motion tokens, imagery-from-captures, EGP, RTL and the
+contrast limits stay binding and outrank it. Where it conflicts, the measurement wins; its
+font recommendations and its image generation are to be ignored.
+
+This mirrors the Repository Mode / Innovation Mode split in dubizzle's own design-system
+export (D-013), and `RULES.md` §4a now states it directly: **measured surfaces** (listings,
+search, DPV, post-an-ad, chat, account, portal) versus **composed surfaces** (landing,
+campaign, growth/SEO, app-download). Freedom is in the arrangement, never in the ingredients.
+
+`frontend-design` was narrowed at the same time. Its description had fired on "build web
+components, pages, or applications" — most requests here — while its body asks for bold
+aesthetics, distinctive display fonts, gradient meshes and dramatic shadows, all of which
+contradict RULES.md. It is now explicitly for non-dubizzle work.
+
 Not installed, available in the library if wanted for non-dubizzle work: `taste-skill`,
 `taste-skill-v1`, `gpt-tasteskill`, `brutalist`, `minimalist`, `soft`, `brandkit`,
 `redesign-skill`, `stitch-skill`, `image-to-code-skill`, `imagegen-frontend-web`,

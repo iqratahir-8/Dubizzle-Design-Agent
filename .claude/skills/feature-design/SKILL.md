@@ -140,6 +140,7 @@ improvising:
 | Animation, transitions | `motion-design` | Motion is undefined; 2 tokens in 1,269 |
 | Photos, illustrations, empty states | `imagery-illustration` | Stock photography is the fastest tell |
 | Charts, metrics, dashboards | `chart-data-viz` | One chart ships; no chart language exists |
+| A landing / campaign / marketing page | `design-taste-frontend` | Composition is a real choice there; brand values still binding |
 | Contrast, targets, names | `npm run check:a11y` | 14 of 24 palette pairings fail AA |
 
 **Anything with no measured basis gets logged in `docs/PROPOSALS.md` and flagged to the

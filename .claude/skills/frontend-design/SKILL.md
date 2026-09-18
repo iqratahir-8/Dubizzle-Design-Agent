@@ -1,6 +1,12 @@
 ---
 name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.
+description: >-
+  Generic frontend craft for NON-dubizzle work only — a standalone demo, a throwaway
+  prototype, or a project with no design system of its own. Do NOT use it for dubizzle
+  Egypt: product UI belongs to `feature-design`, and dubizzle landing/campaign pages belong
+  to the scoped `design-taste-frontend`. Its advice to pick a bold aesthetic, distinctive
+  display fonts, gradient meshes and dramatic shadows contradicts RULES.md, which is derived
+  from 142 live captures.
 license: Complete terms in LICENSE.txt
 ---
 

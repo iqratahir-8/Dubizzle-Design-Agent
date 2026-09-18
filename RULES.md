@@ -231,6 +231,30 @@ Fake content is the fastest way to make a real design look generated. Use `desig
 
 ---
 
+## 4a. Two kinds of surface
+
+Not every dubizzle screen is a measured one, and treating them the same produces either
+fabricated product UI or timid marketing pages.
+
+**Measured surfaces** — listings, search, ad detail, post-an-ad, chat, account, the agency
+portal. These exist in production and are captured. Reproduce them; compose new work from
+their parts. Skill: `feature-design`.
+
+**Composed surfaces** — landing, campaign, seasonal, growth/SEO and app-download pages.
+Composition is a genuine design choice here, and a centred hero, three evenly-weighted cards
+and larger display type are **permitted** (they are still wrong on top of a results grid).
+Skill: `design-taste-frontend`, scoped for dubizzle.
+
+The brand does not change between them. Palette, Proxima Nova / GESS, gradient-by-role,
+motion tokens, imagery from captures, EGP, RTL, contrast — all binding on both. What changes
+is how much freedom you have in **arrangement**, not in **ingredients**.
+
+This mirrors the split dubizzle's own design-system export draws between *Repository Mode*
+and *Innovation Mode* (D-013): what ships today is the baseline, not the limit — but anything
+beyond it is labelled, never presented as an existing standard.
+
+---
+
 ## 4b. Accessibility — what is checked, and what is known broken
 
 Run `npm run check:a11y`. It resolves the palette from the generated tokens, so it cannot
