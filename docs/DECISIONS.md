@@ -302,3 +302,38 @@ includes raw screenshots. What matters is extracted and committed; the raw bundl
 **The general rule this sets:** an external design system is evidence, not authority. Where it
 agrees with a measurement, it corroborates. Where it goes beyond one, it is a proposal — however
 official it looks, and however much of it turns out to be right.
+
+## D-014 — Taste-skill library: one of thirteen installed
+**2026-09-18 · adopted**
+
+The `taste-skill` library (leonxlnx, 13 skills) was reviewed for this project. **Only
+`output-skill` was installed**, as `full-output-enforcement`.
+
+**Why the rest stay out.** They are aesthetic-*selection* skills: they read a brief, infer a
+design direction, then supply fonts, spacing, shadows and motion. dubizzle already has all of
+those, measured from production across 142 captures. A skill that picks an aesthetic is
+solving a problem this project does not have, and would reintroduce exactly what D-007 cost us
+— confident values with nothing behind them.
+
+`taste-skill` itself rules this out in its own first line: *"Landing pages, portfolios, and
+redesigns. Not dashboards, not data tables, not multi-step product UI."* dubizzle is a dense
+product UI with data tables and an agency dashboard. It also says *"the audience picks the
+aesthetic, not your taste"* — here the **measurements** pick it.
+
+The style skills (`brutalist`, `minimalist`, `soft`, `gpt-tasteskill`) impose a visual
+language; `brandkit` and the `imagegen-*` skills generate brand imagery, which RULES.md §4d
+forbids — dubizzle's illustration style is extracted from captures, never generated.
+
+**Why `output-skill` is different.** It carries no aesthetic at all. It bans `// ...`,
+`// TODO`, "for brevity", skeleton-instead-of-implementation, and truncated files, and defines
+a clean pause/resume protocol at token limits. That is useful for a project whose deliverables
+are complete token files, capture scripts and full component sets.
+
+**The general rule:** a skill that supplies *values* competes with the measurements and is
+refused. A skill that supplies *rigour* is welcome. Judge an external skill on which of those
+it is.
+
+Not installed, available in the library if wanted for non-dubizzle work: `taste-skill`,
+`taste-skill-v1`, `gpt-tasteskill`, `brutalist`, `minimalist`, `soft`, `brandkit`,
+`redesign-skill`, `stitch-skill`, `image-to-code-skill`, `imagegen-frontend-web`,
+`imagegen-frontend-mobile`.
