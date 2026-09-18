@@ -426,3 +426,39 @@ product. If dubizzle ships a native app they become relevant in a day.
 worth holding, provided the conflict is written down and the skill is wired to produce
 proposals instead of output. What must never happen is a skill quietly overriding a rule —
 that is D-007 with extra steps.
+
+## D-016 — AntV chart MCP: registered for exploration, not for shipping
+**2026-09-18 · adopted with a hard data boundary**
+
+`.mcp.json` registers `@antv/mcp-server-chart` (26+ chart types: bar, line, column, area,
+pie, radar, sankey, funnel, treemap, network, district maps and more). It closes a real
+gap — the system could not draw a chart at all — but only for one half of the problem.
+
+**The boundary that matters: the server sends data off this machine.** Every `generate_*`
+call POSTs the chart data to `getVisRequestServer()`, defaulting to
+`https://antv-studio.alipay.com/api/gpt-vis` (Ant Group), and returns a remote image URL.
+For a project that deleted a capture and fixed five redaction bugs over a single phone
+number (D-011), posting a leads table or revenue series to a third-party renderer would
+undo that in one call. **Fixture-shaped numbers only**, unless self-hosted — the repo
+ships a Dockerfile and compose file, and `VIS_REQUEST_SERVER` points wherever you deploy.
+
+**What it produces is not a design-system artefact.** A remote image in AntV's palette and
+axis styling is not dubizzle's chart, cannot be tokenised, and `RULES.md` 4d forbids
+generated imagery in a composed or measured surface. It is a thinking aid: *which chart
+type fits this data*, sketched fast.
+
+**What ships is still the path in RULES.md 4e:** measure the portal's Ads Performance line
+chart first (`chart-data-viz`), propose the tokens it implies, get sign-off, pick the
+rendering library with `pick-ui-library` — AntV's own React libraries are the natural
+candidates precisely because the portal's chart comes from that family — then build the
+component in dubizzle tokens and theme the library rather than shipping its defaults.
+
+New skill `dubizzle-charts` holds the usage rules, the data boundary, and the decisions
+already made: red is reserved for action so a series is never red, the portal's line is
+blue, colour is never the only signal, EGP formatting follows production, and a table
+often beats a chart in a dense classifieds product — the portal's own Insights screen
+carries trend inside a table with no chart at all.
+
+**Consumer side has no chart today** and the bar stays high: a price-history line on a DPV
+is plausible and would still be a new pattern needing product sign-off, not something
+added because the capability arrived.

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "chart": {
+      "command": "npx",
+      "args": ["-y", "@antv/mcp-server-chart"],
+      "env": {
+        "VIS_REQUEST_SERVER": "https://antv-studio.alipay.com/api/gpt-vis"
+      }
+    }
+  }
+}

@@ -342,6 +342,16 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    what changes that. Its interruptibility / start-from-current-value / respect-velocity
    ideas apply today because they are correctness, not style.
 
+
+28. **Charts: capability in, shipping path unchanged** (**D-016**). `.mcp.json` registers
+   `@antv/mcp-server-chart` (26+ types). **Hard boundary: it POSTs data to
+   `antv-studio.alipay.com` and returns a remote image** — fixture numbers only, never real
+   lead/revenue/portal data, unless self-hosted via `VIS_REQUEST_SERVER` (Dockerfile ships
+   with it). Output is an AntV-styled image, so it is an exploration aid, not a
+   design-system artefact (RULES.md 4d). What ships still follows 4e: measure the portal's
+   Ads Performance chart → propose tokens → `pick-ui-library` → build in dubizzle tokens.
+   New skill `dubizzle-charts` carries the rules; `chart-data-viz` links to it.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

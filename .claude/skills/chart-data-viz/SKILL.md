@@ -72,6 +72,19 @@ Once the existing one is measured:
 - Empty and single-point states need designing too — a chart with one day of data is the
   common case for a new agency.
 
+## The AntV chart MCP server
+
+`.mcp.json` registers `@antv/mcp-server-chart` (26+ chart types). Read the
+`dubizzle-charts` skill before using it. The short version:
+
+- It **posts your data to a remote endpoint** (`antv-studio.alipay.com` by default) and
+  returns an image URL. **Never send real dubizzle data** — no lead counts, revenue,
+  credit balances or anything from the portal captures. Self-host via `VIS_REQUEST_SERVER`
+  if real values must be charted.
+- Its output is a rendered image in AntV's styling, so it is an exploration aid, not a
+  design-system artefact. `RULES.md` 4d forbids generated imagery in a shipped surface.
+- It is genuinely good for deciding *which chart type* fits before you build anything.
+
 ## Libraries
 
 If a chart is implemented in React, keep the rendering dependency-free or SVG-based where
