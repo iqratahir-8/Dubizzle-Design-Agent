@@ -249,3 +249,17 @@ once, and nothing is left to notice. Three rules follow:
    returns.
 3. **Wholesale overwrite beats detection for third-party data.** Where a person's name can
    appear, replace everything in the region rather than what a detector recognises.
+
+## D-012 — dubizzle Pro has no mobile layout
+**2026-09-18 · user decision**
+
+The agency portal is desktop-only. Rendering it at 390px yields a squeezed desktop page,
+not a mobile design, so capturing it would put a misleading "mobile portal" in the gallery
+and invite someone to build against a layout that does not exist.
+
+`DESKTOP_ONLY` in `scripts/capture-account.mjs` holds every `portal-*` screen, and a mobile
+run reports them as **skipped** with the reason rather than silently producing nothing. If
+dubizzle ships a Pro mobile layout later, remove the screens from that set — don't work
+around it.
+
+The eight portal captures are therefore desktop-only by design, not by omission.

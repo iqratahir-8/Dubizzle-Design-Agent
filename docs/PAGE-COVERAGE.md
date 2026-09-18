@@ -128,3 +128,32 @@ filter, so they don't need their own capture.
 | Empty search result state | ⬜ worth capturing later (needs a query with no results) |
 | Favourites, saved searches | ⬜ hand-built templates; need logged-in captures |
 | Help centre (`/hc/…`) | out of scope — Zendesk, not dubizzle's design |
+
+## Agency portal (dubizzle Pro) — desktop only
+
+`/en/agencyPortal` — camelCase. Every lowercase spelling 404s, `pro.` and `business.`
+subdomains do not resolve, and there is **no public entry point**: the only route in is
+"Partner with dubizzle" in the signed-in user menu, with an agency account.
+
+**Desktop only** — dubizzle Pro has no mobile layout (D-012).
+
+| Screen | URL | Capture |
+|---|---|---|
+| Dashboard | `/en/agencyPortal` | ✅ `portal-dashboard` |
+| Agency Ads | `/en/agencyPortal/ads` | ✅ `portal-ads` |
+| Leads | `/en/agencyPortal/leads` | ✅ `portal-leads` |
+| VIP Leads | `/en/agencyPortal/vip` | ✅ `portal-vip` |
+| Candidates | `/en/agencyPortal/jobsApplications` | ✅ `portal-candidates` |
+| Agency Management | `/en/agencyPortal/agents` | ✅ `portal-agents` |
+| Insights | `/en/agencyPortal/insights/cars-market` | ✅ `portal-insights` |
+| Credit Info | `/en/agencyPortal/creditInfo/all` | ✅ `portal-credit` |
+
+**Leads, VIP Leads, Candidates, Agency Management and Dashboard list other people** —
+buyers, applicants, staff. Their table rows are overwritten with fixtures before anything
+is written (`FIXTURE_SCREENS` → `fixturizeTables`). Read **D-011** before changing any of
+that: a real phone number reached disk once already.
+
+The portal is a sidebar app, not the consumer chrome: "dubizzle Pro" wordmark, a collapsible
+icon rail (8rem closed, matching `--agency-portal-closed-nav-container-width`), and an Ads
+Performance panel with a **line chart** — the design system has no chart patterns or
+data-viz tokens, which is a real gap rather than something to invent.

@@ -65,6 +65,11 @@ export const FIXTURE_SCREENS = new Set([
    tables, the same problem property-agencies had. */
 export const PORTAL_WAIT = 6000;
 
+/* dubizzle Pro has no mobile layout — confirmed by the user, 2026-09-18. Rendering
+   it at 390px produces a squeezed desktop page, not a mobile design, so capturing it
+   would put a misleading "mobile portal" in the gallery. Skipped rather than saved. */
+export const DESKTOP_ONLY = new Set(Object.keys(ACCOUNT_SCREENS).filter((k) => k.startsWith('portal-')));
+
 const args = process.argv.slice(2);
 const layoutArg = args.find((a) => a.startsWith('--layout='))?.split('=')[1];
 const layouts = layoutArg ? [layoutArg] : Object.keys(LAYOUTS);
@@ -106,6 +111,10 @@ if (!identity?.fullName) {
 const results = [];
 for (const name of selected) {
   for (const layout of layouts) {
+    if (layout !== 'desktop' && DESKTOP_ONLY.has(name)) {
+      results.push({ base: `${name}.${layout}`, status: 'skipped', detail: 'dubizzle Pro has no mobile layout' });
+      continue;
+    }
     const { viewport, userAgent } = LAYOUTS[layout];
     const base = `${name}.${layout}`;
     const page = await browser.newPage();

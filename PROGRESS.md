@@ -320,8 +320,10 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    connections mean the network never idles. It bit in three places, two of them *before*
    any capture (the sign-in probe and `readAccountIdentity`), so a timeout aborted whole runs.
    All now `domcontentloaded` + best-effort idle.
-   **Not yet done:** portal mobile layout; toasts (copy/share, form validation,
-   favourite-then-undo) still outstanding.
+   **Portal is desktop-only** — dubizzle Pro has no mobile layout (user, 2026-09-18;
+   **D-012**). `DESKTOP_ONLY` in `capture-account.mjs` skips `portal-*` on mobile with a
+   reason, so the eight captures are desktop-only by design, not omission.
+   **Not yet done:** toasts (copy/share, form validation, favourite-then-undo).
 
 ## 6. Next up
 
