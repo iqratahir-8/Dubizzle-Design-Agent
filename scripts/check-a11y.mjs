@@ -92,7 +92,18 @@ const DOM_AUDIT = () => {
     if (!vis(el)) continue;
     const r = el.getBoundingClientRect();
     const min = Math.min(r.width, r.height);
-    if (min < 24) out.targets.push({ tag: el.tagName.toLowerCase(), name: name(el).slice(0, 30), size: `${Math.round(r.width)}x${Math.round(r.height)}` });
+    if (min >= 24) continue;
+    /* A visually-hidden radio or checkbox driven by a label is not the target —
+       the label is. Judge the label's box instead, which is the thing a finger
+       actually lands on. */
+    if (/^(input)$/i.test(el.tagName) && /^(radio|checkbox)$/i.test(el.type)) {
+      const lab = (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)) || el.closest('label');
+      if (lab) {
+        const lr = lab.getBoundingClientRect();
+        if (Math.min(lr.width, lr.height) >= 24) continue;
+      }
+    }
+    out.targets.push({ tag: el.tagName.toLowerCase(), name: name(el).slice(0, 30), size: `${Math.round(r.width)}x${Math.round(r.height)}` });
   }
   for (const img of document.querySelectorAll('img')) {
     if (!vis(img)) continue;
