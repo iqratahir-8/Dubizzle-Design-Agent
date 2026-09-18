@@ -1,0 +1,159 @@
+---
+name: feature-design
+description: >-
+  Turn a PRD, a feature request, or a rough idea into dubizzle Egypt screens — new features
+  or a revamp of existing ones. Use whenever the ask is "design X", "we need a screen for
+  Y", "here's a PRD", "revamp the Z page", "what would this look like", or a feature
+  description with no screens attached. Runs the product pass and the design pass, builds
+  the screens from measured parts, and says plainly what is new and unverified.
+---
+
+# Designing a dubizzle feature or revamp
+
+The design system's job is reproduction: everything in it is measured against live
+dubizzle. This skill is the other direction — producing screens that **don't exist yet**
+— and the whole risk is that invented values get presented with the same confidence as
+measured ones. Keep those two things separated at every step.
+
+**Read first:** `PRODUCT.md` (who this serves), `RULES.md` (the constraints),
+`docs/DECISIONS.md` (what not to re-litigate). Then this.
+
+---
+
+## Step 0 — Establish what already exists. Never skip this.
+
+Most "new" screens are recombinations of things already measured. Before designing
+anything, find out which of four states the screen is in:
+
+| State | How to tell | What to do |
+|---|---|---|
+| **Captured + templated** | listed in `docs/PAGE-COVERAGE.md`, file in `design-kit/templates/{desktop,mobile}/` | Open the template. Revamp from the real thing. |
+| **Captured, not built** | HTML in `design-kit/reference/live/`, no component | Measure it, build the component, then design. |
+| **Exists on live, not captured** | you can reach a URL | **Capture it first** (`live-capture` skill). Don't design against a screenshot or a memory. |
+| **Doesn't exist anywhere** | genuinely new | Compose from measured parts (Step 3). This is the only case where you invent, and it must be labelled. |
+
+```bash
+grep -i "<screen>" docs/PAGE-COVERAGE.md docs/COMPONENT-INVENTORY.md
+ls design-kit/templates/desktop | grep -i "<screen>"
+ls design-kit/reference/live | grep -i "<screen>"
+```
+
+A revamp of a screen we have **starts from that template file**, not from a blank page and
+not from your idea of what the page looks like. The template is a frozen capture of
+production; your memory of it is not.
+
+---
+
+## Step 1 — The product pass (do this before drawing anything)
+
+Write it down, briefly. Four things:
+
+1. **The job.** Restate the ask as a user job, mapped to one of the four in `PRODUCT.md`:
+   scan · filter · contact · post. If it serves none of them, say so — that is a finding,
+   not an obstacle.
+2. **Scope.** Must / should / won't. Name what you cut.
+3. **Success metric**, and what would show it failed. `PRODUCT.md` has **TODOs** here — if
+   the metric isn't filled in, write the metric you'd propose and mark it as needing the
+   business owner. Do not invent a number.
+4. **Edge cases, before design:** zero results · huge result set · expired or removed ad ·
+   signed-out · **Arabic/RTL** · slow connection · long Egyptian place names wrapping.
+
+---
+
+## Step 2 — Screen inventory and flow
+
+List every screen and every transition the job needs, then mark each one with its Step 0
+state. Include the states people forget, because the system currently has almost none of
+them measured:
+
+**empty · loading/skeleton · error · validation · success · signed-out**
+
+If a state has never been captured on live, it is an invention. Label it.
+
+---
+
+## Step 3 — Build, composing from measured parts
+
+Order of preference, strictly:
+
+1. An existing React component (`src/components/`, 42 of them) or its `patterns.css` class.
+2. A variant of one — a new prop, not a new component.
+3. Something genuinely new, built only from tokens.
+
+Then:
+
+- **Real content** from `design-kit/content/fixtures.json`. Real prices, real Egyptian
+  locations, real messy titles. Fake data is the single biggest tell.
+- **Icons** from `design-kit/icons/` first; Lucide / Font Awesome Free / Material Symbols
+  as named fallbacks (RULES.md §Iconography, `ATTRIBUTIONS.md`).
+- **Both breakpoints.** 768px is the real split. Mobile is not a narrower desktop — check
+  how live solves it (search and location are dropdowns on desktop, full pages on mobile).
+- **Copy** in dubizzle voice: imperative, second person. `Post Your Ad`, `Call`, `Chats`.
+  Never `Get Started`, `Discover`, `Unlock`, `Seamless`.
+
+**Anything with no measured basis gets logged in `docs/PROPOSALS.md` and flagged to the
+user for designer sign-off.** New colour, new gradient, new frosted surface, new motion,
+new chart, new illustration. `check:design` warns rather than blocks, so the warning plus
+you saying it out loud is the only gate. A new value that ships unmentioned is the failure
+mode — see D-007 and D-011.
+
+---
+
+## Step 4 — Check before you show it
+
+```bash
+npm run check:design -- <files>   # tokens, palette, radius, shadows, icons, copy
+npm run check:parity              # React and kit must agree
+```
+
+The linter can't see these — check them yourself:
+
+- **Contrast.** The palette has real failures: `--text-tertiary` (#919395) is **3.08:1** on
+  white and **2.85:1** on `--surface-subtle` — both fail AA. `--color-secondary` 3.53,
+  `--color-success` 3.56, `--color-warning` 1.70. Don't put body text on those pairings and
+  don't "fix" the brand values — choose a safe pairing and say why.
+- **RTL.** Logical properties only (`margin-inline-start`, never `margin-left`). Note that
+  **no Arabic screen has ever been captured or verified** — so an RTL claim here is
+  untested, and should be stated as such.
+- **Density.** dubizzle is a scanning product. If it looks airy, it's wrong.
+- **Hierarchy.** On an ad card: price → title → specs → meta. Never flatten it.
+
+---
+
+## Step 5 — The adversarial product review
+
+Now critique your own design from the PM seat, in writing, and show it to the user
+alongside the design rather than quietly reconciling the two:
+
+- What here is over-built for the job?
+- What ships without it?
+- What's unvalidated — which parts rest on an assumption rather than a measurement?
+- What would a sceptical reviewer attack first?
+
+One agent doing both roles will otherwise just agree with itself. The tension between
+"cut scope" and "defend craft" is the useful part; make it visible.
+
+---
+
+## What you hand over
+
+1. The screens — kit HTML and/or React, both breakpoints, all states.
+2. A **measured-values table**: every size, colour and spacing, with its source (measured on
+   live / existing token / **proposed, needs sign-off**).
+3. Components used, and any new ones added.
+4. `PROPOSALS.md` rows for anything new.
+5. **Open questions and assumptions**, explicitly — not silently resolved.
+6. The Step 5 critique.
+
+---
+
+## The one rule that matters
+
+State provenance for everything: **measured** (verified on live), **adopted** (designer
+confirmed), or **proposed** (invented, unconfirmed). Never let the third look like the
+first. Every serious failure this project has had — a fabricated rule enforced as law
+(D-007), an entirely invented agency portal template, a capture that "saved" a page showing
+nothing (D-010) — was an unverified thing wearing the costume of a verified one.
+
+If the system has no pattern for what's being asked, say so and propose the nearest one.
+Never invent a new visual language and present it as dubizzle.

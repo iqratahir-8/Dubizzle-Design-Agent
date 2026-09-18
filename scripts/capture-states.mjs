@@ -285,8 +285,19 @@ try {
         }
         // Say in the file itself which element is hovered — "which menu is this?" is otherwise
         // only answerable from the file name.
-        const stamp = `<meta name="live-state" content="${name}${hoverMark ? ` · hovering ${hoverMark.replace(/"/g, "'")}` : ''}">`;
+        /* The hover label is PAGE TEXT — on the phone-reveal state it was the seller's
+           actual number — and this stamp is injected after contactLeaks() has already
+           run, so anything in it bypassed every gate and landed in the saved file.
+           Scrub the label, then re-check the finished HTML rather than trusting that
+           the only thing added since was safe. */
+        const safeMark = hoverMark ? scrubContactsHtml(hoverMark).replace(/"/g, "'") : '';
+        const stamp = `<meta name="live-state" content="${name}${safeMark ? ` · hovering ${safeMark}` : ''}">`;
         html = html.replace(/<head([^>]*)>/i, (m) => `${m}\n${stamp}`);
+        const finalLeaks = contactLeaks(html);
+        if (finalLeaks.length) {
+          results.push({ base, status: 'FAILED', detail: `refused to save — after stamping: ${finalLeaks.join(', ')}` });
+          continue;
+        }
         writeFileSync(join(OUT, `${base}.html`), html);
         /* Viewport-size: the state is an overlay, and a full-page shot re-lays it out
            of view. But a non-overlay state (an expanded details table) sits wherever it
@@ -294,6 +305,7 @@ try {
            show the top of the page and prove nothing. Put the evidence back on screen
            first, so the PNG shows what the HTML captured. */
         let shotAt = null;
+        let cleanupNote = '';
         if (state.expect) {
           // scrollIntoView is unreliable after the freeze (the frozen document can be
           // height-locked), so compute the absolute offset and scroll the window.
@@ -322,12 +334,33 @@ try {
           await sleep(500);
         }
         await page.screenshot({ path: join(SCREENS, `${base}.png`), fullPage: false });
+
+        /* Some states are produced by an action that writes to the account — favouriting
+           an ad, for example. The capture is frozen by this point, so the live page is
+           reloaded and the action reversed. Cleanup runs even if the capture failed, and
+           its outcome is reported: an undo that silently didn't happen would leave the
+           user's account changed by a capture run. */
+        if (state.cleanup) {
+          try {
+            await page.goto(ORIGIN + state.url, { waitUntil: 'domcontentloaded', timeout: 90_000 });
+            await page.waitForNetworkIdle({ idleTime: 800, timeout: 15_000 }).catch(() => {});
+            await sleep(2500);
+            for (const step of state.cleanup) await runStep(page, step);
+            await sleep(1500);
+            cleanupNote = ' · undone';
+          } catch (error) {
+            cleanupNote = ` · CLEANUP FAILED (${error.message.split('\n')[0].slice(0, 40)}) — undo by hand`;
+          }
+        }
         results.push({
           base,
           status: 'saved',
-          detail: `${state.label} · ${opened.panels} overlay element(s)${hoverMark ? ` · hovering "${hoverMark}"` : ''}${
+          // safeMark, never hoverMark: the raw label is page text and on the phone-reveal
+          // state it was a real number. cleanupNote is included so a silent undo is
+          // impossible to mistake for a completed one.
+          detail: `${state.label} · ${opened.panels} overlay element(s)${safeMark ? ` · hovering "${safeMark}"` : ''}${
             shotAt ? ` · shot at y=${shotAt.scrolled}${shotAt.fixed ? ' (fixed overlay)' : ''}` : ''
-          }`,
+          }${cleanupNote}`,
         });
       } catch (error) {
         results.push({ base, status: 'FAILED', detail: error.message.split('\n')[0] });

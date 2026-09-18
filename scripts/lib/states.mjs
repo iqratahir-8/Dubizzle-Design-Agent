@@ -188,4 +188,38 @@ export const STATES = {
     expect: { text: 'Login into your Dubizzle account' },
     steps: [{ click: { text: 'Save Search' } }, { wait: 2500 }],
   },
+
+  /* ── Signed-in states (npm run capture:states -- --account) ─────────────────
+     Signed out, these three only ever produced the login gate (D-009). With an
+     account they open the real dialogs. Nothing here submits: the report dialog is
+     opened and frozen, never sent. */
+
+  'dpv-phone-in': {
+    label: 'Ad detail — phone reveal (signed in)',
+    url: '/en/ad/mercedes-benz-e300-2018-amg-ID208928385.html',
+    layouts: ['desktop'],
+    account: true,
+    scrubContacts: true,
+    steps: [{ click: { text: 'Show phone number' } }, { wait: 3000 }],
+  },
+  'dpv-report-in': {
+    label: 'Ad detail — report dialog (signed in, never submitted)',
+    url: '/en/ad/mercedes-benz-e300-2018-amg-ID208928385.html',
+    layouts: ['desktop'],
+    account: true,
+    scrubContacts: true,
+    steps: [{ click: { text: 'Report this ad' } }, { wait: 3000 }],
+  },
+
+  /* Favouriting WRITES to the account, so this state carries a cleanup that unsets
+     it afterwards. The heart is a 24×24 svg on the card's right edge; its class is a
+     build hash, so match the path instead — the hash changes on every deploy. */
+  'toast-favourite': {
+    label: 'Listing — favourite toast (undone after capture)',
+    url: '/en/vehicles/cars-for-sale/',
+    layouts: ['desktop'],
+    account: true,
+    steps: [{ click: { selector: 'svg:has(> path[d^="M15.71 5"])' } }, { wait: 2000 }],
+    cleanup: [{ click: { selector: 'svg:has(> path[d^="M15.71 5"])' } }, { wait: 1500 }],
+  },
 };
