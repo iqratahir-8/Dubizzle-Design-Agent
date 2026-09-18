@@ -41,3 +41,8 @@ design-kit/templates/desktop/user-menu.html
 design-kit/templates/mobile/user-menu.html
 design-kit/templates/desktop/m-user-menu.html
 design-kit/templates/mobile/m-user-menu.html
+
+# Design-tool exports — large, contain licensed fonts and raw screenshots.
+# What matters from them is extracted into tokens/illustrations and committed;
+# the raw bundle stays local like the captures. See docs/DECISIONS.md D-013.
+design-kit/reference/exports/

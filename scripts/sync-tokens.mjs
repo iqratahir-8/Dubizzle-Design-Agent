@@ -202,6 +202,20 @@ const SEMANTIC = {
     '--glass-panel-bg-dark': 'rgba(23, 25, 28, 0.64)',
     '--glass-panel-border': 'rgba(255, 255, 255, 0.4)',
   },
+  /* ── Motion ───────────────────────────────────────────────────────────────
+     ADOPTED from the dubizzle Egypt design-system export (Credit Info / Protool
+     bundle, 2026-09-17), NOT measured by this project. 37 of that bundle's 38
+     colour tokens matched our measured palette exactly, which is why its motion
+     values are credited — but credited is not measured. Verify against live with
+     the `motion-design` skill before treating any of these as production fact,
+     and note the keyframes in its motion.css come from a "Sell with AI"
+     prototype that appears nowhere in our 142 live captures. See D-013. */
+  motion: {
+    '--ease-standard': 'cubic-bezier(0.4, 0, 0.2, 1)',
+    '--duration-fast': '0.15s',
+    '--duration-base': '0.25s',
+    '--skeleton-duration': '1.5s',
+  },
   typography: {
     '--font-primary': 'var(--font-ltr)',
     '--font-arabic': "GESS, var(--font-ltr)",

@@ -60,7 +60,7 @@ Never describe an adopted or proposed value as something dubizzle "uses" — it 
 
 | Date | Kind | Value | Used in | Why no existing token fits |
 |---|---|---|---|---|
-| — | — | — | — | *(nothing open)* |
+| 2026-09-18 | colour | `#707ce9` `--ai-indigo` | AI surfaces in the design-system export (`AiChip`, `AiFlowSurface`, `AiStarBadge`) | Only colour in the export that is **not** in our measured palette, and it belongs to an AI feature that appears in none of the 142 live captures. Unshipped — needs designer confirmation before it enters the system. |
 
 ## Adopted
 

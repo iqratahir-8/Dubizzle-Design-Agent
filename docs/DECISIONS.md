@@ -263,3 +263,42 @@ dubizzle ships a Pro mobile layout later, remove the screens from that set — d
 around it.
 
 The eight portal captures are therefore desktop-only by design, not by omission.
+
+## D-013 — The design-system export: credited, not measured
+**2026-09-18 · adopted with a boundary**
+
+A dubizzle Egypt design-system bundle arrived as a design-tool export (`Credit Info Protool.zip`
+— the agency portal's Credit Info screen plus a 45-component system). It is the first external
+source this project has taken anything from, so its provenance had to be established before use.
+
+**What it agrees with us on.** 37 of its 38 colour tokens match our measured palette **exactly**.
+That is a strong independent confirmation of the extraction pipeline, and the reason its other
+values are credible at all.
+
+**What it adds that we lacked.** Motion tokens — `--ease-standard` `cubic-bezier(0.4,0,0.2,1)`,
+`--duration-fast` 0.15s, `--duration-base` 0.25s, `--skeleton-duration` 1.5s. The system had two
+timing values in 1,269 tokens; these are now in `sync-tokens.mjs` under a `motion` group. Also
+illustrations and portal icons, extracted to `design-kit/illustrations/` — the system previously
+had **no** illustration assets at all, which blocked every empty state.
+
+**Where the boundary is.** These are **adopted, not measured** (the provenance rule from
+`PROPOSALS.md`), and the distinction is load-bearing here:
+
+- The bundle's `motion.css` credits a **"Sell with AI" prototype**, and its component list
+  includes `AiChip`, `AiFlowSurface`, `AiStarBadge`. **None of those appear in any of our 142
+  live captures.** The bundle therefore mixes shipped product with proposed design work — its
+  own readme says as much, splitting "Repository Mode" from "Innovation Mode" and labelling the
+  latter *Future Recommendation*.
+- Its one non-matching colour, `--ai-indigo` `#707ce9`, belongs to exactly that unshipped AI
+  work. It went to `docs/PROPOSALS.md` as **open**, not into the token set.
+- `--duration-fast: 0.15s` happens to match the figure `RULES.md` asserted before D-007. That
+  is corroboration from a second source, **not** a measurement — it may simply share an origin.
+  Verify on live with the `motion-design` skill before calling 0.15s production fact.
+
+**Storage.** `design-kit/reference/exports/` is gitignored, like the captures: the bundle is
+12.9MB, carries licensed Proxima Nova and GESS font files that must not be redistributed, and
+includes raw screenshots. What matters is extracted and committed; the raw bundle stays local.
+
+**The general rule this sets:** an external design system is evidence, not authority. Where it
+agrees with a measurement, it corroborates. Where it goes beyond one, it is a proposal — however
+official it looks, and however much of it turns out to be right.

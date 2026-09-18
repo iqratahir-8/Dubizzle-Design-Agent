@@ -286,9 +286,15 @@ same mistake as D-007. The generated tokens contain exactly **two** motion value
 (`--banner-animation-speed: 1s`, `--tertiary-button-transition: 0.3s`), and production
 plainly has more: mega menus open, carousels rotate, sheets slide up, toasts enter and leave.
 
-So, until someone measures them:
+**Four timing tokens now exist**, adopted from the design-system export (D-013):
+`--ease-standard` `cubic-bezier(0.4, 0, 0.2, 1)` · `--duration-fast` 0.15s ·
+`--duration-base` 0.25s · `--skeleton-duration` 1.5s. They are **adopted, not measured** —
+credited to a second source that agrees with us on 37 of 38 colours, but not yet verified
+against live. Use them in preference to anything invented, and say which they are.
 
-- **Reuse a measured transition or none at all.** Do not invent a duration or an easing.
+So, until the rest are measured:
+
+- **Reuse an adopted or measured transition, or none at all.** Do not invent a duration or an easing.
 - Anything new goes in `docs/PROPOSALS.md` as a motion proposal with the value you used.
 - **Always honour `prefers-reduced-motion: reduce`** — no current component does. New ones must.
 - Still forbidden regardless: `transform: scale()` on hover, bounce/spring/elastic easing,
@@ -303,9 +309,11 @@ Use the `motion-design` skill to measure real values before adding any.
 - **Photography is user content.** Ad photos come from sellers: uneven, sometimes poorly lit,
   often watermarked. Mocks must use the real listing images in the captures, not stock
   photography — polished stock is the fastest way to make a screen look fake.
-- **Illustrations exist but are not in the kit.** Production uses them for empty states and
-  404 (blue-tinted line work with soft shapes). `design-kit/icons/` has **no illustration
-  category**, so there is nothing to reuse yet — extract from a capture, don't draw a new style.
+- **Illustrations now exist** in `design-kit/illustrations/` (11 assets from the design-system
+  export, D-013): empty states for credits and ads, the dubizzle Pro logo, portal nav icons,
+  credit coins. Use these first. For a state they don't cover, extract from a capture —
+  production's style is blue-tinted line work with soft shapes (see the 404 and portal Leads
+  empty state). **Don't draw a new style.**
 - **Never generate imagery in a brand style that doesn't exist.** If a screen needs an
   illustration the system doesn't have, say so and propose the nearest captured one.
 - Avatars are initials on `--red-02` when there is no photo. Logos keep their own colour.
