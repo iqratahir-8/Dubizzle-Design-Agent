@@ -397,3 +397,32 @@ the token, measure live, or log a proposal. `motion-design` now routes to them b
 
 Licence: MIT, Copyright (c) 2026 Emil Kowalski. Notice kept at
 `.claude/skills/animate/LICENSE-emil` and recorded in `ATTRIBUTIONS.md`.
+
+**Revised same day — all thirteen are installed.** The user wants the remaining three
+available against a future in which dubizzle's components and physics move toward a newer
+iOS feel. That is a legitimate reason to hold a skill the current rules do not yet allow,
+so the answer is not to refuse it but to scope it honestly:
+
+- **`apple-design`** teaches exactly what `RULES.md` 4c bans. It is installed **ahead of
+  the rules** and framed as a **proposal generator**: on a measured surface nothing ships,
+  and the spring you would use goes to `PROPOSALS.md` noting that it needs sign-off *and a
+  change to 4c*. Three of its ideas apply today regardless, because they are correctness
+  rather than style — interruptibility, starting from the current on-screen value, and
+  respecting a drag's velocity. None require a spring. RULES.md 4c now says all of this.
+- **`pick-ui-library`** has an immediate use. `chart-data-viz` says adding a charting
+  dependency is a decision to raise rather than make silently, and the portal ships a
+  chart the system cannot draw. This skill is how to raise it well. It is scoped to check
+  `src/components/` first: a second library for something we already have is a defect.
+- **`ask-sonner`** is scoped so the **captures remain the specification** — appearance,
+  copy, placement and timing come from `toast-favourite` and the captured states, not from
+  Sonner's defaults. Sonner is a candidate implementation and a reference for what we have
+  not captured (promise, loading, updating in place). Adopting it is a proposal with its
+  bundle cost stated, themed entirely in dubizzle tokens.
+
+`animate-expo` and `write-swift` remain uninstalled: React Native and Swift are not this
+product. If dubizzle ships a native app they become relevant in a day.
+
+**The principle this settles:** a skill whose advice the current rules forbid can still be
+worth holding, provided the conflict is written down and the skill is wired to produce
+proposals instead of output. What must never happen is a skill quietly overriding a rule —
+that is D-007 with extra steps.

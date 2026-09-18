@@ -335,6 +335,12 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    spring and gesture physics RULES.md 4c forbids). `animate` and `emil-design-eng` carry
    dubizzle preambles. Division: **craft from them, provenance from `motion-design`.**
    MIT, credited in `ATTRIBUTIONS.md`.
+   **Revised same day: all 13 installed.** `apple-design`, `pick-ui-library` and
+   `ask-sonner` added for a future iOS-aligned component/physics direction (user).
+   `apple-design` is installed **ahead of the rules** — it teaches the springs RULES.md 4c
+   bans — so it is wired as a **proposal generator**, not shipped motion, and 4c now states
+   what changes that. Its interruptibility / start-from-current-value / respect-velocity
+   ideas apply today because they are correctness, not style.
 
 ## 6. Next up
 

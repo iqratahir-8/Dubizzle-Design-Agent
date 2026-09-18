@@ -324,7 +324,21 @@ So, until the rest are measured:
 - Still forbidden regardless: `transform: scale()` on hover, bounce/spring/elastic easing,
   decorative entrance animations, parallax.
 
-Use the `motion-design` skill to measure real values before adding any.
+Use the `motion-design` skill to measure real values before adding any, and the
+`animate` skill to build one well.
+
+### When the physics rules change
+
+`apple-design` is installed against a future in which dubizzle's components move toward
+a newer iOS feel (user decision, 2026-09-18) — spring physics, velocity-aware drags,
+interruptible gestures. **Today those contradict the bans above.** Until this section is
+revised by a designer and product owner, that skill produces entries in
+`docs/PROPOSALS.md`, not shipped motion, and a spring on a measured surface is a defect.
+
+Three of its ideas apply right now regardless, because they are correctness rather than
+style: motion should be **interruptible**, it should **start from the current on-screen
+value** instead of snapping to zero first, and a drag should **respect the velocity** the
+user gave it. None of those need a spring.
 
 ---
 

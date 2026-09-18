@@ -35,9 +35,10 @@ Requires the licence notice to be carried with any distribution.
 
 ## Agent skills
 
-**Emil Kowalski's skills** (`animate`, `review-animations`, `improve-animations`,
-`find-animation-opportunities`, `animation-vocabulary`, `emil-design-eng`,
-`mobile-native`, `prototype`) — MIT Licence.
+**Emil Kowalski's skills** — all thirteen, MIT Licence: `animate`, `animate-expo`
+(uninstalled), `animation-vocabulary`, `apple-design`, `ask-sonner`, `emil-design-eng`,
+`find-animation-opportunities`, `improve-animations`, `mobile-native`,
+`pick-ui-library`, `prototype`, `review-animations`, `write-swift` (uninstalled).
 
 > MIT License. Copyright (c) 2026 Emil Kowalski. https://animations.dev/
 
