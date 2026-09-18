@@ -359,3 +359,41 @@ Not installed, available in the library if wanted for non-dubizzle work: `taste-
 `taste-skill-v1`, `gpt-tasteskill`, `brutalist`, `minimalist`, `soft`, `brandkit`,
 `redesign-skill`, `stitch-skill`, `image-to-code-skill`, `imagegen-frontend-web`,
 `imagegen-frontend-mobile`.
+
+## D-015 — Emil Kowalski's animation skills: eight of thirteen installed
+**2026-09-18 · adopted**
+
+Motion was the system's weakest area (RULES.md 4c: two timing tokens in 1,269, nothing
+honouring `prefers-reduced-motion`). These skills close the craft half of that gap, and
+they pass the D-014 test cleanly: **they supply rigour, not values.**
+
+The `animate` skill's own third rule is *"Extend the codebase's tokens, don't fork them.
+If `--ease-out` or a duration scale already exists, use it. Adding a parallel system is a
+defect"* — which is this project's position stated by someone else. Its frequency gate
+(*100+ times/day → no animation, ever*) is doubly right for a scanning product.
+
+**Installed:** `animate` (build), `review-animations` (critique, "approval is earned"),
+`improve-animations` (codebase audit), `find-animation-opportunities` (read-only survey),
+`animation-vocabulary` (name a motion from a vague description), `emil-design-eng`
+(craft philosophy), `mobile-native` (mweb feeling native), `prototype` (variant explorer
+for composed surfaces).
+
+**Not installed, and why:** `animate-expo` and `write-swift` target React Native and
+Swift; this is a web product. `ask-sonner` and `pick-ui-library` push external
+dependencies into a project that has its own 42-component library. `apple-design`
+teaches spring and gesture physics that `RULES.md` 4c forbids outright — installing it
+would put a skill and the rules in direct conflict, which is the `frontend-design`
+problem again.
+
+**Scoping.** Two got a dubizzle preamble. `animate` is pointed at our four adopted motion
+tokens (D-013) and the §4c bans. `emil-design-eng` is marked as craft only: its "taste is
+trained" framing is about judgement, not licence to choose new ingredients, and where it
+suggests a border, shadow, radius or duration that differs from a token, **the token
+wins** and the suggestion goes to `PROPOSALS.md`.
+
+The division that keeps both useful: **craft from these skills, provenance from
+`motion-design`.** They will happily hand you a duration; `motion-design` insists you use
+the token, measure live, or log a proposal. `motion-design` now routes to them by job.
+
+Licence: MIT, Copyright (c) 2026 Emil Kowalski. Notice kept at
+`.claude/skills/animate/LICENSE-emil` and recorded in `ATTRIBUTIONS.md`.

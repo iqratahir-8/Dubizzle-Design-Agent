@@ -76,6 +76,23 @@ gets flagged to the user for designer sign-off — never quietly into a componen
 reveals · parallax · anything that moves while the user is scanning a list. dubizzle is a
 scanning product: motion that competes with scanning is a defect.
 
+## Working with the Emil Kowalski skills
+
+Those skills (installed, MIT) carry the craft; this one carries the provenance.
+
+| Job | Skill |
+|---|---|
+| Build an animation | `animate` |
+| Review motion code against a craft bar | `review-animations` |
+| Audit all motion in the codebase | `improve-animations` |
+| Find things that should animate but don't | `find-animation-opportunities` |
+| Name a motion the user described vaguely | `animation-vocabulary` |
+| Make mweb feel native | `mobile-native` |
+
+What stays with this skill: **where a value came from.** Those skills supply technique
+and will happily give you a duration; this one insists you use dubizzle's token, or
+measure live, or log a proposal. Craft from them, provenance from here.
+
 ## Output
 
 Say which values you measured, which you reused, and which are proposals awaiting sign-off.

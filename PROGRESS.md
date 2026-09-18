@@ -325,6 +325,17 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    reason, so the eight captures are desktop-only by design, not omission.
    **Not yet done:** toasts (copy/share, form validation, favourite-then-undo).
 
+
+27. **Motion craft installed** (**D-015**): eight of Emil Kowalski's thirteen skills —
+   `animate`, `review-animations`, `improve-animations`, `find-animation-opportunities`,
+   `animation-vocabulary`, `emil-design-eng`, `mobile-native`, `prototype`. They pass the
+   D-014 test (rigour, not values); `animate`'s own rule 3 is "extend the codebase's
+   tokens, don't fork them". Skipped: `animate-expo` / `write-swift` (wrong platform),
+   `ask-sonner` / `pick-ui-library` (push external deps), `apple-design` (teaches the
+   spring and gesture physics RULES.md 4c forbids). `animate` and `emil-design-eng` carry
+   dubizzle preambles. Division: **craft from them, provenance from `motion-design`.**
+   MIT, credited in `ATTRIBUTIONS.md`.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

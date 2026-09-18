@@ -33,6 +33,20 @@ Requires the licence notice to be carried with any distribution.
 
 ---
 
+## Agent skills
+
+**Emil Kowalski's skills** (`animate`, `review-animations`, `improve-animations`,
+`find-animation-opportunities`, `animation-vocabulary`, `emil-design-eng`,
+`mobile-native`, `prototype`) — MIT Licence.
+
+> MIT License. Copyright (c) 2026 Emil Kowalski. https://animations.dev/
+
+**taste-skill** `output-skill` and `design-taste-frontend` (leonxlnx) — see that
+repository for its licence terms.
+
+MIT requires the copyright and permission notice to travel with the software, which is
+why the licence text is kept at `.claude/skills/animate/LICENSE-emil`.
+
 ## Where the credit has to appear
 
 A product that ships any Lucide, Font Awesome or Material Symbols icon carries a visible
