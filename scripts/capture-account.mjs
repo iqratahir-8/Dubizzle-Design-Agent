@@ -56,6 +56,13 @@ export const ACCOUNT_SCREENS = {
      Agency Ads list, so the capture saved the wrong screen. Needs a live ad ID. */
   'portal-credit-self': '/en/agencyPortal/creditInfo/self',
   'portal-credit-agents': '/en/agencyPortal/creditInfo/agents',
+
+  /* Leads filter tabs. They are <button>s that push a real URL, so each tab is its own
+     capturable state (probed on live 2026-09-21). "Chats" leaves the portal for the
+     consumer /en/chat, which is already captured as the chat template. */
+  'portal-leads-phone': '/en/agencyPortal/leads?filter=leadType_eq_phone',
+  'portal-leads-sms': '/en/agencyPortal/leads?filter=leadType_eq_sms',
+  'portal-leads-whatsapp': '/en/agencyPortal/leads?filter=leadType_eq_whatsapp',
   'portal-candidate-detail': '/en/agencyPortal/jobsApplications/208428952',
 };
 
@@ -77,6 +84,10 @@ export const FIXTURE_SCREENS = new Set([
   'portal-credit-agents',
   // a job's applicants are named individuals with CVs
   'portal-candidate-detail',
+  // filtered Leads views list the same people as Leads
+  'portal-leads-phone',
+  'portal-leads-sms',
+  'portal-leads-whatsapp',
 ]);
 
 /* The portal is client-rendered and slow to fill; the default settle leaves empty

@@ -1111,6 +1111,66 @@ export const PortalCreditAgents: Story = {
   },
 };
 
+export const PortalLeadsPhone: Story = {
+  name: "Agency portal — Leads, Phone",
+  args: {
+    "name": "portal-leads-phone",
+    "label": "Agency portal — Leads, Phone",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalLeadsSms: Story = {
+  name: "Agency portal — Leads, SMS",
+  args: {
+    "name": "portal-leads-sms",
+    "label": "Agency portal — Leads, SMS",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalLeadsWhatsapp: Story = {
+  name: "Agency portal — Leads, WhatsApp",
+  args: {
+    "name": "portal-leads-whatsapp",
+    "label": "Agency portal — Leads, WhatsApp",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalLeadsDaterange: Story = {
+  name: "Agency portal — Leads, Date Range open",
+  args: {
+    "name": "portal-leads-daterange",
+    "label": "Agency portal — Leads, Date Range open",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
 export const Favourites: Story = {
   name: "Favourites",
   args: {

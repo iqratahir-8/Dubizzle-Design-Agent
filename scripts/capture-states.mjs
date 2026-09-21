@@ -23,7 +23,7 @@ import { absolutize } from './lib/absolutize.mjs';
 import { recordResponses, snapshotHtml } from './lib/snapshot.mjs';
 import { buildGallery } from './build-screens-gallery.mjs';
 import { ORIGIN, LAYOUTS, sleep, captureAndDismissInterstitial, removePushPrompt } from './lib/render-helpers.mjs';
-import { readAccountIdentity, redactPage, sanitizeHtml, leaks, visibleLeaks, scrubContactsPage, scrubContactsHtml, contactLeaks } from './lib/redact.mjs';
+import { readAccountIdentity, redactPage, sanitizeHtml, leaks, visibleLeaks, scrubContactsPage, scrubContactsHtml, contactLeaks, fixturizeTables, fixturizeCards } from './lib/redact.mjs';
 import { STATES } from './lib/states.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -220,7 +220,16 @@ try {
 
         // Third-party contact details (a seller's revealed phone) go before the
         // screenshot, whether or not this is a signed-in capture.
-        if (state.scrubContacts) await scrubContactsPage(page);
+        /* A dropdown opened over the Leads table still has the table underneath it, and
+           that table lists real people. Interaction states on people pages run the same
+           wholesale fixture passes as page captures (D-011, D-017). */
+        let fixed = null;
+        if (state.fixtures) {
+          const t = await fixturizeTables(page);
+          const c = await fixturizeCards(page);
+          fixed = `fixtures: ${t.cells} cells, ${c.leaves} card leaves, ${c.fields} fields`;
+        }
+        if (state.scrubContacts || state.fixtures) await scrubContactsPage(page);
         if (identity) await redactPage(page, identity);
         const opened = await page.evaluate(() => {
           const panels = [...document.querySelectorAll('*')].filter((el) => {
@@ -360,7 +369,7 @@ try {
           // impossible to mistake for a completed one.
           detail: `${state.label} · ${opened.panels} overlay element(s)${safeMark ? ` · hovering "${safeMark}"` : ''}${
             shotAt ? ` · shot at y=${shotAt.scrolled}${shotAt.fixed ? ' (fixed overlay)' : ''}` : ''
-          }${cleanupNote}`,
+          }${cleanupNote}${fixed ? ` · ${fixed}` : ''}`,
         });
       } catch (error) {
         results.push({ base, status: 'FAILED', detail: error.message.split('\n')[0] });

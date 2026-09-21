@@ -63,9 +63,50 @@ export const PORTAL_DRAWER = {
   ],
 };
 
+/* Hotspots: controls that are <button>s rather than links, so rewriting hrefs cannot
+   reach them. Each says: on these pages, a click on the control whose text is exactly
+   this goes to that frame — the Figma prototype model, over real captures.
+     on       which frames the rule applies to
+     text     the control's own visible text, matched exactly
+     band     optional [minY, maxY] in page px; "Chats" is both a Leads tab and a link in
+              the site header, and only the tab should jump
+     outside  instead of a control: any click outside the element containing this text
+              (how an open dropdown closes)
+   A rule whose target was never captured is dropped at build time, so the prototype
+   never offers a jump that goes nowhere. Tab URLs were probed on live 2026-09-21. */
+const LEADS = /^portal-leads(-phone|-sms|-whatsapp)?$/;
+const LEADS_ANY = /^portal-leads/;
+export const PORTAL_HOTSPOTS = [
+  { on: LEADS_ANY, text: 'All', band: [120, 200], go: 'portal-leads' },
+  { on: LEADS_ANY, text: 'Phone', band: [120, 200], go: 'portal-leads-phone' },
+  { on: LEADS_ANY, text: 'SMS', band: [120, 200], go: 'portal-leads-sms' },
+  { on: LEADS_ANY, text: 'WhatsApp', band: [120, 200], go: 'portal-leads-whatsapp' },
+  // live sends this tab out of the portal to the consumer inbox
+  { on: LEADS_ANY, text: 'Chats', band: [120, 200], go: 'chat' },
+  // appears only while a filter is active; on live it returns to the unfiltered list
+  { on: LEADS_ANY, text: 'Clear All Filters', go: 'portal-leads' },
+  { on: LEADS, text: 'Date Range', go: 'portal-leads-daterange' },
+  { on: /^portal-leads-daterange$/, text: 'Date Range', go: 'portal-leads' },
+  { on: /^portal-leads-daterange$/, text: 'Apply', go: 'portal-leads' },
+  { on: /^portal-leads-daterange$/, text: 'Reset', go: 'portal-leads' },
+  { on: /^portal-leads-daterange$/, outside: 'Preset range', go: 'portal-leads' },
+];
+
 export const PROTOTYPES = {
-  'agency-portal': { member: (name) => name.startsWith('portal-'), routes: PORTAL_ROUTES, drawer: PORTAL_DRAWER },
+  'agency-portal': {
+    member: (name) => name.startsWith('portal-'),
+    routes: PORTAL_ROUTES,
+    drawer: PORTAL_DRAWER,
+    hotspots: PORTAL_HOTSPOTS,
+  },
 };
+
+/** The hotspots that apply to one page and lead somewhere real. */
+export function hotspotsFor(proto, page, isAvailable) {
+  return (proto.hotspots || [])
+    .filter((h) => h.on.test(page) && isAvailable(h.go))
+    .map(({ text, band, outside, go }) => ({ text, band, outside, go }));
+}
 
 export function prototypeFor(name) {
   for (const [id, p] of Object.entries(PROTOTYPES)) if (p.member(name)) return { id, ...p };
@@ -112,11 +153,60 @@ export function wirePrototype(html, proto, isAvailable) {
  *   - say so when a link leads outside the prototype, instead of silently doing nothing
  * Kept tiny and dependency-free; the captures have their own scripts stripped.
  */
-export function prototypeRuntime(proto) {
+export function prototypeRuntime(proto, hotspots = []) {
   const drawer = JSON.stringify(proto.drawer || null);
   return `<script>
 (function () {
   var DRAWER = ${drawer};
+  var HOTSPOTS = ${JSON.stringify(hotspots)};
+
+  /* The control a click landed on, if its own text is exactly t: walk up a few levels
+     from the target so a click on an icon inside a tab still counts as the tab. */
+  function controlWithText(node, t) {
+    for (var i = 0; node && i < 5; node = node.parentElement, i++) {
+      if (node.nodeType === 1 && (node.textContent || '').trim() === t) return node;
+    }
+    return null;
+  }
+  function inBand(el, band) {
+    if (!band) return true;
+    var y = el.getBoundingClientRect().top + window.scrollY;
+    return y >= band[0] && y <= band[1];
+  }
+  function panelOf(t) {
+    var hit = [].slice.call(document.querySelectorAll('body *')).filter(function (e) {
+      return e.children.length === 0 && (e.textContent || '').trim() === t;
+    })[0];
+    for (var n = hit; n && n !== document.body; n = n.parentElement) {
+      var cs = getComputedStyle(n);
+      if (cs.position === 'absolute' || cs.position === 'fixed') return n;
+    }
+    return null;
+  }
+  function hotspot(e) {
+    for (var i = 0; i < HOTSPOTS.length; i++) {
+      var h = HOTSPOTS[i];
+      if (h.outside) {
+        /* "Click outside closes the dropdown" must not swallow clicks that mean
+           something else. It fired on the burger and navigated away before the drawer
+           could open (caught by check:prototype). Other controls keep their own jobs:
+           the sidebar, links, and anything another hotspot claims. */
+        var t = e.target;
+        if (t.closest && (t.closest('nav') || t.closest('a[data-proto-link],[data-proto-offsite]'))) continue;
+        var claimed = false;
+        for (var j = 0; j < HOTSPOTS.length; j++) {
+          if (!HOTSPOTS[j].outside && controlWithText(t, HOTSPOTS[j].text)) { claimed = true; break; }
+        }
+        if (claimed) continue;
+        var panel = panelOf(h.outside);
+        if (panel && !panel.contains(t)) return h.go;
+        continue;
+      }
+      var c = controlWithText(e.target, h.text);
+      if (c && inBand(c, h.band)) return h.go;
+    }
+    return null;
+  }
   var KEY = 'proto-drawer:' + ${JSON.stringify(proto.id)};
 
   function note(text) {
@@ -189,7 +279,10 @@ export function prototypeRuntime(proto) {
 
   document.addEventListener('click', function (e) {
     var tgt = e.target;
+    // The drawer's own control goes first: nothing else should be able to claim it.
     if (DRAWER && nav && tgt.closest && tgt.closest(DRAWER.trigger)) { e.preventDefault(); setDrawer(!isOpen()); return; }
+    var go = hotspot(e);
+    if (go) { e.preventDefault(); e.stopPropagation(); location.href = go + '.html'; return; }
     // Click outside an open drawer closes it, like any overlay panel.
     if (nav && isOpen() && tgt.closest && !tgt.closest('nav')) setDrawer(false);
 

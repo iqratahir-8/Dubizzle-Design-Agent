@@ -222,4 +222,17 @@ export const STATES = {
     steps: [{ click: { selector: 'svg:has(> path[d^="M15.71 5"])' } }, { wait: 2000 }],
     cleanup: [{ click: { selector: 'svg:has(> path[d^="M15.71 5"])' } }, { wait: 1500 }],
   },
+
+  /* Agency portal interaction states. Each is a frame the prototype's hotspots jump to:
+     click Date Range on Leads, land on this. They sit on a people page, so they run the
+     full fixture passes (fixtures: true), not just contact scrubbing. */
+  'portal-leads-daterange': {
+    label: 'Agency portal — Leads, Date Range open',
+    url: '/en/agencyPortal/leads',
+    layouts: ['desktop'],
+    account: true,
+    fixtures: true,
+    expect: { text: 'Preset range' },
+    steps: [{ wait: 1500 }, { click: { text: 'Date Range' } }, { wait: 1500 }],
+  },
 };

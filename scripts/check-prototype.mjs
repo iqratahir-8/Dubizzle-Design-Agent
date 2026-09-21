@@ -105,6 +105,57 @@ for (const f of pages) {
   console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${f.padEnd(34)} ${r.shown}/${r.total} titles · wordmark ${r.brand ? 'yes' : 'NO'} · ${r.width}px`);
 }
 
+// Hotspots: buttons that jump between frames. Click the real control, check the landing.
+console.log(`\nHOTSPOTS — click each control, confirm the frame it lands on\n`);
+const HOT = [
+  ['portal-leads.html', 'Phone', 'portal-leads-phone.html'],
+  ['portal-leads.html', 'SMS', 'portal-leads-sms.html'],
+  ['portal-leads.html', 'WhatsApp', 'portal-leads-whatsapp.html'],
+  ['portal-leads-phone.html', 'All', 'portal-leads.html'],
+  ['portal-leads.html', 'Chats', 'chat.html'],
+  ['portal-leads-whatsapp.html', 'Clear All Filters', 'portal-leads.html'],
+  ['portal-leads.html', 'Date Range', 'portal-leads-daterange.html'],
+  ['portal-leads-daterange.html', 'Apply', 'portal-leads.html'],
+  ['portal-leads-daterange.html', 'Reset', 'portal-leads.html'],
+];
+for (const [from, label, want] of HOT) {
+  if (!existsSync(join(DIR, from)) || !existsSync(join(DIR, want))) { console.log(`  --   ${from} → ${label}: frame not built`); continue; }
+  /* Each case starts collapsed. The drawer remembers its state for the session, so the
+     drawer test above leaves it pinned open, and a pinned drawer overlays the left of the
+     page — the click meant for the "All" tab then lands on the drawer's "Agency Ads".
+     That overlap is real live behaviour; it just must not leak between test cases. */
+  await page.goto('file://' + join(DIR, from), { waitUntil: 'domcontentloaded' });
+  await page.evaluate(() => { try { sessionStorage.clear(); } catch (e) {} });
+  await page.goto('file://' + join(DIR, from), { waitUntil: 'domcontentloaded' });
+  await page.mouse.move(1000, 700);
+  const box = await page.evaluate((t) => {
+    const el = [...document.querySelectorAll('button,[role="tab"],a,div,span')]
+      .filter((e) => (e.textContent || '').trim() === t && e.getBoundingClientRect().width > 8)
+      .sort((a, b) => a.getBoundingClientRect().width - b.getBoundingClientRect().width)
+      .find((e) => !e.closest('nav') && e.getBoundingClientRect().top > 70);
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  }, label);
+  if (!box) { console.log(`  MISS ${from} → "${label}" not found`); problems++; continue; }
+  await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 6000 }).catch(() => {}), page.mouse.click(box.x, box.y)]);
+  const landed = page.url().split('/').pop();
+  const ok = landed === want;
+  if (!ok) problems++;
+  console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${from.replace('.html', '').padEnd(28)} "${label}" → ${landed}`);
+}
+// An open dropdown closes on a click outside it.
+if (existsSync(join(DIR, 'portal-leads-daterange.html'))) {
+  await page.goto('file://' + join(DIR, 'portal-leads-daterange.html'), { waitUntil: 'domcontentloaded' });
+  await page.evaluate(() => { try { sessionStorage.clear(); } catch (e) {} });
+  await page.goto('file://' + join(DIR, 'portal-leads-daterange.html'), { waitUntil: 'domcontentloaded' });
+  await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 6000 }).catch(() => {}), page.mouse.click(1100, 700)]);
+  const landed = page.url().split('/').pop();
+  const ok = landed === 'portal-leads.html';
+  if (!ok) problems++;
+  console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${'portal-leads-daterange'.padEnd(28)} click outside → ${landed}`);
+}
+
 // An offsite link must say so, not silently navigate to production.
 await page.goto(start, { waitUntil: 'domcontentloaded' });
 const offsite = await page.evaluate(async () => {
