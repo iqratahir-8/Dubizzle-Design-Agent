@@ -385,6 +385,29 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    Ads list. Needs a live ID; until then those links say "not part of this prototype".
    Cosmetic: fixture ad titles don't match their category on Leads (over-replacement, safe).
 
+
+31. **Portal prototype: drawer and Leads filters.** Sidebar drawer expands with all eight
+   page titles and the "dubizzle Pro" wordmark (the reported bug: toggling the nav class
+   alone widened it with every title still at opacity 0 — React strips four collapsed-only
+   classes on live, now listed in `PORTAL_DRAWER.collapsedOnly`). Leads filters work via
+   **hotspots** — controls that are `<button>`s, which href rewriting cannot reach: tabs
+   All/Phone/SMS/WhatsApp jump between real filtered captures (their URLs probed on live:
+   `?filter=leadType_eq_*`), **Chats** goes to the consumer inbox as it does on live,
+   **Date Range** opens the real captured dropdown and Apply / Reset / click-outside close
+   it, **Clear All Filters** returns to the unfiltered list. `check:prototype` now clicks
+   every hotspot and opens the drawer on every page. Two bugs it caught in my own work:
+   the click-outside rule swallowed the burger on the dropdown frame, and test cases leaked
+   pinned-drawer state into each other.
+   **Open question to the user:** which "detail drawers" they mean — Leads rows open
+   nothing on live. Candidates offered: an applicant card, an Agency Ads row or its ⋯ menu,
+   VIP Leads → Purchase (open and freeze only, never confirm: it spends credits), an agent
+   row. Next: the same hotspot treatment for the other pages' filters.
+   **Probe hygiene:** live probes screenshotted unredacted pages twice; both deleted. Any
+   probe that screenshots must run the fixture passes and `redactPage` first.
+   **Shell gotcha:** in zsh an `rm` glob that matches nothing is an *error*, which aborts an
+   `&&` chain — it silently skipped this very PROGRESS update once. Use `rm -f` on explicit
+   names, or `setopt NULL_GLOB`.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find
