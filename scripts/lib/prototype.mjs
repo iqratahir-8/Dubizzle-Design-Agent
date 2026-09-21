@@ -37,8 +37,34 @@ export const PORTAL_ROUTES = [
   [/^\/en\/agencyPortal\/creditInfo(\/all)?\/?$/, 'portal-credit'],
 ];
 
+/* The portal's sidebar drawer. Clicking the burger on live swaps ONE class on the
+   <nav>: collapsed (80px icon rail) ↔ expanded (a 25rem panel with each page title
+   beside its icon). Both sets of rules are already in the captured stylesheet, so the
+   prototype toggles dubizzle's real CSS rather than imitating it (measured 2026-09-21).
+   The trigger is found by the product's own aria-label, which survives a redeploy;
+   the two class names are build hashes and are re-checked on every build. */
+export const PORTAL_DRAWER = {
+  trigger: 'header[aria-label="Burger menu"]',
+  collapsed: '_4a96f724',
+  expanded: '_36772a2f',
+  /* Swapping the nav class alone widens the drawer but leaves every page title
+     invisible, which is the bug the user reported. Nothing in the CSS reverses the
+     collapsed-only classes under the expanded class: on live, React strips them from
+     each element when the drawer opens. A frozen capture has lost React, so the runtime
+     does it. The captured rules fade the text in over 1s — live's own motion. */
+  /* Classes that exist only in the collapsed state, measured from the captured CSS.
+     Two hide text (opacity:0; position:absolute) and two centre an icon in the 80px
+     rail. The runtime strips all four on open and restores them on close. */
+  collapsedOnly: [
+    '_09ded1f5', // each page title       — hidden
+    'c14480cc', // "dubizzle Pro" wordmark — hidden
+    '_647a463c', // each nav row           — icon centred
+    '_63d57cdb', // the burger row         — icon centred
+  ],
+};
+
 export const PROTOTYPES = {
-  'agency-portal': { member: (name) => name.startsWith('portal-'), routes: PORTAL_ROUTES },
+  'agency-portal': { member: (name) => name.startsWith('portal-'), routes: PORTAL_ROUTES, drawer: PORTAL_DRAWER },
 };
 
 export function prototypeFor(name) {
@@ -86,8 +112,13 @@ export function wirePrototype(html, proto, isAvailable) {
  *   - say so when a link leads outside the prototype, instead of silently doing nothing
  * Kept tiny and dependency-free; the captures have their own scripts stripped.
  */
-export const PROTOTYPE_RUNTIME = `<script>
+export function prototypeRuntime(proto) {
+  const drawer = JSON.stringify(proto.drawer || null);
+  return `<script>
 (function () {
+  var DRAWER = ${drawer};
+  var KEY = 'proto-drawer:' + ${JSON.stringify(proto.id)};
+
   function note(text) {
     var n = document.getElementById('proto-note');
     if (!n) {
@@ -105,17 +136,73 @@ export const PROTOTYPE_RUNTIME = `<script>
     clearTimeout(n._t);
     n._t = setTimeout(function () { n.style.opacity = '0'; }, 2200);
   }
+
+  /* Drawer. The state is kept for the session so that opening the drawer and then
+     picking a page does not snap it shut on arrival, which would read as a bug in a
+     prototype. Storage can throw (private mode); the drawer still works without it. */
+  var nav = null, owned = [], pinned = false;
+  /* Reveal or hide. Each node is cached with the classes it carried at load: once a
+     class is removed the node can no longer be found by it. */
+  function reveal(on) {
+    for (var i = 0; i < owned.length; i++) {
+      for (var k = 0; k < owned[i].cls.length; k++) owned[i].el.classList.toggle(owned[i].cls[k], !on);
+    }
+  }
+  function setDrawer(open) {
+    if (!nav) return;
+    pinned = open;
+    // Closing while the pointer is still over the rail leaves it hover-expanded, so the
+    // titles must stay visible until the pointer actually leaves.
+    reveal(open || nav.matches(':hover'));
+    nav.classList.toggle(DRAWER.expanded, open);
+    nav.classList.toggle(DRAWER.collapsed, !open);
+    var t = nav.querySelector(DRAWER.trigger);
+    if (t) t.setAttribute('aria-expanded', String(open));
+    try { sessionStorage.setItem(KEY, open ? '1' : '0'); } catch (e) {}
+  }
+  function isOpen() { return pinned; }
+  if (DRAWER) {
+    var trig = document.querySelector(DRAWER.trigger);
+    nav = trig && trig.closest('nav');
+    if (nav) {
+      [].slice.call(nav.querySelectorAll('*')).forEach(function (el) {
+        var cls = DRAWER.collapsedOnly.filter(function (c) { return el.classList.contains(c); });
+        if (cls.length) owned.push({ el: el, cls: cls });
+      });
+      /* The collapsed rail also expands on hover in live CSS
+         (.cd0bc53c:not(expanded):hover { width: 25rem }). Show the titles for the hover
+         too, or the rail widens into an empty panel. */
+      nav.addEventListener('mouseenter', function () { if (!pinned) reveal(true); });
+      nav.addEventListener('mouseleave', function () { if (!pinned) reveal(false); });
+      trig.setAttribute('role', 'button');
+      trig.setAttribute('tabindex', '0');
+      trig.style.cursor = 'pointer';
+      var saved = null;
+      try { saved = sessionStorage.getItem(KEY); } catch (e) {}
+      setDrawer(saved === '1');
+      trig.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setDrawer(!isOpen()); }
+      });
+    }
+  }
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen()) setDrawer(false); });
+
   document.addEventListener('click', function (e) {
-    var off = e.target.closest && e.target.closest('[data-proto-offsite]');
+    var tgt = e.target;
+    if (DRAWER && nav && tgt.closest && tgt.closest(DRAWER.trigger)) { e.preventDefault(); setDrawer(!isOpen()); return; }
+    // Click outside an open drawer closes it, like any overlay panel.
+    if (nav && isOpen() && tgt.closest && !tgt.closest('nav')) setDrawer(false);
+
+    var off = tgt.closest && tgt.closest('[data-proto-offsite]');
     if (off) {
       e.preventDefault();
       note('Not part of this prototype: ' + off.getAttribute('data-proto-offsite'));
       return;
     }
-    var t = e.target.closest && e.target.closest('button, [role="button"], a');
-    if (t && /^\\s*ok, i understand\\s*$/i.test(t.textContent || '')) {
+    var b = tgt.closest && tgt.closest('button, [role="button"], a');
+    if (b && /^\\s*ok, i understand\\s*$/i.test(b.textContent || '')) {
       e.preventDefault();
-      var box = t;
+      var box = b;
       for (var i = 0; i < 12 && box.parentElement; i++) {
         box = box.parentElement;
         var cs = getComputedStyle(box);
@@ -126,3 +213,7 @@ export const PROTOTYPE_RUNTIME = `<script>
   }, true);
 })();
 </script>`;
+}
+
+/** Kept for any caller that wants the runtime without a drawer. */
+export const PROTOTYPE_RUNTIME = prototypeRuntime({ id: 'default' });

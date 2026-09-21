@@ -23,7 +23,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSy
 import { createHash } from 'node:crypto';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { prototypeFor, wirePrototype, PROTOTYPE_RUNTIME } from './lib/prototype.mjs';
+import { prototypeFor, wirePrototype, prototypeRuntime } from './lib/prototype.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const LIVE = join(ROOT, 'design-kit/reference/live');
@@ -97,8 +97,22 @@ function buildTemplate(name, entry, layout) {
     const isAvailable = (target) =>
       Boolean(templates[target]) && existsSync(join(LIVE, `${templates[target].capture}.${layout}.html`));
     const r = wirePrototype(html, group, isAvailable);
-    html = r.html.replace(/<\/body>/i, `${PROTOTYPE_RUNTIME}\n</body>`);
-    proto = { id: group.id, wired: r.wired, neutralised: r.neutralised };
+    html = r.html.replace(/<\/body>/i, `${prototypeRuntime(group)}\n</body>`);
+    /* The drawer's class names are build hashes. If a re-capture comes from a newer
+       dubizzle release they will have changed, and the toggle would silently stop
+       working — so check the capture still carries both, and say so if it does not. */
+    let drawerOk = null;
+    if (group.drawer) {
+      drawerOk =
+        html.includes(group.drawer.collapsed) &&
+        group.drawer.collapsedOnly.every((c) => html.includes(c)) &&
+        html.includes('aria-label="Burger menu"');
+      const cssHasExpanded = [...html.matchAll(/_live-css\/([\w.]+\.css)/g)].some((m) =>
+        readFileSync(join(CSS_DIR, m[1]), 'utf8').includes(`.${group.drawer.expanded}`),
+      );
+      drawerOk = drawerOk && cssHasExpanded;
+    }
+    proto = { id: group.id, wired: r.wired, neutralised: r.neutralised, drawerOk };
   }
 
   const out = join(TEMPLATES, layout, `${name}.html`);
@@ -114,7 +128,8 @@ for (const [name, entry] of Object.entries(templates)) {
   }
 }
 for (const b of built.filter((b) => b.proto)) {
-  console.log(`proto ${b.layout}/${b.name}.html  ${b.proto.wired} links wired, ${b.proto.neutralised} neutralised`);
+  const d = b.proto.drawerOk === null ? '' : b.proto.drawerOk ? ' · drawer ok' : ' · DRAWER CLASSES NOT FOUND — re-measure (a new release changed the hashes)';
+  console.log(`proto ${b.layout}/${b.name}.html  ${b.proto.wired} links wired, ${b.proto.neutralised} neutralised${d}`);
 }
 
 // ── Prune shared files no template references any more (old captures) ─────────

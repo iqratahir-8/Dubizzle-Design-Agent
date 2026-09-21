@@ -81,6 +81,30 @@ for (const target of routes) {
   console.log(`  ${ok ? 'ok  ' : 'FAIL'} dashboard → ${target.padEnd(24)} landed on ${landed}`);
 }
 
+// The drawer. The reported bug was a drawer that widened with every page title still
+// invisible, so assert on the titles themselves, on every page, not on the width.
+console.log(`\nDRAWER — open it on every page; every title and the wordmark must show\n`);
+for (const f of pages) {
+  await page.goto('file://' + join(DIR, f), { waitUntil: 'domcontentloaded' });
+  await page.evaluate(() => { try { sessionStorage.clear(); } catch (e) {} });
+  await page.goto('file://' + join(DIR, f), { waitUntil: 'domcontentloaded' });
+  const has = await page.$('header[aria-label="Burger menu"]');
+  if (!has) { console.log(`  --   ${f.padEnd(34)} no drawer`); continue; }
+  await page.click('header[aria-label="Burger menu"]');
+  await page.mouse.move(900, 500);
+  await new Promise((r) => setTimeout(r, 1300));
+  const r = await page.evaluate(() => {
+    const nav = document.querySelector('header[aria-label="Burger menu"]').closest('nav');
+    const shown = (el) => { const cs = getComputedStyle(el); const b = el.getBoundingClientRect(); return b.width > 4 && cs.display !== 'none' && cs.visibility !== 'hidden' && parseFloat(cs.opacity) > 0.5; };
+    const titles = [...nav.querySelectorAll('a[data-proto-link] span')].filter((s) => s.textContent.trim());
+    const brand = [...nav.querySelectorAll('header span')].find((s) => /dubizzle Pro/.test(s.textContent));
+    return { total: titles.length, shown: titles.filter(shown).length, brand: !!brand && shown(brand), width: Math.round(nav.getBoundingClientRect().width) };
+  });
+  const ok = r.total > 0 && r.shown === r.total && r.brand && r.width > 200;
+  if (!ok) problems++;
+  console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${f.padEnd(34)} ${r.shown}/${r.total} titles · wordmark ${r.brand ? 'yes' : 'NO'} · ${r.width}px`);
+}
+
 // An offsite link must say so, not silently navigate to production.
 await page.goto(start, { waitUntil: 'domcontentloaded' });
 const offsite = await page.evaluate(async () => {
