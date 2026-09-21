@@ -52,8 +52,15 @@ export const ACCOUNT_SCREENS = {
      walking the route graph of the eight above (2026-09-21). The ad overview is one
      representative of /ads/extraDetails/<id>/overview; every Agency Ads row links
      to its own. Same for the candidate detail. */
-  /* portal-ad-overview removed: the ad ID had expired and the URL fell back to the
-     Agency Ads list, so the capture saved the wrong screen. Needs a live ad ID. */
+  /* The ad details drawer: clicking any Agency Ads card opens it over the list and
+     pushes /ads/extraDetails/<id>/<tab>. Five tabs, each its own URL. The ID is an ad
+     that was active on 2026-09-21; if it expires the URL falls back to the list (that
+     is what broke the first attempt) — check the saved screen shows the drawer. */
+  'portal-ad-overview': '/en/agencyPortal/ads/extraDetails/207466446/overview?tabChange=true',
+  'portal-ad-info': '/en/agencyPortal/ads/extraDetails/207466446/info',
+  'portal-ad-promo': '/en/agencyPortal/ads/extraDetails/207466446/promotional%20tools',
+  'portal-ad-agent': '/en/agencyPortal/ads/extraDetails/207466446/agent',
+  'portal-ad-chats': '/en/agencyPortal/ads/extraDetails/207466446/chats',
   'portal-credit-self': '/en/agencyPortal/creditInfo/self',
   'portal-credit-agents': '/en/agencyPortal/creditInfo/agents',
 
@@ -80,6 +87,11 @@ export const FIXTURE_SCREENS = new Set([
   'portal-agents',
   // an ad's own performance page can list the people who enquired about it
   'portal-ad-overview',
+  'portal-ad-info',
+  'portal-ad-promo',
+  // names the assigned agent, and the chats tab lists buyers
+  'portal-ad-agent',
+  'portal-ad-chats',
   // per-agent credit allocation names staff
   'portal-credit-agents',
   // a job's applicants are named individuals with CVs

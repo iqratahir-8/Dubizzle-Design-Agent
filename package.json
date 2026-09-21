@@ -51,7 +51,8 @@
     "capture:post-ad": "node scripts/capture-post-ad.mjs",
     "capture:states": "node scripts/capture-states.mjs",
     "check:a11y": "node scripts/check-a11y.mjs",
-    "check:prototype": "node scripts/check-prototype.mjs"
+    "check:prototype": "node scripts/check-prototype.mjs",
+    "extract:portal-filters": "node scripts/extract-portal-filters.mjs"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

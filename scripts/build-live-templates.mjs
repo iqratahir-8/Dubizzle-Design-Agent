@@ -24,6 +24,7 @@ import { createHash } from 'node:crypto';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { prototypeFor, wirePrototype, prototypeRuntime, hotspotsFor } from './lib/prototype.mjs';
+import { filtersFor, filtersRuntime } from './lib/prototype-filters.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const LIVE = join(ROOT, 'design-kit/reference/live');
@@ -39,6 +40,8 @@ const LAYOUTS = ['desktop', 'mobile'];
 const { templates } = JSON.parse(readFileSync(join(TEMPLATES, 'live-templates.json'), 'utf8'));
 const manifest = JSON.parse(readFileSync(join(ROOT, 'design-kit/reference/capture-manifest.json'), 'utf8'));
 const urls = Object.assign({}, ...Object.values(manifest.tiers));
+const PORTAL_FILTERS_FILE = join(ROOT, 'design-kit/content/portal-filters.json');
+const PORTAL_FILTERS = existsSync(PORTAL_FILTERS_FILE) ? JSON.parse(readFileSync(PORTAL_FILTERS_FILE, 'utf8')) : null;
 
 mkdirSync(CSS_DIR, { recursive: true });
 mkdirSync(ASSET_DIR, { recursive: true });
@@ -98,7 +101,10 @@ function buildTemplate(name, entry, layout) {
       Boolean(templates[target]) && existsSync(join(LIVE, `${templates[target].capture}.${layout}.html`));
     const r = wirePrototype(html, group, isAvailable);
     const hot = hotspotsFor(group, name, isAvailable);
-    html = r.html.replace(/<\/body>/i, `${prototypeRuntime(group, hot)}\n</body>`);
+    /* Working filters: dubizzle's own option lists, read off live into
+       design-kit/content/portal-filters.json (npm run extract:portal-filters). */
+    const filters = filtersFor(name, PORTAL_FILTERS);
+    html = r.html.replace(/<\/body>/i, `${prototypeRuntime(group, hot)}\n${filtersRuntime(filters)}\n</body>`);
     /* The drawer's class names are build hashes. If a re-capture comes from a newer
        dubizzle release they will have changed, and the toggle would silently stop
        working — so check the capture still carries both, and say so if it does not. */
@@ -113,7 +119,7 @@ function buildTemplate(name, entry, layout) {
       );
       drawerOk = drawerOk && cssHasExpanded;
     }
-    proto = { id: group.id, wired: r.wired, neutralised: r.neutralised, drawerOk, hotspots: hot.length };
+    proto = { id: group.id, wired: r.wired, neutralised: r.neutralised, drawerOk, hotspots: hot.length, filters: filters ? Object.keys(filters.dropdowns).length : 0 };
   }
 
   const out = join(TEMPLATES, layout, `${name}.html`);
@@ -130,7 +136,7 @@ for (const [name, entry] of Object.entries(templates)) {
 }
 for (const b of built.filter((b) => b.proto)) {
   const d = b.proto.drawerOk === null ? '' : b.proto.drawerOk ? ' · drawer ok' : ' · DRAWER CLASSES NOT FOUND — re-measure (a new release changed the hashes)';
-  console.log(`proto ${b.layout}/${b.name}.html  ${b.proto.wired} links wired, ${b.proto.neutralised} neutralised, ${b.proto.hotspots} hotspot(s)${d}`);
+  console.log(`proto ${b.layout}/${b.name}.html  ${b.proto.wired} links wired, ${b.proto.neutralised} neutralised, ${b.proto.hotspots} hotspot(s), ${b.proto.filters} filter(s)${d}`);
 }
 
 // ── Prune shared files no template references any more (old captures) ─────────

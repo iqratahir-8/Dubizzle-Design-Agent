@@ -40,6 +40,8 @@ for (const f of pages) {
   const ph = (t.match(PHONE) || []).filter((p) => p.replace(/\D/g, '') !== '01012345678');
   const em = (t.match(EMAIL) || []).filter((e) => !e.endsWith('example.com'));
   const known = KNOWN_LEAKS.filter((k) => t.includes(k));
+  // this account names its staff "<Name> Agent <n>" — the pattern, not a list of names
+  for (const m of t.match(/\b[A-Z][a-z]+ Agent \d+\b/g) || []) known.push(m.replace(/^\w+/, '<name>'));
   const bad = ph.length || em.length || known.length;
   if (bad) problems++;
   console.log(`  ${bad ? 'LEAK' : 'ok  '} ${f.padEnd(34)}${bad ? ` phones=${ph.length} emails=${em.length} known=[${known.join(', ')}]` : ''}`);
@@ -154,6 +156,75 @@ if (existsSync(join(DIR, 'portal-leads-daterange.html'))) {
   const ok = landed === 'portal-leads.html';
   if (!ok) problems++;
   console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${'portal-leads-daterange'.padEnd(28)} click outside → ${landed}`);
+}
+
+// The ad details drawer: a card opens it, its tabs move within it, a click on the list closes it.
+console.log(`\nAD DRAWER — open from a card, switch tab, close by clicking the list\n`);
+if (existsSync(join(DIR, 'portal-ad-overview.html'))) {
+  const click = async (x, y) => { await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 4000 }).catch(() => {}), page.mouse.click(x, y)]); return page.url().split('/').pop(); };
+  await page.goto('file://' + join(DIR, 'portal-ads.html'), { waitUntil: 'domcontentloaded' });
+  await page.evaluate(() => { try { sessionStorage.clear(); } catch (e) {} });
+  await page.goto('file://' + join(DIR, 'portal-ads.html'), { waitUntil: 'domcontentloaded' });
+  const steps = [];
+  steps.push(['card → drawer', await click(1000, 420), 'portal-ad-overview.html']);
+  const tab = await page.evaluate(() => { const a = [...document.querySelectorAll('a[data-proto-link="portal-ad-info"]')].find((x) => x.textContent.trim() === 'Ad Data'); if (!a) return null; const r = a.getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; });
+  steps.push(['tab "Ad Data"', tab ? await click(...tab) : 'missing', 'portal-ad-info.html']);
+  steps.push(['click inside stays', await click(1100, 600), 'portal-ad-info.html']);
+  steps.push(['click on list closes', await click(400, 600), 'portal-ads.html']);
+  for (const [what, got, want] of steps) {
+    if (got !== want) problems++;
+    console.log(`  ${got === want ? 'ok  ' : 'FAIL'} ${what.padEnd(24)} → ${got}`);
+  }
+}
+
+// Filters: each must open dubizzle's option list and actually change what the list shows.
+console.log(`\nFILTERS — open a menu, pick, confirm the list responds\n`);
+const FILTER_CASES = [
+  // page, kind, control, option/value, expected visible items (null = just must change)
+  ['portal-ads', 'tab', 'Active Ads', null, (n, all) => n > 0 && n < all],
+  ['portal-ads', 'tab', 'View all', null, (n, all) => n === all],
+  ['portal-ads', 'drop', 'Choose Agent', 'Yasmine A.', (n, all) => n >= 1 && n < all],
+  ['portal-ads', 'search', 'Search keyword', 'Samsung', (n) => n >= 1],
+  ['portal-candidates', 'drop', 'Experience Level', '5-10 Years', (n, all) => n >= 1 && n < all],
+  ['portal-candidates', 'tab', 'Rejected', null, (n) => n === 0],
+  ['portal-vip', 'drop', 'Make & Model', 'Nissan', (n, all) => n >= 1 && n < all],
+  ['portal-leads', 'drop', 'Agent', 'Karim M.', (n, all) => n >= 1 && n < all],
+];
+let lastPage = null;
+for (const [pg, kind, control, value, ok] of FILTER_CASES) {
+  if (!existsSync(join(DIR, `${pg}.html`))) { console.log(`  --   ${pg}: not built`); continue; }
+  if (pg !== lastPage) {
+    await page.goto('file://' + join(DIR, `${pg}.html`), { waitUntil: 'domcontentloaded' });
+    await page.evaluate(() => { try { sessionStorage.clear(); } catch (e) {} });
+    await page.goto('file://' + join(DIR, `${pg}.html`), { waitUntil: 'domcontentloaded' });
+    await page.mouse.move(1000, 800);
+    lastPage = pg;
+  }
+  const all = await page.evaluate(() => window.__protoFilters && window.__protoFilters.items);
+  const center = (sel) => page.evaluate((s) => { const e = document.querySelector(s); if (!e) return null; e.scrollIntoView({ block: 'center' }); const r = e.getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }, sel);
+  let detail = '';
+  if (kind === 'tab') {
+    const c = await center(`[data-proto-tab="${control}"]`);
+    if (c) await page.mouse.click(...c);
+  } else if (kind === 'search') {
+    await page.click(`input[placeholder="${control}"]`, { clickCount: 3 });
+    await page.type(`input[placeholder="${control}"]`, value);
+  } else {
+    const c = await center(`[data-proto-filter="${control}"]`);
+    if (c) await page.mouse.click(...c);
+    const opts = await page.evaluate(() => document.querySelectorAll('#proto-menu [role=option]').length);
+    const o = await page.evaluate((v) => { const e = [...document.querySelectorAll('#proto-menu [role=option]')].find((x) => x.textContent.trim() === v); if (!e) return null; e.scrollIntoView({ block: 'center' }); const r = e.getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height / 2]; }, value);
+    if (o) await page.mouse.click(...o);
+    detail = ` · menu ${opts} options`;
+    await page.keyboard.press('Escape');
+  }
+  await new Promise((r) => setTimeout(r, 150));
+  const n = await page.evaluate(() => window.__protoFilters && window.__protoFilters.shown());
+  const pass = typeof n === 'number' && ok(n, all);
+  if (!pass) problems++;
+  console.log(`  ${pass ? 'ok  ' : 'FAIL'} ${pg.padEnd(20)} ${kind.padEnd(6)} ${(control + (value ? ' = ' + value : '')).padEnd(34)} ${n}/${all} shown${detail}`);
+  // reset per page between cases that should start clean
+  if (kind !== 'tab') { await page.goto('file://' + join(DIR, `${pg}.html`), { waitUntil: 'domcontentloaded' }); await page.mouse.move(1000, 800); }
 }
 
 // An offsite link must say so, not silently navigate to production.

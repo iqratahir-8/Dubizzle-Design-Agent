@@ -24,7 +24,13 @@ const ORIGIN = 'https://www.dubizzle.com.eg';
  */
 export const PORTAL_ROUTES = [
   [/^\/(en\/)?agencyPortal\/?$/, 'portal-dashboard'],
+  /* The ad details drawer: one long panel over Agency Ads; its five tabs are anchors
+     into it, each with its own URL (captured 2026-09-21). */
   [/^\/en\/agencyPortal\/ads\/extraDetails\/[^/]+\/overview\/?$/, 'portal-ad-overview'],
+  [/^\/en\/agencyPortal\/ads\/extraDetails\/[^/]+\/info\/?$/, 'portal-ad-info'],
+  [/^\/en\/agencyPortal\/ads\/extraDetails\/[^/]+\/promotional(%20| )tools\/?$/, 'portal-ad-promo'],
+  [/^\/en\/agencyPortal\/ads\/extraDetails\/[^/]+\/agent\/?$/, 'portal-ad-agent'],
+  [/^\/en\/agencyPortal\/ads\/extraDetails\/[^/]+\/chats\/?$/, 'portal-ad-chats'],
   [/^\/en\/agencyPortal\/ads\/?$/, 'portal-ads'],
   [/^\/en\/agencyPortal\/leads\/?$/, 'portal-leads'],
   [/^\/en\/agencyPortal\/vip\/?$/, 'portal-vip'],
@@ -90,6 +96,8 @@ export const PORTAL_HOTSPOTS = [
   { on: /^portal-leads-daterange$/, text: 'Apply', go: 'portal-leads' },
   { on: /^portal-leads-daterange$/, text: 'Reset', go: 'portal-leads' },
   { on: /^portal-leads-daterange$/, outside: 'Preset range', go: 'portal-leads' },
+  // the ad details drawer closes on a click on the dimmed list behind it, as on live
+  { on: /^portal-ad-/, outside: 'Promotional Tools', go: 'portal-ads' },
 ];
 
 export const PROTOTYPES = {
@@ -174,13 +182,22 @@ export function prototypeRuntime(proto, hotspots = []) {
     return y >= band[0] && y <= band[1];
   }
   function panelOf(t) {
-    var hit = [].slice.call(document.querySelectorAll('body *')).filter(function (e) {
-      return e.children.length === 0 && (e.textContent || '').trim() === t;
-    })[0];
+    // by text node: the drawer's tab text shares its element with an icon
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), tn, hit = null;
+    while ((tn = w.nextNode())) if (tn.nodeValue.trim() === t) { hit = tn.parentElement; break; }
+    /* The panel is the nearest positioned ancestor narrower than the page: the ad
+       drawer sits in a full-width fixed backdrop, and "outside the backdrop" is nowhere. */
     for (var n = hit; n && n !== document.body; n = n.parentElement) {
       var cs = getComputedStyle(n);
-      if (cs.position === 'absolute' || cs.position === 'fixed') return n;
+      if ((cs.position === 'absolute' || cs.position === 'fixed') && n.getBoundingClientRect().width < document.documentElement.clientWidth * 0.9) return n;
     }
+    /* A frozen capture can lose the positioning (fixed layers are settled when frozen),
+       so fall back to the widest ancestor that is still narrower than the page. */
+    var best = null;
+    for (var m = hit; m && m !== document.body; m = m.parentElement) {
+      if (m.getBoundingClientRect().width < document.documentElement.clientWidth * 0.9) best = m;
+    }
+    if (best) return best;
     return null;
   }
   function hotspot(e) {

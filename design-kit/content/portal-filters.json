@@ -1,0 +1,970 @@
+{
+  "source": "https://www.dubizzle.com.eg",
+  "extracted": "2026-09-21",
+  "pages": {
+    "portal-ads": {
+      "Egypt": {
+        "options": [
+          "Use current location",
+          "Choose location",
+          "See ads in  all Egypt",
+          "Alexandria",
+          "Aswan",
+          "Asyut",
+          "Beheira",
+          "Beni Suef",
+          "Cairo",
+          "Dakahlia",
+          "Damietta",
+          "Fayoum",
+          "Gharbia",
+          "Giza",
+          "Ismailia",
+          "Kafr al-Sheikh",
+          "Luxor",
+          "Matruh",
+          "Minya",
+          "Monufia",
+          "New Valley",
+          "Port Said",
+          "Qalyubia",
+          "Qena",
+          "Red Sea",
+          "Sharqia",
+          "Sinai",
+          "Sohag",
+          "Suez"
+        ],
+        "inputs": [
+          "text:Search for location"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "4px",
+            "boxShadow": "rgba(0, 0, 0, 0.12) 0px 0px 6px 0px, rgba(0, 0, 0, 0.24) 0px 6px 6px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "0px",
+            "maxHeight": "450px",
+            "width": 250,
+            "height": 450,
+            "offsetY": 0,
+            "fieldWidth": 250
+          },
+          "row": {
+            "paddingTop": "0px",
+            "paddingLeft": "0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 70,
+            "fontSize": "14px",
+            "fontWeight": "700",
+            "color": "rgb(145, 147, 149)",
+            "lineHeight": "21px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Category": {
+        "options": [
+          "All",
+          "Vehicles",
+          "Cars for Sale",
+          "Cars for Rent",
+          "Tyres, Batteries, Oils, & Accessories",
+          "Car Wheels",
+          "Car Tires",
+          "Rims",
+          "Car Batteries & Accessories",
+          "Chargers & Jump Starters",
+          "Car Oils and Lubricants",
+          "Car Coolants and Additives",
+          "Car Interior Lighting",
+          "Interior Accessories",
+          "Exterior Accessories",
+          "Car Safety & Security",
+          "Car Tools & Gadgets",
+          "Car Spare Parts",
+          "Car Care",
+          "Pads, Sponges, & Cloths",
+          "Car Air Fresheners",
+          "Car Cleaning Products",
+          "Car Waxes",
+          "Car Polishes & Compounds",
+          "Motorcycles Gear, Safety & Security",
+          "Motorcycle Securtiy",
+          "Motorcycle Gear",
+          "Motorcycle Safety",
+          "Motorcycle Spare Parts",
+          "Motorcycle Tires & Wheels",
+          "Motorcycle Filters & Belts",
+          "Motorcycle Exhaust Systems",
+          "Motorcycle Braking System",
+          "Motorcycle Body & Frame",
+          "Motorcycle Electrical & Lighting",
+          "Motorcycle Suspension",
+          "Motorcycle Engine & Transmission",
+          "Motorcycles & Scooters",
+          "Boats - Watercraft",
+          "Heavy Trucks, Buses & Other Vehicles",
+          "Mobile Phones, Tablets, & Accessories",
+          "Mobile Phones",
+          "Tablets",
+          "Mobile & Tablet Accessories",
+          "Chargers & Cables",
+          "Power Banks",
+          "Headphones & Earbuds",
+          "Covers & Cases",
+          "Screen Protectors",
+          "Mobile Stands",
+          "Selfie Sticks",
+          "Ring Lights",
+          "Stylus Pens",
+          "Mobile & Tablet Keyboards",
+          "Adapters",
+          "Memory Cards",
+          "Spare Parts",
+          "Mobile Numbers",
+          "Smart Watches",
+          "Wearables",
+          "Fitness Trackers",
+          "Smart Glasses",
+          "Smart Rings",
+          "Jobs",
+          "Accounting, Finance & Banking",
+          "Engineering",
+          "Designers",
+          "Customer Service & Call Center",
+          "Workers and Technicians",
+          "Management & Consulting",
+          "Drivers & Delivery",
+          "Education",
+          "HR",
+          "Tourism, Travel & Hospitality",
+          "IT - Telecom",
+          "Marketing and Public Relations",
+          "Medical, Healthcare, & Nursing",
+          "Sales",
+          "Secretarial",
+          "Architecture & Design"
+        ],
+        "inputs": [],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "6px",
+            "boxShadow": "rgba(0, 0, 0, 0.16) 0px 4px 10px 0px",
+            "paddingTop": "8px",
+            "paddingLeft": "0px",
+            "maxHeight": "400px",
+            "width": 352,
+            "height": 400,
+            "offsetY": 7,
+            "fieldWidth": 196
+          },
+          "row": {
+            "paddingTop": "8px",
+            "paddingLeft": "30px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 44,
+            "fontSize": "16px",
+            "fontWeight": "700",
+            "color": "rgb(35, 38, 42)",
+            "lineHeight": "24px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Product": {
+        "options": [
+          "Elite",
+          "Featured"
+        ],
+        "inputs": [
+          "checkbox",
+          "checkbox"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "6px",
+            "boxShadow": "rgba(0, 0, 0, 0.16) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "0px",
+            "maxHeight": "400px",
+            "width": 240,
+            "height": 120,
+            "offsetY": 15,
+            "fieldWidth": 196
+          },
+          "row": {
+            "paddingTop": "10px",
+            "paddingLeft": "16px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 44,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(35, 38, 42)",
+            "lineHeight": "24px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Published date": {
+        "options": [
+          "Preset range",
+          "Custom range",
+          "Last week",
+          "Last month",
+          "Last 3 months",
+          "Last year",
+          "Reset",
+          "Apply"
+        ],
+        "inputs": [],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "8px",
+            "boxShadow": "rgba(0, 0, 0, 0.16) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "16px",
+            "maxHeight": "none",
+            "width": 340,
+            "height": 230,
+            "offsetY": 15,
+            "fieldWidth": 196
+          },
+          "row": {
+            "paddingTop": "0px",
+            "paddingLeft": "0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 38,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(35, 38, 42)",
+            "lineHeight": "21px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Choose Agent": {
+        "people": true
+      },
+      "Dealership Location": {
+        "options": [
+          "Test Loc 3",
+          "Test Loc 1",
+          "Untagged"
+        ],
+        "inputs": [],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "6px",
+            "boxShadow": "rgba(0, 0, 0, 0.16) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "0px",
+            "maxHeight": "400px",
+            "width": 240,
+            "height": 155,
+            "offsetY": 15,
+            "fieldWidth": 300
+          },
+          "row": {
+            "paddingTop": "10px",
+            "paddingLeft": "16px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 41,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(35, 38, 42)",
+            "lineHeight": "21px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      }
+    },
+    "portal-leads": {
+      "Agent": {
+        "people": true
+      }
+    },
+    "portal-vip": {
+      "Make & Model": {
+        "options": [
+          "Honda",
+          "MINI",
+          "Chevrolet",
+          "Porsche",
+          "Mercedes-Benz",
+          "Jaguar",
+          "Volkswagen",
+          "Suzuki",
+          "Alfa Romeo",
+          "Lada",
+          "Isuzu",
+          "Hyundai",
+          "Other make",
+          "Ford",
+          "Mazda",
+          "Kia",
+          "Peugeot",
+          "Ssang Yong",
+          "BMW",
+          "Fiat",
+          "Dodge",
+          "Renault",
+          "Jeep",
+          "Toyota",
+          "Nissan",
+          "Daihatsu",
+          "Volvo",
+          "Chrysler",
+          "Citroen",
+          "Mitsubishi",
+          "Land Rover",
+          "Hummer",
+          "Skoda",
+          "Proton",
+          "Daewoo",
+          "Seat",
+          "Subaru",
+          "Speranza",
+          "Opel",
+          "Audi",
+          "Brilliance",
+          "BYD",
+          "Chery",
+          "Geely",
+          "MG",
+          "Saipa",
+          "Changan",
+          "Lancia",
+          "Senova",
+          "Jac",
+          "Aston Martin",
+          "Bentley",
+          "Bugatti",
+          "Buick",
+          "Cadillac",
+          "Chana",
+          "Faw",
+          "Ferrari",
+          "Great Wall",
+          "Infiniti",
+          "Lamborghini",
+          "Lexus",
+          "Lifan",
+          "Lincoln",
+          "Maserati",
+          "Tesla",
+          "Zotye",
+          "Changhe",
+          "KYC",
+          "GMC",
+          "Lotus",
+          "McLaren",
+          "Rolls Royce",
+          "King Long",
+          "Jetour",
+          "Soueast",
+          "Haval",
+          "DFSK",
+          "Baic",
+          "Bestune"
+        ],
+        "inputs": [],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "0px 0px 6px 6px",
+            "boxShadow": "rgba(0, 0, 0, 0.1) 0px 2px 8px 0px",
+            "paddingTop": "0px",
+            "paddingLeft": "0px",
+            "maxHeight": "none",
+            "width": 256,
+            "height": 300,
+            "offsetY": 0,
+            "fieldWidth": 256
+          },
+          "row": {
+            "paddingTop": "0px",
+            "paddingLeft": "0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 32,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(35, 38, 42)",
+            "lineHeight": "20px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Year": {
+        "options": [
+          "Minimum",
+          "Maximum",
+          "Reset",
+          "Apply"
+        ],
+        "inputs": [
+          "text:Min",
+          "text:Any"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "8px",
+            "boxShadow": "rgba(0, 0, 0, 0.1) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "16px",
+            "maxHeight": "none",
+            "width": 256,
+            "height": 153,
+            "offsetY": 10,
+            "fieldWidth": 256
+          },
+          "row": {
+            "paddingTop": "0px",
+            "paddingLeft": "0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 65,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(70, 76, 85)",
+            "lineHeight": "21px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Price": {
+        "options": [
+          "Minimum",
+          "Maximum",
+          "Reset",
+          "Apply"
+        ],
+        "inputs": [
+          "text:0",
+          "text:Any"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "8px",
+            "boxShadow": "rgba(0, 0, 0, 0.1) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "16px",
+            "maxHeight": "none",
+            "width": 256,
+            "height": 153,
+            "offsetY": 10,
+            "fieldWidth": 256
+          },
+          "row": {
+            "paddingTop": "0px",
+            "paddingLeft": "0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 65,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(70, 76, 85)",
+            "lineHeight": "21px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "KM Driven": {
+        "options": [
+          "Minimum",
+          "Maximum",
+          "Reset",
+          "Apply"
+        ],
+        "inputs": [
+          "text:Any",
+          "text:Any"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "8px",
+            "boxShadow": "rgba(0, 0, 0, 0.1) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "16px",
+            "maxHeight": "none",
+            "width": 256,
+            "height": 153,
+            "offsetY": 10,
+            "fieldWidth": 256
+          },
+          "row": {
+            "paddingTop": "0px",
+            "paddingLeft": "0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 65,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(70, 76, 85)",
+            "lineHeight": "21px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Fuel Type": {
+        "options": [
+          "Diesel",
+          "Electric",
+          "Benzine",
+          "Hybrid",
+          "Natural Gas"
+        ],
+        "inputs": [
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "6px",
+            "boxShadow": "rgba(0, 0, 0, 0.16) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "0px",
+            "maxHeight": "400px",
+            "width": 260,
+            "height": 252,
+            "offsetY": 8,
+            "fieldWidth": 256
+          },
+          "row": {
+            "paddingTop": "10px",
+            "paddingLeft": "16px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 44,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(35, 38, 42)",
+            "lineHeight": "24px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Egypt": {
+        "options": [
+          "Use current location",
+          "Choose location",
+          "See ads in  all Egypt",
+          "Alexandria",
+          "Aswan",
+          "Asyut",
+          "Beheira",
+          "Beni Suef",
+          "Cairo",
+          "Dakahlia",
+          "Damietta",
+          "Fayoum",
+          "Gharbia",
+          "Giza",
+          "Ismailia",
+          "Kafr al-Sheikh",
+          "Luxor",
+          "Matruh",
+          "Minya",
+          "Monufia",
+          "New Valley",
+          "Port Said",
+          "Qalyubia",
+          "Qena",
+          "Red Sea",
+          "Sharqia",
+          "Sinai",
+          "Sohag",
+          "Suez"
+        ],
+        "inputs": [
+          "text:Search for location"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "4px",
+            "boxShadow": "rgba(0, 0, 0, 0.12) 0px 0px 6px 0px, rgba(0, 0, 0, 0.24) 0px 6px 6px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "0px",
+            "maxHeight": "450px",
+            "width": 256,
+            "height": 450,
+            "offsetY": 0,
+            "fieldWidth": 256
+          },
+          "row": {
+            "paddingTop": "0px",
+            "paddingLeft": "0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 70,
+            "fontSize": "14px",
+            "fontWeight": "700",
+            "color": "rgb(145, 147, 149)",
+            "lineHeight": "21px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      }
+    },
+    "portal-candidates": {
+      "Egypt": {
+        "options": [
+          "Use current location",
+          "Choose location",
+          "See ads in  all Egypt",
+          "Alexandria",
+          "Aswan",
+          "Asyut",
+          "Beheira",
+          "Beni Suef",
+          "Cairo",
+          "Dakahlia",
+          "Damietta",
+          "Fayoum",
+          "Gharbia",
+          "Giza",
+          "Ismailia",
+          "Kafr al-Sheikh",
+          "Luxor",
+          "Matruh",
+          "Minya",
+          "Monufia",
+          "New Valley",
+          "Port Said",
+          "Qalyubia",
+          "Qena",
+          "Red Sea",
+          "Sharqia",
+          "Sinai",
+          "Sohag",
+          "Suez"
+        ],
+        "inputs": [
+          "text:Search for location"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "4px",
+            "boxShadow": "rgba(0, 0, 0, 0.12) 0px 0px 6px 0px, rgba(0, 0, 0, 0.24) 0px 6px 6px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "0px",
+            "maxHeight": "450px",
+            "width": 260,
+            "height": 450,
+            "offsetY": 0,
+            "fieldWidth": 260
+          },
+          "row": {
+            "paddingTop": "0px",
+            "paddingLeft": "0px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 70,
+            "fontSize": "14px",
+            "fontWeight": "700",
+            "color": "rgb(145, 147, 149)",
+            "lineHeight": "21px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Experience Level": {
+        "options": [
+          "No Experience",
+          "1-3 Years",
+          "3-5 Years",
+          "5-10 Years",
+          "10-20 Years",
+          "20+ Years"
+        ],
+        "inputs": [
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "6px",
+            "boxShadow": "rgba(0, 0, 0, 0.16) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "0px",
+            "maxHeight": "400px",
+            "width": 240,
+            "height": 296,
+            "offsetY": 15,
+            "fieldWidth": 260
+          },
+          "row": {
+            "paddingTop": "10px",
+            "paddingLeft": "16px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 44,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(35, 38, 42)",
+            "lineHeight": "24px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Education Level": {
+        "options": [
+          "No Education",
+          "Student",
+          "High Secondary School",
+          "Diploma",
+          "Bachelor's Degree",
+          "Master's Degree",
+          "PhD Degree"
+        ],
+        "inputs": [
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "6px",
+            "boxShadow": "rgba(0, 0, 0, 0.16) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "0px",
+            "maxHeight": "400px",
+            "width": 240,
+            "height": 340,
+            "offsetY": 15,
+            "fieldWidth": 260
+          },
+          "row": {
+            "paddingTop": "10px",
+            "paddingLeft": "16px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 44,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(35, 38, 42)",
+            "lineHeight": "24px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      },
+      "Application Status": {
+        "options": [
+          "New (13)",
+          "Applied (0)",
+          "Screening (0)",
+          "First Interview (0)",
+          "Second Interview (0)",
+          "Interview Not Attended (0)",
+          "Interview rescheduled (0)",
+          "Awaiting approval (0)",
+          "On Hold (0)",
+          "Shortlisted (0)",
+          "Offer sent (0)",
+          "Offer Declined (0)",
+          "Hired (0)"
+        ],
+        "inputs": [
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox",
+          "checkbox"
+        ],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "6px",
+            "boxShadow": "rgba(0, 0, 0, 0.16) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "0px",
+            "maxHeight": "400px",
+            "width": 240,
+            "height": 400,
+            "offsetY": 15,
+            "fieldWidth": 260
+          },
+          "row": {
+            "paddingTop": "10px",
+            "paddingLeft": "16px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 46,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(159, 110, 0)",
+            "lineHeight": "18px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      }
+    },
+    "portal-agents": {
+      "Sort by": {
+        "error": "nothing opened"
+      }
+    },
+    "portal-insights": {
+      "All dubizzle Cars": {
+        "error": "nothing opened"
+      },
+      "Last month": {
+        "options": [
+          "Last week",
+          "Last 2 weeks",
+          "Last month",
+          "Last 3 months",
+          "Last 6 months",
+          "Last year",
+          "Reset",
+          "Apply"
+        ],
+        "inputs": [],
+        "style": {
+          "panel": {
+            "backgroundColor": "rgb(255, 255, 255)",
+            "borderTopWidth": "0px",
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderRadius": "8px",
+            "boxShadow": "rgba(0, 0, 0, 0.16) 0px 4px 10px 0px",
+            "paddingTop": "16px",
+            "paddingLeft": "16px",
+            "maxHeight": "none",
+            "width": 385,
+            "height": 170,
+            "offsetY": 8,
+            "fieldWidth": 175
+          },
+          "row": {
+            "paddingTop": "8px",
+            "paddingLeft": "16px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "height": 34,
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "color": "rgb(35, 38, 42)",
+            "lineHeight": "16px"
+          },
+          "field": {
+            "borderTopColor": "rgb(35, 38, 42)",
+            "borderTopWidth": "0px",
+            "borderRadius": "0px"
+          }
+        }
+      }
+    }
+  }
+}

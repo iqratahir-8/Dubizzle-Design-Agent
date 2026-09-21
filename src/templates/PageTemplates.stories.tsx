@@ -1171,6 +1171,81 @@ export const PortalLeadsDaterange: Story = {
   },
 };
 
+export const PortalAdOverview: Story = {
+  name: "Agency portal — Ad details drawer, Overview",
+  args: {
+    "name": "portal-ad-overview",
+    "label": "Agency portal — Ad details drawer, Overview",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAdInfo: Story = {
+  name: "Agency portal — Ad details drawer, Ad Data",
+  args: {
+    "name": "portal-ad-info",
+    "label": "Agency portal — Ad details drawer, Ad Data",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAdPromo: Story = {
+  name: "Agency portal — Ad details drawer, Promo Tools",
+  args: {
+    "name": "portal-ad-promo",
+    "label": "Agency portal — Ad details drawer, Promo Tools",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAdAgent: Story = {
+  name: "Agency portal — Ad details drawer, Agent Details",
+  args: {
+    "name": "portal-ad-agent",
+    "label": "Agency portal — Ad details drawer, Agent Details",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAdChats: Story = {
+  name: "Agency portal — Ad details drawer, Chats",
+  args: {
+    "name": "portal-ad-chats",
+    "label": "Agency portal — Ad details drawer, Chats",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
 export const Favourites: Story = {
   name: "Favourites",
   args: {
