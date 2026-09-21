@@ -352,6 +352,19 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    Ads Performance chart → propose tokens → `pick-ui-library` → build in dubizzle tokens.
    New skill `dubizzle-charts` carries the rules; `chart-data-viz` links to it.
 
+
+29. **Agency portal in Storybook** — the eight `portal-*` captures are now live templates
+   (`live-templates.json`, `account: true`), desktop only, so they appear under
+   **Templates → Pages → Agency portal — …** alongside the other pages (71 page templates).
+   Built templates are gitignored like `my-ads`/`chat`, and were re-scanned after the build
+   because extraction produces new files from PII-sensitive captures: all clean.
+   **Redaction gap noticed:** the dashboard reads "Welcome to Test Agency" — harmless here
+   because it is a test account, but the redactor covers person names, phones and emails,
+   **not business names**. On a real agency account its name would pass straight through.
+   Worth closing before capturing any production agency.
+   The old `templates/desktop/agency-portal.html` URL now 404s by design: it was the
+   invented template deleted earlier in the session.
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

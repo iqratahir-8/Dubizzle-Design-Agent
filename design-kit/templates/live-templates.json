@@ -259,6 +259,46 @@
     "menu-vehicles-car-care": {
       "capture": "menu-vehicles-car-care",
       "label": "Header mega menu — Vehicles, Car Care panel (second level)"
+    },
+    "portal-dashboard": {
+      "capture": "portal-dashboard",
+      "label": "Agency portal — Dashboard",
+      "account": true
+    },
+    "portal-ads": {
+      "capture": "portal-ads",
+      "label": "Agency portal — Agency Ads",
+      "account": true
+    },
+    "portal-leads": {
+      "capture": "portal-leads",
+      "label": "Agency portal — Leads",
+      "account": true
+    },
+    "portal-vip": {
+      "capture": "portal-vip",
+      "label": "Agency portal — VIP Leads",
+      "account": true
+    },
+    "portal-candidates": {
+      "capture": "portal-candidates",
+      "label": "Agency portal — Candidates",
+      "account": true
+    },
+    "portal-agents": {
+      "capture": "portal-agents",
+      "label": "Agency portal — Agency Management",
+      "account": true
+    },
+    "portal-insights": {
+      "capture": "portal-insights",
+      "label": "Agency portal — Insights",
+      "account": true
+    },
+    "portal-credit": {
+      "capture": "portal-credit",
+      "label": "Agency portal — Credit Info",
+      "account": true
     }
   },
   "_states": "Templates whose capture is an interaction state (scripts/capture-states.mjs): the header mega menus, the location dropdown, the search suggestions, the mobile search/location overlays and the signed-in user menu. They are one viewport tall, not full pages."

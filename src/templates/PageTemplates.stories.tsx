@@ -946,6 +946,126 @@ export const MenuVehiclesCarCare: Story = {
   },
 };
 
+export const PortalDashboard: Story = {
+  name: "Agency portal — Dashboard",
+  args: {
+    "name": "portal-dashboard",
+    "label": "Agency portal — Dashboard",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-18",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAds: Story = {
+  name: "Agency portal — Agency Ads",
+  args: {
+    "name": "portal-ads",
+    "label": "Agency portal — Agency Ads",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalLeads: Story = {
+  name: "Agency portal — Leads",
+  args: {
+    "name": "portal-leads",
+    "label": "Agency portal — Leads",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-18",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalVip: Story = {
+  name: "Agency portal — VIP Leads",
+  args: {
+    "name": "portal-vip",
+    "label": "Agency portal — VIP Leads",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalCandidates: Story = {
+  name: "Agency portal — Candidates",
+  args: {
+    "name": "portal-candidates",
+    "label": "Agency portal — Candidates",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAgents: Story = {
+  name: "Agency portal — Agency Management",
+  args: {
+    "name": "portal-agents",
+    "label": "Agency portal — Agency Management",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-18",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalInsights: Story = {
+  name: "Agency portal — Insights",
+  args: {
+    "name": "portal-insights",
+    "label": "Agency portal — Insights",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-18",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalCredit: Story = {
+  name: "Agency portal — Credit Info",
+  args: {
+    "name": "portal-credit",
+    "label": "Agency portal — Credit Info",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
 export const Favourites: Story = {
   name: "Favourites",
   args: {

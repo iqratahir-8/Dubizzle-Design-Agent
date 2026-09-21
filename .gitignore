@@ -46,3 +46,6 @@ design-kit/templates/mobile/m-user-menu.html
 # What matters from them is extracted into tokens/illustrations and committed;
 # the raw bundle stays local like the captures. See docs/DECISIONS.md D-013.
 design-kit/reference/exports/
+# Agency portal templates: built from signed-in, fixture-redacted captures (D-011).
+# Desktop only — dubizzle Pro has no mobile layout (D-012). Local, like my-ads/chat.
+design-kit/templates/desktop/portal-*.html
