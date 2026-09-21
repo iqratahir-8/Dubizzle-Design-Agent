@@ -460,3 +460,129 @@ export async function fixturizeTables(page) {
   );
 }
 
+
+/* ── People in CARD layouts ───────────────────────────────────────────────────
+   fixturizeTables only walks <table>. The portal's Candidates screen lists
+   applicants as cards — avatar, name, city, current employer — with no table at
+   all, so a real applicant's full name passed every gate: the table pass found
+   nothing, and no phone/email pattern matches a name. It was built into a template
+   and shown in Storybook before being caught by eye (D-017).
+
+   Two rules, both wholesale rather than detective, per D-011:
+     1. A PERSON CARD is a repeated list item containing an avatar-like image. Every
+        text leaf in it is overwritten except UI labels, status words, dates, numbers
+        and generic enums. Over-replacing is safe; under-replacing leaks.
+     2. A LABELLED PERSON FIELD ("Assigned to:", "Posted by:", "Agent:") has its
+        value replaced wherever it appears, avatar or not. */
+const FIXTURE_JOBS = ['Site engineer, 6 years', 'Accountant at a trading company', 'Sales coordinator', 'Graphic designer', 'Project engineer'];
+const FIXTURE_PLACES = ['Nasr City, Cairo', 'Maadi, Cairo', 'Sheikh Zayed, Giza', 'Smouha, Alexandria', 'Mansoura, Dakahlia'];
+
+export async function fixturizeCards(page) {
+  return page.evaluate(
+    ({ names, ads, jobs, places }) => {
+      const pick = (arr, i) => arr[i % arr.length];
+      const leavesOf = (root) =>
+        [...root.querySelectorAll('*')].filter((n) => n.children.length === 0 && n.textContent.trim());
+      /* KEEP only what is generic on its own. "Current Job:" is NOT here: a label
+         at the front of a leaf used to protect the whole leaf, and the value after it
+         was an applicant's real employer and university. Labelled values are split
+         and judged by the label below. */
+      const KEEP = (t) =>
+        /:\s*$/.test(t) ||
+        /^(new|active|rejected|disabled|hybrid|on site|remote|pending|accepted|shortlisted|view|more|less)$/i.test(t) ||
+        /^\d[\d\s,./:-]*$/.test(t) ||
+        /^applied on\b/i.test(t) ||
+        /^experience\s*:?\s*\d/i.test(t) ||
+        /^\s*(\d+\s*-\s*\d+|\d+\+?)\s*years?\s*$/i.test(t) ||
+        /^(bachelor|master|phd|diploma|high school)('s)?(\s+degree)?$/i.test(t);
+      // Labelled values whose value identifies a person: replace the value, keep the label.
+      const IDENT_LABEL = /^(current job|current position|company|employer|works at|university|school|college)\s*:\s*/i;
+
+      const avatarLike = (img) => {
+        const r = img.getBoundingClientRect();
+        if (r.width < 16 || r.width > 96 || Math.abs(r.width - r.height) > 6) return false;
+        const cue = `${img.alt || ''} ${img.getAttribute('src') || ''} ${img.className || ''}`;
+        const round = parseFloat(getComputedStyle(img).borderRadius) >= r.width * 0.3;
+        return round || /avatar|user|profile|person|candidate|photo/i.test(cue);
+      };
+      const cardOf = (el) => {
+        for (let n = el, d = 0; n && n.parentElement && d < 9; n = n.parentElement, d++) {
+          const p = n.parentElement;
+          const twins = [...p.children].filter((c) => c.tagName === n.tagName && c.className === n.className);
+          if (twins.length >= 2 && n.getBoundingClientRect().height > 40) return n;
+        }
+        return null;
+      };
+
+      let cards = 0;
+      let leaves = 0;
+      const done = new Set();
+      [...document.querySelectorAll('img')].filter(avatarLike).forEach((img) => {
+        const card = cardOf(img);
+        if (!card || done.has(card)) return;
+        done.add(card);
+        cards++;
+        let named = false;
+        leavesOf(card).forEach((leaf, i) => {
+          const t = leaf.textContent.trim();
+          const lab = t.match(IDENT_LABEL);
+          if (lab) {
+            leaf.textContent = `${lab[0].trim()} ${pick(jobs, cards + i)}`;
+            leaves++;
+            return;
+          }
+          if (KEEP(t)) return;
+          if (!named) {
+            leaf.textContent = pick(names, cards);
+            named = true;
+          } else {
+            // After the name, a short line with no digits is almost always the city.
+            // Give it a real Egyptian place rather than an ad title, so the prototype
+            // reads correctly; anything else still gets overwritten.
+            const short = t.split(/\s+/).length <= 4 && !/\d/.test(t);
+            leaf.textContent = short ? pick(places, cards + i) : pick(jobs, cards + i);
+          }
+          leaves++;
+        });
+      });
+
+      // Labelled person fields, anywhere on the page.
+      let fields = 0;
+      /* The product often labels these itself: Agency Ads renders
+         <div aria-label="Agent name">Assigned to: <b>Ahmed Agent 1</b></div>. The label
+         is a text node beside the <b>, not a leaf of its own, so a leaf-based rule never
+         sees it. The aria-label is the reliable hook. */
+      document.querySelectorAll('[aria-label]').forEach((el, i) => {
+        if (!/\b(agent|user|customer|candidate|seller|owner|contact|buyer)\s*name\b|^name$/i.test(el.getAttribute('aria-label'))) return;
+        const inner = [...el.querySelectorAll('*')].filter((n) => n.children.length === 0 && n.textContent.trim());
+        if (inner.length) inner.forEach((n) => { n.textContent = pick(names, i); fields++; });
+        else if (el.textContent.trim()) {
+          el.textContent = el.textContent.replace(/(:\s*)?[^:]+$/, (m, colon) => `${colon || ''}${pick(names, i)}`);
+          fields++;
+        }
+      });
+      const LABEL = /^(assigned to|posted by|agent|agent name|contact person|owner)\s*:?\s*$/i;
+      leavesOf(document.body).forEach((leaf, i) => {
+        const t = leaf.textContent.trim();
+        const inline = t.match(/^(assigned to|posted by|agent)\s*:\s*(.+)$/i);
+        if (inline) {
+          leaf.textContent = `${inline[1]}: ${pick(names, i)}`;
+          fields++;
+          return;
+        }
+        if (!LABEL.test(t)) return;
+        const next =
+          leaf.nextElementSibling ||
+          [...(leaf.parentElement?.parentElement?.querySelectorAll('*') ?? [])].find(
+            (n) => n.children.length === 0 && n.compareDocumentPosition(leaf) & Node.DOCUMENT_POSITION_PRECEDING && n.textContent.trim(),
+          );
+        if (next && next.textContent.trim() && !KEEP(next.textContent.trim())) {
+          next.textContent = pick(names, i);
+          fields++;
+        }
+      });
+      return { cards, leaves, fields };
+    },
+    { names: FIXTURE_NAMES, ads: FIXTURE_ADS, jobs: FIXTURE_JOBS, places: FIXTURE_PLACES },
+  );
+}

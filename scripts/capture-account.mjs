@@ -23,7 +23,7 @@ import { buildGallery } from './build-screens-gallery.mjs';
 import { ORIGIN, LAYOUTS, sleep, scrollThrough, settleFixedElements, captureAndDismissInterstitial, removePushPrompt } from './lib/render-helpers.mjs';
 import { readAccountIdentity, redactPage, sanitizeHtml, leaks, visibleLeaks } from './lib/redact.mjs';
 import { connectToSession, isSignedIn } from './capture-session.mjs';
-import { fixturizeTables, scrubContactsPage, scrubContactsHtml, contactLeaks } from './lib/redact.mjs';
+import { fixturizeTables, fixturizeCards, scrubContactsPage, scrubContactsHtml, contactLeaks } from './lib/redact.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'design-kit/reference/live');
@@ -47,6 +47,16 @@ export const ACCOUNT_SCREENS = {
   'portal-agents': '/en/agencyPortal/agents',
   'portal-insights': '/en/agencyPortal/insights/cars-market',
   'portal-credit': '/en/agencyPortal/creditInfo/all',
+
+  /* Second-level portal screens, reachable only by clicking through — found by
+     walking the route graph of the eight above (2026-09-21). The ad overview is one
+     representative of /ads/extraDetails/<id>/overview; every Agency Ads row links
+     to its own. Same for the candidate detail. */
+  /* portal-ad-overview removed: the ad ID had expired and the URL fell back to the
+     Agency Ads list, so the capture saved the wrong screen. Needs a live ad ID. */
+  'portal-credit-self': '/en/agencyPortal/creditInfo/self',
+  'portal-credit-agents': '/en/agencyPortal/creditInfo/agents',
+  'portal-candidate-detail': '/en/agencyPortal/jobsApplications/208428952',
 };
 
 /* Screens listing OTHER people — buyers who contacted the agency, job applicants,
@@ -55,10 +65,18 @@ export const ACCOUNT_SCREENS = {
    See fixturizeTables() in lib/redact.mjs. */
 export const FIXTURE_SCREENS = new Set([
   'portal-dashboard',
+  // each ad row says "Assigned to: <agent>" — a staff member's name (D-017)
+  'portal-ads',
   'portal-leads',
   'portal-vip',
   'portal-candidates',
   'portal-agents',
+  // an ad's own performance page can list the people who enquired about it
+  'portal-ad-overview',
+  // per-agent credit allocation names staff
+  'portal-credit-agents',
+  // a job's applicants are named individuals with CVs
+  'portal-candidate-detail',
 ]);
 
 /* The portal is client-rendered and slow to fill; the default settle leaves empty
@@ -151,6 +169,10 @@ for (const name of selected) {
       let fixed = null;
       if (FIXTURE_SCREENS.has(name)) {
         fixed = await fixturizeTables(page);
+        // Cards as well as tables: the Candidates screen has no <table> at all, and a
+        // real applicant's name passed straight through the table pass (D-017).
+        const c = await fixturizeCards(page);
+        fixed = { ...fixed, cards: c.cards, cardLeaves: c.leaves, fields: c.fields };
         await scrubContactsPage(page);
       }
       const counts = await redactPage(page, identity);
@@ -186,7 +208,7 @@ for (const name of selected) {
         base,
         status: 'saved',
         detail: `${height}px tall · redacted: ${counts.text} text, ${counts.chatRows} chat rows, ${counts.inputs} fields, ${counts.avatars} avatars${
-          fixed ? ` · fixtures: ${fixed.cells} cells in ${fixed.rows} rows / ${fixed.tables} table(s)` : ''
+          fixed ? ` · fixtures: ${fixed.cells} cells/${fixed.tables} table(s), ${fixed.cardLeaves} leaves/${fixed.cards} card(s), ${fixed.fields} labelled field(s)` : ''
         }`,
       });
     } catch (error) {

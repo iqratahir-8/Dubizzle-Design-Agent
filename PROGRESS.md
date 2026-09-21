@@ -365,6 +365,26 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    The old `templates/desktop/agency-portal.html` URL now 404s by design: it was the
    invented template deleted earlier in the session.
 
+
+30. **Agency portal is a working prototype** — stored in the page templates, as asked.
+   `scripts/lib/prototype.mjs` rewrites every portal link to its sibling template during
+   `build:templates`, so the screens navigate to each other in the kit **and inside
+   Storybook's frame**. Pagination lands on the same screen; per-ad/per-job URLs map to the
+   one representative capture; links to live dubizzle are neutralised and say "Not part of
+   this prototype" instead of silently opening production. Active sidebar states come free
+   (each capture was taken on its own route). **11 screens**, three new: Candidates for a
+   job, Credit Info → Owner, Credit Info → Agents. `npm run check:prototype` clicks every
+   route and fails on a leak, a dead link or a wrong landing.
+   **Incident → D-017:** a real job applicant's name reached `portal-candidates`, its
+   template and Storybook, and I had reported the portal "clean" on a phone/email scan.
+   Card layouts bypassed the table-only fixture pass. Fixed with `fixturizeCards()` plus
+   labelled-field and `aria-label` rules; every people screen re-captured and checked by
+   eye. Never committed (gitignored). The new check then caught one more — an agent name
+   in a Leads table cell — which the old pass had kept for being under 24 characters.
+   **Ad overview not captured:** its ad ID had expired and the URL fell back to the Agency
+   Ads list. Needs a live ID; until then those links say "not part of this prototype".
+   Cosmetic: fixture ad titles don't match their category on Leads (over-replacement, safe).
+
 ## 6. Next up
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find

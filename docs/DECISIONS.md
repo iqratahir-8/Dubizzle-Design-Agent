@@ -462,3 +462,41 @@ carries trend inside a table with no chart at all.
 **Consumer side has no chart today** and the bar stays high: a price-history line on a DPV
 is plausible and would still be a new pattern needing product sign-off, not something
 added because the capability arrived.
+
+## D-017 — A real applicant's name passed every gate, and I reported it clean
+**2026-09-21 · adopted after an incident**
+
+`portal-candidates` and the new `portal-candidate-detail` contained a real job applicant's
+full name, city, current employer and degree. The first was captured on 2026-09-18, built
+into a template and shown in Storybook, and **I told the user all portal captures scanned
+clean**. That was only true for phone numbers and emails. Both files were gitignored and
+never committed (git history checked); both are deleted.
+
+**Why it got through.** The Candidates screen lists applicants as **cards** — avatar, name,
+city, employer — with no `<table>`. `fixturizeTables` only walks tables, so it reported
+"0 cells, 0 rows, 0 tables" and moved on. Every other gate matches patterns, and a name is
+not a pattern. So four independent checks all passed a page with a named stranger on it.
+
+**The tell was in the log and I read past it.** Three people-listing screens reported
+"fixtures: 0 cells", which should mean "empty" and instead meant "not a table". A redaction
+pass that finds nothing to redact on a page that obviously lists people is not a pass — it
+is a pass that did not run.
+
+**Fixed:**
+- `fixturizeCards()` (lib/redact.mjs): a *person card* is a repeated list item containing
+  an avatar-like image; every text leaf in it is overwritten except UI labels, status words,
+  dates, numbers and generic enums. Over-replacing is safe; under-replacing leaks.
+- Labelled person fields — "Assigned to:", "Posted by:", "Agent:" — have their value
+  replaced anywhere on the page, avatar or not. Agency Ads carried "Assigned to: <agent>"
+  and was not in the fixture set at all; it is now.
+- The capture log reports tables, cards and labelled fields separately, so "found nothing"
+  is visible per mechanism instead of summed to a reassuring zero.
+
+**Also found in the same pass:** `portal-ad-overview` was saved against an ad ID that had
+expired; the URL fell back to the Agency Ads list and the capture recorded the wrong screen
+(the D-010 failure again). Deleted, and removed from `ACCOUNT_SCREENS` until a live ID is used.
+
+**The rule this adds, and it outranks the regexes:** for any screen that lists people, the
+**screenshot is checked by eye before the capture is trusted**. Every privacy failure on
+this project — D-011's phone number, this name — passed the automated gates and was caught
+by looking. The gates are necessary. They have never once been sufficient.

@@ -117,3 +117,16 @@ Say "read PROGRESS.md" — it is the handoff file, kept current, and it points a
 `RULES.md` (the binding constraints), `docs/COMPONENT-INVENTORY.md` (what exists and what's next),
 `docs/LIVE-MEASUREMENTS.md` (every measured value), `docs/PAGE-COVERAGE.md` (what's captured),
 `docs/DECISIONS.md` (why things are the way they are).
+
+
+## The agency portal prototype
+
+The eight portal sections plus three sub-screens are a clickable prototype built from real
+captures. Start at **Dashboard** and use the sidebar.
+
+- Kit: `npm run kit`, then open `http://localhost:4321/templates/desktop/portal-dashboard.html`
+- Storybook: `npm run dev` → Templates → Pages → Agency portal — …
+
+Say **"rebuild the portal prototype"** after a re-capture, and **"check the prototype"** to
+run `npm run check:prototype` (privacy, dead links, and a real click-through of every route).
+Desktop only: dubizzle Pro has no mobile layout.

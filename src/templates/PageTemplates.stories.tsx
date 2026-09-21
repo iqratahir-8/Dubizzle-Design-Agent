@@ -956,7 +956,7 @@ export const PortalDashboard: Story = {
     ],
     "live": true,
     "local": true,
-    "captured": "2026-09-18",
+    "captured": "2026-09-21",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -971,7 +971,7 @@ export const PortalAds: Story = {
     ],
     "live": true,
     "local": true,
-    "captured": "2026-09-17",
+    "captured": "2026-09-21",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -986,7 +986,7 @@ export const PortalLeads: Story = {
     ],
     "live": true,
     "local": true,
-    "captured": "2026-09-18",
+    "captured": "2026-09-21",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -1001,7 +1001,7 @@ export const PortalVip: Story = {
     ],
     "live": true,
     "local": true,
-    "captured": "2026-09-17",
+    "captured": "2026-09-21",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -1016,7 +1016,7 @@ export const PortalCandidates: Story = {
     ],
     "live": true,
     "local": true,
-    "captured": "2026-09-17",
+    "captured": "2026-09-21",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -1031,7 +1031,7 @@ export const PortalAgents: Story = {
     ],
     "live": true,
     "local": true,
-    "captured": "2026-09-18",
+    "captured": "2026-09-21",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
@@ -1062,6 +1062,51 @@ export const PortalCredit: Story = {
     "live": true,
     "local": true,
     "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalCandidateDetail: Story = {
+  name: "Agency portal — Candidates for a job",
+  args: {
+    "name": "portal-candidate-detail",
+    "label": "Agency portal — Candidates for a job",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalCreditSelf: Story = {
+  name: "Agency portal — Credit Info (Owner)",
+  args: {
+    "name": "portal-credit-self",
+    "label": "Agency portal — Credit Info (Owner)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalCreditAgents: Story = {
+  name: "Agency portal — Credit Info (Agents)",
+  args: {
+    "name": "portal-credit-agents",
+    "label": "Agency portal — Credit Info (Agents)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-21",
     "origin": "https://www.dubizzle.com.eg"
   },
 };
