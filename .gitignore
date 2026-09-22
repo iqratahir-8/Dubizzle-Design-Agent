@@ -53,3 +53,10 @@ design-kit/templates/desktop/portal-*.html
 design-kit/templates/desktop/dpv-report-in.html
 design-kit/templates/desktop/dpv-report-form.html
 design-kit/reference/live/screens/_live-check/
+
+# Remotion skills installed via `npx skills add` — kept local, not part of the
+# design-system repo. Remove this block (and commit .agents/) if you decide to
+# keep them; or `rm -rf .agents skills-lock.json .claude/skills/remotion-*` to drop them.
+.agents/
+skills-lock.json
+.claude/skills/remotion-*
