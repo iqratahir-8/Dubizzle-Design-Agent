@@ -1,0 +1,28 @@
+/* Credits summary — repo creditsSummary.cssm, measured on live. Must match .credits-summary in patterns.css. */
+.panel {
+  position: relative;
+  box-sizing: border-box;
+  width: 37.5rem;
+  overflow: hidden;
+  padding: var(--primary-spacing);
+  border-radius: var(--input-border-radius);
+  background: linear-gradient(180deg, var(--yellow-02) 0%, var(--white) 100%);
+  box-shadow: var(--shadow-raised);
+  font-family: var(--font-primary);
+  color: var(--text-color);
+}
+.coins { position: absolute; top: -2.5rem; right: -1.03rem; width: 9.2rem; opacity: 0.4; }
+.available { display: flex; flex-direction: column; margin-bottom: 2rem; }
+.label { font-size: 1.596rem; line-height: 2.394rem; }
+.value { display: flex; align-items: center; font-size: 2.394rem; font-weight: 700; line-height: 3.591rem; }
+.coin { width: 2.4rem; margin-right: 0.8rem; }
+.usage { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: var(--primary-spacing); }
+.ratio { align-self: flex-end; font-size: var(--text-sm); line-height: 2.1rem; }
+.bar { display: block; height: 0.8rem; overflow: hidden; border-radius: 0.4rem; background: var(--gray-02); }
+.fill { display: block; height: 100%; background: var(--yellow-04); }
+.legend { margin: 0 0 var(--primary-spacing); padding: 0; list-style: disc inside; color: var(--gray-05); font-size: var(--text-sm); line-height: 2.4rem; }
+.legend li::marker { font-size: 2.4rem; }
+.legend li:first-child::marker { color: var(--brown-01); }
+.legend li:nth-child(2)::marker { color: var(--yellow-05); }
+.legend b { color: var(--text-color); }
+.expires { display: block; font-size: 1.204rem; line-height: 1.806rem; }

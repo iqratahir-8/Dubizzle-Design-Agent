@@ -1412,6 +1412,9 @@
   --shadow-bottom-nav: 0 -2px 4px 0 rgba(0, 0, 0, 0.133);
   --shadow-menu: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
   --shadow-side-panel: -80px -120px 240px 0 rgba(0, 0, 0, 0.1);
+  --shadow-menu-strong: 0 4px 10px 0 rgba(0, 0, 0, 0.24);
+  --shadow-raised: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  --shadow-modal: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
   --shadow-toast: 0 3px 8px 0 rgba(0, 0, 0, 0.15);
   --glass-chip-blur: blur(4px);
   --glass-panel-blur: blur(12px);

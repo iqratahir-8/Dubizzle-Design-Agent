@@ -155,3 +155,15 @@ export { SortMenu, SORT_MENU_OPTIONS } from './components/SortMenu';
 export type { SortMenuProps } from './components/SortMenu';
 export { FiltersHeader, FilterSection, FilterField, RangeFilter, ChoiceChips, ResultsBar } from './components/MobileFilters';
 export type { FiltersHeaderProps, FilterSectionProps, FilterFieldProps, RangeFilterProps, ChoiceChipsProps, ResultsBarProps } from './components/MobileFilters';
+
+/* Batch 3 — from the popup captures (2026-09-22). */
+export { ActionsMenu, AD_ACTIONS, AGENT_ACTIONS } from './components/ActionsMenu';
+export type { ActionsMenuProps, ActionsMenuItem } from './components/ActionsMenu';
+export { CreditsSummary } from './components/CreditsSummary';
+export type { CreditsSummaryProps } from './components/CreditsSummary';
+export { PortalModal, DetailsTable } from './components/PortalModal';
+export type { PortalModalProps, DetailsTableProps } from './components/PortalModal';
+export { ReportAdDialog, REPORT_REASONS } from './components/ReportAdDialog';
+export type { ReportAdDialogProps } from './components/ReportAdDialog';
+export { MoreFiltersPanel } from './components/MoreFiltersPanel';
+export type { MoreFiltersPanelProps, MoreFiltersField } from './components/MoreFiltersPanel';

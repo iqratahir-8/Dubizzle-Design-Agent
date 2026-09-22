@@ -1,0 +1,13 @@
+/* Report this ad — measured on live (dpv-report-form). Must match .report-dialog in patterns.css. */
+.body { display: flex; flex-direction: column; width: 37.6rem; padding: 1.6rem 0.8rem 0.8rem; }
+.title { margin: 0 0 2rem; font-size: 2.394rem; font-weight: 700; line-height: 2.7531rem; }
+.reasons { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2.4rem; }
+.reason { position: relative; display: flex; align-items: center; gap: 1.5rem; padding-inline-start: 2rem; font-size: var(--text-sm); line-height: 2.1rem; cursor: pointer; }
+.input { position: absolute; opacity: 0; pointer-events: none; }
+.ring { box-sizing: border-box; flex: none; width: 2rem; height: 2rem; border: 0.2rem solid var(--gray-03); border-radius: 50%; background: var(--white); }
+.ringOn { border: 0.6rem solid var(--red-05); }
+.comment { box-sizing: border-box; height: 8.4rem; padding: 0.8rem 4rem 0.8rem 1.2rem; border: 0; border-radius: var(--radius-sm); background: var(--white); font-family: var(--font-primary); font-size: 1.596rem; resize: none; }
+.comment::placeholder { color: var(--gray-04); }
+.count { margin: 0.2rem 0; color: #dedfdf; font-size: 1.204rem; line-height: 1.806rem; }
+.send { height: 4rem; padding: 0 1.6rem; border: 0; border-radius: var(--button-border-radius); background: var(--red-05); color: var(--white); font-family: var(--font-primary); font-size: 1.596rem; font-weight: 700; cursor: pointer; }
+.send:disabled { cursor: default; }

@@ -315,6 +315,30 @@ function overlaysDemo() {
       </div></div>`;
 }
 
+/* ── Batch 3: popups captured 2026-09-22 ───────────────────────────────────── */
+function popupsDemo() {
+  const slug = (l) => l.toLowerCase().replace(/[^a-z]+/g, '-').replace(/-$/, '');
+  const menu = (variant, items, size) => `<div class="actions-menu actions-menu--${variant}" role="menu" data-parity="actions-${variant}">` +
+    items.map((l) => `<button class="actions-menu__item" type="button" role="menuitem"><span class="actions-menu__icon"><img src="assets/portal/action-${slug(l)}.svg" alt="" width="${size}" height="${size}"></span><span>${l}</span></button>`).join('') + '</div>';
+  const CLOSE = '<svg width="24" height="24" viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true"><path d="M878.3 85.3L512 451.6 145.7 85.3H85.3v60.4L451.7 512 85.3 878.3v60.4h60.4L512 572.3l366.3 366.4h60.4v-60.4L572.4 512l366.3-366.3V85.3z"></path></svg>';
+  const reasons = ['Offensive content', 'Fraud', 'Duplicate ad', 'Product already sold', 'Wrong category', 'Product unavailable', 'Fake product', 'Indecent', 'Other'];
+  return `
+      <h3>Actions menus · credits summary · More Filters</h3>
+      <p class="note">Live captures <code>portal-ads-actions</code>, <code>portal-agents-actions</code>, <code>portal-ads-credits</code>, <code>portal-ads-more-filters</code>. Icons extracted from the captures; coins are the repo's artwork.</p>
+      <div class="demo" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap">
+        ${menu('ad', ['Edit Now', 'Mark as sold', 'Deactivate Ad', 'Assign Agent'], 22)}
+        ${menu('agent', ['Change Ads Ownership', 'Update Credits', 'Remove Agent', 'Unassign Agent Ads'], 16)}
+        <div class="credits-summary" data-parity="credits-summary"><img class="credits-summary__coins" src="assets/portal/coins.svg" alt=""><div class="credits-summary__available"><span class="credits-summary__label">Available credits</span><span class="credits-summary__value"><img class="credits-summary__coin" src="assets/portal/coin.svg" alt="">1,031</span></div><div class="credits-summary__usage"><span class="credits-summary__ratio"><b>3,969</b> / 5,000</span><span class="credits-summary__bar" role="progressbar"><span class="credits-summary__fill" style="width:79.38%"></span></span></div><ul class="credits-summary__legend"><li>Assigned to Agents <b>0</b> (Used <b>0</b>)</li><li>Used by Owner <b>3,969</b></li></ul><span class="credits-summary__expires">Expires on 10 October 2026 at 11:39</span></div>
+        <div class="more-filters" data-parity="more-filters"><label class="more-filters__field"><span class="more-filters__label">Agent Code</span><span class="more-filters__box"><input class="more-filters__input" placeholder="Agent Code"></span></label><label class="more-filters__field"><span class="more-filters__label">Phone Number</span><span class="more-filters__box"><input class="more-filters__input" placeholder="Phone Number"></span></label><div class="more-filters__actions"><button class="more-filters__reset" type="button">Reset</button><button class="more-filters__apply" type="button">Apply</button></div></div>
+      </div>
+      <h3>Portal confirm modals · report this ad</h3>
+      <p class="note">Export Leads (md) and Purchase Lead (sm) from the live captures. Captures never press the confirm button.</p>
+      <div class="demo" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap">
+        <div style="position:relative;width:64rem;height:64rem"><div class="portal-modal portal-modal--inline"><div class="portal-modal__panel portal-modal__panel--md" role="dialog" data-parity="portal-modal-md"><button class="portal-modal__close" type="button" aria-label="Close">${CLOSE}</button><div class="portal-modal__title">Export Leads</div><p class="portal-modal__subtitle">Based on the filters you applied, we're preparing your lead export.</p><div><div style="font-size:16px;font-weight:700;line-height:24px;margin-bottom:12px">Export Details</div><table class="details-table"><tbody><tr><td class="details-table__key">Date Range</td><td class="details-table__val">22 Sep 25 - 22 Sep 26</td></tr><tr><td class="details-table__key">Lead Type</td><td class="details-table__val">All Leads</td></tr><tr><td class="details-table__key">Agent</td><td class="details-table__val">All Agents</td></tr><tr><td class="details-table__key">Total Records</td><td class="details-table__val">260</td></tr></tbody></table></div><div class="portal-modal__footer"><button class="btn btn--secondary" type="button">Cancel</button><button class="btn btn--primary" type="button">Request Export</button></div></div></div></div>
+        <div style="position:relative;width:52rem;height:62rem"><div class="dialog dialog--inline"><div class="dialog__panel" role="dialog" data-parity="report-dialog"><div class="report-dialog"><h2 class="report-dialog__title">Item report</h2><div class="report-dialog__reasons" role="radiogroup">${reasons.map((r) => `<label class="report-dialog__reason"><input type="radio" name="kit-report"><span class="report-dialog__ring"></span><span>${r}</span></label>`).join('')}</div><textarea class="report-dialog__comment" placeholder="Comment"></textarea><span class="report-dialog__count">0/500</span><button class="report-dialog__send" type="button">Send complaint</button></div></div></div></div>
+      </div>`;
+}
+
 /* ── Listing page head ────────────────────────────────────────────────────────
    Breadcrumbs, title + ad count, Save Search and the sort trigger, as the live cars
    listing arranges them. */
@@ -1013,6 +1037,7 @@ ${overlaysDemo()}
       <h2>Agency portal (dubizzle Pro)</h2>
       <p class="note">Components of the agency portal, built from the maple repo's <code>horizontal/agencyPortal/components</code> and checked against the live portal.</p>
 ${portalDemo()}
+${popupsDemo()}
     </section>
 
     <section id="templates">

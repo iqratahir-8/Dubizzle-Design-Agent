@@ -1,0 +1,11 @@
+/* More Filters panel — measured on live. Must match .more-filters in patterns.css. */
+.panel { display: flex; flex-direction: column; gap: 0.8rem; box-sizing: border-box; width: 27.2rem; padding: var(--primary-spacing); border-radius: var(--input-border-radius); background: var(--white); box-shadow: var(--shadow-menu); font-family: var(--font-primary); }
+.field { display: flex; flex-direction: column; gap: 0.8rem; }
+.label { color: var(--text-color); font-size: var(--text-sm); font-weight: 700; line-height: 2.1rem; }
+.box { display: flex; box-sizing: border-box; height: 4.8rem; border: 0.1rem solid var(--gray-03); border-radius: var(--input-border-radius); background: var(--white); }
+.input { flex: 1; min-width: 0; padding: 0; padding-inline-start: 1.2rem; border: 0; outline: 0; background: transparent; color: var(--text-color); font-family: inherit; font-size: 1.596rem; }
+.input::placeholder { color: var(--gray-04); }
+.actions { display: flex; gap: 2rem; margin-top: 1rem; }
+.reset, .apply { box-sizing: border-box; width: 11rem; height: 4rem; padding: 0 1.6rem; border-radius: var(--button-border-radius); font-family: inherit; font-size: 1.596rem; font-weight: 700; cursor: pointer; }
+.reset { border: 0.1rem solid var(--red-04); background: var(--white); color: var(--text-color); }
+.apply { border: 0; background: var(--red-05); color: var(--white); }
