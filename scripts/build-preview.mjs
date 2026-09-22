@@ -342,8 +342,8 @@ function popupsDemo() {
 /* ── Batch 4: portal content (check:live verified) ────────────────────────── */
 function portalContentDemo() {
   const menu = [['dashboard', 'Dashboard'], ['agency-ads', 'Agency Ads'], ['candidates', 'Candidates'], ['leads', 'Leads'], ['vip-leads', 'VIP Leads'], ['agency-management', 'Agency Management'], ['insights', 'Insights'], ['credit-info', 'Credit Info']];
-  const rail = (expanded, parity) => `<nav class="side-menu${expanded ? ' side-menu--expanded' : ''}" aria-label="Agency portal" data-parity="${parity}"><button class="side-menu__header" type="button" aria-label="Burger menu"><span class="side-menu__icon" style="--i:url(assets/live-icons/nav-menu.svg)"></span><span class="side-menu__brand">dubizzle Pro</span></button>` +
-    menu.map(([k, l]) => `<a class="side-menu__item${k === 'agency-ads' ? ' side-menu__item--active' : ''}" href="#"><span class="side-menu__icon" style="--i:url(assets/live-icons/nav-${k}.svg)"></span><span class="side-menu__title">${l}</span></a>`).join('') + '</nav>';
+  const rail = (expanded, parity) => `<nav class="side-menu${expanded ? ' side-menu--expanded' : ''}" aria-label="Agency portal" data-parity="${parity}"><button class="side-menu__header" type="button" aria-label="Burger menu"><span class="side-menu__icon" style="--i:url(../assets/live-icons/nav-menu.svg)"></span><span class="side-menu__brand">dubizzle Pro</span></button>` +
+    menu.map(([k, l]) => `<a class="side-menu__item${k === 'agency-ads' ? ' side-menu__item--active' : ''}" href="#"><span class="side-menu__icon" style="--i:url(../assets/live-icons/nav-${k}.svg)"></span><span class="side-menu__title">${l}</span></a>`).join('') + '</nav>';
   const tags = ['Current Job: Project engineer', 'Experience: 5-10 Years', "Bachelor's Degree"];
   const specs = ['2022', 'Used', '130000', 'Volkswagen'];
   return `
