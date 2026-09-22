@@ -143,3 +143,15 @@ export { SideDialog } from './components/SideDialog';
 export type { SideDialogProps } from './components/SideDialog';
 export { AnalyticsStats } from './components/AnalyticsStats';
 export type { AnalyticsStatsProps, AnalyticsStat } from './components/AnalyticsStats';
+
+/* Overlays and feedback — repo dubizzle-facelift/strat, measured on live captures. */
+export { Toast } from './components/Toast';
+export type { ToastProps } from './components/Toast';
+export { Dialog } from './components/Dialog';
+export type { DialogProps } from './components/Dialog';
+export { LoginDialog } from './components/LoginDialog';
+export type { LoginDialogProps, LoginProvider } from './components/LoginDialog';
+export { SortMenu, SORT_MENU_OPTIONS } from './components/SortMenu';
+export type { SortMenuProps } from './components/SortMenu';
+export { FiltersHeader, FilterSection, FilterField, RangeFilter, ChoiceChips, ResultsBar } from './components/MobileFilters';
+export type { FiltersHeaderProps, FilterSectionProps, FilterFieldProps, RangeFilterProps, ChoiceChipsProps, ResultsBarProps } from './components/MobileFilters';

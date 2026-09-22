@@ -276,6 +276,45 @@ function portalDemo() {
       </div>`;
 }
 
+/* ── Overlays & feedback ───────────────────────────────────────────────────── */
+function overlaysDemo() {
+  const CLOSE = (n) => `<svg width="${n}" height="${n}" viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true"><path d="M878.3 85.3L512 451.6 145.7 85.3H85.3v60.4L451.7 512 85.3 878.3v60.4h60.4L512 572.3l366.3 366.4h60.4v-60.4L572.4 512l366.3-366.3V85.3z"></path></svg>`;
+  const TICK = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  const sort = ['Newly listed', 'Most relevant', 'Lowest price', 'Highest price', 'Verified accounts'];
+  const provider = (p, l) => `<button class="login-dialog__provider" type="button"><img src="assets/login/${p}.svg" alt="" width="24" height="24"><span>${l}</span></button>`;
+  const range = (suffix) => `<div class="m-filters__range"><label class="m-filters__range-box"><input class="m-filters__range-input" placeholder="Min">${suffix ? `<span class="m-filters__suffix">${suffix}</span>` : ''}</label><span class="m-filters__to">To</span><label class="m-filters__range-box"><input class="m-filters__range-input" placeholder="Max">${suffix ? `<span class="m-filters__suffix">${suffix}</span>` : ''}</label></div>`;
+  const section = (t, body) => `<section class="m-filters__section"><span class="m-filters__section-title">${t}</span><div class="m-filters__section-body">${body}</div></section>`;
+  return `
+      <h3>Toast</h3>
+      <p class="note">Repo <code>dubizzle-facelift/components/toast</code>. <strong>Repo values, not yet verified on live</strong> — the captured favourite toast had already slid away.</p>
+      <div class="demo demo--stack" style="align-items:flex-start">
+        <div class="toast toast--success toast--inline" role="status" data-parity="toast"><div class="toast__message"><img class="toast__icon" src="assets/toast/success.svg" alt=""><div><span class="toast__main">Ad added to your favourites</span></div></div><button class="toast__dismiss" type="button" aria-label="Dismiss">${CLOSE(16)}</button></div>
+        <div class="toast toast--error toast--inline" role="status"><div class="toast__message"><img class="toast__icon" src="assets/toast/error.svg" alt=""><div><span class="toast__main">Something went wrong. Please try again.</span></div></div><button class="toast__dismiss" type="button" aria-label="Dismiss">${CLOSE(16)}</button></div>
+      </div>
+      <h3>Login dialog · sort menu</h3>
+      <p class="note">Measured on the live captures. The dialog shell (<code>.dialog</code>) is shared by every centred modal.</p>
+      <div class="demo" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap">
+        <div style="position:relative;width:52rem;height:62rem"><div class="dialog dialog--inline"><div class="dialog__panel" style="width:44rem" role="dialog" data-parity="login-dialog"><button class="dialog__close" type="button" aria-label="Close">${CLOSE(20)}</button>
+          <div class="login-dialog__head"><img class="login-dialog__logo" src="assets/logo-en-full.svg" alt="dubizzle"><span class="login-dialog__title">Login into your Dubizzle account</span></div>
+          <div class="login-dialog__providers">${provider('phone', 'Login with Phone')}${provider('email', 'Login with Email')}<span class="login-dialog__or">OR</span>${provider('google', 'Login with Google')}${provider('facebook', 'Login with Facebook')}</div>
+          <button class="login-dialog__create" type="button">New to Dubizzle? Create an account</button></div></div></div>
+        <ul class="sort-menu" role="listbox" data-parity="sort-menu">${sort.map((o, i) => `<li class="sort-menu__row${i === 0 ? ' is-on' : ''}" role="option">${i === 0 ? TICK : ''}<span>${o}</span></li>`).join('')}</ul>
+      </div>
+      <h3>Mobile filters page</h3>
+      <p class="note">Full screen on live, not a sheet. Repo <code>search/compact/filtersDialog</code>; measured on the live capture.</p>
+      <div class="demo"><div style="width:39rem;background:var(--white)" data-parity="m-filters">
+        <header class="m-filters__header"><button class="m-filters__close" type="button" aria-label="Close">${CLOSE(18)}</button><button class="m-filters__searching" type="button"><span>Searching for</span> <b>Cars for Sale</b></button><button class="m-filters__reset" type="button" disabled>Reset</button></header>
+        <div style="padding:20px 16px">
+          ${section('Locations', '<button class="m-filters__field" type="button"><span class="m-filters__field-text">Egypt</span></button>')}
+          ${section('Brand and Model', '<button class="m-filters__field is-empty" type="button"><span class="m-filters__field-text">Choose</span></button>')}
+          ${section('Year', range(''))}
+          ${section('Condition', '<div class="m-filters__chips"><button class="m-filters__chip" type="button">New</button><button class="m-filters__chip" type="button">Used</button></div>')}
+          ${section('Price', range('EGP'))}
+        </div>
+        <div class="m-filters__results-bar"><button class="m-filters__results" type="button">See +13K Results</button></div>
+      </div></div>`;
+}
+
 /* ── Listing page head ────────────────────────────────────────────────────────
    Breadcrumbs, title + ad count, Save Search and the sort trigger, as the live cars
    listing arranges them. */
@@ -490,6 +529,7 @@ const page = `<!doctype html>
     <a href="#nav-components">Tabs &amp; pagination</a>
     <hr>
     <a href="#chrome">Header &amp; footer</a>
+    <a href="#overlays">Overlays &amp; feedback</a>
     <a href="#portal">Agency portal</a>
     <a href="#mobile">Mobile web</a>
     <a href="#templates">Page templates</a>
@@ -962,6 +1002,11 @@ ${megaMenuDemo()}
           <iframe class="frame" src="templates/mobile/home.html" title="Mobile home" loading="lazy"></iframe>
         </div>
       </div>
+    </section>
+
+    <section id="overlays">
+      <h2>Overlays &amp; feedback</h2>
+${overlaysDemo()}
     </section>
 
     <section id="portal">

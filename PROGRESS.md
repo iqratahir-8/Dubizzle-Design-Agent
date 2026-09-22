@@ -433,6 +433,14 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    `--shadow-side-panel` (measured / repo). Parity **261/261**. Remaining repo components are
    listed in `docs/COMPONENT-INVENTORY.md` ("Agency portal" + the consumer to-do lists).
 
+34. **Components from the maple repo, batch 2: overlays & feedback.** `Toast` (repo values +
+   repo icons — not yet live-verified), `Dialog`, `LoginDialog`, `SortMenu`, and the mobile
+   filters page parts (`FiltersHeader`, `FilterSection`, `FilterField`, `RangeFilter`,
+   `ChoiceChips`, `ResultsBar`) — measured on the login-dialog, sort-menu and m-filters
+   captures. Kit section `#overlays`. Parity **282/282**. Assets that aren't icons from the
+   monorepo live in `src/assets/{login,toast}` + `design-kit/assets/…`, because
+   `npm run sync:icons` deletes and rebuilds `design-kit/icons`.
+
 ## 6. Next up
 
 0. **Continue the repo component batches** (user request 2026-09-21): portal batch 2 (date

@@ -64,6 +64,21 @@ against the live portal captures (live wins). Filter option lists are live's own
   `multiSegmentBar`, `packageStatePill`, `productsTag`, `banner`, `actionsButton` /
   `generalActionsDropdown`, `agentInitial`, `contact`
 
+## Overlays & feedback — from the maple repo (batch 2)
+
+- ✅ `Toast` — repo `dubizzle-facelift/components/toast` + its two icons. **Repo values; not
+  live-verified** (the captured favourite toast had slid out of frame — re-capture mid-slide).
+- ✅ `Dialog` — repo strat BaseDialog; overlay / radius / padding measured on the live login dialog
+- ✅ `LoginDialog` — measured on `login-dialog.desktop`; provider icons extracted from the capture
+  (`src/assets/login`, `design-kit/assets/login`)
+- ✅ `SortMenu` (+ `SORT_MENU_OPTIONS`, live's five options) — measured on `sort-menu.desktop`.
+  Note `SortBy`'s older `SORT_OPTIONS` list no longer matches live.
+- ✅ Mobile filters page — `FiltersHeader`, `FilterSection`, `FilterField`, `RangeFilter`,
+  `ChoiceChips`, `ResultsBar` — repo `search/compact/filtersDialog`, measured on `m-filters.mobile`
+- ⬜ Next consumer batch: filter rail (desktop), DPV sections (details table, description,
+  seller card, safety tips, location), favourite button, verified badge, no-hits, report dialog
+  (captured: dpv-report), save-search dialog (captured)
+
 ## Exists, needs live verification
 - ✅ `Header` (desktop) — checked against the live home template (2026-09-17) and corrected: band 68
   tall (14 above/below the 40px Post Your Ad), vertical links 130×35 bottom-aligned, Post Your Ad

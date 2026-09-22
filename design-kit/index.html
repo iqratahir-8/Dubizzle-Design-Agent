@@ -82,6 +82,7 @@
     <a href="#nav-components">Tabs &amp; pagination</a>
     <hr>
     <a href="#chrome">Header &amp; footer</a>
+    <a href="#overlays">Overlays &amp; feedback</a>
     <a href="#portal">Agency portal</a>
     <a href="#mobile">Mobile web</a>
     <a href="#templates">Page templates</a>
@@ -989,6 +990,39 @@
           <iframe class="frame" src="templates/mobile/home.html" title="Mobile home" loading="lazy"></iframe>
         </div>
       </div>
+    </section>
+
+    <section id="overlays">
+      <h2>Overlays &amp; feedback</h2>
+
+      <h3>Toast</h3>
+      <p class="note">Repo <code>dubizzle-facelift/components/toast</code>. <strong>Repo values, not yet verified on live</strong> — the captured favourite toast had already slid away.</p>
+      <div class="demo demo--stack" style="align-items:flex-start">
+        <div class="toast toast--success toast--inline" role="status" data-parity="toast"><div class="toast__message"><img class="toast__icon" src="assets/toast/success.svg" alt=""><div><span class="toast__main">Ad added to your favourites</span></div></div><button class="toast__dismiss" type="button" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true"><path d="M878.3 85.3L512 451.6 145.7 85.3H85.3v60.4L451.7 512 85.3 878.3v60.4h60.4L512 572.3l366.3 366.4h60.4v-60.4L572.4 512l366.3-366.3V85.3z"></path></svg></button></div>
+        <div class="toast toast--error toast--inline" role="status"><div class="toast__message"><img class="toast__icon" src="assets/toast/error.svg" alt=""><div><span class="toast__main">Something went wrong. Please try again.</span></div></div><button class="toast__dismiss" type="button" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true"><path d="M878.3 85.3L512 451.6 145.7 85.3H85.3v60.4L451.7 512 85.3 878.3v60.4h60.4L512 572.3l366.3 366.4h60.4v-60.4L572.4 512l366.3-366.3V85.3z"></path></svg></button></div>
+      </div>
+      <h3>Login dialog · sort menu</h3>
+      <p class="note">Measured on the live captures. The dialog shell (<code>.dialog</code>) is shared by every centred modal.</p>
+      <div class="demo" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap">
+        <div style="position:relative;width:52rem;height:62rem"><div class="dialog dialog--inline"><div class="dialog__panel" style="width:44rem" role="dialog" data-parity="login-dialog"><button class="dialog__close" type="button" aria-label="Close"><svg width="20" height="20" viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true"><path d="M878.3 85.3L512 451.6 145.7 85.3H85.3v60.4L451.7 512 85.3 878.3v60.4h60.4L512 572.3l366.3 366.4h60.4v-60.4L572.4 512l366.3-366.3V85.3z"></path></svg></button>
+          <div class="login-dialog__head"><img class="login-dialog__logo" src="assets/logo-en-full.svg" alt="dubizzle"><span class="login-dialog__title">Login into your Dubizzle account</span></div>
+          <div class="login-dialog__providers"><button class="login-dialog__provider" type="button"><img src="assets/login/phone.svg" alt="" width="24" height="24"><span>Login with Phone</span></button><button class="login-dialog__provider" type="button"><img src="assets/login/email.svg" alt="" width="24" height="24"><span>Login with Email</span></button><span class="login-dialog__or">OR</span><button class="login-dialog__provider" type="button"><img src="assets/login/google.svg" alt="" width="24" height="24"><span>Login with Google</span></button><button class="login-dialog__provider" type="button"><img src="assets/login/facebook.svg" alt="" width="24" height="24"><span>Login with Facebook</span></button></div>
+          <button class="login-dialog__create" type="button">New to Dubizzle? Create an account</button></div></div></div>
+        <ul class="sort-menu" role="listbox" data-parity="sort-menu"><li class="sort-menu__row is-on" role="option"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Newly listed</span></li><li class="sort-menu__row" role="option"><span>Most relevant</span></li><li class="sort-menu__row" role="option"><span>Lowest price</span></li><li class="sort-menu__row" role="option"><span>Highest price</span></li><li class="sort-menu__row" role="option"><span>Verified accounts</span></li></ul>
+      </div>
+      <h3>Mobile filters page</h3>
+      <p class="note">Full screen on live, not a sheet. Repo <code>search/compact/filtersDialog</code>; measured on the live capture.</p>
+      <div class="demo"><div style="width:39rem;background:var(--white)" data-parity="m-filters">
+        <header class="m-filters__header"><button class="m-filters__close" type="button" aria-label="Close"><svg width="18" height="18" viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true"><path d="M878.3 85.3L512 451.6 145.7 85.3H85.3v60.4L451.7 512 85.3 878.3v60.4h60.4L512 572.3l366.3 366.4h60.4v-60.4L572.4 512l366.3-366.3V85.3z"></path></svg></button><button class="m-filters__searching" type="button"><span>Searching for</span> <b>Cars for Sale</b></button><button class="m-filters__reset" type="button" disabled>Reset</button></header>
+        <div style="padding:20px 16px">
+          <section class="m-filters__section"><span class="m-filters__section-title">Locations</span><div class="m-filters__section-body"><button class="m-filters__field" type="button"><span class="m-filters__field-text">Egypt</span></button></div></section>
+          <section class="m-filters__section"><span class="m-filters__section-title">Brand and Model</span><div class="m-filters__section-body"><button class="m-filters__field is-empty" type="button"><span class="m-filters__field-text">Choose</span></button></div></section>
+          <section class="m-filters__section"><span class="m-filters__section-title">Year</span><div class="m-filters__section-body"><div class="m-filters__range"><label class="m-filters__range-box"><input class="m-filters__range-input" placeholder="Min"></label><span class="m-filters__to">To</span><label class="m-filters__range-box"><input class="m-filters__range-input" placeholder="Max"></label></div></div></section>
+          <section class="m-filters__section"><span class="m-filters__section-title">Condition</span><div class="m-filters__section-body"><div class="m-filters__chips"><button class="m-filters__chip" type="button">New</button><button class="m-filters__chip" type="button">Used</button></div></div></section>
+          <section class="m-filters__section"><span class="m-filters__section-title">Price</span><div class="m-filters__section-body"><div class="m-filters__range"><label class="m-filters__range-box"><input class="m-filters__range-input" placeholder="Min"><span class="m-filters__suffix">EGP</span></label><span class="m-filters__to">To</span><label class="m-filters__range-box"><input class="m-filters__range-input" placeholder="Max"><span class="m-filters__suffix">EGP</span></label></div></div></section>
+        </div>
+        <div class="m-filters__results-bar"><button class="m-filters__results" type="button">See +13K Results</button></div>
+      </div></div>
     </section>
 
     <section id="portal">

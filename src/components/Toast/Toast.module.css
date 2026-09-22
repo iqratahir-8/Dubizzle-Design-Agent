@@ -1,0 +1,35 @@
+/* Toast — repo dubizzle-facelift/components/styles/toast.cssm (not yet live-verified).
+   Must match .toast in patterns.css. */
+.toast {
+  position: fixed;
+  z-index: 9999;
+  top: 1.6rem;
+  right: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 35rem;
+  max-width: calc(100% - 3.2rem);
+  height: 5.6rem;
+  margin: 0;
+  padding: var(--content-padding) var(--primary-spacing);
+  border-radius: 0.8rem;
+  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  font-family: var(--font-primary);
+  color: var(--text-color);
+  animation: toast-in 150ms var(--ease-standard);
+}
+@keyframes toast-in { from { transform: translateX(calc(100% + 1.6rem)); } }
+@media (prefers-reduced-motion: reduce) { .toast { animation: none; } }
+.inline { position: relative; top: auto; right: auto; }
+.tall { height: 7.8rem; }
+.success { background: var(--green-02); }
+.error { background: var(--red-02); }
+.message { display: flex; align-items: center; gap: 1.6rem; }
+.icon { flex: none; width: 3.6rem; height: 3.6rem; margin: 0.2rem; }
+.iconLarge { width: 4.1rem; height: 4.1rem; }
+.lines { display: flex; flex-direction: column; gap: 0.8rem; }
+.main { font-size: var(--text-sm); font-weight: 700; line-height: 2.1rem; }
+.mainLarge { font-size: var(--text-md); line-height: 2.4rem; }
+.dismiss { display: inline-flex; padding: 0; border: 0; background: none; color: var(--text-color); cursor: pointer; }

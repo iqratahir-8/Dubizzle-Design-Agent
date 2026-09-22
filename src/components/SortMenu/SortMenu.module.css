@@ -1,0 +1,27 @@
+/* Sort menu — measured on the live capture (sort-menu.desktop).
+   Must match .sort-menu in patterns.css. */
+.menu {
+  box-sizing: border-box;
+  width: 22rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  box-shadow: var(--shadow-control);
+  font-family: var(--font-primary);
+}
+.row {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 5rem;
+  padding-inline-start: 5.4rem;
+  color: var(--text-color);
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  cursor: pointer;
+}
+.row:hover { background: var(--list-item-hover-color); }
+.on { padding-inline-start: 0; font-weight: 700; }
+.tick { flex: none; margin: 0 1.6rem; color: var(--red-05); }
