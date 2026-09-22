@@ -1246,6 +1246,300 @@ export const PortalAdChats: Story = {
   },
 };
 
+export const DpvPhone: Story = {
+  name: "Ad detail — phone reveal is gated by login (signed out)",
+  args: {
+    "name": "dpv-phone",
+    "label": "Ad detail — phone reveal is gated by login (signed out)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const DpvReport: Story = {
+  name: "Ad detail — report this ad modal (never submitted)",
+  args: {
+    "name": "dpv-report",
+    "label": "Ad detail — report this ad modal (never submitted)",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const DpvDetailsExpanded: Story = {
+  name: "Ad detail — details table expanded",
+  args: {
+    "name": "dpv-details-expanded",
+    "label": "Ad detail — details table expanded",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const LoginDialog: Story = {
+  name: "Login or Signup dialog",
+  args: {
+    "name": "login-dialog",
+    "label": "Login or Signup dialog",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const SortMenu: Story = {
+  name: "Listing — sort menu open (desktop)",
+  args: {
+    "name": "sort-menu",
+    "label": "Listing — sort menu open (desktop)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const MFilters: Story = {
+  name: "Listing — mobile filter sheet",
+  args: {
+    "name": "m-filters",
+    "label": "Listing — mobile filter sheet",
+    "layouts": [
+      "mobile"
+    ],
+    "live": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const SaveSearch: Story = {
+  name: "Listing — Save Search (signed out prompt)",
+  args: {
+    "name": "save-search",
+    "label": "Listing — Save Search (signed out prompt)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-17",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const DpvReportIn: Story = {
+  name: "Ad detail — report dialog (signed in, never submitted)",
+  args: {
+    "name": "dpv-report-in",
+    "label": "Ad detail — report dialog (signed in, never submitted)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-18",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const DpvGallery: Story = {
+  name: "Ad detail — full-screen gallery",
+  args: {
+    "name": "dpv-gallery",
+    "label": "Ad detail — full-screen gallery",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const DpvReportForm: Story = {
+  name: "Ad detail — report this ad (signed in, never submitted)",
+  args: {
+    "name": "dpv-report-form",
+    "label": "Ad detail — report this ad (signed in, never submitted)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAdsCredits: Story = {
+  name: "Agency portal — Available credits dropdown",
+  args: {
+    "name": "portal-ads-credits",
+    "label": "Agency portal — Available credits dropdown",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAdsMoreFilters: Story = {
+  name: "Agency portal — Agency Ads, More Filters",
+  args: {
+    "name": "portal-ads-more-filters",
+    "label": "Agency portal — Agency Ads, More Filters",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAdsRequestBrand: Story = {
+  name: "Agency portal — Request to add Brand/Model dialog (never submitted)",
+  args: {
+    "name": "portal-ads-request-brand",
+    "label": "Agency portal — Request to add Brand/Model dialog (never submitted)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAdsActions: Story = {
+  name: "Agency portal — Agency Ads, ad actions menu (⋯)",
+  args: {
+    "name": "portal-ads-actions",
+    "label": "Agency portal — Agency Ads, ad actions menu (⋯)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAdAssignAgent: Story = {
+  name: "Agency portal — ad drawer, Change Agent dialog (never saved)",
+  args: {
+    "name": "portal-ad-assign-agent",
+    "label": "Agency portal — ad drawer, Change Agent dialog (never saved)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAgentsInvite: Story = {
+  name: "Agency portal — Invite agent dialog (never sent)",
+  args: {
+    "name": "portal-agents-invite",
+    "label": "Agency portal — Invite agent dialog (never sent)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAgentsSort: Story = {
+  name: "Agency portal — Agency Management, Sort by menu",
+  args: {
+    "name": "portal-agents-sort",
+    "label": "Agency portal — Agency Management, Sort by menu",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalAgentsActions: Story = {
+  name: "Agency portal — agent row actions menu (⋮)",
+  args: {
+    "name": "portal-agents-actions",
+    "label": "Agency portal — agent row actions menu (⋮)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalLeadsExport: Story = {
+  name: "Agency portal — Export Leads confirmation (never confirmed)",
+  args: {
+    "name": "portal-leads-export",
+    "label": "Agency portal — Export Leads confirmation (never confirmed)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
+export const PortalVipPurchase: Story = {
+  name: "Agency portal — VIP Leads, Purchase Lead confirmation (never confirmed: spends credits)",
+  args: {
+    "name": "portal-vip-purchase",
+    "label": "Agency portal — VIP Leads, Purchase Lead confirmation (never confirmed: spends credits)",
+    "layouts": [
+      "desktop"
+    ],
+    "live": true,
+    "local": true,
+    "captured": "2026-09-22",
+    "origin": "https://www.dubizzle.com.eg"
+  },
+};
+
 export const Favourites: Story = {
   name: "Favourites",
   args: {

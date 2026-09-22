@@ -67,7 +67,7 @@ against the live portal captures (live wins). Filter option lists are live's own
 ## Overlays & feedback — from the maple repo (batch 2)
 
 - ✅ `Toast` — repo `dubizzle-facelift/components/toast` + its two icons. **Repo values; not
-  live-verified** (the captured favourite toast had slid out of frame — re-capture mid-slide).
+  live-verified**: re-probed 2026-09-22 — favouriting raises no toast on live, share is native; every toast follows a real action, which captures never perform.
 - ✅ `Dialog` — repo strat BaseDialog; overlay / radius / padding measured on the live login dialog
 - ✅ `LoginDialog` — measured on `login-dialog.desktop`; provider icons extracted from the capture
   (`src/assets/login`, `design-kit/assets/login`)

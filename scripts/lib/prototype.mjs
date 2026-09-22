@@ -97,7 +97,40 @@ export const PORTAL_HOTSPOTS = [
   { on: /^portal-leads-daterange$/, text: 'Reset', go: 'portal-leads' },
   { on: /^portal-leads-daterange$/, outside: 'Preset range', go: 'portal-leads' },
   // the ad details drawer closes on a click on the dimmed list behind it, as on live
-  { on: /^portal-ad-/, outside: 'Promotional Tools', go: 'portal-ads' },
+  { on: /^portal-ad-(overview|info|promo|agent|chats)$/, outside: 'Promotional Tools', go: 'portal-ads' },
+
+  /* Popups & modals (captured 2026-09-22, read-only). Each trigger opens its frame; the
+     frame closes back on Cancel, a click outside it, or Escape — like live. Confirming
+     buttons (Submit, Apply product, Purchase, Request Export, Send) go nowhere: the
+     prototype never pretends an action happened that was never captured.
+       box  a control with no text (⋯, ⋮, the credits pill), as page px [x1, y1, x2, y2] */
+  { on: /^portal-ads$/, text: 'More Filters', go: 'portal-ads-more-filters' },
+  { on: /^portal-ads-more-filters$/, text: 'Reset', go: 'portal-ads' },
+  { on: /^portal-ads-more-filters$/, outside: 'Agent Code', go: 'portal-ads' },
+  { on: /^portal-ads$/, text: 'Request to add Brand/Model', go: 'portal-ads-request-brand' },
+  { on: /^portal-ads-request-brand$/, text: 'Cancel', go: 'portal-ads' },
+  { on: /^portal-ads-request-brand$/, outside: 'Add New Car Brand/Model', go: 'portal-ads' },
+  { on: /^portal-ads$/, box: [1144, 90, 1416, 138], go: 'portal-ads-credits' },
+  { on: /^portal-ads-credits$/, box: [1144, 90, 1416, 138], go: 'portal-ads' },
+  { on: /^portal-ads-credits$/, outside: 'Used by Owner', go: 'portal-ads' },
+  { on: /^portal-ads$/, box: [1343, 490, 1399, 546], go: 'portal-ads-actions' },
+  { on: /^portal-ads-actions$/, outside: 'Mark as sold', go: 'portal-ads' },
+  { on: /^portal-ad-agent$/, text: 'Assign Agent', go: 'portal-ad-assign-agent' },
+  { on: /^portal-ad-assign-agent$/, text: 'Cancel', go: 'portal-ad-agent' },
+  { on: /^portal-ad-assign-agent$/, outside: 'New Responsible Agent', go: 'portal-ad-agent' },
+  { on: /^portal-agents$/, text: 'Invite agent', go: 'portal-agents-invite' },
+  { on: /^portal-agents-invite$/, text: 'Cancel', go: 'portal-agents' },
+  { on: /^portal-agents-invite$/, outside: 'Send invitation to an agent to join you.', go: 'portal-agents' },
+  { on: /^portal-agents$/, text: 'Sort by', go: 'portal-agents-sort' },
+  { on: /^portal-agents-sort$/, text: 'Sort by', go: 'portal-agents' },
+  { on: /^portal-agents-sort$/, outside: 'Sort By Total Ads', go: 'portal-agents' },
+  { on: /^portal-agents$/, box: [1360, 432, 1396, 468], go: 'portal-agents-actions' },
+  { on: /^portal-agents-actions$/, outside: 'Update Credits', go: 'portal-agents' },
+  { on: LEADS, text: 'Export Leads', go: 'portal-leads-export' },
+  { on: /^portal-leads-export$/, text: 'Cancel', go: 'portal-leads' },
+  { on: /^portal-leads-export$/, outside: 'Export Details', go: 'portal-leads' },
+  { on: /^portal-vip$/, text: 'Purchase', go: 'portal-vip-purchase' },
+  { on: /^portal-vip-purchase$/, outside: 'Purchase Lead', go: 'portal-vip' },
 ];
 
 export const PROTOTYPES = {
@@ -113,7 +146,7 @@ export const PROTOTYPES = {
 export function hotspotsFor(proto, page, isAvailable) {
   return (proto.hotspots || [])
     .filter((h) => h.on.test(page) && isAvailable(h.go))
-    .map(({ text, band, outside, go }) => ({ text, band, outside, go }));
+    .map(({ text, band, outside, box, go }) => ({ text, band, outside, box, go }));
 }
 
 export function prototypeFor(name) {
@@ -214,9 +247,18 @@ export function prototypeRuntime(proto, hotspots = []) {
         for (var j = 0; j < HOTSPOTS.length; j++) {
           if (!HOTSPOTS[j].outside && controlWithText(t, HOTSPOTS[j].text)) { claimed = true; break; }
         }
+        for (var q = 0; q < HOTSPOTS.length && !claimed; q++) {
+          var bx = HOTSPOTS[q].box;
+          if (bx) { var px = e.clientX + window.scrollX, py = e.clientY + window.scrollY; if (px >= bx[0] && px <= bx[2] && py >= bx[1] && py <= bx[3]) claimed = true; }
+        }
         if (claimed) continue;
         var panel = panelOf(h.outside);
         if (panel && !panel.contains(t)) return h.go;
+        continue;
+      }
+      if (h.box) {
+        var x = e.clientX + window.scrollX, y = e.clientY + window.scrollY;
+        if (x >= h.box[0] && x <= h.box[2] && y >= h.box[1] && y <= h.box[3]) return h.go;
         continue;
       }
       var c = controlWithText(e.target, h.text);
@@ -292,7 +334,12 @@ export function prototypeRuntime(proto, hotspots = []) {
       });
     }
   }
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen()) setDrawer(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (isOpen()) { setDrawer(false); return; }
+    // a popup frame closes back to the page it opened from, like live
+    for (var i = 0; i < HOTSPOTS.length; i++) if (HOTSPOTS[i].outside) { location.href = HOTSPOTS[i].go + '.html'; return; }
+  });
 
   document.addEventListener('click', function (e) {
     var tgt = e.target;

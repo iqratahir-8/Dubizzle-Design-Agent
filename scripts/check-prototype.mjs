@@ -92,6 +92,9 @@ for (const f of pages) {
   await page.goto('file://' + join(DIR, f), { waitUntil: 'domcontentloaded' });
   const has = await page.$('header[aria-label="Burger menu"]');
   if (!has) { console.log(`  --   ${f.padEnd(34)} no drawer`); continue; }
+  // a modal frame dims the page, burger included: on live that click closes the modal
+  const covered = await page.evaluate(() => { const t = document.querySelector('header[aria-label="Burger menu"]'); const r = t.getBoundingClientRect(); const h = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2); return !(h && (t.contains(h) || h.contains(t))); });
+  if (covered) { console.log(`  --   ${f.padEnd(34)} modal open — burger covered, as on live`); continue; }
   await page.click('header[aria-label="Burger menu"]');
   await page.mouse.move(900, 500);
   await new Promise((r) => setTimeout(r, 1300));
@@ -175,6 +178,52 @@ if (existsSync(join(DIR, 'portal-ad-overview.html'))) {
     if (got !== want) problems++;
     console.log(`  ${got === want ? 'ok  ' : 'FAIL'} ${what.padEnd(24)} → ${got}`);
   }
+}
+
+// Popups: each trigger opens its captured frame; a click outside (or Escape) closes it.
+console.log(`\nPOPUPS — open each from its trigger, then close it\n`);
+const POPUPS = [
+  // page, trigger (text or [x, y] point), frame, close by ('outside' point | 'escape' | text)
+  ['portal-ads', 'More Filters', 'portal-ads-more-filters', [1100, 800]],
+  ['portal-ads', 'Request to add Brand/Model', 'portal-ads-request-brand', 'Cancel'],
+  ['portal-ads', [1280, 114], 'portal-ads-credits', 'escape'],
+  ['portal-ads', [1371, 518], 'portal-ads-actions', [600, 800]],
+  ['portal-ad-agent', 'Assign Agent', 'portal-ad-assign-agent', 'Cancel'],
+  ['portal-agents', 'Invite agent', 'portal-agents-invite', 'Cancel'],
+  ['portal-agents', 'Sort by', 'portal-agents-sort', [900, 700]],
+  ['portal-agents', [1378, 450], 'portal-agents-actions', [600, 700]],
+  ['portal-leads', 'Export Leads', 'portal-leads-export', 'Cancel'],
+  ['portal-vip', 'Purchase', 'portal-vip-purchase', [1300, 800]],
+];
+for (const [from, trigger, frame, closer] of POPUPS) {
+  if (!existsSync(join(DIR, `${frame}.html`))) { console.log(`  --   ${frame}: not built`); continue; }
+  const go = async (x, y) => { await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 4000 }).catch(() => {}), page.mouse.click(x, y)]); return page.url().split('/').pop(); };
+  const byText = (t) => page.evaluate((t) => {
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n;
+    while ((n = w.nextNode())) if (n.nodeValue.trim() === t && !n.parentElement.closest('nav') && n.parentElement.tagName !== 'SCRIPT') {
+      const el = n.parentElement;
+      if (el.getBoundingClientRect().width === 0) continue;
+      el.scrollIntoView({ block: 'center' });
+      const r = el.getBoundingClientRect(), x = r.x + r.width / 2, y = r.y + r.height / 2;
+      const hit = document.elementFromPoint(x, y);
+      // only a copy the pointer can actually reach (hidden menus hold duplicates)
+      if (hit && (el.contains(hit) || hit.contains(el))) return [x, y];
+    }
+    return null;
+  }, t);
+  await page.goto('file://' + join(DIR, `${from}.html`), { waitUntil: 'domcontentloaded' });
+  await page.evaluate(() => { try { sessionStorage.clear(); } catch (e) {} });
+  await page.goto('file://' + join(DIR, `${from}.html`), { waitUntil: 'domcontentloaded' });
+  await page.mouse.move(1000, 850);
+  const at = Array.isArray(trigger) ? trigger : await byText(trigger);
+  const opened = at ? await go(...at) : 'trigger missing';
+  let closed;
+  if (closer === 'escape') { await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 4000 }).catch(() => {}), page.keyboard.press('Escape')]); closed = page.url().split('/').pop(); }
+  else if (Array.isArray(closer)) closed = await go(...closer);
+  else { const c = await byText(closer); closed = c ? await go(...c) : 'close missing'; }
+  const ok = opened === `${frame}.html` && closed === `${from}.html`;
+  if (!ok) problems++;
+  console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${from.padEnd(16)} → ${opened.padEnd(32)} → ${closed}`);
 }
 
 // Filters: each must open dubizzle's option list and actually change what the list shows.

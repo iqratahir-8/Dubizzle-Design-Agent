@@ -22,8 +22,9 @@ export interface ToastProps {
  * right over 150ms, dismisses itself after 3s in the product. Icons are the repo's own
  * (iconBadgeGood_2.svg, loginErrorIcon.svg).
  *
- * Provenance: repo values only. The live favourite toast was captured (toast-favourite)
- * but had already slid out of frame, so this is NOT yet verified against live.
+ * Provenance: repo values only, NOT verified against live. Re-probed 2026-09-22: no
+ * read-only action on live raises a toast (favouriting doesn't; share uses the native
+ * sheet) — every toast follows a real action (export, invite, activate, purchase).
  */
 export function Toast({ message, secondaryMessage, type = 'success', visible = true, onDismiss, inline = false, assetsPath = '/assets', className }: ToastProps) {
   if (!visible) return null;

@@ -5,9 +5,10 @@ description: Guide to Sonner, the React toast library — install and wire up th
 
 > ## SCOPED FOR DUBIZZLE
 >
-> dubizzle has its own toasts, and they are **captured** (`toast-favourite`, plus the
-> states in `scripts/lib/states.mjs`). Those captures are the specification: appearance,
-> copy, placement and timing come from them, not from Sonner's defaults.
+> dubizzle has its own toast: `Toast` in `src/components` (repo `dubizzle-facelift/components/toast`).
+> That component is the specification: appearance, copy, placement and timing come from it,
+> not from Sonner's defaults. (No live toast is captured: every live toast follows a real
+> action, which captures never perform.)
 >
 > Sonner is a candidate **implementation** for that behaviour, and a good reference for
 > the parts we have not captured — promise and loading toasts, updating a toast in

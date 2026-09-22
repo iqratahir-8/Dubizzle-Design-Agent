@@ -5,7 +5,7 @@ const meta: Meta<typeof Toast> = {
   title: 'Feedback/Toast',
   component: Toast,
   tags: ['autodocs'],
-  parameters: { docs: { description: { component: 'Toast notification. Repo `dubizzle-facelift/components/toast.tsx`. **Repo values, not yet verified against live** — the captured favourite toast had already slid away.' } } },
+  parameters: { docs: { description: { component: 'Toast notification. Repo `dubizzle-facelift/components/toast.tsx`. **Repo values, not yet verified against live** — no read-only action on live raises a toast (every one follows a real action: export, invite, purchase), so none can be captured without doing one.' } } },
   args: { inline: true, message: 'Ad added to your favourites', onDismiss: () => {} },
 };
 export default meta;

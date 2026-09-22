@@ -414,7 +414,7 @@ so the answer is not to refuse it but to scope it honestly:
   chart the system cannot draw. This skill is how to raise it well. It is scoped to check
   `src/components/` first: a second library for something we already have is a defect.
 - **`ask-sonner`** is scoped so the **captures remain the specification** — appearance,
-  copy, placement and timing come from `toast-favourite` and the captured states, not from
+  copy, placement and timing come from the repo's `Toast` (`src/components/Toast`), not from
   Sonner's defaults. Sonner is a candidate implementation and a reference for what we have
   not captured (promise, loading, updating in place). Adopting it is a proposal with its
   bundle cost stated, themed entirely in dubizzle tokens.

@@ -286,7 +286,7 @@ function overlaysDemo() {
   const section = (t, body) => `<section class="m-filters__section"><span class="m-filters__section-title">${t}</span><div class="m-filters__section-body">${body}</div></section>`;
   return `
       <h3>Toast</h3>
-      <p class="note">Repo <code>dubizzle-facelift/components/toast</code>. <strong>Repo values, not yet verified on live</strong> — the captured favourite toast had already slid away.</p>
+      <p class="note">Repo <code>dubizzle-facelift/components/toast</code>. <strong>Repo values, not yet verified on live</strong> — no read-only action on live raises a toast (every one follows a real action: export, invite, purchase), so none can be captured without doing one.</p>
       <div class="demo demo--stack" style="align-items:flex-start">
         <div class="toast toast--success toast--inline" role="status" data-parity="toast"><div class="toast__message"><img class="toast__icon" src="assets/toast/success.svg" alt=""><div><span class="toast__main">Ad added to your favourites</span></div></div><button class="toast__dismiss" type="button" aria-label="Dismiss">${CLOSE(16)}</button></div>
         <div class="toast toast--error toast--inline" role="status"><div class="toast__message"><img class="toast__icon" src="assets/toast/error.svg" alt=""><div><span class="toast__main">Something went wrong. Please try again.</span></div></div><button class="toast__dismiss" type="button" aria-label="Dismiss">${CLOSE(16)}</button></div>
