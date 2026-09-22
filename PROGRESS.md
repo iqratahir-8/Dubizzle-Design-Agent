@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-22 (portal filters working, ad details drawer, first portal component batch from the maple repo) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-22 (popups & modals captured + wired, components batch 3, D-018 modern-look rules) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -440,6 +440,38 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    captures. Kit section `#overlays`. Parity **282/282**. Assets that aren't icons from the
    monorepo live in `src/assets/{login,toast}` + `design-kit/assets/…`, because
    `npm run sync:icons` deletes and rebuilds `design-kit/icons`.
+
+35. **Toast re-capture → no live toast exists to capture.** Re-probed desktop + mobile web:
+   favouriting raises no toast (the heart just fills); Share opens the native share sheet.
+   Every toast in the repo follows a real action (Export Leads, invite, activate, purchase,
+   password change), which captures never perform. The `toast-favourite` state was removed
+   (its capture was a plain listing). `Toast` stays repo-sourced and labelled as such.
+   Favourites list had 3 ads afterwards; none is an ad tapped during probing (taps were
+   paired to undo). **To verify Toast on live, the user must allow one real action** —
+   the least harmful is Export Leads (emails the account's own address).
+36. **Popups & modals, consumer + portal.** 12 new read-only captures (opened, frozen,
+   closed — nothing submitted/purchased/sent): `dpv-gallery`, `dpv-report-form`,
+   `portal-ads-credits|more-filters|request-brand|actions`, `portal-ad-assign-agent`,
+   `portal-agents-invite|sort|actions`, `portal-leads-export`, `portal-vip-purchase`
+   (credits still 1,031 after). And the real gap: the earlier modal captures (`dpv-phone`,
+   `dpv-report`, `login-dialog`, `sort-menu`, `m-filters`, `save-search`,
+   `dpv-details-expanded`, `dpv-report-in`) had **never been made templates** — that's why
+   the user couldn't see them. All states are templates now (103 page stories). Portal
+   popups are wired into the prototype: trigger opens, Cancel / click outside / Escape
+   closes (`box` hotspots for ⋯ / ⋮ / credits pill); `check:prototype` tests all 10.
+   Signed-in consumer modal templates are gitignored like other account templates.
+   Skipped: the location map (a bare Google Maps iframe), phone reveal signed in (creates
+   a lead for the seller), header notifications (personal content).
+37. **Components batch 3** from those captures: `ActionsMenu` (ad ⋯ / agent ⋮, icons
+   extracted from the captures → `src/assets/portal`), `CreditsSummary` (repo coins),
+   `PortalModal` + `DetailsTable`, `ReportAdDialog`, `MoreFiltersPanel`. Tokens
+   `--shadow-menu-strong`, `--shadow-raised`, `--shadow-modal`. Parity **301/301**.
+38. **D-018 — modern-look rules** (user): gradients from primitives, glassmorphism, soft
+   coloured glows, purple/indigo/teal accents (designer must add primitive + semantic
+   tokens) and centred heroes moved from Don't to Do; icons may come from Material Symbols
+   (Rounded, outlined), Font Awesome Regular and Lucide — rounded, outlined, not pointed.
+   RULES.md §1/§2/§2a, the kit Rules panel, `check:design` messages and the taste-skill
+   preamble all updated together.
 
 ## 6. Next up
 

@@ -24,7 +24,7 @@ description: >-
 > |---|---|
 > | Palette — no colour outside the tokens | `RULES.md` §1 |
 > | Type — Proxima Nova (Latin) / GESS (Arabic). **No Google Fonts for body or display** | `RULES.md` §1 |
-> | Gradient by role only; a new one is a proposal | `RULES.md` §1, D-007 |
+> | Gradients: measured roles, or new ones mixed from palette primitives — a new one is a proposal | `RULES.md` §1, §2a |
 > | Motion — `--duration-fast/base`, `--ease-standard`; honour `prefers-reduced-motion` | `RULES.md` §4c, D-013 |
 > | Imagery — from captures, never stock or generated | `RULES.md` §4d |
 > | Copy — imperative, second person. Never "Discover", "Unlock", "Seamless" | `RULES.md` §4 |
@@ -36,6 +36,14 @@ description: >-
 > evenly-weighted cards, generous vertical rhythm, larger display type, section-scale
 > composition. Those are permitted here (user decision, 2026-09-17) and still wrong on top of
 > a results grid.
+>
+> **dubizzle overrides this skill's own defaults** (user decision, 2026-09-22, `RULES.md`
+> §2a): its "LILA RULE", "no neon / outer glows", anti-glassmorphism and anti-centre-bias
+> defaults do **not** apply here. Gradients from our primitives, glassmorphism, soft coloured
+> glows, purple / indigo / teal accents and centred heroes are open where the page needs
+> them — each new value logged in `docs/PROPOSALS.md`, and the designer asked to add new
+> colours as primitive + semantic tokens. Icons: kit first, then Material Symbols Rounded
+> (outlined), Font Awesome Regular or Lucide — rounded, not sharp.
 >
 > **Where it conflicts, the measurement wins.** Ignore its font recommendations, its colour
 > systems, and any instruction to generate imagery. Take its discipline: read the brief,

@@ -84,7 +84,12 @@ const rules = [
       if (!/linear-gradient|radial-gradient|conic-gradient/.test(line)) return null;
       if (context.inMaskDeclaration) return null;
       if (ALLOWED_GRADIENT_HINTS.some((re) => re.test(line))) return null;
-      return 'gradient not in the system — use its role token if one fits (RULES.md §1), otherwise log it in docs/PROPOSALS.md and confirm it with the designer before it ships';
+      /* New gradients are welcome (user decision 2026-09-22) as long as they are mixed
+         from the palette's primitives. Literal colour stops are the only real problem. */
+      const literal = /#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i.test(line.replace(/var\([^)]*\)/g, ''));
+      return literal
+        ? 'gradient with literal colours — build it from palette primitives (var(--red-05), var(--blue-03)…), then log it in docs/PROPOSALS.md so the designer can adopt it as a token'
+        : 'new gradient from primitives — fine to use; once final, log it in docs/PROPOSALS.md so the designer adds it to the system as a token';
     },
   },
   {
@@ -147,7 +152,7 @@ const rules = [
       if (!m) return null;
       const value = m[1].trim().toLowerCase();
       if (/var\(|none|inherit/.test(value)) return null;
-      return `hand-authored shadow — use --shadow-card / --shadow-card-hover / --shadow-dropdown / --shadow-header`;
+      return `hand-authored shadow — use a --shadow-* token; a coloured glow is allowed but goes through docs/PROPOSALS.md and becomes a --glow-* token`;
     },
   },
   {
@@ -273,8 +278,8 @@ function describeHue(hex) {
   else hue = (r - g) / (max - min) + 4;
   hue = Math.round(hue * 60);
   if (hue < 0) hue += 360;
-  if (hue >= 255 && hue <= 330) return ' (purple/violet — never used)';
-  if (hue >= 160 && hue <= 200) return ' (teal/cyan — never used)';
+  if (hue >= 225 && hue <= 330) return ' (purple/indigo — an allowed future accent, but it needs primitive + semantic tokens from the designer first)';
+  if (hue >= 160 && hue <= 200) return ' (teal — an allowed future accent, but it needs primitive + semantic tokens from the designer first)';
   return '';
 }
 

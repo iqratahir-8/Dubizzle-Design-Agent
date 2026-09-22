@@ -1070,23 +1070,26 @@ ${popupsDemo()}
           <h3 style="margin-top:0">Do</h3>
           <ul>
             <li>Use tokens for every colour, space, radius and shadow</li>
-            <li>Use icons from this set — all ${icons.total} of them</li>
+            <li>Kit icons first (${icons.total}); then Material Symbols (Google Fonts), Font Awesome Free or Lucide — rounded, outlined, never sharp-pointed</li>
+            <li>Make new gradients from our primitives for a modern look — ask the designer to add each to the system once final</li>
+            <li>Use glassmorphism and soft coloured glows where they help, with a solid fallback</li>
+            <li>Use purple, indigo or teal where needed — and ask the designer to add them as primitive + semantic colour tokens</li>
+            <li>Use centred marketing heroes on landing and campaign pages</li>
             <li>Write real EGP prices and real Egyptian place names</li>
             <li>Keep the ad-card hierarchy: price, title, specs, meta</li>
-            <li>Choose the denser layout when torn</li>
             <li>Use logical properties so RTL flips correctly</li>
           </ul>
         </div>
         <div class="demo demo--stack dont">
           <h3 style="margin-top:0">Don't</h3>
           <ul>
-            <li>Gradients — only the Featured, Elite and Pro badges</li>
-            <li>Emoji as icons, or Lucide / Font Awesome / Google Fonts</li> <!-- ds-ignore -->
-            <li>Glassmorphism, blur, or coloured glows</li>
+            <li>Colour literals — every colour, gradient stop and glow comes from a token</li>
+            <li>A purple, indigo or teal CTA — red stays the action colour</li>
+            <li>Emoji as icons, or sharp / filled icon styles next to our rounded set</li>
+            <li>Gradients or glows behind dense listings or on body text</li>
             <li>Scale or bounce on hover — colour transitions only</li>
-            <li>Purple, indigo, teal — they appear nowhere in the brand</li>
-            <li>Centred marketing heroes or three evenly-weighted cards</li>
-            <li>Radius above 1.2rem, or a hand-authored shadow</li>
+            <li>Dark mode — dubizzle EG web has none</li>
+            <li>Radius above 1.2rem (pills and avatars excepted)</li>
           </ul>
         </div>
       </div>

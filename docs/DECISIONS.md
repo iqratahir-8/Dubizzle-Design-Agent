@@ -500,3 +500,29 @@ expired; the URL fell back to the Agency Ads list and the capture recorded the w
 **screenshot is checked by eye before the capture is trusted**. Every privacy failure on
 this project — D-011's phone number, this name — passed the automated gates and was caught
 by looking. The gates are necessary. They have never once been sufficient.
+
+## D-018 — The modern-look toolkit is open: gradients from primitives, glass, glows, accents, heroes (2026-09-22)
+
+**User decision.** Removed from the Don'ts: gradients ("in future we are open to use and make
+new gradients for modern look using our primitives"), glassmorphism and coloured glows ("a
+possibility… for modern look"), purple / indigo / teal ("somewhere needed — ask the designer
+to add it in the colour tokens as primitive and semantic colours"), and centred marketing
+heroes ("where needed"). Added to the Do's: icons from Material Symbols (Google Fonts), Font
+Awesome and Lucide, "similar to our platform with smooth curve edges with outlined stroke and
+not fully pointed".
+
+**What changed.** `RULES.md` §1 (colour accents, gradients from primitives, shadows incl.
+glows), new §2a "Do — the modern-look toolkit", §2 Forbidden rewritten around what is still
+wrong (literal colours, a non-red CTA, glow/gradient on body text or dense listings, dark
+mode, neon); iconography now specifies the variant (Material Symbols Rounded outlined, FA
+Regular, Lucide at 1.5–1.75 stroke). The kit's Rules panel (`build-preview.mjs`) — which
+still showed the old Don'ts to designers — was rewritten to match. `check:design`: a
+gradient built only from `var()` stops is a note to register it, not a violation; literal
+stops are flagged; purple/indigo/teal hex now says "allowed accent, needs tokens"; the shadow
+error points glows at `--glow-*` tokens. `taste-skill`'s own anti-purple / anti-glow /
+anti-centre defaults are overridden in its dubizzle preamble.
+
+**What did not change.** The gate. Every new gradient, glow and accent colour is still a
+**proposal** until the designer confirms it and it becomes a token — and Claude must say so
+in the response. Purple/indigo/teal have no tokens yet: the designer needs to add a
+primitive ramp (`01…07`) and semantic roles for each.

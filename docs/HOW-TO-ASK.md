@@ -130,3 +130,21 @@ captures. Start at **Dashboard** and use the sidebar.
 Say **"rebuild the portal prototype"** after a re-capture, and **"check the prototype"** to
 run `npm run check:prototype` (privacy, dead links, and a real click-through of every route).
 Desktop only: dubizzle Pro has no mobile layout.
+
+**What works in it (2026-09-22):** sidebar drawer; Leads tabs and Date Range; working
+filters on every page (dubizzle's real option lists); the **ad details drawer** (click any
+Agency Ads card; five tabs); and **every popup** — More Filters, Request Brand/Model, the
+credits dropdown, the ⋯ and ⋮ action menus, Change Agent, Invite agent, Sort by, Export
+Leads, Purchase Lead. Cancel, a click outside, or Escape closes them. Confirm buttons do
+nothing on purpose: those actions were never performed, so there is no screen after them.
+
+## Popups and modals you can name
+
+Consumer: `login-dialog`, `dpv-phone` (login gate), `dpv-report` / `dpv-report-form`,
+`dpv-gallery`, `sort-menu`, `m-filters` (mobile), `save-search`, `dpv-details-expanded`.
+Portal: `portal-ads-credits`, `portal-ads-more-filters`, `portal-ads-request-brand`,
+`portal-ads-actions`, `portal-ad-assign-agent`, `portal-agents-invite`,
+`portal-agents-sort`, `portal-agents-actions`, `portal-leads-export`,
+`portal-vip-purchase`, `portal-leads-daterange`. All in Storybook → Templates → Pages and
+in the kit's templates index. There is no live toast to capture: every dubizzle toast
+follows a real action (see PROGRESS item 35).

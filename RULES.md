@@ -45,6 +45,20 @@ Only the palette. `--red-01…07`, `--gray-00…08`, `--blue-01…09`, `--yellow
 
 Red means **action or brand**. It is not a decoration. Do not tint backgrounds red for atmosphere.
 
+**Future accents — purple, indigo, teal (user decision, 2026-09-22).** These may be used
+where a design genuinely needs them: an AI or assistant surface, a data-viz series that has
+run out of palette hues, a campaign or modern-look marketing page. They are **not in the
+palette yet**, so using one starts the proposal workflow below, every time:
+1. Use it from a named variable, never a bare literal, and log it in `docs/PROPOSALS.md`
+   (`--ai-indigo #707ce9` is already open there).
+2. **Ask the designer to add it to the colour tokens as both a primitive and a semantic
+   token** — a primitive ramp (`--purple-01…07`, `--indigo-01…07`, `--teal-01…07`, matching
+   the existing `01…07` steps) and the semantic role that uses it (e.g. `--color-ai`,
+   `--chart-series-6`). Say this out loud in the response; don't just leave it in the file.
+3. Once confirmed: `scripts/sync-tokens.mjs` → `npm run sync:tokens`, a `D-NNN` in
+   `docs/DECISIONS.md`, and the row moves to **Adopted**.
+Keep them accents. Red stays the one action colour — a purple CTA is still wrong.
+
 ### Spacing — 4px base
 `--space-1` .4 · `--space-2` .8 · `--space-3` 1.2 · `--space-4` 1.6 · `--space-5` 2 · `--space-6` 2.4 · `--space-7` 3.2 · `--space-8` 4 · `--space-9` 4.8 · `--space-10` 6.4 (rem, where 1rem = 10px)
 
@@ -62,19 +76,35 @@ Weights: 400 regular · 600 semibold · 700 bold. (100/300/900 exist but are eff
 
 Line height: 1.5 body, 1.2 headings.
 
-Font: `--font-primary` (Proxima Nova) for Latin. `--font-arabic` (GESS) for Arabic. Nothing else — no Inter, no system-ui, no Google Fonts.
+Font: `--font-primary` (Proxima Nova) for Latin. `--font-arabic` (GESS) for Arabic. No other *text* face — no Inter, no system-ui. (Google Fonts is allowed for one thing only: the Material Symbols **icon** font, §2 Iconography.)
 
 ### Shadow
-`--shadow-card` · `--shadow-card-hover` · `--shadow-dropdown` · `--shadow-header`
+Base set: `--shadow-card` · `--shadow-card-hover` · `--shadow-dropdown` · `--shadow-header`.
+Measured on live since (2026-09-21/22): `--shadow-overlay` (header dropdowns, ad ⋯ menu),
+`--shadow-menu` (portal filter menus), `--shadow-menu-strong` (agent ⋮ menu),
+`--shadow-raised` (credits summary), `--shadow-modal` (portal confirm modals),
+`--shadow-side-panel` (ad details drawer), `--shadow-control`, `--shadow-toast` (repo value).
 
-All four are near-invisible by design. **Never author a new shadow.** If you find yourself writing `0 10px 30px rgba(0,0,0,0.15)`, you have left the design system.
+Use a token, never a literal. A new shadow — including a **coloured glow** (below) — goes
+through the proposal workflow and becomes a token before it ships.
 
-### Gradient — allowed by role, never by taste
+### Gradient — open, built from our primitives
 
-Gradient is part of this system. It was measured, not guessed: **333 rendered
-gradients across 124 live captures, in six roles.** Every one does a job. Use the
-token for the role; if your gradient isn't one of these, it's decoration and §2
-forbids it.
+Gradients are part of this system, and **new ones are welcome for a modern look**
+(user decision, 2026-09-22). Two sources:
+
+**Measured.** Production already renders **333 gradients across 124 live captures, in
+seven roles** (table below). Where one of these roles fits, use its token.
+
+**New.** A design may make a new gradient — a hero wash, a campaign band, an AI surface,
+a card sheen. Rules for a new one:
+- **Mix it from palette primitives only** — `var(--red-05)`, `var(--yellow-02)`,
+  `var(--blue-03)`, `var(--white)`… (and purple / indigo / teal once the designer has added
+  them, §Color). No literal hex stops; `check:design` flags those.
+- Keep text on it legible: check contrast against the *darkest and lightest* stop, not the
+  middle (`npm run check:a11y`).
+- **Once it is final, ask the designer to add it to the system** as a named token
+  (`--gradient-<role>`), then log and adopt it via `docs/PROPOSALS.md`, like any new value.
 
 | Role | Token | Where it renders |
 |---|---|---|
@@ -85,12 +115,14 @@ forbids it.
 | "Post your ad" CTA band | `--cta-band-home` · `--cta-band-motors` · `--cta-band-property` · `--cta-band-mobiles` | Under a results grid, tinted per vertical |
 | Surface depth | `--surface-depth` | DPV specs strip — a barely-there shade, not a flat fill |
 | App promo | `--app-promo-gradient` · `--app-icon-gradient` | Mobile app-download surfaces |
+| Credits summary | `linear-gradient(180deg, var(--yellow-02), var(--white))` | Agency portal "Available credits" panel and Purchase Lead (repo `goldenGradient`, live 2026-09-22) |
 
-The test is whether removing the gradient loses information. A scrim keeps white
-text legible on an unknown photo. An edge fade says the rail scrolls. A badge
-gradient distinguishes paid tiers at a glance. A gradient hero says nothing.
+The measured roles all carry information (a scrim keeps white text legible, an edge
+fade says the rail scrolls, a badge gradient separates paid tiers). New gradients may be
+there for mood as well — that's allowed now — but they should still sit behind content,
+not compete with the red CTA.
 
-### Frosted glass — one measured use, one opt-in
+### Frosted glass and coloured glows — available for a modern look
 
 **Measured.** `backdrop-filter` renders in exactly one place on live dubizzle: the
 **media-type chip** ("Video") on a card photo — `--glass-chip-bg` + `--glass-chip-blur`,
@@ -106,6 +138,13 @@ dubizzle does; it's something this system now offers.
 Use it where the chip's logic holds: the backdrop is genuinely unknown — over imagery,
 over a map, over content scrolling underneath. Over a known solid background it costs
 a compositing layer and buys nothing; use a surface token.
+
+**Coloured glows (future possibility, user decision 2026-09-22).** A soft glow in a
+palette colour — behind a hero device, around an AI surface, under a featured card — is
+allowed for a modern look. Build it from a primitive (`0 0 4rem var(--red-03)`-style), keep
+it soft and behind content, never on body text, and never more than one glow per view.
+It is a new shadow, so it becomes a `--glow-<role>` token through `docs/PROPOSALS.md` once
+the designer confirms it.
 
 Always ship a solid fallback. `.glass-panel` puts the blur behind `@supports` and falls
 back to `--surface-page` with a real border, so the panel stays legible where
@@ -137,14 +176,17 @@ adopted or proposed value something dubizzle "uses".
 
 ## 2. Forbidden — the AI slop list
 
-Each of these is a tell that a screen was generated rather than designed. None of them appear in dubizzle production.
+Each of these is a tell that a screen was generated rather than designed.
+(Gradients, glassmorphism, coloured glows, purple / indigo / teal and centred marketing
+heroes used to be on this list. They are **not forbidden any more** — see §1 and §2a for
+how to use them.)
 
 **Color and surface**
-- ✗ Purple, indigo, violet, teal — anywhere, for anything
-- ⚠ Gradient that isn't one of the §1 roles — mesh backgrounds, gradient buttons, gradient text, gradient borders. Production has 333 gradients and none of them is decorative, so the default answer is still no. But if a design needs a new one, **use it, then raise it**: log it in `docs/PROPOSALS.md` and get the designer's sign-off before it ships. `check:design` warns rather than blocks.
-- ⚠ Frosted panels — available as an opt-in (`.glass-panel`, §1), not a default. Reach for it when the backdrop is genuinely unknown; over a known solid background a surface token is better and cheaper.
+- ✗ Colour from literals. Every colour — including a new gradient stop or a glow — comes from a token.
+- ✗ A purple, indigo or teal **CTA**. Those are accents; red stays the one action colour.
+- ✗ Gradient or glow on body text, or behind dense listing content where it costs legibility.
 - ✗ Dark mode. dubizzle EG web has none. Do not invent one.
-- ✗ Glows and neon. (Coloured shadow exists in exactly one place — the header's active-vertical tab, which is `ds-ignore`d geometry. Don't author a second.)
+- ✗ Neon: saturated, hard-edged glows or several glows fighting in one view.
 
 **Shape and depth**
 - ✗ Border radius above 1.2rem on anything that isn't a pill or avatar
@@ -161,9 +203,19 @@ Each of these is a tell that a screen was generated rather than designed. None o
 **Iconography**
 - ✗ Emoji as icons. Ever. Not in UI, not in labels, not in empty states.
 - ✓ **`design-kit/icons/` first** — 587 real dubizzle icons, and they match each other.
-- ✓ **Then Lucide, Font Awesome, or Google's Material Symbols**, resolved by name: if the
-  design asks for an icon the kit doesn't have, take it from whichever pack has it rather
-  than shipping a gap. (User decision, 2026-09-17.)
+- ✓ **Then Material Symbols (Google Fonts), Font Awesome, or Lucide**, resolved by name: if
+  the design asks for an icon the kit doesn't have, take it from whichever pack has it rather
+  than shipping a gap. (User decisions, 2026-09-17 and 2026-09-22.)
+- ✓ **Pick the variant that looks like our platform: smooth, curved corners; outlined
+  stroke; nothing sharp or fully pointed.** Concretely:
+  - Material Symbols → the **Rounded** family, **outlined** (`FILL 0`), weight 300–400,
+    `GRAD 0`, optical size matched to the render size. Not *Sharp*, not filled by default.
+  - Font Awesome Free → the **Regular** (outlined) style where the glyph exists; avoid
+    Solid for UI icons, and never Pro-only styles.
+  - Lucide → as shipped: round caps and joins; stroke 1.5–1.75 at 24px to sit next to the
+    kit's weight (2 reads heavy).
+  - Same size and optical weight as the kit icons around it; a sharp-cornered icon next to
+    dubizzle's rounded set is the mismatch to avoid.
 - Keep one pack per screen where you can. Mixing sets is visible — Lucide's 2px stroke on a
   24 grid doesn't sit level with dubizzle's filled set — so if a screen needs three external
   icons, take all three from the same pack and match the optical size.
@@ -174,10 +226,9 @@ Each of these is a tell that a screen was generated rather than designed. None o
   nothing and multiplies the mismatch.
 
 **Layout**
-- ⚠ Centred marketing hero with a big headline and a single CTA — **permitted when the brief
-  calls for one** (user decision, 2026-09-17). It is still wrong for a listings surface, where
-  density and scanning win. Use it for campaign, landing and promotional pages, not on top of
-  a results grid.
+- ✓ Centred marketing hero with a big headline and a single CTA — **use it where needed**
+  (user decisions, 2026-09-17 and 2026-09-22): campaign, landing and promotional pages.
+  Still not on top of a results grid, where density and scanning win.
 - ⚠ Three evenly-weighted cards in a row — **permitted when the content is genuinely three
   peers** (a value-prop row, a three-step explainer). Don't use it to pad thin content, and
   don't apply it to listings: real ad grids are ragged because real content is ragged.
@@ -189,6 +240,27 @@ Each of these is a tell that a screen was generated rather than designed. None o
 - ✗ Letter-spaced uppercase headings as decoration (the footer column headings are the one exception)
 - ✗ Font sizes above 3.2rem
 - ✗ Thin or light weights for body text
+
+---
+
+## 2a. Do — the modern-look toolkit (user decisions, 2026-09-22)
+
+These are open to use. Each new value still goes through **propose → designer confirms →
+token** (§1), and the response must say so.
+
+- ✓ **Gradients made from our primitives** — hero washes, campaign bands, AI surfaces, card
+  sheens. Palette tokens as stops, legible text, and a `--gradient-<role>` token once final.
+- ✓ **Icons from Material Symbols (Google Fonts), Font Awesome Free and Lucide**, similar to
+  our platform: **rounded, smooth-curved corners, outlined stroke, not sharp or fully
+  pointed** (Material *Rounded* outlined, FA *Regular*, Lucide as shipped). Kit icons first.
+- ✓ **Glassmorphism** — `.glass-panel` over imagery, maps or scrolling content, with the
+  solid `@supports` fallback.
+- ✓ **Coloured glows** — soft, one per view, from a palette colour, as a `--glow-<role>` token.
+- ✓ **Purple, indigo and teal where needed** — as accents (AI, data-viz, campaigns).
+  **Ask the designer to add each to the colour tokens as a primitive ramp and a semantic
+  role** before it ships; until then it is a proposal.
+- ✓ **Centred marketing heroes where needed** — landing, campaign and promotional pages.
+- ✓ Three evenly-weighted cards when the content really is three peers.
 
 ---
 
