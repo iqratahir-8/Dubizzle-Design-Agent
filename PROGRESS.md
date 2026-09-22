@@ -28,14 +28,16 @@ Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HAND
 screen that can be named, what to say to get it, and how to re-capture after a release. Keep it
 accurate as the system grows.
 
-**Git (2026-09-22):** the working remote is now **`git@github.com:iqratahir-8/Dubizzle-Design-System.git`**
-(private; this Mac's `iqratahir-8` SSH key has access) — git remote name `iqratahir`, and the branch
-tracks it. Everything is pushed: `main` = the current work (it also carries GitHub's initial README
-commit as a parent), `claude/keen-hypatia-ftrhz4` = same, `legacy-main` = the first session's separate
-history. The original repo `chaudhary-umair-ahmad/Dubizzle-Design-System` (remote `origin`) is not
-accessible from this account; when its owner is available, either add `iqratahir-8` as a collaborator
-and push there, or transfer this repo to them. Keep it **private** (licensed Proxima Nova / GESS).
-On a new machine: `git clone git@github.com:iqratahir-8/Dubizzle-Design-System.git`, `npm install`.
+**Git (2026-09-22):** two private remotes, kept identical — push to both.
+- **`origin` = `git@github.com:chaudhary-umair-ahmad/Dubizzle-Design-System.git`** (the canonical repo;
+  `iqratahir-8` was added as a collaborator on 2026-09-22 and pushes over SSH).
+- `iqratahir` = `git@github.com:iqratahir-8/Dubizzle-Design-System.git` (a mirror made while the owner
+  was away).
+Branches on both: `main` and `claude/keen-hypatia-ftrhz4` = the current work; `legacy-main` = the first
+session's separate history. The owner's one extra commit (Remotion-skills gitignore, 79973fd) was
+merged in, never overwritten. Push with: `git push origin HEAD:main HEAD:claude/keen-hypatia-ftrhz4 &&
+git push iqratahir HEAD:main HEAD:claude/keen-hypatia-ftrhz4`. Keep both **private**
+(licensed Proxima Nova / GESS). New machine: `git clone git@github.com:chaudhary-umair-ahmad/Dubizzle-Design-System.git`, `npm install`.
 
 **Not in git (by design):** `design-kit/reference/live/` — all captured live pages and
 screenshots (gitignored: large, and account screens are private). They're in the folder on this
