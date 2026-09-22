@@ -37,7 +37,7 @@ export function LoginDialog({ open, onClose, onProvider, onCreateAccount, inline
       </div>
       <div className={styles.providers}>
         {PROVIDERS.slice(0, 2).map(button)}
-        <span className={styles.or}>OR</span>
+        <span className={styles.or}>Or</span>
         {PROVIDERS.slice(2).map(button)}
       </div>
       <button type="button" className={styles.create} onClick={onCreateAccount}>New to Dubizzle? Create an account</button>

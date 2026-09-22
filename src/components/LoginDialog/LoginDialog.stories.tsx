@@ -6,7 +6,7 @@ const meta: Meta<typeof LoginDialog> = {
   component: LoginDialog,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', docs: { description: { component: 'The login dialog, measured on the live capture. Provider icons are the live ones (src/assets/login).' } } },
-  decorators: [(S) => <div style={{ position: 'relative', height: 620 }}><S /></div>],
+  decorators: [(S) => <div style={{ position: 'relative', height: 625 }}><S /></div>],
   args: { open: true, inline: true, onClose: () => {} },
 };
 export default meta;

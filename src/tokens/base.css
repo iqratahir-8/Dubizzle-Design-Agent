@@ -10,6 +10,11 @@
 /* Root font-size: 10px so 1rem = 10px (matches the codebase convention). */
 html {
   font-size: 10px;
+  /* Live renders all text this way (html and body, measured 2026-09-22). Without it every
+     glyph is a shade heavier than production — check:live saw 5–10% pixel noise on text. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Base text — must stay identical to the body rule in design-kit/patterns/patterns.css.

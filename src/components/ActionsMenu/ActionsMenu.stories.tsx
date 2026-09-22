@@ -10,6 +10,6 @@ const meta: Meta<typeof ActionsMenu> = {
 export default meta;
 type Story = StoryObj<typeof ActionsMenu>;
 const slug = (l: string) => l.toLowerCase().replace(/[^a-z]+/g, '-').replace(/-$/, '');
-const icon = (l: string, size: number) => <img src={`/assets/portal/action-${slug(l)}.svg`} alt="" width={size} height={size} />;
-export const AdCard: Story = { args: { variant: 'ad', items: AD_ACTIONS.map((label) => ({ label, icon: icon(label, 22) })) } };
-export const AgentRow: Story = { args: { variant: 'agent', items: AGENT_ACTIONS.map((label) => ({ label, icon: icon(label, 16) })) } };
+const icon = (l: string) => <img src={`/assets/portal/action-${slug(l)}.svg`} alt="" />;
+export const AdCard: Story = { args: { variant: 'ad', items: AD_ACTIONS.map((label) => ({ label, icon: icon(label) })) } };
+export const AgentRow: Story = { args: { variant: 'agent', items: AGENT_ACTIONS.map((label) => ({ label, icon: icon(label) })) } };

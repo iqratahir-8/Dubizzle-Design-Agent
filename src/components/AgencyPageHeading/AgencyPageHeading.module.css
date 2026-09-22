@@ -1,6 +1,6 @@
 /* Agency portal page title — repo agencyPageHeading.cssm, checked against live.
    Must match .agency-heading in patterns.css (npm run check:parity). */
-.heading { font-family: var(--font-primary); }
+.heading { display: inline-flex; flex-direction: column; font-family: var(--font-primary); }
 .title {
   margin: 0 0 0.8rem;
   color: var(--text-color);

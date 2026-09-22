@@ -52,7 +52,8 @@
     "capture:states": "node scripts/capture-states.mjs",
     "check:a11y": "node scripts/check-a11y.mjs",
     "check:prototype": "node scripts/check-prototype.mjs",
-    "extract:portal-filters": "node scripts/extract-portal-filters.mjs"
+    "extract:portal-filters": "node scripts/extract-portal-filters.mjs",
+    "check:live": "node scripts/check-live.mjs"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

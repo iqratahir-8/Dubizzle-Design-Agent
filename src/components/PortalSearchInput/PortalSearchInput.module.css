@@ -12,7 +12,7 @@
   font-family: var(--font-primary);
 }
 .box:focus-within { border-color: var(--red-03); }
-.icon { flex: none; margin-inline-start: 1.6rem; color: var(--gray-06); }
+.icon { flex: none; margin-inline-start: 1.6rem; }
 .input {
   flex: 1;
   min-width: 0;

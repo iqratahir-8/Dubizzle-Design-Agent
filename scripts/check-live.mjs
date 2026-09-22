@@ -1,0 +1,209 @@
+#!/usr/bin/env node
+/**
+ * Component vs LIVE. check:parity proves Storybook and the kit agree with each other;
+ * this proves the component agrees with dubizzle. For each spec it finds the element in a
+ * frozen live capture (by its own text, then N levels up to the component root) and the
+ * same element in the Storybook story, then:
+ *   1. compares computed box + type properties (the values that must match exactly), and
+ *   2. screenshots both and pixel-diffs them (share of pixels off by >32 in any channel,
+ *      after scaling the story shot onto the live one's size).
+ *
+ * Needs both servers: npm run dev (6006) and npm run kit (4321, which serves the captures
+ * with their fonts). Account captures are local-only; a spec whose capture is missing is
+ * reported as "--", not failed.
+ *
+ *   npm run check:live                # all
+ *   npm run check:live -- Portal      # specs whose name contains "Portal"
+ */
+import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'node:fs';
+import { join, resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import puppeteer from 'puppeteer-core';
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const LIVE = join(ROOT, 'design-kit/reference/live');
+const OUT = join(LIVE, 'screens/_live-check');
+const SB = process.env.STORYBOOK_URL || 'http://localhost:6006';
+const KIT = process.env.KIT_URL || 'http://localhost:4321';
+const CHROME = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+/** A component is "pixel-matched" at or under this share of differing pixels. */
+const TOLERANCE = 0.03;
+/** Size may differ by this many px (sub-pixel rounding, 1px borders) before it counts. */
+const SIZE_SLACK = 2;
+
+/* height is compared rounded, with SIZE_SLACK, below — the raw string differs on sub-pixels */
+const BOX = ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'borderTopWidth', 'borderTopColor', 'borderTopLeftRadius', 'backgroundColor', 'backgroundImage', 'boxShadow'];
+const TYPE = ['color', 'fontSize', 'fontWeight', 'lineHeight'];
+
+/* live: [capture, anchor text, levels up, nth visible match] · story: [id, selector, n]
+   width: compare width too (off where the story's container sets it differently). */
+export const SPECS = [
+  { name: 'AgencyPageHeading / title', live: ['portal-agents.desktop', 'Agency Management', 0], story: ['agency-portal-agencypageheading--with-subtitle', 'h1'], props: TYPE, pixels: true },
+  { name: 'PortalTabs sm / switcher', live: ['portal-leads.desktop', 'Phone', 2], story: ['agency-portal-agencyportaltabswitcher--leads', '[role="tablist"]'], props: BOX, width: true, pixels: true },
+  { name: 'PortalTabs sm / active tab', live: ['portal-leads.desktop', 'All', 1], story: ['agency-portal-agencyportaltabswitcher--leads', '[role="tab"]'], props: [...BOX, ...TYPE], width: true },
+  { name: 'PortalTabs md / switcher', live: ['portal-credit.desktop', 'Owner', 2], story: ['agency-portal-agencyportaltabswitcher--credit-info', '[role="tablist"]'], props: BOX, width: true, pixels: true },
+  { name: 'AdState / active', live: ['portal-ads.desktop', 'Active', 0], story: ['agency-portal-adstate--active', '[class*="_state_"]'], props: [...BOX, ...TYPE], width: true, pixels: true },
+  { name: 'AdStateFilter / selected', live: ['portal-ads.desktop', 'View all (162)', 1], story: ['agency-portal-adstatefilter--default', 'button'], props: [...BOX, ...TYPE], width: true, pixels: true },
+  { name: 'AdStateFilter / resting', live: ['portal-ads.desktop', 'Active Ads (5)', 1], story: ['agency-portal-adstatefilter--default', 'button', 1], props: [...BOX, ...TYPE], width: true, pixels: true },
+  { name: 'PortalSearchInput / box', live: ['portal-ads.desktop', { placeholder: 'Search keyword' }, 1], story: ['agency-portal-portalsearchinput--agency-ads', 'label'], props: BOX, width: true, pixels: true },
+  { name: 'PortalSelect / field', live: ['portal-candidates.desktop', 'Experience Level', 2], story: ['agency-portal-multiplechoicedropdown--closed', 'button'], props: BOX, width: true, pixels: true },
+  { name: 'SortMenu / menu', live: ['sort-menu.desktop', 'Most relevant', 3], story: ['components-sortmenu--default', '[role="listbox"]'], props: BOX, width: true, pixels: true },
+  { name: 'LoginDialog / panel', live: ['login-dialog.desktop', 'Login into your Dubizzle account', 4], story: ['feedback-logindialog--default', '[role="dialog"]'], props: ['borderTopLeftRadius', 'backgroundColor'], width: true, pixels: true },
+  { name: 'ReportAdDialog / panel', live: ['dpv-report-form.desktop', 'Item report', 3], story: ['feedback-reportaddialog--default', '[role="dialog"]'], props: ['borderTopLeftRadius', 'backgroundColor'], width: true, pixels: true },
+  { name: 'ActionsMenu / ad ⋯', live: ['portal-ads-actions.desktop', 'Mark as sold', 2], story: ['agency-portal-actionsmenu--ad-card', '[role="menu"]'], props: BOX, width: true, pixels: true },
+  { name: 'ActionsMenu / agent ⋮', live: ['portal-agents-actions.desktop', 'Update Credits', 3], story: ['agency-portal-actionsmenu--agent-row', '[role="menu"]'], props: BOX, width: true, pixels: true },
+  { name: 'CreditsSummary / panel', live: ['portal-ads-credits.desktop', 'Available credits', 4, 1], story: ['agency-portal-creditssummary--default', '[class*="_panel_"]'], props: BOX, width: true, pixels: true },
+  { name: 'MoreFiltersPanel / panel', live: ['portal-ads-more-filters.desktop', 'Agent Code', 1], story: ['agency-portal-morefilterspanel--default', '[class*="_panel_"]'], props: BOX, width: true, pixels: true },
+  { name: 'PortalModal md / panel', live: ['portal-leads-export.desktop', 'Export Details', 3], story: ['agency-portal-portalmodal--export-leads', '[role="dialog"]'], props: BOX, width: true, pixels: true },
+  { name: 'MobileFilters / header', live: ['m-filters.mobile', 'Reset', 4], story: ['mobile-mobilefilters--page', 'header'], props: BOX, width: true, pixels: true, mobile: true },
+];
+
+const PIXEL_PAGE = `<canvas id=a></canvas><canvas id=b></canvas><script>
+window.diff = async (A, B) => {
+  const load = (src) => new Promise((r) => { const i = new Image(); i.onload = () => r(i); i.src = src; });
+  const [ia, ib] = await Promise.all([load(A), load(B)]);
+  const W = ia.width, H = ia.height;
+  const ca = document.getElementById('a'), cb = document.getElementById('b');
+  ca.width = cb.width = W; ca.height = cb.height = H;
+  const xa = ca.getContext('2d'), xb = cb.getContext('2d');
+  xa.drawImage(ia, 0, 0); xb.fillStyle = '#fff'; xb.fillRect(0, 0, W, H); xb.drawImage(ib, 0, 0, W, H);
+  const da = xa.getImageData(0, 0, W, H).data, db = xb.getImageData(0, 0, W, H).data;
+  let off = 0;
+  const mask = xa.createImageData(W, H);
+  for (let i = 0; i < da.length; i += 4) {
+    const bad = Math.abs(da[i] - db[i]) > 32 || Math.abs(da[i + 1] - db[i + 1]) > 32 || Math.abs(da[i + 2] - db[i + 2]) > 32;
+    if (bad) off++;
+    mask.data[i] = bad ? 224 : 255; mask.data[i + 1] = bad ? 0 : 255; mask.data[i + 2] = bad ? 0 : 255; mask.data[i + 3] = 255;
+  }
+  // composite for a human: live / ours / diff, 3x
+  const S = 3, gap = 6, c = document.createElement('canvas');
+  c.width = W * S; c.height = (H * 3 + 2 * gap / S) * S;
+  const x = c.getContext('2d'); x.imageSmoothingEnabled = false; x.fillStyle = '#9aa'; x.fillRect(0, 0, c.width, c.height);
+  x.drawImage(ca, 0, 0, W * S, H * S); x.drawImage(cb, 0, H * S + gap, W * S, H * S);
+  const m = document.createElement('canvas'); m.width = W; m.height = H; m.getContext('2d').putImageData(mask, 0, 0);
+  x.drawImage(m, 0, 2 * (H * S + gap), W * S, H * S);
+  return { diff: off / (W * H), composite: c.toDataURL('image/png') };
+};
+</script>`;
+
+async function locate(page, target) {
+  return page.evaluate((t) => {
+    const [anchor, up, nth] = [t[1], t[2] || 0, t[3] || 0];
+    let el = null;
+    if (typeof anchor === 'object') el = document.querySelector(`input[placeholder="${anchor.placeholder}"]`);
+    else {
+      const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let n, k = 0;
+      while ((n = w.nextNode())) {
+        if (n.nodeValue.trim() !== anchor || n.parentElement.closest('script,style,nav')) continue;
+        const e = n.parentElement, r = e.getBoundingClientRect();
+        if (r.width === 0 || r.bottom < 0 || r.top > innerHeight) continue;
+        const h = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+        if (!h || !(e.contains(h) || h.contains(e))) continue;
+        if (k++ === nth) { el = e; break; }
+      }
+    }
+    if (!el) return null;
+    for (let i = 0; i < up; i++) el = el.parentElement;
+    el.setAttribute('data-live-check', '1');
+    return true;
+  }, target);
+}
+
+async function read(page, sel, props) {
+  return page.evaluate((sel, props) => {
+    const el = document.querySelector(sel);
+    if (!el) return null;
+    const cs = getComputedStyle(el), r = el.getBoundingClientRect();
+    // where the first line of text and the first icon actually sit inside the component
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let t, text = null;
+    while ((t = w.nextNode())) if (t.nodeValue.trim()) { const rg = document.createRange(); rg.selectNodeContents(t); const b = rg.getBoundingClientRect(); text = { x: +(b.x - r.x).toFixed(1), y: +(b.y - r.y).toFixed(1), w: +b.width.toFixed(1), s: t.nodeValue.trim().slice(0, 24) }; break; }
+    const ic = el.querySelector('svg, img'); let icon = null;
+    if (ic) { const b = ic.getBoundingClientRect(); icon = { x: +(b.x - r.x).toFixed(1), y: +(b.y - r.y).toFixed(1), w: +b.width.toFixed(1), h: +b.height.toFixed(1) }; }
+    return { w: Math.round(r.width), h: Math.round(r.height), x: r.x, y: r.y, text, icon, props: Object.fromEntries(props.map((p) => [p, cs[p]])) };
+  }, sel, props);
+}
+
+const only = process.argv.slice(2).filter((a) => !a.startsWith('-'));
+const specs = SPECS.filter((s) => !only.length || only.some((o) => s.name.includes(o)));
+mkdirSync(OUT, { recursive: true });
+const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ['--no-sandbox'] });
+const live = await browser.newPage();
+const story = await browser.newPage();
+const pix = await browser.newPage();
+await pix.setContent(PIXEL_PAGE);
+let problems = 0, checked = 0;
+const report = [];
+
+for (const s of specs) {
+  const vp = s.mobile ? { width: 390, height: 844, deviceScaleFactor: 1 } : { width: 1440, height: 900, deviceScaleFactor: 1 };
+  if (!existsSync(join(LIVE, `${s.live[0]}.html`))) { console.log(`  --   ${s.name.padEnd(30)} capture ${s.live[0]} not on this machine`); continue; }
+  await live.setViewport(vp);
+  await story.setViewport(vp);
+  await live.goto(`${KIT}/reference/live/${s.live[0]}.html`, { waitUntil: 'load' });
+  await live.evaluate(() => document.fonts.ready);
+  await new Promise((r) => setTimeout(r, 300));
+  if (!(await locate(live, s.live))) { console.log(`  MISS ${s.name.padEnd(30)} live anchor not found`); problems++; continue; }
+  await story.goto(`${SB}/iframe.html?id=${s.story[0]}&viewMode=story`, { waitUntil: 'load', timeout: 60000 });
+  await story.waitForSelector('#storybook-root > *', { timeout: 30000 }).catch(() => {});
+  await new Promise((r) => setTimeout(r, 400));
+  await story.evaluate(() => document.fonts.ready);
+  await story.evaluate((sel, n) => { const e = document.querySelectorAll(`#storybook-root ${sel}`)[n || 0]; if (e) e.setAttribute('data-live-check', '1'); }, s.story[1], s.story[2]);
+  const props = s.props || [];
+  const a = await read(live, '[data-live-check]', props);
+  const b = await read(story, '[data-live-check]', props);
+  if (!b) { console.log(`  MISS ${s.name.padEnd(30)} story element not found`); problems++; continue; }
+  checked++;
+  const diffs = props.filter((p) => a.props[p] !== b.props[p]).map((p) => `${p}: live ${a.props[p]} · ours ${b.props[p]}`);
+  if (Math.abs(a.h - b.h) > SIZE_SLACK) diffs.push(`height: live ${a.h} · ours ${b.h}`);
+  if (s.width && Math.abs(a.w - b.w) > SIZE_SLACK) diffs.push(`width: live ${a.w} · ours ${b.w}`);
+  if (a.text && b.text && (Math.abs(a.text.x - b.text.x) > 0.6 || Math.abs(a.text.y - b.text.y) > 0.6 || Math.abs(a.text.w - b.text.w) > 1.5))
+    diffs.push(`text "${a.text.s}": live @${a.text.x},${a.text.y} w${a.text.w} · ours "${b.text.s}" @${b.text.x},${b.text.y} w${b.text.w}`);
+  if (a.icon && b.icon && (Math.abs(a.icon.x - b.icon.x) > 0.6 || Math.abs(a.icon.y - b.icon.y) > 0.6 || Math.abs(a.icon.w - b.icon.w) > 0.6 || Math.abs(a.icon.h - b.icon.h) > 0.6))
+    diffs.push(`icon: live @${a.icon.x},${a.icon.y} ${a.icon.w}×${a.icon.h} · ours @${b.icon.x},${b.icon.y} ${b.icon.w}×${b.icon.h}`);
+  let pct = null;
+  if (s.pixels) {
+    /* Put ours on the same sub-pixel phase as live before shooting. A live element at
+       y = 182.5 (a centred dialog) has soft edges in the capture itself; comparing that with
+       a crisp whole-pixel render measures the capture, not us. Two ways to shift — layout
+       offset (keeps the text raster path) and transform (survives centred overlays that
+       re-snap layout) — render the same component, so both are tried and the closer wins. */
+    const frac = (v) => v - Math.floor(v);
+    const slug = s.name.replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+    const fa = join(OUT, `${slug}.live.png`), fb = join(OUT, `${slug}.ours.png`);
+    const shot = async (page, r, file) => page.screenshot({ path: file, clip: { x: Math.max(0, r.x), y: Math.max(0, r.y), width: Math.max(1, r.w), height: Math.max(1, r.h) } });
+    const toData = (f) => 'data:image/png;base64,' + readFileSync(f).toString('base64');
+    await shot(live, a, fa);
+    const base = { x: b.x, y: b.y };
+    let best = null;
+    for (const mode of ['none', 'layout', 'transform']) {
+      await story.evaluate(() => { const e = document.querySelector('#storybook-root'); e.style.position = ''; e.style.left = ''; e.style.top = ''; e.style.transform = ''; });
+      const dx = frac(a.x) - frac(base.x), dy = frac(a.y) - frac(base.y);
+      if (mode !== 'none') {
+        if (Math.abs(dx) < 0.01 && Math.abs(dy) < 0.01) continue;
+        await story.evaluate((m, dx, dy) => {
+          const e = document.querySelector('#storybook-root');
+          if (m === 'layout') { e.style.position = 'relative'; e.style.left = `${dx}px`; e.style.top = `${dy}px`; }
+          else e.style.transform = `translate(${dx}px, ${dy}px)`;
+        }, mode, dx, dy);
+      }
+      const rb = await read(story, '[data-live-check]', []);
+      await shot(story, rb, fb);
+      const r = await pix.evaluate((A, B) => window.diff(A, B), toData(fa), toData(fb));
+      if (!best || r.diff < best.diff) best = r;
+    }
+    pct = best.diff;
+    writeFileSync(join(OUT, `${slug}.compare.png`), Buffer.from(best.composite.split(',')[1], 'base64'));
+  }
+  const pixelOk = pct === null || pct <= TOLERANCE;
+  const ok = diffs.length === 0 && pixelOk;
+  if (!ok) problems++;
+  report.push({ name: s.name, ok, pixels: pct === null ? null : +(pct * 100).toFixed(1), diffs });
+  console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${s.name.padEnd(30)} ${pct === null ? '' : `${(pct * 100).toFixed(1).padStart(5)}% px`}  ${a.w}×${a.h} live · ${b.w}×${b.h} ours`);
+  for (const d of diffs) console.log(`         ${d}`);
+}
+
+await browser.close();
+writeFileSync(join(OUT, 'report.json'), JSON.stringify(report, null, 2));
+console.log(`\n${checked} checked · ${problems ? `${problems} off live` : 'all match live'} (pixel tolerance ${TOLERANCE * 100}%) · shots in design-kit/reference/live/screens/_live-check/`);
+process.exit(problems ? 1 : 0);

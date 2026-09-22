@@ -1,28 +1,27 @@
-/* Credits summary — repo creditsSummary.cssm, measured on live. Must match .credits-summary in patterns.css. */
-.panel {
-  position: relative;
-  box-sizing: border-box;
-  width: 37.5rem;
-  overflow: hidden;
-  padding: var(--primary-spacing);
-  border-radius: var(--input-border-radius);
-  background: linear-gradient(180deg, var(--yellow-02) 0%, var(--white) 100%);
-  box-shadow: var(--shadow-raised);
-  font-family: var(--font-primary);
-  color: var(--text-color);
-}
-.coins { position: absolute; top: -2.5rem; right: -1.03rem; width: 9.2rem; opacity: 0.4; }
+/* Credits summary — anatomy from the live capture, see CreditsSummary.tsx.
+   Must match .credits-summary in patterns.css. */
+.panel { position: relative; display: flex; flex-direction: column; box-sizing: border-box; width: 37.5rem; overflow: hidden; padding: var(--primary-spacing); border-radius: var(--input-border-radius); background: linear-gradient(var(--yellow-02), var(--white)); box-shadow: var(--shadow-raised); font-family: var(--font-primary); color: var(--text-color); font-size: var(--text-sm); line-height: 2.1rem; }
+.top { display: flex; }
 .available { display: flex; flex-direction: column; margin-bottom: 2rem; }
 .label { font-size: 1.596rem; line-height: 2.394rem; }
-.value { display: flex; align-items: center; font-size: 2.394rem; font-weight: 700; line-height: 3.591rem; }
-.coin { width: 2.4rem; margin-right: 0.8rem; }
+.value { display: flex; align-items: center; gap: 0.8rem; font-size: 2.394rem; font-weight: 700; line-height: 3.591rem; }
+.coin { width: 2.4rem; height: 3.6rem; }
+.coins { position: absolute; top: -2.5rem; right: -1.03rem; width: 9.2rem; opacity: 0.4; }
 .usage { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: var(--primary-spacing); }
-.ratio { align-self: flex-end; font-size: var(--text-sm); line-height: 2.1rem; }
-.bar { display: block; height: 0.8rem; overflow: hidden; border-radius: 0.4rem; background: var(--gray-02); }
-.fill { display: block; height: 100%; background: var(--yellow-04); }
-.legend { margin: 0 0 var(--primary-spacing); padding: 0; list-style: disc inside; color: var(--gray-05); font-size: var(--text-sm); line-height: 2.4rem; }
+.ratio { display: flex; justify-content: flex-end; color: var(--gray-05); }
+.ratio b { font-weight: 700; }
+.bar { display: flex; gap: 0.1rem; height: 1.2rem; overflow: hidden; border-radius: 2rem; }
+.agents { background: var(--brown-01); }
+.owner { background: var(--yellow-05); }
+.left { flex: 1; background: var(--gray-02); }
+.assignments { margin-bottom: var(--primary-spacing); color: var(--gray-05); }
+.legend { margin: 0; padding: 0; list-style: disc inside; }
+.legend li { line-height: 2.4rem; }
 .legend li::marker { font-size: 2.4rem; }
 .legend li:first-child::marker { color: var(--brown-01); }
 .legend li:nth-child(2)::marker { color: var(--yellow-05); }
-.legend b { color: var(--text-color); }
-.expires { display: block; font-size: 1.204rem; line-height: 1.806rem; }
+.legend li > span { margin-inline-start: -1.9rem; }
+.legend b { margin: 0 0.2rem; font-weight: 700; }
+.expires { display: flex; align-items: center; gap: 0.6rem; }
+.expires img { flex: none; margin-inline-start: 0.1rem; }
+.expires span { font-size: 1.204rem; line-height: 1.806rem; }

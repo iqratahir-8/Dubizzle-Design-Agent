@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { cx } from '../../utils/cx';
-import { ChevronDownIcon } from '../icons';
 import styles from './MultipleChoiceDropdown.module.css';
 
 export interface MultipleChoiceDropdownProps {
@@ -18,6 +17,8 @@ export interface MultipleChoiceDropdownProps {
   width?: string;
   /** Menu width; live checklists are 24rem, the category list 35.2rem. */
   menuWidth?: string;
+  /** Where the live chevron glyph lives (src/assets/live-icons). */
+  assetsPath?: string;
   className?: string;
 }
 
@@ -31,7 +32,7 @@ export interface MultipleChoiceDropdownProps {
  * shadow 0 4 10 rgba(0,0,0,.16), 16px top padding; rows 44 tall, 10/16 padding, 14/24.
  */
 export function MultipleChoiceDropdown({
-  label, options, value = [], onChange, mode = 'multiple', open, disabled = false, width, menuWidth, className,
+  label, options, value = [], onChange, mode = 'multiple', open, disabled = false, width, menuWidth, assetsPath = '/assets', className,
 }: MultipleChoiceDropdownProps) {
   const [isOpen, setOpen] = useState(false);
   const shown = open ?? isOpen;
@@ -63,7 +64,7 @@ export function MultipleChoiceDropdown({
         onClick={() => setOpen(!shown)}
       >
         <span className={cx(styles.title, value.length > 0 && styles.picked)}>{title}</span>
-        <ChevronDownIcon size={24} className={cx(styles.chevron, shown && styles.chevronOpen)} />
+        <img src={`${assetsPath}/live-icons/chevron-down-thin.svg`} alt="" width={20} height={20} className={cx(styles.chevron, shown && styles.chevronOpen)} />
       </button>
       {shown && (
         <div className={styles.menu} role="listbox" aria-multiselectable={mode === 'multiple'} style={menuWidth ? { width: menuWidth } : undefined}>

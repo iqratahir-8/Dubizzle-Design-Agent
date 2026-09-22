@@ -52,3 +52,4 @@ design-kit/templates/desktop/portal-*.html
 # Signed-in consumer modal states (redacted) stay local too
 design-kit/templates/desktop/dpv-report-in.html
 design-kit/templates/desktop/dpv-report-form.html
+design-kit/reference/live/screens/_live-check/

@@ -1,5 +1,5 @@
 import { cx } from '../../utils/cx';
-import { ChevronDownIcon, ChevronRightIcon, CloseIcon, LocationPinIcon } from '../icons';
+import { ChevronRightIcon, LocationPinIcon } from '../icons';
 import styles from './MobileFilters.module.css';
 
 /*
@@ -20,14 +20,15 @@ export interface FiltersHeaderProps {
   onCategory?: () => void;
   /** Reset is grey until a filter is set. */
   canReset?: boolean;
+  assetsPath?: string;
 }
-export function FiltersHeader({ category, onClose, onReset, onCategory, canReset = false }: FiltersHeaderProps) {
+export function FiltersHeader({ category, onClose, onReset, onCategory, canReset = false, assetsPath = '/assets' }: FiltersHeaderProps) {
   return (
     <header className={styles.header}>
-      <button type="button" className={styles.close} aria-label="Close" onClick={onClose}><CloseIcon size={18} /></button>
+      <button type="button" className={styles.close} aria-label="Close" onClick={onClose}><img src={`${assetsPath}/live-icons/close-filters.svg`} alt="" width={18} height={18} /></button>
       <button type="button" className={styles.searching} onClick={onCategory}>
         <span className={styles.searchingLabel}>Searching for</span> <span className={styles.searchingValue}>{category}</span>
-        <ChevronDownIcon size={20} />
+        <img src={`${assetsPath}/live-icons/chevron-down-small.svg`} alt="" width={12} height={20} />
       </button>
       <button type="button" className={cx(styles.reset, canReset && styles.resetOn)} onClick={onReset} disabled={!canReset}>Reset</button>
     </header>

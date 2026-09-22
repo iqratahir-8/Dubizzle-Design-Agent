@@ -81,7 +81,7 @@ Font: `--font-primary` (Proxima Nova) for Latin. `--font-arabic` (GESS) for Arab
 ### Shadow
 Base set: `--shadow-card` · `--shadow-card-hover` · `--shadow-dropdown` · `--shadow-header`.
 Measured on live since (2026-09-21/22): `--shadow-overlay` (header dropdowns, ad ⋯ menu),
-`--shadow-menu` (portal filter menus), `--shadow-menu-strong` (agent ⋮ menu),
+`--shadow-filter-menu` (portal filter menus; `--shadow-menu` is the user menu's softer one), `--shadow-menu-strong` (agent ⋮ menu),
 `--shadow-raised` (credits summary), `--shadow-modal` (portal confirm modals),
 `--shadow-side-panel` (ad details drawer), `--shadow-control`, `--shadow-toast` (repo value).
 

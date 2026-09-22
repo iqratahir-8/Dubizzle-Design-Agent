@@ -6,7 +6,7 @@ const meta: Meta<typeof ReportAdDialog> = {
   component: ReportAdDialog,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen', docs: { description: { component: 'Report this ad (signed in). Reasons and layout from the live capture; never submitted during capture.' } } },
-  decorators: [(S) => <div style={{ position: 'relative', height: 620 }}><S /></div>],
+  decorators: [(S) => <div style={{ position: 'relative', height: 625 }}><S /></div>],
   args: { open: true, inline: true, onClose: () => {} },
 };
 export default meta;

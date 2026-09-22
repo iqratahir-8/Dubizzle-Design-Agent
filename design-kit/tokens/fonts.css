@@ -4,38 +4,59 @@
    how the gap was found (npm run check:parity, ContactBar).
    Only the weights the system actually uses are shipped here. */
 
+/* Proxima Nova as dubizzle.com.eg serves it (Adobe Fonts woff2, extracted from the live
+   capture 2026-09-22). These, not the desktop .otf pack below, are what production renders:
+   the .otf files have different vertical metrics and put every line of text 1–2px lower
+   than live (found by npm run check:live). Declared first under the same family name for
+   400/600/700, so they win; weights live doesn't ship fall through to the .otf files.
+   Licensed to dubizzle — never redistribute (ATTRIBUTIONS.md). */
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('../assets/fonts/Proxima-Nova-Light.otf') format('opentype');
-  font-weight: 300;
+  src: url('../assets/fonts/live/proxima-nova-700.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('../assets/fonts/Proxima-Nova-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Proxima Nova';
-  src: url('../assets/fonts/Proxima-Nova-Regular-Italic.otf') format('opentype');
-  font-weight: 400;
+  src: url('../assets/fonts/live/proxima-nova-700-italic.woff2') format('woff2');
+  font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('../assets/fonts/Proxima-Nova-Semibold.otf') format('opentype');
+  src: url('../assets/fonts/live/proxima-nova-600.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('../assets/fonts/Proxima-Nova-Bold.otf') format('opentype');
-  font-weight: 700;
+  src: url('../assets/fonts/live/proxima-nova-600-italic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../assets/fonts/live/proxima-nova-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../assets/fonts/live/proxima-nova-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../assets/fonts/Proxima-Nova-Light.otf') format('opentype');
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
@@ -50,28 +71,28 @@
 /* proxima-nova — the Typekit alias the product's CSS asks for. */
 @font-face {
   font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima-Nova-Regular.otf') format('opentype');
+  src: url('../assets/fonts/live/proxima-nova-400.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima-Nova-Regular-Italic.otf') format('opentype');
+  src: url('../assets/fonts/live/proxima-nova-400-italic.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima-Nova-Semibold.otf') format('opentype');
+  src: url('../assets/fonts/live/proxima-nova-600.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'proxima-nova';
-  src: url('../assets/fonts/Proxima-Nova-Bold.otf') format('opentype');
+  src: url('../assets/fonts/live/proxima-nova-700.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

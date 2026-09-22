@@ -161,8 +161,8 @@ export { ActionsMenu, AD_ACTIONS, AGENT_ACTIONS } from './components/ActionsMenu
 export type { ActionsMenuProps, ActionsMenuItem } from './components/ActionsMenu';
 export { CreditsSummary } from './components/CreditsSummary';
 export type { CreditsSummaryProps } from './components/CreditsSummary';
-export { PortalModal, DetailsTable } from './components/PortalModal';
-export type { PortalModalProps, DetailsTableProps } from './components/PortalModal';
+export { PortalModal, DetailsTable, InfoBanner, ModalButton } from './components/PortalModal';
+export type { PortalModalProps, DetailsTableProps, InfoBannerProps, ModalButtonProps } from './components/PortalModal';
 export { ReportAdDialog, REPORT_REASONS } from './components/ReportAdDialog';
 export type { ReportAdDialogProps } from './components/ReportAdDialog';
 export { MoreFiltersPanel } from './components/MoreFiltersPanel';

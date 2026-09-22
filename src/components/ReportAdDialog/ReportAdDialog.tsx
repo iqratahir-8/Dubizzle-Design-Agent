@@ -24,7 +24,7 @@ export function ReportAdDialog({ open, onClose, onSubmit, inline, className }: R
   const [reason, setReason] = useState('');
   const [comment, setComment] = useState('');
   return (
-    <Dialog open={open} onClose={onClose} inline={inline} className={className}>
+    <Dialog open={open} onClose={onClose} inline={inline} padding="0 3.2rem 3.2rem" className={className}>
       <div className={styles.body}>
         <h2 className={styles.title}>Item report</h2>
         <div role="radiogroup" className={styles.reasons}>

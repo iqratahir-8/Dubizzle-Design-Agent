@@ -5,7 +5,6 @@
   overflow: hidden;
   border: 0.1rem solid var(--pro-tools-selection-color);
   border-radius: var(--button-border-radius);
-  background: var(--white);
   font-family: var(--font-primary);
 }
 .tab {
@@ -19,6 +18,7 @@
   line-height: 2.1rem;
   cursor: pointer;
 }
+.md { background: var(--white); } /* live: Credit Info's frame is white, Leads' is clear */
 .sm .tab { min-width: 10rem; }
 .text {
   display: block;
@@ -29,6 +29,9 @@
   user-select: none;
 }
 .sm .text { margin: 0.85rem 0; }
+/* sm (Leads, Candidates, VIP): live separates every tab with a full-height red-03 rule */
+.sm .tab:not(:last-child) { border-right: 0.1rem solid var(--pro-tools-selection-color); }
+.sm .tab > .text { border-left: 0 !important; }
 /* rule between two resting tabs; the active tab needs none */
 .tab:not(.active) + .tab:not(.active) > .text { border-left: 0.1rem solid var(--secondary-light-grey-color); }
 .active {

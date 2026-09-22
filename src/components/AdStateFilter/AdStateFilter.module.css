@@ -8,7 +8,7 @@
   padding: 0.8rem 1.6rem;
   border: 0.1rem solid var(--secondary-light-grey-color);
   border-radius: var(--button-border-radius);
-  background: var(--white);
+  background: transparent;
   color: var(--text-color);
   font-family: var(--font-primary);
   font-size: var(--text-sm);

@@ -24,4 +24,4 @@
 }
 .row:hover { background: var(--list-item-hover-color); }
 .on { padding-inline-start: 0; font-weight: 700; }
-.tick { flex: none; margin: 0 1.6rem; color: var(--red-05); }
+.tick { flex: none; margin: 0 1.6rem; }

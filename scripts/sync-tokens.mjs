@@ -278,7 +278,9 @@ const SEMANTIC = {
     // Agency portal, measured on live 2026-09-21 (design-kit/content/portal-filters.json):
     // every filter menu (checklists, category list, date presets). Darker than the repo's
     // --dropdown-shadow (.1), which live uses only for the VIP range panels.
-    '--shadow-menu': '0 4px 10px 0 rgba(0, 0, 0, 0.16)',
+    // Named apart from --shadow-menu (the user menu's softer .1): sharing the name let that
+    // one silently override this, and parity could not see it (caught by check:live).
+    '--shadow-filter-menu': '0 4px 10px 0 rgba(0, 0, 0, 0.16)',
     // The ad details drawer (repo sideDialog.cssm .large) — a wide soft cast to the left.
     '--shadow-side-panel': '-80px -120px 240px 0 rgba(0, 0, 0, 0.1)',
     // Toast (repo dubizzle-facelift/components/styles/toast.cssm; not yet live-verified).

@@ -1,2 +1,2 @@
-export { PortalModal, DetailsTable } from './PortalModal';
-export type { PortalModalProps, DetailsTableProps } from './PortalModal';
+export { PortalModal, DetailsTable, InfoBanner, ModalButton } from './PortalModal';
+export type { PortalModalProps, DetailsTableProps, InfoBannerProps, ModalButtonProps } from './PortalModal';
