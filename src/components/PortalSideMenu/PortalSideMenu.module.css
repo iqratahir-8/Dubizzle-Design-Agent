@@ -1,0 +1,15 @@
+/* Portal side menu — live anatomy, see PortalSideMenu.tsx. Must match .portal-menu-rail in patterns.css. */
+.menu { display: flex; flex-direction: column; gap: 0.4rem; box-sizing: border-box; width: var(--agency-portal-closed-nav-container-width); height: 100%; overflow: hidden; padding: 1.6rem 1.2rem 2.4rem; background: var(--gray-01); font-family: var(--font-primary); transition: width 0.3s ease-in-out; }
+.expanded { width: 25rem; box-shadow: var(--shadow-drawer); }
+.header, .item { display: flex; align-items: center; box-sizing: border-box; width: 100%; height: 5.6rem; flex: none; padding: 1.6rem; border: 0; border-radius: var(--radius-nav); background: none; color: var(--gray-05); font-family: inherit; text-decoration: none; cursor: pointer; }
+.header { gap: 0.8rem; }
+.item { gap: 1.6rem; }
+.item .icon { width: 2.3rem; } /* live's section glyphs are 23×24; the burger is 24×24 */
+.menu:not(.expanded) .header, .menu:not(.expanded) .item { justify-content: center; }
+.menu:not(.expanded) .header { padding-inline: 1.55rem 1.65rem; } /* live centres the burger at 27.5px */
+.icon { flex: none; width: 2.4rem; height: 2.4rem; background: currentColor; -webkit-mask: var(--i) center / contain no-repeat; mask: var(--i) center / contain no-repeat; }
+.brand, .title { overflow: hidden; color: var(--gray-05); font-size: 1.596rem; font-weight: 700; line-height: 2.394rem; white-space: nowrap; transition: opacity 1s; }
+.menu:not(.expanded) .brand, .menu:not(.expanded) .title { position: absolute; opacity: 0; pointer-events: none; }
+.item:not(.active):hover { background: var(--gray-02); }
+.active { background: var(--red-05); color: var(--white); }
+.active .title { color: var(--white); }

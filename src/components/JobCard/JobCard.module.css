@@ -1,0 +1,15 @@
+/* Job card — live anatomy, see JobCard.tsx. Must match .job-card in patterns.css. */
+.card { display: flex; flex-direction: column; gap: 0.8rem; box-sizing: border-box; width: 30rem; height: 19.6rem; padding: 1.6rem; border: 0.1rem solid var(--gray-03); border-radius: var(--radius-lg); background: var(--white); font-family: var(--font-primary); color: var(--text-color); font-size: var(--text-sm); line-height: 2.1rem; text-align: start; cursor: pointer; }
+.selected { width: 30.4rem; border: 0.2rem solid var(--red-04); }
+.stateRow { display: flex; }
+.state { display: flex; align-items: center; justify-content: center; box-sizing: border-box; height: 2.4rem; padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); background: var(--gray-02); color: var(--gray-04); font-size: 1.2rem; font-weight: 700; line-height: 1.4rem; }
+.body { display: flex; flex-direction: column; gap: 0.8rem; }
+.title { overflow: hidden; font-size: var(--text-md); font-weight: 700; line-height: 2.4rem; white-space: nowrap; text-overflow: ellipsis; }
+.lines { display: flex; flex-direction: column; gap: 0.8rem; }
+.line { display: flex; align-items: center; gap: 0.8rem; height: 1.8rem; }
+.line img { flex: none; }
+/* live lets a long address squeeze the pin (16 → 12px wide on the selected card) */
+.line .pin { flex: 0 1 auto; min-width: 0; }
+.text { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.dot { margin: 0 0.8rem; font-weight: 700; }
+.count { margin: auto 0 0 0.2rem; line-height: 2.1rem; margin-bottom: 0.1rem; color: var(--blue-05); font-weight: 700; }

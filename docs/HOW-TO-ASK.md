@@ -148,3 +148,11 @@ Portal: `portal-ads-credits`, `portal-ads-more-filters`, `portal-ads-request-bra
 `portal-vip-purchase`, `portal-leads-daterange`. All in Storybook → Templates → Pages and
 in the kit's templates index. There is no live toast to capture: every dubizzle toast
 follows a real action (see PROGRESS item 35).
+
+## Checking a component against live
+
+Say **"check it against live"** to run `npm run check:live` (needs Storybook + the kit
+running). It compares each component with the frozen live capture — values, text position
+and a pixel diff — and writes a live / ours / diff picture per component to
+`design-kit/reference/live/screens/_live-check/`. After a dubizzle release: re-capture,
+then run it; anything that moved shows up in red.

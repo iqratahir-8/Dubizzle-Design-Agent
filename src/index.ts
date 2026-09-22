@@ -167,3 +167,13 @@ export { ReportAdDialog, REPORT_REASONS } from './components/ReportAdDialog';
 export type { ReportAdDialogProps } from './components/ReportAdDialog';
 export { MoreFiltersPanel } from './components/MoreFiltersPanel';
 export type { MoreFiltersPanelProps, MoreFiltersField } from './components/MoreFiltersPanel';
+
+/* Batch 4 — portal content, verified with npm run check:live. */
+export { CandidateCard } from './components/CandidateCard';
+export type { CandidateCardProps } from './components/CandidateCard';
+export { JobCard } from './components/JobCard';
+export type { JobCardProps } from './components/JobCard';
+export { VipLeadCard } from './components/VipLeadCard';
+export type { VipLeadCardProps } from './components/VipLeadCard';
+export { PortalSideMenu, PORTAL_MENU } from './components/PortalSideMenu';
+export type { PortalSideMenuProps, PortalMenuItem } from './components/PortalSideMenu';

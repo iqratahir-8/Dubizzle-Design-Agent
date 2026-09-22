@@ -1,0 +1,14 @@
+/* Candidate card — live anatomy, see CandidateCard.tsx. Must match .candidate-card in patterns.css. */
+.card { display: flex; flex-direction: column; gap: 1.6rem; box-sizing: border-box; padding: 1.6rem; border: 0.1rem solid var(--gray-02); border-radius: var(--radius-lg); font-family: var(--font-primary); color: var(--text-color); font-size: var(--text-sm); line-height: 2.1rem; }
+.head { display: flex; align-items: center; gap: 0.8rem; }
+.avatar { flex: none; width: 4rem; height: 4rem; }
+.name { font-size: 1.988rem; font-weight: 700; line-height: 2.982rem; }
+.new { margin-inline-start: auto; padding: 0.4rem 0.8rem; border-radius: 2rem; background: #e7f1fd; color: #0f5dc4; font-size: var(--text-sm); line-height: 1.8rem; }
+.row { display: flex; align-items: center; gap: 0.8rem; }
+.row img { flex: none; }
+.meta { font-size: var(--text-sm); line-height: 2.1rem; }
+.foot { display: flex; margin-bottom: -0.6rem; } /* live: the tag row overhangs the padding by 6px */
+.tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.tag { display: flex; align-items: center; justify-content: center; box-sizing: border-box; height: 2.8rem; padding: 0.4rem 0.8rem; border: 0.1rem solid var(--gray-02); border-radius: var(--radius-sm); font-size: var(--text-md); line-height: 2.4rem; }
+.applied { display: flex; align-items: center; gap: 0.8rem; margin-inline-start: auto; }
+.applied img { flex: none; }

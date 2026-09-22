@@ -4167,3 +4167,70 @@ ul {
 .more-filters__reset, .more-filters__apply { box-sizing: border-box; width: 11rem; height: 4rem; padding: 0 1.6rem; border-radius: var(--button-border-radius); font-family: inherit; font-size: 1.596rem; font-weight: 700; cursor: pointer; }
 .more-filters__reset { border: 0.1rem solid var(--red-04); background: var(--white); color: var(--text-color); }
 .more-filters__apply { border: 0; background: var(--red-05); color: var(--white); }
+
+/* =====================================================================================
+   Batch 4 — portal content. Mirrors src/components/{CandidateCard, JobCard, VipLeadCard,
+   PortalSideMenu}; all four verified against live by npm run check:live.
+   ===================================================================================== */
+.candidate-card { display: flex; flex-direction: column; gap: 1.6rem; box-sizing: border-box; padding: 1.6rem; border: 0.1rem solid var(--gray-02); border-radius: var(--radius-lg); font-family: var(--font-primary); color: var(--text-color); font-size: var(--text-sm); line-height: 2.1rem; }
+.candidate-card__head { display: flex; align-items: center; gap: 0.8rem; }
+.candidate-card__avatar { flex: none; width: 4rem; height: 4rem; }
+.candidate-card__name { font-size: 1.988rem; font-weight: 700; line-height: 2.982rem; }
+.candidate-card__new { margin-inline-start: auto; padding: 0.4rem 0.8rem; border-radius: 2rem; background: #e7f1fd; color: #0f5dc4; font-size: var(--text-sm); line-height: 1.8rem; }
+.candidate-card__row { display: flex; align-items: center; gap: 0.8rem; }
+.candidate-card__row img { flex: none; }
+.candidate-card__meta { font-size: var(--text-sm); line-height: 2.1rem; }
+.candidate-card__foot { display: flex; margin-bottom: -0.6rem; } /* live: the tag row overhangs the padding by 6px */
+.candidate-card__tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.candidate-card__tag { display: flex; align-items: center; justify-content: center; box-sizing: border-box; height: 2.8rem; padding: 0.4rem 0.8rem; border: 0.1rem solid var(--gray-02); border-radius: var(--radius-sm); font-size: var(--text-md); line-height: 2.4rem; }
+.candidate-card__applied { display: flex; align-items: center; gap: 0.8rem; margin-inline-start: auto; }
+.candidate-card__applied img { flex: none; }
+.job-card { display: flex; flex-direction: column; gap: 0.8rem; box-sizing: border-box; width: 30rem; height: 19.6rem; padding: 1.6rem; border: 0.1rem solid var(--gray-03); border-radius: var(--radius-lg); background: var(--white); font-family: var(--font-primary); color: var(--text-color); font-size: var(--text-sm); line-height: 2.1rem; text-align: start; cursor: pointer; }
+.job-card--selected { width: 30.4rem; border: 0.2rem solid var(--red-04); }
+.job-card__stateRow { display: flex; }
+.job-card__state { display: flex; align-items: center; justify-content: center; box-sizing: border-box; height: 2.4rem; padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); background: var(--gray-02); color: var(--gray-04); font-size: 1.2rem; font-weight: 700; line-height: 1.4rem; }
+.job-card__body { display: flex; flex-direction: column; gap: 0.8rem; }
+.job-card__title { overflow: hidden; font-size: var(--text-md); font-weight: 700; line-height: 2.4rem; white-space: nowrap; text-overflow: ellipsis; }
+.job-card__lines { display: flex; flex-direction: column; gap: 0.8rem; }
+.job-card__line { display: flex; align-items: center; gap: 0.8rem; height: 1.8rem; }
+.job-card__line img { flex: none; }
+/* live lets a long address squeeze the pin (16 → 12px wide on the selected card) */
+.job-card__line .job-card__pin { flex: 0 1 auto; min-width: 0; }
+.job-card__text { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.job-card__dot { margin: 0 0.8rem; font-weight: 700; }
+.job-card__count { margin: auto 0 0 0.2rem; line-height: 2.1rem; margin-bottom: 0.1rem; color: var(--blue-05); font-weight: 700; }
+.vip-card { display: flex; gap: 1.6rem; box-sizing: border-box; padding: 1.6rem; border: 0.1rem solid var(--gray-02); border-radius: var(--radius-lg); box-shadow: var(--shadow-card-raised); font-family: var(--font-primary); color: var(--text-color); font-size: var(--text-sm); line-height: 2.1rem; }
+.vip-card__media { display: flex; flex: none; width: 22.6rem; height: 16.4rem; border-radius: var(--radius-sm); }
+.vip-card__media img, .vip-card__placeholder { box-sizing: border-box; width: 100%; height: 100%; border: 0.1rem solid rgba(80, 80, 80, 0.3); border-radius: var(--radius-sm); object-fit: cover; background: var(--gray-01); }
+.vip-card__body { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.vip-card__top { display: flex; margin-bottom: 1.2rem; font-size: 2rem; font-weight: 700; line-height: 3rem; }
+.vip-card__title { flex: 1; min-width: 0; }
+.vip-card__price { display: flex; align-items: flex-end; padding-inline-start: 1.6rem; white-space: nowrap; }
+.vip-card__mid { display: flex; align-items: flex-start; justify-content: space-between; gap: 3.2rem; }
+.vip-card__specs { display: flex; align-items: center; gap: 0.8rem; }
+.vip-card__spec { color: #000; font-weight: 700; line-height: 1.8rem; }
+.vip-card__dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--gray-03); }
+.vip-card__locked { position: relative; display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; width: 15.5rem; }
+.vip-card__bar { height: 1.6rem; border-radius: var(--radius-sm); background: var(--gray-02); }
+.vip-card__lock { position: absolute; top: 2.4rem; left: 6.8rem; }
+.vip-card__bottom { display: flex; justify-content: space-between; gap: 1.6rem; margin-top: 1.4rem; }
+.vip-card__where { display: flex; align-items: center; align-self: flex-end; gap: 0.8rem; font-size: var(--text-md); line-height: 2rem; }
+.vip-card__loc { display: flex; align-items: center; gap: 0.8rem; }
+.vip-card__loc img { flex: none; }
+.vip-card__sep { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--gray-05); }
+.vip-card__purchase { display: flex; align-items: center; justify-content: center; gap: 1.6rem; box-sizing: border-box; height: 4rem; padding: 0.1rem 1.6rem; border: 0; border-radius: var(--radius-lg); background: var(--red-05); color: var(--white); font-family: inherit; font-size: var(--text-md); font-weight: 700; line-height: 1.8rem; cursor: pointer; }
+.vip-card__cost { display: flex; align-items: center; gap: 0.6rem; }
+.side-menu { display: flex; flex-direction: column; gap: 0.4rem; box-sizing: border-box; width: var(--agency-portal-closed-nav-container-width); height: 100%; overflow: hidden; padding: 1.6rem 1.2rem 2.4rem; background: var(--gray-01); font-family: var(--font-primary); transition: width 0.3s ease-in-out; }
+.side-menu--expanded { width: 25rem; box-shadow: var(--shadow-drawer); }
+.side-menu__header, .side-menu__item { display: flex; align-items: center; box-sizing: border-box; width: 100%; height: 5.6rem; flex: none; padding: 1.6rem; border: 0; border-radius: var(--radius-nav); background: none; color: var(--gray-05); font-family: inherit; text-decoration: none; cursor: pointer; }
+.side-menu__header { gap: 0.8rem; }
+.side-menu__item { gap: 1.6rem; }
+.side-menu__item .side-menu__icon { width: 2.3rem; } /* live's section glyphs are 23×24; the burger is 24×24 */
+.side-menu:not(.side-menu--expanded) .side-menu__header, .side-menu:not(.side-menu--expanded) .side-menu__item { justify-content: center; }
+.side-menu:not(.side-menu--expanded) .side-menu__header { padding-inline: 1.55rem 1.65rem; } /* live centres the burger at 27.5px */
+.side-menu__icon { flex: none; width: 2.4rem; height: 2.4rem; background: currentColor; -webkit-mask: var(--i) center / contain no-repeat; mask: var(--i) center / contain no-repeat; }
+.side-menu__brand, .side-menu__title { overflow: hidden; color: var(--gray-05); font-size: 1.596rem; font-weight: 700; line-height: 2.394rem; white-space: nowrap; transition: opacity 1s; }
+.side-menu:not(.side-menu--expanded) .side-menu__brand, .side-menu:not(.side-menu--expanded) .side-menu__title { position: absolute; opacity: 0; pointer-events: none; }
+.side-menu__item:not(.side-menu__item--active):hover { background: var(--gray-02); }
+.side-menu__item--active { background: var(--red-05); color: var(--white); }
+.side-menu__item--active .side-menu__title { color: var(--white); }

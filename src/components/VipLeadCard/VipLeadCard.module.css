@@ -1,0 +1,22 @@
+/* VIP lead card — live anatomy, see VipLeadCard.tsx. Must match .vip-card in patterns.css. */
+.card { display: flex; gap: 1.6rem; box-sizing: border-box; padding: 1.6rem; border: 0.1rem solid var(--gray-02); border-radius: var(--radius-lg); box-shadow: var(--shadow-card-raised); font-family: var(--font-primary); color: var(--text-color); font-size: var(--text-sm); line-height: 2.1rem; }
+.media { display: flex; flex: none; width: 22.6rem; height: 16.4rem; border-radius: var(--radius-sm); }
+.media img, .placeholder { box-sizing: border-box; width: 100%; height: 100%; border: 0.1rem solid rgba(80, 80, 80, 0.3); border-radius: var(--radius-sm); object-fit: cover; background: var(--gray-01); }
+.body { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.top { display: flex; margin-bottom: 1.2rem; font-size: 2rem; font-weight: 700; line-height: 3rem; }
+.title { flex: 1; min-width: 0; }
+.price { display: flex; align-items: flex-end; padding-inline-start: 1.6rem; white-space: nowrap; }
+.mid { display: flex; align-items: flex-start; justify-content: space-between; gap: 3.2rem; }
+.specs { display: flex; align-items: center; gap: 0.8rem; }
+.spec { color: #000; font-weight: 700; line-height: 1.8rem; }
+.dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--gray-03); }
+.locked { position: relative; display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; width: 15.5rem; }
+.bar { height: 1.6rem; border-radius: var(--radius-sm); background: var(--gray-02); }
+.lock { position: absolute; top: 2.4rem; left: 6.8rem; }
+.bottom { display: flex; justify-content: space-between; gap: 1.6rem; margin-top: 1.4rem; }
+.where { display: flex; align-items: center; align-self: flex-end; gap: 0.8rem; font-size: var(--text-md); line-height: 2rem; }
+.loc { display: flex; align-items: center; gap: 0.8rem; }
+.loc img { flex: none; }
+.sep { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--gray-05); }
+.purchase { display: flex; align-items: center; justify-content: center; gap: 1.6rem; box-sizing: border-box; height: 4rem; padding: 0.1rem 1.6rem; border: 0; border-radius: var(--radius-lg); background: var(--red-05); color: var(--white); font-family: inherit; font-size: var(--text-md); font-weight: 700; line-height: 1.8rem; cursor: pointer; }
+.cost { display: flex; align-items: center; gap: 0.6rem; }

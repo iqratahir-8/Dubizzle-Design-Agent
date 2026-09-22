@@ -473,9 +473,36 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    RULES.md §1/§2/§2a, the kit Rules panel, `check:design` messages and the taste-skill
    preamble all updated together.
 
+39. **Pixel-perfect against live: `npm run check:live`** (user: "make sure everything is pixel
+   perfect and match with live"). New check: finds each component in the frozen live capture
+   and in its Storybook story, compares computed box/type values plus the first text line's
+   and icon's offsets, and pixel-diffs the two (≤3%) — composites (live / ours / red diff)
+   in `design-kit/reference/live/screens/_live-check/` (gitignored). It found what parity
+   never could, because both sides were wrong together:
+   - **Fonts:** live serves Proxima Nova as Adobe Fonts woff2; our .otf pack has different
+     vertical metrics — every line sat 1–2px low. Live's own files (extracted from the
+     captures, `src/assets/fonts/live/`) are now the `proxima-nova` faces in both.
+   - **Text rendering:** live sets `-webkit-font-smoothing: antialiased` +
+     `text-rendering: optimizeLegibility` on html/body; now in `base.css` and the kit.
+   - **Token collision:** new `--shadow-menu` (.16) was overridden by an older same-named
+     one (.1) → renamed `--shadow-filter-menu`.
+   - Per-component anatomy fixes (dialog header row, login rhythm, credits bar/legend,
+     More Filters error slots, Leads tab rules, Export Leads table/banner/buttons, job-card
+     pin shrink…) and live glyphs in `src/assets/live-icons/` (sprite `<use>` resolved).
+   - The check aligns sub-pixel phase (live dialogs sit at y=.5) and masks real content
+     (photos, avatars). 24/24 specs pass; 15 at 0.0–0.5%.
+40. **Components batch 4:** `CandidateCard`, `JobCard`, `VipLeadCard`, `PortalSideMenu` —
+   built from live anatomy dumps, verified by `check:live` from the start. Tokens
+   `--shadow-card-raised`, `--shadow-drawer`, `--radius-nav`. Parity **318/318**.
+   Note for the user: the old Don'ts they saw came from the **backup copy** in
+   `~/Downloads/Dubizzle-Design-System` (its `design-kit/index.html` predates D-018); the real
+   kit is `~/Dubizzle-Design-System` → http://localhost:4321.
+
 ## 6. Next up
 
-0. **Continue the repo component batches** (user request 2026-09-21): portal batch 2 (date
+0. **Every component needs a `check:live` spec.** Before calling one done, add it to
+   `scripts/check-live.mjs` and pass it.
+0b. **Continue the repo component batches** (user request 2026-09-21): portal batch 2 (date
    range / presets, range panel, credits summary, side menu, table, job card, consumption log,
    insights card) then consumer (toast, dialogWithHeader, bottom sheet, sort menu, filter rail,
    DPV sections, seller card, favourite button, verified badge, no-hits). Each: repo source →

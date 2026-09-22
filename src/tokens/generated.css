@@ -1415,6 +1415,9 @@
   --shadow-menu-strong: 0 4px 10px 0 rgba(0, 0, 0, 0.24);
   --shadow-raised: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
   --shadow-modal: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+  --shadow-card-raised: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  --shadow-drawer: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+  --radius-nav: 1rem;
   --shadow-toast: 0 3px 8px 0 rgba(0, 0, 0, 0.15);
   --glass-chip-blur: blur(4px);
   --glass-panel-blur: blur(12px);

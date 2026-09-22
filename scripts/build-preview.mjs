@@ -339,6 +339,32 @@ function popupsDemo() {
       </div>`;
 }
 
+/* ── Batch 4: portal content (check:live verified) ────────────────────────── */
+function portalContentDemo() {
+  const menu = [['dashboard', 'Dashboard'], ['agency-ads', 'Agency Ads'], ['candidates', 'Candidates'], ['leads', 'Leads'], ['vip-leads', 'VIP Leads'], ['agency-management', 'Agency Management'], ['insights', 'Insights'], ['credit-info', 'Credit Info']];
+  const rail = (expanded, parity) => `<nav class="side-menu${expanded ? ' side-menu--expanded' : ''}" aria-label="Agency portal" data-parity="${parity}"><button class="side-menu__header" type="button" aria-label="Burger menu"><span class="side-menu__icon" style="--i:url(assets/live-icons/nav-menu.svg)"></span><span class="side-menu__brand">dubizzle Pro</span></button>` +
+    menu.map(([k, l]) => `<a class="side-menu__item${k === 'agency-ads' ? ' side-menu__item--active' : ''}" href="#"><span class="side-menu__icon" style="--i:url(assets/live-icons/nav-${k}.svg)"></span><span class="side-menu__title">${l}</span></a>`).join('') + '</nav>';
+  const tags = ['Current Job: Project engineer', 'Experience: 5-10 Years', "Bachelor's Degree"];
+  const specs = ['2022', 'Used', '130000', 'Volkswagen'];
+  return `
+      <h3>Side menu · job cards</h3>
+      <p class="note">The dubizzle Pro rail (80px) and drawer (250px), live glyphs. Job cards: selected (2px red-04) and resting.</p>
+      <div class="demo" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap">
+        <div style="height:90rem;display:flex">${rail(false, 'side-menu-rail')}</div>
+        <div style="height:90rem;display:flex">${rail(true, 'side-menu-drawer')}</div>
+        <div style="display:flex;gap:2.4rem;flex-wrap:wrap;align-items:flex-start">
+          <button class="job-card job-card--selected" type="button" data-parity="job-card-selected"><div class="job-card__stateRow"><span class="job-card__state">Disabled</span></div><div class="job-card__body"><span class="job-card__title">Civil Engineer</span><div class="job-card__lines"><div class="job-card__line"><img class="job-card__pin" src="assets/live-icons/pin-job-16.svg" alt="" width="16" height="16"><span class="job-card__text">Abd Al Aziz Al Taqi St., Amreya, Alexandria<span class="job-card__dot">·</span>On Site</span></div><div class="job-card__line"><img src="assets/live-icons/calendar-job.svg" alt="" width="16" height="16"><span class="job-card__text">Expires in 12 Aug 2026</span></div></div></div><span class="job-card__count">13 Candidates (13 new)</span></button>
+          <button class="job-card" type="button" data-parity="job-card"><div class="job-card__stateRow"><span class="job-card__state">Disabled</span></div><div class="job-card__body"><span class="job-card__title">Software Engineer</span><div class="job-card__lines"><div class="job-card__line"><img class="job-card__pin" src="assets/live-icons/pin-job-16.svg" alt="" width="16" height="16"><span class="job-card__text">6th District, Nasr City, Cairo<span class="job-card__dot">·</span>Hybrid</span></div><div class="job-card__line"><img src="assets/live-icons/calendar-job.svg" alt="" width="16" height="16"><span class="job-card__text">Expires in 15 Aug 2026</span></div></div></div><span class="job-card__count">1 Candidates (1 new)</span></button>
+        </div>
+      </div>
+      <h3>Candidate card · VIP lead card</h3>
+      <p class="note">Names are fixtures. A VIP lead's contact stays locked until purchased — captures never purchase.</p>
+      <div class="demo demo--stack" style="align-items:stretch">
+        <article class="candidate-card" data-parity="candidate-card"><div class="candidate-card__head"><img class="candidate-card__avatar" src="assets/portal/avatar-neutral.svg" alt="" width="40" height="40"><span class="candidate-card__name">Mona S.</span><span class="candidate-card__new">New</span></div><div class="candidate-card__row"><img src="assets/live-icons/pin-24.svg" alt="" width="24" height="24"><span class="candidate-card__meta">Smouha, Alexandria</span></div><div class="candidate-card__foot"><div class="candidate-card__tags">${tags.map((t) => `<span class="candidate-card__tag">${esc(t)}</span>`).join('')}</div><div class="candidate-card__applied"><img src="assets/live-icons/calendar-16.svg" alt="" width="16" height="16"><span class="candidate-card__meta">Applied on 16/7/2026</span></div></div></article>
+        <article class="vip-card" data-parity="vip-card"><div class="vip-card__media"><span class="vip-card__placeholder"></span></div><div class="vip-card__body"><div class="vip-card__top"><div class="vip-card__title">Volkswagen ID4 2022</div><div class="vip-card__price">EGP 1,350,000</div></div><div class="vip-card__mid"><div class="vip-card__specs">${specs.map((x, i) => `${i ? '<span class="vip-card__dot"></span>' : ''}<span class="vip-card__spec">${x}</span>`).join('')}</div><div class="vip-card__locked"><span class="vip-card__bar" style="width:15.5rem"></span><span class="vip-card__bar" style="width:13rem"></span><span class="vip-card__bar" style="width:14.3rem"></span><img class="vip-card__lock" src="assets/live-icons/lock-20.svg" alt="" width="20" height="20"></div></div><div class="vip-card__bottom"><div class="vip-card__where"><span class="vip-card__loc"><img src="assets/live-icons/pin-16.svg" alt="" width="16" height="16"><span>5th Settlement, New Cairo</span></span><span class="vip-card__sep"></span><span>21 September 2026</span></div><button class="vip-card__purchase" type="button"><span>Purchase</span><span class="vip-card__cost"><img src="assets/portal/coin.svg" alt="" width="16" height="16"><span>50</span></span></button></div></div></article>
+      </div>`;
+}
+
 /* ── Listing page head ────────────────────────────────────────────────────────
    Breadcrumbs, title + ad count, Save Search and the sort trigger, as the live cars
    listing arranges them. */
@@ -1038,6 +1064,7 @@ ${overlaysDemo()}
       <p class="note">Components of the agency portal, built from the maple repo's <code>horizontal/agencyPortal/components</code> and checked against the live portal.</p>
 ${portalDemo()}
 ${popupsDemo()}
+${portalContentDemo()}
     </section>
 
     <section id="templates">

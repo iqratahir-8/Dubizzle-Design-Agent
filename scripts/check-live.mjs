@@ -35,7 +35,9 @@ const SIZE_SLACK = 2;
 const BOX = ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'borderTopWidth', 'borderTopColor', 'borderTopLeftRadius', 'backgroundColor', 'backgroundImage', 'boxShadow'];
 const TYPE = ['color', 'fontSize', 'fontWeight', 'lineHeight'];
 
-/* live: [capture, anchor text, levels up, nth visible match] · story: [id, selector, n]
+/* live: [capture, anchor text | {placeholder} | {selector}, levels up, nth visible match] · story: [id, selector, n]
+   mask: [[x, y, w, h]] regions left out of the pixel diff — real content (a listing photo,
+   an avatar) that the story can't and shouldn't copy.
    width: compare width too (off where the story's container sets it differently). */
 export const SPECS = [
   { name: 'AgencyPageHeading / title', live: ['portal-agents.desktop', 'Agency Management', 0], story: ['agency-portal-agencypageheading--with-subtitle', 'h1'], props: TYPE, pixels: true },
@@ -55,11 +57,18 @@ export const SPECS = [
   { name: 'CreditsSummary / panel', live: ['portal-ads-credits.desktop', 'Available credits', 4, 1], story: ['agency-portal-creditssummary--default', '[class*="_panel_"]'], props: BOX, width: true, pixels: true },
   { name: 'MoreFiltersPanel / panel', live: ['portal-ads-more-filters.desktop', 'Agent Code', 1], story: ['agency-portal-morefilterspanel--default', '[class*="_panel_"]'], props: BOX, width: true, pixels: true },
   { name: 'PortalModal md / panel', live: ['portal-leads-export.desktop', 'Export Details', 3], story: ['agency-portal-portalmodal--export-leads', '[role="dialog"]'], props: BOX, width: true, pixels: true },
+  // batch 4
+  { name: 'CandidateCard', live: ['portal-candidates.desktop', 'Mona S.', 2], story: ['agency-portal-candidatecard--default', 'article'], props: BOX, width: true, pixels: true, mask: [[17, 17, 40, 40]] },
+  { name: 'JobCard / selected', live: ['portal-candidates.desktop', 'Civil Engineer', 2], story: ['agency-portal-jobcard--selected', 'button'], props: BOX, width: true, pixels: true },
+  { name: 'JobCard / resting', live: ['portal-candidates.desktop', 'Software Engineer', 2], story: ['agency-portal-jobcard--resting', 'button'], props: BOX, width: true, pixels: true },
+  { name: 'VipLeadCard', live: ['portal-vip.desktop', 'Volkswagen ID4 2022', 3], story: ['agency-portal-vipleadcard--default', 'article'], props: BOX, width: true, pixels: true, mask: [[16, 16, 228, 166]], noIcon: true },
+  { name: 'PortalSideMenu / rail', live: ['portal-ads.desktop', { selector: 'nav' }, 0], story: ['agency-portal-portalsidemenu--collapsed', 'nav'], props: ['paddingTop', 'paddingLeft', 'backgroundColor'], width: true, pixels: true },
+  { name: 'PortalSideMenu / drawer', live: ['portal-ads.desktop', { selector: 'nav' }, 0], expandDrawer: true, story: ['agency-portal-portalsidemenu--expanded', 'nav'], props: ['paddingTop', 'paddingLeft', 'backgroundColor', 'boxShadow'], width: true, pixels: true },
   { name: 'MobileFilters / header', live: ['m-filters.mobile', 'Reset', 4], story: ['mobile-mobilefilters--page', 'header'], props: BOX, width: true, pixels: true, mobile: true },
 ];
 
 const PIXEL_PAGE = `<canvas id=a></canvas><canvas id=b></canvas><script>
-window.diff = async (A, B) => {
+window.diff = async (A, B, holes) => {
   const load = (src) => new Promise((r) => { const i = new Image(); i.onload = () => r(i); i.src = src; });
   const [ia, ib] = await Promise.all([load(A), load(B)]);
   const W = ia.width, H = ia.height;
@@ -67,6 +76,7 @@ window.diff = async (A, B) => {
   ca.width = cb.width = W; ca.height = cb.height = H;
   const xa = ca.getContext('2d'), xb = cb.getContext('2d');
   xa.drawImage(ia, 0, 0); xb.fillStyle = '#fff'; xb.fillRect(0, 0, W, H); xb.drawImage(ib, 0, 0, W, H);
+  for (const [x, y, w, h] of holes || []) { xa.fillStyle = xb.fillStyle = '#fff'; xa.fillRect(x, y, w, h); xb.fillRect(x, y, w, h); }
   const da = xa.getImageData(0, 0, W, H).data, db = xb.getImageData(0, 0, W, H).data;
   let off = 0;
   const mask = xa.createImageData(W, H);
@@ -90,7 +100,7 @@ async function locate(page, target) {
   return page.evaluate((t) => {
     const [anchor, up, nth] = [t[1], t[2] || 0, t[3] || 0];
     let el = null;
-    if (typeof anchor === 'object') el = document.querySelector(`input[placeholder="${anchor.placeholder}"]`);
+    if (typeof anchor === 'object') el = anchor.selector ? document.querySelector(anchor.selector) : document.querySelector(`input[placeholder="${anchor.placeholder}"]`);
     else {
       const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
       let n, k = 0;
@@ -143,6 +153,17 @@ for (const s of specs) {
   await live.goto(`${KIT}/reference/live/${s.live[0]}.html`, { waitUntil: 'load' });
   await live.evaluate(() => document.fonts.ready);
   await new Promise((r) => setTimeout(r, 300));
+  if (s.expandDrawer) {
+    /* the drawer isn't captured open; the prototype template toggles live's own classes,
+       so open it there (same page, same CSS) */
+    await live.goto(`${KIT}/templates/desktop/${s.live[0].replace('.desktop', '')}.html`, { waitUntil: 'load' });
+    await live.evaluate(() => { try { sessionStorage.clear(); } catch (e) {} });
+    await live.goto(`${KIT}/templates/desktop/${s.live[0].replace('.desktop', '')}.html`, { waitUntil: 'load' });
+    await live.evaluate(() => document.fonts.ready);
+    await live.mouse.click(40, 44); // the burger, top-left of the rail
+    await live.mouse.move(900, 500);
+    await new Promise((r) => setTimeout(r, 1500));
+  }
   if (!(await locate(live, s.live))) { console.log(`  MISS ${s.name.padEnd(30)} live anchor not found`); problems++; continue; }
   await story.goto(`${SB}/iframe.html?id=${s.story[0]}&viewMode=story`, { waitUntil: 'load', timeout: 60000 });
   await story.waitForSelector('#storybook-root > *', { timeout: 30000 }).catch(() => {});
@@ -159,7 +180,7 @@ for (const s of specs) {
   if (s.width && Math.abs(a.w - b.w) > SIZE_SLACK) diffs.push(`width: live ${a.w} · ours ${b.w}`);
   if (a.text && b.text && (Math.abs(a.text.x - b.text.x) > 0.6 || Math.abs(a.text.y - b.text.y) > 0.6 || Math.abs(a.text.w - b.text.w) > 1.5))
     diffs.push(`text "${a.text.s}": live @${a.text.x},${a.text.y} w${a.text.w} · ours "${b.text.s}" @${b.text.x},${b.text.y} w${b.text.w}`);
-  if (a.icon && b.icon && (Math.abs(a.icon.x - b.icon.x) > 0.6 || Math.abs(a.icon.y - b.icon.y) > 0.6 || Math.abs(a.icon.w - b.icon.w) > 0.6 || Math.abs(a.icon.h - b.icon.h) > 0.6))
+  if (!s.noIcon && a.icon && b.icon && (Math.abs(a.icon.x - b.icon.x) > 0.6 || Math.abs(a.icon.y - b.icon.y) > 0.6 || Math.abs(a.icon.w - b.icon.w) > 0.6 || Math.abs(a.icon.h - b.icon.h) > 0.6))
     diffs.push(`icon: live @${a.icon.x},${a.icon.y} ${a.icon.w}×${a.icon.h} · ours @${b.icon.x},${b.icon.y} ${b.icon.w}×${b.icon.h}`);
   let pct = null;
   if (s.pixels) {
@@ -189,7 +210,7 @@ for (const s of specs) {
       }
       const rb = await read(story, '[data-live-check]', []);
       await shot(story, rb, fb);
-      const r = await pix.evaluate((A, B) => window.diff(A, B), toData(fa), toData(fb));
+      const r = await pix.evaluate((A, B, M) => window.diff(A, B, M), toData(fa), toData(fb), s.mask || []);
       if (!best || r.diff < best.diff) best = r;
     }
     pct = best.diff;

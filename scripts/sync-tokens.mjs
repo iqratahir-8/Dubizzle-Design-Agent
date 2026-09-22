@@ -290,6 +290,12 @@ const SEMANTIC = {
     '--shadow-raised': '0 2px 4px 0 rgba(0, 0, 0, 0.16)',
     // Centred confirm modals in the portal (live Purchase Lead).
     '--shadow-modal': '0 10px 30px 0 rgba(0, 0, 0, 0.2)',
+    // VIP lead card (live portal-vip).
+    '--shadow-card-raised': '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
+    // The expanded portal drawer (live, measured on the prototype toggling live CSS).
+    '--shadow-drawer': '0 8px 20px 0 rgba(0, 0, 0, 0.2)',
+    // Agency portal side-menu items (live, 2026-09-22) — the one 10px radius in the product.
+    '--radius-nav': '1rem',
     '--shadow-toast': '0 3px 8px 0 rgba(0, 0, 0, 0.15)',
     // Header overlays — the location dropdown and the search suggestions both use this pair.
     // The blur half of the media chip (--glass-chip-bg). The only backdrop-filter

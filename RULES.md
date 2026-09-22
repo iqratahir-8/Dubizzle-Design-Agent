@@ -65,7 +65,7 @@ Keep them accents. Red stays the one action colour — a purple CTA is still wro
 `--space-4` (16px) is the default. There is no 13px, no 18px, no 1.5x anything.
 
 ### Radius
-`--radius-sm` .4 · `--radius-md` .6 (inputs, buttons) · `--radius-lg` .8 (cards) · `--radius-xl` 1.2 (dropdowns) · `--radius-pill` 2 (pills) · `--radius-full` (circles only)
+`--radius-sm` .4 · `--radius-md` .6 (inputs, buttons) · `--radius-lg` .8 (cards) · `--radius-nav` 1 (portal side-menu items, measured) · `--radius-xl` 1.2 (dropdowns) · `--radius-pill` 2 (pills) · `--radius-full` (circles only)
 
 **Nothing is more rounded than 1.2rem except pills and avatars.** No `rounded-2xl` cards.
 
@@ -447,16 +447,17 @@ built from guessed colours will not match the one screen that already ships one.
 ## 5. Before you call it done
 
 - [ ] Every colour, space, radius, and shadow is a token — no literal hex or off-scale px
-- [ ] Every gradient is a §1 role via its token — or it's logged in `docs/PROPOSALS.md` **and flagged to the user for designer sign-off**
+- [ ] Every gradient is a §1 role token, or mixed from palette primitives and logged in `docs/PROPOSALS.md` **and flagged to the user for designer sign-off**
 - [ ] Any new colour is likewise tokenised or logged and flagged
 - [ ] Frosted surfaces use `.glass-chip` / `.glass-panel` and have a solid `@supports` fallback
-- [ ] Icons come from `design-kit/icons/` first; external ones are Lucide / Font Awesome Free / Material Symbols, ideally one pack per screen
+- [ ] Icons come from `design-kit/icons/` (or `src/assets/live-icons`, glyphs extracted from live) first; external ones are Material Symbols Rounded / Font Awesome Free Regular / Lucide — rounded and outlined, ideally one pack per screen
 - [ ] No emoji anywhere
 - [ ] Nothing scales or bounces on hover
 - [ ] Content reads like real Egyptian listings, with real prices and real place names
 - [ ] The densest reasonable layout was chosen, not the airiest
 - [ ] It works at 375px and at 1280px
 - [ ] `npm run check:design <file>` passes
+- [ ] A new or changed **product component** has a `check:live` spec and passes it — its Storybook story pixel-diffed against the live capture (≤3%, computed values equal). Parity with the kit is not enough: both sides can be wrong together (the `--shadow-menu` collision, the .otf font metrics).
 
 ---
 

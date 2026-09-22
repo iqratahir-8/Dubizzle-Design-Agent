@@ -79,6 +79,16 @@ against the live portal captures (live wins). Filter option lists are live's own
   seller card, safety tips, location), favourite button, verified badge, no-hits, report dialog
   (captured: dpv-report), save-search dialog (captured)
 
+## Batch 4 — portal content (verified by `npm run check:live`)
+
+- ✅ `CandidateCard`, `JobCard` (selected / resting), `VipLeadCard`, `PortalSideMenu` (rail +
+  drawer) — anatomy dumped from the live captures, glyphs extracted from them
+  (`src/assets/live-icons`), avatar + coin from the repo. All pass `check:live`.
+- Batches 1–3 were re-verified the same way and fixed (see PROGRESS item 39).
+- ⬜ Next: Agency Ads card (analytics + products bar + actions), Leads table row, dashboard
+  stat cards, Insights charts, Credit Info consumption log, consumer DPV sections and filter
+  rail. Each gets a `check:live` spec before it is called done.
+
 ## Exists, needs live verification
 - ✅ `Header` (desktop) — checked against the live home template (2026-09-17) and corrected: band 68
   tall (14 above/below the 40px Post Your Ad), vertical links 130×35 bottom-aligned, Post Your Ad
