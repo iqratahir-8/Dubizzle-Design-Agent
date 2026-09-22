@@ -281,6 +281,8 @@ const SEMANTIC = {
     '--shadow-menu': '0 4px 10px 0 rgba(0, 0, 0, 0.16)',
     // The ad details drawer (repo sideDialog.cssm .large) — a wide soft cast to the left.
     '--shadow-side-panel': '-80px -120px 240px 0 rgba(0, 0, 0, 0.1)',
+    // Toast (repo dubizzle-facelift/components/styles/toast.cssm; not yet live-verified).
+    '--shadow-toast': '0 3px 8px 0 rgba(0, 0, 0, 0.15)',
     // Header overlays — the location dropdown and the search suggestions both use this pair.
     // The blur half of the media chip (--glass-chip-bg). The only backdrop-filter
     // in the product.

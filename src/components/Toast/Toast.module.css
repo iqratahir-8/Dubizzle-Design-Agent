@@ -15,7 +15,7 @@
   margin: 0;
   padding: var(--content-padding) var(--primary-spacing);
   border-radius: 0.8rem;
-  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-toast);
   font-family: var(--font-primary);
   color: var(--text-color);
   animation: toast-in 150ms var(--ease-standard);

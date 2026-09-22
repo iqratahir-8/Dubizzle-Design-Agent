@@ -4014,7 +4014,7 @@ ul {
    MobileFilters} (npm run check:parity). Toast = repo values (not yet live-verified);
    the rest measured on live captures (login-dialog, sort-menu, m-filters), 2026-09-22.
    ===================================================================================== */
-.toast { position: fixed; z-index: 9999; top: 1.6rem; right: 1.6rem; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; width: 35rem; max-width: calc(100% - 3.2rem); height: 5.6rem; margin: 0; padding: var(--content-padding) var(--primary-spacing); border-radius: 0.8rem; box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15); font-family: var(--font-primary); color: var(--text-color); animation: toast-in 150ms var(--ease-standard); }
+.toast { position: fixed; z-index: 9999; top: 1.6rem; right: 1.6rem; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; width: 35rem; max-width: calc(100% - 3.2rem); height: 5.6rem; margin: 0; padding: var(--content-padding) var(--primary-spacing); border-radius: 0.8rem; box-shadow: var(--shadow-toast); font-family: var(--font-primary); color: var(--text-color); animation: toast-in 150ms var(--ease-standard); }
 @keyframes toast-in { from { transform: translateX(calc(100% + 1.6rem)); } }
 @media (prefers-reduced-motion: reduce) { .toast { animation: none; } }
 .toast--inline { position: relative; top: auto; right: auto; }
