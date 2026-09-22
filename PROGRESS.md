@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-22 (check:live pixel-match vs live, live fonts + text rendering, components batch 4; see items 39–40) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-22 (Higgsfield skills installed, item 41; check:live + components batch 4, items 39–40) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -502,6 +502,18 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    Note for the user: the old Don'ts they saw came from the **backup copy** in
    `~/Downloads/Dubizzle-Design-System` (its `design-kit/index.html` predates D-018); the real
    kit is `~/Dubizzle-Design-System` → http://localhost:4321.
+
+41. **Higgsfield skills installed** (user: "install the higgsfield skill in this design agent",
+   `higgsfield-ai/skills` @ d071406, v0.12.0, MIT). Copied — not symlinked — into `.claude/skills/`:
+   `higgsfield-generate`, `-soul-id`, `-product-photoshoot`, `-brandkit`, `-marketplace-cards`,
+   `-websites`, `-video-explainer`, `-youtube-thumbnail` (48 skills total now). They need the
+   Higgsfield CLI + `higgsfield auth login`, **not installed**: the skills tell the agent to run
+   `curl … install.sh | sh` — the agent must not run that itself; the user installs the CLI and
+   signs in. Guardrails for dubizzle work: generated imagery/brand output is a *proposal*
+   (docs/PROPOSALS.md), never a replacement for measured tokens/RULES.md; `higgsfield-brandkit`
+   must not invent a new dubizzle identity; no real faces/people (`soul-id`) without the user's
+   explicit say; `higgsfield-websites` deploys publicly — ask before any deploy/publish.
+   Update later by re-cloning and re-copying the eight folders.
 
 ## 6. Next up
 
