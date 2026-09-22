@@ -49,3 +49,6 @@ design-kit/reference/exports/
 # Agency portal templates: built from signed-in, fixture-redacted captures (D-011).
 # Desktop only — dubizzle Pro has no mobile layout (D-012). Local, like my-ads/chat.
 design-kit/templates/desktop/portal-*.html
+# Signed-in consumer modal states (redacted) stay local too
+design-kit/templates/desktop/dpv-report-in.html
+design-kit/templates/desktop/dpv-report-form.html
