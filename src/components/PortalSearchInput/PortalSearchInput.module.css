@@ -1,0 +1,28 @@
+/* Agency portal search field — repo searchInput.cssm, checked against live Agency Ads.
+   Must match .portal-search in patterns.css. */
+.box {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 24rem;
+  height: 4.8rem;
+  border: 0.1rem solid var(--gray-03);
+  border-radius: var(--input-border-radius);
+  background: var(--white);
+  font-family: var(--font-primary);
+}
+.box:focus-within { border-color: var(--red-03); }
+.icon { flex: none; margin-inline-start: 1.6rem; color: var(--gray-06); }
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0; padding-inline-start: 1.2rem;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 1.596rem;
+}
+.input::placeholder { color: var(--gray-04); }

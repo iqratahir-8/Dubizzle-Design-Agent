@@ -1,0 +1,38 @@
+/* Agency portal tab switcher — repo agencyPortalTabSwitcher.cssm (.secondary), checked
+   against live Leads / Credit Info. Must match .portal-tabs in patterns.css. */
+.switcher {
+  display: inline-flex;
+  overflow: hidden;
+  border: 0.1rem solid var(--pro-tools-selection-color);
+  border-radius: var(--button-border-radius);
+  background: var(--white);
+  font-family: var(--font-primary);
+}
+.tab {
+  min-width: 11.2rem;
+  padding: 0;
+  border: 0;
+  background: var(--white);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  cursor: pointer;
+}
+.sm .tab { min-width: 10rem; }
+.text {
+  display: block;
+  margin: 1.1rem 0;
+  padding: 0 var(--primary-spacing);
+  text-align: center;
+  text-transform: capitalize;
+  user-select: none;
+}
+.sm .text { margin: 0.85rem 0; }
+/* rule between two resting tabs; the active tab needs none */
+.tab:not(.active) + .tab:not(.active) > .text { border-left: 0.1rem solid var(--secondary-light-grey-color); }
+.active {
+  background: var(--agency-portal-tab-switcher-active-background-color);
+  color: var(--agency-portal-tab-switcher-active-text-color);
+  font-weight: 700;
+}

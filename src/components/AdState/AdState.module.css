@@ -1,0 +1,21 @@
+/* Ad state badge — repo adState.cssm, checked against live. Must match .ad-state in patterns.css. */
+.state {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 2.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.4rem;
+  white-space: nowrap;
+}
+.active { color: var(--ad-active-color); background: var(--green-02); }
+.expired { color: var(--ad-expired-color); background: var(--ad-expired-background-color); }
+.pending, .notPosted { color: var(--ad-pending-color); background: var(--ad-pending-background-color); }
+.rejected { color: var(--white); background: var(--ad-rejected-background-color); }
+.sold { color: var(--white); background: var(--ad-sold-background-color); }
+.disabled { color: var(--gray-04); background: var(--ad-state-disabled-background-color); }
+.dates { height: 3rem; padding: 0.6rem 0.8rem; font-size: 1.4rem; line-height: 1.8rem; }

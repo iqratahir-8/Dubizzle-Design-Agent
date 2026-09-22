@@ -275,6 +275,12 @@ const SEMANTIC = {
     '--shadow-tile': '0 2px 8px 0 rgba(0, 0, 0, 0.14)', // vertical tiles in the mobile header
     '--shadow-search': '0 2px 10px 0 rgba(0, 0, 0, 0.1)', // mobile search field and favourites button
     '--shadow-bottom-nav': '0 -2px 4px 0 rgba(0, 0, 0, 0.133)',
+    // Agency portal, measured on live 2026-09-21 (design-kit/content/portal-filters.json):
+    // every filter menu (checklists, category list, date presets). Darker than the repo's
+    // --dropdown-shadow (.1), which live uses only for the VIP range panels.
+    '--shadow-menu': '0 4px 10px 0 rgba(0, 0, 0, 0.16)',
+    // The ad details drawer (repo sideDialog.cssm .large) — a wide soft cast to the left.
+    '--shadow-side-panel': '-80px -120px 240px 0 rgba(0, 0, 0, 0.1)',
     // Header overlays — the location dropdown and the search suggestions both use this pair.
     // The blur half of the media chip (--glass-chip-bg). The only backdrop-filter
     // in the product.

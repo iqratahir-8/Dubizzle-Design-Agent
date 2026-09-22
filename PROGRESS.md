@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-17 (late; D-007/D-008 rules, D-009/D-010 modals, D-011 portal + redaction incident) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-22 (portal filters working, ad details drawer, first portal component batch from the maple repo) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -408,7 +408,38 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    `&&` chain — it silently skipped this very PROGRESS update once. Use `rm -f` on explicit
    names, or `setopt NULL_GLOB`.
 
+32. **Working filters on every portal page + the ad details drawer** (user: "make filters work
+   in the prototype"). `scripts/extract-portal-filters.mjs` (`npm run extract:portal-filters`)
+   opens each dropdown on live **read-only** (real mouse input — these open on mousedown),
+   reads the options and the menu's computed style, never picks → `design-kit/content/
+   portal-filters.json` (17 dropdowns). Agent dropdowns are never harvested: fixture names.
+   `scripts/lib/prototype-filters.mjs` injects a runtime: menus in live's style, picking
+   filters the captured cards/rows on what each card shows; tabs move selection with the
+   captured CSS classes; search filters as you type. **Honesty rule:** a filter whose field
+   isn't printed on the card (Category, Product, Published date) hides nothing and says so.
+   The "detail drawer" question is answered: clicking an Agency Ads card opens a 650px side
+   drawer on live (`/ads/extraDetails/<id>/<tab>`) — captured as 5 templates
+   (`portal-ad-overview|info|promo|agent|chats`, ad 207466446), wired: card → drawer, tabs,
+   click on the list closes. `check:prototype` now tests drawer + 8 filter cases.
+   **Harvest incident:** the first harvest run read lazily-loaded list rows as "options" (ad
+   titles and a staff name) — the file was deleted before commit; panel detection is now
+   anchored to the field. check:prototype also flags the "<Name> Agent <n>" staff pattern.
+33. **Components from the maple repo, batch 1: agency portal** (user: "save all the
+   components in the storybook and design kit by fetching it from the repo"). Source
+   `frontend/horizontal/horizontal/agencyPortal/components`; values checked on live. New:
+   `AgencyPageHeading`, `AgencyPortalTabSwitcher`, `AdState`, `AdStateFilter`,
+   `MultipleChoiceDropdown`, `PortalSearchInput`, `SideDialog`, `AnalyticsStats` — React
+   (Storybook "Agency Portal/…") + kit section `#portal`. New tokens `--shadow-menu`,
+   `--shadow-side-panel` (measured / repo). Parity **261/261**. Remaining repo components are
+   listed in `docs/COMPONENT-INVENTORY.md` ("Agency portal" + the consumer to-do lists).
+
 ## 6. Next up
+
+0. **Continue the repo component batches** (user request 2026-09-21): portal batch 2 (date
+   range / presets, range panel, credits summary, side menu, table, job card, consumption log,
+   insights card) then consumer (toast, dialogWithHeader, bottom sheet, sort menu, filter rail,
+   DPV sections, seller card, favourite button, verified badge, no-hits). Each: repo source →
+   live measurement → React + kit + story + parity pairs.
 
 **Now (2026-09-14): storing components from the captured pages in the library** (user: "the components you find
 [in the exported pages], store in the component library" — starting with mobile bottom nav, sort/save, quick links,

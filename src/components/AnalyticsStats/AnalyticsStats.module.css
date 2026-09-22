@@ -1,0 +1,15 @@
+/* Agency Ads analytics row — repo analyticsStats.cssm, checked against live.
+   Must match .analytics-stats in patterns.css. */
+.row { display: flex; flex-wrap: wrap; column-gap: 1.6rem; font-family: var(--font-primary); color: var(--dark-color); }
+.stat { display: flex; align-items: center; column-gap: 0.8rem; line-height: 3.2rem; }
+.iconWrapper {
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  background: var(--gray-01);
+}
+.iconWrapper > svg { width: 2.4rem; height: 2.4rem; }
+.value { font-size: var(--text-sm); font-weight: 700; text-decoration: underline; }

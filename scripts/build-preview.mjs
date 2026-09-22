@@ -227,6 +227,55 @@ function accountMenusDemo() {
 }
 
 
+/* ── Agency portal (dubizzle Pro) ─────────────────────────────────────────────
+   Repo horizontal/agencyPortal/components, measured on the live portal. Options in the
+   dropdown are the ones live offers (design-kit/content/portal-filters.json). */
+const portalFilters = (() => {
+  try { return JSON.parse(readFileSync(join(ROOT, 'design-kit/content/portal-filters.json'), 'utf8')).pages; } catch { return {}; }
+})();
+function portalDemo() {
+  const DOWN = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  const SEARCH = '<svg width="24" height="24" viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true"><path d="M448 725.33c-152.92 0-277.33-124.41-277.33-277.33S295.08 170.67 448 170.67 725.33 295.08 725.33 448 600.92 725.33 448 725.33zm436.44 98.78v.02L732.52 672.19c48.77-61.78 78.15-139.54 78.15-224.19 0-199.98-162.7-362.67-362.67-362.67S85.33 248.03 85.33 448c0 199.98 162.69 362.67 362.67 362.67 84.63 0 162.41-29.38 224.17-78.15l206.14 206.15h60.36v-60.33l-54.23-54.23z"></path></svg>';
+  const CHECK = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  const tabs = (items, active, size, parity) =>
+    `<div class="portal-tabs${size === 'sm' ? ' portal-tabs--sm' : ''}" role="tablist"${parity ? ` data-parity="${parity}"` : ''}>` +
+    items.map((t) => `<button class="portal-tabs__tab${t === active ? ' is-active' : ''}" type="button" role="tab"><span class="portal-tabs__text">${esc(t)}</span></button>`).join('') + '</div>';
+  const exp = (portalFilters['portal-candidates'] || {})['Experience Level'];
+  const experience = (exp && exp.options) || ['No Experience', '1-3 Years', '3-5 Years', '5-10 Years', '10-20 Years', '20+ Years'];
+  const states = [['active', 'Active'], ['expired', 'Expired'], ['pending', 'Pending'], ['not-posted', 'Not posted'], ['rejected', 'Rejected'], ['sold', 'Sold'], ['disabled', 'Disabled']];
+  const pills = [['View all', 162], ['Active Ads', 5], ['Inactive Ads', 80], ['Pending Ads', 61], ['Moderated Ads', 15], ['Expiring Soon Ads', 0], ['Expired Ads', 1]];
+  return `
+      <h3>Page heading · tab switcher</h3>
+      <p class="note">Repo <code>agencyPageHeading</code> and <code>agencyPortalTabSwitcher</code>. Two heights on live: 43px (Credit Info, the ad drawer) and 38px (Leads, Candidates, VIP Leads).</p>
+      <div class="demo demo--stack" style="align-items:flex-start">
+        <div class="agency-heading" data-parity="agency-heading"><h1 class="agency-heading__title">Agency Management</h1><p class="agency-heading__subtitle">(Previously Known as Agents)</p></div>
+        ${tabs(['All', 'Phone', 'SMS', 'WhatsApp', 'Chats'], 'All', 'sm', 'portal-tabs-sm')}
+        ${tabs(['All', 'Owner', 'Agents'], 'All', 'md', 'portal-tabs-md')}
+      </div>
+      <h3>Ad state · state filter</h3>
+      <div class="demo demo--stack" style="align-items:flex-start">
+        <div style="display:flex;gap:8px;flex-wrap:wrap" data-parity="ad-states">${states.map(([k, l]) => `<span class="ad-state ad-state--${k}">${l}</span>`).join('')}</div>
+        <span class="ad-state ad-state--active ad-state--dates">Active from 21 Sept to 21 Oct</span>
+        <div class="state-filter" role="radiogroup" data-parity="state-filter">${pills.map(([l, n], i) => `<button class="state-filter__choice${i === 0 ? ' is-selected' : ''}" type="button" role="radio">${l} (${n})</button>`).join('')}</div>
+      </div>
+      <h3>Search · filter dropdown</h3>
+      <p class="note">Repo <code>searchInput</code> and <code>multipleChoiceDropdown</code>. The open checklist carries live's Experience Level options.</p>
+      <div class="demo" style="align-items:flex-start;gap:1.6rem;min-height:38rem">
+        <label class="portal-search" data-parity="portal-search">${SEARCH}<input class="portal-search__input" type="search" placeholder="Search here..."></label>
+        <div class="portal-select" data-parity="portal-select-closed"><button class="portal-select__field" type="button"><span class="portal-select__title">Experience Level</span>${DOWN}</button></div>
+        <div class="portal-select is-open" style="width:26rem" data-parity="portal-select-open"><button class="portal-select__field" type="button"><span class="portal-select__title is-picked">5-10 Years</span>${DOWN}</button>
+          <div class="portal-menu" role="listbox">${experience.map((o) => `<div class="portal-menu__entry${o === '5-10 Years' ? ' is-on' : ''}" role="option"><span class="portal-menu__box">${o === '5-10 Years' ? CHECK : ''}</span><span>${esc(o)}</span></div>`).join('')}</div></div>
+      </div>
+      <h3>Side dialog — the ad details drawer</h3>
+      <p class="note">Repo <code>sideDialog</code>, <code>large</code> size: 65rem, opens from an Agency Ads card. Click through it in the <a href="templates/desktop/portal-ads.html">portal prototype</a>.</p>
+      <div class="demo" style="display:block;position:relative;height:64.2rem;padding:0;overflow:hidden;background:var(--gray-00)">
+        <div class="side-dialog side-dialog--inline"><aside class="side-dialog__panel side-dialog__panel--large" style="width:min(65rem,100%)" data-parity="side-dialog">
+          <div class="side-dialog__header"><div class="side-dialog__title"><span class="ad-state ad-state--active">Active</span></div></div>
+          <div style="display:grid;gap:12px;font-size:16px">Ad ID <b>207466446</b><div style="font-size:20px;font-weight:700;line-height:28px">Selfie Stick - Premium Quality</div>${tabs(['Overview', 'Ad Data', 'Promo Tools', 'Agent Details', 'Chats'], 'Overview', 'md')}</div>
+        </aside></div>
+      </div>`;
+}
+
 /* ── Listing page head ────────────────────────────────────────────────────────
    Breadcrumbs, title + ad count, Save Search and the sort trigger, as the live cars
    listing arranges them. */
@@ -441,6 +490,7 @@ const page = `<!doctype html>
     <a href="#nav-components">Tabs &amp; pagination</a>
     <hr>
     <a href="#chrome">Header &amp; footer</a>
+    <a href="#portal">Agency portal</a>
     <a href="#mobile">Mobile web</a>
     <a href="#templates">Page templates</a>
     <a href="#rules">Rules</a>
@@ -912,6 +962,12 @@ ${megaMenuDemo()}
           <iframe class="frame" src="templates/mobile/home.html" title="Mobile home" loading="lazy"></iframe>
         </div>
       </div>
+    </section>
+
+    <section id="portal">
+      <h2>Agency portal (dubizzle Pro)</h2>
+      <p class="note">Components of the agency portal, built from the maple repo's <code>horizontal/agencyPortal/components</code> and checked against the live portal.</p>
+${portalDemo()}
     </section>
 
     <section id="templates">

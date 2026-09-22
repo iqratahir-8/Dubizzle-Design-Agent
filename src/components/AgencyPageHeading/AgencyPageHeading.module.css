@@ -1,0 +1,17 @@
+/* Agency portal page title — repo agencyPageHeading.cssm, checked against live.
+   Must match .agency-heading in patterns.css (npm run check:parity). */
+.heading { font-family: var(--font-primary); }
+.title {
+  margin: 0 0 0.8rem;
+  color: var(--text-color);
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 3.52rem;
+  letter-spacing: -0.1rem;
+}
+.subtitle {
+  margin: 0 0 var(--primary-spacing);
+  color: var(--gray-04);
+  font-size: var(--text-md);
+  line-height: 2.4rem;
+}

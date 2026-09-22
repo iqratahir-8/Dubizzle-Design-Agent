@@ -1,0 +1,25 @@
+/* Ad state filter pills — repo roundedButtonChoice.cssm, checked against live Agency Ads.
+   Must match .state-filter in patterns.css. */
+.row { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.choice {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  border: 0.1rem solid var(--secondary-light-grey-color);
+  border-radius: var(--button-border-radius);
+  background: var(--white);
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  line-height: 1.6rem;
+  cursor: pointer;
+  transition: background-color 100ms, color 100ms;
+}
+.choice:not(.selected):hover { background: var(--list-item-hover-color); }
+.selected {
+  border-color: var(--selected-choice-border-color);
+  background: var(--selected-choice-background-color);
+  color: var(--selected-choice-text-color);
+  font-weight: 700;
+}

@@ -43,6 +43,27 @@ Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not liv
   live menu content exported as `MEGA_MENUS` (7 categories, 67 subcategories, 201 links) and the
   strip wired into `Header` (`categories`, `openCategory`)
 
+## Agency portal (dubizzle Pro) — from the maple repo
+
+Source: `frontend/horizontal/horizontal/agencyPortal/components` (61 shared components) in the
+`dubizzle-maple-master` monorepo. The repo gives anatomy, props and states; values are checked
+against the live portal captures (live wins). Filter option lists are live's own,
+`design-kit/content/portal-filters.json` (`npm run extract:portal-filters`).
+
+- ✅ `AgencyPageHeading` — repo `agencyPageHeading` (live adds -1px tracking)
+- ✅ `AgencyPortalTabSwitcher` — repo `agencyPortalTabSwitcher` (.secondary), sizes md 43 / sm 38
+- ✅ `AdState` — repo `adState`, 7 states + dated variant
+- ✅ `AdStateFilter` — repo `agencyAds/stateFilter` (roundedButtonChoice selectedSecondary)
+- ✅ `MultipleChoiceDropdown` — repo `multipleChoiceDropdown` (field + checklist; `mode="single"`)
+- ✅ `PortalSearchInput` — repo `searchInput`
+- ✅ `SideDialog` — repo `sideDialog` (default 37rem; large 65rem = the ad details drawer)
+- ✅ `AnalyticsStats` — repo `analyticsStats`
+- ⬜ Next from the repo: `presetDateFilter` + `dateRange` (Date Range menu — captured), range filter
+  panel (VIP Year/Price/KM), `creditsSummary` + `creditsSummaryDropdown`, `sideMenu` (the drawer
+  rail), `table` + `tablePagination`, `agencyJobCard`, `consumptionLog`, `insightsCard`,
+  `multiSegmentBar`, `packageStatePill`, `productsTag`, `banner`, `actionsButton` /
+  `generalActionsDropdown`, `agentInitial`, `contact`
+
 ## Exists, needs live verification
 - ✅ `Header` (desktop) — checked against the live home template (2026-09-17) and corrected: band 68
   tall (14 above/below the 40px Post Your Ad), vertical links 130×35 bottom-aligned, Post Your Ad
