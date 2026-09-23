@@ -47,6 +47,23 @@ Two things worth saying out loud when they matter:
 - **"prototype"** or **"production React"** — a throwaway HTML screen and a library component are
   different deliverables.
 
+## Screens that are not in the repo
+
+45 templates are built from **logged-in captures** and stay on the machine that captured them —
+chat, my ads, edit profile, settings, packages, the user menu, the whole post-an-ad and upsell
+flow, and every agency-portal screen. They hold real people's names and messages, so
+`.gitignore` keeps them out of git by design. In a fresh clone they simply do not exist.
+
+Two things follow:
+
+- **After cloning, run `npm run build:templates`.** Every screen with a hand-built source
+  (`design-kit/templates/_pages/`) is generated from it, and the ones with a local capture are
+  regenerated from that instead.
+- **`chat` has a shareable version.** Its inbox list is measured from the live screen, and
+  everyone in it is a fixture. Use it for chat-screen work in any session, on any account. The
+  **thread on the right is a proposal, not a measurement** — the capture shows the empty state,
+  because the agent never opens a real conversation. Say so in any ticket that uses it.
+
 ## The screens you can name
 
 47 public page templates, each in desktop and mobile. You don't have to use the exact name —

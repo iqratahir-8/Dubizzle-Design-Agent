@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-23 (ad detail page sections, batch 1 — item 46) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-23 (shareable chat template — item 47) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -613,6 +613,22 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    value cell's `rgba(245,245,245,.8)`, where we ship --gray-00 one level off and invisible.
    **Still to build on this page:** location block (map + "See location"), "See More Ads by" rail,
    the sticky section tabs, and the mobile DPV. No safety-tips block exists in this capture.
+
+47. **The chat screen works outside this machine now** (user: a parallel session could not
+   design against the chat template). Cause: `design-kit/templates/desktop/chat.html` is one of
+   **45 gitignored templates** built from logged-in captures — they hold real names and messages,
+   so they never leave the machine. A clone has the hand-built source in
+   `_pages/chat.*.html` but no built file until `npm run build:templates` runs.
+   Rebuilt that source against the live capture so it is worth using: the inbox list is now
+   **measured** — 511 wide beside the 767 pane, rows exactly **100** tall with a 40px --red-01
+   avatar at 24 and the content column at 69, three lines per row (name 15.96/23.94/700, the ad
+   **17.92/700**, then the message), a 1px --neutral-color-light rule between rows, the "Inbox"
+   bar at 64 on --gray-01, and the quick-filter chips (30 tall, pill, 12.04/18.06; selected red
+   on --red-02, resting charcoal in a red hairline).
+   **The thread is still a proposal** and is labelled as one in the template, the CSS and
+   HOW-TO-ASK: live's capture shows "Your chat is empty", because we never open a conversation.
+   Mobile's thread header got its own `.chat-head` so the 100px list geometry doesn't hit it.
+   Everyone in both templates is a fixture. Parity 330/330, design 0 errors, RTL clean.
 
 ## 6. Next up
 

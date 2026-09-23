@@ -2039,10 +2039,16 @@ ul {
 
 /* ── Two-pane layout (chat, settings) ─────────────────────────────────────── */
 
+/* ── Chat ─────────────────────────────────────────────────────────────────────
+   The list column is measured on the live chat screen (chat.desktop, 2026-09-23):
+   511 wide beside a 767 pane, rows exactly 100 tall with a 40px avatar at 24, the
+   content column at 69, and a 1px --neutral-color-light rule between rows.
+   The THREAD side is NOT measured — the capture shows the empty state, because the
+   agent never opens someone's conversation. Treat those bubbles as a proposal. */
+
 .pane-layout {
   display: grid;
-  grid-template-columns: minmax(0, 34rem) minmax(0, 1fr);
-  gap: var(--space-4);
+  grid-template-columns: minmax(0, 51.1rem) minmax(0, 1fr);
   align-items: start;
   padding-block: var(--space-4);
 }
@@ -2053,16 +2059,60 @@ ul {
 
 .pane {
   background: var(--surface-card);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-card);
   overflow: hidden;
 }
 
-.conversation {
+.pane--list { border-inline-end: 1px solid var(--neutral-color-light); }
+
+/* "Inbox" bar above the list: 64 tall on --gray-01. */
+.inbox-head {
   display: flex;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  border-bottom: 0.1rem solid var(--border-default);
+  align-items: center;
+  height: 6.4rem;
+  padding-inline: var(--space-4);
+  background: var(--gray-01);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--gray-06);
+}
+
+.inbox-filters {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 0.8rem 1.6rem;
+}
+
+/* 30 tall, radius 14, 12.04/18.06 — selected is red on --red-02, resting is
+   charcoal inside a red hairline. */
+.inbox-filter {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--red-05);
+  /* Live sets 14px on a 30px chip — a pill at this height. */
+  border-radius: var(--radius-full);
+  background: none;
+  font-family: inherit;
+  font-size: 1.204rem;
+  line-height: 1.806rem;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.inbox-filter--selected {
+  border-color: var(--red-02);
+  background: var(--red-02);
+  font-weight: var(--weight-bold);
+  color: var(--red-05);
+}
+
+/* One row of the inbox list. The mobile thread header uses .chat-head instead. */
+.conversation {
+  position: relative;
+  display: block;
+  height: 10rem;
+  border-bottom: 1px solid var(--neutral-color-light);
   cursor: pointer;
 }
 
@@ -2070,50 +2120,129 @@ ul {
 .conversation--active { background: var(--surface-muted); }
 
 .conversation__avatar {
-  width: 4.8rem;
-  height: 4.8rem;
-  flex: none;
-  border-radius: var(--radius-full);
-  background: var(--color-primary-muted);
-  color: var(--color-primary);
+  position: absolute;
+  top: 3rem;
+  inset-inline-start: 2.4rem;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--red-01);
+  font-size: 2.4rem;
   font-weight: var(--weight-bold);
+  color: var(--red-05);
 }
 
-.conversation__body { flex: 1; min-width: 0; }
+.conversation__body {
+  position: absolute;
+  top: 1.4rem;
+  inset-inline-start: 6.9rem;
+  width: 36.3rem;
+}
 
 .conversation__name {
-  font-size: var(--text-sm);
-  font-weight: var(--weight-bold);
   margin: 0;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.394rem;
+  color: var(--gray-06);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The ad being discussed — the loudest line in the row. */
+.conversation__ad {
+  margin: 0;
+  font-size: 1.792rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.7rem;
+  color: var(--gray-06);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .conversation__preview {
-  margin: 0.2rem 0 0;
-  font-size: var(--text-xs);
-  color: var(--text-tertiary);
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  color: var(--gray-05);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.conversation__time {
-  font-size: var(--text-xs);
-  color: var(--text-tertiary);
-  flex: none;
+.conversation__action {
+  position: absolute;
+  top: 2.4rem;
+  inset-inline-end: 1.6rem;
 }
 
+.conversation__time {
+  position: absolute;
+  top: 1.4rem;
+  inset-inline-end: 1.6rem;
+  font-size: var(--text-xs);
+  color: var(--gray-05);
+}
+
+/* Live's capture shows this, not a thread: we never open a conversation. */
+.chat-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--neutral-color-light);
+  background: var(--surface-card);
+}
+
+.chat-head__avatar {
+  width: 4rem;
+  height: 4rem;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--red-01);
+  font-size: 2.4rem;
+  font-weight: var(--weight-bold);
+  color: var(--red-05);
+}
+
+/* The ad's photo in the thread header — 40px, same as the avatar it replaces. */
+.chat-head__thumb {
+  width: 4rem;
+  height: 4rem;
+  flex: none;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.chat-head__body { min-width: 0; flex: 1; }
+
+.chat-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55rem;
+  font-size: 1.596rem;
+  line-height: 2.394rem;
+  color: var(--gray-06);
+}
+
+/* PROPOSAL, not measured — the capture shows the empty state, so the thread is our design.
+   White under the bubbles so the --gray-01 incoming ones read on a grey page. */
 .thread {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
   padding: var(--space-4);
   min-height: 40rem;
+  background: var(--surface-card);
 }
 
 .bubble {

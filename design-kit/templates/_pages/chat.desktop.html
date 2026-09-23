@@ -1,12 +1,20 @@
-<!--@ {"title":"Chat | dubizzle Egypt","header":"desktop","bodyClass":"page-bg-search","note":"Conversation list beside a thread. Own messages use blue-02, the other party gray-01 — matching chatOwnMessageBackgroundColor upstream."} @-->
+<!--@ {"title":"Chat | dubizzle Egypt","header":"desktop","bodyClass":"page-bg-search","note":"Inbox list measured on the live chat screen (511 wide, 100px rows, 40px avatar at 24, content at 69). The thread on the right is a PROPOSAL — the capture shows the empty state, because the agent never opens a real conversation. Everyone in it is a fixture."} @-->
 
 <main class="container">
   <div class="pane-layout">
-    <aside class="pane">
+    <aside class="pane pane--list">
+      <div class="inbox-head">Inbox</div>
+      <div class="inbox-filters">
+        <button class="inbox-filter inbox-filter--selected" type="button">All</button>
+        <button class="inbox-filter" type="button">Unread Chats</button>
+        <button class="inbox-filter" type="button">Important</button>
+      </div>
+
       <div class="conversation conversation--active">
         <span class="conversation__avatar">A</span>
         <div class="conversation__body">
           <p class="conversation__name">Ahmed H.</p>
+          <p class="conversation__ad">Apartment for sale in Zamalek 200m</p>
           <p class="conversation__preview">Is the price negotiable?</p>
         </div>
         <span class="conversation__time">2h</span>
@@ -15,6 +23,7 @@
         <span class="conversation__avatar">M</span>
         <div class="conversation__body">
           <p class="conversation__name">Mona S.</p>
+          <p class="conversation__ad">Hyundai Elantra 2021</p>
           <p class="conversation__preview">I can come see it tomorrow morning</p>
         </div>
         <span class="conversation__time">5h</span>
@@ -23,6 +32,7 @@
         <span class="conversation__avatar">N</span>
         <div class="conversation__body">
           <p class="conversation__name">Nile Realty</p>
+          <p class="conversation__ad">Villa for sale in New Cairo 340m</p>
           <p class="conversation__preview">We have three similar units in the same compound</p>
         </div>
         <span class="conversation__time">1d</span>
@@ -31,6 +41,7 @@
         <span class="conversation__avatar">م</span>
         <div class="conversation__body">
           <p class="conversation__name">محمود ع.</p>
+          <p class="conversation__ad">iPhone 15 Pro Max 256GB</p>
           <p class="conversation__preview">التمن قابل للتفاوض؟</p>
         </div>
         <span class="conversation__time">2d</span>
@@ -42,11 +53,13 @@
         <span class="conversation__avatar">A</span>
         <div class="conversation__body">
           <p class="conversation__name">Ahmed H.</p>
-          <p class="conversation__preview">Apartment for sale in Zamalek 200m · EGP 8,500,000</p>
+          <p class="conversation__ad">Apartment for sale in Zamalek 200m</p>
+          <p class="conversation__preview">EGP 8,500,000</p>
         </div>
-        <button class="contact-btn contact-btn--call">Call</button>
+        <button class="contact-btn contact-btn--call conversation__action">Call</button>
       </div>
 
+      <!-- PROPOSAL, not measured: live's capture shows "Your chat is empty". -->
       <div class="thread">
         <div class="bubble">
           Hi, is the apartment still available?
@@ -67,8 +80,7 @@
       </div>
 
       <div class="composer">
-        <label class="visually-hidden" for="msg">Message</label>
-        <input class="input composer__input" id="msg" type="text" placeholder="Write a message...">
+        <input class="input composer__input" type="text" placeholder="Write a message…" aria-label="Message">
         <button class="btn btn--primary" type="button">Send</button>
       </div>
     </section>
