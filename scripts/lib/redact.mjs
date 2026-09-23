@@ -132,25 +132,50 @@ export async function redactPage(page, identity) {
         counts.chatRows++;
       });
 
-      /* Open chat thread. The bubbles carry hashed class names, so matching on "message" or
-         "bubble" misses them and real text (including phone numbers people swap in chat)
-         survives to the gate. Match on POSITION instead: every leaf text element that is not
-         an inbox row, a timestamp or one of the screen's own controls gets a sample message. */
+      /* Open chat thread. Bubbles carry hashed class names, and a bubble is usually text PLUS
+         a timestamp — so neither a class match nor a leaf-element match finds them. Walk TEXT
+         NODES inside the thread column instead: on desktop that is everything right of the
+         inbox and below the panel's top edge, on mobile the whole page. Chrome words and
+         timestamps are kept, so the capture still measures the product's own copy. */
       if (/\/chat\/.+/.test(location.pathname)) {
-        const CHROME = /^(inbox|all|unread chats|important|send|call|chat|block|report|delete|online|offline|typing|today|yesterday|seen|delivered|sent)$/i;
-        const rowLink = (e) => e.closest('a[href*="chat"]');
-        const thread = [...document.querySelectorAll('body *')].filter((e) => {
-          if (e.children.length || rowLink(e)) return false;
-          const t = e.textContent.trim();
-          if (t.length < 2 || isTime(t) || CHROME.test(t)) return false;
-          /* no geometry test: a thread virtualises its scrollback, so the messages above the
-             viewport have no box but their text is still in the HTML we are about to save */
-          return true;
+        const CHROME = /^(type a message|view ad|today|yesterday|questions|next steps|send|call|chat|block|report|delete|inbox|all|unread chats|important|quick filters|location|number viewed|seen|delivered|sent|online|offline|egp [\d,. ]+)$/i;
+        /* Three or more of these is an inbox LIST beside the thread; one is the ad header on a
+           phone, which is also a chat link — treating that as the list hid the whole screen
+           from redaction and a real conversation was written to disk. */
+        const rowLike = [...document.querySelectorAll('a[href*="chat"]')].filter((e) => {
+          const b = e.getBoundingClientRect();
+          return b.height > 60 && b.height < 140 && b.width > 250;
         });
-        thread.forEach((e, i) => {
-          e.textContent = sample.messages[i % sample.messages.length];
+        const rows = rowLike.length >= 3 ? rowLike : [];
+        const threadStart = rows.length ? Math.max(...rows.map((r) => r.getBoundingClientRect().right)) : 0;
+        /* The chat panel itself, so the site header and category strip keep their own words. A
+           phone has no inbox beside the thread, so there the panel is the page. */
+        let panel = document.body;
+        if (rows.length) {
+          panel = rows[0];
+          while (panel.parentElement && panel.getBoundingClientRect().width < 1000) panel = panel.parentElement;
+        }
+        /* No vertical test: a thread is scrolled to its newest message, so everything said
+           earlier sits above the viewport with a negative top and would be skipped. */
+        const inThread = (node) => {
+          const el = node.parentElement;
+          if (!el || el.closest('a[href*="chat"]') || el.closest('script, style') || !panel.contains(el)) return false;
+          const r = el.getBoundingClientRect();
+          return threadStart === 0 || r.width === 0 || r.left >= threadStart - 1;
+        };
+        const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        for (let n = walk.nextNode(); n; n = walk.nextNode()) {
+          const t = n.nodeValue.trim();
+          if (t.length < 2 || isTime(t) || CHROME.test(t)) continue;
+          if (inThread(n)) nodes.push(n);
+        }
+        nodes.forEach((n, i) => {
+          n.nodeValue = sample.messages[i % sample.messages.length];
           counts.bubbles++;
         });
+        /* The first line of the thread column names the other person — a name, not a message. */
+        if (nodes[0]) nodes[0].nodeValue = sample.chatNames[0];
       }
 
       // Every remaining visible text node.

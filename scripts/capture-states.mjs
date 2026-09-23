@@ -213,7 +213,11 @@ try {
       const base = `${name}.${layout}`;
       const page = await browser.newPage();
       try {
-        await page.setUserAgent(userAgent);
+        /* The chat app ties its session to the User-Agent: overriding it with our canned one
+           logs the page out and serves the login dialog instead of the thread. States marked
+           keepUserAgent use the capture window's own UA. Mobile still needs the mobile UA to
+           get the mobile markup, so a mobile capture of such a state may be signed out. */
+        if (!(state.keepUserAgent && layout === 'desktop')) await page.setUserAgent(userAgent);
         await page.setViewport(viewport);
         await page.setExtraHTTPHeaders({ 'Accept-Language': 'en' });
         const recorder = recordResponses(page);

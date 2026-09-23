@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-23 (chat: ChatInbox component + thread capture blocked on sign-in — item 48) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-23 (chat detail screen captured and redacted — item 49) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -651,6 +651,28 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
      To finish: `npm run capture:login`, sign in **in that window** with the account that has
      active chats, then re-run the command above. The thread pane of the template and prototype
      stays a labelled proposal until then.
+
+49. **The chat detail screen is captured** (user signed in, then: "capture"). Desktop and
+   mobile, redacted, local-only like every logged-in capture. New `npm run capture:chat-thread`
+   (`CHAT_THREAD_URL='/en/chat/user/<id>/<ad>'`) — its own script because the states runner
+   prepares its page in a way the chat app answers with the **login dialog**; a plain page in
+   the same window stays signed in. The thread id is never stored in the repo.
+   **Four redaction bugs the eye-check caught, all fixed** — and each one had written real
+   content to disk before it was spotted:
+   - Bubbles carry **hashed class names**, so the old class matcher never saw them.
+   - A bubble is text **plus** a timestamp, so a leaf-element match skipped it too.
+   - A thread is scrolled to its newest message, so everything said earlier has a **negative
+     top** and a position filter dropped it.
+   - On a phone the **ad header is itself a chat link**, so the code mistook it for the inbox
+     list and excluded the entire screen from redaction.
+   Redaction is now scoped by containment: inside the chat panel, right of the inbox on
+   desktop, the whole page on mobile; the site chrome, the inbox labels and timestamps keep
+   their own words, so the capture still measures the product's copy.
+   **A gate that did not fire:** `visibleLeaks` protects the account holder, not the person on
+   the other side — their display name passed every check. Only looking at the screenshot
+   caught it. The eye-check on people screens is not optional.
+   Next: the thread components (bubble, composer, thread header) and the inbox→thread
+   prototype, both now measurable rather than proposed.
 
 ## 6. Next up
 
