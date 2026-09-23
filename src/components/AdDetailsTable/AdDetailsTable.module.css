@@ -1,0 +1,60 @@
+/* "Details" on an ad detail page — the two-column key/value grid and the "View +N more"
+   toggle under it. Measured on the live car DPV (car-dpv.desktop, 2026-09-23). */
+
+.section {
+  font-family: var(--font-primary);
+}
+
+/* Every ad-detail section heading: 23.94/36 at 700. */
+.heading {
+  margin: 0;
+  font-size: 2.394rem;
+  font-weight: var(--weight-bold);
+  line-height: 3.6rem;
+  color: var(--gray-06);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.6rem;
+  row-gap: 0.4rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 40% minmax(0, 1fr);
+}
+
+/* The key cell carries the grey; the value cell is the near-white --gray-00 (live paints it
+   rgba(245,245,245,.8) over white, which resolves to #f7f7f7 — one step off this token). */
+.key {
+  padding: 0.8rem 1.2rem;
+  background: var(--gray-01);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: var(--gray-06);
+}
+
+.value {
+  padding: 0.8rem 1.2rem;
+  background: var(--gray-00);
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  color: var(--gray-06);
+}
+
+.more {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--blue-05);
+  cursor: pointer;
+}

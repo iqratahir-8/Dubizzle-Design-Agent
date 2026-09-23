@@ -1,0 +1,111 @@
+/* Ad detail page — price, title and the line under it. Measured on the live car DPV
+   (car-dpv.desktop, 2026-09-23) and verified by npm run check:live. */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-primary);
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4.2rem;
+}
+
+.priceGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+/* 28/42 at 600 — heavier and larger than any card price. */
+.price {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 2.8rem;
+  font-weight: var(--weight-semibold);
+  line-height: 4.2rem;
+  color: var(--gray-06);
+  white-space: nowrap;
+}
+
+/* The down-payment chip: --gray-01, radius 6, 4/8 — label 600, amount 900. */
+.downPayment {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-md);
+  background: var(--gray-01);
+  font-size: 1.6rem;
+  font-weight: var(--weight-semibold);
+  line-height: 2.4rem;
+  color: var(--gray-05);
+  white-space: nowrap;
+}
+
+.downPaymentAmount {
+  font-weight: 900;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex: none;
+}
+
+.favourite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+/* 19.88/29.96 at 700 — the ad's own title, the only h1 on the page. */
+.title {
+  margin: 0;
+  font-size: 1.988rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.996rem;
+  color: var(--gray-06);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.1rem;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  color: var(--gray-06);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}

@@ -340,6 +340,57 @@ function popupsDemo() {
 }
 
 /* ── Batch 4: portal content (check:live verified) ────────────────────────── */
+function adDetailDemo() {
+  const specs = [['dpv-year', 'Year', '2018'], ['dpv-kilometers', 'Kilometers', '43,000'], ['dpv-transmission', 'Transmission Type', 'Automatic'], ['dpv-fuel', 'Fuel Type', 'Benzine']];
+  const details = [['Brand', 'Mercedes-Benz'], ['Model', 'E300'], ['Version', 'AMG'], ['Condition', 'Used'], ['Body Type', 'Sedan'], ['Color', 'Black']];
+  const description = `2018 Mercedes E300 AMG
+43,600 KM
+Original Paint
+Agency maintained
+First owner
+Panorama roof
+Price negotiable`;
+  return `
+      <h3>Ad detail page</h3>
+      <p class="note">Price block, specs strip, details grid and description, measured on the live car DPV (<code>car-dpv.desktop</code>).</p>
+      <div class="demo" style="flex-direction:column;align-items:stretch;gap:2.4rem;width:82.6rem;padding:0;background:none;border:0">
+        <header class="ad-price-header" data-parity="ad-price-header">
+          <div class="ad-price-header__row">
+            <div class="ad-price-header__prices">
+              <span class="ad-price-header__price">EGP 3,190,000</span>
+              <span class="ad-price-header__down-payment"><span>Down Payment</span><b>EGP 957,000</b></span>
+            </div>
+            <div class="ad-price-header__actions">
+              <button class="ad-price-header__favourite" type="button" aria-label="Add to favourites"><img src="icons/action/heart.svg" alt="" width="24" height="24"></button>
+              <button class="ad-price-header__share" type="button" aria-label="Share this ad"><img src="assets/icons/share.svg" alt="" width="24" height="24"></button>
+            </div>
+          </div>
+          <h1 class="ad-price-header__title">Mercedes-Benz E300 2018 AMG</h1>
+          <div class="ad-price-header__meta">
+            <span class="ad-price-header__meta-item"><img src="assets/live-icons/pin-16.svg" alt="" width="17" height="17">Maadi, Cairo</span>
+            <span class="ad-price-header__meta-item">6 days ago</span>
+          </div>
+        </header>
+
+        <div class="ad-specs-strip" data-parity="ad-specs-strip">
+          ${specs.map(([icon, label, value]) => `<div class="ad-specs-strip__cell"><img class="ad-specs-strip__icon" src="assets/live-icons/${icon}.svg" alt="" width="24" height="24"><span class="ad-specs-strip__text"><span class="ad-specs-strip__label">${esc(label)}</span><span class="ad-specs-strip__value">${esc(value)}</span></span></div>`).join('')}
+        </div>
+
+        <section class="ad-details" data-parity="ad-details">
+          <h3 class="ad-details__heading">Details</h3>
+          <div class="ad-details__grid">
+            ${details.map(([k, v]) => `<div class="ad-details__row"><span class="ad-details__key">${esc(k)}</span><span class="ad-details__value">${esc(v)}</span></div>`).join('')}
+          </div>
+          <button class="ad-details__more" type="button">View +5 more<img src="assets/live-icons/chevron-down-small.svg" alt="" width="16" height="16"></button>
+        </section>
+
+        <section class="ad-description" data-parity="ad-description">
+          <h3 class="ad-description__heading">Description</h3>
+          <p class="ad-description__body">${esc(description)}</p>
+        </section>
+      </div>`;
+}
+
 function portalContentDemo() {
   const menu = [['dashboard', 'Dashboard'], ['agency-ads', 'Agency Ads'], ['candidates', 'Candidates'], ['leads', 'Leads'], ['vip-leads', 'VIP Leads'], ['agency-management', 'Agency Management'], ['insights', 'Insights'], ['credit-info', 'Credit Info']];
   const rail = (expanded, parity) => `<nav class="side-menu${expanded ? ' side-menu--expanded' : ''}" aria-label="Agency portal" data-parity="${parity}"><button class="side-menu__header" type="button" aria-label="Burger menu"><span class="side-menu__icon" style="--i:url(../assets/live-icons/nav-menu.svg)"></span><span class="side-menu__brand">dubizzle Pro</span></button>` +
@@ -581,6 +632,7 @@ const page = `<!doctype html>
     <a href="#chrome">Header &amp; footer</a>
     <a href="#overlays">Overlays &amp; feedback</a>
     <a href="#portal">Agency portal</a>
+    <a href="#ad-detail">Ad detail page</a>
     <a href="#mobile">Mobile web</a>
     <a href="#templates">Page templates</a>
     <a href="#rules">Rules</a>
@@ -1065,6 +1117,12 @@ ${overlaysDemo()}
 ${portalDemo()}
 ${popupsDemo()}
 ${portalContentDemo()}
+    </section>
+
+    <section id="ad-detail">
+      <h2>Ad detail page</h2>
+      <p class="note">The sections of a DPV — everything between the gallery and the seller card. Built from the live capture, checked by <code>npm run check:live</code>.</p>
+${adDetailDemo()}
     </section>
 
     <section id="templates">

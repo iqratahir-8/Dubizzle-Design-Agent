@@ -121,6 +121,15 @@ export const SPECS = [
   { name: 'LocationDropdown / panel', live: ['location-dropdown.desktop', 'Alexandria', 2], story: ['components-locationdropdown--default', '[class*="_panel_"]'], props: BOX, width: true, pixels: true },
   /* no pixels: an <h1> is a block, so each one is as wide as its own container */
   { name: 'PageHead / title', live: ['cars-list.desktop', 'Cars for Sale in Egypt', 0], story: ['components-pagehead--default', 'h1'], props: TYPE },
+  /* Ad detail page. The story holds the same listing as the capture, so these compare pixels. */
+  { name: 'AdPriceHeader / price', live: ['car-dpv.desktop', 'EGP 3,190,000', 0], story: ['ad-detail-adpriceheader--car', '[class*="_price_"]'], props: [...BOX, ...TYPE], width: true, pixels: true },
+  { name: 'AdPriceHeader / chip', live: ['car-dpv.desktop', 'Down Payment', 0], story: ['ad-detail-adpriceheader--car', '[class*="_downPayment_"]'], props: [...BOX, ...TYPE], width: true, pixels: true },
+  { name: 'AdPriceHeader / title', live: ['car-dpv.desktop', 'Mercedes-Benz E300 2018 AMG', 0], story: ['ad-detail-adpriceheader--car', 'h1'], props: TYPE },
+  { name: 'AdSpecsStrip / strip', live: ['car-dpv.desktop', 'Year', 3], story: ['ad-detail-adspecsstrip--car', '[class*="_strip_"]'], props: BOX, width: true, pixels: true },
+  { name: 'AdSpecsStrip / cell', live: ['car-dpv.desktop', 'Year', 2], story: ['ad-detail-adspecsstrip--car', '[class*="_cell_"]'], props: BOX, width: true, pixels: true },
+  { name: 'AdDetailsTable / heading', live: ['car-dpv.desktop', 'Details', 0], story: ['ad-detail-addetailstable--collapsed', 'h3'], props: TYPE, pixels: true },
+  { name: 'AdDetailsTable / key', live: ['car-dpv.desktop', 'Brand', 0], story: ['ad-detail-addetailstable--collapsed', '[class*="_key_"]'], props: [...BOX, ...TYPE], pixels: true },
+  { name: 'AdDescription / heading', live: ['car-dpv.desktop', 'Description', 0], story: ['ad-detail-addescription--car', 'h3'], props: TYPE, pixels: true },
   { name: 'MobileFilters / header', live: ['m-filters.mobile', 'Reset', 4], story: ['mobile-mobilefilters--page', 'header'], props: BOX, width: true, pixels: true, mobile: true },
 ];
 

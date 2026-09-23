@@ -1,0 +1,56 @@
+/* The four-cell strip under the price block on an ad detail page. Measured on the live car DPV
+   (car-dpv.desktop, 2026-09-23): 78 tall, --gray-01 on a 1px --gray-02 border, radius 6,
+   cells of equal width with 16 padding, a 24px icon and 12 before the text. */
+
+.strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  /* Live fills the strip with a --gray-00 → --gray-01 gradient over --gray-01, not a flat grey. */
+  background-color: var(--gray-01);
+  background-image: linear-gradient(var(--gray-00), var(--gray-01));
+  font-family: var(--font-primary);
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.6rem;
+  min-width: 0;
+}
+
+/* Live divides the cells with a 1px --gray-02 rule, not a gap. */
+.cell + .cell {
+  border-inline-start: 1px solid var(--gray-02);
+}
+
+.icon {
+  flex: none;
+  color: var(--gray-06);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* 14/16.8 — a tighter line than the 21 used everywhere else, so the pair fits 44. */
+.label {
+  font-size: var(--text-sm);
+  line-height: 1.68rem;
+  color: var(--gray-05);
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.7rem;
+  color: var(--gray-06);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

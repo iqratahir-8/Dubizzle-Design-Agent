@@ -177,3 +177,13 @@ export { VipLeadCard } from './components/VipLeadCard';
 export type { VipLeadCardProps } from './components/VipLeadCard';
 export { PortalSideMenu, PORTAL_MENU } from './components/PortalSideMenu';
 export type { PortalSideMenuProps, PortalMenuItem } from './components/PortalSideMenu';
+
+/* Ad detail page sections (live-measured on car-dpv, 2026-09-23) */
+export { AdPriceHeader } from './components/AdPriceHeader';
+export type { AdPriceHeaderProps } from './components/AdPriceHeader';
+export { AdSpecsStrip } from './components/AdSpecsStrip';
+export type { AdSpecsStripProps, AdSpec } from './components/AdSpecsStrip';
+export { AdDetailsTable } from './components/AdDetailsTable';
+export type { AdDetailsTableProps, AdDetail } from './components/AdDetailsTable';
+export { AdDescription } from './components/AdDescription';
+export type { AdDescriptionProps } from './components/AdDescription';

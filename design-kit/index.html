@@ -84,6 +84,7 @@
     <a href="#chrome">Header &amp; footer</a>
     <a href="#overlays">Overlays &amp; feedback</a>
     <a href="#portal">Agency portal</a>
+    <a href="#ad-detail">Ad detail page</a>
     <a href="#mobile">Mobile web</a>
     <a href="#templates">Page templates</a>
     <a href="#rules">Rules</a>
@@ -1089,6 +1090,56 @@
       <div class="demo demo--stack" style="align-items:stretch">
         <article class="candidate-card" data-parity="candidate-card"><div class="candidate-card__head"><img class="candidate-card__avatar" src="assets/portal/avatar-neutral.svg" alt="" width="40" height="40"><span class="candidate-card__name">Mona S.</span><span class="candidate-card__new">New</span></div><div class="candidate-card__row"><img src="assets/live-icons/pin-24.svg" alt="" width="24" height="24"><span class="candidate-card__meta">Smouha, Alexandria</span></div><div class="candidate-card__foot"><div class="candidate-card__tags"><span class="candidate-card__tag">Current Job: Project engineer</span><span class="candidate-card__tag">Experience: 5-10 Years</span><span class="candidate-card__tag">Bachelor's Degree</span></div><div class="candidate-card__applied"><img src="assets/live-icons/calendar-16.svg" alt="" width="16" height="16"><span class="candidate-card__meta">Applied on 16/7/2026</span></div></div></article>
         <article class="vip-card" data-parity="vip-card"><div class="vip-card__media"><span class="vip-card__placeholder"></span></div><div class="vip-card__body"><div class="vip-card__top"><div class="vip-card__title">Volkswagen ID4 2022</div><div class="vip-card__price">EGP 1,350,000</div></div><div class="vip-card__mid"><div class="vip-card__specs"><span class="vip-card__spec">2022</span><span class="vip-card__dot"></span><span class="vip-card__spec">Used</span><span class="vip-card__dot"></span><span class="vip-card__spec">130000</span><span class="vip-card__dot"></span><span class="vip-card__spec">Volkswagen</span></div><div class="vip-card__locked"><span class="vip-card__bar" style="width:15.5rem"></span><span class="vip-card__bar" style="width:13rem"></span><span class="vip-card__bar" style="width:14.3rem"></span><img class="vip-card__lock" src="assets/live-icons/lock-20.svg" alt="" width="20" height="20"></div></div><div class="vip-card__bottom"><div class="vip-card__where"><span class="vip-card__loc"><img src="assets/live-icons/pin-16.svg" alt="" width="16" height="16"><span>5th Settlement, New Cairo</span></span><span class="vip-card__sep"></span><span>21 September 2026</span></div><button class="vip-card__purchase" type="button"><span>Purchase</span><span class="vip-card__cost"><img src="assets/portal/coin.svg" alt="" width="16" height="16"><span>50</span></span></button></div></div></article>
+      </div>
+    </section>
+
+    <section id="ad-detail">
+      <h2>Ad detail page</h2>
+      <p class="note">The sections of a DPV — everything between the gallery and the seller card. Built from the live capture, checked by <code>npm run check:live</code>.</p>
+
+      <h3>Ad detail page</h3>
+      <p class="note">Price block, specs strip, details grid and description, measured on the live car DPV (<code>car-dpv.desktop</code>).</p>
+      <div class="demo" style="flex-direction:column;align-items:stretch;gap:2.4rem;width:82.6rem;padding:0;background:none;border:0">
+        <header class="ad-price-header" data-parity="ad-price-header">
+          <div class="ad-price-header__row">
+            <div class="ad-price-header__prices">
+              <span class="ad-price-header__price">EGP 3,190,000</span>
+              <span class="ad-price-header__down-payment"><span>Down Payment</span><b>EGP 957,000</b></span>
+            </div>
+            <div class="ad-price-header__actions">
+              <button class="ad-price-header__favourite" type="button" aria-label="Add to favourites"><img src="icons/action/heart.svg" alt="" width="24" height="24"></button>
+              <button class="ad-price-header__share" type="button" aria-label="Share this ad"><img src="assets/icons/share.svg" alt="" width="24" height="24"></button>
+            </div>
+          </div>
+          <h1 class="ad-price-header__title">Mercedes-Benz E300 2018 AMG</h1>
+          <div class="ad-price-header__meta">
+            <span class="ad-price-header__meta-item"><img src="assets/live-icons/pin-16.svg" alt="" width="17" height="17">Maadi, Cairo</span>
+            <span class="ad-price-header__meta-item">6 days ago</span>
+          </div>
+        </header>
+
+        <div class="ad-specs-strip" data-parity="ad-specs-strip">
+          <div class="ad-specs-strip__cell"><img class="ad-specs-strip__icon" src="assets/live-icons/dpv-year.svg" alt="" width="24" height="24"><span class="ad-specs-strip__text"><span class="ad-specs-strip__label">Year</span><span class="ad-specs-strip__value">2018</span></span></div><div class="ad-specs-strip__cell"><img class="ad-specs-strip__icon" src="assets/live-icons/dpv-kilometers.svg" alt="" width="24" height="24"><span class="ad-specs-strip__text"><span class="ad-specs-strip__label">Kilometers</span><span class="ad-specs-strip__value">43,000</span></span></div><div class="ad-specs-strip__cell"><img class="ad-specs-strip__icon" src="assets/live-icons/dpv-transmission.svg" alt="" width="24" height="24"><span class="ad-specs-strip__text"><span class="ad-specs-strip__label">Transmission Type</span><span class="ad-specs-strip__value">Automatic</span></span></div><div class="ad-specs-strip__cell"><img class="ad-specs-strip__icon" src="assets/live-icons/dpv-fuel.svg" alt="" width="24" height="24"><span class="ad-specs-strip__text"><span class="ad-specs-strip__label">Fuel Type</span><span class="ad-specs-strip__value">Benzine</span></span></div>
+        </div>
+
+        <section class="ad-details" data-parity="ad-details">
+          <h3 class="ad-details__heading">Details</h3>
+          <div class="ad-details__grid">
+            <div class="ad-details__row"><span class="ad-details__key">Brand</span><span class="ad-details__value">Mercedes-Benz</span></div><div class="ad-details__row"><span class="ad-details__key">Model</span><span class="ad-details__value">E300</span></div><div class="ad-details__row"><span class="ad-details__key">Version</span><span class="ad-details__value">AMG</span></div><div class="ad-details__row"><span class="ad-details__key">Condition</span><span class="ad-details__value">Used</span></div><div class="ad-details__row"><span class="ad-details__key">Body Type</span><span class="ad-details__value">Sedan</span></div><div class="ad-details__row"><span class="ad-details__key">Color</span><span class="ad-details__value">Black</span></div>
+          </div>
+          <button class="ad-details__more" type="button">View +5 more<img src="assets/live-icons/chevron-down-small.svg" alt="" width="16" height="16"></button>
+        </section>
+
+        <section class="ad-description" data-parity="ad-description">
+          <h3 class="ad-description__heading">Description</h3>
+          <p class="ad-description__body">2018 Mercedes E300 AMG
+43,600 KM
+Original Paint
+Agency maintained
+First owner
+Panorama roof
+Price negotiable</p>
+        </section>
       </div>
     </section>
 

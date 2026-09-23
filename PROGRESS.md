@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-23 (Arabic/RTL captured and the library made to mirror — item 45) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-23 (ad detail page sections, batch 1 — item 46) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -590,6 +590,29 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    **Next for Arabic:** check:live specs that compare our components against the `.ar` captures
    (the script's `locale` is not wired into specs yet), GESS metrics in the type scale, and the
    Arabic numerals question (live uses Western digits in Arabic — worth confirming with the user).
+
+46. **Ad detail page, sections batch 1** (user: "start on the ad detail page sections").
+   Four components built from `car-dpv.desktop`, each with a story, a kit twin, parity pairs and
+   a `check:live` spec — **50/50 against live**, parity **330/330**:
+   - `AdPriceHeader` — the 42px price row (**28/42 at 600**, the loudest number on the site), the
+     down-payment chip 8 after it (--gray-01, radius 6, 4/8, label 600 + amount **900**), the 40px
+     favourite and 24px share on the right, the h1 at 19.88/29.96, and the 14/21 meta line.
+   - `AdSpecsStrip` — the four headline specs. Two things the pixel diff caught that no amount of
+     reading would have: live fills the band with a **--gray-00 → --gray-01 gradient** over
+     --gray-01, not a flat grey, and divides the cells with a **1px --gray-02 rule**.
+   - `AdDetailsTable` — two columns 16 apart, rows 4 apart, a 40% key cell on --gray-01 and a bold
+     value cell, both 16/24 at 8/12, and the blue 14/700 "View +N more".
+   - `AdDescription` — 23.94/36 heading, 15.96/23.94 body, `white-space: pre-line` because sellers
+     type ads as lines, not paragraphs.
+   Four spec glyphs extracted from the capture into `live-icons` (`dpv-year`, `-kilometers`,
+   `-transmission`, `-fuel`); the transmission one came out without an `xmlns` and rendered as a
+   broken image until fixed — check that on any future extraction.
+   Kit gains an **Ad detail page** section (`#ad-detail`).
+   **Deferred, with reasons in docs/PROPOSALS.md:** `SellerCard` (live sets the seller's name in
+   `#12151b`, darker than --gray-06 and used nowhere else — needs the designer), and the details
+   value cell's `rgba(245,245,245,.8)`, where we ship --gray-00 one level off and invisible.
+   **Still to build on this page:** location block (map + "See location"), "See More Ads by" rail,
+   the sticky section tabs, and the mobile DPV. No safety-tips block exists in this capture.
 
 ## 6. Next up
 

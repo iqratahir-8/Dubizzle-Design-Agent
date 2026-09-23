@@ -4264,3 +4264,189 @@ ul {
 .side-menu__item:not(.side-menu__item--active):hover { background: var(--gray-02); }
 .side-menu__item--active { background: var(--red-05); color: var(--white); }
 .side-menu__item--active .side-menu__title { color: var(--white); }
+
+/* ── Ad detail page sections ──────────────────────────────────────────────────
+   Measured on the live car DPV (car-dpv.desktop, 2026-09-23). Mirrors
+   AdPriceHeader / AdSpecsStrip / AdDetailsTable / AdDescription in src/components
+   (npm run check:parity). */
+
+.ad-price-header { display: flex; flex-direction: column; font-family: var(--font-primary); }
+
+.ad-price-header__row { display: flex; align-items: center; justify-content: space-between; min-height: 4.2rem; }
+
+.ad-price-header__prices { display: flex; align-items: center; gap: 0.8rem; min-width: 0; }
+
+/* 28/42 at 600 — the loudest number on the site. */
+.ad-price-header__price {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 2.8rem;
+  font-weight: var(--weight-semibold);
+  line-height: 4.2rem;
+  color: var(--gray-06);
+  white-space: nowrap;
+}
+
+.ad-price-header__down-payment {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-md);
+  background: var(--gray-01);
+  font-size: 1.6rem;
+  font-weight: var(--weight-semibold);
+  line-height: 2.4rem;
+  color: var(--gray-05);
+  white-space: nowrap;
+}
+
+.ad-price-header__down-payment b { font-weight: 900; }
+
+.ad-price-header__actions { display: flex; align-items: center; gap: 0.8rem; flex: none; }
+
+.ad-price-header__favourite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.ad-price-header__share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.ad-price-header__title {
+  margin: 0;
+  font-size: 1.988rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.996rem;
+  color: var(--gray-06);
+}
+
+.ad-price-header__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.1rem;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  color: var(--gray-06);
+}
+
+.ad-price-header__meta-item { display: flex; align-items: center; gap: 0.4rem; }
+
+.ad-specs-strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  border: 1px solid var(--gray-02);
+  border-radius: var(--radius-md);
+  /* Live fills the strip with a --gray-00 → --gray-01 gradient over --gray-01, not a flat grey. */
+  background-color: var(--gray-01);
+  background-image: linear-gradient(var(--gray-00), var(--gray-01));
+  font-family: var(--font-primary);
+}
+
+.ad-specs-strip__cell { display: flex; align-items: center; gap: 1.2rem; padding: 1.6rem; min-width: 0; }
+
+/* Live divides the cells with a 1px --gray-02 rule, not a gap. */
+.ad-specs-strip__cell + .ad-specs-strip__cell { border-inline-start: 1px solid var(--gray-02); }
+
+.ad-specs-strip__icon { flex: none; color: var(--gray-06); }
+
+.ad-specs-strip__text { display: flex; flex-direction: column; min-width: 0; }
+
+/* 14/16.8 — tighter than the usual 21 so the pair fits 44. */
+.ad-specs-strip__label { font-size: var(--text-sm); line-height: 1.68rem; color: var(--gray-05); }
+
+.ad-specs-strip__value {
+  font-size: 1.8rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.7rem;
+  color: var(--gray-06);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ad-details { font-family: var(--font-primary); }
+
+/* Every ad-detail section heading: 23.94/36 at 700. */
+.ad-details__heading,
+.ad-description__heading {
+  margin: 0;
+  font-size: 2.394rem;
+  font-weight: var(--weight-bold);
+  line-height: 3.6rem;
+  color: var(--gray-06);
+}
+
+.ad-details__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.6rem;
+  row-gap: 0.4rem;
+}
+
+.ad-details__row { display: grid; grid-template-columns: 40% minmax(0, 1fr); }
+
+.ad-details__key {
+  padding: 0.8rem 1.2rem;
+  background: var(--gray-01);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: var(--gray-06);
+}
+
+.ad-details__value {
+  padding: 0.8rem 1.2rem;
+  background: var(--gray-00);
+  font-size: 1.6rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.4rem;
+  color: var(--gray-06);
+}
+
+.ad-details__more {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--blue-05);
+  cursor: pointer;
+}
+
+.ad-description { font-family: var(--font-primary); }
+
+.ad-description__heading { margin-bottom: 1.6rem; }
+
+.ad-description__body {
+  margin: 0;
+  font-size: 1.596rem;
+  line-height: 2.394rem;
+  color: var(--gray-06);
+  /* Sellers type their ads as lines, not paragraphs — live keeps every break. */
+  white-space: pre-line;
+}
