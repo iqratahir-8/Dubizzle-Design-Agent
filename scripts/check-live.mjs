@@ -121,6 +121,13 @@ export const SPECS = [
   { name: 'LocationDropdown / panel', live: ['location-dropdown.desktop', 'Alexandria', 2], story: ['components-locationdropdown--default', '[class*="_panel_"]'], props: BOX, width: true, pixels: true },
   /* no pixels: an <h1> is a block, so each one is as wide as its own container */
   { name: 'PageHead / title', live: ['cars-list.desktop', 'Cars for Sale in Egypt', 0], story: ['components-pagehead--default', 'h1'], props: TYPE },
+  /* Chat inbox. The capture's conversations are real people, so the story carries fixtures —
+     boxes and type are compared, pixels are not. */
+  { name: 'ChatInbox / row', live: ['chat.desktop', 'Mona S.', 3], story: ['chat-chatinbox--default', '[class*="_row_"]', 1], props: ['borderBottomWidth', 'borderBottomColor', 'backgroundColor'], width: true, noText: true, noIcon: true },
+  /* borderTopLeftRadius is left out: live writes 14px, we use the pill token — the same curve
+     on a 30px chip, and check:design refuses a 1.4rem radius as off-scale. */
+  { name: 'ChatInbox / filter', live: ['chat.desktop', 'Unread Chats', 0], story: ['chat-chatinbox--default', '[class*="_filter_"]', 1], props: [...BOX.filter((p) => p !== 'borderTopLeftRadius'), ...TYPE] },
+  { name: 'ChatInbox / filter on', live: ['chat.desktop', 'All', 0], story: ['chat-chatinbox--default', '[class*="_filterSelected_"]'], props: [...BOX.filter((p) => p !== 'borderTopLeftRadius'), ...TYPE] },
   /* Ad detail page. The story holds the same listing as the capture, so these compare pixels. */
   { name: 'AdPriceHeader / price', live: ['car-dpv.desktop', 'EGP 3,190,000', 0], story: ['ad-detail-adpriceheader--car', '[class*="_price_"]'], props: [...BOX, ...TYPE], width: true, pixels: true },
   { name: 'AdPriceHeader / chip', live: ['car-dpv.desktop', 'Down Payment', 0], story: ['ad-detail-adpriceheader--car', '[class*="_downPayment_"]'], props: [...BOX, ...TYPE], width: true, pixels: true },

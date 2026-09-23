@@ -18,6 +18,25 @@
  * whatever sits at a viewport point (used where the text is the account holder's name).
  */
 export const STATES = {
+  /* The one state that shows someone's conversation. Two ways in, both deliberate:
+       CHAT_THREAD_URL=/en/chat/user/<id>/<ad> npm run capture:states -- chat-thread
+     opens exactly the thread the account holder named, or, with no URL, the runner opens a
+     conversation that is ALREADY read (no read receipt reaches the other person) and refuses
+     when every chat is unread. The thread's own id never enters this file — it identifies a
+     real person. Message text, names and the ad line are replaced by redactPage, and the
+     capture is refused outright if a name or phone survives. */
+  'chat-thread': {
+    label: 'Chat — an open conversation',
+    url: process.env.CHAT_THREAD_URL || '/en/chat',
+    layouts: ['desktop', 'mobile'],
+    fixtures: true,
+    /* people swap phone numbers inside chat messages — scrub them like any other
+       third-party contact detail, in the page and again in the saved HTML */
+    scrubContacts: true,
+    /* the thread renders late — 9s, or the runner freezes an empty page */
+    steps: process.env.CHAT_THREAD_URL ? [{ wait: 9000 }] : [{ wait: 9000 }, { openReadChat: true }],
+  },
+
   'menu-vehicles': {
     label: 'Header mega menu — Vehicles',
     url: '/en/',

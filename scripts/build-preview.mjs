@@ -340,6 +340,28 @@ function popupsDemo() {
 }
 
 /* ── Batch 4: portal content (check:live verified) ────────────────────────── */
+function chatDemo() {
+  const rows = [
+    ['A', 'Ahmed H.', 'Apartment for sale in Zamalek 200m', 'Is the price negotiable?', '2h', true],
+    ['M', 'Mona S.', 'Hyundai Elantra 2021', 'I can come see it tomorrow morning', '5h', false],
+    ['N', 'Nile Realty', 'Villa for sale in New Cairo 340m', 'We have three similar units in the same compound', '1d', false],
+  ];
+  return `
+      <h3>Chat inbox</h3>
+      <p class="note">Measured on the live chat screen (<code>chat.desktop</code>): a 64px Inbox bar, 30px filter pills, and rows of exactly 100 with the ad as the loudest line. Everyone here is a fixture.</p>
+      <div class="demo" style="align-items:flex-start;padding:0;background:none;border:0">
+        <div class="pane" style="width:51.1rem" data-parity="chat-inbox">
+          <div class="inbox-head">Inbox</div>
+          <div class="inbox-filters">
+            <button class="inbox-filter inbox-filter--selected" type="button">All</button>
+            <button class="inbox-filter" type="button">Unread Chats</button>
+            <button class="inbox-filter" type="button">Important</button>
+          </div>
+          ${rows.map(([initial, name, ad, preview, time, active]) => `<div class="conversation${active ? ' conversation--active' : ''}"><span class="conversation__avatar">${initial}</span><div class="conversation__body"><p class="conversation__name">${esc(name)}</p><p class="conversation__ad">${esc(ad)}</p><p class="conversation__preview">${esc(preview)}</p></div><span class="conversation__time">${time}</span></div>`).join('')}
+        </div>
+      </div>`;
+}
+
 function adDetailDemo() {
   const specs = [['dpv-year', 'Year', '2018'], ['dpv-kilometers', 'Kilometers', '43,000'], ['dpv-transmission', 'Transmission Type', 'Automatic'], ['dpv-fuel', 'Fuel Type', 'Benzine']];
   const details = [['Brand', 'Mercedes-Benz'], ['Model', 'E300'], ['Version', 'AMG'], ['Condition', 'Used'], ['Body Type', 'Sedan'], ['Color', 'Black']];
@@ -632,6 +654,7 @@ const page = `<!doctype html>
     <a href="#chrome">Header &amp; footer</a>
     <a href="#overlays">Overlays &amp; feedback</a>
     <a href="#portal">Agency portal</a>
+    <a href="#chat">Chat</a>
     <a href="#ad-detail">Ad detail page</a>
     <a href="#mobile">Mobile web</a>
     <a href="#templates">Page templates</a>
@@ -1117,6 +1140,11 @@ ${overlaysDemo()}
 ${portalDemo()}
 ${popupsDemo()}
 ${portalContentDemo()}
+    </section>
+
+    <section id="chat">
+      <h2>Chat</h2>
+${chatDemo()}
     </section>
 
     <section id="ad-detail">

@@ -95,6 +95,37 @@ const FIND = `(step) => {
 
 async function runStep(page, step) {
   if (step.wait) return sleep(step.wait);
+  /* Opening a conversation marks it read, and the other person sees that. So this step
+     opens only a thread that is ALREADY read — no unread badge, no bold preview line —
+     and refuses to open anything when every conversation is unread. */
+  if (step.openReadChat) {
+    const picked = await page.evaluate(() => {
+      /* the row links are relative ("chat/user/…"), so match on "chat" and on the row's own
+         geometry — the inbox column, 100px tall */
+      const rows = [...document.querySelectorAll('a[href*="chat"]')].filter((r) => {
+        const b = r.getBoundingClientRect();
+        return b.height > 60 && b.height < 140 && b.width > 250 && b.x < 760;
+      });
+      const unread = (row) => {
+        if (row.querySelector('[class*="unread" i]')) return true;
+        const leaves = [...row.querySelectorAll('*')].filter((e) => !e.children.length && e.textContent.trim());
+        // a small all-digits badge, or a preview line still in bold, both mean unread
+        if (leaves.some((e) => /^\d{1,2}$/.test(e.textContent.trim()) && e.getBoundingClientRect().width < 28)) return true;
+        const preview = leaves[leaves.length - 1];
+        return preview ? Number(getComputedStyle(preview).fontWeight) >= 600 : false;
+      };
+      const open = rows.find((r) => !unread(r));
+      if (!open) return { total: rows.length, picked: null };
+      const r = open.getBoundingClientRect();
+      return { total: rows.length, picked: { x: r.x + r.width / 2, y: r.y + r.height / 2 } };
+    });
+    if (!picked.picked) {
+      throw new Error(picked.total ? `all ${picked.total} conversations are unread — refusing to open one and mark it read` : 'no conversations in the inbox');
+    }
+    await page.mouse.click(picked.picked.x, picked.picked.y);
+    await sleep(2500);
+    return;
+  }
   if (step.type) {
     await page.keyboard.type(step.type.text, { delay: 90 });
     return;

@@ -187,3 +187,7 @@ export { AdDetailsTable } from './components/AdDetailsTable';
 export type { AdDetailsTableProps, AdDetail } from './components/AdDetailsTable';
 export { AdDescription } from './components/AdDescription';
 export type { AdDescriptionProps } from './components/AdDescription';
+
+/* Chat (live-measured on chat.desktop, 2026-09-23) */
+export { ChatInbox } from './components/ChatInbox';
+export type { ChatInboxProps, ChatConversation } from './components/ChatInbox';

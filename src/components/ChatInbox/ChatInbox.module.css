@@ -1,0 +1,135 @@
+/* The chat inbox — measured on the live chat screen (chat.desktop, 2026-09-23).
+   Mirrors .inbox-head / .inbox-filter / .conversation in patterns.css (npm run check:parity). */
+
+.inbox {
+  font-family: var(--font-primary);
+  background: var(--surface-card);
+}
+
+/* "Inbox" bar: 64 tall on --gray-01. */
+.head {
+  display: flex;
+  align-items: center;
+  height: 6.4rem;
+  padding-inline: var(--space-4);
+  background: var(--gray-01);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--gray-06);
+}
+
+.filterRow {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 0.8rem 1.6rem;
+}
+
+/* 30 tall, 12.04/18.06 — selected is red on --red-02, resting charcoal in a red hairline. */
+.filter {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--red-05);
+  /* live sets 14px on a 30px chip — a pill at this height */
+  border-radius: var(--radius-full);
+  background: none;
+  font-family: inherit;
+  font-size: 1.204rem;
+  line-height: 1.806rem;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.filterSelected {
+  border-color: var(--red-02);
+  background: var(--red-02);
+  font-weight: var(--weight-bold);
+  color: var(--red-05);
+}
+
+/* Rows are exactly 100 tall: a 40px avatar at 24, the text column at 69. */
+.row {
+  position: relative;
+  /* a <button> would otherwise take the UA font, size and colour */
+  font: inherit;
+  color: var(--gray-06);
+  display: block;
+  width: 100%;
+  height: 10rem;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--neutral-color-light);
+  background: none;
+  text-align: start;
+  cursor: pointer;
+}
+
+.rowActive {
+  background: var(--surface-muted);
+}
+
+.avatar {
+  position: absolute;
+  top: 3rem;
+  inset-inline-start: 2.4rem;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--red-01);
+  font-size: 2.4rem;
+  font-weight: var(--weight-bold);
+  color: var(--red-05);
+}
+
+.body {
+  position: absolute;
+  top: 1.4rem;
+  inset-inline-start: 6.9rem;
+  width: 36.3rem;
+}
+
+.name {
+  display: block;
+  margin: 0;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.394rem;
+  color: var(--gray-06);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The ad being discussed — the loudest line in the row. */
+.ad {
+  display: block;
+  margin: 0;
+  font-size: 1.792rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.7rem;
+  color: var(--gray-06);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.preview {
+  display: block;
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  color: var(--gray-05);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.time {
+  position: absolute;
+  top: 1.4rem;
+  inset-inline-end: 1.6rem;
+  font-size: var(--text-xs);
+  color: var(--gray-05);
+}

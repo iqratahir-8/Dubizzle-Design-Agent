@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-23 (shareable chat template — item 47) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-23 (chat: ChatInbox component + thread capture blocked on sign-in — item 48) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -629,6 +629,28 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    HOW-TO-ASK: live's capture shows "Your chat is empty", because we never open a conversation.
    Mobile's thread header got its own `.chat-head` so the 100px list geometry doesn't hit it.
    Everyone in both templates is a fixture. Parity 330/330, design 0 errors, RTL clean.
+
+48. **Chat, round 2** (user: capture the chat detail screen, then "store the full prototype
+   and interaction components").
+   - **`ChatInbox` shipped** — the inbox bar, the filter pills and the 100px rows, measured on
+     `chat.desktop`: 40px --red-01 avatar at 24, text column at 69, name 15.96/23.94/700, the ad
+     **17.92/700**, the message 14/21, a 1px --neutral-color-light rule. React + kit (`#chat`
+     section) + stories + 6 parity pairs + 3 live specs. **53/53 live, 336/336 parity.**
+     Fixtures only — a real inbox is full of real people.
+   - **The thread capture is not done.** New `chat-thread` state (`scripts/lib/states.mjs`) with
+     two safeguards: with no URL it opens only a conversation that is **already read**, so no
+     read receipt reaches anyone, and refuses when every chat is unread; with
+     `CHAT_THREAD_URL=… npm run capture:states -- chat-thread` it opens exactly the thread the
+     account holder named. The id never enters the repo — it identifies a real person.
+     Two redaction fixes were needed and are in: thread bubbles carry **hashed class names**, so
+     the old class-based matcher missed them (real text, including phone numbers people swap in
+     chat, reached the gate), and the scrollback above the viewport has no box, so a geometry
+     filter missed it too — both now replaced wholesale. The state also sets `scrubContacts`.
+     **Blocked:** the capture window is signed in to a different account from the one that owns
+     the thread, so the URL renders the login dialog. Those two captures were deleted.
+     To finish: `npm run capture:login`, sign in **in that window** with the account that has
+     active chats, then re-run the command above. The thread pane of the template and prototype
+     stays a labelled proposal until then.
 
 ## 6. Next up
 

@@ -132,11 +132,21 @@ export async function redactPage(page, identity) {
         counts.chatRows++;
       });
 
-      // Open chat thread: message bubbles live outside the row links.
+      /* Open chat thread. The bubbles carry hashed class names, so matching on "message" or
+         "bubble" misses them and real text (including phone numbers people swap in chat)
+         survives to the gate. Match on POSITION instead: every leaf text element that is not
+         an inbox row, a timestamp or one of the screen's own controls gets a sample message. */
       if (/\/chat\/.+/.test(location.pathname)) {
-        const thread = [...document.querySelectorAll('[class*="essage"], [class*="ubble"]')].filter(
-          (e) => !e.closest('a[href*="/chat/"]') && e.children.length === 0 && e.textContent.trim().length > 2 && !isTime(e.textContent.trim()),
-        );
+        const CHROME = /^(inbox|all|unread chats|important|send|call|chat|block|report|delete|online|offline|typing|today|yesterday|seen|delivered|sent)$/i;
+        const rowLink = (e) => e.closest('a[href*="chat"]');
+        const thread = [...document.querySelectorAll('body *')].filter((e) => {
+          if (e.children.length || rowLink(e)) return false;
+          const t = e.textContent.trim();
+          if (t.length < 2 || isTime(t) || CHROME.test(t)) return false;
+          /* no geometry test: a thread virtualises its scrollback, so the messages above the
+             viewport have no box but their text is still in the HTML we are about to save */
+          return true;
+        });
         thread.forEach((e, i) => {
           e.textContent = sample.messages[i % sample.messages.length];
           counts.bubbles++;

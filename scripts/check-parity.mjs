@@ -268,6 +268,13 @@ export const PAIRS = [
   ['PageHead / count', { story: 'components-pagehead--with-save-search', sel: '[class*="_count_"]', n: 0, props: ALL }, { sel: '[data-parity="page-head-row"] .page-head-row__count', n: 0 }],
   ['PageHead / actions', { story: 'components-pagehead--with-save-search', sel: '[class*="_actions_"]', n: 0, props: BOX }, { sel: '[data-parity="page-head-row"] .page-head-row__actions', n: 0 }],
   // Batch 4 — portal content
+  /* Chat inbox (live-measured on chat.desktop, 2026-09-23) */
+  ['ChatInbox / head', { story: 'chat-chatinbox--default', sel: '[class*="_head_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-inbox"] .inbox-head', n: 0 }],
+  ['ChatInbox / filter selected', { story: 'chat-chatinbox--default', sel: '[class*="_filterSelected_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-inbox"] .inbox-filter--selected', n: 0 }],
+  ['ChatInbox / filter', { story: 'chat-chatinbox--default', sel: '[class*="_filter_"]', n: 1, props: ALL }, { sel: '[data-parity="chat-inbox"] .inbox-filter', n: 1 }],
+  ['ChatInbox / row', { story: 'chat-chatinbox--default', sel: '[class*="_row_"]', n: 1, props: SIZED }, { sel: '[data-parity="chat-inbox"] .conversation', n: 1 }],
+  ['ChatInbox / avatar', { story: 'chat-chatinbox--default', sel: '[class*="_avatar_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-inbox"] .conversation__avatar', n: 0 }],
+  ['ChatInbox / ad line', { story: 'chat-chatinbox--default', sel: '[class*="_ad_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-inbox"] .conversation__ad', n: 0 }],
   /* Ad detail page (live-measured on car-dpv, 2026-09-23) */
   ['AdPriceHeader / price', { story: 'ad-detail-adpriceheader--car', sel: '[class*="_price_"]', n: 0, props: ALL }, { sel: '[data-parity="ad-price-header"] .ad-price-header__price', n: 0 }],
   ['AdPriceHeader / down payment', { story: 'ad-detail-adpriceheader--car', sel: '[class*="_downPayment_"]', n: 0, props: ALL }, { sel: '[data-parity="ad-price-header"] .ad-price-header__down-payment', n: 0 }],
