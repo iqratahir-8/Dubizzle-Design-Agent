@@ -115,7 +115,7 @@ export function Header({
 
   function navLink(label: string, icon: string, key: HeaderVertical) {
     return (
-      <a key={key} href="#" className={styles.navLink}>
+      <a key={key} href="#" className={cx(styles.navLink, activeVertical === key && styles.navLinkActive)}>
         {activeVertical === key && <Tab />}
         <div className={styles.navLinkInner}>
           <img src={`${assetPath}/icons/nav-${icon}.svg`} alt="" />

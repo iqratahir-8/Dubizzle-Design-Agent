@@ -275,7 +275,7 @@ Both were measured on redacted captures, so the name in the stories and the kit 
 
 ### Listing page head (desktop)
 - **Breadcrumbs:** a `<ul>` with 8 of bottom padding; crumbs 14/21 in `rgba(35,38,42,.64)`
-  (`--text-muted`), separated by a slash with 4 either side; the current page is full charcoal.
+  (`--text-muted`), separated by a slash with 4 either side; the current page is full charcoal and bold (700) — measured 2026-09-23.
 - **Title row:** H1 24/26.3/700 with the ad count 16 to its right — the count sits on a pale red
   pill (`--red-02`), padding 2 7, radius 4, 14/21/700 charcoal. Not a grey pill.
 - **Save Search:** 140×45, padding 10 12, radius 6, white with a 1px `#e0e0e0` border, label 16/700

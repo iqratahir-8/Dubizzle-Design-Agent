@@ -84,11 +84,13 @@ ul {
   background: var(--surface-subtle);
 }
 
+/* The 68px band: live's 43px logo/vertical row sits 16 from the top, 9 from the bottom. */
 .header__row1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: 1.2rem;
+  padding-top: 1.6rem;
+  padding-bottom: 0.9rem;
 }
 
 .header__brand-group {
@@ -104,17 +106,21 @@ ul {
   padding-inline: var(--space-2);
 }
 
+/* 65×35, as live paints it — our logo file declares 120×38, so height alone came out too wide. */
 .header__logo img {
-  height: 3.6rem;
+  width: 6.5rem;
+  height: 3.5rem;
 }
 
+/* 35 tall and centred in the row when resting — the active one fills all 43 (see below). */
 .header__vertical {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
   min-width: 13rem;
-  min-height: 3.6rem;
+  min-height: 3.5rem;
+  line-height: 1.5;
   padding-inline: var(--space-2);
   font-size: 1.6rem;
   font-weight: var(--weight-bold);
@@ -127,8 +133,10 @@ ul {
   height: 2.8rem;
 }
 
-/* The active vertical reads as a white tab bleeding into the white row below. */
+/* The active vertical reads as a white tab bleeding into the white row below, and fills the
+   row's full 43px height to reach it (measured on property.desktop / cars-list.desktop). */
 .header__vertical--active {
+  align-self: stretch;
   background: var(--surface-page);
 }
 
@@ -1455,7 +1463,8 @@ ul {
 .ad-list-card__time { display: flex; align-items: center; color: var(--gray-05); }
 .ad-list-card__logo { position: absolute; right: 1.6rem; bottom: 1.6rem; width: 12rem; height: 4rem; border-radius: var(--radius-sm); object-fit: cover; }
 
-.ad-list-card__actions { display: flex; gap: 0.8rem; padding: 0 1.6rem 1.6rem 2.1rem; }
+/* .8rem above the buttons: live's right column is one flex column with an 8px gap (cars-list). */
+.ad-list-card__actions { display: flex; gap: 0.8rem; padding: 0.8rem 1.6rem 1.6rem 2.1rem; }
 
 /* Mobile web */
 .ad-list-card--mobile { display: block; border-radius: var(--radius-lg); }
@@ -3844,7 +3853,8 @@ ul {
 
 .breadcrumbs__crumb:hover { text-decoration: underline; }
 
-.breadcrumbs__crumb--current { color: var(--gray-06); }
+/* Current page: full charcoal and bold (measured on live cars-list / car-dpv). */
+.breadcrumbs__crumb--current { color: var(--gray-06); font-weight: 700; }
 
 .breadcrumbs__separator {
   padding-inline: 0.4rem;

@@ -6,7 +6,7 @@ const meta: Meta<typeof Breadcrumbs> = {
   component: Breadcrumbs,
   tags: ['autodocs'],
   parameters: {
-    docs: { description: { component: 'Breadcrumbs above a listing or ad detail page on dubizzle.com.eg — 14/21 links at 64% charcoal, slash separators, the current page in full charcoal.' } },
+    docs: { description: { component: 'Breadcrumbs above a listing or ad detail page on dubizzle.com.eg — 14/21 links at 64% charcoal, slash separators, the current page in full charcoal and bold.' } },
   },
   args: {
     items: [

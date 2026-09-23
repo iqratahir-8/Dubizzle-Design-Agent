@@ -19,14 +19,17 @@
 .row1 {
   display: flex;
   justify-content: space-between;
-  /* Live: the band is 68 tall — 14 above and below the 40px Post Your Ad button. */
-  padding-block: 1.4rem;
+  /* Live: the band is 68 tall — the 43px logo/vertical row sits 16 from the top, 9 from the
+     bottom (measured on home.desktop: the row's box is y 16 → 59). */
+  padding-top: 1.6rem;
+  padding-bottom: 0.9rem;
   min-width: 0;
 }
 
 .brandGroup {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  margin-left: -1.6rem;
   position: relative;
   z-index: 1;
 }
@@ -45,17 +48,22 @@
   height: 2.6rem;
 }
 
+/* Live hangs the logo link 16px into the page gutter (its own 1.6rem padding, pulled back by
+   the group's negative margin), which puts the logo itself at x 96.5 in a 1440 viewport. */
 .logoLink {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 13rem;
-  padding-inline: 0.8rem;
+  padding: 0.4rem 1.6rem;
 }
 
+/* Live paints the same artwork (viewBox 0 0 65 36) at exactly 65×35, slightly squished; our
+   file declares 120×38, so height alone rendered it 113.7 wide and pushed Motors 16px right. */
 .logoLink img {
-  height: 3.6rem;
+  width: 6.5rem;
+  height: 3.5rem;
 }
 
 /* Live: the vertical links are 130×35 anchors centred in the 68px band — not stretched to it. */
@@ -66,10 +74,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* Bottom-aligned, not centred: live sits them on the row's baseline so the active tab
-     flares straight into the white row below. */
-  align-self: flex-end;
+  /* Centred in the 43px row: live's resting vertical link is 35 tall at y 20 in a row at
+     y 16 (home.desktop). The active one is the full 43 — its white tab is drawn by the
+     absolutely-positioned .tabShadow/.tabFill below, which flare into the white row. */
+  align-self: center;
   text-decoration: none;
+}
+
+/* The active vertical fills the row (43 tall on live, against 35 for the resting ones) —
+   that is what lets its white tab meet the white row below. */
+.navLinkActive {
+  align-self: stretch;
+  height: auto;
 }
 
 .navLinkInner {
@@ -90,7 +106,9 @@
   font-family: var(--font-primary);
   font-size: 1.596rem;
   font-weight: var(--weight-bold);
-  line-height: 1.2;
+  /* 1.5, not 1.2: live's label line box is 23.94px tall, which is what centres the text at
+     y 25.5 inside the 35px link (measured on home.desktop). */
+  line-height: 1.5;
 }
 
 /* White tab behind the active vertical — mirrors `.highlight` in
@@ -99,7 +117,7 @@
    row below, not decoration, so they're exempt from the radius/shadow rules. */
 .tabShadow {
   position: absolute;
-  inset: calc(-1.6rem / 1.5) 0 calc(-1 * 1.4rem);
+  inset: calc(-1.6rem / 1.5) 0 -1.3rem; /* bottom edge lands on the band's 68px baseline */
   border-radius: 3rem 3rem 0 0 / 1.6rem; /* ds-ignore */
   z-index: -1;
   box-shadow: -8px 0 16px rgba(147, 1, 0, 0.05), 8px 0 16px rgba(0, 0, 0, 0.05); /* ds-ignore */
@@ -108,7 +126,7 @@
 .tabFill {
   position: absolute;
   top: calc(-1.6rem / 1.5);
-  bottom: calc(-1 * 1.4rem);
+  bottom: -1.3rem; /* same baseline as .tabShadow */
   inset-inline: -1.6rem;
   border-inline: 1.6rem solid transparent;
   border-radius: 3rem 3rem 0 0 / 1.6rem; /* ds-ignore — same tab geometry as .tabShadow */

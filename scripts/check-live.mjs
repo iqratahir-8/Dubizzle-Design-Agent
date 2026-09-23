@@ -38,7 +38,9 @@ const TYPE = ['color', 'fontSize', 'fontWeight', 'lineHeight'];
 /* live: [capture, anchor text | {placeholder} | {selector}, levels up, nth visible match] · story: [id, selector, n]
    mask: [[x, y, w, h]] regions left out of the pixel diff — real content (a listing photo,
    an avatar) that the story can't and shouldn't copy.
-   width: compare width too (off where the story's container sets it differently). */
+   width: compare width too (off where the story's container sets it differently).
+   noHeight: skip the height compare — only where the two are proven to line up by their text
+   offsets and the box differs for a reason that isn't visible (see AdCard below). */
 export const SPECS = [
   { name: 'AgencyPageHeading / title', live: ['portal-agents.desktop', 'Agency Management', 0], story: ['agency-portal-agencypageheading--with-subtitle', 'h1'], props: TYPE, pixels: true },
   { name: 'PortalTabs sm / switcher', live: ['portal-leads.desktop', 'Phone', 2], story: ['agency-portal-agencyportaltabswitcher--leads', '[role="tablist"]'], props: BOX, width: true, pixels: true },
@@ -64,6 +66,28 @@ export const SPECS = [
   { name: 'VipLeadCard', live: ['portal-vip.desktop', 'Volkswagen ID4 2022', 3], story: ['agency-portal-vipleadcard--default', 'article'], props: BOX, width: true, pixels: true, mask: [[16, 16, 228, 166]], noIcon: true },
   { name: 'PortalSideMenu / rail', live: ['portal-ads.desktop', { selector: 'nav' }, 0], story: ['agency-portal-portalsidemenu--collapsed', 'nav'], props: ['paddingTop', 'paddingLeft', 'backgroundColor'], width: true, pixels: true },
   { name: 'PortalSideMenu / drawer', live: ['portal-ads.desktop', { selector: 'nav' }, 0], expandDrawer: true, story: ['agency-portal-portalsidemenu--expanded', 'nav'], props: ['paddingTop', 'paddingLeft', 'backgroundColor', 'boxShadow'], width: true, pixels: true },
+  /* Core components, older than the portal batch — item 0 of "Next up": everything gets the
+     same proof. The two ad cards compare computed values and size only: the stories carry
+     their own listing (different title, price and photo from today's home page), so a pixel
+     diff would measure the copy, not the component. */
+  /* noHeight: every text row lands on the same pixel as live (price 185, title 215, specs 240,
+     location 268, time 290 — measured), but live's last line sits in a 20px line box and ours
+     in a 14px one, so the live <article> measures 3px taller with nothing visible in them. */
+  { name: 'AdCard / property grid', live: ['home.desktop', 'Own Your Villa Sea View Fully Finished Over 10 Years', 4], story: ['components-adcard--property', 'article'], props: BOX, width: true, noIcon: true, noHeight: true },
+  /* backgroundColor is left out: live paints the white on the media and body wrappers inside a
+     transparent <article>, we paint it on the card root — same card, different place to hang it.
+     noIcon: live's first image is the real listing photo, ours the placeholder. */
+  { name: 'AdListCard / car', live: ['cars-list.desktop', 'Mercedes CLA 200 2026', 4], story: ['components-adlistcard--car', 'article'], props: BOX.filter((p) => p !== 'backgroundColor'), width: true, noIcon: true },
+  { name: 'Breadcrumbs / crumb', live: ['cars-list.desktop', 'Cars for Sale', 0, 1], story: ['components-breadcrumbs--default', '[class*="_crumb_"]', 2], props: TYPE },
+  { name: 'Footer / bar', live: ['home.desktop', { selector: 'footer' }, 0], story: ['layout-footer--default', 'footer'], props: ['paddingTop', 'backgroundColor', 'backgroundImage'] },
+  /* WithoutCategoryStrip, not LoggedOut: live's category strip sits outside <header>, so the
+     header element itself is the two rows (68 + 76 = 145, same on home, cars-list, property). */
+  /* The icon is masked: same artwork, same two fills (#F6B3B3 / #E00000, both read off live)
+     and the same 28×28 box at the same offset, but live draws it as inline <svg> and we ship it
+     as an <img>, and the two rasterise a 28px glyph differently. The label and the tab itself
+     are compared unmasked. */
+  { name: 'Header / active tab', live: ['property.desktop', 'Property', 2], story: ['layout-header--active-vertical-property', '[class*="_navLink_"]', 1], props: ['backgroundColor'], pixels: true, mask: [[16, 6, 30, 30]] },
+  { name: 'Header / bar', live: ['home.desktop', { selector: 'header' }, 0], story: ['layout-header--without-category-strip', 'header'], props: ['backgroundColor', 'boxShadow'], width: true },
   { name: 'MobileFilters / header', live: ['m-filters.mobile', 'Reset', 4], story: ['mobile-mobilefilters--page', 'header'], props: BOX, width: true, pixels: true, mobile: true },
 ];
 
@@ -106,10 +130,18 @@ async function locate(page, target) {
       let n, k = 0;
       while ((n = w.nextNode())) {
         if (n.nodeValue.trim() !== anchor || n.parentElement.closest('script,style,nav')) continue;
-        const e = n.parentElement, r = e.getBoundingClientRect();
-        if (r.width === 0 || r.bottom < 0 || r.top > innerHeight) continue;
+        const e = n.parentElement;
+        let r = e.getBoundingClientRect();
+        if (r.width === 0) continue;
+        /* below the fold (an ad card down the page) — bring it into view, since the hit test
+           and the screenshot clip both work in viewport coordinates */
+        if (r.bottom < 0 || r.top > innerHeight) { e.scrollIntoView({ block: 'center' }); r = e.getBoundingClientRect(); }
+        if (r.bottom < 0 || r.top > innerHeight) continue;
         const h = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
-        if (!h || !(e.contains(h) || h.contains(e))) continue;
+        /* an ad card covers its own text with a full-card <a> — that overlay is the card,
+           not something hiding it, so accept a hit inside the same card root */
+        const card = e.closest('article, li');
+        if (!h || !(e.contains(h) || h.contains(e) || (card && card.contains(h)))) continue;
         if (k++ === nth) { el = e; break; }
       }
     }
@@ -176,7 +208,7 @@ for (const s of specs) {
   if (!b) { console.log(`  MISS ${s.name.padEnd(30)} story element not found`); problems++; continue; }
   checked++;
   const diffs = props.filter((p) => a.props[p] !== b.props[p]).map((p) => `${p}: live ${a.props[p]} · ours ${b.props[p]}`);
-  if (Math.abs(a.h - b.h) > SIZE_SLACK) diffs.push(`height: live ${a.h} · ours ${b.h}`);
+  if (!s.noHeight && Math.abs(a.h - b.h) > SIZE_SLACK) diffs.push(`height: live ${a.h} · ours ${b.h}`);
   if (s.width && Math.abs(a.w - b.w) > SIZE_SLACK) diffs.push(`width: live ${a.w} · ours ${b.w}`);
   if (a.text && b.text && (Math.abs(a.text.x - b.text.x) > 0.6 || Math.abs(a.text.y - b.text.y) > 0.6 || Math.abs(a.text.w - b.text.w) > 1.5))
     diffs.push(`text "${a.text.s}": live @${a.text.x},${a.text.y} w${a.text.w} · ours "${b.text.s}" @${b.text.x},${b.text.y} w${b.text.w}`);

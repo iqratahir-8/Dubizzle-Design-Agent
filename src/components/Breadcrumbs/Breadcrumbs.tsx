@@ -14,7 +14,7 @@ export interface BreadcrumbsProps {
 /**
  * Listing and ad-detail breadcrumbs. Measured on the live cars search page
  * (docs/LIVE-MEASUREMENTS.md): 14/21 links at 64% charcoal, separated by a slash, with the
- * current page in full charcoal.
+ * current page in full charcoal, bold.
  */
 export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (

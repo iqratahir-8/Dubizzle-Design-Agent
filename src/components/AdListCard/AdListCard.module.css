@@ -328,7 +328,9 @@
 .actions {
   display: flex;
   gap: 0.8rem;
-  padding: 0 1.6rem 1.6rem 2.1rem;
+  /* .8rem above the buttons: live lays the whole right column out as one flex column with an
+     8px gap, so the buttons sit 8px below the meta line (measured, cars-list.desktop) */
+  padding: 0.8rem 1.6rem 1.6rem 2.1rem;
 }
 
 /* ── Mobile web ────────────────────────────────────────────────────────── */

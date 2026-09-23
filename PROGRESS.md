@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-22 (Higgsfield skills installed, item 41; check:live + components batch 4, items 39–40) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-23 (check:live now covers the core components — items 41–42) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -515,9 +515,26 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    explicit say; `higgsfield-websites` deploys publicly — ask before any deploy/publish.
    Update later by re-cloning and re-copying the eight folders.
 
+42. **check:live for the core components** ("Next up" item 0). Five new specs — `AdCard`,
+   `AdListCard`, `Breadcrumbs`, `Footer`, `Header` (bar + active vertical) — take the suite to
+   **30/30 matching live**. Three real bugs the specs caught and fixed, in both libraries:
+   - `AdListCard`: the buttons row was missing live's 8px gap above it (card 265 → 273, live 273).
+   - `Breadcrumbs`: live's current crumb is **bold** as well as full charcoal (checked on
+     cars-list and car-dpv; `docs/LIVE-MEASUREMENTS.md` said colour only).
+   - `Header`: the logo file declares 120×38, so height alone rendered it 113.7 wide instead of
+     live's 65×35 and pushed the verticals 16px right; the band's 43px row sits 16/9 (not
+     12.5/12.5); the nav label's line box is 1.5, not 1.2; resting verticals are centred (35 tall)
+     and only the **active** one fills the row's 43 — it now gets `.navLinkActive`.
+   Script gained three things: anchors below the fold scroll into view, a hit on a card's own
+   full-card `<a>` overlay counts as visible, and `noHeight` for a box that differs with nothing
+   visible in it (AdCard: every text row lands on live's pixel; live's last line box is 6px taller).
+   Parity **318/318**, `check:design` 0 errors, build and `tsc` clean.
+
 ## 6. Next up
 
-0. **Every component needs a `check:live` spec.** Before calling one done, add it to
+0. **Every component needs a `check:live` spec.** 30 exist (all passing); still missing for
+   Button, Input, Chip, Pagination, Tabs, Toast, AccountMenu, MegaMenu and the mobile set.
+   Before calling one done, add it to
    `scripts/check-live.mjs` and pass it.
 0b. **Continue the repo component batches** (user request 2026-09-21): portal batch 2 (date
    range / presets, range panel, credits summary, side menu, table, job card, consumption log,
