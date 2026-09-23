@@ -6,9 +6,10 @@ storybook-static
 .env
 .env.local
 
-# Saved copies of live pages — ground truth for template work, but 16MB.
-# Re-save from dubizzle.com.eg if you need them; see HANDOFF.md.
-design-kit/reference/live/
+# Live-capture screenshots stay local (1.6GB) — the HTML captures (the actual measured
+# ground truth) are tracked via Git LFS instead; see PROGRESS.md item 44. Regenerate with
+# npm run capture:rendered / capture:account if you need them on a new machine.
+design-kit/reference/live/screens/
 
 # skill-creator optimization scratch (logs, iteration runs)
 .claude/skills/*-workspace/
@@ -52,7 +53,6 @@ design-kit/templates/desktop/portal-*.html
 # Signed-in consumer modal states (redacted) stay local too
 design-kit/templates/desktop/dpv-report-in.html
 design-kit/templates/desktop/dpv-report-form.html
-design-kit/reference/live/screens/_live-check/
 
 # Remotion skills installed via `npx skills add` — kept local, not part of the
 # design-system repo. Remove this block (and commit .agents/) if you decide to
