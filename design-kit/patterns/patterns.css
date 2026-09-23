@@ -338,10 +338,10 @@ ul {
 }
 
 /* Bottom navigation — Home, Chat, Sell, My Ads, Account */
+/* Five equal columns filling the bar (71.6 each on a 390 phone), as live lays them out. */
 .bottom-nav {
   display: grid;
-  grid-template-columns: repeat(5, 7.2rem);
-  justify-content: center;
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.8rem;
   height: 5.9rem;
   padding: 0.7rem 0;
@@ -1034,8 +1034,9 @@ ul {
   gap: 0.4rem;
   flex: none;
   margin: 0;
-  height: 4.2rem;
-  padding: 0 1.6rem;
+  /* Live sizes the quick chip by padding, not a fixed height: .8rem above and below a 2.4rem
+     line box, plus the 1px border, is the 42 it measures (cars-list.desktop). */
+  padding: 0.8rem 1.6rem;
   border: 1px solid var(--gray-02);
   border-radius: var(--radius-md);
   background: var(--gray-00);
@@ -1618,14 +1619,15 @@ ul {
   gap: var(--space-2);
 }
 
+/* Live's form field (edit-profile.desktop): 48 tall, 1px --gray-02, radius 6, 12px inset, 1.6rem. */
 .input {
-  height: 4.6rem;
-  padding: 0 var(--space-3);
+  height: 4.8rem;
+  padding: 0 1.2rem;
   line-height: var(--leading-normal);
-  border: 0.1rem solid var(--border-input);
+  border: 0.1rem solid var(--gray-02);
   border-radius: var(--radius-md);
   font-family: inherit;
-  font-size: var(--text-sm);
+  font-size: var(--text-md);
   color: var(--text-primary);
   outline: none;
   min-width: 0;
@@ -2487,19 +2489,23 @@ ul {
   gap: 0.6rem;
 }
 
+/* Live's page button: 32×32, 14/400 --black, radius 6, no padding; the current page is the
+   charcoal pill with a 1px --gray-02 border, so 1px taller (cars-list.desktop). */
 .pagination__btn {
   width: 3.2rem;
   height: 3.2rem;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: 0 solid currentColor;
   border-radius: var(--radius-md);
   background: transparent;
   font-family: inherit;
   font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  color: var(--text-primary);
+  font-weight: var(--weight-regular);
+  line-height: 3.2rem;
+  color: var(--black);
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -2507,6 +2513,9 @@ ul {
 .pagination__btn:hover { background: var(--surface-muted); }
 
 .pagination__btn--active {
+  height: 3.3rem;
+  line-height: 3.3rem;
+  border: 1px solid var(--gray-02);
   background: var(--text-primary);
   color: var(--text-inverse);
 }

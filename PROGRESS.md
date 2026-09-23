@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-23 (check:live now covers the core components — items 41–42) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-23 (check:live 37/37 — core components and the everyday controls, items 41–43) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -530,10 +530,33 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    visible in it (AdCard: every text row lands on live's pixel; live's last line box is 6px taller).
    Parity **318/318**, `check:design` 0 errors, build and `tsc` clean.
 
+43. **check:live batch 2 — the everyday controls.** Seven more specs (`Button`, `Chip`,
+   `Pagination` ×2, `BottomNav`, `Input`, `MobileHeader`): **37/37 match live**. Fixed in both
+   libraries:
+   - `Pagination`: live's page button is 32×32, **14/400 --black**, no padding; the current page
+     is the charcoal pill with a **1px --gray-02 border**, so 33 tall. Ours was 14/600 charcoal,
+     UA padding, no border.
+   - `Input`: live's field is **48 tall, 1px --gray-02, text 1.6rem** — ours was 46, --gray-03, 1.4rem.
+   - `BottomNav`: five **equal columns that fill the bar** (71.6 on a 390 phone), not fixed 72s
+     centred — that 1px per column was shifting every label and icon.
+   - `Chip`: live sizes the quick chip by **.8rem padding** around a 2.4rem line box, not a fixed
+     height. Same 42, honest box.
+   Script: `noText` (for elements holding different content, e.g. live page 1 vs the story's 5)
+   and a **fix for a bug I introduced in item 42** — screenshot clips are page coordinates, so a
+   scrolled-to anchor cropped the wrong region.
+   Deliberately not compared: `Button`'s width (live's only red button is the header CTA, which
+   carries a 130px min-width belonging to the header), `Input`'s padding (live hangs the 12px
+   inset on the `<input>`, we hang it on the field so the kit's single `<input>` matches),
+   `MobileHeader`'s padding and background image (live insets its children and paints a noise
+   PNG under the gradient; the 0.3% pixel diff covers it).
+   **Open:** `MegaMenu` has no spec — live's panel is 732 wide with several columns, ours renders
+   one 302-wide column. Worth a proper look at the story's data, not a spec tweak.
+
 ## 6. Next up
 
-0. **Every component needs a `check:live` spec.** 30 exist (all passing); still missing for
-   Button, Input, Chip, Pagination, Tabs, Toast, AccountMenu, MegaMenu and the mobile set.
+0. **Every component needs a `check:live` spec.** 37 exist (all passing); still missing for
+   Tabs, Select, Checkbox, Toggle, Pill, AccountMenu, MegaMenu (see item 43), SearchSuggestions
+   and most of the mobile set. Toast has no live state to capture (item 35).
    Before calling one done, add it to
    `scripts/check-live.mjs` and pass it.
 0b. **Continue the repo component batches** (user request 2026-09-21): portal batch 2 (date

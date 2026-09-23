@@ -3,8 +3,9 @@
 
 .nav {
   display: grid;
-  grid-template-columns: repeat(5, 7.2rem);
-  justify-content: center;
+  /* Five equal columns that fill the bar, not fixed 72s: on a 390 phone live's columns measure
+     71.6 = (390 - 4 × 8) / 5, which is what puts Home's label at x 19.8 (home.mobile). */
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.8rem;
   height: 5.9rem;
   padding: 0.7rem 0;

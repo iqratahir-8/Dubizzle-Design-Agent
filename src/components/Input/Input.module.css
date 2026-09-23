@@ -11,13 +11,18 @@
   font-family: var(--font-primary);
 }
 
+/* Live's form field (edit-profile.desktop): 48 tall, 1px --gray-02, radius 6, text 1.6rem with a
+   12px inset. Live hangs that inset on the <input> inside; we hang it on the field so the kit's
+   single <input> is the same element — the text lands in the same place either way. */
 .field {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  height: 4.6rem;
+  height: 4.8rem;
   padding: 0 1.2rem;
-  border: 1px solid var(--gray-03);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  border: 1px solid var(--gray-02);
   border-radius: var(--radius-md);
   background: var(--white);
   transition: border-color 0.15s;
@@ -47,7 +52,8 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: 1.4rem;
+  font-size: inherit;
+  line-height: inherit;
   color: var(--gray-06);
   font-family: var(--font-primary);
 }

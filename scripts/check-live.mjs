@@ -39,6 +39,8 @@ const TYPE = ['color', 'fontSize', 'fontWeight', 'lineHeight'];
    mask: [[x, y, w, h]] regions left out of the pixel diff — real content (a listing photo,
    an avatar) that the story can't and shouldn't copy.
    width: compare width too (off where the story's container sets it differently).
+   noText / noIcon: skip the text or icon offset compare, only where the two elements hold
+   different content (a different page number, a label centred inside a wider live box).
    noHeight: skip the height compare — only where the two are proven to line up by their text
    offsets and the box differs for a reason that isn't visible (see AdCard below). */
 export const SPECS = [
@@ -88,6 +90,27 @@ export const SPECS = [
      are compared unmasked. */
   { name: 'Header / active tab', live: ['property.desktop', 'Property', 2], story: ['layout-header--active-vertical-property', '[class*="_navLink_"]', 1], props: ['backgroundColor'], pixels: true, mask: [[16, 6, 30, 30]] },
   { name: 'Header / bar', live: ['home.desktop', { selector: 'header' }, 0], story: ['layout-header--without-category-strip', 'header'], props: ['backgroundColor', 'boxShadow'], width: true },
+  /* The only red button in any capture is the header's Post Your Ad, and it carries a 130px
+     min-width that belongs to the header, not to Button — so height, padding, radius and colour
+     are compared, width is not, and the label's type lives on a span inside live's button. */
+  { name: 'Button / primary', live: ['home.desktop', 'Post Your Ad', 2], story: ['components-button--primary', 'button'], props: BOX, noText: true },
+  { name: 'Chip / quick', live: ['cars-list.desktop', 'Mercedes-Benz', 0, 1], story: ['components-chip--quick', 'button'], props: [...BOX, ...TYPE], width: true, pixels: true },
+  /* the row itself can't be pixel-compared — the story's flex row stretches to Storybook's
+     width, while live's sits in a 260px block; its buttons are the part that must match */
+  /* no pixel diff on these two: live's row starts at page 1 and the story's at page 5, so the
+     crops hold different digits — the box, colours, radius and border are what must match */
+  { name: 'Pagination / current page', live: ['cars-list.desktop', '1', 0], story: ['components-pagination--default', '[aria-current]'], props: [...BOX, ...TYPE], width: true, noText: true },
+  { name: 'Pagination / page', live: ['cars-list.desktop', '2', 0, 1], story: ['components-pagination--default', 'button', 2], props: [...BOX, ...TYPE], width: true },
+  { name: 'BottomNav / bar', live: ['home.mobile', 'Chat', 3], story: ['mobile-bottomnav--home', 'nav'], props: BOX, width: true, pixels: true, mobile: true },
+  /* No pixel diff (the story's field stretches to Storybook's width) and no padding compare:
+     live hangs the 12px text inset on the <input> inside the field, we hang it on the field so
+     the design kit's single <input> can be the same element — the text lands in the same place. */
+  { name: 'Input / field', live: ['edit-profile.desktop', { placeholder: 'Name' }, 1], story: ['components-input--default', '[class*="_field_"]'], props: BOX.filter((p) => !p.startsWith('padding')) },
+  /* live's mobile home header is a plain grey div, the second block on the page — the first
+     390×75 one above it is the app banner, not the header. Padding and backgroundImage are left
+     out of the compare: live insets its children rather than the block, and paints the grey as a
+     white→grey gradient over a noise PNG we don't ship. The pixel diff (0.3%) covers both. */
+  { name: 'MobileHeader / bar', live: ['home.mobile', { selector: 'body > div:nth-child(2) > div:first-child > div:nth-child(2)' }, 0], story: ['mobile-mobileheader--home-full', 'header'], props: ['borderTopWidth', 'borderTopLeftRadius', 'backgroundColor'], width: true, pixels: true, mobile: true },
   { name: 'MobileFilters / header', live: ['m-filters.mobile', 'Reset', 4], story: ['mobile-mobilefilters--page', 'header'], props: BOX, width: true, pixels: true, mobile: true },
 ];
 
@@ -162,7 +185,9 @@ async function read(page, sel, props) {
     while ((t = w.nextNode())) if (t.nodeValue.trim()) { const rg = document.createRange(); rg.selectNodeContents(t); const b = rg.getBoundingClientRect(); text = { x: +(b.x - r.x).toFixed(1), y: +(b.y - r.y).toFixed(1), w: +b.width.toFixed(1), s: t.nodeValue.trim().slice(0, 24) }; break; }
     const ic = el.querySelector('svg, img'); let icon = null;
     if (ic) { const b = ic.getBoundingClientRect(); icon = { x: +(b.x - r.x).toFixed(1), y: +(b.y - r.y).toFixed(1), w: +b.width.toFixed(1), h: +b.height.toFixed(1) }; }
-    return { w: Math.round(r.width), h: Math.round(r.height), x: r.x, y: r.y, text, icon, props: Object.fromEntries(props.map((p) => [p, cs[p]])) };
+    /* x/y are PAGE coordinates (rect + scroll): screenshot clips are measured from the document
+       origin, and locate() scrolls a below-the-fold anchor into view before we get here. */
+    return { w: Math.round(r.width), h: Math.round(r.height), x: r.x + scrollX, y: r.y + scrollY, text, icon, props: Object.fromEntries(props.map((p) => [p, cs[p]])) };
   }, sel, props);
 }
 
@@ -210,7 +235,7 @@ for (const s of specs) {
   const diffs = props.filter((p) => a.props[p] !== b.props[p]).map((p) => `${p}: live ${a.props[p]} · ours ${b.props[p]}`);
   if (!s.noHeight && Math.abs(a.h - b.h) > SIZE_SLACK) diffs.push(`height: live ${a.h} · ours ${b.h}`);
   if (s.width && Math.abs(a.w - b.w) > SIZE_SLACK) diffs.push(`width: live ${a.w} · ours ${b.w}`);
-  if (a.text && b.text && (Math.abs(a.text.x - b.text.x) > 0.6 || Math.abs(a.text.y - b.text.y) > 0.6 || Math.abs(a.text.w - b.text.w) > 1.5))
+  if (!s.noText && a.text && b.text && (Math.abs(a.text.x - b.text.x) > 0.6 || Math.abs(a.text.y - b.text.y) > 0.6 || Math.abs(a.text.w - b.text.w) > 1.5))
     diffs.push(`text "${a.text.s}": live @${a.text.x},${a.text.y} w${a.text.w} · ours "${b.text.s}" @${b.text.x},${b.text.y} w${b.text.w}`);
   if (!s.noIcon && a.icon && b.icon && (Math.abs(a.icon.x - b.icon.x) > 0.6 || Math.abs(a.icon.y - b.icon.y) > 0.6 || Math.abs(a.icon.w - b.icon.w) > 0.6 || Math.abs(a.icon.h - b.icon.h) > 0.6))
     diffs.push(`icon: live @${a.icon.x},${a.icon.y} ${a.icon.w}×${a.icon.h} · ours @${b.icon.x},${b.icon.y} ${b.icon.w}×${b.icon.h}`);
