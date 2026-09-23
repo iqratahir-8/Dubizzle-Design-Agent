@@ -12,7 +12,10 @@
   font-family: var(--font-primary);
 }
 
+/* 15 below the field: live wraps it in a block that adds 7, then 8 of padding
+   (location-dropdown.desktop) — that is what puts the row below at y 87. */
 .searchField {
+  margin-bottom: 1.5rem;
   display: flex;
   height: 4.8rem;
   margin-inline: var(--space-4);
@@ -33,13 +36,16 @@
   font-size: 1.596rem;
 }
 
+/* Live's row is 50 tall — 8 above the 24px line, 16 below — and is closed by a 1px rule
+   (#edeeee) before "Choose location" (location-dropdown.desktop). */
 .currentLocation {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   width: 100%;
-  padding: 1.6rem;
+  padding: 0.8rem 1.6rem 1.6rem;
   border: 0;
+  border-bottom: 1px solid var(--top-banner-border-color);
   background: none;
   color: var(--blue-05);
   font-family: inherit;

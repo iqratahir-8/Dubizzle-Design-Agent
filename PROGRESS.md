@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-23 (check:live 37/37 — core components and the everyday controls, items 41–43) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-23 (check:live 42/42 — menus and overlays too, items 41–44) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -552,11 +552,29 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    **Open:** `MegaMenu` has no spec — live's panel is 732 wide with several columns, ours renders
    one 302-wide column. Worth a proper look at the story's data, not a spec tweak.
 
+44. **check:live batch 3 — menus and overlays.** Five more specs (`UserMenu` panel + row,
+   `SearchSuggestions`, `LocationDropdown`, `PageHead`): **42/42 match live**. Found and fixed:
+   - `PageHead`: live's listing title carries **letter-spacing -1px** — ours ran 22px wider on
+     the same string. Line-height is the ratio 1.1 (26.334), not a rounded rem.
+   - `LocationDropdown`: the "use current location" row is **50 tall (8 above, 16 below)** and is
+     closed by a **1px #edeeee rule**; the search field has **15px under it**. Ours was 58, no
+     rule, no gap — everything below sat 15px too high.
+   - `UserMenu`: the promo card is **8px padding, 1px --blue-03, 4px before the next row**
+     (ours: 12px padding, no border, 16px gap); rows are **20 inset, 20px icon, 6px gap**
+     (ours: 20/26), and the label's line box is 1.5 × the font.
+   - `SearchSuggestions`: live sets the **typed query bold in a 23px line box** — ours was
+     regular in a 24px one, and the row came out a pixel short.
+   Not compared, each with the reason in the spec: `UserMenu`'s total height (the captured
+   account has a different set of entries from the story's, and live wraps its promo icon in a
+   45px block against our 40), the padding live hangs on inner divs, and the two panels' widths,
+   which follow their containers.
+
 ## 6. Next up
 
-0. **Every component needs a `check:live` spec.** 37 exist (all passing); still missing for
-   Tabs, Select, Checkbox, Toggle, Pill, AccountMenu, MegaMenu (see item 43), SearchSuggestions
-   and most of the mobile set. Toast has no live state to capture (item 35).
+0. **Every component needs a `check:live` spec.** 42 exist (all passing); still missing for
+   Tabs, Select, Checkbox, Toggle, Radio, Pill, AccountMenu, MegaMenu (see item 43) and most of
+   the mobile set (`settings-notifications.desktop` has live toggles, `post-details.desktop` has
+   live selects). Toast has no live state to capture (item 35).
    Before calling one done, add it to
    `scripts/check-live.mjs` and pass it.
 0b. **Continue the repo component batches** (user request 2026-09-21): portal batch 2 (date

@@ -111,6 +111,16 @@ export const SPECS = [
      out of the compare: live insets its children rather than the block, and paints the grey as a
      white→grey gradient over a noise PNG we don't ship. The pixel diff (0.3%) covers both. */
   { name: 'MobileHeader / bar', live: ['home.mobile', { selector: 'body > div:nth-child(2) > div:first-child > div:nth-child(2)' }, 0], story: ['mobile-mobileheader--home-full', 'header'], props: ['borderTopWidth', 'borderTopLeftRadius', 'backgroundColor'], width: true, pixels: true, mobile: true },
+  /* The panel's own chrome and its rows are what UserMenu owns; its total height is content —
+     live's account has a different set of entries from the story's, and live's promo card wraps
+     its icon in a 45px block against our 40. Its rows are 57 in both. */
+  { name: 'UserMenu / panel', live: ['user-menu.desktop', 'Edit Profile', 4], story: ['layout-usermenu--default', '[class*="_panel_"]'], props: BOX, width: true, noHeight: true, noText: true, noIcon: true },
+  { name: 'UserMenu / row', live: ['user-menu.desktop', 'Edit Profile', 2], story: ['layout-usermenu--default', '[class*="_row_"]'], props: [...BOX.filter((p) => !p.startsWith('padding')), ...TYPE], width: true, pixels: true, noText: true },  /* live's inset sits on a div inside the row, which also puts its label's line box 1.5px higher */
+  /* live's first row is the highlighted one, so compare its second against ours */
+  { name: 'SearchSuggestions / row', live: ['search-suggestions.desktop', 'Car Spare Parts', 2], story: ['components-searchsuggestions--default', '[class*="_row_"]', 2], props: BOX.filter((p) => p !== 'borderTopColor'), noIcon: true, noText: true },  /* the arrow sits at the right edge of a panel as wide as its search field, and live's query is an <em> + <br> where ours is a flex column, so the glyphs sit 3px apart inside the same 45px block */
+  { name: 'LocationDropdown / panel', live: ['location-dropdown.desktop', 'Alexandria', 2], story: ['components-locationdropdown--default', '[class*="_panel_"]'], props: BOX, width: true, pixels: true },
+  /* no pixels: an <h1> is a block, so each one is as wide as its own container */
+  { name: 'PageHead / title', live: ['cars-list.desktop', 'Cars for Sale in Egypt', 0], story: ['components-pagehead--default', 'h1'], props: TYPE },
   { name: 'MobileFilters / header', live: ['m-filters.mobile', 'Reset', 4], story: ['mobile-mobilefilters--page', 'header'], props: BOX, width: true, pixels: true, mobile: true },
 ];
 

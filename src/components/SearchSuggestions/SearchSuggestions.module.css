@@ -39,7 +39,10 @@
 .query {
   color: var(--gray-06);
   font-size: 1.6rem;
-  line-height: 2.4rem;
+  /* Live sets the typed query in bold inside a 23px line box, with the category under it on a
+     20px line — the row's 45px content (search-suggestions.desktop). */
+  font-weight: var(--weight-bold);
+  line-height: 2.3rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

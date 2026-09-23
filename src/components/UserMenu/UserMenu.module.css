@@ -75,13 +75,15 @@
   text-decoration: none;
 }
 
+/* Live's promo card: 8px above and below, none at the sides, a 1px --blue-03 border and only
+   4px before the next row (user-menu.desktop). */
 .promo {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  margin: 0 1.6rem 1.6rem;
-  padding: 1.2rem;
-  border: 0;
+  margin: 0 1.6rem 0.4rem;
+  padding: 0.8rem 0;
+  border: 1px solid var(--blue-03);
   border-radius: var(--radius-md);
   background: var(--blue-02);
   text-align: start;
@@ -122,7 +124,8 @@
 .row {
   display: flex;
   align-items: center;
-  gap: 2.6rem;
+  /* Live: 20 inset, a 20px icon, then 6 before the label — the text lands at x 46. */
+  gap: 0.6rem;
   height: 5.7rem;
   padding-inline: 2rem;
   color: var(--black);
@@ -141,5 +144,6 @@
 
 .rowLabel {
   font-size: 1.596rem;
-  line-height: 2.4rem;
+  /* live: 1.5 × the 15.96 font, i.e. 23.94 — not the 2.4rem step */
+  line-height: 1.5;
 }
