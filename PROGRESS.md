@@ -6,6 +6,13 @@ so it is safe to switch accounts at any point.
 
 Last updated: 2026-09-23 (check:live 37/37 — core components and the everyday controls, items 41–43) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
+**Parallel branches note (2026-09-23):** three more worktrees exist alongside
+`claude/keen-hypatia-ftrhz4`, each to avoid colliding with in-progress uncommitted work on
+that branch — `claude/skills-and-design-agent` (`~/Dubizzle-Design-System-skills`),
+`claude/chat-sell-pitch` (`~/Dubizzle-Design-System-chat-pitch`), and this one,
+`claude/live-captures-lfs` (`~/Dubizzle-Design-System-live-lfs`, item 44). Reconcile all
+branches' `PROGRESS.md` on merge.
+
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
 
@@ -39,9 +46,18 @@ merged in, never overwritten. Push with: `git push origin HEAD:main HEAD:claude/
 git push iqratahir HEAD:main HEAD:claude/keen-hypatia-ftrhz4`. Keep both **private**
 (licensed Proxima Nova / GESS). New machine: `git clone git@github.com:chaudhary-umair-ahmad/Dubizzle-Design-System.git`, `npm install`.
 
-**Not in git (by design):** `design-kit/reference/live/` — all captured live pages and
-screenshots (gitignored: large, and account screens are private). They're in the folder on this
-Mac; on a new machine, re-capture (section 4).
+**`design-kit/reference/live/*.html` is now in git, via Git LFS (2026-09-23, branch
+`claude/live-captures-lfs`)** — the whole folder was gitignored before this (large: 2.4GB
+combined with screenshots; some captures are logged-in account data). The user asked for it
+on GitHub; see item 44 below for the full reasoning, the privacy check done before
+committing, and why screenshots are deliberately excluded. `.gitattributes` routes
+`design-kit/reference/live/**/*.html` (244 files, 792MB) through LFS — fits under GitHub's
+free 1GB LFS quota. **`design-kit/reference/live/screens/` (screenshots, 1.6GB) stays
+gitignored/local** — a verification aid for `check:live`/`check:captures`, not something
+the design work depends on; regenerate with `npm run capture:rendered` / `capture:account`.
+**Git LFS must be installed** (`brew install git-lfs && git lfs install`) before
+cloning/pulling this repo now, or the tracked HTML files resolve to pointer text instead of
+content.
 
 ## 2. What the project is
 
@@ -77,8 +93,14 @@ human-designed, with no "AI slop", and that can be regenerated when a new releas
 - The capture Chrome profile (session cookies) lives at `~/.dubizzle-capture/chrome-profile`,
   outside the repo. Never commit or copy it.
 - **Never run `npm audit fix --force`** — it upgrades vite past 6 and breaks Storybook.
-- Repo must stay **private** (licensed Proxima Nova / GESS fonts, internal tokens). The current
-  MIT `LICENSE` is wrong and should be replaced (not done yet).
+- Repo must stay **private** (licensed Proxima Nova / GESS fonts — actual `.otf`/`.woff`
+  binaries are committed, not just CSS references — plus internal tokens). The current MIT
+  `LICENSE` is wrong and should be replaced (not done yet) — it names the user as sole
+  copyright holder and grants MIT rights over content they don't hold the license to. **Was
+  briefly made public on 2026-09-23** mid-session (see item 44) — no confirmed leak, but this
+  combination (wrong LICENSE + real font binaries + now `design-kit/reference/live/*.html`
+  in git too) makes the private setting load-bearing, not a formality. Fix the LICENSE before
+  the next time this repo's visibility changes.
 - Don't push (no access from this Mac).
 
 ## 4. Live capture tooling
@@ -552,8 +574,41 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    **Open:** `MegaMenu` has no spec — live's panel is 732 wide with several columns, ours renders
    one 302-wide column. Worth a proper look at the story's data, not a spec tweak.
 
+44. **`design-kit/reference/live/*.html` moved from gitignored to Git LFS** (branch
+   `claude/live-captures-lfs`, worktree `~/Dubizzle-Design-System-live-lfs`; user request:
+   "upload all the live captures we have done in the online repo"). Checked two things before
+   doing it, not just flipping the ignore rule: (1) size — 2.4GB combined with screenshots,
+   so plain git would bloat history permanently; (2) privacy — the account captures in here
+   (My Ads, chat, profile, settings, packages) go through this project's two-layer redaction
+   (`scripts/lib/redact.mjs`) before being saved. Read that code rather than assuming: it's a
+   real "leaks"/"visibleLeaks" gate that refuses to save/screenshot anything with the account
+   holder's name/phone still in it, plus separate scrubbing for third parties' contact
+   details and chat message content. Confirmed the chat inbox names treated as "real measured
+   data" earlier this session (Mona S., Karim M., Nile Realty, etc.) are actually the
+   redaction's own fixture pool (`scripts/lib/redact.mjs`'s `chatNames`), not real people.
+   **First attempt tracked screenshots too** (556 files, 2.4GB) — re-scoped to HTML only
+   (244 files, 792MB) after checking GitHub's free LFS quota is 1GB storage/bandwidth per
+   repo; screenshots stay gitignored/local, a `check:live`/`check:captures` verification aid
+   the design work doesn't otherwise depend on. Branch was reset and redone rather than
+   layering a "remove the PNGs" commit on top — git-lfs uploads every object referenced
+   anywhere in pushed history by default, so that wouldn't have avoided the upload; nothing
+   had been successfully pushed yet, so redoing from the base was safe.
+   **Mid-task, the repo was briefly made public** — surfaced a separate, pre-existing problem:
+   commit history already has real Proxima Nova/GESS Two font binaries under a plain MIT
+   LICENSE naming the user as sole copyright holder. Not something this task caused, but going
+   public activated it. User made the repo private again before anything was pushed; the
+   LICENSE/font issue is still open (see item 0d below and the ground rules section).
+   `git-lfs` wasn't installed on this Mac — installed via `brew install git-lfs`. Not yet
+   pushed to either remote; that's next once the user confirms.
+
 ## 6. Next up
 
+0d. **Fix the LICENSE / font-binary problem** (surfaced by item 44, not caused by it — the
+   MIT `LICENSE` naming the user as sole copyright holder over committed Proxima Nova/GESS Two
+   binaries predates this session). Replace the LICENSE with something that doesn't misclaim
+   rights over licensed fonts and dubizzle's internal tokens; consider whether the font
+   binaries should be in git at all versus referenced from a licensed source at build time.
+   Do this before the repo's visibility changes again.
 0. **Every component needs a `check:live` spec.** 37 exist (all passing); still missing for
    Tabs, Select, Checkbox, Toggle, Pill, AccountMenu, MegaMenu (see item 43), SearchSuggestions
    and most of the mobile set. Toast has no live state to capture (item 35).
