@@ -284,7 +284,11 @@ Heights: 3.2 / 4 / 4.8rem. Never invent a fifth variant or a new size.
 
 **Density** — desktop search shows 3 cards per row at ≥1280px, 2 at ≥768px, 1 below. Gap is 1.2rem. That is tighter than feels comfortable. Keep it.
 
-**RTL** — layouts flip for Arabic. Use `margin-inline-start` / `padding-inline-end` / `inset-inline-start`, never `left` / `right`.
+**RTL** — layouts flip for Arabic. Use `margin-inline-start` / `padding-inline-end` /
+`inset-inline-start` / `text-align: start`, never `left` / `right`. `npm run check:rtl` fails the
+build on a physical direction; a rule that genuinely must not mirror opts out with a trailing
+`/* rtl-ok: why */`. The Arabic side is captured — `design-kit/reference/live/*.ar.*.html`, 38
+pages × desktop and mobile — so "we don't know what Arabic looks like" is no longer an excuse.
 
 ---
 
@@ -457,6 +461,7 @@ built from guessed colours will not match the one screen that already ships one.
 - [ ] The densest reasonable layout was chosen, not the airiest
 - [ ] It works at 375px and at 1280px
 - [ ] `npm run check:design <file>` passes
+- [ ] `npm run check:rtl` passes — every direction is logical, so the component mirrors in Arabic
 - [ ] A new or changed **product component** has a `check:live` spec and passes it — its Storybook story pixel-diffed against the live capture (≤3%, computed values equal). Parity with the kit is not enough: both sides can be wrong together (the `--shadow-menu` collision, the .otf font metrics).
 
 ---

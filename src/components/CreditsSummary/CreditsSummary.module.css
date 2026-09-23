@@ -6,7 +6,7 @@
 .label { font-size: 1.596rem; line-height: 2.394rem; }
 .value { display: flex; align-items: center; gap: 0.8rem; font-size: 2.394rem; font-weight: 700; line-height: 3.591rem; }
 .coin { width: 2.4rem; height: 3.6rem; }
-.coins { position: absolute; top: -2.5rem; right: -1.03rem; width: 9.2rem; opacity: 0.4; }
+.coins { position: absolute; top: -2.5rem; inset-inline-end: -1.03rem; width: 9.2rem; opacity: 0.4; }
 .usage { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: var(--primary-spacing); }
 .ratio { display: flex; justify-content: flex-end; color: var(--gray-05); }
 .ratio b { font-weight: 700; }

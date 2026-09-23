@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-23 (check:live 42/42 — menus and overlays too, items 41–44) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-23 (Arabic/RTL captured and the library made to mirror — item 45) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -568,6 +568,28 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    account has a different set of entries from the story's, and live wraps its promo icon in a
    45px block against our 40), the padding live hangs on inner divs, and the two panels' widths,
    which follow their containers.
+
+45. **The Arabic side exists now** (user: "yes do it"). `capture:live` gained `--locale=ar`:
+   Arabic lives at `/ar/`, and each capture is saved beside its English twin as
+   `<name>.ar.<layout>.html`, so nothing is overwritten. **38 pages × desktop and mobile = 76
+   captures**, one failure (`not-found`, which really is an HTTP 404 in both locales).
+   What they show: `dir="rtl"`, `lang="ar"`, the same font stack with **GESS** carrying the
+   Arabic glyphs, the same box sizes, and the layout mirrored (a home rail card sits at x 1040
+   instead of x 80). The Arabic home header measures 163 against 145 — **not** a design
+   difference: its Post Your Ad block carries a 21px element rendering the literal text
+   "JUiQoL", an artifact of the frozen capture. Re-capture that one with `capture:rendered`
+   before trusting the Arabic header's height.
+   **The library now mirrors.** 53 rules across 18 files used physical directions
+   (`padding-right`, `left:`, `text-align: left`, `border-right`) and kept their English layout
+   when the page flipped — the heart, the Featured badge, the toast, the dialog close, the
+   Toggle knob, the portal tab borders. All converted to logical properties in both libraries.
+   New `npm run check:rtl` fails on any physical direction, with `/* rtl-ok: why */` as the
+   documented opt-out; it is in RULES.md §3 and the done-list.
+   Proof: `AdCard` rendered under `dir="rtl"` mirrors correctly — heart left, price right,
+   spec line reversed. Parity **318/318**, check:live **42/42**, design 0 errors, build clean.
+   **Next for Arabic:** check:live specs that compare our components against the `.ar` captures
+   (the script's `locale` is not wired into specs yet), GESS metrics in the type scale, and the
+   Arabic numerals question (live uses Western digits in Arabic — worth confirming with the user).
 
 ## 6. Next up
 

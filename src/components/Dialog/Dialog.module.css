@@ -28,7 +28,7 @@
 .close {
   position: absolute;
   top: 1.6rem;
-  right: 1.6rem;
+  inset-inline-end: 1.6rem;
   display: inline-flex;
   padding: 0;
   border: 0;

@@ -4,7 +4,7 @@
 .panel { position: relative; box-sizing: border-box; max-width: calc(100% - 3.2rem); background: var(--white); font-family: var(--font-primary); color: var(--text-color); }
 .md { width: 60rem; padding: 2.4rem; border-radius: 0.8rem; }
 .sm { width: 46.6rem; padding: 5.6rem 2.4rem 2.4rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-modal); }
-.close { position: absolute; top: 2.64rem; right: 2.4rem; display: inline-flex; padding: 0; border: 0; background: none; color: var(--text-color); cursor: pointer; }
+.close { position: absolute; top: 2.64rem; inset-inline-end: 2.4rem; display: inline-flex; padding: 0; border: 0; background: none; color: var(--text-color); cursor: pointer; }
 .md .title { margin-bottom: 0.4rem; font-size: 1.988rem; font-weight: 600; line-height: 2.982rem; }
 .sm .title { margin-bottom: 2rem; font-size: 2.4rem; font-weight: 700; line-height: 3.6rem; text-align: center; }
 .subtitle { margin: 0 0 2rem; color: #333; font-size: var(--text-md); line-height: 2.4rem; }
@@ -20,5 +20,5 @@
 .table { width: 100%; overflow: hidden; border-collapse: collapse; border: 0.1rem solid var(--gray-02); border-radius: var(--radius-sm); background: var(--white); font-size: var(--text-md); line-height: 2.4rem; }
 .table tr + tr { border-top: 0.1rem solid var(--gray-02); }
 .table td { padding: 1.2rem 1.6rem; }
-.key { width: 40%; border-right: 0.1rem solid var(--gray-02); background: #f5f5f5; color: #666; }
+.key { width: 40%; border-inline-end: 0.1rem solid var(--gray-02); background: #f5f5f5; color: #666; }
 .val { background: var(--white); color: #000; font-weight: 600; }

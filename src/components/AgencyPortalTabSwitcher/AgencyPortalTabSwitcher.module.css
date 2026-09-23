@@ -30,10 +30,10 @@
 }
 .sm .text { margin: 0.85rem 0; }
 /* sm (Leads, Candidates, VIP): live separates every tab with a full-height red-03 rule */
-.sm .tab:not(:last-child) { border-right: 0.1rem solid var(--pro-tools-selection-color); }
-.sm .tab > .text { border-left: 0 !important; }
+.sm .tab:not(:last-child) { border-inline-end: 0.1rem solid var(--pro-tools-selection-color); }
+.sm .tab > .text { border-inline-start: 0 !important; }
 /* rule between two resting tabs; the active tab needs none */
-.tab:not(.active) + .tab:not(.active) > .text { border-left: 0.1rem solid var(--secondary-light-grey-color); }
+.tab:not(.active) + .tab:not(.active) > .text { border-inline-start: 0.1rem solid var(--secondary-light-grey-color); }
 .active {
   background: var(--agency-portal-tab-switcher-active-background-color);
   color: var(--agency-portal-tab-switcher-active-text-color);

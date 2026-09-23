@@ -29,7 +29,7 @@
 .brandGroup {
   display: flex;
   align-items: center;
-  margin-left: -1.6rem;
+  margin-inline-start: -1.6rem;
   position: relative;
   z-index: 1;
 }

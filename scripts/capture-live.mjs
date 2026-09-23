@@ -8,9 +8,11 @@
  * SingleFile needed. Content that loads after first paint (e.g. "Discover
  * Listings") is not included; the same is true of browser saves.
  *
- *   npm run capture:live              # capture anything missing
- *   npm run capture:live -- --force   # re-capture everything
- *   npm run capture:live -- car-dpv   # only named pages
+ *   npm run capture:live                    # capture anything missing
+ *   npm run capture:live -- --force         # re-capture everything
+ *   npm run capture:live -- car-dpv         # only named pages
+ *   npm run capture:live -- --locale=ar     # the Arabic (RTL) side of the same pages,
+ *                                           # saved as <name>.ar.<layout>.html
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
@@ -35,6 +37,15 @@ const DELAY_MS = 2000;
 const args = process.argv.slice(2);
 const force = args.includes('--force');
 const only = new Set(args.filter((a) => !a.startsWith('--')));
+/* dubizzle serves Arabic under /ar/ with dir="rtl" and GESS instead of Proxima Nova. Those
+   captures sit beside the English ones as <name>.ar.<layout>.html so nothing overwrites. */
+const locale = (args.find((a) => a.startsWith('--locale='))?.split('=')[1] ?? 'en').toLowerCase();
+if (!['en', 'ar'].includes(locale)) {
+  console.error(`--locale must be en or ar, not "${locale}"`);
+  process.exit(2);
+}
+const suffix = locale === 'en' ? '' : `.${locale}`;
+const localize = (path) => (locale === 'en' ? path : path.replace('/en/', '/ar/'));
 
 const pages = Object.values(manifest.tiers).flatMap((tier) => Object.entries(tier));
 const unknown = [...only].filter((name) => !pages.some(([n]) => n === name));
@@ -140,31 +151,32 @@ let fetched = 0;
 
 for (const [name, path] of pages) {
   if (only.size && !only.has(name)) continue;
+  const label = `${name}${suffix}`;
 
   for (const [layout, ua] of Object.entries(USER_AGENTS)) {
-    const file = join(OUT, `${name}.${layout}.html`);
+    const file = join(OUT, `${name}${suffix}.${layout}.html`);
     if (existsSync(file) && !force) {
-      results.push({ name, layout, status: 'kept', detail: `${(statSync(file).size / 1e6).toFixed(1)}MB existing` });
+      results.push({ name: label, layout, status: 'kept', detail: `${(statSync(file).size / 1e6).toFixed(1)}MB existing` });
       continue;
     }
 
     if (fetched++) await sleep(DELAY_MS);
     try {
-      const response = await fetch(ORIGIN + path, {
-        headers: { 'User-Agent': ua, 'Accept-Language': 'en' },
+      const response = await fetch(ORIGIN + localize(path), {
+        headers: { 'User-Agent': ua, 'Accept-Language': locale },
         redirect: 'follow',
       });
       const html = await response.text();
       const problems = problemsWith(html, response);
       if (problems.length) {
-        results.push({ name, layout, status: 'FAILED', detail: problems.join('; ') });
+        results.push({ name: label, layout, status: 'FAILED', detail: problems.join('; ') });
         continue;
       }
       writeFileSync(file, absolutize(html, ORIGIN));
       const h1 = html.match(/<h1[^>]*>(.*?)<\/h1>/s)?.[1].replace(/<[^>]+>/g, '').trim();
-      results.push({ name, layout, status: 'saved', detail: `${(html.length / 1e6).toFixed(1)}MB · ${h1 ?? '(no h1)'}` });
+      results.push({ name: label, layout, status: 'saved', detail: `${(html.length / 1e6).toFixed(1)}MB · ${h1 ?? '(no h1)'}` });
     } catch (error) {
-      results.push({ name, layout, status: 'FAILED', detail: error.message });
+      results.push({ name: label, layout, status: 'FAILED', detail: error.message });
     }
   }
 }
