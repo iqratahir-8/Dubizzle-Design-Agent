@@ -6,6 +6,7 @@ working list. Work top-down; when one is done: measure (see `live-capture` skill
 `check:parity` pairs, record values in `docs/LIVE-MEASUREMENTS.md`, tick it here, commit, update PROGRESS.md.
 
 Status: ✅ done (live-measured, React + kit, parity) · 🟡 exists but not live-verified · ⬜ to do
+Last reconciled against `src/components/` on 2026-09-23.
 
 ## Done
 - ✅ Grid ad card — `AdCard` desktop + mobile (home/landing rails, DPV similar ads)
@@ -109,15 +110,15 @@ against the live portal captures (live wins). Filter option lists are live's own
 
 ## To do — desktop
 - ⬜ Filter rail: Categories tree with counts, Location, Brand & Model, Price range — listings
-- ⬜ Sort menu (the list that opens under `SortBy`) + desktop Prime Dealers First checkbox row
-- ⬜ Featured Businesses strip (with arrow) — listings
+- ✅ Sort menu (`SortMenu`, check:live 0.0%) — **open:** the desktop Prime Dealers First checkbox row
+- ✅ Featured Businesses strip (`FeaturedBusinesses`)
 - ⬜ Home category directory (12 categories × 4 links + "All in …") and hero banner
 - ⬜ Section rail header ("Cars for Sale" + "View More") — home
-- ⬜ Popular searches / SEO link columns with "View more"
+- ✅ Popular searches / SEO link columns (`PopularSearches`)
 - ⬜ "Join us in building a safer community… Verify now" sticky bottom banner
-- ⬜ DPV: gallery, price/title box, seller card, details table, description, location, safety tips
+- 🟡 DPV: gallery done (`AdGallery`); **open:** price/title box, seller card, details table, description, location, safety tips
 - ⬜ Seller / business profile header (logo, Verified Business, published ads, Share agency profile)
-- ⬜ Login dialog (Login with Phone / Email / Google / Facebook)
+- ✅ Login dialog (`LoginDialog`, check:live 0.1%)
 - ⬜ 404 page
 
 ## To do — account and flows (local captures)
