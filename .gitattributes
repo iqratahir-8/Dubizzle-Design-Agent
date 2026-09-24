@@ -1,0 +1,9 @@
+# design-kit/reference/live/*.html — frozen live-capture snapshots (inlined fonts/CSSOM),
+# large and rarely diffed line by line. Routed through Git LFS instead of plain git so
+# history doesn't carry every byte of every version forever. See PROGRESS.md item 44.
+#
+# Screenshots (screens/*.png, 1.6GB) are deliberately NOT included here — they stay
+# gitignored/local to keep this under GitHub's free 1GB LFS quota. Only the HTML captures
+# (783MB) are tracked; they're the actual measured ground truth this repo's tooling and
+# design work depend on.
+design-kit/reference/live/**/*.html filter=lfs diff=lfs merge=lfs -text
