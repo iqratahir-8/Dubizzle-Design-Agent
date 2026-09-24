@@ -38,8 +38,12 @@ accurate as the system grows.
 **Git (2026-09-22):** two private remotes, kept identical — push to both.
 - **`origin` = `git@github.com:chaudhary-umair-ahmad/Dubizzle-Design-System.git`** (the canonical repo;
   `iqratahir-8` was added as a collaborator on 2026-09-22 and pushes over SSH).
-- `iqratahir` = `git@github.com:iqratahir-8/Dubizzle-Design-System.git` (a mirror made while the owner
-  was away).
+- `iqratahir` = `git@github.com:iqratahir-8/Dubizzle-Design-Agent.git` (a mirror made while the owner
+  was away). **Renamed from `Dubizzle-Design-System` to `Dubizzle-Design-Agent` on GitHub's side**
+  (discovered 2026-09-23 when a push got a "this repository moved" notice) — fixed with
+  `git remote set-url iqratahir git@github.com:iqratahir-8/Dubizzle-Design-Agent.git`. Remotes
+  live in `.git/config`, shared by every worktree of this repo, so this one command fixed it
+  everywhere at once — no need to repeat it per worktree.
 Branches on both: `main` and `claude/keen-hypatia-ftrhz4` = the current work; `legacy-main` = the first
 session's separate history. The owner's one extra commit (Remotion-skills gitignore, 79973fd) was
 merged in, never overwritten. Push with: `git push origin HEAD:main HEAD:claude/keen-hypatia-ftrhz4 &&
