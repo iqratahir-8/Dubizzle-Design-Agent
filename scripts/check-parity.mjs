@@ -275,6 +275,18 @@ export const PAIRS = [
   ['ChatInbox / row', { story: 'chat-chatinbox--default', sel: '[class*="_row_"]', n: 1, props: SIZED }, { sel: '[data-parity="chat-inbox"] .conversation', n: 1 }],
   ['ChatInbox / avatar', { story: 'chat-chatinbox--default', sel: '[class*="_avatar_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-inbox"] .conversation__avatar', n: 0 }],
   ['ChatInbox / ad line', { story: 'chat-chatinbox--default', sel: '[class*="_ad_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-inbox"] .conversation__ad', n: 0 }],
+  /* Chat thread (live-measured on chat-thread.desktop, 2026-09-23) */
+  ['ChatThread / header', { story: 'chat-chatthread--conversation', sel: '[class*="_header_"]', n: 0, props: SIZED }, { sel: '[data-parity="chat-thread"] .chat-thread-header', n: 0 }],
+  ['ChatThread / name', { story: 'chat-chatthread--conversation', sel: '[class*="_name_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-thread"] .chat-thread-header__name', n: 0 }],
+  ['ChatThread / ad strip', { story: 'chat-chatthread--conversation', sel: '[class*="_adStrip_"]', n: 0, props: SIZED }, { sel: '[data-parity="chat-thread"] .chat-ad-strip', n: 0 }],
+  ['ChatThread / view ad', { story: 'chat-chatthread--conversation', sel: '[class*="_viewAd_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-thread"] .chat-ad-strip__view', n: 0 }],
+  ['ChatThread / bubble', { story: 'chat-chatthread--conversation', sel: '[class*="_bubble_"]', n: 1, props: ALL }, { sel: '[data-parity="chat-thread"] .bubble', n: 1 }],
+  ['ChatThread / own bubble', { story: 'chat-chatthread--conversation', sel: '[class*="_bubbleOwn_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-thread"] .bubble--own', n: 0 }],
+  ['ChatThread / time', { story: 'chat-chatthread--conversation', sel: '[class*="_time_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-thread"] .bubble__time', n: 0 }],
+  ['ChatThread / day', { story: 'chat-chatthread--conversation', sel: '[class*="_day_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-thread"] .thread__day', n: 0 }],
+  ['ChatThread / tab', { story: 'chat-chatthread--conversation', sel: '[class*="_tabActive_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-thread"] .chat-tab--active', n: 0 }],
+  ['ChatThread / composer', { story: 'chat-chatthread--conversation', sel: '[class*="_composer_"]', n: 0, props: SIZED }, { sel: '[data-parity="chat-thread"] .composer', n: 0 }],
+  ['ChatThread / send', { story: 'chat-chatthread--conversation', sel: '[class*="_send_"]', n: 0, props: ALL }, { sel: '[data-parity="chat-thread"] .composer__send', n: 0 }],
   /* Ad detail page (live-measured on car-dpv, 2026-09-23) */
   ['AdPriceHeader / price', { story: 'ad-detail-adpriceheader--car', sel: '[class*="_price_"]', n: 0, props: ALL }, { sel: '[data-parity="ad-price-header"] .ad-price-header__price', n: 0 }],
   ['AdPriceHeader / down payment', { story: 'ad-detail-adpriceheader--car', sel: '[class*="_downPayment_"]', n: 0, props: ALL }, { sel: '[data-parity="ad-price-header"] .ad-price-header__down-payment', n: 0 }],

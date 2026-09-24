@@ -1,0 +1,291 @@
+/* The open conversation on the chat screen. Measured on the live capture
+   (chat-thread.desktop, 2026-09-23) — the first capture of this screen; before it, the
+   thread was a proposal. Mirrors .chat-thread-* in patterns.css (npm run check:parity). */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  height: 6.4rem;
+  padding-inline: 2.4rem;
+  font-family: var(--font-primary);
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--red-01);
+  font-size: 2.4rem;
+  font-weight: var(--weight-bold);
+  color: var(--red-05);
+}
+
+.who {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  margin: 0;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.394rem;
+  color: var(--gray-06);
+}
+
+.lastActive {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  color: var(--gray-05);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.action {
+  width: 5.6rem;
+  height: 4.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+/* The ad under the header: 73 tall on white, a 40px thumb and the outlined View Ad. */
+.adStrip {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  height: 7.3rem;
+  padding-inline: 2.4rem;
+  background: var(--surface-card);
+  font-family: var(--font-primary);
+}
+
+.adThumb {
+  width: 4rem;
+  height: 4rem;
+  flex: none;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.adText {
+  flex: 1;
+  min-width: 0;
+}
+
+.adTitle {
+  margin: 0;
+  font-size: 1.792rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.7rem;
+  color: var(--gray-06);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.adPrice {
+  margin: 0;
+  font-size: 1.596rem;
+  line-height: 2.394rem;
+  color: var(--gray-06);
+}
+
+.viewAd {
+  flex: none;
+  height: 3.8rem;
+  padding-inline: 1.6rem;
+  border: 1px solid var(--red-04);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.394rem;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.8rem;
+  background: var(--surface-card);
+  font-family: var(--font-primary);
+}
+
+/* "TODAY" sits on a white pill, 28 tall, in --gray-04. */
+.day {
+  width: fit-content;
+  /* live holds the pill at 190 whatever the word is */
+  min-width: 19rem;
+  margin: 0.8rem auto;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid var(--gray-04);
+  border-radius: var(--radius-full);
+  text-align: center;
+  background: var(--surface-card);
+  font-size: 1.204rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.806rem;
+  color: var(--gray-04);
+}
+
+.row {
+  display: flex;
+}
+
+.rowOwn {
+  justify-content: flex-end;
+}
+
+/* 8/16 on --gray-01, text 15.96/23.94 in --black, the time 14/21 in --gray-05. The corner
+   facing the speaker is square on every message after the first in a run. */
+.bubble {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  max-width: 60%;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-lg);
+  border-start-start-radius: 0;
+  background: var(--gray-01);
+  color: var(--gray-06);
+}
+
+/* The words themselves are 15.96/23.94 in --black; the box keeps the inherited 14/21. */
+.text {
+  font-size: 1.596rem;
+  line-height: 2.394rem;
+  color: var(--black);
+}
+
+.bubbleOwn {
+  border-start-start-radius: var(--radius-lg);
+  border-start-end-radius: 0;
+  background: var(--blue-02);
+}
+
+/* The first message in a run keeps both top corners. */
+.bubbleFirst {
+  border-start-start-radius: var(--radius-lg);
+  border-start-end-radius: var(--radius-lg);
+}
+
+.time {
+  flex: none;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  color: var(--gray-05);
+}
+
+/* An image is sent as a 4px frame around the picture, not as text. */
+.imageBubble {
+  padding: 0.4rem;
+}
+
+.imageBubble img {
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+/* The composer sits under two tabs on an 18px shoulder. */
+.tabs {
+  display: flex;
+  height: 5rem;
+  border-start-start-radius: 1.8rem;
+  border-start-end-radius: 1.8rem;
+  background: var(--surface-card);
+  font-family: var(--font-primary);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.2rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.394rem;
+  color: var(--gray-04);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tabActive {
+  border-bottom-color: var(--red-05);
+  color: var(--gray-06);
+}
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  height: 5.7rem;
+  padding-inline: 2.4rem;
+  border-top: 1px solid var(--neutral-color-light);
+  background: var(--surface-card);
+  font-family: var(--font-primary);
+}
+
+.attach {
+  flex: none;
+  display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  font-size: 1.596rem;
+  color: var(--gray-06);
+}
+
+.input::placeholder {
+  color: var(--gray-04);
+}
+
+.send {
+  flex: none;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--gray-06);
+  color: var(--white);
+  cursor: pointer;
+}

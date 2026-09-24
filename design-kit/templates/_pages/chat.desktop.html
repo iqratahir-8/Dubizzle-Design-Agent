@@ -1,4 +1,4 @@
-<!--@ {"title":"Chat | dubizzle Egypt","header":"desktop","bodyClass":"page-bg-search","note":"Inbox list measured on the live chat screen (511 wide, 100px rows, 40px avatar at 24, content at 69). The thread on the right is a PROPOSAL — the capture shows the empty state, because the agent never opens a real conversation. Everyone in it is a fixture."} @-->
+<!--@ {"title":"Chat | dubizzle Egypt","header":"desktop","bodyClass":"page-bg-search","note":"Both halves measured on live — the inbox from chat.desktop, the conversation from chat-thread.desktop. Click a conversation to open it. Everyone in it is a fixture."} @-->
 
 <main class="container">
   <div class="pane-layout">
@@ -10,79 +10,152 @@
         <button class="inbox-filter" type="button">Important</button>
       </div>
 
-      <div class="conversation conversation--active">
-        <span class="conversation__avatar">A</span>
+      <div class="conversation conversation--active" data-chat="karim">
+        <span class="conversation__avatar">K</span>
         <div class="conversation__body">
-          <p class="conversation__name">Ahmed H.</p>
-          <p class="conversation__ad">Apartment for sale in Zamalek 200m</p>
+          <p class="conversation__name">Karim M.</p>
+          <p class="conversation__ad">iPhone 15 Pro Max 256GB</p>
           <p class="conversation__preview">Is the price negotiable?</p>
         </div>
         <span class="conversation__time">2h</span>
       </div>
-      <div class="conversation">
-        <span class="conversation__avatar">M</span>
-        <div class="conversation__body">
-          <p class="conversation__name">Mona S.</p>
-          <p class="conversation__ad">Hyundai Elantra 2021</p>
-          <p class="conversation__preview">I can come see it tomorrow morning</p>
-        </div>
-        <span class="conversation__time">5h</span>
-      </div>
-      <div class="conversation">
+      <div class="conversation" data-chat="nile">
         <span class="conversation__avatar">N</span>
         <div class="conversation__body">
           <p class="conversation__name">Nile Realty</p>
-          <p class="conversation__ad">Villa for sale in New Cairo 340m</p>
+          <p class="conversation__ad">Hyundai Elantra 2019</p>
           <p class="conversation__preview">We have three similar units in the same compound</p>
         </div>
-        <span class="conversation__time">1d</span>
+        <span class="conversation__time">22/09/2026</span>
       </div>
-      <div class="conversation">
+      <div class="conversation" data-chat="yasmine">
+        <span class="conversation__avatar">Y</span>
+        <div class="conversation__body">
+          <p class="conversation__name">Yasmine A.</p>
+          <p class="conversation__ad">Villa for sale Mivida compound</p>
+          <p class="conversation__preview">Number viewed</p>
+        </div>
+        <span class="conversation__time">21/09/2026</span>
+      </div>
+      <div class="conversation" data-chat="mahmoud">
         <span class="conversation__avatar">م</span>
         <div class="conversation__body">
           <p class="conversation__name">محمود ع.</p>
-          <p class="conversation__ad">iPhone 15 Pro Max 256GB</p>
-          <p class="conversation__preview">التمن قابل للتفاوض؟</p>
+          <p class="conversation__ad">Apartment for sale in Zamalek 200m</p>
+          <p class="conversation__preview">I can come see it tomorrow morning</p>
         </div>
-        <span class="conversation__time">2d</span>
+        <span class="conversation__time">21/09/2026</span>
       </div>
     </aside>
 
     <section class="pane">
-      <div class="conversation">
-        <span class="conversation__avatar">A</span>
-        <div class="conversation__body">
-          <p class="conversation__name">Ahmed H.</p>
-          <p class="conversation__ad">Apartment for sale in Zamalek 200m</p>
-          <p class="conversation__preview">EGP 8,500,000</p>
+      <header class="chat-thread-header" data-thread-header>
+        <span class="chat-thread-header__avatar">K</span>
+        <div class="chat-thread-header__who">
+          <p class="chat-thread-header__name">Karim M.</p>
+          <p class="chat-thread-header__last-active">Last active 5 hours ago</p>
         </div>
-        <button class="contact-btn contact-btn--call conversation__action">Call</button>
+        <div class="chat-thread-header__actions">
+          <button class="chat-thread-header__action" type="button" aria-label="Report this conversation"><img src="../../assets/live-icons/chat-report.svg" alt="" width="22" height="22"></button>
+          <button class="chat-thread-header__action" type="button" aria-label="Call"><img src="../../assets/live-icons/chat-call.svg" alt="" width="22" height="22"></button>
+          <button class="chat-thread-header__action" type="button" aria-label="Send an SMS"><img src="../../assets/live-icons/chat-sms.svg" alt="" width="22" height="22"></button>
+          <button class="chat-thread-header__action" type="button" aria-label="More"><img src="../../assets/live-icons/chat-more.svg" alt="" width="22" height="22"></button>
+          <button class="chat-thread-header__action" type="button" aria-label="Close this conversation"><img src="../../assets/live-icons/chat-close.svg" alt="" width="22" height="22"></button>
+        </div>
+      </header>
+
+      <div class="chat-ad-strip" data-thread-ad>
+        <span class="chat-ad-strip__thumb media-placeholder"></span>
+        <div class="chat-ad-strip__text">
+          <p class="chat-ad-strip__title">iPhone 15 Pro Max 256GB</p>
+          <p class="chat-ad-strip__price">EGP 120,000</p>
+        </div>
+        <button class="chat-ad-strip__view" type="button">View Ad</button>
       </div>
 
-      <!-- PROPOSAL, not measured: live's capture shows "Your chat is empty". -->
-      <div class="thread">
-        <div class="bubble">
-          Hi, is the apartment still available?
-          <span class="bubble__time">10:42</span>
-        </div>
-        <div class="bubble bubble--own">
-          Yes, still available.
-          <span class="bubble__time">10:44</span>
-        </div>
-        <div class="bubble">
-          Is the price negotiable?
-          <span class="bubble__time">10:45</span>
-        </div>
-        <div class="bubble bubble--own">
-          Slightly, for a serious buyer. Would you like to view it this week?
-          <span class="bubble__time">10:47</span>
-        </div>
+      <div class="thread" data-thread>
+        <p class="thread__day">Yesterday</p>
+        <div class="thread__row thread__row--own"><div class="bubble bubble--own bubble--first"><span class="bubble__text">Hi, is this still available?</span><span class="bubble__time">13:08</span></div></div>
+        <div class="thread__row"><div class="bubble bubble--first"><span class="bubble__text">Yes, still available.</span><span class="bubble__time">13:09</span></div></div>
+        <div class="thread__row thread__row--own"><div class="bubble bubble--own bubble--first"><span class="bubble__text">Is the price negotiable?</span><span class="bubble__time">13:09</span></div></div>
+        <div class="thread__row"><div class="bubble bubble--first"><span class="bubble__text">Slightly, for a serious buyer. Would you like to see it this week?</span><span class="bubble__time">13:10</span></div></div>
+        <p class="thread__day">Today</p>
+        <div class="thread__row thread__row--own"><div class="bubble bubble--own bubble--first"><span class="bubble__text">Saturday morning works for me.</span><span class="bubble__time">09:41</span></div></div>
       </div>
 
+      <div class="chat-tabs" role="tablist">
+        <button class="chat-tab chat-tab--active" type="button" role="tab" aria-selected="true">Questions</button>
+        <button class="chat-tab" type="button" role="tab" aria-selected="false">Next steps</button>
+      </div>
       <div class="composer">
-        <input class="input composer__input" type="text" placeholder="Write a message…" aria-label="Message">
-        <button class="btn btn--primary" type="button">Send</button>
+        <button class="composer__attach" type="button" aria-label="Attach a file"><img src="../../assets/live-icons/chat-attach.svg" alt="" width="22" height="22"></button>
+        <input class="composer__field" type="text" placeholder="Type a message" aria-label="Message">
+        <button class="composer__send" type="button" aria-label="Send"><img src="../../assets/live-icons/chat-send.svg" alt="" width="20" height="20"></button>
       </div>
     </section>
   </div>
 </main>
+
+<script>
+/* Prototype only: clicking a conversation opens it in the pane beside the list, the way live
+   does. Everyone and every message here is a fixture — the measured anatomy is what matters. */
+(function () {
+  var CHATS = {
+    karim: { name: 'Karim M.', initial: 'K', lastActive: 'Last active 5 hours ago', ad: 'iPhone 15 Pro Max 256GB', price: 'EGP 120,000',
+      messages: [['day', 'Yesterday'], ['own', 'Hi, is this still available?', '13:08'], ['them', 'Yes, still available.', '13:09'],
+        ['own', 'Is the price negotiable?', '13:09'], ['them', 'Slightly, for a serious buyer. Would you like to see it this week?', '13:10'],
+        ['day', 'Today'], ['own', 'Saturday morning works for me.', '09:41']] },
+    nile: { name: 'Nile Realty', initial: 'N', lastActive: 'Last active 2 days ago', ad: 'Hyundai Elantra 2019', price: 'EGP 890,000',
+      messages: [['day', 'Monday'], ['them', 'We have three similar units in the same compound.', '11:02'],
+        ['own', 'Can you send photos of the one facing the garden?', '11:20'], ['them', 'Sending them now.', '11:22']] },
+    yasmine: { name: 'Yasmine A.', initial: 'Y', lastActive: 'Last active 1 day ago', ad: 'Villa for sale Mivida compound', price: 'EGP 22,130,000',
+      messages: [['day', 'Sunday'], ['own', 'Is the price negotiable?', '18:40'], ['them', 'A little, for a serious buyer.', '18:52']] },
+    mahmoud: { name: 'محمود ع.', initial: 'م', lastActive: 'Last active 3 days ago', ad: 'Apartment for sale in Zamalek 200m', price: 'EGP 8,500,000',
+      messages: [['day', 'Saturday'], ['them', 'I can come see it tomorrow morning.', '09:15'], ['own', 'Tomorrow at 11 works.', '09:31']] }
+  };
+  var header = document.querySelector('[data-thread-header]');
+  var adStrip = document.querySelector('[data-thread-ad]');
+  var thread = document.querySelector('[data-thread]');
+  if (!header || !thread || !adStrip) return;
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function open(key) {
+    var chat = CHATS[key];
+    if (!chat) return;
+    header.querySelector('.chat-thread-header__avatar').textContent = chat.initial;
+    header.querySelector('.chat-thread-header__name').textContent = chat.name;
+    header.querySelector('.chat-thread-header__last-active').textContent = chat.lastActive;
+    adStrip.querySelector('.chat-ad-strip__title').textContent = chat.ad;
+    adStrip.querySelector('.chat-ad-strip__price').textContent = chat.price;
+    var html = '';
+    var previous = null;
+    chat.messages.forEach(function (m) {
+      if (m[0] === 'day') { html += '<p class="thread__day">' + esc(m[1]) + '</p>'; previous = null; return; }
+      var own = m[0] === 'own';
+      var first = previous === null || previous !== m[0];
+      html += '<div class="thread__row' + (own ? ' thread__row--own' : '') + '">' +
+        '<div class="bubble' + (own ? ' bubble--own' : '') + (first ? ' bubble--first' : '') + '">' +
+        '<span class="bubble__text">' + esc(m[1]) + '</span><span class="bubble__time">' + esc(m[2]) + '</span></div></div>';
+      previous = m[0];
+    });
+    thread.innerHTML = html;
+    document.querySelectorAll('[data-chat]').forEach(function (row) {
+      row.classList.toggle('conversation--active', row.getAttribute('data-chat') === key);
+    });
+  }
+
+  document.querySelectorAll('[data-chat]').forEach(function (row) {
+    row.addEventListener('click', function () { open(row.getAttribute('data-chat')); });
+  });
+
+  document.querySelectorAll('.chat-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.chat-tab').forEach(function (t) {
+        t.classList.toggle('chat-tab--active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+    });
+  });
+})();
+</script>

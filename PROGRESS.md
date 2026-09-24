@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-23 (chat detail screen captured and redacted — item 49) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-24 (chat thread components + prototype — item 50) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -673,6 +673,27 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    caught it. The eye-check on people screens is not optional.
    Next: the thread components (bubble, composer, thread header) and the inbox→thread
    prototype, both now measurable rather than proposed.
+
+50. **Chat thread components and prototype** (user: "build the thread components and
+   prototype"). Everything here is measured on `chat-thread.desktop` — the half of the chat
+   screen that was a labelled proposal until yesterday. **58/58 live, 347/347 parity.**
+   - `ChatThreadHeader` — 64 tall, 40px --red-01 avatar, name 15.96/23.94/700 over "Last
+     active …" at 14/21, and five 56×47 actions in live's order: report, call, SMS, more, close.
+   - `ChatAdStrip` — 73 tall, 40px thumb at radius 4, title 17.92/2.7/700 over the price at
+     15.96, and **View Ad** outlined in --red-04 at radius 8.
+   - `ChatThread` — bubbles at 8/16, incoming on --gray-01, the account holder's own on
+     --blue-02 at the right. Two details the capture settled: **the corner facing the speaker
+     goes square after the first message in a run**, which is what makes a run read as one
+     block, and the box keeps the inherited 14/21 while the words sit in a 15.96/23.94 span in
+     --black. Day pills are 190 wide whatever the word, 28 tall, 1px --gray-04.
+   - `ChatComposer` — live's two tabs (**Questions / Next steps**, uppercase, red underline on
+     the active one) on an 18px shoulder above a 57px bar with a 40px charcoal send button.
+   Icons extracted from the capture: `chat-report` (an `<img>`, base64 — decode it, or it saves
+   as unreadable text), `-call`, `-sms`, `-more`, `-close`, `-attach`, `-send`.
+   **The prototype:** the chat template's inbox rows now open their conversation in the pane
+   beside them — header, ad strip and messages all swap, the row marks itself active, and the
+   composer tabs switch. Four fixture conversations, in `_pages/chat.desktop.html`.
+   The template's note no longer says "proposal", because it no longer is one.
 
 ## 6. Next up
 

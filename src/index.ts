@@ -191,3 +191,5 @@ export type { AdDescriptionProps } from './components/AdDescription';
 /* Chat (live-measured on chat.desktop, 2026-09-23) */
 export { ChatInbox } from './components/ChatInbox';
 export type { ChatInboxProps, ChatConversation } from './components/ChatInbox';
+export { ChatThread, ChatThreadHeader, ChatAdStrip, ChatComposer } from './components/ChatThread';
+export type { ChatThreadProps, ChatThreadHeaderProps, ChatAdStripProps, ChatComposerProps, ChatMessage } from './components/ChatThread';

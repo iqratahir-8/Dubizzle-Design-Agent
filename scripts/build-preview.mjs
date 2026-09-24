@@ -342,10 +342,12 @@ function popupsDemo() {
 /* ── Batch 4: portal content (check:live verified) ────────────────────────── */
 function chatDemo() {
   const rows = [
-    ['A', 'Ahmed H.', 'Apartment for sale in Zamalek 200m', 'Is the price negotiable?', '2h', true],
-    ['M', 'Mona S.', 'Hyundai Elantra 2021', 'I can come see it tomorrow morning', '5h', false],
-    ['N', 'Nile Realty', 'Villa for sale in New Cairo 340m', 'We have three similar units in the same compound', '1d', false],
+    ['K', 'Karim M.', 'iPhone 15 Pro Max 256GB', 'Is the price negotiable?', '2h', true],
+    ['N', 'Nile Realty', 'Hyundai Elantra 2019', 'We have three similar units in the same compound', '22/09/2026', false],
+    ['Y', 'Yasmine A.', 'Villa for sale Mivida compound', 'Number viewed', '21/09/2026', false],
   ];
+  const icon = (name, label) => `<button class="chat-thread-header__action" type="button" aria-label="${label}"><img src="assets/live-icons/chat-${name}.svg" alt="" width="22" height="22"></button>`;
+  const bubble = (text, time, own, first) => `<div class="thread__row${own ? ' thread__row--own' : ''}"><div class="bubble${own ? ' bubble--own' : ''}${first ? ' bubble--first' : ''}"><span class="bubble__text">${esc(text)}</span><span class="bubble__time">${time}</span></div></div>`;
   return `
       <h3>Chat inbox</h3>
       <p class="note">Measured on the live chat screen (<code>chat.desktop</code>): a 64px Inbox bar, 30px filter pills, and rows of exactly 100 with the ad as the loudest line. Everyone here is a fixture.</p>
@@ -358,6 +360,45 @@ function chatDemo() {
             <button class="inbox-filter" type="button">Important</button>
           </div>
           ${rows.map(([initial, name, ad, preview, time, active]) => `<div class="conversation${active ? ' conversation--active' : ''}"><span class="conversation__avatar">${initial}</span><div class="conversation__body"><p class="conversation__name">${esc(name)}</p><p class="conversation__ad">${esc(ad)}</p><p class="conversation__preview">${esc(preview)}</p></div><span class="conversation__time">${time}</span></div>`).join('')}
+        </div>
+      </div>
+
+      <h3>Chat thread</h3>
+      <p class="note">Measured on <code>chat-thread.desktop</code>, the first capture of an open conversation. Incoming messages sit on --gray-01, the account holder's own on --blue-02, and the corner facing the speaker goes square after the first message in a run.</p>
+      <div class="demo" style="align-items:flex-start;padding:0;background:none;border:0">
+        <div class="pane" style="width:76.7rem" data-parity="chat-thread">
+          <header class="chat-thread-header">
+            <span class="chat-thread-header__avatar">K</span>
+            <div class="chat-thread-header__who">
+              <p class="chat-thread-header__name">Karim M.</p>
+              <p class="chat-thread-header__last-active">Last active 5 hours ago</p>
+            </div>
+            <div class="chat-thread-header__actions">${icon('report', 'Report this conversation')}${icon('call', 'Call')}${icon('sms', 'Send an SMS')}${icon('more', 'More')}${icon('close', 'Close this conversation')}</div>
+          </header>
+          <div class="chat-ad-strip">
+            <span class="chat-ad-strip__thumb media-placeholder"></span>
+            <div class="chat-ad-strip__text">
+              <p class="chat-ad-strip__title">iPhone 15 Pro Max 256GB</p>
+              <p class="chat-ad-strip__price">EGP 120,000</p>
+            </div>
+            <button class="chat-ad-strip__view" type="button">View Ad</button>
+          </div>
+          <div class="thread">
+            <p class="thread__day">Yesterday</p>
+            ${bubble('Hi, is this still available?', '13:08', true, true)}
+            ${bubble('Yes, still available.', '13:09', false, true)}
+            ${bubble('Is the price negotiable?', '13:09', true, true)}
+            ${bubble('Slightly, for a serious buyer. Would you like to see it this week?', '13:10', false, true)}
+          </div>
+          <div class="chat-tabs" role="tablist">
+            <button class="chat-tab chat-tab--active" type="button" role="tab" aria-selected="true">Questions</button>
+            <button class="chat-tab" type="button" role="tab" aria-selected="false">Next steps</button>
+          </div>
+          <div class="composer">
+            <button class="composer__attach" type="button" aria-label="Attach a file"><img src="assets/live-icons/chat-attach.svg" alt="" width="22" height="22"></button>
+            <input class="composer__field" type="text" placeholder="Type a message" aria-label="Message">
+            <button class="composer__send" type="button" aria-label="Send"><img src="assets/live-icons/chat-send.svg" alt="" width="20" height="20"></button>
+          </div>
         </div>
       </div>`;
 }

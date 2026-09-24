@@ -128,6 +128,16 @@ export const SPECS = [
      on a 30px chip, and check:design refuses a 1.4rem radius as off-scale. */
   { name: 'ChatInbox / filter', live: ['chat.desktop', 'Unread Chats', 0], story: ['chat-chatinbox--default', '[class*="_filter_"]', 1], props: [...BOX.filter((p) => p !== 'borderTopLeftRadius'), ...TYPE] },
   { name: 'ChatInbox / filter on', live: ['chat.desktop', 'All', 0], story: ['chat-chatinbox--default', '[class*="_filterSelected_"]'], props: [...BOX.filter((p) => p !== 'borderTopLeftRadius'), ...TYPE] },
+  /* Chat thread, against the first capture of an open conversation. The story carries fixture
+     messages, so boxes, colours and type are compared and pixels are not. Anchors avoid the
+     inbox beside it — its row previews come from the same fixture pool as the messages, so
+     plain message text would match there first; timestamps only occur in the thread. */
+  { name: 'ChatThread / header', live: ['chat-thread.desktop', 'Last active 5 hours ago', 2], story: ['chat-chatthread--conversation', '[class*="_header_"]'], props: ['backgroundColor', 'borderTopWidth'], width: true, noText: true, noIcon: true },
+  { name: 'ChatThread / view ad', live: ['chat-thread.desktop', 'View Ad', 1], story: ['chat-chatthread--conversation', '[class*="_viewAd_"]'], props: BOX.filter((p) => !p.startsWith('padding')), width: true, noText: true },
+  { name: 'ChatThread / bubble', live: ['chat-thread.desktop', '13:09', 2], story: ['chat-chatthread--conversation', '[class*="_bubbleOwn_"]'], props: [...BOX, ...TYPE], noText: true },
+  /* borderTopLeftRadius is left out: live writes 30px on a 28px pill, which is the pill token */
+  { name: 'ChatThread / day', live: ['chat-thread.desktop', 'Yesterday', 0], story: ['chat-chatthread--conversation', '[class*="_day_"]'], props: [...BOX.filter((p) => p !== 'borderTopLeftRadius'), ...TYPE], noText: true },
+  { name: 'ChatThread / tab', live: ['chat-thread.desktop', 'Questions', 1], story: ['chat-chatthread--conversation', '[class*="_tab_"]'], props: [...BOX, ...TYPE], width: true, noText: true },
   /* Ad detail page. The story holds the same listing as the capture, so these compare pixels. */
   { name: 'AdPriceHeader / price', live: ['car-dpv.desktop', 'EGP 3,190,000', 0], story: ['ad-detail-adpriceheader--car', '[class*="_price_"]'], props: [...BOX, ...TYPE], width: true, pixels: true },
   { name: 'AdPriceHeader / chip', live: ['car-dpv.desktop', 'Down Payment', 0], story: ['ad-detail-adpriceheader--car', '[class*="_downPayment_"]'], props: [...BOX, ...TYPE], width: true, pixels: true },

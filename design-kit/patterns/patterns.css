@@ -2234,43 +2234,267 @@ ul {
   color: var(--gray-06);
 }
 
-/* PROPOSAL, not measured — the capture shows the empty state, so the thread is our design.
-   White under the bubbles so the --gray-01 incoming ones read on a grey page. */
+/* ── Chat thread ──────────────────────────────────────────────────────────────
+   Measured on chat-thread.desktop (2026-09-23), the first capture of an open
+   conversation — before it, everything here was a proposal. Mirrors ChatThread /
+   ChatThreadHeader / ChatAdStrip / ChatComposer (npm run check:parity). */
+
+.chat-thread-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  height: 6.4rem;
+  padding-inline: 2.4rem;
+  font-family: var(--font-primary);
+}
+
+.chat-thread-header__avatar {
+  width: 4rem;
+  height: 4rem;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--red-01);
+  font-size: 2.4rem;
+  font-weight: var(--weight-bold);
+  color: var(--red-05);
+}
+
+.chat-thread-header__who { flex: 1; min-width: 0; }
+
+.chat-thread-header__name {
+  margin: 0;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.394rem;
+  color: var(--gray-06);
+}
+
+.chat-thread-header__last-active {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  color: var(--gray-05);
+}
+
+.chat-thread-header__actions { display: flex; align-items: center; flex: none; }
+
+.chat-thread-header__action {
+  width: 5.6rem;
+  height: 4.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.chat-ad-strip {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  height: 7.3rem;
+  padding-inline: 2.4rem;
+  background: var(--surface-card);
+  font-family: var(--font-primary);
+}
+
+.chat-ad-strip__thumb {
+  width: 4rem;
+  height: 4rem;
+  flex: none;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.chat-ad-strip__text { flex: 1; min-width: 0; }
+
+.chat-ad-strip__title {
+  margin: 0;
+  font-size: 1.792rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.7rem;
+  color: var(--gray-06);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-ad-strip__price {
+  margin: 0;
+  font-size: 1.596rem;
+  line-height: 2.394rem;
+  color: var(--gray-06);
+}
+
+.chat-ad-strip__view {
+  flex: none;
+  height: 3.8rem;
+  padding-inline: 1.6rem;
+  border: 1px solid var(--red-04);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.394rem;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
 .thread {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  min-height: 40rem;
+  gap: 0.4rem;
+  padding: 0.8rem;
   background: var(--surface-card);
 }
 
+/* "TODAY" on a white pill, 28 tall, in --gray-04. */
+.thread__day {
+  width: fit-content;
+  /* live holds the pill at 190 whatever the word is */
+  min-width: 19rem;
+  margin: 0.8rem auto;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid var(--gray-04);
+  border-radius: var(--radius-full);
+  text-align: center;
+  background: var(--surface-card);
+  font-size: 1.204rem;
+  font-weight: var(--weight-bold);
+  line-height: 1.806rem;
+  color: var(--gray-04);
+}
+
+.thread__row { display: flex; }
+.thread__row--own { justify-content: flex-end; }
+
+/* 8/16 on --gray-01, text 15.96/23.94 in --black, time 14/21 in --gray-05. The corner facing
+   the speaker is square on every message after the first in a run. */
 .bubble {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
   max-width: 60%;
-  padding: var(--space-3);
+  padding: 0.8rem 1.6rem;
   border-radius: var(--radius-lg);
-  font-size: var(--text-sm);
-  background: var(--surface-muted);
-  align-self: flex-start;
+  border-start-start-radius: 0;
+  background: var(--gray-01);
+  color: var(--gray-06);
+}
+
+/* The words themselves are 15.96/23.94 in --black; the box keeps the inherited 14/21. */
+.bubble__text {
+  font-size: 1.596rem;
+  line-height: 2.394rem;
+  color: var(--black);
 }
 
 .bubble--own {
-  background: var(--color-secondary-light);
-  align-self: flex-end;
+  border-start-start-radius: var(--radius-lg);
+  border-start-end-radius: 0;
+  background: var(--blue-02);
 }
+
+.bubble--first {
+  border-start-start-radius: var(--radius-lg);
+  border-start-end-radius: var(--radius-lg);
+}
+
+.bubble--image { padding: 0.4rem; }
+.bubble--image img { display: block; border-radius: var(--radius-sm); }
 
 .bubble__time {
-  display: block;
-  margin-top: var(--space-1);
-  font-size: 1rem;
-  color: var(--text-tertiary);
+  flex: none;
+  font-size: var(--text-sm);
+  line-height: 2.1rem;
+  color: var(--gray-05);
 }
 
+.chat-tabs {
+  display: flex;
+  height: 5rem;
+  border-start-start-radius: 1.8rem;
+  border-start-end-radius: 1.8rem;
+  background: var(--surface-card);
+  font-family: var(--font-primary);
+}
+
+.chat-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.2rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.394rem;
+  color: var(--gray-04);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.chat-tab--active { border-bottom-color: var(--red-05); color: var(--gray-06); }
+
+/* 57 tall on a 1px --neutral-color-light rule, field at 15.96, 40px charcoal send. */
 .composer {
   display: flex;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-4);
-  border-top: 0.1rem solid var(--border-default);
+  align-items: center;
+  gap: 1.6rem;
+  height: 5.7rem;
+  padding-inline: 2.4rem;
+  border-top: 1px solid var(--neutral-color-light);
+  background: var(--surface-card);
+  font-family: var(--font-primary);
+}
+
+.composer__attach {
+  flex: none;
+  display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.composer__field {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  font-size: 1.596rem;
+  color: var(--gray-06);
+}
+
+.composer__field::placeholder { color: var(--gray-04); }
+
+.composer__send {
+  flex: none;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--gray-06);
+  color: var(--white);
+  cursor: pointer;
 }
 
 /* ── Empty / error state ──────────────────────────────────────────────────── */
