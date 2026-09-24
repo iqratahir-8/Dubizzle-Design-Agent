@@ -146,6 +146,10 @@ export const SPECS = [
   { name: 'AdSpecsStrip / cell', live: ['car-dpv.desktop', 'Year', 2], story: ['ad-detail-adspecsstrip--car', '[class*="_cell_"]'], props: BOX, width: true, pixels: true },
   { name: 'AdDetailsTable / heading', live: ['car-dpv.desktop', 'Details', 0], story: ['ad-detail-addetailstable--collapsed', 'h3'], props: TYPE, pixels: true },
   { name: 'AdDetailsTable / key', live: ['car-dpv.desktop', 'Brand', 0], story: ['ad-detail-addetailstable--collapsed', '[class*="_key_"]'], props: [...BOX, ...TYPE], pixels: true },
+  { name: 'AdLocation / place', live: ['car-dpv.desktop', 'Maadi', 2], story: ['ad-detail-adlocation--default', '[class*="_place_"]'], props: BOX, width: true, noText: true, noIcon: true },
+  { name: 'AdLocation / area', live: ['car-dpv.desktop', 'Maadi', 0], story: ['ad-detail-adlocation--default', '[class*="_area_"]'], props: TYPE },
+  { name: 'AdLocation / city', live: ['car-dpv.desktop', 'Cairo', 0], story: ['ad-detail-adlocation--default', '[class*="_city_"]'], props: TYPE },
+  { name: 'AdLocation / see', live: ['car-dpv.desktop', 'See location', 1], story: ['ad-detail-adlocation--default', '[class*="_seeLocation_"]'], props: BOX.filter((p) => !p.startsWith('padding')), width: true, noText: true, noIcon: true },
   { name: 'AdDescription / heading', live: ['car-dpv.desktop', 'Description', 0], story: ['ad-detail-addescription--car', 'h3'], props: TYPE, pixels: true },
   { name: 'MobileFilters / header', live: ['m-filters.mobile', 'Reset', 4], story: ['mobile-mobilefilters--page', 'header'], props: BOX, width: true, pixels: true, mobile: true },
 ];

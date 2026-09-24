@@ -4,7 +4,7 @@
 should read this first and continue from "Next up". It is updated after every milestone,
 so it is safe to switch accounts at any point.
 
-Last updated: 2026-09-24 (chat thread components + prototype — item 50) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
+Last updated: 2026-09-24 (Arabic parked; ad-detail Location — items 50–51) · branch `claude/keen-hypatia-ftrhz4` · location `~/Dubizzle-Design-System`
 
 Older, partly superseded notes: `HANDOFF.md` (first session), `docs/SESSION-HANDOFF.md`
 (second session). Where they disagree with this file, this file wins.
@@ -696,7 +696,23 @@ Plus HTTP-fetched listing/DPV pages from the manifest.
    composer tabs switch. Four fixture conversations, in `_pages/chat.desktop.html`.
    The template's note no longer says "proposal", because it no longer is one.
 
+51. **Ad detail: Location** (after the user parked Arabic). Measured on `car-dpv.desktop`:
+   the 51px place row — a 48px --gray-01 disc with a 25px pin, the area at **18/27/700** over
+   the city at 16/24 in --gray-05 — then a 267px map at radius 8 with "See location" centred
+   on it (40 tall, 1px --red-04, radius 6, a red 18px pin, label 15.96/700).
+   **The map is a slot, not an image.** The system ships no map tiles, so an empty one stays
+   neutral grey instead of pretending to be a map; consumers pass a real one in.
+   **62/62 live, 353/353 parity.**
+   Still open on this page: the "See More Ads by" seller rail and the sticky section tabs. The
+   rail is blocked on the same question as `SellerCard` — live sets the seller's name in
+   **#12151b**, darker than --gray-06 and used nowhere else (docs/PROPOSALS.md).
+
 ## 6. Next up
+
+0a. **Arabic is parked** (user, 2026-09-24: "we can skip the arabic for now"). The 76 `.ar`
+   captures, the logical-property conversion and `npm run check:rtl` all stay — nothing regresses
+   — but the follow-ups wait: live specs against the `.ar` captures, GESS metrics in the type
+   scale, and the Western vs Arabic-Indic digits question. Pick it up before any Arabic release.
 
 0. **Every component needs a `check:live` spec.** 42 exist (all passing); still missing for
    Tabs, Select, Checkbox, Toggle, Radio, Pill, AccountMenu, MegaMenu (see item 43) and most of

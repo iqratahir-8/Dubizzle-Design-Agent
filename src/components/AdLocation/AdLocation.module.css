@@ -1,0 +1,92 @@
+/* "Location" on an ad detail page. Measured on the live car DPV (car-dpv.desktop, 2026-09-24):
+   the area and city beside a 48px grey disc, then a 267px map with the outlined "See location"
+   centred on it. The map itself is a slot — the system ships no map tiles. */
+
+.section {
+  font-family: var(--font-primary);
+}
+
+.heading {
+  margin: 0;
+  font-size: 2.394rem;
+  font-weight: var(--weight-bold);
+  line-height: 3.6rem;
+  color: var(--gray-06);
+}
+
+.place {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 5.1rem;
+}
+
+.pin {
+  width: 4.8rem;
+  height: 4.8rem;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--gray-01);
+  color: var(--gray-06);
+}
+
+.area {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.7rem;
+  color: var(--gray-06);
+}
+
+.city {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: var(--gray-05);
+}
+
+/* The map is 267 tall with the button centred on it. Consumers put a real map in the slot;
+   with nothing in it the area falls back to the neutral placeholder grey. */
+.map {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26.7rem;
+  border-radius: var(--radius-lg);
+  background: var(--gray-01);
+  overflow: hidden;
+}
+
+.map img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seeLocation {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  height: 4rem;
+  padding-inline: 1.6rem;
+  border: 1px solid var(--red-04);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.seeLocationIcon {
+  flex: none;
+  color: var(--red-05);
+}

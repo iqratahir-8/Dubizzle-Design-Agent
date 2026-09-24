@@ -185,6 +185,8 @@ export { AdSpecsStrip } from './components/AdSpecsStrip';
 export type { AdSpecsStripProps, AdSpec } from './components/AdSpecsStrip';
 export { AdDetailsTable } from './components/AdDetailsTable';
 export type { AdDetailsTableProps, AdDetail } from './components/AdDetailsTable';
+export { AdLocation } from './components/AdLocation';
+export type { AdLocationProps } from './components/AdLocation';
 export { AdDescription } from './components/AdDescription';
 export type { AdDescriptionProps } from './components/AdDescription';
 

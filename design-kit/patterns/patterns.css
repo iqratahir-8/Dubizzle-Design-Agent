@@ -4803,3 +4803,71 @@ ul {
   /* Sellers type their ads as lines, not paragraphs — live keeps every break. */
   white-space: pre-line;
 }
+
+/* ── Ad detail: location ──────────────────────────────────────────────────────
+   Measured on car-dpv.desktop (2026-09-24). Mirrors AdLocation (npm run check:parity). */
+
+.ad-location { font-family: var(--font-primary); }
+
+.ad-location__heading {
+  margin: 0;
+  font-size: 2.394rem;
+  font-weight: var(--weight-bold);
+  line-height: 3.6rem;
+  color: var(--gray-06);
+}
+
+.ad-location__place { display: flex; align-items: center; gap: 1.2rem; min-height: 5.1rem; }
+
+.ad-location__pin {
+  width: 4.8rem;
+  height: 4.8rem;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--gray-01);
+  color: var(--gray-06);
+}
+
+.ad-location__area {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: var(--weight-bold);
+  line-height: 2.7rem;
+  color: var(--gray-06);
+}
+
+.ad-location__city { display: block; font-size: 1.6rem; line-height: 2.4rem; color: var(--gray-05); }
+
+/* The map is a slot — the system ships no tiles, so an empty one stays neutral. */
+.ad-location__map {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26.7rem;
+  border-radius: var(--radius-lg);
+  background: var(--gray-01);
+  overflow: hidden;
+}
+
+.ad-location__see {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  height: 4rem;
+  padding-inline: 1.6rem;
+  border: 1px solid var(--red-04);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  font-family: inherit;
+  font-size: 1.596rem;
+  font-weight: var(--weight-bold);
+  color: var(--gray-06);
+  cursor: pointer;
+}
+
+.ad-location__see img { flex: none; }
